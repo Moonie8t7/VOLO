@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Final BG3 design specifications */
+    --background: 30 20% 8%; /* #161411 charcoal background */
+    --foreground: 35 50% 91%; /* #FDE5CD header text */
+    --card: 30 20% 10%; /* Slightly lighter than background */
+    --card-foreground: 35 50% 91%;
+    --popover: 30 20% 10%;
+    --popover-foreground: 35 50% 91%;
+    --primary: 35 50% 91%; /* #FDE5CD header color */
+    --primary-foreground: 30 20% 8%;
+    --secondary: 34 53% 79%; /* #FBCEA0 small headers */
+    --secondary-foreground: 30 20% 8%;
+    --muted: 30 20% 12%;
+    --muted-foreground: 0 0% 81%; /* #CFCFCE main text */
+    --accent: 37 42% 66%; /* #D7A869 Rich Gold */
+    --accent-foreground: 30 20% 8%;
+    --destructive: 10 40% 50%; /* #B15A4A Burnt Red */
+    --destructive-foreground: 35 50% 91%;
+    --border: 35 30% 56%; /* #B4906D border color */
+    --input: 30 20% 10%;
+    --ring: 35 30% 56%;
+    --radius: 0.375rem;
+    
+    /* Final BG3 color palette */
+    --bg3-header: 35 50% 91%; /* #FDE5CD */
+    --bg3-border: 35 30% 56%; /* #B4906D */
+    --bg3-main: 0 0% 81%; /* #CFCFCE */
+    --bg3-small: 34 53% 79%; /* #FBCEA0 */
+    --bg3-charcoal: 30 20% 8%; /* #161411 */
+    --bg3-gold: 37 42% 66%; /* #D7A869 Rich Gold */
+    --bg3-sienna: 19 45% 61%; /* #D29062 Sienna Orange */
+    --bg3-coffee: 30 30% 20%; /* #443623 Dark Coffee */
+    --bg3-dark-brown: 30 30% 20%; /* #443623 High contrast text on gold */
+    --bg3-clay: 10 40% 50%; /* #B15A4A Burnt Red */
+    --bg3-panel: 30 12% 15%; /* #24211A Panel Background */
+  }
+
+  .light {
+    --background: 45 25% 95%; /* Warm parchment */
+    --foreground: 13 15% 15%;
+    --card: 45 20% 90%;
+    --card-foreground: 13 15% 15%;
+    --popover: 45 20% 90%;
+    --popover-foreground: 13 15% 15%;
+    --primary: 41 85% 45%;
+    --primary-foreground: 45 25% 95%;
+    --secondary: 45 15% 85%;
+    --secondary-foreground: 13 15% 15%;
+    --muted: 45 15% 85%;
+    --muted-foreground: 13 10% 40%;
+    --accent: 41 85% 45%;
+    --accent-foreground: 45 25% 95%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 45 25% 95%;
+    --border: 45 10% 75%;
+    --input: 45 15% 85%;
+    --ring: 41 85% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'EB Garamond', serif;
+    font-weight: 300;
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--bg3-sienna) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--bg3-gold) / 0.05) 0%, transparent 50%);
+  }
+  
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: hsl(var(--bg3-header)); /* #FDE5CD */
+  }
+  
+  .font-subheader {
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    font-variant: small-caps;
+    letter-spacing: 0.025em;
+    color: hsl(var(--bg3-small)); /* #FBCEA0 */
+  }
+  
+  /* Typography only. Colour is deliberately not set here: a blanket rule on
+     p/span/div overrides text on inverted surfaces, which made button and badge
+     labels disappear against light backgrounds. */
+  .font-body, p, span, div {
+    font-family: 'EB Garamond', serif;
+    font-weight: 300;
+  }
+
+  /* Opt-in body copy colour, for prose sitting on the dark background. */
+  .font-body {
+    color: hsl(var(--bg3-main)); /* #CFCFCE */
+  }
+  
+  .text-subheading {
+    color: hsl(var(--bg3-small)); /* #FBCEA0 */
+  }
+  
+  .bg-gradient-bg3 {
+    /* Stays dark across the whole sweep so cream text keeps its contrast.
+       The warmth comes from the coffee midpoint, not from lightness. */
+    background: linear-gradient(135deg,
+      hsl(var(--bg3-charcoal)) 0%,
+      hsl(var(--bg3-coffee)) 50%,
+      hsl(var(--bg3-charcoal)) 100%);
+  }
+  
+  .text-gradient-bg3 {
+    background: linear-gradient(135deg, 
+      hsl(var(--bg3-header)), 
+      hsl(var(--bg3-small)));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .border-ornate {
+    border-image: linear-gradient(45deg, 
+      hsl(var(--bg3-border) / 0.4), 
+      hsl(var(--bg3-small) / 0.6), 
+      hsl(var(--bg3-border) / 0.4)) 1;
+  }
+  
+  .shadow-bg3 {
+    box-shadow: 
+      0 4px 12px hsl(var(--bg3-charcoal) / 0.3),
+      0 0 0 1px hsl(var(--bg3-gold) / 0.1);
+  }
+
+  /* BG3 themed colors for replacing modern blues/reds */
+  .text-bg3-gold { color: hsl(var(--bg3-gold)); }
+  .text-bg3-sienna { color: hsl(var(--bg3-sienna)); }
+  .text-bg3-clay { color: hsl(var(--bg3-clay)); }
+  .text-bg3-coffee { color: hsl(var(--bg3-coffee)); }
+  .text-bg3-dark-brown { color: hsl(var(--bg3-dark-brown)); }
+  
+  .bg-bg3-gold { background-color: hsl(var(--bg3-gold)); }
+  .bg-bg3-sienna { background-color: hsl(var(--bg3-sienna)); }
+  .bg-bg3-clay { background-color: hsl(var(--bg3-clay)); }
+  .bg-bg3-panel { background-color: hsl(var(--bg3-panel)); }
+  
+  .border-bg3-gold { border-color: hsl(var(--bg3-gold)); }
+  .border-bg3-clay { border-color: hsl(var(--bg3-clay)); }
+}
+
+/* Status colours, referenced by the component helpers below. */
+:root {
+  --warning: 38 92% 50%;
+  --success: 142 76% 36%;
+  --error: 0 84% 60%;
+}
+
+
+@layer components {
+  .text-warning {
+    color: hsl(var(--warning));
+  }
+  
+  .text-success {
+    color: hsl(var(--success));
+  }
+  
+  .text-error {
+    color: hsl(var(--error));
+  }
+  
+  .bg-warning {
+    background-color: hsl(var(--warning));
+  }
+  
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+  
+  .bg-error {
+    background-color: hsl(var(--error));
+  }
+}

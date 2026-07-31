@@ -1,0 +1,167 @@
+import { useMemo, useState } from 'react';
+import { Database, Search, GitPullRequest, ExternalLink } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useStore } from '@/lib/store';
+
+const MASTERLIST_REPO = 'https://github.com/Moonie8t7/VOLO';
+const PAGE_SIZE = 60;
+
+export default function MasterlistPage() {
+  const { masterlist, isLoadingMasterlist, masterlistError } = useStore();
+  const [query, setQuery] = useState('');
+  const [group, setGroup] = useState<string>('all');
+  const [limit, setLimit] = useState(PAGE_SIZE);
+
+  const filtered = useMemo(() => {
+    if (!masterlist) return [];
+    const q = query.trim().toLowerCase();
+    return masterlist.plugins.filter(p => {
+      if (group !== 'all' && p.group !== group) return false;
+      if (!q) return true;
+      return p.name.toLowerCase().includes(q) || p.author?.toLowerCase().includes(q);
+    });
+  }, [masterlist, query, group]);
+
+  const counts = useMemo(() => {
+    const map = new Map<string, number>();
+    for (const p of masterlist?.plugins ?? []) map.set(p.group, (map.get(p.group) ?? 0) + 1);
+    return map;
+  }, [masterlist]);
+
+  return (
+    <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
+      <div className="max-w-5xl mx-auto space-y-8">
+        <header className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h1 className="text-4xl font-display font-bold text-gradient-bg3">
+              Community masterlist
+            </h1>
+            <p className="text-muted-foreground mt-2 font-body">
+              {masterlist
+                ? `${masterlist.plugins.length.toLocaleString()} mods, v${masterlist.version}`
+                : 'Loading'}
+            </p>
+          </div>
+          <a href={MASTERLIST_REPO} target="_blank" rel="noreferrer">
+            <Button variant="outline">
+              <GitPullRequest className="mr-2 h-4 w-4" />
+              Contribute
+              <ExternalLink className="ml-2 h-3 w-3" />
+            </Button>
+          </a>
+        </header>
+
+        {masterlistError && (
+          <Alert variant="destructive">
+            <AlertDescription>{masterlistError}</AlertDescription>
+          </Alert>
+        )}
+
+        <Alert className="border-primary/30 bg-primary/5">
+          <Database className="h-4 w-4" />
+          <AlertDescription className="font-body">
+            Built from load orders the community sent in. Mods in{' '}
+            <Badge variant="outline" className="mx-1">unsorted</Badge> haven't been
+            categorised yet. If you know where one belongs, that is the most useful
+            thing you can contribute.
+          </AlertDescription>
+        </Alert>
+
+        <Card className="border-ornate shadow-bg3">
+          <CardHeader className="space-y-4">
+            <CardTitle className="font-display">Browse</CardTitle>
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                value={query}
+                onChange={e => { setQuery(e.target.value); setLimit(PAGE_SIZE); }}
+                placeholder="Search by mod name or author"
+                className="pl-9"
+              />
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <GroupChip
+                label="all" count={masterlist?.plugins.length ?? 0}
+                active={group === 'all'}
+                onClick={() => { setGroup('all'); setLimit(PAGE_SIZE); }}
+              />
+              {masterlist?.groups.map(g => (
+                <GroupChip
+                  key={g.name} label={g.name} count={counts.get(g.name) ?? 0}
+                  active={group === g.name}
+                  onClick={() => { setGroup(g.name); setLimit(PAGE_SIZE); }}
+                />
+              ))}
+            </div>
+          </CardHeader>
+          <CardContent>
+            {isLoadingMasterlist && (
+              <p className="py-8 text-center text-muted-foreground font-body">Loading masterlist</p>
+            )}
+
+            {!isLoadingMasterlist && !filtered.length && (
+              <p className="py-8 text-center text-muted-foreground font-body">
+                Nothing matches that search.
+              </p>
+            )}
+
+            <ul className="divide-y divide-border/50">
+              {filtered.slice(0, limit).map(p => (
+                <li key={p.uuid} className="py-3 flex items-center gap-4">
+                  <span className="flex-1 min-w-0">
+                    <span className="block truncate font-medium font-body">{p.name}</span>
+                    {p.author && (
+                      <span className="block truncate text-xs text-muted-foreground">{p.author}</span>
+                    )}
+                  </span>
+                  {p.evidence && p.evidence.installs > 1 && (
+                    <span className="text-xs text-muted-foreground shrink-0">
+                      seen in {p.evidence.installs}
+                    </span>
+                  )}
+                  <Badge
+                    variant={p.group === 'unsorted' ? 'outline' : 'secondary'}
+                    className="text-xs shrink-0"
+                  >
+                    {p.group}
+                  </Badge>
+                </li>
+              ))}
+            </ul>
+
+            {filtered.length > limit && (
+              <Button
+                variant="ghost"
+                className="w-full mt-4"
+                onClick={() => setLimit(l => l + PAGE_SIZE)}
+              >
+                Show more ({(filtered.length - limit).toLocaleString()} remaining)
+              </Button>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
+
+function GroupChip({
+  label, count, active, onClick,
+}: { label: string; count: number; active: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+        active
+          ? 'border-primary bg-primary/15 text-foreground'
+          : 'border-border text-muted-foreground hover:border-primary/50'
+      }`}
+    >
+      {label} <span className="opacity-60">{count.toLocaleString()}</span>
+    </button>
+  );
+}
