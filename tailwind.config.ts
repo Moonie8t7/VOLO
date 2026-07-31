@@ -3,8 +3,19 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: ["class"],
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
+  future: {
+    // Compiles every hover: utility inside @media (hover: hover), so touch
+    // devices stop firing hover states on tap and leaving them stuck.
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
+      transitionTimingFunction: {
+        // The built-in curves are too soft to read as intentional. These start
+        // faster, so the interface feels like it responds on contact.
+        "out-quint": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "in-out-quint": "cubic-bezier(0.77, 0, 0.175, 1)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

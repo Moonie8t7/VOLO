@@ -1,6 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Upload, ArrowUpDown, Download, Database, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Upload, ArrowUpDown, Download, Database, Heart, Menu, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useStore } from "@/lib/store";
 
@@ -11,78 +11,176 @@ const NAV = [
   { href: "/masterlist", icon: Database, label: "Community Masterlist" },
 ];
 
-export default function Sidebar() {
-  const [location] = useLocation();
-  const { mods, masterlist } = useStore();
+/**
+ * Nav items are a single interactive element each.
+ *
+ * They used to be a Link wrapping a Button, which nests an <a> around a
+ * <button>. That is invalid HTML, gives every item two tab stops, and leaves
+ * screen readers announcing a link containing a button.
+ *
+ * min-h-11 is 44px, the minimum comfortable touch target.
+ */
+function NavLink({
+  href, icon: Icon, label, active, badge, tone = "primary", onNavigate,
+}: {
+  href: string;
+  icon: typeof Upload;
+  label: string;
+  active: boolean;
+  badge?: number;
+  tone?: "primary" | "support";
+  onNavigate?: () => void;
+}) {
+  const activeStyle = tone === "support"
+    ? "bg-destructive text-destructive-foreground border-destructive/30"
+    : "bg-primary text-primary-foreground border-primary/30";
+  const idleStyle = tone === "support"
+    ? "text-foreground/80 hover:text-foreground hover:bg-destructive/10 hover:border-destructive/20"
+    : "text-foreground/80 hover:text-foreground hover:bg-primary/10 hover:border-primary/20";
 
   return (
-    <aside className="w-72 bg-gradient-bg3 border-r border-ornate flex flex-col shadow-bg3">
-      <Link href="/">
-        <div className="p-6 border-b border-border/20 cursor-pointer hover:bg-primary/5 transition-colors">
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-md shadow-bg3 border border-border overflow-hidden shrink-0">
-              <img src="/assets/volo-logo.png" alt="" className="w-full h-full object-cover" />
-            </div>
-            <div className="min-w-0">
-              <h2 className="text-2xl font-display font-bold text-gradient-bg3">VOLO</h2>
-              <p className="text-sm font-subheader truncate">Verified Order &amp; Load Optimisation</p>
-              <p className="text-xs text-muted-foreground/70 mt-1 font-body">for Baldur's Gate III</p>
-            </div>
-          </div>
-        </div>
-      </Link>
+    <Link
+      href={href}
+      onClick={onNavigate}
+      aria-current={active ? "page" : undefined}
+      className={`flex min-h-11 w-full items-center gap-4 rounded-md border px-4 py-2 text-left
+        transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2
+        focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background
+        ${active ? `${activeStyle} font-medium shadow-bg3` : `${idleStyle} border-transparent`}`}
+    >
+      <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
+      <span className="flex-1 tracking-wide">{label}</span>
+      {badge !== undefined && badge > 0 && (
+        <Badge variant="secondary" className="text-xs">{badge}</Badge>
+      )}
+    </Link>
+  );
+}
 
-      <nav className="flex-1 px-6 py-8 space-y-3">
-        {NAV.map(item => {
-          const isActive = location === item.href;
-          return (
-            <Link key={item.href} href={item.href}>
-              <Button
-                variant={isActive ? "default" : "ghost"}
-                className={`w-full justify-start text-left transition-all duration-200 ${
-                  isActive
-                    ? "bg-primary/90 text-primary-foreground shadow-bg3 border border-primary/30 font-medium"
-                    : "text-foreground/80 hover:text-foreground hover:bg-primary/10 hover:border-primary/20 border border-transparent"
-                }`}
-              >
-                <item.icon className="mr-4 h-5 w-5 shrink-0" />
-                <span className="font-medium tracking-wide flex-1">{item.label}</span>
-                {item.href === "/optimise" && mods.length > 0 && (
-                  <Badge variant="secondary" className="ml-2 text-xs">{mods.length}</Badge>
-                )}
-              </Button>
-            </Link>
-          );
-        })}
-      </nav>
+function Brand({ compact = false }: { compact?: boolean }) {
+  return (
+    <Link
+      href="/"
+      className="flex items-center gap-4 rounded-md focus-visible:outline-none
+        focus-visible:ring-2 focus-visible:ring-ring"
+    >
+      <img
+        src="/assets/volo-logo.png"
+        alt=""
+        width={compact ? 40 : 56}
+        height={compact ? 40 : 56}
+        className={`${compact ? "h-10 w-10" : "h-14 w-14"} shrink-0 rounded-md border border-border object-cover shadow-bg3`}
+      />
+      <span className="min-w-0">
+        <span className="block font-display text-2xl font-bold text-primary">VOLO</span>
+        {!compact && (
+          <>
+            <span className="block truncate text-sm text-secondary">
+              Verified Order and Load Optimisation
+            </span>
+            <span className="mt-1 block text-xs text-muted-foreground/70">
+              for Baldur's Gate III
+            </span>
+          </>
+        )}
+      </span>
+    </Link>
+  );
+}
 
-      <div className="px-6 py-4 border-t border-border/20">
-        <Link href="/donations">
-          <Button
-            variant={location === "/donations" ? "default" : "ghost"}
-            className={`w-full justify-start text-left transition-all duration-200 ${
-              location === "/donations"
-                ? "bg-destructive/90 text-destructive-foreground shadow-bg3 border border-destructive/30 font-medium"
-                : "text-foreground/80 hover:text-foreground hover:bg-destructive/10 hover:border-destructive/20 border border-transparent"
-            }`}
+function Footer() {
+  const { masterlist } = useStore();
+  return (
+    <div className="space-y-1 border-t border-border/20 bg-card/50 px-6 py-5 text-xs text-muted-foreground">
+      <p>
+        Masterlist <span className="text-foreground/80">{masterlist ? `v${masterlist.version}` : "loading"}</span>
+      </p>
+      {masterlist && <p>{masterlist.plugins.length.toLocaleString()} mods known</p>}
+      {masterlist?.gamePatch && <p>BG3 {masterlist.gamePatch}</p>}
+      <p className="pt-1 opacity-70">Runs entirely in your browser.</p>
+    </div>
+  );
+}
+
+export default function Sidebar() {
+  const [location] = useLocation();
+  const { mods } = useStore();
+  const [open, setOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
+
+  // Escape closes the disclosure and returns focus to the control that opened
+  // it, so keyboard users are not stranded inside a panel they cannot dismiss.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      toggle.current?.focus();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const items = NAV.map(item => (
+    <NavLink
+      key={item.href}
+      {...item}
+      active={location === item.href}
+      badge={item.href === "/optimise" ? mods.length : undefined}
+      onNavigate={() => setOpen(false)}
+    />
+  ));
+
+  return (
+    <>
+      {/* Below lg the sidebar would eat most of the viewport, so it collapses
+          into a top bar with a disclosure panel. */}
+      <header className="flex flex-col border-b border-ornate bg-gradient-bg3 shadow-bg3 lg:hidden">
+        <div className="flex items-center justify-between gap-4 px-4 py-3">
+          <Brand compact />
+          <button
+            type="button"
+            ref={toggle}
+            onClick={() => setOpen(v => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="flex h-11 w-11 items-center justify-center rounded-md border border-transparent
+              text-foreground/80 transition-colors hover:bg-primary/10 hover:text-foreground
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <Heart className="mr-3 h-4 w-4" />
-            Support VOLO
-          </Button>
-        </Link>
-      </div>
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+        {open && (
+          <nav id="mobile-nav" aria-label="Main" className="space-y-2 px-4 pb-4">
+            {items}
+            <NavLink
+              href="/donations" icon={Heart} label="Support VOLO" tone="support"
+              active={location === "/donations"} onNavigate={() => setOpen(false)}
+            />
+          </nav>
+        )}
+      </header>
 
-      <div className="px-6 py-5 border-t border-border/20 bg-card/50 text-xs font-body text-muted-foreground space-y-1">
-        <p>
-          Masterlist{" "}
-          <span className="text-foreground/80">
-            {masterlist ? `v${masterlist.version}` : "loading"}
-          </span>
-        </p>
-        {masterlist && <p>{masterlist.plugins.length.toLocaleString()} mods known</p>}
-        {masterlist?.gamePatch && <p>BG3 {masterlist.gamePatch}</p>}
-        <p className="pt-1 opacity-70">Runs entirely in your browser.</p>
-      </div>
-    </aside>
+      <aside className="hidden w-72 shrink-0 flex-col border-r border-ornate bg-gradient-bg3 shadow-bg3 lg:flex">
+        <div className="border-b border-border/20 p-6">
+          <Brand />
+        </div>
+
+        <nav aria-label="Main" className="flex-1 space-y-3 px-6 py-8">
+          {items}
+        </nav>
+
+        <div className="border-t border-border/20 px-6 py-4">
+          <NavLink
+            href="/donations" icon={Heart} label="Support VOLO" tone="support"
+            active={location === "/donations"}
+          />
+        </div>
+
+        <Footer />
+      </aside>
+    </>
   );
 }

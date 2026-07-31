@@ -80,12 +80,15 @@ export default function OptimisePage() {
           </Alert>
         )}
 
-        <div className="grid gap-4 sm:grid-cols-4">
-          <Metric label="Mods" value={stats.total} />
-          <Metric label="Moved" value={stats.moved} />
-          <Metric label="Known to masterlist" value={stats.knownToMasterlist} />
-          <Metric label="Not yet categorised" value={stats.unsorted} muted />
-        </div>
+        {/* A single dense strip rather than four big-number cards. The figures
+            are supporting detail, not the point of the page, and four identical
+            metric cards is the stock dashboard treatment. */}
+        <dl className="flex flex-wrap items-baseline gap-x-8 gap-y-3 border-y border-border/40 py-4">
+          <Metric label="mods" value={stats.total} />
+          <Metric label="moved" value={stats.moved} />
+          <Metric label="known to the masterlist" value={stats.knownToMasterlist} />
+          <Metric label="not yet categorised" value={stats.unsorted} muted />
+        </dl>
 
         {issues.map((issue, i) => <IssueCard key={i} issue={issue} />)}
 
@@ -174,14 +177,12 @@ export default function OptimisePage() {
 
 function Metric({ label, value, muted }: { label: string; value: number; muted?: boolean }) {
   return (
-    <Card className="border-ornate">
-      <CardContent className="pt-6">
-        <p className="text-xs uppercase tracking-wider text-muted-foreground">{label}</p>
-        <p className={`text-3xl font-display font-bold mt-1 ${muted ? 'text-muted-foreground' : 'text-gradient-bg3'}`}>
-          {value}
-        </p>
-      </CardContent>
-    </Card>
+    <div className="flex items-baseline gap-2">
+      <dd className={`font-display text-2xl font-bold tabular-nums ${muted ? 'text-muted-foreground' : 'text-primary'}`}>
+        {value.toLocaleString()}
+      </dd>
+      <dt className="text-sm text-muted-foreground">{label}</dt>
+    </div>
   );
 }
 
