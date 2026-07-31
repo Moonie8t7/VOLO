@@ -63,6 +63,38 @@
   }
 }
 
+/* Vestibular disorders make movement genuinely painful, so honour the system
+   setting rather than treating motion as decoration everyone wants.
+
+   Reduced does not mean none. Movement goes: no transforms, no looping
+   animations, no smooth scrolling. Colour and opacity transitions stay, because
+   they carry meaning (hover, focus, selected) rather than motion, and stripping
+   them makes state changes harder to follow, not easier. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    /* Dropping transform from the transition list stops motion without
+       clearing static transforms, which are load-bearing for layout: several
+       elements are centred with -translate-y-1/2 and would jump if reset. */
+    transition-property: color, background-color, border-color, fill, stroke, opacity !important;
+    transition-duration: 120ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Press feedback. A control that visibly gives under the press confirms the
+   interface heard you, before any actual work happens. Deliberately subtle, and
+   skipped entirely when the user has asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  button:not(:disabled):active,
+  a[data-press]:active {
+    transform: scale(0.98);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -85,11 +117,13 @@
     color: hsl(var(--bg3-header)); /* #FDE5CD */
   }
   
+  /* Section labels. Small-caps was dropped: at 12-14px it measurably hurts
+     legibility, and this class sits on labels rather than display headings.
+     Cinzel stays so the surface still reads as BG3. */
   .font-subheader {
     font-family: 'Cinzel', serif;
-    font-weight: 400;
-    font-variant: small-caps;
-    letter-spacing: 0.025em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     color: hsl(var(--bg3-small)); /* #FBCEA0 */
   }
   
@@ -119,13 +153,12 @@
       hsl(var(--bg3-charcoal)) 100%);
   }
   
+  /* Solid, not a gradient. Gradient-filled text via background-clip is
+     decorative rather than meaningful, it weakens contrast across the sweep,
+     and it disappears entirely in forced-colours mode. Emphasis comes from
+     scale and weight instead. */
   .text-gradient-bg3 {
-    background: linear-gradient(135deg, 
-      hsl(var(--bg3-header)), 
-      hsl(var(--bg3-small)));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: hsl(var(--bg3-header));
   }
   
   .border-ornate {
