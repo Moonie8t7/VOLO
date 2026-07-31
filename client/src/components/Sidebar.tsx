@@ -80,6 +80,7 @@ export default function Sidebar() {
           </span>
         </p>
         {masterlist && <p>{masterlist.plugins.length.toLocaleString()} mods known</p>}
+        {masterlist?.gamePatch && <p>BG3 {masterlist.gamePatch}</p>}
         <p className="pt-1 opacity-70">Runs entirely in your browser.</p>
       </div>
     </aside>

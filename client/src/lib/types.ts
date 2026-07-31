@@ -42,6 +42,8 @@ export interface MasterlistPlugin {
   version?: string;
   dependencies?: ModRef[];
   featureFlags?: string[];
+  /** Newest BG3 build this mod has been seen in a load order for. */
+  lastSeenGameBuild?: string;
   evidence?: {
     source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'none';
     installs: number;
@@ -52,6 +54,11 @@ export interface MasterlistPlugin {
 export interface Masterlist {
   version: string;
   generated: string;
+  /** BG3 build this data is calibrated against, e.g. "4.8.700.7143220". */
+  gameBuild?: string | null;
+  /** Human form of the above, e.g. "Patch 8". */
+  gamePatch?: string | null;
+  gameBuildsObserved?: string[];
   provenance?: Record<string, number>;
   groups: Group[];
   plugins: MasterlistPlugin[];

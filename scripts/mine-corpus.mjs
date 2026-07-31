@@ -39,6 +39,44 @@ const ENGINE_MASTERS = new Set([
 ]);
 
 /**
+ * The base-game packages carry the game build they were shipped with, so a full
+ * BG3MM export tells us which patch the load order was actually built against.
+ * 4.7.x is Patch 7, 4.8.x is Patch 8. Worth capturing because BG3 patches break
+ * compatibility outright, and a single-game tool can afford to model that rather
+ * than abstract it away.
+ */
+function compareBuilds(a = '0', b = '0') {
+  const pa = String(a).split('.').map(Number);
+  const pb = String(b).split('.').map(Number);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const diff = (pa[i] || 0) - (pb[i] || 0);
+    if (diff) return diff;
+  }
+  return 0;
+}
+
+/** Highest base-game build referenced anywhere in one exported order. */
+function detectGameBuild(entries) {
+  let best = null;
+  for (const entry of entries) {
+    for (const dep of entry?.Dependencies ?? []) {
+      if (!ENGINE_MASTERS.has(dep?.Name)) continue;
+      const build = dep?.Version?.Version;
+      if (build && (!best || compareBuilds(build, best) > 0)) best = build;
+    }
+  }
+  return best;
+}
+
+/** "4.8.700.7143220" -> "Patch 8". Anything unexpected is reported verbatim. */
+function patchLabel(build) {
+  if (!build) return null;
+  const [major, minor] = String(build).split('.');
+  if (major === '4' && minor) return `Patch ${String(minor)[0]}`;
+  return build;
+}
+
+/**
  * Canonical group order. `after` encodes the load-order relation the way LOOT
  * does. Each group loads after the ones named. Derived from the section
  * headers modders actually wrote in their own working orders.
@@ -205,7 +243,7 @@ for (const file of fs.readdirSync(CORPUS_DIR).sort()) {
     .update(entries.map(e => e.UUID || e.Name).join('|')).digest('hex');
   if (seen.has(fp)) { skipped.push([file, 'duplicate of another file']); continue; }
   seen.add(fp);
-  orders.push({ file, label: labelOf(file), entries });
+  orders.push({ file, label: labelOf(file), entries, gameBuild: detectGameBuild(entries) });
 }
 
 /** uuid -> record */
@@ -219,7 +257,7 @@ function record(uuid) {
       dependencies: new Map(),
       featureFlags: new Set(),
       author: null, version: null, folder: null, description: null,
-      seenIn: new Set(), seenInWorking: 0,
+      seenIn: new Set(), seenInWorking: 0, lastGameBuild: null,
     });
   }
   return mods.get(uuid);
@@ -244,6 +282,9 @@ for (const order of orders) {
     r.names.set(name, (r.names.get(name) || 0) + 1);
     r.seenIn.add(order.file);
     if (order.label === 'working') r.seenInWorking++;
+    if (order.gameBuild && compareBuilds(order.gameBuild, r.lastGameBuild ?? '0') > 0) {
+      r.lastGameBuild = order.gameBuild;
+    }
     if (currentSection) r.sections.set(currentSection, (r.sections.get(currentSection) || 0) + 1);
 
     if (entry.Author && !r.author) r.author = entry.Author;
@@ -300,6 +341,7 @@ for (const r of mods.values()) {
     plugin.dependencies = [...r.dependencies].map(([uuid, n]) => ({ uuid, name: n }));
   }
   if (r.featureFlags.size) plugin.featureFlags = [...r.featureFlags];
+  if (r.lastGameBuild) plugin.lastSeenGameBuild = r.lastGameBuild;
   plugin.evidence = {
     source: confidence,
     installs: r.seenIn.size,
@@ -311,16 +353,27 @@ for (const r of mods.values()) {
 plugins.sort((a, b) =>
   b.evidence.installs - a.evidence.installs || a.name.localeCompare(b.name));
 
+// Every distinct base-game build the corpus was built against, newest first.
+const builds = [...new Set(orders.map(o => o.gameBuild).filter(Boolean))]
+  .sort((a, b) => compareBuilds(b, a));
+const newestBuild = builds[0] ?? null;
+
 const masterlist = {
   $schema: './masterlist.schema.json',
   version: '2.0.0',
   generated: new Date().toISOString(),
   generator: 'scripts/mine-corpus.mjs',
+  // The BG3 build this masterlist is calibrated against. Patches change what is
+  // compatible, so consumers need to know how current the data is.
+  gameBuild: newestBuild,
+  gamePatch: patchLabel(newestBuild),
+  gameBuildsObserved: builds,
   provenance: {
     ordersAnalysed: orders.length,
     working: orders.filter(o => o.label === 'working').length,
     broken: orders.filter(o => o.label === 'broken').length,
     unlabelled: orders.filter(o => o.label === 'unlabelled').length,
+    ordersWithKnownBuild: orders.filter(o => o.gameBuild).length,
   },
   groups: GROUPS,
   plugins,
@@ -355,6 +408,22 @@ Generated ${masterlist.generated} by \`scripts/mine-corpus.mjs\`.
 | With declared dependencies | ${withDeps.length} |
 | With Script Extender flags | ${plugins.filter(p => p.featureFlags).length} |
 | With author metadata | ${plugins.filter(p => p.author).length} |
+
+## Game version
+
+Calibrated against **${masterlist.gamePatch ?? 'unknown'}** (build \`${masterlist.gameBuild ?? 'unknown'}\`).
+
+BG3 patches change what is compatible, so the build a load order was made on
+matters. Full BG3MM exports record it on the base-game packages, which is where
+this comes from. Only ${masterlist.provenance.ordersWithKnownBuild} of ${orders.length} orders carry it, because the short
+export format omits dependency metadata entirely.
+
+Builds observed across the corpus, newest first:
+
+${builds.length ? builds.map(b => `- \`${b}\` (${patchLabel(b)})`).join('\n') : '_none recorded_'}
+
+${plugins.filter(p => p.lastSeenGameBuild).length} mods record the newest build they were seen on, which is what would let
+the tool flag a mod as last verified on an older patch.
 
 ## How each mod got its group
 
@@ -391,5 +460,6 @@ console.log(`separators:${String(separatorCount).padStart(5)} headers parsed`);
 console.log(`indexed:   ${plugins.length} unique mods`);
 console.log(`grouped:   ${stats.fromSection} by section header, ${stats.fromName} by name pattern, ${stats.unsorted} unsorted`);
 console.log(`hard deps: ${withDeps.length} mods with declared dependencies`);
+console.log(`game:      ${masterlist.gamePatch ?? 'unknown'} (build ${masterlist.gameBuild ?? 'unknown'}), ${builds.length} builds seen`);
 console.log(`\nwrote ${OUT_DIR}/bg3-masterlist.json`);
 console.log(`wrote ${OUT_DIR}/coverage-report.md`);

@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-07-31T19:41:05.143Z by `scripts/mine-corpus.mjs`.
+Generated 2026-07-31T19:46:59.395Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -16,6 +16,22 @@ Generated 2026-07-31T19:41:05.143Z by `scripts/mine-corpus.mjs`.
 | With declared dependencies | 20 |
 | With Script Extender flags | 43 |
 | With author metadata | 128 |
+
+## Game version
+
+Calibrated against **Patch 8** (build `4.8.700.7143220`).
+
+BG3 patches change what is compatible, so the build a load order was made on
+matters. Full BG3MM exports record it on the base-game packages, which is where
+this comes from. Only 1 of 12 orders carry it, because the short
+export format omits dependency metadata entirely.
+
+Builds observed across the corpus, newest first:
+
+- `4.8.700.7143220` (Patch 8)
+
+132 mods record the newest build they were seen on, which is what would let
+the tool flag a mod as last verified on an older patch.
 
 ## How each mod got its group
 
