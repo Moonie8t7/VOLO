@@ -42,7 +42,8 @@ export default function MasterlistPage() {
             </h1>
             <p className="text-muted-foreground mt-2 font-body">
               {masterlist
-                ? `${masterlist.plugins.length.toLocaleString()} mods, v${masterlist.version}`
+                ? `${masterlist.plugins.length.toLocaleString()} mods, v${masterlist.version}` +
+                  (masterlist.gamePatch ? `, calibrated against BG3 ${masterlist.gamePatch}` : '')
                 : 'Loading'}
             </p>
           </div>
