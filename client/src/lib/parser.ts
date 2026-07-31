@@ -1,0 +1,200 @@
+/**
+ * Parses BG3 load order files entirely in the browser.
+ *
+ * Formats seen in real community submissions:
+ *   {Order: [{UUID, Name}]}        BG3MM "export order", most common, no dependency data
+ *   [{Index, FileName, UUID, ...}] BG3MM "export to file", includes dependencies
+ *   {Mods: [...]}                  older BG3MM
+ *   TSV/CSV                        Index/Name/Author/...
+ *   plain text                     one mod per line
+ */
+
+import type { Mod, ParseResult, ModRef } from './types';
+
+/**
+ * Cosmetic dividers modders insert to section their orders. They are not mods,
+ * but they ARE the community's own categorisation, so we keep them separately.
+ *
+ *   ---------------------------|   Spells   |---------------------------
+ *   ] Armor [
+ *   >             Jewelry
+ */
+const SEPARATOR_RE = /[-=_~]{4,}|^\s*[\]>]\s*\S|^\s*\|.*\|\s*$/;
+
+export function isSeparator(name: string): boolean {
+  return SEPARATOR_RE.test(name);
+}
+
+/** Pull the human label out of a separator line, if there is one. */
+export function sectionLabel(name: string): string | null {
+  const piped = name.match(/\|([^|]{2,60})\|/);
+  if (piped) return piped[1].trim();
+  const bracketed = name.match(/\]\s*([^[\]]{2,60})\s*\[/);
+  if (bracketed) return bracketed[1].trim();
+  const stripped = name.replace(/[-=_~*#>\][|]{1,}/g, ' ').replace(/\s+/g, ' ').trim();
+  return stripped.length >= 2 ? stripped : null;
+}
+
+/** Base-game packages that show up as dependencies but aren't mods. */
+const ENGINE_MASTERS = new Set([
+  'GustavDev', 'GustavX', 'Gustav', 'Shared', 'SharedDev',
+  'Honour', 'HonourX', 'Engine', 'ModBrowser',
+]);
+
+function toModRefs(raw: unknown): ModRef[] | undefined {
+  if (!Array.isArray(raw)) return undefined;
+  const refs = raw
+    .filter((d): d is Record<string, unknown> => !!d && typeof d === 'object')
+    .map(d => ({ uuid: String(d.UUID ?? d.uuid ?? ''), name: String(d.Name ?? d.name ?? '') }))
+    .filter(d => d.name && !ENGINE_MASTERS.has(d.name));
+  return refs.length ? refs : undefined;
+}
+
+function versionOf(raw: unknown): string | undefined {
+  if (typeof raw === 'string') return raw || undefined;
+  if (raw && typeof raw === 'object') {
+    const v = (raw as Record<string, unknown>).Version;
+    if (typeof v === 'string') return v || undefined;
+  }
+  return undefined;
+}
+
+/** Build a Mod from one entry of any recognised object format. */
+function toMod(raw: Record<string, unknown>, index: number): Mod | null {
+  const name = String(raw.Name ?? raw.name ?? '').trim();
+  if (!name) return null;
+
+  const uuid = String(raw.UUID ?? raw.uuid ?? raw.Uuid ?? '').trim();
+  const se = raw.ScriptExtenderData as Record<string, unknown> | undefined;
+  const flags = Array.isArray(se?.FeatureFlags) ? (se!.FeatureFlags as string[]) : undefined;
+
+  return {
+    // Nameless-but-real mods can lack a UUID in hand-written lists; synthesise a
+    // stable key so they still sort rather than silently collapsing together.
+    uuid: uuid || `name:${name.toLowerCase()}`,
+    name,
+    originalIndex: index,
+    folder: str(raw.Folder ?? raw.folder),
+    author: str(raw.Author ?? raw.author),
+    version: versionOf(raw.Version ?? raw.version),
+    description: str(raw.Description ?? raw.description),
+    fileName: str(raw.FileName ?? raw.fileName),
+    dependencies: toModRefs(raw.Dependencies ?? raw.dependencies),
+    featureFlags: flags,
+  };
+}
+
+const str = (v: unknown): string | undefined => {
+  const s = typeof v === 'string' ? v.trim() : '';
+  return s || undefined;
+};
+
+/** Walk a list of raw entries, splitting mods from section headers. */
+function collect(entries: unknown[], format: string): ParseResult {
+  const mods: Mod[] = [];
+  const sections: { label: string; afterIndex: number }[] = [];
+  const warnings: string[] = [];
+  const seen = new Map<string, number>();
+
+  for (const raw of entries) {
+    if (!raw || typeof raw !== 'object') continue;
+    const rec = raw as Record<string, unknown>;
+    const name = String(rec.Name ?? rec.name ?? '').trim();
+    if (!name) continue;
+
+    if (isSeparator(name)) {
+      const label = sectionLabel(name);
+      if (label) sections.push({ label, afterIndex: mods.length });
+      continue;
+    }
+
+    const mod = toMod(rec, mods.length);
+    if (!mod) continue;
+
+    const prior = seen.get(mod.uuid);
+    if (prior !== undefined) {
+      warnings.push(`Duplicate entry "${mod.name}" appears twice. Keeping the first occurrence.`);
+      continue;
+    }
+    seen.set(mod.uuid, mods.length);
+    mods.push(mod);
+  }
+
+  return { mods, sections, format, warnings, errors: [] };
+}
+
+function parseDelimited(content: string, delim: string, format: string): ParseResult {
+  const lines = content.split(/\r?\n/).filter(l => l.trim());
+  if (!lines.length) return empty(format, ['File is empty.']);
+
+  const header = lines[0].split(delim).map(h => h.trim().replace(/^"|"$/g, ''));
+  const looksLikeHeader = header.some(h => /^(name|uuid|filename|author)$/i.test(h));
+
+  const rows = looksLikeHeader ? lines.slice(1) : lines;
+  const keys = looksLikeHeader ? header : ['Name'];
+
+  const entries = rows.map(line => {
+    const cells = line.split(delim).map(c => c.trim().replace(/^"|"$/g, ''));
+    const rec: Record<string, unknown> = {};
+    keys.forEach((k, i) => { rec[k] = cells[i]; });
+    return rec;
+  });
+
+  return collect(entries, format);
+}
+
+function parseText(content: string): ParseResult {
+  const entries = content
+    .split(/\r?\n/)
+    .map(l => l.trim())
+    .filter(l => l && !l.startsWith('#') && !l.startsWith('//'))
+    .map(line => {
+      // "Mod Name [1.0.0]" or "Mod Name (Author)"
+      const m = line.match(/^(.+?)\s*[[(]([^\])]+)[\])]\s*$/);
+      return m ? { Name: m[1].trim(), Version: m[2].trim() } : { Name: line };
+    });
+  return collect(entries, 'Plain text');
+}
+
+const empty = (format: string, errors: string[]): ParseResult =>
+  ({ mods: [], sections: [], format, warnings: [], errors });
+
+/**
+ * Parse any supported load order file. Never throws. Errors come back on the
+ * result so the UI can show them.
+ */
+export function parseLoadOrder(content: string, filename = ''): ParseResult {
+  const trimmed = content.trim();
+  if (!trimmed) return empty('unknown', ['File is empty.']);
+
+  const ext = filename.toLowerCase().split('.').pop() ?? '';
+  const looksJson = trimmed.startsWith('{') || trimmed.startsWith('[');
+
+  if (ext === 'json' || looksJson) {
+    let data: unknown;
+    try {
+      data = JSON.parse(trimmed);
+    } catch (err) {
+      return empty('JSON', [
+        `Not valid JSON: ${err instanceof Error ? err.message : 'parse failed'}`,
+      ]);
+    }
+
+    if (Array.isArray(data)) return collect(data, 'BG3MM export (full metadata)');
+
+    const obj = data as Record<string, unknown>;
+    if (Array.isArray(obj.Order)) return collect(obj.Order, 'BG3MM load order');
+    if (Array.isArray(obj.Mods)) return collect(obj.Mods, 'BG3MM mod list');
+    if (Array.isArray(obj.mods)) return collect(obj.mods, 'JSON mod list');
+    if (obj.Name || obj.name) return collect([obj], 'Single mod');
+
+    return empty('JSON', [
+      'Unrecognised JSON. Expected a BG3 Mod Manager export: an array of mods, ' +
+      'or an object with an "Order" or "Mods" array.',
+    ]);
+  }
+
+  if (ext === 'tsv' || trimmed.includes('\t')) return parseDelimited(content, '\t', 'TSV');
+  if (ext === 'csv' || /,.*\n/.test(trimmed)) return parseDelimited(content, ',', 'CSV');
+  return parseText(content);
+}

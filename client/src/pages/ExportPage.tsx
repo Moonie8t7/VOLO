@@ -1,0 +1,122 @@
+import { useState } from 'react';
+import { Link } from 'wouter';
+import { Download, Copy, Check, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useStore } from '@/lib/store';
+import { EXPORT_FORMATS, exportOrder, download, type ExportFormat } from '@/lib/exporter';
+
+const MIME: Record<string, string> = {
+  json: 'application/json',
+  csv: 'text/csv',
+  txt: 'text/plain',
+  md: 'text/markdown',
+};
+
+export default function ExportPage() {
+  const { result } = useStore();
+  const [format, setFormat] = useState<ExportFormat>('bg3mm');
+  const [copied, setCopied] = useState(false);
+
+  if (!result) {
+    return (
+      <div className="p-8 min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-card">
+        <div className="text-center max-w-md">
+          <h1 className="text-3xl font-display font-bold text-gradient-bg3">Nothing to export</h1>
+          <p className="text-muted-foreground mt-3 font-body">
+            Import and sort a load order first.
+          </p>
+          <Link href="/import">
+            <Button size="lg" className="mt-6">
+              Import a load order
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const spec = EXPORT_FORMATS.find(f => f.id === format)!;
+  const content = exportOrder(result, format);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(content);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
+  };
+
+  return (
+    <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
+      <div className="max-w-4xl mx-auto space-y-8">
+        <header>
+          <h1 className="text-4xl font-display font-bold text-gradient-bg3">Export</h1>
+          <p className="text-muted-foreground mt-2 font-body">
+            {result.mods.length} mods, ready to go back into BG3 Mod Manager.
+          </p>
+        </header>
+
+        <Alert className="border-primary/30 bg-primary/5">
+          <AlertDescription className="font-body">
+            In BG3 Mod Manager: <strong>File, then Import Order from File</strong>, pick the
+            downloaded file, then save your load order.
+          </AlertDescription>
+        </Alert>
+
+        <Card className="border-ornate shadow-bg3">
+          <CardHeader>
+            <CardTitle className="font-display">Format</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid gap-3 sm:grid-cols-2">
+              {EXPORT_FORMATS.map(f => (
+                <button
+                  key={f.id}
+                  onClick={() => setFormat(f.id)}
+                  className={`text-left rounded-lg border p-4 transition-colors ${
+                    format === f.id
+                      ? 'border-primary bg-primary/10'
+                      : 'border-border hover:border-primary/50'
+                  }`}
+                >
+                  <p className="font-medium font-subheader">{f.label}</p>
+                  <p className="text-xs text-muted-foreground mt-1 font-body">{f.hint}</p>
+                </button>
+              ))}
+            </div>
+
+            <div className="flex gap-3">
+              <Button
+                size="lg"
+                className="flex-1"
+                onClick={() =>
+                  download(content, `volo-load-order.${spec.ext}`, MIME[spec.ext] ?? 'text/plain')
+                }
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download .{spec.ext}
+              </Button>
+              <Button size="lg" variant="outline" onClick={copy}>
+                {copied ? <Check className="mr-2 h-4 w-4" /> : <Copy className="mr-2 h-4 w-4" />}
+                {copied ? 'Copied' : 'Copy'}
+              </Button>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Preview</p>
+              <pre className="max-h-72 overflow-auto rounded border border-border bg-card/50 p-4 text-xs font-mono">
+                {content.slice(0, 4000)}
+                {content.length > 4000 ? '\n(preview truncated)' : ''}
+              </pre>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
