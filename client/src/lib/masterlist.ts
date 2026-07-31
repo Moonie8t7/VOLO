@@ -13,13 +13,17 @@ const LOCAL_URL = '/bg3-masterlist.json';
 
 /**
  * The masterlist as it stands on main, which runs ahead of whatever shipped with
- * this build. Lets a masterlist correction reach users without a redeploy.
+ * this build. Lets a correction reach users without a redeploy.
  *
- * If this ever points at a path that does not exist, every visitor gets a 404 in
- * their console on every page load, so keep it in step with the repo layout.
+ * Disabled while the repository is private: raw.githubusercontent.com answers 404
+ * for anonymous requests to a private repo, so every visitor would collect a
+ * console error on every page load for no benefit. The bundled copy is identical
+ * data in the meantime.
+ *
+ * Re-enable by restoring the URL below once the repository is public.
  */
-const REMOTE_URL: string | null =
-  'https://raw.githubusercontent.com/Moonie8t7/VOLO/main/masterlist/bg3-masterlist.json';
+const REMOTE_URL: string | null = null;
+// 'https://raw.githubusercontent.com/Moonie8t7/VOLO/main/masterlist/bg3-masterlist.json'
 
 const EMPTY: Masterlist = {
   version: '0.0.0',
