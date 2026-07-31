@@ -1,0 +1,25 @@
+{
+  "include": ["client/src/**/*"],
+  "exclude": [
+    "node_modules", "build", "dist", "release", "**/*.test.ts",
+    "client/src/_parked"
+  ],
+  "compilerOptions": {
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/typescript/tsbuildinfo",
+    "noEmit": true,
+    "module": "ESNext",
+    "target": "ES2022",
+    "strict": true,
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",
+    "types": ["vite/client"],
+    "paths": {
+      "@/*": ["./client/src/*"]
+    }
+  }
+}
