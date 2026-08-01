@@ -77,7 +77,7 @@ function Brand({ compact = false }: { compact?: boolean }) {
         <span className="block font-display text-2xl font-bold text-primary">VOLO</span>
         {!compact && (
           <>
-            <span className="block truncate text-sm text-secondary">
+            <span className="block text-sm leading-snug text-secondary">
               Verified Order and Load Optimisation
             </span>
             <span className="mt-1 block text-xs text-muted-foreground/70">
@@ -94,12 +94,14 @@ function Footer() {
   const { masterlist } = useStore();
   return (
     <div className="space-y-1 border-t border-border/20 bg-card/50 px-6 py-5 text-xs text-muted-foreground">
-      <p>
-        Masterlist <span className="text-foreground/80">{masterlist ? `v${masterlist.version}` : "loading"}</span>
-      </p>
-      {masterlist && <p>{masterlist.plugins.length.toLocaleString()} mods known</p>}
-      {masterlist?.gamePatch && <p>BG3 {masterlist.gamePatch}</p>}
-      <p className="pt-1 opacity-70">Runs entirely in your browser.</p>
+      {masterlist ? (
+        <>
+          <p>Masterlist: {masterlist.plugins.length.toLocaleString()} mods</p>
+          {masterlist.gamePatch && <p>Calibrated for BG3 {masterlist.gamePatch}</p>}
+        </>
+      ) : (
+        <p>Loading masterlist</p>
+      )}
     </div>
   );
 }
