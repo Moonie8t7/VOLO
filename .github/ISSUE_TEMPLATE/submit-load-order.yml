@@ -1,0 +1,46 @@
+name: Submit a load order
+description: Share a load order so VOLO can learn from it. Working orders teach placement, broken ones teach caution.
+title: "Load order submission"
+labels: ["load-order-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Every submission makes the sorter better for everyone.
+
+        The most useful format is the full BG3 Mod Manager export
+        (File, then Export Order to File), because it carries dependency and
+        version data. The short export works too.
+  - type: dropdown
+    id: status
+    attributes:
+      label: Does this load order work?
+      description: Working means you have actually played on it without load-order problems.
+      options:
+        - Working, I have played on it
+        - Not working, it has problems
+    validations:
+      required: true
+  - type: input
+    id: patch
+    attributes:
+      label: BG3 patch
+      description: The game version this order was used with, if you know it.
+      placeholder: Patch 8
+  - type: textarea
+    id: order
+    attributes:
+      label: The load order
+      description: >
+        Paste the JSON here, or drag the exported file into this box and GitHub
+        will attach it.
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: >
+        Anything worth knowing. For a broken order, what went wrong is the most
+        valuable detail you can add.

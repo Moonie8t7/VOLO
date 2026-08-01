@@ -1,0 +1,66 @@
+name: Process load order submission
+
+# A submission issue arrives, the corpus and masterlist are regenerated from it,
+# and the result is opened as a pull request for human approval. Nothing lands
+# on main without a person merging it.
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  process:
+    if: contains(github.event.issue.labels.*.name, 'load-order-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Write issue body to file
+        env:
+          BODY: ${{ github.event.issue.body }}
+        run: printf '%s' "$BODY" > /tmp/issue-body.txt
+
+      - name: Process the submission
+        id: process
+        run: |
+          set +e
+          node scripts/process-submission.mjs \
+            --body /tmp/issue-body.txt \
+            --number "${{ github.event.issue.number }}" \
+            --report /tmp/report.md
+          echo "accepted=$([ $? -eq 0 ] && echo yes || echo no)" >> "$GITHUB_OUTPUT"
+
+      - name: Open a pull request with the changes
+        if: steps.process.outputs.accepted == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="submission/issue-${{ github.event.issue.number }}"
+          git config user.name "volo-submissions"
+          git config user.email "submissions@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add "Load Orders - Public Submitted" masterlist public/bg3-masterlist.json
+          git commit -m "Add load order from issue #${{ github.event.issue.number }} and regenerate the masterlist"
+          git push -f origin "$BRANCH"
+          gh pr create \
+            --title "Load order submission #${{ github.event.issue.number }}" \
+            --body-file /tmp/report.md \
+            --head "$BRANCH" || gh pr edit "$BRANCH" --body-file /tmp/report.md
+
+      - name: Report back on the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" --body-file /tmp/report.md
