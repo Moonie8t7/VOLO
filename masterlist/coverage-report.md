@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-07-31T21:04:42.800Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-01T00:09:16.938Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -38,27 +38,42 @@ the tool flag a mod as last verified on an older patch.
 | Source | Count | Trust |
 |---|---|---|
 | Curated override | 12 | highest, hand-verified infrastructure |
-| Human-authored section header | 1454 | high, a modder put it there |
-| Name pattern fallback | 519 | medium, needs review |
-| Uncategorised | 902 | none, needs community input |
+| Human-authored section header | 1488 | high, a modder put it there |
+| Name pattern fallback | 558 | medium, needs review |
+| Uncategorised | 829 | none, needs community input |
 
 ## Group distribution
 
-- `core`: 1
-- `libraries`: 24
-- `frameworks`: 65
-- `gameplay`: 86
-- `classes`: 220
-- `spells`: 121
-- `items`: 395
-- `character`: 418
-- `clothing`: 135
-- `companions`: 135
-- `ui`: 53
-- `visual`: 183
-- `patches`: 33
-- `fixes`: 66
-- `unsorted`: 952
+- `Top of Load Order`: 9
+- `User Interface`: 53
+- `Visuals`: 25
+- `Weapons`: 90
+- `Dyes`: 17
+- `Clothing`: 122
+- `Character Customization`: 121
+- `Resources`: 87
+- `Equipment`: 74
+- `Armor`: 197
+- `Utilities`: 8
+- `Races`: 52
+- `Animations`: 8
+- `Spells`: 121
+- `Classes`: 199
+- `Bodies`: 4
+- `Miscellaneous`: 49
+- `Bug Fixes`: 98
+- `Gameplay`: 86
+- `Accessories`: 53
+- `Quests`: 0
+- `Environment`: 0
+- `Audio`: 1
+- `Hair`: 151
+- `Heads`: 124
+- `Dice`: 147
+- `Companions`: 91
+- `NPC`: 71
+- `Bottom of Load Order`: 0
+- `unsorted`: 829
 
 ## Known limitations
 
@@ -66,7 +81,7 @@ the tool flag a mod as last verified on an older patch.
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **902 mods are `unsorted`.** These need community categorisation.
+- **829 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 
