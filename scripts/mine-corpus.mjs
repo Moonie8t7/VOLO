@@ -260,7 +260,9 @@ function readOrder(file) {
 function labelOf(file) {
   const n = file.toLowerCase();
   if (n.startsWith('not-working') || n.startsWith('not_working')) return 'broken';
-  if (n.startsWith('working_') || n.includes('current_working')) return 'working';
+  // Anything prefixed current_ is an order the maintainer personally played on,
+  // which is the strongest verification we have.
+  if (n.startsWith('working_') || n.startsWith('current_')) return 'working';
   return 'unlabelled';
 }
 

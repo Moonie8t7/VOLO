@@ -1,15 +1,15 @@
 # Masterlist coverage report
 
-Generated 2026-08-01T00:09:16.938Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-01T00:24:49.698Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
 | Load orders analysed | 12 |
-| labelled working | 6 |
+| labelled working | 8 |
 | labelled broken | 2 |
-| unlabelled | 4 |
+| unlabelled | 2 |
 | Separator headers parsed | 172 |
 | **Unique mods indexed** | **2887** |
 | Seen in more than one order | 882 |
@@ -77,7 +77,7 @@ the tool flag a mod as last verified on an older patch.
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 6
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 8
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.

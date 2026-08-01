@@ -68,7 +68,9 @@ function shuffled(arr, seed = 7) {
   return a;
 }
 
-const isWorking = f => /^working_/i.test(f) || /current_working/i.test(f);
+// current_ prefixed orders were personally played by the maintainer, so they
+// count as verified working alongside the working_ submissions.
+const isWorking = f => /^working_/i.test(f) || /^current_/i.test(f);
 
 const rows = [];
 for (const file of fs.readdirSync(CORPUS).sort()) {
