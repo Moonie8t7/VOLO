@@ -86,7 +86,9 @@ function readOrder(f) {
   return Array.isArray(j.Order) ? j.Order : Array.isArray(j.Mods) ? j.Mods : Array.isArray(j) ? j : null;
 }
 
-const isWorking = f => /^working_/i.test(f) || /current_working/i.test(f);
+// current_ prefixed orders were personally played by the maintainer, so they
+// count as verified working alongside the working_ submissions.
+const isWorking = f => /^working_/i.test(f) || /^current_/i.test(f);
 
 // Label every mod with the section it sits under, per file.
 const labelledOrders = [];
