@@ -29,8 +29,8 @@ export default function LandingPage() {
           </p>
           <p className="text-lg mb-3 max-w-2xl mx-auto leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
             Sorts your Baldur's Gate 3 mod list the way load orders that actually
-            work are sorted. Runs entirely in your browser; your list never
-            leaves your machine.
+            work are sorted. Nothing is uploaded: the sorting runs on your own
+            device, right in the browser.
           </p>
           <p className="text-sm mb-8 italic" style={{ color: "hsl(var(--bg3-main) / 0.7)" }}>
             Named after the Realms' most confident chronicler. Unlike Volo... we verify.
