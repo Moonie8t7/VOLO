@@ -63,8 +63,8 @@ export default function ImportPage() {
         <Alert className="border-primary/30 bg-primary/5">
           <ShieldCheck className="h-4 w-4" />
           <AlertDescription className="font-body">
-            Your load order is processed entirely in your browser. It is never uploaded,
-            and VOLO has no server that could store it.
+            Your load order is read and sorted on this device, in the browser. It is
+            never sent over the internet, and VOLO has no server that could receive it.
           </AlertDescription>
         </Alert>
 
