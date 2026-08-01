@@ -323,7 +323,7 @@ function record(uuid) {
       dependencies: new Map(),
       featureFlags: new Set(),
       author: null, version: null, folder: null, description: null,
-      seenIn: new Set(), seenInWorking: 0, lastGameBuild: null,
+      seenIn: new Set(), seenInWorking: 0, seenInBroken: 0, lastGameBuild: null,
     });
   }
   return mods.get(uuid);
@@ -348,6 +348,7 @@ for (const order of orders) {
     r.names.set(name, (r.names.get(name) || 0) + 1);
     r.seenIn.add(order.file);
     if (order.label === 'working') r.seenInWorking++;
+    if (order.label === 'broken') r.seenInBroken++;
     if (order.gameBuild && compareBuilds(order.gameBuild, r.lastGameBuild ?? '0') > 0) {
       r.lastGameBuild = order.gameBuild;
     }
@@ -412,6 +413,10 @@ for (const r of mods.values()) {
     source: confidence,
     installs: r.seenIn.size,
     workingInstalls: r.seenInWorking,
+    // Seen in an order the submitter reported as broken. Together with
+    // workingInstalls of zero this is the "never verified anywhere" caution
+    // signal, the one thing the broken orders measurably taught us.
+    brokenInstalls: r.seenInBroken,
   };
   plugins.push(plugin);
 }
