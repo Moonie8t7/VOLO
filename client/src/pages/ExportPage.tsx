@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
-import { Download, Copy, Check, ArrowRight } from 'lucide-react';
+import { Download, Copy, Check, ArrowRight, Heart, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -14,10 +14,34 @@ const MIME: Record<string, string> = {
   md: 'text/markdown',
 };
 
+/**
+ * Submissions go through a GitHub issue form. An Action validates the order,
+ * adds it to the corpus, regenerates the masterlist and opens a pull request,
+ * so the site needs no server of its own. Orders are too large for a URL, so
+ * the flow is copy to clipboard, then paste into the form that opens.
+ */
+const SUBMIT_URL =
+  'https://github.com/Moonie8t7/VOLO/issues/new?template=submit-load-order.yml';
+
 export default function ExportPage() {
   const { result } = useStore();
   const [format, setFormat] = useState<ExportFormat>('bg3mm');
   const [copied, setCopied] = useState(false);
+  const [shared, setShared] = useState(false);
+
+  const share = async () => {
+    if (!result) return;
+    try {
+      // Always submit the BG3MM form regardless of the selected export format,
+      // because that is the format the intake pipeline validates.
+      await navigator.clipboard.writeText(exportOrder(result, 'bg3mm'));
+      setShared(true);
+      setTimeout(() => setShared(false), 4000);
+    } catch {
+      // Clipboard can be refused; the form still opens and accepts attachments.
+    }
+    window.open(SUBMIT_URL, '_blank', 'noopener');
+  };
 
   if (!result) {
     return (
@@ -114,6 +138,30 @@ export default function ExportPage() {
                 {content.length > 4000 ? '\n(preview truncated)' : ''}
               </pre>
             </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-ornate shadow-bg3">
+          <CardHeader>
+            <CardTitle className="font-display flex items-center gap-2">
+              <Heart className="h-5 w-5 text-destructive/80" />
+              Share it back
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 font-body">
+            <p className="text-sm text-muted-foreground">
+              Once you have actually played on this order, submitting it teaches VOLO.
+              Working orders sharpen where mods belong; broken ones sharpen the warnings.
+              Every future user sorts against what you verified.
+            </p>
+            <Button onClick={share}>
+              {shared ? <Check className="mr-2 h-4 w-4" /> : <ExternalLink className="mr-2 h-4 w-4" />}
+              {shared ? 'Copied, paste it into the form' : 'Submit this load order'}
+            </Button>
+            <p className="text-xs text-muted-foreground">
+              Copies the order to your clipboard and opens the submission form on GitHub,
+              where you say whether it worked. Submissions are public.
+            </p>
           </CardContent>
         </Card>
       </div>
