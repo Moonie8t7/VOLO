@@ -12,7 +12,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        // The official BG3 call-to-action: translucent black fill, one-pixel
+        // gold border, bronze uppercase text, square corners from the radius
+        // token. Hover lifts the text to the gold accent rather than moving
+        // or recolouring the surface.
+        default:
+          "border border-border/80 bg-black/35 uppercase tracking-wide text-bronze hover:bg-black/50 hover:text-secondary",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
