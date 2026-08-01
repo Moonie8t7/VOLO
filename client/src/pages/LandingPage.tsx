@@ -33,7 +33,7 @@ export default function LandingPage() {
             leaves your machine.
           </p>
           <p className="text-sm mb-8 italic" style={{ color: "hsl(var(--bg3-main) / 0.7)" }}>
-            Named after the Realms' most confident chronicler. Unlike Volo, we verify.
+            Named after the Realms' most confident chronicler. Unlike Volo... we verify.
           </p>
 
           <Link href="/import">
