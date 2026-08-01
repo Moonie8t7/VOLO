@@ -29,8 +29,7 @@ export default function LandingPage() {
           </p>
           <p className="text-lg mb-3 max-w-2xl mx-auto leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
             Sorts your Baldur's Gate 3 mod list the way load orders that actually
-            work are sorted. The file you drop in is read and sorted on your own
-            device; it is never sent over the internet.
+            work are sorted. Free, no account, nothing to install.
           </p>
           <p className="text-sm mb-8 italic" style={{ color: "hsl(var(--bg3-main) / 0.7)" }}>
             Named after the Realms' most confident chronicler. Unlike Volo... we verify.
@@ -104,9 +103,14 @@ export default function LandingPage() {
               Is my mod list uploaded anywhere?
             </AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
-              No. Parsing and sorting happen in your browser. There is no server
-              behind this site, so there is nowhere to upload it to. The only
-              time your list leaves your machine is if you choose to submit it.
+              No. When the page loads, your browser downloads VOLO's code and
+              runs it on your computer, the same way a downloaded program runs.
+              Opening your file hands it to that code, not to a server: the
+              sorting happens on your machine, and the sorted file you save is
+              generated there too. You can check this yourself with the
+              browser's network panel; once the page has loaded, using VOLO
+              makes no further requests. The one exception is choosing to
+              submit your order from the Export page.
             </AccordionContent>
           </AccordionItem>
 
