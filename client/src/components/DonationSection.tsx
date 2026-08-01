@@ -62,7 +62,7 @@ interface DonationSectionProps {
 export default function DonationSection({ variant = "full", className = "" }: DonationSectionProps) {
   if (variant === "buttons") {
     return (
-      <div className={`flex flex-wrap gap-3 ${className}`}>
+      <div className={`flex flex-wrap justify-center gap-3 ${className}`}>
         {donationPlatforms.map(platform => (
           <Button
             key={platform.name}
@@ -111,7 +111,7 @@ export default function DonationSection({ variant = "full", className = "" }: Do
         you feel like putting something in the tip jar, these work:
       </p>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap justify-center gap-3">
         {donationPlatforms.map(platform => (
           <Button
             key={platform.name}
