@@ -81,22 +81,58 @@ function patchLabel(build) {
  * does. Each group loads after the ones named. Derived from the section
  * headers modders actually wrote in their own working orders.
  */
+/**
+ * Categories use the community "Sorting Category Empty Mods" vocabulary, so the
+ * names match the separators people already put in their load orders.
+ *
+ * The ORDER is learned from the submitted working load orders, not invented.
+ * scripts/learn-category-order.mjs aggregates every mod pair in every working
+ * order to category level (tens of thousands of observations per pair) and
+ * ranks categories by weighted head to head wins. This sequence is that
+ * ranking, with exactly two definitional overrides: Top of Load Order is
+ * pinned first and Bottom of Load Order is pinned last.
+ *
+ * Some of it contradicts tidy doctrine, for example Spells precede Classes at
+ * 80 percent across 11,833 observed pairs. The data wins: these orders are the
+ * verified article, and doctrine is what produced an ordering that scored
+ * barely above random. Re-run the learner as submissions arrive and update
+ * this list when the evidence shifts.
+ *
+ * Real dependencies are hard edges in the sorter and can never be violated by
+ * group order, so trusting the learned sequence cannot break a dependency
+ * chain.
+ */
 const GROUPS = [
-  { name: 'core',          after: [],                  description: 'Loaders and script extenders that everything else depends on' },
-  { name: 'libraries',     after: ['core'],            description: 'Shared code libraries with no standalone behaviour' },
-  { name: 'frameworks',    after: ['libraries'],       description: 'Systems other mods build on (MCM, item shipment, compatibility)' },
-  { name: 'gameplay',      after: ['frameworks'],      description: 'Rules, mechanics, combat and progression tweaks' },
-  { name: 'classes',       after: ['gameplay'],        description: 'Classes, subclasses, races, feats and deities' },
-  { name: 'spells',        after: ['classes'],         description: 'Spell additions and overhauls' },
-  { name: 'items',         after: ['spells'],          description: 'Gear, weapons, armour, consumables and containers' },
-  { name: 'character',     after: ['items'],           description: 'Character creation: heads, hair, eyes, skins, presets' },
-  { name: 'clothing',      after: ['character'],       description: 'Outfits, camp clothing and dyes' },
-  { name: 'companions',    after: ['clothing'],        description: 'Companion edits and new party members' },
-  { name: 'ui',            after: ['companions'],      description: 'Interface, hotbar, tooltips and menus' },
-  { name: 'visual',        after: ['ui'],              description: 'Textures, dice skins and visual effects' },
-  { name: 'patches',       after: ['visual'],          description: 'Compatibility patches between other mods' },
-  { name: 'fixes',         after: ['patches'],         description: 'Late-loading bug fixes and overrides' },
-  { name: 'unsorted',      after: ['fixes'],           description: 'Not yet categorised by the community' },
+  { name: 'Top of Load Order',       after: [],                            description: 'Explicit head marker' },
+  { name: 'User Interface',          after: ['Top of Load Order'],         description: 'Interface frameworks, hotbar, tooltips and menus' },
+  { name: 'Visuals',                 after: ['User Interface'],            description: 'Textures and visual effects' },
+  { name: 'Weapons',                 after: ['Visuals'],                   description: 'Weapons' },
+  { name: 'Dyes',                    after: ['Weapons'],                   description: 'Dyes and colour options' },
+  { name: 'Clothing',                after: ['Dyes'],                      description: 'Outfits and camp clothing' },
+  { name: 'Character Customization', after: ['Clothing'],                  description: 'Creation options, presets, makeup and tattoos' },
+  { name: 'Resources',               after: ['Character Customization'],   description: 'Shared libraries and frameworks other mods depend on' },
+  { name: 'Equipment',               after: ['Resources'],                 description: 'General gear, consumables and containers' },
+  { name: 'Armor',                   after: ['Equipment'],                 description: 'Armour sets and pieces' },
+  { name: 'Utilities',               after: ['Armor'],                     description: 'Loaders, mod fixers and script extender support' },
+  { name: 'Races',                   after: ['Utilities'],                 description: 'Races, subraces and lineages' },
+  { name: 'Animations',              after: ['Races'],                     description: 'Animation replacements and additions' },
+  { name: 'Spells',                  after: ['Animations'],                description: 'Spell additions and overhauls' },
+  { name: 'Classes',                 after: ['Spells'],                    description: 'Classes, subclasses and feats' },
+  { name: 'Bodies',                  after: ['Classes'],                   description: 'Body models and skins' },
+  { name: 'Miscellaneous',           after: ['Bodies'],                    description: 'Everything without a better home' },
+  { name: 'Bug Fixes',               after: ['Miscellaneous'],             description: 'Fixes and compatibility patches' },
+  { name: 'Gameplay',                after: ['Bug Fixes'],                 description: 'Rules, mechanics, combat and progression' },
+  { name: 'Accessories',             after: ['Gameplay'],                  description: 'Jewellery, cloaks and trinkets' },
+  { name: 'Quests',                  after: ['Accessories'],               description: 'New and altered quests' },
+  { name: 'Environment',             after: ['Quests'],                    description: 'World, lighting and level changes' },
+  { name: 'Audio',                   after: ['Environment'],               description: 'Sound and music' },
+  { name: 'Hair',                    after: ['Audio'],                     description: 'Hairstyles and beards' },
+  { name: 'Heads',                   after: ['Hair'],                      description: 'Heads, faces and eyes' },
+  { name: 'Dice',                    after: ['Heads'],                     description: 'Dice skins' },
+  { name: 'Companions',              after: ['Dice'],                      description: 'Companion edits and new party members' },
+  { name: 'NPC',                     after: ['Companions'],                description: 'Non-companion character changes' },
+  { name: 'Bottom of Load Order',    after: ['NPC'],                       description: 'Explicit tail marker' },
+  { name: 'unsorted',                after: ['NPC'],                       description: 'Not yet categorised by the community' },
 ];
 
 /**
@@ -108,15 +144,15 @@ const GROUPS = [
  * first". Content mods infer fine; the foundation has to be stated.
  */
 const CURATED = [
-  [/^bg3se|script\s*extender|^norbyte/i,                          'core'],
-  [/native\s*mod\s*loader|^nativemodloader|^mod\s*fixer|modfixer/i, 'core'],
-  [/^impui|improvedui/i,                                          'core'],
-  [/^communitylibrary|community\s*library/i,                      'libraries'],
-  [/^volitioncabinet/i,                                           'libraries'],
-  [/^aahzlib|material\s*library|^tagframework/i,                  'libraries'],
-  [/compatibility\s*framework|^compatibilityframework/i,          'frameworks'],
-  [/mod\s*configuration\s*menu|^bg3mcm/i,                         'frameworks'],
-  [/item\s*shipment\s*framework/i,                                'frameworks'],
+  [/^bg3se|script\s*extender|^norbyte/i,                          'Utilities'],
+  [/native\s*mod\s*loader|^nativemodloader|^mod\s*fixer|modfixer/i, 'Utilities'],
+  [/^impui|improvedui/i,                                          'User Interface'],
+  [/^communitylibrary|community\s*library/i,                      'Resources'],
+  [/^volitioncabinet/i,                                           'Resources'],
+  [/^aahzlib|material\s*library|^tagframework/i,                  'Resources'],
+  [/compatibility\s*framework|^compatibilityframework/i,          'Resources'],
+  [/mod\s*configuration\s*menu|^bg3mcm/i,                         'Resources'],
+  [/item\s*shipment\s*framework/i,                                'Resources'],
 ];
 
 /**
@@ -127,50 +163,78 @@ const CURATED = [
  * and mis-sort badly. Real infrastructure is caught by CURATED above.
  */
 const SECTION_TO_GROUP = {
-  'loaders': 'core',
-  'libraries': 'libraries', 'library': 'libraries',
-  'frameworks': 'frameworks', 'framework': 'frameworks',
-  'gameplay': 'gameplay', 'tweaks': 'gameplay', 'combat': 'gameplay', 'cheats': 'gameplay',
-  'mechanics': 'gameplay', 'quality of life': 'gameplay', 'qol': 'gameplay',
-  'classes': 'classes', 'subclasses': 'classes', 'class': 'classes', 'feats': 'classes',
-  'races': 'classes', 'subraces': 'classes', 'deities': 'classes', 'backgrounds': 'classes',
-  'sorcerer': 'classes', 'druid': 'classes', 'wizard': 'classes', 'cleric': 'classes',
-  'warlock': 'classes', 'fighter': 'classes', 'rogue': 'classes', 'bard': 'classes',
-  'paladin': 'classes', 'ranger': 'classes', 'monk': 'classes', 'barbarian': 'classes',
-  'spells': 'spells', 'spell': 'spells', 'magic': 'spells', 'cantrips': 'spells',
-  'gear': 'items', 'armor': 'items', 'armour': 'items', 'weapons': 'items',
-  'jewelry': 'items', 'jewellery': 'items', 'accesories': 'items', 'accessories': 'items',
-  'consumables': 'items', 'containers': 'items', 'items': 'items', 'equipment': 'items',
-  'character creator': 'character', 'character creation': 'character', 'cc': 'character',
-  'heads': 'character', 'head': 'character', 'hair': 'character', 'eyes': 'character',
-  'faces': 'character', 'skins': 'character', 'tattoos': 'character', 'presets': 'character',
-  'bodies': 'character', 'cosmetics': 'character', 'makeup': 'character',
-  'clothing': 'clothing', 'clothes': 'clothing', 'outfits': 'clothing', 'dyes': 'clothing',
-  'camp clothes': 'clothing',
-  'companions': 'companions', 'companion edits': 'companions', 'characters': 'companions',
-  'npcs': 'companions', 'origins': 'companions',
-  'user interface': 'ui', 'ui': 'ui', 'interface': 'ui', 'hud': 'ui',
-  'textures': 'visual', 'dices': 'visual', 'dice': 'visual', 'visuals': 'visual',
-  'vfx': 'visual', 'lighting': 'visual', 'other': 'unsorted', 'miscellaneous': 'unsorted',
-  'misc': 'unsorted',
-  'patches': 'patches', 'patch': 'patches', 'compatibility': 'patches',
-  'fixes': 'fixes', 'fix': 'fixes', 'bugfixes': 'fixes',
+  'top of load order': 'Top of Load Order', 'bottom of load order': 'Bottom of Load Order',
+  'loaders': 'Utilities', 'utilities': 'Utilities', 'utility': 'Utilities',
+  'libraries': 'Resources', 'library': 'Resources', 'resources': 'Resources',
+  'frameworks': 'Resources', 'framework': 'Resources',
+  'gameplay': 'Gameplay', 'tweaks': 'Gameplay', 'combat': 'Gameplay', 'cheats': 'Gameplay',
+  'mechanics': 'Gameplay', 'quality of life': 'Gameplay', 'qol': 'Gameplay', 'balance': 'Gameplay',
+  'classes': 'Classes', 'subclasses': 'Classes', 'class': 'Classes', 'feats': 'Classes',
+  'deities': 'Classes', 'backgrounds': 'Classes', 'religion': 'Classes',
+  'sorcerer': 'Classes', 'druid': 'Classes', 'wizard': 'Classes', 'cleric': 'Classes',
+  'warlock': 'Classes', 'fighter': 'Classes', 'rogue': 'Classes', 'bard': 'Classes',
+  'paladin': 'Classes', 'ranger': 'Classes', 'monk': 'Classes', 'barbarian': 'Classes',
+  'races': 'Races', 'race': 'Races', 'subraces': 'Races',
+  'spells': 'Spells', 'spell': 'Spells', 'magic': 'Spells', 'cantrips': 'Spells',
+  'gear': 'Equipment', 'items': 'Equipment', 'equipment': 'Equipment',
+  'consumables': 'Equipment', 'containers': 'Equipment',
+  'armor': 'Armor', 'armour': 'Armor',
+  'weapons': 'Weapons', 'weapon': 'Weapons',
+  'jewelry': 'Accessories', 'jewellery': 'Accessories', 'accesories': 'Accessories',
+  'accessories': 'Accessories', 'cloaks': 'Accessories',
+  'character creator': 'Character Customization', 'character creation': 'Character Customization',
+  'character customization': 'Character Customization', 'cc': 'Character Customization',
+  'tattoos': 'Character Customization', 'presets': 'Character Customization',
+  'cosmetics': 'Character Customization', 'makeup': 'Character Customization',
+  'cosmetic colors': 'Character Customization',
+  'bodies': 'Bodies', 'body': 'Bodies', 'skins': 'Bodies',
+  'heads': 'Heads', 'head': 'Heads', 'eyes': 'Heads', 'faces': 'Heads',
+  'hair': 'Hair', 'hairstyles': 'Hair', 'beards': 'Hair',
+  'clothing': 'Clothing', 'clothes': 'Clothing', 'outfits': 'Clothing',
+  'camp clothes': 'Clothing', 'camp': 'Clothing',
+  'dyes': 'Dyes', 'dye': 'Dyes',
+  'companions': 'Companions', 'companion edits': 'Companions', 'origins': 'Companions',
+  'npcs': 'NPC', 'npc': 'NPC', 'characters': 'NPC',
+  'quests': 'Quests', 'quest': 'Quests',
+  'environment': 'Environment', 'lighting': 'Environment',
+  'animations': 'Animations', 'animation': 'Animations',
+  'user interface': 'User Interface', 'ui': 'User Interface', 'interface': 'User Interface',
+  'hud': 'User Interface',
+  'textures': 'Visuals', 'visuals': 'Visuals', 'vfx': 'Visuals',
+  'dices': 'Dice', 'dice': 'Dice',
+  'audio': 'Audio', 'sound': 'Audio', 'music': 'Audio',
+  'other': 'Miscellaneous', 'miscellaneous': 'Miscellaneous', 'misc': 'Miscellaneous',
+  'patches': 'Bug Fixes', 'patch': 'Bug Fixes', 'compatibility': 'Bug Fixes',
+  'compatibility patches': 'Bug Fixes',
+  'fixes': 'Bug Fixes', 'fix': 'Bug Fixes', 'bugfixes': 'Bug Fixes', 'bug fixes': 'Bug Fixes',
 };
 
 /** Fallback name patterns when a mod sits under no section header. */
 const NAME_PATTERNS = [
-  [/script\s*extender|nativemodloader|native mod loader|^bg3se|improvedui|^impui/i, 'core'],
-  [/communitylibrary|community library|volitioncabinet|materiallibrary|material library|^lib[A-Z]|modders?\s*resource/i, 'libraries'],
-  [/compatibilityframework|compatibility framework|mod configuration menu|^bg3mcm|framework$|framework\b/i, 'frameworks'],
-  [/\bspell|cantrip|\bmagic\b/i, 'spells'],
-  [/subclass|\bclass\b|\bfeat\b|\brace\b|deity|deities/i, 'classes'],
-  [/hair|beard|head|\beyes?\b|skin\s*tone|tattoo|makeup|preset|face/i, 'character'],
-  [/outfit|clothing|clothes|\bdye\b|camp\s*(clothes|outfit)/i, 'clothing'],
-  [/armou?r|weapon|jewel|equipment|\bgear\b|basket.*equipment/i, 'items'],
-  [/hotbar|tooltip|sidebar|inventory ui|\bui\b|interface|topbar|context menu/i, 'ui'],
-  [/texture|\bdice\b|colou?rs?\b|vfx/i, 'visual'],
-  [/\bpatch(es)?\b|compatibility/i, 'patches'],
-  [/\bfix(es)?\b|hotfix/i, 'fixes'],
+  [/script\s*extender|nativemodloader|native mod loader|^bg3se|^mod\s*fixer/i, 'Utilities'],
+  [/improvedui|^impui|hotbar|tooltip|sidebar|inventory ui|\bui\b|interface|topbar|context menu/i, 'User Interface'],
+  [/communitylibrary|community library|volitioncabinet|materiallibrary|material library|^lib[A-Z]|modders?\s*resource|compatibilityframework|compatibility framework|mod configuration menu|^bg3mcm|framework$|framework\b/i, 'Resources'],
+  [/\bspell|cantrip|\bmagic\b/i, 'Spells'],
+  [/subclass|\bclass\b|\bfeat\b|deity|deities/i, 'Classes'],
+  [/\brace\b|subrace|tiefling|githyanki|dragonborn|drow\b/i, 'Races'],
+  [/hair|beard/i, 'Hair'],
+  [/\bheads?\b|\beyes?\b|\bfaces?\b/i, 'Heads'],
+  [/\bbod(y|ies)\b|skin\s*tone/i, 'Bodies'],
+  [/tattoo|makeup|preset|character\s*creat/i, 'Character Customization'],
+  [/\bdyes?\b/i, 'Dyes'],
+  [/outfit|clothing|clothes|camp\s*(clothes|outfit)/i, 'Clothing'],
+  [/armou?r/i, 'Armor'],
+  [/weapon|\bswords?\b|\bblades?\b|\bbows?\b|dagger/i, 'Weapons'],
+  [/jewel|amulet|\brings?\b|cloak|earring/i, 'Accessories'],
+  [/equipment|\bgear\b|basket.*equipment|container/i, 'Equipment'],
+  [/companion|astarion|shadowheart|karlach|lae.?zel|halsin|minthara/i, 'Companions'],
+  [/\bnpcs?\b/i, 'NPC'],
+  [/\bquests?\b/i, 'Quests'],
+  [/animation/i, 'Animations'],
+  [/\bdice\b/i, 'Dice'],
+  [/audio|sound|music|voice/i, 'Audio'],
+  [/texture|colou?rs?\b|vfx|visual/i, 'Visuals'],
+  [/\bpatch(es)?\b|compatibility|\bfix(es)?\b|hotfix/i, 'Bug Fixes'],
 ];
 
 // Corpus loading
