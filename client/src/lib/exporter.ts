@@ -64,7 +64,7 @@ export function exportOrder(result: SortResult, format: ExportFormat): string {
       const lines = [
         '# Load order',
         '',
-        `${mods.length} mods, sorted by [VOLO](https://volo.tools).`,
+        `${mods.length} mods, sorted by [VOLO](https://volobg3.com).`,
         '',
       ];
       let group = '';
