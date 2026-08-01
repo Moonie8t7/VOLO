@@ -155,7 +155,10 @@ export default function OptimisePage() {
                           </p>
                         ))}
                         <p className="text-xs pt-1 opacity-70">
-                          Group assigned from {p.groupSource.replace('-', ' ')}.
+                          {p.groupSource === 'masterlist' && 'Category from the community masterlist.'}
+                          {p.groupSource === 'inferred' && 'Category inferred from submitted load orders.'}
+                          {p.groupSource === 'name-pattern' && 'Category guessed from the mod name.'}
+                          {p.groupSource === 'default' && 'No category information yet.'}
                         </p>
                       </div>
                     )}

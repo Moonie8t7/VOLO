@@ -83,6 +83,7 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
   // Step 1: assign a group to every mod.
   const group = new Map<string, GroupName>();
   const groupSource = new Map<string, Placement['groupSource']>();
+  const confidence = new Map<string, number>();
   let known = 0;
 
   for (const mod of mods) {
@@ -92,7 +93,12 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
 
     if (entry && entry.group !== DEFAULT_GROUP) {
       group.set(mod.uuid, entry.group);
-      groupSource.set(mod.uuid, 'masterlist');
+      if (entry.evidence?.source === 'inferred') {
+        groupSource.set(mod.uuid, 'inferred');
+        if (entry.evidence.confidence) confidence.set(mod.uuid, entry.evidence.confidence);
+      } else {
+        groupSource.set(mod.uuid, 'masterlist');
+      }
       known++;
       continue;
     }
@@ -227,20 +233,26 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
 
   sorted.forEach((mod, position) => {
     const g = group.get(mod.uuid) ?? DEFAULT_GROUP;
+    const src = groupSource.get(mod.uuid) ?? 'default';
+    const conf = confidence.get(mod.uuid);
     const rs = reasons.get(mod.uuid) ?? [];
     rs.unshift({
       kind: 'group',
       text:
         g === DEFAULT_GROUP
           ? 'Not yet categorised by the community, so it stayed in its original position.'
-          : `Categorised as "${g}", which loads in that part of the order.`,
+          : src === 'inferred'
+            ? `Categorised as "${g}" from where it sits in submitted load orders` +
+              (conf ? `, with ${Math.round(conf * 100)} percent of its neighbours agreeing.` : '.')
+            : `Categorised as "${g}", which loads in that part of the order.`,
     });
     if (position !== mod.originalIndex) moved++;
     placements.set(mod.uuid, {
       uuid: mod.uuid,
       position,
       group: g,
-      groupSource: groupSource.get(mod.uuid) ?? 'default',
+      groupSource: src,
+      groupConfidence: conf,
       reasons: rs,
       movedBy: position - mod.originalIndex,
     });
