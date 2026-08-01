@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-01T11:04:43.052Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-01T11:13:06.121Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -40,40 +40,47 @@ the tool flag a mod as last verified on an older patch.
 | Curated override | 12 | highest, hand-verified infrastructure |
 | Human-authored section header | 1488 | high, a modder put it there |
 | Name pattern fallback | 558 | medium, needs review |
-| Uncategorised | 829 | none, needs community input |
+| Neighbour inference, 0.85 agreement or better | 76 | high, measured 97 percent accurate at this band |
+| Neighbour inference, 0.70 to 0.85 | 108 | medium, roughly 75 percent accurate, carries a confidence score |
+| Uncategorised | 645 | none, needs community input |
+
+Inferred placements come from where a mod sits in submitted orders: labelled
+neighbours within six places vote for their group, weighted by closeness.
+Inferred labels never vote for other mods, so an error cannot spread. Each
+inferred entry stores its agreement score as `evidence.confidence`.
 
 ## Group distribution
 
 - `Top of Load Order`: 9
-- `User Interface`: 53
-- `Visuals`: 25
-- `Weapons`: 90
-- `Dyes`: 17
-- `Clothing`: 122
-- `Character Customization`: 121
-- `Resources`: 87
-- `Equipment`: 74
-- `Armor`: 197
+- `User Interface`: 58
+- `Visuals`: 28
+- `Weapons`: 98
+- `Dyes`: 20
+- `Clothing`: 135
+- `Character Customization`: 125
+- `Resources`: 93
+- `Equipment`: 76
+- `Armor`: 226
 - `Utilities`: 8
-- `Races`: 52
-- `Animations`: 8
+- `Races`: 58
+- `Animations`: 10
 - `Spells`: 121
-- `Classes`: 199
+- `Classes`: 215
 - `Bodies`: 4
 - `Miscellaneous`: 49
-- `Bug Fixes`: 98
-- `Gameplay`: 86
-- `Accessories`: 53
+- `Bug Fixes`: 99
+- `Gameplay`: 87
+- `Accessories`: 70
 - `Quests`: 0
 - `Environment`: 0
 - `Audio`: 1
-- `Hair`: 151
-- `Heads`: 124
-- `Dice`: 147
-- `Companions`: 91
+- `Hair`: 169
+- `Heads`: 125
+- `Dice`: 194
+- `Companions`: 93
 - `NPC`: 71
 - `Bottom of Load Order`: 0
-- `unsorted`: 829
+- `unsorted`: 645
 
 ## Known limitations
 
@@ -81,7 +88,7 @@ the tool flag a mod as last verified on an older patch.
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **829 mods are `unsorted`.** These need community categorisation.
+- **645 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 

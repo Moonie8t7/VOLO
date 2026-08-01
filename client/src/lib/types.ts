@@ -45,9 +45,12 @@ export interface MasterlistPlugin {
   /** Newest BG3 build this mod has been seen in a load order for. */
   lastSeenGameBuild?: string;
   evidence?: {
-    source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'none';
+    source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'inferred' | 'none';
     installs: number;
     workingInstalls: number;
+    brokenInstalls?: number;
+    /** For inferred entries: neighbour agreement, 0.7 to 1. Higher tracks measured accuracy. */
+    confidence?: number;
   };
 }
 
@@ -70,7 +73,9 @@ export interface Placement {
   position: number;
   group: GroupName;
   /** How we decided the group. */
-  groupSource: 'masterlist' | 'name-pattern' | 'default';
+  groupSource: 'masterlist' | 'inferred' | 'name-pattern' | 'default';
+  /** Neighbour agreement behind an inferred group, when that is the source. */
+  groupConfidence?: number;
   /** Mods that had to load before this one, and why. */
   reasons: Reason[];
   /** How far this mod moved. Negative = earlier. */

@@ -119,6 +119,11 @@ export default function MasterlistPage() {
                       <span className="block truncate text-xs text-muted-foreground">{p.author}</span>
                     )}
                   </span>
+                  {p.evidence?.source === 'inferred' && p.evidence.confidence && (
+                    <span className="text-xs text-muted-foreground shrink-0">
+                      inferred, {Math.round(p.evidence.confidence * 100)}%
+                    </span>
+                  )}
                   {p.evidence && p.evidence.installs > 1 && (
                     <span className="text-xs text-muted-foreground shrink-0">
                       seen in {p.evidence.installs}
