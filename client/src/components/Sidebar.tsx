@@ -31,9 +31,11 @@ function NavLink({
   tone?: "primary" | "support";
   onNavigate?: () => void;
 }) {
+  // Selected state follows the official site's panel vocabulary: translucent
+  // black with a thin gold border and gold text, never a filled light block.
   const activeStyle = tone === "support"
-    ? "bg-destructive text-destructive-foreground border-destructive/30"
-    : "bg-primary text-primary-foreground border-primary/30";
+    ? "bg-black/35 text-destructive-foreground border-destructive/60"
+    : "bg-black/35 text-secondary border-border/80";
   const idleStyle = tone === "support"
     ? "text-foreground/80 hover:text-foreground hover:bg-destructive/10 hover:border-destructive/20"
     : "text-foreground/80 hover:text-foreground hover:bg-primary/10 hover:border-primary/20";

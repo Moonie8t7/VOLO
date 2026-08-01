@@ -53,6 +53,7 @@ export default {
           foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
         },
         border: "hsl(var(--border) / <alpha-value>)",
+        bronze: "hsl(var(--bg3-bronze) / <alpha-value>)",
         input: "hsl(var(--input) / <alpha-value>)",
         ring: "hsl(var(--ring) / <alpha-value>)",
         chart: {

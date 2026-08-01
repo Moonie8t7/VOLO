@@ -24,7 +24,10 @@
     --border: 35 30% 56%; /* #B4906D border color */
     --input: 30 20% 10%;
     --ring: 35 30% 56%;
-    --radius: 0.375rem;
+    /* Sharp corners throughout, matching the official BG3 site, which uses no
+       border radius anywhere and frames panels with thin gold borders instead. */
+    --radius: 0rem;
+    --bg3-bronze: 28 38% 61%; /* #C19976, official button text bronze */
     
     /* Final BG3 color palette */
     --bg3-header: 35 50% 91%; /* #FDE5CD */
@@ -109,21 +112,25 @@
       radial-gradient(circle at 75% 75%, hsl(var(--bg3-gold) / 0.05) 0%, transparent 50%);
   }
   
+  /* The official BG3 site sets headings in Quadraat Demibold, uppercase, at a
+     flat weight, with hierarchy carried by size rather than boldness. Quadraat
+     is a commercial face, so EB Garamond demibold stands in for it; it is the
+     same humanist-serif family feel, where a carved display face is not. */
   h1, h2, h3, h4, h5, h6, .font-display {
-    font-family: 'Cinzel', serif;
+    font-family: 'EB Garamond', serif;
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     color: hsl(var(--bg3-header)); /* #FDE5CD */
   }
-  
-  /* Section labels. Small-caps was dropped: at 12-14px it measurably hurts
-     legibility, and this class sits on labels rather than display headings.
-     Cinzel stays so the surface still reads as BG3. */
+
+  /* Section labels: uppercase gold, following the official site's H4 and nav
+     treatment. */
   .font-subheader {
-    font-family: 'Cinzel', serif;
+    font-family: 'EB Garamond', serif;
     font-weight: 500;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: hsl(var(--bg3-small)); /* #FBCEA0 */
   }
   
@@ -168,10 +175,11 @@
       hsl(var(--bg3-border) / 0.4)) 1;
   }
   
+  /* The official site uses no box shadows at all; panel framing comes from
+     thin gold borders. The class stays because it marks framed surfaces, but
+     it now draws a hairline ring rather than a drop shadow. */
   .shadow-bg3 {
-    box-shadow: 
-      0 4px 12px hsl(var(--bg3-charcoal) / 0.3),
-      0 0 0 1px hsl(var(--bg3-gold) / 0.1);
+    box-shadow: 0 0 0 1px hsl(var(--bg3-border) / 0.25);
   }
 
   /* BG3 themed colors for replacing modern blues/reds */
