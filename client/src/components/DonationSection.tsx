@@ -44,7 +44,7 @@ const donationPlatforms: DonationPlatform[] = [
     name: "Patreon",
     description: "Monthly",
     icon: <PatreonMark />,
-    url: "https://patreon.com/volo_bg3",
+    url: "https://patreon.com/VOLOBG3",
   },
   {
     name: "PayPal",
