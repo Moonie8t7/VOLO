@@ -31,7 +31,7 @@ Sorting 1,000 mods takes about 3ms.
 
 ## The masterlist
 
-`masterlist/bg3-masterlist.json` covers **2,887 mods**, built from load orders the
+`masterlist/bg3-masterlist.json` covers **around 2,900 mods**, built from load orders the
 community submitted. Roughly half were categorised from section headers that
 modders wrote in their own orders. The rest came from name patterns, curated
 overrides, or are still uncategorised.
@@ -84,10 +84,13 @@ otherwise a refresh on `/optimise` returns a 404.
 
 ## Status
 
-Working: import, sort, explain, export, masterlist browsing.
+Working: import, sort with explanations and confidence scores, export,
+masterlist browsing, and load order submission. Submissions arrive through a
+GitHub issue form; a workflow validates the order, regenerates the masterlist
+and opens a pull request for review.
 
-Not yet built: in-app contribution flow, user overrides that survive masterlist
-updates, and a desktop build that reads `modsettings.lsx` directly.
+Not yet built: user overrides that survive masterlist updates, and a desktop
+build that reads `modsettings.lsx` directly.
 
 ## Licence
 

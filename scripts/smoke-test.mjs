@@ -104,6 +104,32 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// Mods the masterlist has never seen fall back to name patterns. Every group a
+// pattern can emit must exist in the masterlist's vocabulary; an unknown name
+// ranks as nothing and silently sorts to the end, which is how a vocabulary
+// rename once broke the fallback without failing any corpus test.
+{
+  const validGroups = new Set(masterlist.groups.map(g => g.name));
+  const probes = [
+    'Fancy Sword of Testing', 'Probe Hair Pack', 'Probe Spellbook',
+    'Probe Interface Tweak', 'Probe Armour Set', 'Probe Compatibility Patch',
+    'Zzz Totally Unknown Thing',
+  ].map((name, i) => ({ uuid: `probe-${i}`, name, originalIndex: i }));
+
+  const result = sortLoadOrder(probes, masterlist);
+  let bad = 0;
+  console.log('\nfallback vocabulary probe');
+  for (const mod of result.mods) {
+    const g = result.placements.get(mod.uuid)?.group;
+    if (!validGroups.has(g)) {
+      bad++;
+      console.log(`  FAIL  "${mod.name}" assigned unknown group "${g}"`);
+    }
+  }
+  if (!bad) console.log('  ok    every fallback group exists in the masterlist vocabulary');
+  else failures += bad;
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);

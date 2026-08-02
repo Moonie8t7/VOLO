@@ -23,20 +23,36 @@ import type {
 
 const DEFAULT_GROUP = 'unsorted';
 
-/** Fallback categorisation for mods the masterlist has not seen. */
+/**
+ * Fallback categorisation for mods the masterlist has not seen. Group names
+ * must match the masterlist's group vocabulary exactly: an unknown name ranks
+ * as nothing and silently sorts to the end of the order.
+ */
 const NAME_PATTERNS: [RegExp, GroupName][] = [
-  [/^bg3se|script\s*extender|native\s*mod\s*loader|^impui|improvedui|mod\s*fixer/i, 'core'],
-  [/^communitylibrary|community\s*library|^volitioncabinet|^aahzlib|material\s*library|^tagframework/i, 'libraries'],
-  [/compatibility\s*framework|mod\s*configuration\s*menu|^bg3mcm|framework\b/i, 'frameworks'],
-  [/\bspell|cantrip\b/i, 'spells'],
-  [/subclass|\bclass\b|\bfeat\b|\brace\b|deit(y|ies)/i, 'classes'],
-  [/hair|beard|head|\beyes?\b|skin\s*tone|tattoo|makeup|preset|face/i, 'character'],
-  [/outfit|clothing|clothes|\bdye\b/i, 'clothing'],
-  [/armou?r|weapon|jewel|equipment|\bgear\b/i, 'items'],
-  [/hotbar|tooltip|sidebar|\bui\b|interface|topbar/i, 'ui'],
-  [/texture|\bdice\b|colou?rs?\b|vfx/i, 'visual'],
-  [/\bpatch(es)?\b|compatibility/i, 'patches'],
-  [/\bfix(es)?\b|hotfix/i, 'fixes'],
+  [/script\s*extender|native\s*mod\s*loader|^bg3se|mod\s*fixer/i, 'Utilities'],
+  [/improvedui|^impui|hotbar|tooltip|sidebar|\bui\b|interface|topbar|context menu/i, 'User Interface'],
+  [/communitylibrary|community\s*library|volitioncabinet|material\s*library|modders?\s*resource|compatibility\s*framework|mod\s*configuration\s*menu|^bg3mcm|framework\b/i, 'Resources'],
+  [/\bspell|cantrip|\bmagic\b/i, 'Spells'],
+  [/subclass|\bclass\b|\bfeat\b|deit(y|ies)/i, 'Classes'],
+  [/\brace\b|subrace/i, 'Races'],
+  [/hair|beard/i, 'Hair'],
+  [/\bheads?\b|\beyes?\b|\bface\b/i, 'Heads'],
+  [/\bbod(y|ies)\b|skin\s*tone/i, 'Bodies'],
+  [/tattoo|makeup|preset|character\s*creat/i, 'Character Customization'],
+  [/\bdyes?\b/i, 'Dyes'],
+  [/outfit|clothing|clothes|camp\s*(clothes|outfit)/i, 'Clothing'],
+  [/armou?r/i, 'Armor'],
+  [/weapon|sword|blade|\bbow\b|dagger/i, 'Weapons'],
+  [/jewel|amulet|\brings?\b|cloak|earring/i, 'Accessories'],
+  [/equipment|\bgear\b|container/i, 'Equipment'],
+  [/companion|astarion|shadowheart|karlach|\bgale\b|wyll|lae.?zel/i, 'Companions'],
+  [/\bnpcs?\b/i, 'NPC'],
+  [/\bquests?\b/i, 'Quests'],
+  [/animation/i, 'Animations'],
+  [/\bdice\b/i, 'Dice'],
+  [/audio|sound|music|voice/i, 'Audio'],
+  [/texture|colou?rs?\b|vfx|visual/i, 'Visuals'],
+  [/\bpatch(es)?\b|compatibility|\bfix(es)?\b|hotfix/i, 'Bug Fixes'],
 ];
 
 /**
