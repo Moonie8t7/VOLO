@@ -36,9 +36,9 @@ interface DonationPlatform {
 const donationPlatforms: DonationPlatform[] = [
   {
     name: "Ko-fi",
-    description: "One-off",
+    description: "One-off or monthly",
     icon: <KofiMark />,
-    url: "https://ko-fi.com/volo_bg3",
+    url: "https://ko-fi.com/volobg3",
   },
   {
     name: "Patreon",
