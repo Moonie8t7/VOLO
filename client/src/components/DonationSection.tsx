@@ -50,7 +50,7 @@ const donationPlatforms: DonationPlatform[] = [
     name: "PayPal",
     description: "One-off",
     icon: <PayPalMark />,
-    url: "https://paypal.me/volo_bg3",
+    url: "https://paypal.me/VOLOBG3",
   },
 ];
 
