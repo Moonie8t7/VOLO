@@ -97,9 +97,10 @@ build that reads `modsettings.lsx` directly.
 
 Load order dividers by
 [Astralities](https://forums.nexusmods.com/profile/106303673-astralities/),
-who made the VOLO edition of Astra's Load Order Dividers and gave permission
-to ship and modify it. The divider paks in `public/downloads/astras-dividers.zip` are their
-work; VOLO recognises them by UUID on import and can reinsert them on export.
+who made Astra's Load Order Dividers for their own playthroughs and gave
+permission to include and adapt the set here. The divider paks in
+`public/downloads/astras-dividers.zip` are their work; VOLO recognises them by
+UUID on import and can reinsert them on export.
 
 ## Licence
 

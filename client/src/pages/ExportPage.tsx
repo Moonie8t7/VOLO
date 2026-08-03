@@ -135,10 +135,10 @@ export default function ExportPage() {
                     The divider paks must be installed or BG3MM will list them as
                     missing.{' '}
                     <a href="/downloads/astras-dividers.zip" className="underline hover:text-foreground">
-                      Download the VOLO edition
+                      Download the divider paks
                     </a>
-                    ; it shares its UUIDs with Astra's original set on Nexus, so
-                    if you already run those the exported order works as-is.{' '}
+                    ; they are Astra's Load Order Dividers, so if you already
+                    have that set installed the exported order works as-is.{' '}
                     {dividers.credit}{' '}
                     <a href={dividers.creditUrl} target="_blank" rel="noreferrer" className="underline hover:text-foreground">
                       Astralities on Nexus

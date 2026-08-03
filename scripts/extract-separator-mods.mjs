@@ -2,8 +2,9 @@
 /**
  * Reads load order divider paks and emits the UUID and name of each.
  *
- * The active set is Astra's Load Order Dividers, made for VOLO by Astralities
- * and used with permission; credit is required wherever they surface.
+ * The active set is Astra's Load Order Dividers, made by Astralities for their
+ * own playthroughs and used here with permission; credit is required wherever
+ * they surface.
  *
  * Why this matters: those paks are widely used to divide a load order into named
  * sections. When a submitted order contains them we can recognise the section
@@ -158,7 +159,7 @@ fs.writeFileSync(
         'Load order divider paks, recognised by UUID so section boundaries ' +
         'are exact on import and insertable on export.',
       source: "Astra's Load Order Dividers",
-      credit: 'Made by Astralities for VOLO, used with permission.',
+      credit: 'Made by Astralities, used with permission.',
       creditUrl: 'https://forums.nexusmods.com/profile/106303673-astralities/',
       separators: results.map(r => ({ uuid: r.uuid, name: r.name, folder: r.folder })),
     },
