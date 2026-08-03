@@ -45,6 +45,8 @@ export default function ImportPage() {
       'application/json': ['.json'],
       'text/plain': ['.txt'],
       'text/csv': ['.csv', '.tsv'],
+      'application/xml': ['.lsx'],
+      'text/xml': ['.lsx'],
     },
   });
 
@@ -56,7 +58,7 @@ export default function ImportPage() {
         <header>
           <h1 className="text-4xl font-display font-bold text-gradient-bg3">Import your load order</h1>
           <p className="text-muted-foreground mt-2 font-body">
-            Export your order from BG3 Mod Manager, then drop the file here.
+            Drop in a BG3 Mod Manager export, or the game's own modsettings.lsx.
           </p>
         </header>
 
@@ -83,7 +85,7 @@ export default function ImportPage() {
                 {isDragActive ? 'Drop it' : 'Drag a file here, or click to browse'}
               </p>
               <p className="text-sm text-muted-foreground mt-2 font-body">
-                BG3MM export (.json), .csv, .tsv or a plain .txt list
+                BG3MM export (.json), the game's modsettings.lsx, .csv, .tsv or a plain .txt list
               </p>
             </div>
 

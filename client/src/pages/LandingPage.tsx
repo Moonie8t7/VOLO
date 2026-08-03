@@ -137,6 +137,19 @@ export default function LandingPage() {
             </AccordionContent>
           </AccordionItem>
 
+          <AccordionItem value="inactive" className="border-ornate/20">
+            <AccordionTrigger className="text-left font-semibold">
+              Some of my mods show as inactive in-game. Is that bad?
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+              Usually not. Override-style mods do their work without joining the
+              load order, so the in-game manager lists them as inactive; that is
+              normal and safe to ignore. If every single mod is disabled after
+              launch, that is different: one broken pak can take the whole list
+              down with it, and the fix is finding and removing the broken one.
+            </AccordionContent>
+          </AccordionItem>
+
           <AccordionItem value="loot" className="border-ornate/20">
             <AccordionTrigger className="text-left font-semibold">
               Is this like LOOT?

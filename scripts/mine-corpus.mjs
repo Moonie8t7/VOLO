@@ -482,6 +482,36 @@ for (const p of plugins) {
   if (agreement >= 0.85) stats.inferredHigh++; else stats.inferredLow++;
 }
 
+/**
+ * Script Extender awareness. BG3SE is a dll, not a pak, so it can never appear
+ * in a load order; the only way to warn "this order needs the Script Extender
+ * installed" is to know which mods rely on it. Two signals, both already on
+ * disk: ScriptExtenderData blocks inside pak metadata, and off-site
+ * requirement entries naming the extender in the Nexus catalogue.
+ */
+{
+  const SE_RE = /script.?extender|bg3se/i;
+  const enrichPath = path.join('nexus', 'enrichment.json');
+  const catalogPath = path.join('nexus', 'catalog.json');
+  let externalSe = new Set();
+  if (fs.existsSync(enrichPath) && fs.existsSync(catalogPath)) {
+    const enrichment = JSON.parse(fs.readFileSync(enrichPath, 'utf8'));
+    const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+    for (const [uuid, e] of Object.entries(enrichment)) {
+      const req = catalog.mods?.[e.nexusId]?.req ?? [];
+      if (req.some(r => r.external && SE_RE.test(r.name ?? ''))) externalSe.add(uuid);
+    }
+  }
+  let seCount = 0;
+  for (const p of plugins) {
+    if ((p.featureFlags && p.featureFlags.length) || externalSe.has(p.uuid)) {
+      p.usesScriptExtender = true;
+      seCount++;
+    }
+  }
+  console.log(`script extender: ${seCount} mods marked as relying on it`);
+}
+
 plugins.sort((a, b) =>
   b.evidence.installs - a.evidence.installs || a.name.localeCompare(b.name));
 
