@@ -158,6 +158,30 @@ for (const plugin of masterlist.plugins) {
   }
 }
 
+// Requirements harvested from the GraphQL side become load-after proposals.
+// An edge is only proposed when the requiring mod matched the masterlist; the
+// required side resolves to a uuid when it also matched, and otherwise stays a
+// name so the report can show what a fuller catalogue would unlock.
+const uuidByNexusId = new Map(
+  Object.entries(enrichment).map(([uuid, e]) => [e.nexusId, uuid]),
+);
+let depEdges = 0, depResolved = 0;
+for (const [uuid, e] of Object.entries(enrichment)) {
+  const req = catalog.mods[e.nexusId]?.req;
+  if (!Array.isArray(req) || !req.length) continue;
+  const proposals = [];
+  for (const r of req) {
+    if (r.external || !r.id) continue;
+    const targetUuid = uuidByNexusId.get(r.id) ?? null;
+    const p = { name: r.name, nexusId: r.id };
+    if (targetUuid) { p.uuid = targetUuid; depResolved++; }
+    if (r.notes) p.notes = r.notes;
+    proposals.push(p);
+    depEdges++;
+  }
+  if (proposals.length) e.requires = proposals;
+}
+
 fs.writeFileSync(path.join('nexus', 'enrichment.json'), JSON.stringify(enrichment, null, 1) + '\n');
 
 const unmappedCategories = [...new Set(
@@ -187,6 +211,9 @@ Catalogue scanned through id ${catalog.provenance?.scannedThrough ?? '?'} of ${c
 - ${disagreements.length} mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
+- ${depEdges} dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, ${depResolved} of them resolved to a uuid on both
+  ends and usable as load-after constraints today.
 
 ### Sample category fills
 
