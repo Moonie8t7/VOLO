@@ -130,6 +130,56 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   else failures += bad;
 }
 
+// modsettings.lsx: the game's own load order file. Fixture mirrors the real
+// structure, including the base-game Gustav entry that must be filtered out.
+{
+  const lsx = `<?xml version="1.0" encoding="UTF-8"?>
+<save>
+  <region id="ModuleSettings">
+    <node id="root">
+      <children>
+        <node id="Mods">
+          <children>
+            <node id="ModuleShortDesc">
+              <attribute id="Folder" type="LSString" value="GustavDev"/>
+              <attribute id="Name" type="LSString" value="GustavDev"/>
+              <attribute id="UUID" type="guid" value="28ac9ce2-2aba-8cda-b3b5-6e922f71b6b8"/>
+            </node>
+            <node id="ModuleShortDesc">
+              <attribute id="Folder" type="LSString" value="ImpUI_Folder"/>
+              <attribute id="Name" type="LSString" value="ImpUI (ImprovedUI)"/>
+              <attribute id="UUID" type="guid" value="26922ba9-6018-5252-075d-7ff2ba6ed879"/>
+              <attribute id="Version64" type="int64" value="36028797018963968"/>
+            </node>
+            <node id="ModuleShortDesc">
+              <attribute id="Folder" type="LSString" value="TestMod"/>
+              <attribute id="Name" type="LSString" value="Probe Test Mod"/>
+              <attribute id="UUID" type="guid" value="11111111-2222-3333-4444-555555555555"/>
+            </node>
+          </children>
+        </node>
+      </children>
+    </node>
+  </region>
+</save>`;
+
+  const parsed = parseLoadOrder(lsx, 'modsettings.lsx');
+  console.log('\nmodsettings.lsx fixture');
+  const names = parsed.mods.map(m => m.name);
+  if (parsed.mods.length === 2 && names.includes('ImpUI (ImprovedUI)') && names.includes('Probe Test Mod')) {
+    console.log('  ok    two mods parsed, base game filtered out');
+  } else {
+    failures++;
+    console.log(`  FAIL  expected 2 mods without GustavDev, got ${JSON.stringify(names)}`);
+  }
+  if (parsed.mods[0]?.uuid === '26922ba9-6018-5252-075d-7ff2ba6ed879') {
+    console.log('  ok    uuids extracted');
+  } else {
+    failures++;
+    console.log('  FAIL  uuid not extracted');
+  }
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);

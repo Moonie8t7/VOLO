@@ -160,6 +160,46 @@ const empty = (format: string, errors: string[]): ParseResult =>
   ({ mods: [], sections: [], format, warnings: [], errors });
 
 /**
+ * modsettings.lsx is the game's own load order file, the one BG3 reads at
+ * launch. Every modded install has it regardless of manager, and for users of
+ * the official in-game manager it is the only exportable format there is.
+ *
+ * The file is rigid machine-written XML, so a small attribute walker is enough
+ * and works identically in the browser and in node, where DOMParser does not
+ * exist. Structure, for reference:
+ *
+ *   <node id="ModuleShortDesc">
+ *     <attribute id="UUID" value="..."/>
+ *     <attribute id="Name" value="..."/>
+ *     <attribute id="Folder" value="..."/>
+ *   </node>
+ */
+function parseModsettings(content: string): ParseResult {
+  const blocks = content.split(/<node\s+id="ModuleShortDesc"/).slice(1);
+  if (!blocks.length) {
+    return empty('modsettings.lsx', [
+      'This looks like a Larian .lsx file, but no mod entries were found in it.',
+    ]);
+  }
+
+  const entries: Record<string, unknown>[] = [];
+  for (const block of blocks) {
+    const scope = block.split('</node>')[0];
+    const rec: Record<string, unknown> = {};
+    for (const m of scope.matchAll(/<attribute\s+id="([^"]+)"[^>]*\bvalue="([^"]*)"/g)) {
+      rec[m[1]] = m[2];
+    }
+    // The base game ships as modules too; the engine master list already knows
+    // their folder names.
+    if (typeof rec.Folder === 'string' && ENGINE_MASTERS.has(rec.Folder)) continue;
+    if (typeof rec.Name === 'string' && ENGINE_MASTERS.has(rec.Name)) continue;
+    entries.push(rec);
+  }
+
+  return collect(entries, 'BG3 modsettings.lsx');
+}
+
+/**
  * Parse any supported load order file. Never throws. Errors come back on the
  * result so the UI can show them.
  */
@@ -169,6 +209,10 @@ export function parseLoadOrder(content: string, filename = ''): ParseResult {
 
   const ext = filename.toLowerCase().split('.').pop() ?? '';
   const looksJson = trimmed.startsWith('{') || trimmed.startsWith('[');
+
+  if (ext === 'lsx' || (trimmed.startsWith('<?xml') && trimmed.includes('ModuleShortDesc'))) {
+    return parseModsettings(trimmed);
+  }
 
   if (ext === 'json' || looksJson) {
     let data: unknown;

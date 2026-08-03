@@ -274,6 +274,29 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
     });
   });
 
+  // The Script Extender is a dll, not a pak, so it can never appear in this
+  // list; the one useful thing a sorter can do is say how much of the order
+  // depends on it being installed.
+  const seMods = sorted.filter(m => {
+    if (m.featureFlags?.length) return true;
+    const entry = byUuid.get(m.uuid) ??
+      byName.get(m.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
+    return Boolean(entry?.usesScriptExtender);
+  });
+  if (seMods.length) {
+    issues.push({
+      severity: 'info',
+      kind: 'script-extender',
+      message:
+        `${seMods.length} mod${seMods.length > 1 ? 's' : ''} in this order rel` +
+        `${seMods.length > 1 ? 'y' : 'ies'} on the Script Extender, which is ` +
+        'installed separately and never appears in a load order.',
+      uuids: seMods.map(m => m.uuid),
+      resolution:
+        'Make sure BG3SE is installed before playing, or these mods will not work.',
+    });
+  }
+
   const unsortedMods = sorted.filter(m => group.get(m.uuid) === DEFAULT_GROUP);
   if (unsortedMods.length) {
     issues.push({

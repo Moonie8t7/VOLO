@@ -44,6 +44,8 @@ export interface MasterlistPlugin {
   featureFlags?: string[];
   /** Newest BG3 build this mod has been seen in a load order for. */
   lastSeenGameBuild?: string;
+  /** Relies on the Script Extender, which is a dll and never appears in a load order. */
+  usesScriptExtender?: boolean;
   evidence?: {
     source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'inferred' | 'none';
     installs: number;
@@ -92,7 +94,7 @@ export type IssueSeverity = 'critical' | 'warning' | 'info';
 
 export interface Issue {
   severity: IssueSeverity;
-  kind: 'missing-dependency' | 'cycle' | 'duplicate' | 'unsorted' | 'unknown-mod';
+  kind: 'missing-dependency' | 'cycle' | 'duplicate' | 'unsorted' | 'unknown-mod' | 'script-extender';
   message: string;
   /** Mods this issue concerns. */
   uuids: string[];
