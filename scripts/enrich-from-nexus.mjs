@@ -161,7 +161,7 @@ for (const plugin of masterlist.plugins) {
 // Requirements harvested from the GraphQL side become load-after proposals.
 // An edge is only proposed when the requiring mod matched the masterlist; the
 // required side resolves to a uuid when it also matched, and otherwise stays a
-// name so the report can show what a fuller catalogue would unlock.
+// name so the report can show what a fuller catalogue would resolve.
 const uuidByNexusId = new Map(
   Object.entries(enrichment).map(([uuid, e]) => [e.nexusId, uuid]),
 );
