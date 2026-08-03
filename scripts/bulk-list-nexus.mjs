@@ -76,10 +76,30 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 let requestsMade = 0;
 let dailyRemaining = Infinity;
 
+/**
+ * Antivirus scanners on Windows briefly lock freshly written files, which
+ * surfaces as UNKNOWN errors on the next write. Writing to a temp file and
+ * renaming over the target, with retries, rides through the lock window and
+ * never leaves a torn file for readers.
+ */
+function safeWrite(file, data) {
+  const tmp = file + '.tmp';
+  for (let attempt = 0; ; attempt++) {
+    try {
+      fs.writeFileSync(tmp, data);
+      fs.renameSync(tmp, file);
+      return;
+    } catch (err) {
+      if (attempt >= 5) throw err;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 300 * (attempt + 1));
+    }
+  }
+}
+
 function flush() {
   catalog.generated = new Date().toISOString();
-  fs.writeFileSync(CATALOG, JSON.stringify(catalog) + '\n');
-  fs.writeFileSync(STATE, JSON.stringify(state, null, 2) + '\n');
+  safeWrite(CATALOG, JSON.stringify(catalog) + '\n');
+  safeWrite(STATE, JSON.stringify(state, null, 2) + '\n');
 }
 
 function storeNode(n) {
@@ -163,7 +183,7 @@ if (UPDATES_MODE) {
       state.complete = true;
       state.lastSync = new Date().toISOString();
     }
-    flush();
+    if (state.complete || state.offset % (PAGE * 5) === 0) flush();
     if (state.complete) break;
     await sleep(DELAY_MS);
   }
