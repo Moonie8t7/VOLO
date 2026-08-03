@@ -18,8 +18,8 @@ export default function DonationsPage() {
             What it does cost is time: reviewing submitted load orders, keeping
             the masterlist in shape as patches land, and building the features
             still missing. If VOLO saved you an evening and you feel like buying
-            the person behind it a coffee, that is what these are for. No tiers,
-            no perks, no promises. It all stays free either way.
+            the person behind it a coffee, that is what these are for. There are no
+            tiers and no perks, and it all stays free either way.
           </p>
           <p>
             If you would rather give something more useful than money: play on

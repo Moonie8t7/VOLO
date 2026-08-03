@@ -69,7 +69,7 @@ export default function LandingPage() {
         </h2>
         <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
           <p>
-            Not from guesswork. The sorting rules are learned from load orders
+            The sorting rules are learned from load orders
             players submitted after actually playing on them. Orders that worked
             teach placement; orders that broke teach warnings.
           </p>
