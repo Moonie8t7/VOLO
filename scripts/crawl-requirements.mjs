@@ -39,6 +39,19 @@ if (!KEY) {
   console.error('NEXUS_API_KEY is not set.');
   process.exit(2);
 }
+// One catalogue writer at a time; concurrent flushes crash each other.
+try {
+  const held = JSON.parse(fs.readFileSync(path.join('nexus', '.lock'), 'utf8'));
+  if (Date.now() - held.at < 3 * 3600_000) {
+    console.log(`another nexus job appears to be running (pid ${held.pid}); exiting`);
+    process.exit(0);
+  }
+} catch {}
+fs.writeFileSync(path.join('nexus', '.lock'), JSON.stringify({ pid: process.pid, at: Date.now() }));
+process.on('exit', () => { try { fs.unlinkSync(path.join('nexus', '.lock')); } catch {} });
+process.on('SIGINT', () => process.exit(130));
+process.on('SIGTERM', () => process.exit(143));
+
 if (!fs.existsSync(CATALOG)) {
   console.error('No nexus/catalog.json yet. Run scripts/crawl-nexus.mjs first.');
   process.exit(2);
@@ -82,6 +95,8 @@ for (let i = 0; i < pending.length; i += BATCH) {
         apikey: KEY,
         'Content-Type': 'application/json',
         'User-Agent': 'VOLO/1.0 (volobg3.com; load order tool)',
+        'Application-Name': 'VOLO',
+        'Application-Version': '1.0.0',
       },
       body: JSON.stringify({ query }),
       signal: AbortSignal.timeout(60_000),
