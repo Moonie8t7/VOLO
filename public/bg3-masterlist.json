@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-03T16:45:33.369Z",
+  "generated": "2026-08-03T19:52:52.656Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -9,10 +9,10 @@
     "4.8.700.7143220"
   ],
   "provenance": {
-    "ordersAnalysed": 12,
+    "ordersAnalysed": 13,
     "working": 8,
     "broken": 2,
-    "unlabelled": 2,
+    "unlabelled": 3,
     "ordersWithKnownBuild": 1
   },
   "groups": [
@@ -236,7 +236,7 @@
       "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
         "source": "curated",
-        "installs": 11,
+        "installs": 12,
         "workingInstalls": 8,
         "brokenInstalls": 1
       }
@@ -253,7 +253,7 @@
       "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
         "source": "curated",
-        "installs": 10,
+        "installs": 11,
         "workingInstalls": 7,
         "brokenInstalls": 1
       },
@@ -278,7 +278,7 @@
       "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
         "source": "curated",
-        "installs": 10,
+        "installs": 11,
         "workingInstalls": 7,
         "brokenInstalls": 1
       },
@@ -297,6 +297,57 @@
       "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
         "source": "curated",
+        "installs": 11,
+        "workingInstalls": 7,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "Better Containers",
+      "uuid": "cb42bc3a-f1d2-7d9d-16a2-2800154f099a",
+      "group": "User Interface",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 10,
+        "workingInstalls": 8,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Better Inventory UI",
+      "uuid": "6b585be8-ed73-7347-2c58-73146e22b7d4",
+      "group": "User Interface",
+      "evidence": {
+        "source": "section",
+        "installs": 10,
+        "workingInstalls": 8,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Tav's Hair Salon - Tav's Hairpack",
+      "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 10,
+        "workingInstalls": 8,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "unique_tav",
+      "uuid": "4cb0fd40-7212-4fe9-8733-9a8dbc6637ae",
+      "group": "Character Customization",
+      "author": "Kartoffel, Kaz, KittHaven, Astralities",
+      "version": "1.5.1.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section-majority",
         "installs": 10,
         "workingInstalls": 7,
         "brokenInstalls": 1
@@ -318,31 +369,20 @@
       }
     },
     {
-      "name": "Better Containers",
-      "uuid": "cb42bc3a-f1d2-7d9d-16a2-2800154f099a",
-      "group": "User Interface",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 9,
-        "workingInstalls": 8,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Better Inventory UI",
-      "uuid": "6b585be8-ed73-7347-2c58-73146e22b7d4",
+      "name": "BetterTooltips",
+      "uuid": "bc1081b4-e2a9-ce49-8b60-6f64b7eecce4",
       "group": "User Interface",
       "evidence": {
         "source": "section",
         "installs": 9,
-        "workingInstalls": 8,
+        "workingInstalls": 7,
         "brokenInstalls": 0
       }
     },
     {
-      "name": "Tav's Hair Salon - Tav's Hairpack",
-      "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
-      "group": "Character Customization",
+      "name": "OIOPrime",
+      "uuid": "a44c79a0-641f-5757-0d2c-d5794b66f109",
+      "group": "Bug Fixes",
       "evidence": {
         "source": "section-majority",
         "installs": 9,
@@ -351,11 +391,11 @@
       }
     },
     {
-      "name": "unique_tav",
-      "uuid": "4cb0fd40-7212-4fe9-8733-9a8dbc6637ae",
-      "group": "Resources",
-      "author": "Kartoffel, Kaz, KittHaven, Astralities",
-      "version": "1.5.1.0",
+      "name": "TransmogEnhanced",
+      "uuid": "82c1f53b-5ed3-4e2e-95f5-f84ca6ff0c81",
+      "group": "Character Customization",
+      "author": "Eralyne, Wayden",
+      "version": "1.1.2.0",
       "featureFlags": [
         "Lua"
       ],
@@ -367,6 +407,97 @@
         "brokenInstalls": 1
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "VolitionCabinet",
+      "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+      "group": "Resources",
+      "author": "Volitio",
+      "version": "1.16.0.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "curated",
+        "installs": 9,
+        "workingInstalls": 7,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "5eSpells",
+      "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+      "group": "Spells",
+      "author": "Celes/DiZ",
+      "version": "2.4.2.3",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 8,
+        "workingInstalls": 6,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "AahzLib",
+      "uuid": "5d1bd6cb-6361-45ef-b20c-d997acfba822",
+      "group": "Resources",
+      "author": "Aahz",
+      "version": "1.1.0.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "curated",
+        "installs": 8,
+        "workingInstalls": 6,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "ASTRL Demon Eyes",
+      "uuid": "b0c1b53b-0d9b-43b4-803d-1cc62aa9389c",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 8,
+        "workingInstalls": 7,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Feywild Eyes",
+      "uuid": "e6eb4b0f-a921-4632-b324-05c0619fcdc1",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 8,
+        "workingInstalls": 7,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Lifelike - Skintone Expansion",
+      "uuid": "84199668-9978-4142-86b7-efba18e9b557",
+      "group": "Character Customization",
+      "folder": "ASTRL_Lifelike",
+      "author": "Astralities",
+      "version": "1.1.0.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section",
+        "installs": 8,
+        "workingInstalls": 6,
+        "brokenInstalls": 1
+      }
     },
     {
       "name": "Better Hotbar [Vova's Edition]",
@@ -401,8 +532,8 @@
       }
     },
     {
-      "name": "BetterTooltips",
-      "uuid": "bc1081b4-e2a9-ce49-8b60-6f64b7eecce4",
+      "name": "Better Topbar",
+      "uuid": "d9582df8-6eef-a756-117f-965e22007ff6",
       "group": "User Interface",
       "evidence": {
         "source": "section",
@@ -423,13 +554,24 @@
       }
     },
     {
-      "name": "OIOPrime",
-      "uuid": "a44c79a0-641f-5757-0d2c-d5794b66f109",
-      "group": "Bug Fixes",
+      "name": "Myky's Hairstyles",
+      "uuid": "680b2b14-1663-0701-506a-c5c23c68247e",
+      "group": "Character Customization",
       "evidence": {
         "source": "section-majority",
         "installs": 8,
-        "workingInstalls": 8,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "P4 Bangs Bangs Everywhere",
+      "uuid": "80fb12aa-1d82-4df4-af42-7beae9250fb2",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 8,
+        "workingInstalls": 6,
         "brokenInstalls": 0
       }
     },
@@ -449,24 +591,6 @@
       }
     },
     {
-      "name": "TransmogEnhanced",
-      "uuid": "82c1f53b-5ed3-4e2e-95f5-f84ca6ff0c81",
-      "group": "Character Customization",
-      "author": "Eralyne, Wayden",
-      "version": "1.1.2.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 8,
-        "workingInstalls": 7,
-        "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "Vanilla CC Colours For All Sections",
       "uuid": "470714b1-7b5b-1866-4730-056ba9d258e8",
       "group": "Character Customization",
@@ -476,60 +600,6 @@
         "workingInstalls": 7,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "VolitionCabinet",
-      "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-      "group": "Resources",
-      "author": "Volitio",
-      "version": "1.16.0.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "curated",
-        "installs": 8,
-        "workingInstalls": 7,
-        "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "5eSpells",
-      "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
-      "group": "Spells",
-      "author": "Celes/DiZ",
-      "version": "2.4.2.3",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 7,
-        "workingInstalls": 6,
-        "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "AahzLib",
-      "uuid": "5d1bd6cb-6361-45ef-b20c-d997acfba822",
-      "group": "Resources",
-      "author": "Aahz",
-      "version": "1.1.0.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "curated",
-        "installs": 7,
-        "workingInstalls": 6,
-        "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Actually Infernal Rapier",
@@ -543,6 +613,21 @@
         "source": "section-majority",
         "installs": 7,
         "workingInstalls": 5,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Aether's Black Dye",
+      "uuid": "53480625-d3e4-4cce-86c8-a8a793eb61d7",
+      "group": "Equipment",
+      "folder": "AethersBlackDye",
+      "author": "Aetherpoint",
+      "version": "1.0.5.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 4,
         "brokenInstalls": 1
       }
     },
@@ -579,50 +664,109 @@
       }
     },
     {
-      "name": "ASTRL Demon Eyes",
-      "uuid": "b0c1b53b-0d9b-43b4-803d-1cc62aa9389c",
+      "name": "ASTRL Haircolor Overhaul",
+      "uuid": "0ea2fbb8-6d23-4910-9a3b-a20fbd555240",
       "group": "Character Customization",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 7,
-        "workingInstalls": 7,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "ASTRL Feywild Eyes",
-      "uuid": "e6eb4b0f-a921-4632-b324-05c0619fcdc1",
-      "group": "Character Customization",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 7,
-        "workingInstalls": 7,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "ASTRL Lifelike - Skintone Expansion",
-      "uuid": "84199668-9978-4142-86b7-efba18e9b557",
-      "group": "Character Customization",
-      "folder": "ASTRL_Lifelike",
+      "folder": "ASTRLhairoverhaul",
       "author": "Astralities",
-      "version": "1.1.0.0",
+      "version": "2.0.0.0",
       "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
-        "source": "section",
+        "source": "section-majority",
         "installs": 7,
-        "workingInstalls": 6,
+        "workingInstalls": 5,
         "brokenInstalls": 1
       }
     },
     {
-      "name": "Better Topbar",
-      "uuid": "d9582df8-6eef-a756-117f-965e22007ff6",
+      "name": "BCPP 16x9 4 5x10",
+      "uuid": "f43d53cb-aef6-6476-15dc-d71d25c2f1cc",
+      "group": "User Interface",
+      "folder": "BCPPfourfiveten_f43d53cb-aef6-6476-15dc-d71d25c2f1cc",
+      "author": "Caites",
+      "version": "1.7.2.11",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section",
+        "installs": 7,
+        "workingInstalls": 4,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Better Split Item",
+      "uuid": "76e493c7-d7f4-217f-2a3e-61e17c61dedf",
       "group": "User Interface",
       "evidence": {
         "source": "section",
         "installs": 7,
-        "workingInstalls": 7,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Better Various Widgets",
+      "uuid": "2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a",
+      "group": "User Interface",
+      "folder": "BetterVariousWidgets_2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a",
+      "author": "Caites",
+      "version": "1.0.9.8",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section",
+        "installs": 7,
+        "workingInstalls": 5,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Dark Justiciar Dice",
+      "uuid": "6eaf9c0e-3935-4441-8699-f013501d6ba3",
+      "group": "Dice",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Dynamic Sidebar",
+      "uuid": "1e649013-e371-953e-3839-07f02fe1cffa",
+      "group": "User Interface",
+      "evidence": {
+        "source": "section",
+        "installs": 7,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Fix Stragglers",
+      "uuid": "310ba0c7-374e-4e56-8c42-b7c7ad3a38b0",
+      "group": "Bug Fixes",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "Half-Tiefs",
+      "uuid": "144130e9-5eaf-48c3-b28f-446a0c2481aa",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 5,
         "brokenInstalls": 0
       }
     },
@@ -667,9 +811,9 @@
       }
     },
     {
-      "name": "Myky's Hairstyles",
-      "uuid": "680b2b14-1663-0701-506a-c5c23c68247e",
-      "group": "Character Customization",
+      "name": "Mark Book As Read",
+      "uuid": "c72d9f6a-a6e4-48b1-98c0-0ecdc7c31cf7",
+      "group": "Bug Fixes",
       "evidence": {
         "source": "section-majority",
         "installs": 7,
@@ -678,13 +822,25 @@
       }
     },
     {
-      "name": "P4 Bangs Bangs Everywhere",
-      "uuid": "80fb12aa-1d82-4df4-af42-7beae9250fb2",
-      "group": "Character Customization",
+      "name": "Mod Uninstaller",
+      "uuid": "163484d1-8511-4a95-8061-1ede8838b28b",
+      "group": "Utilities",
       "evidence": {
         "source": "section-majority",
         "installs": 7,
         "workingInstalls": 6,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "Myky's Tintable Piercings - AIO",
+      "uuid": "b5377116-0017-69b4-059e-79c488f86889",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 5,
         "brokenInstalls": 0
       }
     },
@@ -701,6 +857,50 @@
         "installs": 7,
         "workingInstalls": 5,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "PK Armors and Clothes",
+      "uuid": "04b2bfdb-de2a-41e6-8798-011165cbd40e",
+      "group": "Clothing",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "PK Hair Collection",
+      "uuid": "4909b11d-fa26-4fd0-8c5b-9d8612ca07db",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "PL_Fair_Eye_Color_Collection",
+      "uuid": "a33411ea-9eaf-fbea-ed2e-b8e1e6318ca2",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Tav's Hairpack - Icon Patch",
+      "uuid": "bfad4cdb-0b02-435a-96c7-06c0f6533055",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
       }
     },
     {
@@ -733,15 +933,26 @@
       }
     },
     {
-      "name": "Aether's Black Dye",
-      "uuid": "53480625-d3e4-4cce-86c8-a8a793eb61d7",
-      "group": "Equipment",
-      "folder": "AethersBlackDye",
-      "author": "Aetherpoint",
-      "version": "1.0.5.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
+      "name": "[Aza] Minthara's Immersive Redesign",
+      "uuid": "761958a6-5c80-60ba-a050-9d1c80c18e55",
+      "group": "Miscellaneous",
       "evidence": {
         "source": "section-majority",
+        "installs": 6,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "AddonBetterInventoryUI",
+      "uuid": "8c7d3408-a746-5022-348b-1635e14af044",
+      "group": "User Interface",
+      "folder": "AddonBetterInventoryUI_8c7d3408-a746-5022-348b-1635e14af044",
+      "author": "Caites",
+      "version": "1.2.9.6",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section",
         "installs": 6,
         "workingInstalls": 4,
         "brokenInstalls": 1
@@ -759,6 +970,17 @@
       }
     },
     {
+      "name": "ASTRL Colorizer - Tattoo & Makeup Color Edits",
+      "uuid": "3609a0b7-bd80-4e5f-9ecc-a73e281a0bc4",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "ASTRL Hair Color Collection",
       "uuid": "7a741e61-cf7c-46cc-b1b5-b67fbefd2ff4",
       "group": "Character Customization",
@@ -770,27 +992,34 @@
       }
     },
     {
-      "name": "ASTRL Haircolor Overhaul",
-      "uuid": "0ea2fbb8-6d23-4910-9a3b-a20fbd555240",
-      "group": "Character Customization",
-      "folder": "ASTRLhairoverhaul",
-      "author": "Astralities",
-      "version": "2.0.0.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
+      "name": "Better Map",
+      "uuid": "02ffe10e-ac53-8877-a3d5-3098fdbb8f5b",
+      "group": "User Interface",
       "evidence": {
-        "source": "section-majority",
+        "source": "section",
         "installs": 6,
-        "workingInstalls": 5,
-        "brokenInstalls": 1
+        "workingInstalls": 6,
+        "brokenInstalls": 0
       }
     },
     {
-      "name": "BCPP 16x9 4 5x10",
-      "uuid": "f43d53cb-aef6-6476-15dc-d71d25c2f1cc",
+      "name": "BW Extra Shields",
+      "uuid": "5389d935-65e1-49b2-8116-c78e283de5c6",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "CPCCE",
+      "uuid": "a2f25ffd-0c2f-4673-ad5d-bbe783e95564",
       "group": "User Interface",
-      "folder": "BCPPfourfiveten_f43d53cb-aef6-6476-15dc-d71d25c2f1cc",
+      "folder": "CPCCE_a2f25ffd-0c2f-4673-ad5d-bbe783e95564",
       "author": "Caites",
-      "version": "1.7.2.11",
+      "version": "1.2.6.8",
       "dependencies": [
         {
           "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
@@ -806,63 +1035,16 @@
       }
     },
     {
-      "name": "Better Map",
-      "uuid": "02ffe10e-ac53-8877-a3d5-3098fdbb8f5b",
-      "group": "User Interface",
-      "evidence": {
-        "source": "section",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Better Split Item",
-      "uuid": "76e493c7-d7f4-217f-2a3e-61e17c61dedf",
-      "group": "User Interface",
-      "evidence": {
-        "source": "section",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Better Various Widgets",
-      "uuid": "2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a",
-      "group": "User Interface",
-      "folder": "BetterVariousWidgets_2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a",
-      "author": "Caites",
-      "version": "1.0.9.8",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "section",
-        "installs": 6,
-        "workingInstalls": 5,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Dark Justiciar Dice",
-      "uuid": "6eaf9c0e-3935-4441-8699-f013501d6ba3",
-      "group": "Dice",
+      "name": "Deity Tag Activator",
+      "uuid": "05827e11-37eb-4820-8916-1fa2060a84c7",
+      "group": "Classes",
       "evidence": {
         "source": "section-majority",
         "installs": 6,
         "workingInstalls": 5,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Dynamic Sidebar",
-      "uuid": "1e649013-e371-953e-3839-07f02fe1cffa",
-      "group": "User Interface",
-      "evidence": {
-        "source": "section",
-        "installs": 6,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "EasyCheat",
@@ -872,29 +1054,6 @@
         "source": "section-majority",
         "installs": 6,
         "workingInstalls": 6,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Fix Stragglers",
-      "uuid": "310ba0c7-374e-4e56-8c42-b7c7ad3a38b0",
-      "group": "Bug Fixes",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "Half-Tiefs",
-      "uuid": "144130e9-5eaf-48c3-b28f-446a0c2481aa",
-      "group": "Character Customization",
-      "evidence": {
-        "source": "section",
-        "installs": 6,
-        "workingInstalls": 5,
         "brokenInstalls": 0
       }
     },
@@ -936,6 +1095,54 @@
       }
     },
     {
+      "name": "KaiLime UI",
+      "uuid": "baf029fa-af6e-4080-bd6a-abacdea9e684",
+      "group": "User Interface",
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Kay's Material Library",
+      "uuid": "896aa172-c026-9e72-7c91-9d67e17595e6",
+      "group": "Resources",
+      "folder": "KayMaterialLibrary_896aa172-c026-9e72-7c91-9d67e17595e6",
+      "author": "perseidipity",
+      "version": "1.0.0.5",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "curated",
+        "installs": 6,
+        "workingInstalls": 3,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Kylin's Heads",
+      "uuid": "afface23-2d71-4614-88f9-bdbabdd61e03",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Kylin's Horns",
+      "uuid": "a952bb44-2cb5-4e6a-ad7b-b431a2249129",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Kylin's Sharran Hairpack",
       "uuid": "9a2f1b69-b5ba-46ee-af68-2c6d8d70fe18",
       "group": "Character Customization",
@@ -947,43 +1154,9 @@
       }
     },
     {
-      "name": "Mark Book As Read",
-      "uuid": "c72d9f6a-a6e4-48b1-98c0-0ecdc7c31cf7",
-      "group": "Bug Fixes",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Mod Uninstaller",
-      "uuid": "163484d1-8511-4a95-8061-1ede8838b28b",
-      "group": "Utilities",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "Myky's Heads - Unique Tav Patch",
       "uuid": "5b7b7951-4b9c-4c0b-9d9b-efe8a2f89567",
       "group": "Bug Fixes",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 6,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Myky's Tintable Piercings - AIO",
-      "uuid": "b5377116-0017-69b4-059e-79c488f86889",
-      "group": "Character Customization",
       "evidence": {
         "source": "section-majority",
         "installs": 6,
@@ -1014,37 +1187,27 @@
       }
     },
     {
-      "name": "PK Armors and Clothes",
-      "uuid": "04b2bfdb-de2a-41e6-8798-011165cbd40e",
-      "group": "Clothing",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 6,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "PK Hair Collection",
-      "uuid": "4909b11d-fa26-4fd0-8c5b-9d8612ca07db",
+      "name": "Physics Hair Pack",
+      "uuid": "c4100869-a15c-4f8c-a72b-eea8aa1ce207",
       "group": "Character Customization",
       "evidence": {
         "source": "section-majority",
         "installs": 6,
-        "workingInstalls": 5,
+        "workingInstalls": 4,
         "brokenInstalls": 0
       }
     },
     {
-      "name": "PL_Fair_Eye_Color_Collection",
-      "uuid": "a33411ea-9eaf-fbea-ed2e-b8e1e6318ca2",
-      "group": "Character Customization",
+      "name": "Preemptively Label Containers",
+      "uuid": "15230bba-a3ab-4352-92f6-1c4c86d2a1e3",
+      "group": "Bug Fixes",
       "evidence": {
-        "source": "section-majority",
+        "source": "section",
         "installs": 6,
-        "workingInstalls": 6,
+        "workingInstalls": 5,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Really Shadowheart",
@@ -1091,6 +1254,17 @@
       }
     },
     {
+      "name": "Silver's Hair Pack",
+      "uuid": "1fd44eaf-a4d2-4de4-9560-51a0c8a63987",
+      "group": "Hair",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "TagFramework",
       "uuid": "2cba831e-bc5e-4ed5-b831-b5c4580b02b0",
       "group": "Resources",
@@ -1101,17 +1275,6 @@
         "brokenInstalls": 0
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "Tav's Hairpack - Icon Patch",
-      "uuid": "bfad4cdb-0b02-435a-96c7-06c0f6533055",
-      "group": "Character Customization",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0
-      }
     },
     {
       "name": "Underdark Dice",
@@ -1173,6 +1336,28 @@
       }
     },
     {
+      "name": "Waypoints",
+      "uuid": "400daab4-2ffe-436d-dcad-5e5312430f17",
+      "group": "Gameplay",
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Wyllzel Flirty Banter Restored",
+      "uuid": "aec42950-0909-4946-b68f-8e2346d9898f",
+      "group": "Bug Fixes",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 6,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "xx Head HEL",
       "uuid": "8377a991-ae75-4286-8841-a9be74aada4d",
       "group": "Character Customization",
@@ -1184,13 +1369,13 @@
       }
     },
     {
-      "name": "[Aza] Minthara's Immersive Redesign",
-      "uuid": "761958a6-5c80-60ba-a050-9d1c80c18e55",
-      "group": "Miscellaneous",
+      "name": "[BS] Dye Support for Shields",
+      "uuid": "37e450bf-009b-4a82-8845-23940b0c3430",
+      "group": "Equipment",
       "evidence": {
-        "source": "section-majority",
+        "source": "section",
         "installs": 5,
-        "workingInstalls": 5,
+        "workingInstalls": 4,
         "brokenInstalls": 0
       }
     },
@@ -1221,21 +1406,6 @@
       }
     },
     {
-      "name": "AddonBetterInventoryUI",
-      "uuid": "8c7d3408-a746-5022-348b-1635e14af044",
-      "group": "User Interface",
-      "folder": "AddonBetterInventoryUI_8c7d3408-a746-5022-348b-1635e14af044",
-      "author": "Caites",
-      "version": "1.2.9.6",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 4,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "AnimationUnlocker",
       "uuid": "7131033f-821a-3993-dad4-5bc235cbeb3b",
       "group": "Resources",
@@ -1247,8 +1417,8 @@
       }
     },
     {
-      "name": "ASTRL Colorizer - Tattoo & Makeup Color Edits",
-      "uuid": "3609a0b7-bd80-4e5f-9ecc-a73e281a0bc4",
+      "name": "ASTRL Hair Color Compatibility Patch",
+      "uuid": "2abc5f1e-d0a9-4cbd-b859-b738a4bbb59c",
       "group": "Character Customization",
       "evidence": {
         "source": "section",
@@ -1340,22 +1510,22 @@
       }
     },
     {
-      "name": "BW Extra Shields",
-      "uuid": "5389d935-65e1-49b2-8116-c78e283de5c6",
-      "group": "Equipment",
+      "name": "BW Viking Hairstyle",
+      "uuid": "eb330d7b-4607-4e1c-86a2-966ff6b198bd",
+      "group": "Character Customization",
       "evidence": {
-        "source": "section",
+        "source": "section-majority",
         "installs": 5,
         "workingInstalls": 4,
         "brokenInstalls": 0
       }
     },
     {
-      "name": "BW Viking Hairstyle",
-      "uuid": "eb330d7b-4607-4e1c-86a2-966ff6b198bd",
-      "group": "Character Customization",
+      "name": "BW_Shields_of_the_Fallen",
+      "uuid": "5bc8b3bd-956e-c70f-8662-16cce24d3f1d",
+      "group": "Equipment",
       "evidence": {
-        "source": "section-majority",
+        "source": "section",
         "installs": 5,
         "workingInstalls": 4,
         "brokenInstalls": 0
@@ -1396,24 +1566,14 @@
       "usesScriptExtender": true
     },
     {
-      "name": "CPCCE",
-      "uuid": "a2f25ffd-0c2f-4673-ad5d-bbe783e95564",
+      "name": "Damage Preview",
+      "uuid": "0e6b886d-c51f-75fb-f9bd-cf9c0c363c5b",
       "group": "User Interface",
-      "folder": "CPCCE_a2f25ffd-0c2f-4673-ad5d-bbe783e95564",
-      "author": "Caites",
-      "version": "1.2.6.8",
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
         "source": "section",
         "installs": 5,
         "workingInstalls": 4,
-        "brokenInstalls": 1
+        "brokenInstalls": 0
       }
     },
     {
@@ -1422,18 +1582,6 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
-        "installs": 5,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "Deity Tag Activator",
-      "uuid": "05827e11-37eb-4820-8916-1fa2060a84c7",
-      "group": "Classes",
-      "evidence": {
-        "source": "section-majority",
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0
@@ -1578,29 +1726,36 @@
       }
     },
     {
-      "name": "KaiLime UI",
-      "uuid": "baf029fa-af6e-4080-bd6a-abacdea9e684",
-      "group": "User Interface",
+      "name": "Kay's Hair Extensions - Custom",
+      "uuid": "4e8c7dde-639e-bc40-771a-267603c8f1f1",
+      "group": "Hair",
       "evidence": {
-        "source": "name-pattern",
+        "source": "section",
         "installs": 5,
-        "workingInstalls": 4,
+        "workingInstalls": 3,
         "brokenInstalls": 0
       }
     },
     {
-      "name": "Kay's Material Library",
-      "uuid": "896aa172-c026-9e72-7c91-9d67e17595e6",
-      "group": "Resources",
-      "folder": "KayMaterialLibrary_896aa172-c026-9e72-7c91-9d67e17595e6",
-      "author": "perseidipity",
-      "version": "1.0.0.5",
-      "lastSeenGameBuild": "4.8.700.7143220",
+      "name": "Kay's Hair Extensions - Vanilla",
+      "uuid": "85d64b7f-9a87-aeb1-bfdb-96fb031ae2cf",
+      "group": "Hair",
       "evidence": {
-        "source": "curated",
+        "source": "section-majority",
         "installs": 5,
         "workingInstalls": 3,
-        "brokenInstalls": 1
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Kay's Hair Extentions - Repositioned",
+      "uuid": "f7ac2ac1-02a9-b3fe-a25d-13ebc689bab3",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
+        "installs": 5,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
       }
     },
     {
@@ -1609,28 +1764,6 @@
       "group": "Equipment",
       "evidence": {
         "source": "section-majority",
-        "installs": 5,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Kylin's Heads",
-      "uuid": "afface23-2d71-4614-88f9-bdbabdd61e03",
-      "group": "Character Customization",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 5,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Kylin's Horns",
-      "uuid": "a952bb44-2cb5-4e6a-ad7b-b431a2249129",
-      "group": "Character Customization",
-      "evidence": {
-        "source": "section",
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0
@@ -1751,27 +1884,15 @@
       }
     },
     {
-      "name": "Physics Hair Pack",
-      "uuid": "c4100869-a15c-4f8c-a72b-eea8aa1ce207",
-      "group": "Character Customization",
+      "name": "No Press Any Key Menu MCM",
+      "uuid": "eb263453-0cc2-4f0c-2375-f4e0f60e8a12",
+      "group": "User Interface",
       "evidence": {
-        "source": "section-majority",
+        "source": "section",
         "installs": 5,
         "workingInstalls": 4,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "Preemptively Label Containers",
-      "uuid": "15230bba-a3ab-4352-92f6-1c4c86d2a1e3",
-      "group": "Bug Fixes",
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Really Shadowheart Extension",
@@ -1818,13 +1939,13 @@
       }
     },
     {
-      "name": "Silver's Hair Pack",
-      "uuid": "1fd44eaf-a4d2-4de4-9560-51a0c8a63987",
+      "name": "Silver's Hair Pack 2",
+      "uuid": "c56e4b79-3bf3-446b-b06b-27dc86337663",
       "group": "Hair",
       "evidence": {
         "source": "section-majority",
         "installs": 5,
-        "workingInstalls": 4,
+        "workingInstalls": 3,
         "brokenInstalls": 0
       }
     },
@@ -1896,6 +2017,17 @@
       }
     },
     {
+      "name": "TopicalGreetings3",
+      "uuid": "2dd3eb9b-4c6d-1497-922d-215b5a374977",
+      "group": "Bug Fixes",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 5,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "TutorialChestSummoning",
       "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
       "group": "Spells",
@@ -1908,6 +2040,62 @@
       "usesScriptExtender": true
     },
     {
+      "name": "Vessnelle_Hair1",
+      "uuid": "54ebec6c-00ce-48e1-8b75-53b6b72ecc3a",
+      "group": "Hair",
+      "author": "Vessnelle",
+      "version": "1.0.233.3395918",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section",
+        "installs": 5,
+        "workingInstalls": 2,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Vessnelle_Hair2",
+      "uuid": "d357aca8-e222-4c09-8b49-54354405502e",
+      "group": "Hair",
+      "author": "Vessnelle",
+      "version": "1.0.233.3395918",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section",
+        "installs": 5,
+        "workingInstalls": 2,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Vessnelle_Hair3",
+      "uuid": "fb9c340a-771a-46e8-bc7c-0d40b80c1885",
+      "group": "Hair",
+      "author": "Vessnelle",
+      "version": "1.0.233.3395918",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section",
+        "installs": 5,
+        "workingInstalls": 2,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Vessnelle_Hair4",
+      "uuid": "7661f2db-28a1-44d0-a52a-9485cf9019eb",
+      "group": "Hair",
+      "author": "Vessnelle",
+      "version": "1.0.233.3395918",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section",
+        "installs": 5,
+        "workingInstalls": 2,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "Vestments Of The Faithful",
       "uuid": "4176096c-ea85-4c61-a162-0f84409bd8db",
       "group": "Clothing",
@@ -1915,17 +2103,6 @@
         "source": "section-majority",
         "installs": 5,
         "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Waypoints",
-      "uuid": "400daab4-2ffe-436d-dcad-5e5312430f17",
-      "group": "Gameplay",
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 5,
         "brokenInstalls": 0
       }
     },
@@ -1941,13 +2118,35 @@
       }
     },
     {
-      "name": "Wyllzel Flirty Banter Restored",
-      "uuid": "aec42950-0909-4946-b68f-8e2346d9898f",
-      "group": "Bug Fixes",
+      "name": "[Aza] Better Starting Gear (Gale) + Tutorial Chest",
+      "uuid": "32378f72-9a6a-9601-7481-c2117ba648d2",
+      "group": "Companions",
       "evidence": {
-        "source": "section-majority",
-        "installs": 5,
-        "workingInstalls": 5,
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "[Aza] Better Starting Gear (Lae'zel) + Tutorial Chest ",
+      "uuid": "b637575e-1188-a203-7645-8dfbaf610f07",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "[Aza] Better Starting Gear (Shadowheart)",
+      "uuid": "edec7b9d-0063-1df6-7b30-d1d4b9a0adc3",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 3,
         "brokenInstalls": 0
       }
     },
@@ -1968,17 +2167,6 @@
       "group": "Bug Fixes",
       "evidence": {
         "source": "section-majority",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "[BS] Dye Support for Shields",
-      "uuid": "37e450bf-009b-4a82-8845-23940b0c3430",
-      "group": "Equipment",
-      "evidence": {
-        "source": "section",
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
@@ -2158,13 +2346,24 @@
       }
     },
     {
-      "name": "ASTRL Hair Color Compatibility Patch",
-      "uuid": "2abc5f1e-d0a9-4cbd-b859-b738a4bbb59c",
+      "name": "ASTRL Fantasy Skintones",
+      "uuid": "78537082-46a0-42c7-a718-d2dc9950cfdd",
       "group": "Character Customization",
       "evidence": {
         "source": "section",
         "installs": 4,
-        "workingInstalls": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Glowing Eyes Unique Tav Patch",
+      "uuid": "4b1035f1-6e41-4591-8516-72752a448681",
+      "group": "Bug Fixes",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 3,
         "brokenInstalls": 0
       }
     },
@@ -2180,6 +2379,28 @@
       }
     },
     {
+      "name": "ASTRL Understated Eyes",
+      "uuid": "04d882a5-a1c8-4527-8772-3973d6b11aa5",
+      "group": "Heads",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Wondrous Skintones",
+      "uuid": "31a373b2-5943-4a22-8aa5-410ca33792a5",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Aurie's Vanilla Treasures",
       "uuid": "aa2a31e0-13a6-d2bf-4dd7-e9ba30d06972",
       "group": "Miscellaneous",
@@ -2189,6 +2410,43 @@
         "workingInstalls": 4,
         "brokenInstalls": 0
       }
+    },
+    {
+      "name": "Auto Send Food To Camp",
+      "uuid": "1c132ec4-4cd2-4c40-aeb9-ff6ee0467da8",
+      "group": "Gameplay",
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "AV Item Shipment Framework",
+      "uuid": "e6333436-9cf0-4464-aaf2-39246292575e",
+      "group": "Resources",
+      "folder": "AVItemShipmentFramework",
+      "author": "Aetherpoint, Volitio",
+      "version": "1.3.0.0",
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        }
+      ],
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "curated",
+        "installs": 4,
+        "workingInstalls": 2,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Bag of Holding Reforged",
@@ -2214,6 +2472,17 @@
       }
     },
     {
+      "name": "BaneDeity",
+      "uuid": "4893b99c-79d5-4da7-a94b-d13612dbb160",
+      "group": "Classes",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "BCBPak",
       "uuid": "1d24059d-ff23-4a79-8892-57c85d512416",
       "group": "Resources",
@@ -2233,6 +2502,49 @@
       "group": "Accessories",
       "evidence": {
         "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Better Combat Log Default",
+      "uuid": "9757088d-43ff-9c67-1a53-365f2d6fea94",
+      "group": "User Interface",
+      "folder": "BetterCombatLogDefault_9757088d-43ff-9c67-1a53-365f2d6fea94",
+      "author": "Caites",
+      "version": "1.2.9.4",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 2,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Better Context Menu",
+      "uuid": "f9dd909a-3607-f8e1-da13-b795884f68b5",
+      "group": "User Interface",
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Better Dyeing",
+      "uuid": "03b0b84a-2689-77c2-5ef6-ebcf88b88037",
+      "group": "User Interface",
+      "evidence": {
+        "source": "section",
         "installs": 4,
         "workingInstalls": 3,
         "brokenInstalls": 0
@@ -2314,17 +2626,6 @@
       }
     },
     {
-      "name": "BW_Shields_of_the_Fallen",
-      "uuid": "5bc8b3bd-956e-c70f-8662-16cce24d3f1d",
-      "group": "Equipment",
-      "evidence": {
-        "source": "section",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Carry Weight Increased 9000",
       "uuid": "92af0ebd-a04c-4e9c-8306-b947aac4c127",
       "group": "Gameplay",
@@ -2343,6 +2644,17 @@
         "source": "section",
         "installs": 4,
         "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "CBR_Battlemage",
+      "uuid": "47929a1a-0d1d-4400-abbf-853cbaeaf5d8",
+      "group": "Armor",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -2369,6 +2681,17 @@
       "name": "CL_Dastardly Accoutrements - Rogue Gear",
       "uuid": "e5d0ed42-a4ae-12f4-7a20-8d48ae38aa42",
       "group": "Armor",
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Clear Map",
+      "uuid": "b8a896ff-621d-89d5-2fc5-f86f372b102d",
+      "group": "User Interface",
       "evidence": {
         "source": "section",
         "installs": 4,
@@ -2443,17 +2766,6 @@
       }
     },
     {
-      "name": "Damage Preview",
-      "uuid": "0e6b886d-c51f-75fb-f9bd-cf9c0c363c5b",
-      "group": "User Interface",
-      "evidence": {
-        "source": "section",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "DivineCurse",
       "uuid": "d5b26f57-5a47-41bb-b752-ce5a4b652510",
       "group": "Clothing",
@@ -2490,6 +2802,17 @@
         "source": "section-majority",
         "installs": 4,
         "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "EasyDye",
+      "uuid": "3bf9a323-db3b-4910-a2bd-f45b90b6a543",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 4,
+        "workingInstalls": 3,
         "brokenInstalls": 0
       }
     },
@@ -2567,6 +2890,17 @@
         "source": "section-majority",
         "installs": 4,
         "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Ghouls Haunting Horns",
+      "uuid": "6cfb5d57-36af-4b11-bae3-9c1ee1f75a5c",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 3,
         "brokenInstalls": 0
       }
     },
@@ -2703,6 +3037,50 @@
       }
     },
     {
+      "name": "Jerinski_Piercing-Edits",
+      "uuid": "0cfd5279-f569-4466-9c80-5e78c3a34c11",
+      "group": "Accessories",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Jerinski_Piercing-Edits_Trips",
+      "uuid": "24a79080-22cd-4f70-9924-5179d44b638d",
+      "group": "Accessories",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Jerinski's Alt Hairs",
+      "uuid": "0f86b73c-928c-033f-6d2d-abf4f06f462f",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Jun's Amateur Hair All-in-One",
+      "uuid": "bc5b8ee6-b32a-4fae-8884-be6162af02dd",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Kai Lime Eyes Daughter of Darkness",
       "uuid": "d65209db-a3a0-4553-937b-d52a39938974",
       "group": "Character Customization",
@@ -2721,39 +3099,6 @@
         "source": "section",
         "installs": 4,
         "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Kay's Hair Extensions - Custom",
-      "uuid": "4e8c7dde-639e-bc40-771a-267603c8f1f1",
-      "group": "Hair",
-      "evidence": {
-        "source": "section",
-        "installs": 4,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Kay's Hair Extensions - Vanilla",
-      "uuid": "85d64b7f-9a87-aeb1-bfdb-96fb031ae2cf",
-      "group": "Hair",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 4,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Kay's Hair Extentions - Repositioned",
-      "uuid": "f7ac2ac1-02a9-b3fe-a25d-13ebc689bab3",
-      "group": "Hair",
-      "evidence": {
-        "source": "section",
-        "installs": 4,
-        "workingInstalls": 3,
         "brokenInstalls": 0
       }
     },
@@ -2901,6 +3246,17 @@
       }
     },
     {
+      "name": "ModularEquipment",
+      "uuid": "7ddddd0f-6b71-4565-bbd1-a7183ae90d04",
+      "group": "Armor",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Myky's Heads - EotB Patch",
       "uuid": "6861c4bd-5dcb-466b-892d-db9f3ed5a805",
       "group": "Bug Fixes",
@@ -2908,6 +3264,17 @@
         "source": "section",
         "installs": 4,
         "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "MyrkulDeity",
+      "uuid": "e08ec529-d255-42ea-bce2-4bb9b4605090",
+      "group": "Classes",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 3,
         "brokenInstalls": 0
       }
     },
@@ -2939,17 +3306,6 @@
       "group": "Miscellaneous",
       "evidence": {
         "source": "section-majority",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "No Press Any Key Menu MCM",
-      "uuid": "eb263453-0cc2-4f0c-2375-f4e0f60e8a12",
-      "group": "User Interface",
-      "evidence": {
-        "source": "section",
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
@@ -3029,6 +3385,17 @@
         "source": "section",
         "installs": 4,
         "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "PseudoKociaras' Heads uTav + EotB",
+      "uuid": "41624948-bc1f-44ff-a932-4ce1cc0fc309",
+      "group": "Heads",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -3187,6 +3554,17 @@
       }
     },
     {
+      "name": "SharDeity",
+      "uuid": "856e2177-8087-49c1-a778-820d07033984",
+      "group": "Classes",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "SharessHarness",
       "uuid": "920ec237-4a49-41f6-b7bf-025297a9b904",
       "group": "Clothing",
@@ -3203,17 +3581,6 @@
         "brokenInstalls": 1
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "Silver's Hair Pack 2",
-      "uuid": "c56e4b79-3bf3-446b-b06b-27dc86337663",
-      "group": "Hair",
-      "evidence": {
-        "source": "section-majority",
-        "installs": 4,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
     },
     {
       "name": "SindaeTexturePak",
@@ -3285,14 +3652,17 @@
       }
     },
     {
-      "name": "TopicalGreetings3",
-      "uuid": "2dd3eb9b-4c6d-1497-922d-215b5a374977",
-      "group": "Bug Fixes",
+      "name": "Trips_Shader",
+      "uuid": "636d2850-f9fe-4c07-9ea7-d4a2ed871c0a",
+      "group": "Resources",
+      "author": "Trips",
+      "version": "2.1.0.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
         "source": "section",
         "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
+        "workingInstalls": 1,
+        "brokenInstalls": 1
       }
     },
     {
@@ -3340,59 +3710,14 @@
       }
     },
     {
-      "name": "Vessnelle_Hair1",
-      "uuid": "54ebec6c-00ce-48e1-8b75-53b6b72ecc3a",
-      "group": "Hair",
-      "author": "Vessnelle",
-      "version": "1.0.233.3395918",
-      "lastSeenGameBuild": "4.8.700.7143220",
+      "name": "Various Dialogue Fixes by Kelo",
+      "uuid": "0f3fcf8c-2e4f-411e-84c3-b89a64905293",
+      "group": "Bug Fixes",
       "evidence": {
-        "source": "section",
+        "source": "section-majority",
         "installs": 4,
-        "workingInstalls": 2,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Vessnelle_Hair2",
-      "uuid": "d357aca8-e222-4c09-8b49-54354405502e",
-      "group": "Hair",
-      "author": "Vessnelle",
-      "version": "1.0.233.3395918",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "section",
-        "installs": 4,
-        "workingInstalls": 2,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Vessnelle_Hair3",
-      "uuid": "fb9c340a-771a-46e8-bc7c-0d40b80c1885",
-      "group": "Hair",
-      "author": "Vessnelle",
-      "version": "1.0.233.3395918",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "section",
-        "installs": 4,
-        "workingInstalls": 2,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Vessnelle_Hair4",
-      "uuid": "7661f2db-28a1-44d0-a52a-9485cf9019eb",
-      "group": "Hair",
-      "author": "Vessnelle",
-      "version": "1.0.233.3395918",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "section",
-        "installs": 4,
-        "workingInstalls": 2,
-        "brokenInstalls": 1
+        "workingInstalls": 3,
+        "brokenInstalls": 0
       }
     },
     {
@@ -3474,35 +3799,13 @@
       }
     },
     {
-      "name": "[Aza] Better Starting Gear (Gale) + Tutorial Chest",
-      "uuid": "32378f72-9a6a-9601-7481-c2117ba648d2",
-      "group": "Companions",
+      "name": "[Aza] Better Visuals for Shadow Hound (Nimbus)",
+      "uuid": "c5dec426-24f7-cc31-22ff-95df0839324d",
+      "group": "NPC",
       "evidence": {
         "source": "section",
         "installs": 3,
         "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "[Aza] Better Starting Gear (Lae'zel) + Tutorial Chest ",
-      "uuid": "b637575e-1188-a203-7645-8dfbaf610f07",
-      "group": "Companions",
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "[Aza] Better Starting Gear (Shadowheart)",
-      "uuid": "edec7b9d-0063-1df6-7b30-d1d4b9a0adc3",
-      "group": "Companions",
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
         "brokenInstalls": 0
       }
     },
@@ -3514,6 +3817,17 @@
         "source": "section",
         "installs": 3,
         "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "♡ Mantis' Fantasy Presets",
+      "uuid": "fe23f110-715c-4b67-a349-11257eae80f8",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -3719,13 +4033,13 @@
       }
     },
     {
-      "name": "ASTRL Fantasy Skintones",
-      "uuid": "78537082-46a0-42c7-a718-d2dc9950cfdd",
-      "group": "Character Customization",
+      "name": "ASTRL Elven Anthology",
+      "uuid": "66b20233-cf0a-44bb-9bcf-32c0e0b09c19",
+      "group": "Races",
       "evidence": {
         "source": "section",
         "installs": 3,
-        "workingInstalls": 3,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -3735,17 +4049,6 @@
       "group": "Heads",
       "evidence": {
         "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "ASTRL Glowing Eyes Unique Tav Patch",
-      "uuid": "4b1035f1-6e41-4591-8516-72752a448681",
-      "group": "Bug Fixes",
-      "evidence": {
-        "source": "section-majority",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
@@ -3774,24 +4077,35 @@
       }
     },
     {
-      "name": "ASTRL Understated Eyes",
-      "uuid": "04d882a5-a1c8-4527-8772-3973d6b11aa5",
-      "group": "Heads",
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "ASTRL Wondrous Skintones",
-      "uuid": "31a373b2-5943-4a22-8aa5-410ca33792a5",
+      "name": "ASTRL Sublime Skintones",
+      "uuid": "da0e8d69-535c-4218-a42f-118c377184ca",
       "group": "Character Customization",
       "evidence": {
         "source": "section",
         "installs": 3,
-        "workingInstalls": 3,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Tiefling Subraces",
+      "uuid": "167b846f-0a0b-4e0c-a9d0-df448be1320a",
+      "group": "Races",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Vivid Tones",
+      "uuid": "313ce7ac-bc8e-4c3c-b949-c76d30879ffd",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -3803,6 +4117,17 @@
         "source": "section",
         "installs": 3,
         "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Atlas' Armor",
+      "uuid": "41d8342a-d3f0-4850-86ec-e85f6e723c4b",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -3829,39 +4154,14 @@
       }
     },
     {
-      "name": "Auto Send Food To Camp",
-      "uuid": "1c132ec4-4cd2-4c40-aeb9-ff6ee0467da8",
-      "group": "Gameplay",
+      "name": "Auto Use Soap",
+      "uuid": "cabed99e-5db6-4f0d-a69f-d49e8a20e663",
+      "group": "Spells",
       "evidence": {
         "source": "section",
         "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "AV Item Shipment Framework",
-      "uuid": "e6333436-9cf0-4464-aaf2-39246292575e",
-      "group": "Resources",
-      "folder": "AVItemShipmentFramework",
-      "author": "Aetherpoint, Volitio",
-      "version": "1.3.0.0",
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        }
-      ],
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "curated",
-        "installs": 3,
         "workingInstalls": 2,
-        "brokenInstalls": 1
+        "brokenInstalls": 0
       },
       "usesScriptExtender": true
     },
@@ -3903,17 +4203,6 @@
       }
     },
     {
-      "name": "BaneDeity",
-      "uuid": "4893b99c-79d5-4da7-a94b-d13612dbb160",
-      "group": "Classes",
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Basic Hair",
       "uuid": "e49ec07a-1209-462e-96ed-fe99db6f01ee",
       "group": "Hair",
@@ -3947,6 +4236,17 @@
       }
     },
     {
+      "name": "BDS Moonlit Circlet",
+      "uuid": "adb83b60-647b-b0ed-57c7-6f8aed9b788f",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Bean_Circlet_Collection_V1",
       "uuid": "74134eb9-12d6-74c4-399a-497f83e64ea5",
       "group": "Accessories",
@@ -3969,50 +4269,6 @@
       }
     },
     {
-      "name": "Better Combat Log Default",
-      "uuid": "9757088d-43ff-9c67-1a53-365f2d6fea94",
-      "group": "User Interface",
-      "folder": "BetterCombatLogDefault_9757088d-43ff-9c67-1a53-365f2d6fea94",
-      "author": "Caites",
-      "version": "1.2.9.4",
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "evidence": {
-        "source": "inferred",
-        "installs": 3,
-        "workingInstalls": 2,
-        "brokenInstalls": 1,
-        "confidence": 0.79
-      }
-    },
-    {
-      "name": "Better Context Menu",
-      "uuid": "f9dd909a-3607-f8e1-da13-b795884f68b5",
-      "group": "User Interface",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Better Dyeing",
-      "uuid": "03b0b84a-2689-77c2-5ef6-ebcf88b88037",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Better Spectre",
       "uuid": "d63f550c-469d-4212-9a18-db66ec38c3a7",
       "group": "Spells",
@@ -4020,6 +4276,17 @@
         "source": "section",
         "installs": 3,
         "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Better Trade Menu",
+      "uuid": "1ae4224b-23fc-dafe-06e4-fb251d1919bd",
+      "group": "User Interface",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -4145,13 +4412,24 @@
       }
     },
     {
-      "name": "CBR_Battlemage",
-      "uuid": "47929a1a-0d1d-4400-abbf-853cbaeaf5d8",
+      "name": "CBR_Astarion_Gear",
+      "uuid": "88472061-89a9-43b7-91d6-651e6005f738",
       "group": "Armor",
       "evidence": {
-        "source": "section",
+        "source": "section-majority",
         "installs": 3,
-        "workingInstalls": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "CBR_GlowGear",
+      "uuid": "d4263af9-7675-4bde-bc3f-953895c6aff9",
+      "group": "Armor",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -4201,17 +4479,6 @@
       "group": "Gameplay",
       "evidence": {
         "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Clear Map",
-      "uuid": "b8a896ff-621d-89d5-2fc5-f86f372b102d",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
@@ -4374,15 +4641,14 @@
       }
     },
     {
-      "name": "EasyDye",
-      "uuid": "3bf9a323-db3b-4910-a2bd-f45b90b6a543",
-      "group": "Resources",
+      "name": "Draconic Sorcerer",
+      "uuid": "6aae5bc1-a557-4902-a9c1-6301d67bf815",
+      "group": "Equipment",
       "evidence": {
-        "source": "inferred",
+        "source": "section-majority",
         "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0,
-        "confidence": 0.72
+        "workingInstalls": 1,
+        "brokenInstalls": 0
       }
     },
     {
@@ -4525,6 +4791,17 @@
       "usesScriptExtender": true
     },
     {
+      "name": "Extra Gear - No Vendors",
+      "uuid": "2cd6c65a-71cc-4db6-bfb2-70116ccd2b94",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Eyes of the Dark Tweak",
       "uuid": "34d098e6-49a6-4f75-9b40-fdc7765af84e",
       "group": "Classes",
@@ -4554,6 +4831,17 @@
         "source": "section",
         "installs": 3,
         "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "FavoredSoul Accessoires Collection",
+      "uuid": "abcc8020-cc16-40cb-9bbc-dd5437ae1f61",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -4591,6 +4879,17 @@
       }
     },
     {
+      "name": "Flagellant's Finery - Loviatar robe refits",
+      "uuid": "88a574d6-d0ef-f8dd-3bc3-939539991a18",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Flaming Hair - Normal",
       "uuid": "abdb3807-c44a-4154-bc67-b817f243a4a8",
       "group": "Character Customization",
@@ -4613,13 +4912,13 @@
       }
     },
     {
-      "name": "Ghouls Haunting Horns",
-      "uuid": "6cfb5d57-36af-4b11-bae3-9c1ee1f75a5c",
+      "name": "Ghouls Custom Piercings",
+      "uuid": "49f60f92-cde9-4621-aeae-7a5c9d412c03",
       "group": "Character Customization",
       "evidence": {
-        "source": "section",
+        "source": "section-majority",
         "installs": 3,
-        "workingInstalls": 3,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -4642,6 +4941,17 @@
         "source": "section",
         "installs": 3,
         "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Glitzy Horns",
+      "uuid": "ed216cc2-6643-837c-3731-5665e88af13e",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -4701,6 +5011,17 @@
         "source": "section",
         "installs": 3,
         "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HarnessRemixes",
+      "uuid": "57bd905a-b49e-439d-b8f1-c469c4b57d38",
+      "group": "Armor",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -4774,6 +5095,28 @@
       }
     },
     {
+      "name": "HT_Astarion Confession Edit 2",
+      "uuid": "2c6afb73-a6b6-1193-56ac-7a04ce39c9b9",
+      "group": "Bug Fixes",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HW_HeadEdits",
+      "uuid": "0b051a3d-3f8e-4f12-a6df-a2feca729327",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "HW_NeresHair",
       "uuid": "e09a623a-8ba0-484f-b6ac-7f25ea91818a",
       "group": "Hair",
@@ -4792,50 +5135,6 @@
         "source": "section-majority",
         "installs": 3,
         "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Jerinski_Piercing-Edits",
-      "uuid": "0cfd5279-f569-4466-9c80-5e78c3a34c11",
-      "group": "Accessories",
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Jerinski_Piercing-Edits_Trips",
-      "uuid": "24a79080-22cd-4f70-9924-5179d44b638d",
-      "group": "Accessories",
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Jerinski's Alt Hairs",
-      "uuid": "0f86b73c-928c-033f-6d2d-abf4f06f462f",
-      "group": "Hair",
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Jun's Amateur Hair All-in-One",
-      "uuid": "bc5b8ee6-b32a-4fae-8884-be6162af02dd",
-      "group": "Hair",
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -4972,6 +5271,17 @@
         "source": "section",
         "installs": 3,
         "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Lyn's Cloak Pack 1",
+      "uuid": "cc2a319a-748d-4958-966d-5e29f1dddcfa",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -5119,13 +5429,13 @@
       }
     },
     {
-      "name": "ModularEquipment",
-      "uuid": "7ddddd0f-6b71-4565-bbd1-a7183ae90d04",
-      "group": "Armor",
+      "name": "MoonshinePoet",
+      "uuid": "f029c859-baf4-4161-9cf8-b9eb60341537",
+      "group": "Equipment",
       "evidence": {
         "source": "section-majority",
         "installs": 3,
-        "workingInstalls": 2,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -5141,14 +5451,18 @@
       }
     },
     {
-      "name": "MyrkulDeity",
-      "uuid": "e08ec529-d255-42ea-bce2-4bb9b4605090",
-      "group": "Classes",
+      "name": "Mouse's Manacles - Raphael Themed Collars n Cuffs",
+      "uuid": "95467730-d153-a600-e4b1-d773131098e9",
+      "group": "Equipment",
+      "folder": "MousesManacles_95467730-d153-a600-e4b1-d773131098e9",
+      "author": "Nikjima",
+      "version": "1.0.0.37",
+      "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
         "source": "section",
         "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
+        "workingInstalls": 1,
+        "brokenInstalls": 1
       }
     },
     {
@@ -5214,6 +5528,17 @@
         "source": "section",
         "installs": 3,
         "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Noira_Piercing_Improvement",
+      "uuid": "64c12c9f-b7cc-4f4b-b812-e196fb831fb7",
+      "group": "Accessories",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -5361,9 +5686,31 @@
       }
     },
     {
+      "name": "P4 Companion Heads for Tav",
+      "uuid": "daac0461-1645-b8be-a79f-da88c81e6396",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "P4 Horn, Makeup, Lip and Tattoo Colours",
       "uuid": "272fdafb-1322-4c19-97da-795a3e12ad98",
       "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "P4 Other NPC Heads for Tav",
+      "uuid": "c367d0fc-34ad-214b-0b11-fe0f2460c2d3",
+      "group": "Heads",
       "evidence": {
         "source": "section",
         "installs": 3,
@@ -5394,6 +5741,28 @@
       }
     },
     {
+      "name": "Patches_for_VFX_Heads",
+      "uuid": "91bb3015-e00e-4263-b88d-a2e54b0f8424",
+      "group": "Utilities",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "PathofNightmaresDice",
+      "uuid": "2c7ce694-2d08-1cfc-3ee1-4aa94d7be731",
+      "group": "Dice",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Porcelain Mask - Lynia Masks Collection 1",
       "uuid": "592213af-a5ad-42cb-8619-5bd7929d2ae7",
       "group": "Clothing",
@@ -5410,17 +5779,6 @@
       "group": "Equipment",
       "evidence": {
         "source": "section",
-        "installs": 3,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "PseudoKociaras' Heads uTav + EotB",
-      "uuid": "41624948-bc1f-44ff-a932-4ce1cc0fc309",
-      "group": "Heads",
-      "evidence": {
-        "source": "section-majority",
         "installs": 3,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -5713,20 +6071,21 @@
       }
     },
     {
+      "name": "Serpentine Piercing Edits",
+      "uuid": "d3a233c1-0ed4-44ab-acdb-295da2588046",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Shadowheart's Datamined Head for Tav",
       "uuid": "55fdcfa5-7e9d-4563-b54a-853233fd7819",
       "group": "Character Customization",
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "SharDeity",
-      "uuid": "856e2177-8087-49c1-a778-820d07033984",
-      "group": "Classes",
       "evidence": {
         "source": "section",
         "installs": 3,
@@ -5768,6 +6127,28 @@
       }
     },
     {
+      "name": "Silver's Modular Bangs Pack",
+      "uuid": "8ec75cf6-8256-4e2a-864c-b0c3743d5b75",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Simple Circlets",
+      "uuid": "0bbda4ce-fe56-4ade-b5de-412238d28079",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Sit This One Out 2",
       "uuid": "d4fd8871-1593-4099-900e-b47fedc91578",
       "group": "Utilities",
@@ -5789,6 +6170,18 @@
         "workingInstalls": 3,
         "brokenInstalls": 0
       }
+    },
+    {
+      "name": "Smart Autosaving",
+      "uuid": "0c8bb2e9-aa96-4de7-b793-a733d68ee6f0",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 3,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Spells Enhanced - Compelled Duel - A1",
@@ -5846,6 +6239,17 @@
       }
     },
     {
+      "name": "Tasha's Cauldron of Hairstyles Pack 2",
+      "uuid": "1ccb0216-5a79-4ce6-85e0-a144fc105b9f",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Tav's Hairpack - Patch for Custom Races",
       "uuid": "98cd5525-1a24-44f4-885a-d95140ab3a8f",
       "group": "Character Customization",
@@ -5868,6 +6272,17 @@
       }
     },
     {
+      "name": "Tepkunset Hair Collection",
+      "uuid": "57b22f40-4886-91a0-7f70-8fec6275e773",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "The Ambassador's Regalia",
       "uuid": "5673a59e-f080-4f0a-a0d0-59a76d720cd1",
       "group": "Armor",
@@ -5879,17 +6294,25 @@
       }
     },
     {
-      "name": "Trips_Shader",
-      "uuid": "636d2850-f9fe-4c07-9ea7-d4a2ed871c0a",
-      "group": "unsorted",
-      "author": "Trips",
-      "version": "2.1.0.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
+      "name": "Toarie's Autosnap Hairpack",
+      "uuid": "dfdb69c0-23ed-46a7-83bb-39fbbb84308c",
+      "group": "Hair",
       "evidence": {
-        "source": "none",
+        "source": "section",
         "installs": 3,
         "workingInstalls": 1,
-        "brokenInstalls": 1
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Trips' Accessories",
+      "uuid": "0ab9e889-3e9a-4f71-be60-ce33aedbeae7",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
       }
     },
     {
@@ -5948,13 +6371,13 @@
       }
     },
     {
-      "name": "Various Dialogue Fixes by Kelo",
-      "uuid": "0f3fcf8c-2e4f-411e-84c3-b89a64905293",
-      "group": "Bug Fixes",
+      "name": "Veils of Faerun - Beard Slot",
+      "uuid": "59b488db-40eb-4a1b-93d3-2d8bfd683aa7",
+      "group": "Equipment",
       "evidence": {
-        "source": "section",
+        "source": "section-majority",
         "installs": 3,
-        "workingInstalls": 3,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -6047,17 +6470,6 @@
       }
     },
     {
-      "name": "[Aza] Better Visuals for Shadow Hound (Nimbus)",
-      "uuid": "c5dec426-24f7-cc31-22ff-95df0839324d",
-      "group": "NPC",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "[Aza] NPC Redesign (The Emerald Grove)",
       "uuid": "74cb2214-5ddb-8fa6-9f6b-1f9be9bba6f3",
       "group": "NPC",
@@ -6084,6 +6496,17 @@
       }
     },
     {
+      "name": "[Aza] Sharran Weaponry (WIP)",
+      "uuid": "9700ffdb-baf0-3fd0-b7e1-a1ad60f82c18",
+      "group": "Weapons",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "♡ Mantis' Arcane Inspired Preset Collection",
       "uuid": "10a48e15-e1f3-48a4-91a5-f18dfbc47f3a",
       "group": "Heads",
@@ -6091,17 +6514,6 @@
         "source": "section-majority",
         "installs": 2,
         "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "♡ Mantis' Fantasy Presets",
-      "uuid": "fe23f110-715c-4b67-a349-11257eae80f8",
-      "group": "Heads",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -6235,6 +6647,17 @@
       }
     },
     {
+      "name": "AgileArmor",
+      "uuid": "e4ee55aa-1b75-43e4-a640-7096a1cc5e44",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Agrippina Armour",
       "uuid": "3967fc85-827c-3204-36e2-eb6e92b6fb31",
       "group": "Weapons",
@@ -6253,6 +6676,17 @@
         "source": "name-pattern",
         "installs": 2,
         "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Alternate Tiefling Tails UT",
+      "uuid": "92bfe04b-b305-4af0-8abd-b31191de5bed",
+      "group": "Bodies",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -6312,6 +6746,17 @@
       }
     },
     {
+      "name": "Appointments of the Dreamlord",
+      "uuid": "4974316a-8911-406b-ac76-6b9657788026",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Armouries of the Allegiant",
       "uuid": "75d0f89f-c212-4433-83fc-1d63bf7efb10",
       "group": "Armor",
@@ -6338,6 +6783,17 @@
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Ash's Armor",
+      "uuid": "e5dafc10-42b0-40e0-8bbb-d0e874ad2727",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
       }
     },
     {
@@ -6374,46 +6830,24 @@
       }
     },
     {
-      "name": "ASTRL Elven Anthology",
-      "uuid": "66b20233-cf0a-44bb-9bcf-32c0e0b09c19",
-      "group": "unsorted",
+      "name": "ASTRL Elven Anthology - Unique Tav",
+      "uuid": "62214ecc-98c9-43df-80c0-5e8e64bf457d",
+      "group": "Races",
       "evidence": {
-        "source": "none",
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Tiefling Subraces - Unique Tav Patch",
+      "uuid": "7ebc24b5-24e7-494f-9419-ddca74e9377c",
+      "group": "Races",
+      "evidence": {
+        "source": "section-majority",
         "installs": 2,
         "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "ASTRL Sublime Skintones",
-      "uuid": "da0e8d69-535c-4218-a42f-118c377184ca",
-      "group": "Bodies",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "ASTRL Tiefling Subraces",
-      "uuid": "167b846f-0a0b-4e0c-a9d0-df448be1320a",
-      "group": "Resources",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "ASTRL Vivid Tones",
-      "uuid": "313ce7ac-bc8e-4c3c-b949-c76d30879ffd",
-      "group": "Character Customization",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -6421,17 +6855,6 @@
       "name": "Athena's Chiton",
       "uuid": "9d3d2e26-9fd8-45c7-a7f5-6476265e33a8",
       "group": "Clothing",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Atlas' Armor",
-      "uuid": "41d8342a-d3f0-4850-86ec-e85f6e723c4b",
-      "group": "Armor",
       "evidence": {
         "source": "section",
         "installs": 2,
@@ -6484,18 +6907,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "Auto Use Soap",
-      "uuid": "cabed99e-5db6-4f0d-a69f-d49e8a20e663",
-      "group": "Spells",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "Aylin and Isobel Epilogue Letters",
       "uuid": "93e94a5e-ccc0-1354-e22c-e83f1d0c43e4",
       "group": "Gameplay",
@@ -6503,6 +6914,17 @@
         "source": "section-majority",
         "installs": 2,
         "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "AYU_BDO_Vespena",
+      "uuid": "1efcedea-8198-dec4-c01d-398d79ac96a3",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -6573,17 +6995,6 @@
       }
     },
     {
-      "name": "BDS_Moonlit_Circlet",
-      "uuid": "adb83b60-647b-b0ed-57c7-6f8aed9b788f",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Beards for Elves",
       "uuid": "2938fb7d-d681-829e-a95c-a90cd64a0e0a",
       "group": "Hair",
@@ -6629,7 +7040,7 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0,
-        "confidence": 0.84
+        "confidence": 0.86
       }
     },
     {
@@ -6643,18 +7054,6 @@
         "brokenInstalls": 0
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "Better Trade Menu",
-      "uuid": "1ae4224b-23fc-dafe-06e4-fb251d1919bd",
-      "group": "User Interface",
-      "evidence": {
-        "source": "inferred",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0,
-        "confidence": 0.91
-      }
     },
     {
       "name": "BG3SX AnimAddon",
@@ -6891,30 +7290,19 @@
       }
     },
     {
-      "name": "CBR_Astarion_Gear",
-      "uuid": "88472061-89a9-43b7-91d6-651e6005f738",
-      "group": "Armor",
+      "name": "CBR_Cambion_Gith",
+      "uuid": "e2c1d1ff-e993-4cfb-9ec6-39535ea4cfae",
+      "group": "Equipment",
       "evidence": {
         "source": "section",
         "installs": 2,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
     {
       "name": "CBR_Dresses_Shirts_RB",
       "uuid": "6ce553dc-7c78-4e1d-9c66-cf7655d67be2",
-      "group": "Armor",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "CBR_GlowGear",
-      "uuid": "d4263af9-7675-4bde-bc3f-953895c6aff9",
       "group": "Armor",
       "evidence": {
         "source": "section",
@@ -7004,6 +7392,17 @@
       }
     },
     {
+      "name": "ChaoticNeuThrall Head Pack",
+      "uuid": "31c118e8-d0ce-42b3-85ad-3f07b5466310",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "CharismaCleric",
       "uuid": "71aabc2f-4e89-4eb1-bb36-d12a4b3a9452",
       "group": "Classes",
@@ -7066,6 +7465,17 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "CK_Hair_Collection",
+      "uuid": "b5c10147-9934-bcfc-4fe3-1aa806b77795",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -7176,6 +7586,17 @@
       }
     },
     {
+      "name": "Consort_Dyes",
+      "uuid": "51e28997-be53-4e92-842b-ad9b9b42f1e5",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "ContainersExtended",
       "uuid": "c52c2d4d-2aa1-e9ea-db5c-3b61d111ec16",
       "group": "Equipment",
@@ -7264,6 +7685,17 @@
       }
     },
     {
+      "name": "Dark Dancer Outfit",
+      "uuid": "0a8238a8-4628-4228-99b4-f0cea7dd75ff",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Dark Urge Dice",
       "uuid": "b1df86cd-56ac-446c-9c8e-7b80b3e7288a",
       "group": "Dice",
@@ -7341,6 +7773,17 @@
       }
     },
     {
+      "name": "Deepspace Piercings",
+      "uuid": "1c8f375d-fed0-4cf6-b349-b818b1e79797",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Diamond Dice",
       "uuid": "621b50e9-9ffb-382a-6623-72819c260551",
       "group": "Dice",
@@ -7390,17 +7833,6 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Draconic Sorcerer",
-      "uuid": "6aae5bc1-a557-4902-a9c1-6301d67bf815",
-      "group": "Clothing",
-      "evidence": {
-        "source": "section",
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -7693,13 +8125,13 @@
       }
     },
     {
-      "name": "Extra Gear - No Vendors",
-      "uuid": "2cd6c65a-71cc-4db6-bfb2-70116ccd2b94",
-      "group": "Armor",
+      "name": "Extra Gear - Tutorial Chest Add-on",
+      "uuid": "f2004946-eb73-4b4e-8603-29597e39b259",
+      "group": "Equipment",
       "evidence": {
         "source": "section",
         "installs": 2,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -7792,17 +8224,6 @@
       }
     },
     {
-      "name": "FavoredSoul Accessoires Collection",
-      "uuid": "abcc8020-cc16-40cb-9bbc-dd5437ae1f61",
-      "group": "Armor",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "FearTaylor's Camp Clothes",
       "uuid": "e34f4a47-7015-bbd5-8940-0b94c597508f",
       "group": "Armor",
@@ -7821,6 +8242,17 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "February Heads",
+      "uuid": "c2a8e1cc-c171-4a16-98ba-c11ff18e8d4e",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -7902,11 +8334,11 @@
       }
     },
     {
-      "name": "Flagellant's Finery - Loviatar robe refits",
-      "uuid": "88a574d6-d0ef-f8dd-3bc3-939539991a18",
-      "group": "unsorted",
+      "name": "Francesca's Journal",
+      "uuid": "2c741623-c489-429c-86e4-10ba9a0b2310",
+      "group": "Companions",
       "evidence": {
-        "source": "none",
+        "source": "section",
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -7957,9 +8389,9 @@
       }
     },
     {
-      "name": "Ghouls Custom Piercings",
-      "uuid": "49f60f92-cde9-4621-aeae-7a5c9d412c03",
-      "group": "Accessories",
+      "name": "Ghastly Ghouls: Playable Undead Race - Kazstra's Virtual Tav",
+      "uuid": "f3d4e722-e576-43ce-a585-cfffcfcbcf40",
+      "group": "Races",
       "evidence": {
         "source": "section",
         "installs": 2,
@@ -7979,13 +8411,13 @@
       }
     },
     {
-      "name": "Glitzy Horns",
-      "uuid": "ed216cc2-6643-837c-3731-5665e88af13e",
-      "group": "Hair",
+      "name": "God of Annihilation",
+      "uuid": "4a8d9fb4-ec54-400f-b834-0583d34ef928",
+      "group": "Equipment",
       "evidence": {
         "source": "section",
         "installs": 2,
-        "workingInstalls": 2,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -8123,17 +8555,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "HairCollection",
-      "uuid": "57b22f40-4886-91a0-7f70-8fec6275e773",
-      "group": "Hair",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "HairMixer by Ren",
       "uuid": "0b2f6b4e-8291-4940-8e4b-5ad3a9bfe858",
       "group": "Hair",
@@ -8163,17 +8584,6 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "HarnessRemixes",
-      "uuid": "57bd905a-b49e-439d-b8f1-c469c4b57d38",
-      "group": "Armor",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -8259,13 +8669,13 @@
       }
     },
     {
-      "name": "HT_Astarion Confession Edit 2",
-      "uuid": "2c6afb73-a6b6-1193-56ac-7a04ce39c9b9",
-      "group": "Bug Fixes",
+      "name": "HT_DarkUrgeTweeaks",
+      "uuid": "d05e5edd-39f9-63d5-3121-811788b0682d",
+      "group": "Quests",
       "evidence": {
         "source": "section-majority",
         "installs": 2,
-        "workingInstalls": 2,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -8281,9 +8691,20 @@
       }
     },
     {
-      "name": "HW_BoringDyes",
-      "uuid": "6dff611f-9f2e-45b1-b43e-06b62753cff9",
-      "group": "Dyes",
+      "name": "HT_Karlach Romance: Better Hot Date",
+      "uuid": "7fe0f68d-117d-44ac-8129-0731389998a7",
+      "group": "Companions",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HT_Lesser Restoration: Assorted Bug Fixes",
+      "uuid": "2653082c-88d7-62dd-da48-b32be67c033b",
+      "group": "Spells",
       "evidence": {
         "source": "section",
         "installs": 2,
@@ -8292,13 +8713,35 @@
       }
     },
     {
-      "name": "HW_HeadEdits",
-      "uuid": "0b051a3d-3f8e-4f12-a6df-a2feca729327",
-      "group": "Heads",
+      "name": "Hug Your Companions",
+      "uuid": "7ba75792-c321-4336-bf47-eb167bbd2029",
+      "group": "Quests",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Hunting Gear: 6 outfits for BT1 + BT3",
+      "uuid": "861f4e0f-613e-f935-9934-483fe0d4c82f",
+      "group": "Equipment",
       "evidence": {
         "source": "section",
         "installs": 2,
-        "workingInstalls": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HW_BoringDyes",
+      "uuid": "6dff611f-9f2e-45b1-b43e-06b62753cff9",
+      "group": "Dyes",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -8512,6 +8955,28 @@
       }
     },
     {
+      "name": "Karlach's Glowing Horns",
+      "uuid": "46818a22-079d-4346-8b3f-3f47dbeeecf9",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Karlach's Long Hair",
+      "uuid": "04a92aed-1410-44fc-9a56-0798f25dd2a3",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Kas' Lingerie",
       "uuid": "b7ee0c78-9f0e-47f7-9525-a7adcb7e0529",
       "group": "Accessories",
@@ -8533,6 +8998,28 @@
         "brokenInstalls": 0
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "KAZSTRA CC Body Tattoo Selector",
+      "uuid": "0570792d-f161-433d-b7b9-a65c2bdd58db",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "KAZSTRA Scarred Visage",
+      "uuid": "fb93b259-a4eb-4894-b1c9-9f71e17ccac5",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
     },
     {
       "name": "Kibelius",
@@ -8820,17 +9307,6 @@
       }
     },
     {
-      "name": "Lyn's Cloak Pack 1",
-      "uuid": "cc2a319a-748d-4958-966d-5e29f1dddcfa",
-      "group": "Armor",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Mashed Up Hairs",
       "uuid": "38db15b2-1d77-45d8-ab2b-6aecf16e147f",
       "group": "Hair",
@@ -9026,16 +9502,17 @@
     {
       "name": "Moonlilia's Pestilent Poison",
       "uuid": "fb52c76a-2662-4d8b-b6b6-ef7124a0637c",
-      "group": "unsorted",
+      "group": "Dice",
       "folder": "PestilentPoison",
       "author": "Moonlilia",
       "version": "1.0.0.0",
       "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 2,
         "workingInstalls": 0,
-        "brokenInstalls": 1
+        "brokenInstalls": 1,
+        "confidence": 0.72
       }
     },
     {
@@ -9084,9 +9561,9 @@
       }
     },
     {
-      "name": "MoonshinePoet",
-      "uuid": "f029c859-baf4-4161-9cf8-b9eb60341537",
-      "group": "Armor",
+      "name": "More Camp Idles - Wyll and Astarion",
+      "uuid": "6a0c6dc2-8744-4fba-897d-400ab15063c7",
+      "group": "Companions",
       "evidence": {
         "source": "section",
         "installs": 2,
@@ -9150,18 +9627,14 @@
       }
     },
     {
-      "name": "Mouse's Manacles - Raphael Themed Collars n Cuffs",
-      "uuid": "95467730-d153-a600-e4b1-d773131098e9",
-      "group": "unsorted",
-      "folder": "MousesManacles_95467730-d153-a600-e4b1-d773131098e9",
-      "author": "Nikjima",
-      "version": "1.0.0.37",
-      "lastSeenGameBuild": "4.8.700.7143220",
+      "name": "Myky's Accessories",
+      "uuid": "2be84b2b-8661-6596-b3af-c236589a7dce",
+      "group": "Equipment",
       "evidence": {
-        "source": "none",
+        "source": "section",
         "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 1
+        "workingInstalls": 0,
+        "brokenInstalls": 0
       }
     },
     {
@@ -9209,6 +9682,17 @@
       }
     },
     {
+      "name": "Mystical Fashions",
+      "uuid": "c7a374ba-f3a4-4c4f-8ead-1adc1c6691ad",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Namaera's Mashups",
       "uuid": "131a6cfc-0626-ea74-417a-21111ef45e25",
       "group": "Hair",
@@ -9223,6 +9707,17 @@
       "name": "Netherese Dress By REN",
       "uuid": "69c591f3-afb3-423d-bfd2-f8f18e98f80c",
       "group": "Armor",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Netherseeam - Head Presets",
+      "uuid": "ed58ae6b-70b1-4837-bb48-0fd35612efc5",
+      "group": "Heads",
       "evidence": {
         "source": "section",
         "installs": 2,
@@ -9280,17 +9775,6 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Noira_Piercing_Improvement",
-      "uuid": "64c12c9f-b7cc-4f4b-b812-e196fb831fb7",
-      "group": "Accessories",
-      "evidence": {
-        "source": "section",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -9495,17 +9979,6 @@
       }
     },
     {
-      "name": "P4 Companion Heads for Tav",
-      "uuid": "daac0461-1645-b8be-a79f-da88c81e6396",
-      "group": "Heads",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "P4 Custom Dyes",
       "uuid": "fdcba160-1c08-4938-8d70-02cd95f44f08",
       "group": "Dyes",
@@ -9539,17 +10012,6 @@
       }
     },
     {
-      "name": "P4 Other NPC Heads for Tav",
-      "uuid": "c367d0fc-34ad-214b-0b11-fe0f2460c2d3",
-      "group": "Heads",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "p4_bangs_tail",
       "uuid": "c50ad347-177a-be15-96e1-a0b64262f0d9",
       "group": "Hair",
@@ -9572,17 +10034,6 @@
       }
     },
     {
-      "name": "Patches_for_VFX_Heads",
-      "uuid": "91bb3015-e00e-4263-b88d-a2e54b0f8424",
-      "group": "Visuals",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Path of the Corpse Eater",
       "uuid": "926dee06-6270-b66d-7b8d-5bb3989cdffb",
       "group": "Classes",
@@ -9590,17 +10041,6 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "PathofNightmaresDice",
-      "uuid": "2c7ce694-2d08-1cfc-3ee1-4aa94d7be731",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 2,
-        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -9638,6 +10078,28 @@
       }
     },
     {
+      "name": "PK Horns 2",
+      "uuid": "ce2e18dd-1166-5a17-ff3c-8ee3337e8d1f",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "PL_Fantastical_Hairstyles",
+      "uuid": "06ba1746-2bcf-774d-3589-6b2f58c6c2ce",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "PL_Gortash_Cane",
       "uuid": "63af9dfa-4644-b03f-c1fc-25319ef93ed5",
       "group": "Weapons",
@@ -9645,6 +10107,17 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "PL_Unnatural_Hair_Colors",
+      "uuid": "fb1d001d-33fe-c944-130d-eee1f8cabff5",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -9703,6 +10176,17 @@
       "name": "Poses_of_Plenty_Vol_1",
       "uuid": "99fb1fcd-b721-a067-ea30-229178dee035",
       "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "PseudoKociaras' Horns",
+      "uuid": "c1d7f569-acb3-4c91-8f67-c1e778bfdf62",
+      "group": "Character Customization",
       "evidence": {
         "source": "section",
         "installs": 2,
@@ -9855,6 +10339,17 @@
       }
     },
     {
+      "name": "Scribe's Shroud",
+      "uuid": "aa0ecc5e-77cc-43cd-9158-04bd89c60a04",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Serafina's Wild Starlight",
       "uuid": "3920de42-2709-4e9f-96c4-e25ebd70c44d",
       "group": "Armor",
@@ -9864,18 +10359,6 @@
         "workingInstalls": 2,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "Serpentine Piercing Edits",
-      "uuid": "d3a233c1-0ed4-44ab-acdb-295da2588046",
-      "group": "Accessories",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Shadowheart Animation Swap",
@@ -9911,31 +10394,9 @@
       }
     },
     {
-      "name": "Silver's Modular Bangs Pack",
-      "uuid": "8ec75cf6-8256-4e2a-864c-b0c3743d5b75",
-      "group": "Hair",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Silver's Modular Base Pack",
       "uuid": "b355f4c8-5642-4419-b485-8f8beb4d2cde",
       "group": "Hair",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Simple Circlets",
-      "uuid": "0bbda4ce-fe56-4ade-b5de-412238d28079",
-      "group": "Armor",
       "evidence": {
         "source": "section",
         "installs": 2,
@@ -9964,18 +10425,6 @@
         "workingInstalls": 1,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "Smart Autosaving",
-      "uuid": "0c8bb2e9-aa96-4de7-b793-a733d68ee6f0",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Soaring Ambition - Ascended Fiend Wings",
@@ -10123,13 +10572,13 @@
       }
     },
     {
-      "name": "Tasha's Cauldron of Hairstyles Pack 2",
-      "uuid": "1ccb0216-5a79-4ce6-85e0-a144fc105b9f",
-      "group": "Hair",
+      "name": "Tasha's Cauldron of Outfits",
+      "uuid": "666afdba-fbd7-4a3c-b5a7-abc97ed552f9",
+      "group": "Equipment",
       "evidence": {
         "source": "section",
         "installs": 2,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -10175,6 +10624,17 @@
       }
     },
     {
+      "name": "TC_Dyes",
+      "uuid": "011d7668-c586-4104-8a14-89c46adcfc74",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Telekinetic Spells",
       "uuid": "19caa3a3-25c3-0c0d-9509-1ae390eaa972",
       "group": "Spells",
@@ -10182,6 +10642,39 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Terpsichore — The Blade's Armour",
+      "uuid": "18b798a4-8ed9-4938-b671-bde042fe863c",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Terpsichore — Wyll Hair",
+      "uuid": "6be5565e-7e0d-4edd-bb35-84e68d98d900",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Terpsichore — Wyll Hair Devil Form Patch",
+      "uuid": "14edd72f-efd0-43d9-b0ba-3290485e5c58",
+      "group": "Bug Fixes",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 2,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -10219,11 +10712,11 @@
       }
     },
     {
-      "name": "Toarie's Autosnap Hairpack",
-      "uuid": "dfdb69c0-23ed-46a7-83bb-39fbbb84308c",
-      "group": "Hair",
+      "name": "Toarie's Autosnap Hairpack - Icon Patch",
+      "uuid": "8e8817b1-f50e-46c5-8db6-6d0e0b879fe4",
+      "group": "Bug Fixes",
       "evidence": {
-        "source": "section",
+        "source": "section-majority",
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -10237,17 +10730,6 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Trips' Accessories",
-      "uuid": "0ab9e889-3e9a-4f71-be60-ce33aedbeae7",
-      "group": "Accessories",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -10351,17 +10833,6 @@
       }
     },
     {
-      "name": "Veils of Faerun - Beard Slot",
-      "uuid": "59b488db-40eb-4a1b-93d3-2d8bfd683aa7",
-      "group": "Character Customization",
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "VisibleShield",
       "uuid": "87d131a1-cf57-74b3-e113-30a226283be8",
       "group": "Visuals",
@@ -10428,6 +10899,17 @@
       }
     },
     {
+      "name": "Wilderness Camp Lighting Tweaks",
+      "uuid": "6f0098e9-a2ca-4976-a78c-82ecde0ccc61",
+      "group": "Environment",
+      "evidence": {
+        "source": "section-majority",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Winter Walker",
       "uuid": "09e190c8-d449-b653-69fc-252bcad61e45",
       "group": "Classes",
@@ -10472,6 +10954,18 @@
       }
     },
     {
+      "name": "Wyll's Devil Form",
+      "uuid": "ada71997-5d8a-4614-8188-efd71d6037fb",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Yennefer's wardrobe",
       "uuid": "10ef0c70-d21b-4b11-a5f1-7fa1004d7896",
       "group": "Armor",
@@ -10501,6 +10995,17 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Yuanti",
+      "uuid": "b2d490bc-6e10-4bc2-89e0-69c8f68cd453",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -10663,17 +11168,6 @@
       }
     },
     {
-      "name": "[Aza] Sharran Weaponry (WIP)",
-      "uuid": "9700ffdb-baf0-3fd0-b7e1-a1ad60f82c18",
-      "group": "Weapons",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "[BS] Instrument Dye Support (Standalone)",
       "uuid": "0297d60e-25b8-40f7-b37a-add1c7b906e8",
       "group": "Dyes",
@@ -10778,6 +11272,17 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "♡ lunomi's heads - pt III ♡",
+      "uuid": "a6ae529a-5195-6fc6-9c16-5913462a757b",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -11440,6 +11945,39 @@
       }
     },
     {
+      "name": "A Candle In The Dark - Custom Companion - Part 1",
+      "uuid": "2396f116-b622-4940-96bf-083b120e2a30",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "A Candle In The Dark - Custom Companion - Part 2",
+      "uuid": "659571cb-e6f1-4c1a-9ab0-cc40a5d28463",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "A Candle In The Dark - Custom Companion - Part 3",
+      "uuid": "9978eded-312f-4656-9a0b-bc6fe8d9615c",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "A Dance With Death",
       "uuid": "5314f632-26ea-63ff-ee6e-10ad25951c30",
       "group": "unsorted",
@@ -11527,6 +12065,17 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Accursed Spectre Tails For Tieflings (and other races)",
+      "uuid": "47dd0512-82ea-401f-80e4-c8633105c331",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -11647,13 +12196,12 @@
     {
       "name": "Adorable Decor",
       "uuid": "d08ff1b5-0e89-4b3f-8b38-699028500151",
-      "group": "Hair",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.73
+        "brokenInstalls": 0
       }
     },
     {
@@ -11709,17 +12257,6 @@
         "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "AgileArmor",
-      "uuid": "e4ee55aa-1b75-43e4-a640-7096a1cc5e44",
-      "group": "Armor",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -11840,6 +12377,17 @@
       }
     },
     {
+      "name": "Alt Lae'zelhawk",
+      "uuid": "7c7b4d81-4fb9-3e38-7915-9bb4a30e9366",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Alt-Shadowheart Head Presets",
       "uuid": "7e0d68f6-376c-4fb0-99f7-58dd289bd633",
       "group": "Heads",
@@ -11860,17 +12408,6 @@
         "workingInstalls": 0,
         "brokenInstalls": 0,
         "confidence": 0.73
-      }
-    },
-    {
-      "name": "Alternate Tiefling Tails UT",
-      "uuid": "92bfe04b-b305-4af0-8abd-b31191de5bed",
-      "group": "Races",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
       }
     },
     {
@@ -11904,6 +12441,28 @@
         "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Amanestra - Addon Great Sword",
+      "uuid": "4416bd69-326f-4262-9bf9-3756963c2442",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Amanestra - Main file",
+      "uuid": "e24a73d5-37c1-4b77-90e5-a4df5088d31c",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -12075,7 +12634,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 1,
-        "confidence": 0.83
+        "confidence": 0.8
       }
     },
     {
@@ -12154,17 +12713,6 @@
         "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Appointments of the Dreamlord",
-      "uuid": "4974316a-8911-406b-ac76-6b9657788026",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 1,
-        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -12497,17 +13045,6 @@
       }
     },
     {
-      "name": "Ash's Armor",
-      "uuid": "e5dafc10-42b0-40e0-8bbb-d0e874ad2727",
-      "group": "Armor",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Ashley_TurtleNeckDress",
       "uuid": "b56f7aa6-6a9d-c1a7-01ed-4df3732a4012",
       "group": "unsorted",
@@ -12524,6 +13061,17 @@
       "group": "Clothing",
       "evidence": {
         "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Astarion Act 3 Rivington Romance Fix",
+      "uuid": "d178cbdc-3638-4aa6-82e0-5f2c0847bc01",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -12717,6 +13265,17 @@
       }
     },
     {
+      "name": "Astarions_Glasses_Horns",
+      "uuid": "67adf8b2-e63e-6769-e9fd-58bd67b02be6",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "AstarionsEarringsCollection",
       "uuid": "9870d168-2e51-46fb-a73d-dd73d7b7db7b",
       "group": "Accessories",
@@ -12750,11 +13309,33 @@
       }
     },
     {
-      "name": "ASTRL Elven Anthology - Unique Tav",
-      "uuid": "62214ecc-98c9-43df-80c0-5e8e64bf457d",
-      "group": "unsorted",
+      "name": "ASTRL Astra's Spellbook",
+      "uuid": "9626d6bb-b347-4855-b8c0-9a258a5bb154",
+      "group": "Spells",
       "evidence": {
-        "source": "none",
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Astral Archive - Asset Library",
+      "uuid": "806f0d7a-071c-4855-b1c6-7dd2c629b575",
+      "group": "Resources",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Dyeable Weapons - Swords & Daggers",
+      "uuid": "7b3b4cea-3252-47ec-a2b8-769f5dc2d601",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -12772,6 +13353,17 @@
       }
     },
     {
+      "name": "ASTRL Floral Presets",
+      "uuid": "23391bd5-2f27-4f64-a8e4-825b92815488",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "ASTRL Fluffy Ears",
       "uuid": "f4b0a342-4eaa-4b94-a205-cc8b591de4b3",
       "group": "unsorted",
@@ -12779,6 +13371,39 @@
         "source": "none",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Glowing Eyes - Cat Eye",
+      "uuid": "15ee4cdf-88d8-4e83-853f-76423608e5d4",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Hair Color Collection - Matching Body Hair",
+      "uuid": "d6b0c09e-bdc8-4c75-893c-b4e1a7d3ea6f",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Hair Color Supplement (Matching Body Hair ver.)",
+      "uuid": "89ddafae-178a-48ff-becd-894db73f7bf0",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -12794,6 +13419,17 @@
       }
     },
     {
+      "name": "ASTRL Luminous Coiffure",
+      "uuid": "84179b36-42d5-42df-9d72-b56c4e1ae67f",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "ASTRL Skin Customization",
       "uuid": "c8ac0ce8-0772-45ee-986e-dc154a59dd23",
       "group": "unsorted",
@@ -12805,13 +13441,79 @@
       }
     },
     {
-      "name": "ASTRL Tiefling Subraces (Unique Tav Patch)",
-      "uuid": "7ebc24b5-24e7-494f-9419-ddca74e9377c",
-      "group": "Resources",
+      "name": "ASTRL Tav with a Backstory - Scars",
+      "uuid": "368caa85-ffa5-4a7e-ab3d-a1b215403f63",
+      "group": "Character Customization",
       "evidence": {
         "source": "section",
         "installs": 1,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL The Pale Devil",
+      "uuid": "c8a68f21-253f-4f98-b7ff-0840acfa20ac",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL The Pale Devil - Astra Edit",
+      "uuid": "a15b622f-0865-418c-af17-0219bfa4492e",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL The Pale Devil - Astra's Hair",
+      "uuid": "b8c3846f-593e-4b9d-a804-9d44c3a6714e",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL The Pale Devil - Astra's Head",
+      "uuid": "a2c54f4d-eb07-4e43-bfc4-8c3451524c4a",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Tiefling Subraces (Bonus Action Patch)",
+      "uuid": "2d391618-52f5-4f9c-b6dd-6f045952843e",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ASTRL Tiefling Subraces (Resistance Patch)",
+      "uuid": "8361f688-d6cd-4fe6-8756-5b646af33413",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -12970,6 +13672,17 @@
         "source": "none",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "AutoVeils",
+      "uuid": "5c68f369-07f6-40f2-9b6a-da694fcdc36d",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -13219,6 +13932,17 @@
       }
     },
     {
+      "name": "AYU_BDO_Coco-Nutty",
+      "uuid": "8a5531fc-284f-72d9-806e-5b6e2bbdc9ac",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "AYU_BDO_ShellBelle",
       "uuid": "62c7a209-1819-e0fb-31c4-18ad6c7b1cc0",
       "group": "unsorted",
@@ -13241,11 +13965,11 @@
       }
     },
     {
-      "name": "AYU_BDO_Vespena",
-      "uuid": "1efcedea-8198-dec4-c01d-398d79ac96a3",
-      "group": "unsorted",
+      "name": "AzazelOutfit",
+      "uuid": "68e9b0fc-d9d3-4cda-941f-b4b36e1f866d",
+      "group": "Equipment",
       "evidence": {
-        "source": "none",
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -13554,13 +14278,12 @@
     {
       "name": "BellNecklace",
       "uuid": "2c7de7d2-36f7-48bb-80fb-d02312cc2770",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.72
+        "brokenInstalls": 0
       }
     },
     {
@@ -13634,6 +14357,17 @@
       }
     },
     {
+      "name": "Better Companion Cantrips - Vicious Mockery - Shadowheart Only",
+      "uuid": "35fdbb1c-4ab6-430e-89c3-329454a6d2e2",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Better Deva Summon",
       "uuid": "7c1a79b5-7113-5811-7baa-9bc09245ffbd",
       "group": "Spells",
@@ -13696,6 +14430,17 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Better Hotbar 2 16 9 6x33 75",
+      "uuid": "3c49168c-cd84-1d30-689d-1abb9b060fb7",
+      "group": "User Interface",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -13970,6 +14715,17 @@
       }
     },
     {
+      "name": "Bhaalist Hair Accessory",
+      "uuid": "7484ab40-e3ea-4708-8856-317089207d9e",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "BisexualMenacePoses",
       "uuid": "fa5ba947-1b96-fe8c-88b4-5d7afe52c2ac",
       "group": "unsorted",
@@ -14179,6 +14935,17 @@
       }
     },
     {
+      "name": "Bloodspun Presets",
+      "uuid": "f90f2d3d-7a8f-4a8b-9e5d-05cabb9fe136",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Bloodvine",
       "uuid": "96ac86cd-f099-4b56-ab8b-1cea055284dc",
       "group": "unsorted",
@@ -14190,6 +14957,17 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "BloodyInheritance",
+      "uuid": "a62ae70d-b873-309c-cd56-eedfdf6b1e8c",
+      "group": "Spells",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
       }
     },
     {
@@ -14470,6 +15248,17 @@
       }
     },
     {
+      "name": "Brightest Star - Wyll's New Act 3 Romance - Camp Night",
+      "uuid": "6da6d38e-05ce-4597-a5ee-7f9539a2a73a",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Bububull's Astromancer Piercings",
       "uuid": "0826ae2e-7d8a-4d31-9c0b-f2a7975b4ad5",
       "group": "Accessories",
@@ -14478,7 +15267,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.91
+        "confidence": 0.76
       }
     },
     {
@@ -14610,13 +15399,12 @@
     {
       "name": "BW Noble Traveling Set",
       "uuid": "084479a9-1b9b-45a0-a468-8a2a998097b1",
-      "group": "Armor",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.74
+        "brokenInstalls": 0
       }
     },
     {
@@ -14678,13 +15466,12 @@
     {
       "name": "BW_COE33_Expeditioner_Glam",
       "uuid": "38b83922-a47d-55d9-eae6-b75b539c41f9",
-      "group": "Clothing",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 1
+        "brokenInstalls": 0
       }
     },
     {
@@ -14834,13 +15621,12 @@
     {
       "name": "BW_FF_Duskwalker_Attire",
       "uuid": "5d5615b2-7b80-6555-5cd4-38d08e705230",
-      "group": "Armor",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 1
+        "brokenInstalls": 0
       }
     },
     {
@@ -14935,13 +15721,12 @@
     {
       "name": "BW_Midnight_Huntress",
       "uuid": "f3b79261-4039-bcc5-44e8-a71ade0e3f32",
-      "group": "Armor",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.87
+        "brokenInstalls": 0
       }
     },
     {
@@ -15024,13 +15809,12 @@
     {
       "name": "BW_OVR_Aurvandill",
       "uuid": "0d8da408-44f9-0a22-2d0e-a07c2119c71c",
-      "group": "Armor",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 1
+        "brokenInstalls": 0
       }
     },
     {
@@ -15311,18 +16095,6 @@
       }
     },
     {
-      "name": "CBR_Cambion_Gith",
-      "uuid": "e2c1d1ff-e993-4cfb-9ec6-39535ea4cfae",
-      "group": "Armor",
-      "evidence": {
-        "source": "inferred",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.9
-      }
-    },
-    {
       "name": "CBR_CitizenOutfits",
       "uuid": "6d37b2cb-e372-4ab7-b284-09f3ab533eb9",
       "group": "Clothing",
@@ -15358,13 +16130,12 @@
     {
       "name": "CBR_Piercings",
       "uuid": "36db45ac-c11b-4075-94a7-1ed54abc640c",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.86
+        "brokenInstalls": 0
       }
     },
     {
@@ -15384,6 +16155,17 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "CDPR Darkurge",
+      "uuid": "4cb0cd47-e2f7-fbd5-1e66-819d2cbedf29",
+      "group": "User Interface",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -15423,6 +16205,28 @@
       }
     },
     {
+      "name": "CelestialMightAasimar",
+      "uuid": "5b59f11d-cec5-c8a3-8448-97208c9e5f0f",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "CelestialMightAasimar KAVT Patch",
+      "uuid": "627710fc-9631-413c-801c-8a15fb163609",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Cervidae",
       "uuid": "b64325c8-0ed5-4c91-aeff-f9d9fe0cc5dc",
       "group": "unsorted",
@@ -15456,22 +16260,22 @@
       }
     },
     {
-      "name": "ChaoticNeuThrall Head Pack",
-      "uuid": "31c118e8-d0ce-42b3-85ad-3f07b5466310",
-      "group": "Heads",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "CHAR_Barbie",
       "uuid": "32424459-d5df-c7c5-dbff-7544491cb9bf",
       "group": "unsorted",
       "evidence": {
         "source": "none",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Character Preset Framework",
+      "uuid": "4fa17abe-993c-4e7e-ab2a-e7370b166ac9",
+      "group": "Resources",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -15544,6 +16348,17 @@
       }
     },
     {
+      "name": "Check Out Of The Elfsong",
+      "uuid": "794fe66e-8818-49fd-a30a-c546c7b512b1",
+      "group": "Miscellaneous",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "CheckersGold",
       "uuid": "751e00d8-ef3f-432d-b93f-88da3f222a10",
       "group": "Dice",
@@ -15563,6 +16378,17 @@
         "source": "none",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Chiz's 5e Spells Tweaks",
+      "uuid": "87d02b31-6ab1-4ee0-8cbf-6e9406707063",
+      "group": "Spells",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -15641,17 +16467,6 @@
         "source": "none",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "CK_Hair_Collection",
-      "uuid": "b5c10147-9934-bcfc-4fe3-1aa806b77795",
-      "group": "Hair",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -15873,7 +16688,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 1
+        "confidence": 0.73
       }
     },
     {
@@ -16114,17 +16929,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "Consort_Dyes",
-      "uuid": "51e28997-be53-4e92-842b-ad9b9b42f1e5",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "ContainedMagic",
       "uuid": "6127cc5c-a74f-4e34-a308-456c946db00b",
       "group": "Dice",
@@ -16304,6 +17108,17 @@
       }
     },
     {
+      "name": "Crimson Mayhem",
+      "uuid": "c1acaec3-2489-7661-8cb1-cf8dfe31222b",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "CritfisherRing",
       "uuid": "d2688f82-9654-73d1-c84d-9644f779c5d5",
       "group": "Weapons",
@@ -16323,7 +17138,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.92
+        "confidence": 0.77
       }
     },
     {
@@ -16411,6 +17226,17 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Crystallized_Horns",
+      "uuid": "3a5544db-d0cb-8668-32ee-07f5db4fac13",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -16628,17 +17454,6 @@
       }
     },
     {
-      "name": "Dark Dancer Outfit",
-      "uuid": "0a8238a8-4628-4228-99b4-f0cea7dd75ff",
-      "group": "Clothing",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Dark Dyes For Armour",
       "uuid": "195dd32f-c900-a1c0-ebb8-10f186721106",
       "group": "Dyes",
@@ -16730,13 +17545,12 @@
     {
       "name": "DarthRen_Piercing",
       "uuid": "3785a86d-d399-44ab-8108-a808af72fe77",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.95
+        "brokenInstalls": 0
       }
     },
     {
@@ -16884,18 +17698,6 @@
       }
     },
     {
-      "name": "Deepspace Piercings",
-      "uuid": "1c8f375d-fed0-4cf6-b349-b818b1e79797",
-      "group": "Accessories",
-      "evidence": {
-        "source": "inferred",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.92
-      }
-    },
-    {
       "name": "Deepspace Rings - White",
       "uuid": "7d6570fd-6c74-4086-9e41-0a0483c4e55d",
       "group": "Accessories",
@@ -16962,6 +17764,17 @@
       }
     },
     {
+      "name": "DemonPlayerFeaturesForVanilla",
+      "uuid": "fbed3dfe-3064-4815-abe1-29b80daee44a",
+      "group": "Miscellaneous",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Dés de Séluné",
       "uuid": "88ae7401-1d6c-47d7-955e-86589feba920",
       "group": "User Interface",
@@ -16975,13 +17788,12 @@
     {
       "name": "Desert Dancer By REN",
       "uuid": "8faa8004-7cc5-468b-a5af-763b62dc89d3",
-      "group": "Clothing",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.93
+        "brokenInstalls": 0
       }
     },
     {
@@ -18100,6 +18912,17 @@
       }
     },
     {
+      "name": "DrowDress",
+      "uuid": "dc409471-ceda-4b36-7715-47bd22cf4e87",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Druid Healer's Outfit",
       "uuid": "da754913-8b5f-49d3-aaf1-da230f8efd45",
       "group": "Clothing",
@@ -18155,6 +18978,17 @@
       }
     },
     {
+      "name": "Dunmer Race",
+      "uuid": "bfc31d95-8fd5-4bdc-a92b-ec3bfce13f86",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Duplication Chest",
       "uuid": "590a9f09-c640-6b07-56d6-a156b3ff8fb6",
       "group": "unsorted",
@@ -18195,6 +19029,39 @@
         "source": "none",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "DVQR - Voice1",
+      "uuid": "716e54f9-b64f-ba89-abf1-778ab3190b4f",
+      "group": "Quests",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "DVQR - Voice2",
+      "uuid": "fd74ba4b-a3c3-29fc-7a9b-4c0131a4fe3b",
+      "group": "Quests",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "DVQR - VoiceMeta",
+      "uuid": "fd2bdaa3-9555-8b36-523c-995704764bf6",
+      "group": "Quests",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -18289,13 +19156,23 @@
     {
       "name": "DyeDyeDye",
       "uuid": "1c9f73f8-7513-49a9-8882-b796eab331f5",
-      "group": "Dyes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.74
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Dyes of the Deities",
+      "uuid": "6f0b0897-5b27-6bbb-bc12-26bc93f0ceba",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
       }
     },
     {
@@ -18405,6 +19282,28 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "EilistraeeDice",
+      "uuid": "3c77514b-7df9-c676-2bd5-10acd5dad7f9",
+      "group": "Dice",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Eladrin",
+      "uuid": "abc09812-ed4d-43ff-9a93-ee46487e81d9",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -18628,7 +19527,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.86
+        "confidence": 0.78
       }
     },
     {
@@ -19293,17 +20192,6 @@
       }
     },
     {
-      "name": "Extra Gear - Tutorial Chest Add-on",
-      "uuid": "f2004946-eb73-4b4e-8603-29597e39b259",
-      "group": "Equipment",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Extra Radiant Weapons",
       "uuid": "cb0b3847-728b-89c8-0caa-5b815959bad9",
       "group": "Weapons",
@@ -19398,6 +20286,28 @@
       "group": "Heads",
       "evidence": {
         "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Eyevan's Ghoulish Goods",
+      "uuid": "8a10d361-b4cd-48c8-96aa-38f750965429",
+      "group": "NPC",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Ezuneo's Draconic Tails",
+      "uuid": "240366f9-2117-b515-6849-2d082e0c955d",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -19893,17 +20803,6 @@
       }
     },
     {
-      "name": "February Heads",
-      "uuid": "c2a8e1cc-c171-4a16-98ba-c11ff18e8d4e",
-      "group": "Heads",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "FED Camp Chest",
       "uuid": "caa82196-33c8-6f4e-de67-edda871476f0",
       "group": "Weapons",
@@ -19939,25 +20838,23 @@
     {
       "name": "Fennel's Farming Frock",
       "uuid": "7619da0a-c6cc-4aa8-91a4-9b8c3bc9bc5f",
-      "group": "Clothing",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.74
+        "brokenInstalls": 0
       }
     },
     {
       "name": "Feywild_Dyes_Bundle",
       "uuid": "abb3f271-4ca6-5ad6-fbf7-a6e73e0b8941",
-      "group": "Dyes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.83
+        "brokenInstalls": 0
       }
     },
     {
@@ -20032,6 +20929,17 @@
       "group": "Hair",
       "evidence": {
         "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Firbolgs",
+      "uuid": "3a5901d1-51bd-3f9a-5fcf-0ca87b56e9f2",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -20184,17 +21092,6 @@
       }
     },
     {
-      "name": "Francesca's Journal",
-      "uuid": "2c741623-c489-429c-86e4-10ba9a0b2310",
-      "group": "Companions",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Frost Knight Set By REN",
       "uuid": "404282f3-2eb6-4b4f-82e6-7878b63c9e67",
       "group": "unsorted",
@@ -20268,6 +21165,17 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Funky Froge Skintones",
+      "uuid": "31b62197-c3c3-d745-515b-e74c11f923c2",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -20536,13 +21444,13 @@
       }
     },
     {
-      "name": "Ghastly Ghouls: Playable Undead Race - Kazstra's Virtual Tav",
-      "uuid": "f3d4e722-e576-43ce-a585-cfffcfcbcf40",
-      "group": "Races",
+      "name": "Ghoul Touch Weaponry",
+      "uuid": "2eeb2c60-59c4-b579-f269-72e83eaa2cd4",
+      "group": "Equipment",
       "evidence": {
-        "source": "name-pattern",
+        "source": "section",
         "installs": 1,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -20679,17 +21587,6 @@
       }
     },
     {
-      "name": "God of Annihilation",
-      "uuid": "4a8d9fb4-ec54-400f-b834-0583d34ef928",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "God Slayer Class",
       "uuid": "2a979984-4e6e-879d-5852-172bffffa255",
       "group": "Classes",
@@ -20717,6 +21614,17 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Gold & Silver Grafted Tiefling Horns",
+      "uuid": "eff98a6a-68b5-7cff-9703-e725fbf20f1a",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -21157,6 +22065,17 @@
       }
     },
     {
+      "name": "Half-Elf Half-Orc Subrace - Unique Tav",
+      "uuid": "d25f0ed3-efe7-4194-bdc6-671f784d7cef",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Half-Orc 5e 2024",
       "uuid": "aa9bad27-7b2e-5d4e-d420-e735c0ebcefc",
       "group": "unsorted",
@@ -21442,7 +22361,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.73
+        "confidence": 0.75
       }
     },
     {
@@ -21578,6 +22497,17 @@
       }
     },
     {
+      "name": "Horns of Plenty",
+      "uuid": "b4f41d44-d7a2-44bd-818e-fcb1cb0ebe0e",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "HOTD_HeadPresets",
       "uuid": "6a78be2f-53e6-48f0-b712-cc40614da4f0",
       "group": "Heads",
@@ -21633,35 +22563,90 @@
       }
     },
     {
-      "name": "HT_DarkUrgeTweeaks",
-      "uuid": "d05e5edd-39f9-63d5-3121-811788b0682d",
-      "group": "Gameplay",
+      "name": "HT_Astarion's Nightmare: Restored Early Access Scene",
+      "uuid": "d2e5c07b-9f3d-4415-8668-0ba266977e1c",
+      "group": "Companions",
       "evidence": {
-        "source": "section",
+        "source": "name-pattern",
         "installs": 1,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
     {
-      "name": "HT_Karlach Romance: Better Hot Date",
-      "uuid": "7fe0f68d-117d-44ac-8129-0731389998a7",
-      "group": "Gameplay",
+      "name": "HT_Book Club With Gale",
+      "uuid": "87cbd5af-34b2-f511-7606-93b389a09cbd",
+      "group": "Quests",
       "evidence": {
         "source": "section",
         "installs": 1,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
     {
-      "name": "HT_Lesser Restoration: Assorted Bug Fixes",
-      "uuid": "2653082c-88d7-62dd-da48-b32be67c033b",
-      "group": "Spells",
+      "name": "HT_Camp Event Overhaul",
+      "uuid": "d756bfd1-e403-8ce1-9f81-c6c988a60837",
+      "group": "Companions",
       "evidence": {
         "source": "section",
         "installs": 1,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HT_Early Access Scenes Restored",
+      "uuid": "868bf4c5-e0ee-44de-875e-315462e6bf42",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HT_Firestarter: Karlach Romance Overhaul",
+      "uuid": "664c4105-4125-d780-8617-b9731f6f44f5",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HT_GALE: More dead spider reactions",
+      "uuid": "2f44ca65-8a5d-26d7-9843-defd614fa2bd",
+      "group": "Quests",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HT_Hermit Crab Quest Restored",
+      "uuid": "cc417a0e-c26c-6827-4585-9d1c2d63abb0",
+      "group": "Quests",
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HT_Minthara's Weaknesses: Astarion/Minthara Banter Restored",
+      "uuid": "79c99ac4-e32e-4637-ad8b-2fa75b603529",
+      "group": "Companions",
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -21677,13 +22662,13 @@
       }
     },
     {
-      "name": "Hug Your Companions",
-      "uuid": "7ba75792-c321-4336-bf47-eb167bbd2029",
-      "group": "Companions",
+      "name": "HT_Sit With Astarion",
+      "uuid": "fb3240da-7a9c-e5e3-096c-17b855a169e5",
+      "group": "Quests",
       "evidence": {
         "source": "section",
         "installs": 1,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -21706,17 +22691,6 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Hunting Gear: 6 outfits for BT1 + BT3",
-      "uuid": "861f4e0f-613e-f935-9934-483fe0d4c82f",
-      "group": "Clothing",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -22065,13 +23039,12 @@
     {
       "name": "Indoct's Subtler Piercings",
       "uuid": "1b1a4c35-8ffc-4640-8a5a-f80ff8c6f841",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.87
+        "brokenInstalls": 0
       }
     },
     {
@@ -22339,6 +23312,17 @@
       "group": "Dyes",
       "evidence": {
         "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Izzli's Snazzy Salon",
+      "uuid": "f2a594af-ee5c-4406-afc4-fb5f2a8f6bda",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -22664,33 +23648,11 @@
       }
     },
     {
-      "name": "Karlach's Glowing Horns",
-      "uuid": "46818a22-079d-4346-8b3f-3f47dbeeecf9",
-      "group": "Companions",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Karlach's Long Hair",
       "uuid": "af4e2cd6-44af-6449-1fe9-46aa04659798",
       "group": "Hair",
       "evidence": {
         "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Karlach's Long Hair",
-      "uuid": "04a92aed-1410-44fc-9a56-0798f25dd2a3",
-      "group": "Companions",
-      "evidence": {
-        "source": "section",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -22783,28 +23745,6 @@
         "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "KAZSTRA CC Body Tattoo Selector",
-      "uuid": "0570792d-f161-433d-b7b9-a65c2bdd58db",
-      "group": "Bodies",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "KAZSTRA Scarred Visage",
-      "uuid": "fb93b259-a4eb-4894-b1c9-9f71e17ccac5",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 1,
-        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -22984,6 +23924,17 @@
         "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Labeled Container Creator",
+      "uuid": "f9e0b029-06e0-4ddd-9243-471785486532",
+      "group": "Equipment",
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -23197,6 +24148,17 @@
       }
     },
     {
+      "name": "LeatheryGarb",
+      "uuid": "1580f68d-1150-469f-a3c1-2ad9e961a4a0",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "LegacyOfDeath",
       "uuid": "8df003a3-7cbd-dd4f-2e5a-553431513ce1",
       "group": "unsorted",
@@ -23252,6 +24214,17 @@
       }
     },
     {
+      "name": "Less Empty Vases",
+      "uuid": "8a3dd49c-f8a3-483c-8fff-a0f222c903e2",
+      "group": "Miscellaneous",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Lestat De Lioncourt Outfit By REN",
       "uuid": "af1c569d-7d48-4e48-a963-68687f85ced1",
       "group": "Clothing",
@@ -23285,6 +24258,28 @@
       }
     },
     {
+      "name": "Leyline Leila's Loops And Swirls Piercings Mod",
+      "uuid": "d6b694b8-160f-478e-9714-afd6507e6e26",
+      "group": "Character Customization",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Leyline Leila's Squeaky Soap",
+      "uuid": "b5c5582b-5389-4718-94ab-0950ed9ef993",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "LHCutDice",
       "uuid": "b096166b-339f-48e8-a3c3-750efba2ef49",
       "group": "Dice",
@@ -23305,7 +24300,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.91
+        "confidence": 0.87
       }
     },
     {
@@ -23426,6 +24421,17 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Loiru_MalePack",
+      "uuid": "b3762b8f-d994-4bb1-8b5c-479a6758cb29",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -24218,6 +25224,28 @@
       }
     },
     {
+      "name": "Melpomene — Shadowheart Hair",
+      "uuid": "bd824859-846e-45be-bed0-69e41853cfd9",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Melpomene — Shadowheart Sharran Hair",
+      "uuid": "fb35ce17-22d8-4bd1-afed-5ca02ab56318",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Mercenary_Weaponry_Landsknecht",
       "uuid": "5f4d1afe-cf37-4d9c-a0e3-79d0af77ceec",
       "group": "Armor",
@@ -24347,6 +25375,17 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "MirrorInAvernus",
+      "uuid": "5926b4cc-3d8b-4406-8283-7b1d85fba62d",
+      "group": "Miscellaneous",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -24650,6 +25689,17 @@
       }
     },
     {
+      "name": "Moonlight Presets Collection [Archived Mod] ",
+      "uuid": "e9930307-0f2c-994b-5d93-0c0eb4d1136a",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "MoonlightButterflyFix",
       "uuid": "9d3a3f72-19f1-40b3-a4d9-fcd5fca67e16",
       "group": "Spells",
@@ -24805,17 +25855,6 @@
       }
     },
     {
-      "name": "More Camp Idles - Wyll and Astarion",
-      "uuid": "6a0c6dc2-8744-4fba-897d-400ab15063c7",
-      "group": "Companions",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "more Dreads and curly hairpack 02",
       "uuid": "67c540ea-c73d-4b55-b70f-6151f1f09aa0",
       "group": "Hair",
@@ -24832,6 +25871,17 @@
       "group": "Hair",
       "evidence": {
         "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "More Githyanki Armor",
+      "uuid": "fbaa8399-548c-4ad4-833b-9a7163bdcc37",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -24861,15 +25911,25 @@
       }
     },
     {
+      "name": "More Options for Barcus Windmill Dialogue",
+      "uuid": "fd2dbc21-08cf-473b-8d42-3beacea86b72",
+      "group": "Quests",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "More Resources",
       "uuid": "87687266-7ce9-56b1-f60a-6864edd07363",
-      "group": "Hair",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.7
+        "brokenInstalls": 0
       }
     },
     {
@@ -24903,18 +25963,19 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 1
+        "confidence": 0.86
       }
     },
     {
       "name": "MoreLights",
       "uuid": "48ae3668-2e36-e42a-e403-1b73966f5508",
-      "group": "unsorted",
+      "group": "Hair",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.8
       }
     },
     {
@@ -24995,17 +26056,6 @@
       }
     },
     {
-      "name": "Myky's Accessories",
-      "uuid": "2be84b2b-8661-6596-b3af-c236589a7dce",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Myrkul_Weaponry_Scythes",
       "uuid": "5935dd6c-6eea-4fd7-a7e2-6259b16a01eb",
       "group": "Weapons",
@@ -25022,17 +26072,6 @@
       "group": "Classes",
       "evidence": {
         "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Mystical Fashions",
-      "uuid": "c7a374ba-f3a4-4c4f-8ead-1adc1c6691ad",
-      "group": "Armor",
-      "evidence": {
-        "source": "section",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -25253,17 +26292,6 @@
       "name": "Nesha Leesha Restyled",
       "uuid": "de2d3bcb-1c39-fb5c-a738-2becbd9dc8e8",
       "group": "NPC",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Netherseeam - Head Presets UTAV",
-      "uuid": "ed58ae6b-70b1-4837-bb48-0fd35612efc5",
-      "group": "Heads",
       "evidence": {
         "source": "section",
         "installs": 1,
@@ -25503,6 +26531,17 @@
       }
     },
     {
+      "name": "Noble Vindicator",
+      "uuid": "633fc6a8-f285-4a6c-95d9-5516a7a80da8",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Noble Wardrobe",
       "uuid": "9bb0e19f-b992-5e72-51be-87b1ac444ebd",
       "group": "Weapons",
@@ -25544,7 +26583,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.87
+        "confidence": 0.89
       }
     },
     {
@@ -25588,6 +26627,28 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "NoTutorialPopup",
+      "uuid": "f571f706-2d9b-9b2d-7775-1e8399360d85",
+      "group": "Utilities",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "November Heads",
+      "uuid": "56659949-48ae-07b0-2a2f-504babae3e69",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -26233,7 +27294,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.74
+        "confidence": 0.75
       }
     },
     {
@@ -26305,6 +27366,17 @@
         "brokenInstalls": 0
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "Onyx Head",
+      "uuid": "ee3cf239-f9e7-530c-4187-5baa34eba349",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
     },
     {
       "name": "OnyxMonkCollection",
@@ -26636,7 +27708,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.94
+        "confidence": 0.75
       }
     },
     {
@@ -26808,13 +27880,12 @@
     {
       "name": "PathOfUndeath",
       "uuid": "fe04695e-d206-4a88-b3f9-b2a65855ac4c",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.73
+        "brokenInstalls": 0
       },
       "usesScriptExtender": true
     },
@@ -27111,6 +28182,17 @@
       }
     },
     {
+      "name": "PK Elven Squad",
+      "uuid": "f487ab4b-2b8f-47f9-bed0-69bebceb4f56",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "PK Hair Pack",
       "uuid": "ba91f18a-a172-063b-943a-b29817dff9af",
       "group": "Hair",
@@ -27119,18 +28201,6 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "PK Horns 2",
-      "uuid": "ce2e18dd-1166-5a17-ff3c-8ee3337e8d1f",
-      "group": "Classes",
-      "evidence": {
-        "source": "inferred",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.73
       }
     },
     {
@@ -27268,17 +28338,6 @@
       }
     },
     {
-      "name": "PL_Fantastical_Hairstyles",
-      "uuid": "06ba1746-2bcf-774d-3589-6b2f58c6c2ce",
-      "group": "Hair",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "PL_Hair_Colors",
       "uuid": "b62a8569-a384-60bd-e630-708ca90571cd",
       "group": "Hair",
@@ -27312,11 +28371,11 @@
       }
     },
     {
-      "name": "PL_Unnatural_Hair_Colors",
-      "uuid": "fb1d001d-33fe-c944-130d-eee1f8cabff5",
-      "group": "Hair",
+      "name": "PL_TailofTheFrontier",
+      "uuid": "9a8084b2-779c-6079-3fc0-1b6a6d80afee",
+      "group": "Companions",
       "evidence": {
-        "source": "name-pattern",
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -27517,6 +28576,39 @@
       }
     },
     {
+      "name": "Precious Head Preset Pack I",
+      "uuid": "fe3234d4-1e9d-4d68-4708-f3bcf626fe3b",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Precious Little Flower Braids",
+      "uuid": "d066f012-8239-2228-9c27-fd96ce0d1078",
+      "group": "Hair",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Precious Little Vampy Heads",
+      "uuid": "c24127a5-2203-26a8-c9ed-e6414eb0ef5b",
+      "group": "Heads",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "PreciousPetCollar",
       "uuid": "2b95f342-3419-475e-94c5-6e8b01e095fe",
       "group": "unsorted",
@@ -27650,17 +28742,6 @@
       }
     },
     {
-      "name": "PseudoKociaras' Horns",
-      "uuid": "c1d7f569-acb3-4c91-8f67-c1e778bfdf62",
-      "group": "Character Customization",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "PsychicRiders",
       "uuid": "1e3aead9-0ef4-e603-939e-88bf83115de5",
       "group": "Weapons",
@@ -27773,6 +28854,28 @@
       }
     },
     {
+      "name": "Race CC Universal Automatic Patcher (UAP) (NO CACHE)",
+      "uuid": "390fe96d-d38a-49ef-a522-9335d0a948d6",
+      "group": "Races",
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Radiant Regalia",
+      "uuid": "3ed0e643-76bd-479d-96b7-adde17f73527",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "RadiantRobes",
       "uuid": "eaceef3d-2c93-4f0f-ab53-8c5f98cdeb59",
       "group": "unsorted",
@@ -27868,6 +28971,17 @@
         "source": "none",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Raphael, Restored - Last Light Fixes",
+      "uuid": "c72a3d25-aed2-b011-3cd9-5ee0618e99a2",
+      "group": "Bug Fixes",
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -28735,6 +29849,17 @@
       }
     },
     {
+      "name": "SatyrRace",
+      "uuid": "68315895-8bd4-4d53-aefc-1b853ffc1461",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Save Alfira",
       "uuid": "142323a2-cd9e-68bd-6023-4ccdb28683b4",
       "group": "unsorted",
@@ -28884,13 +30009,12 @@
     {
       "name": "SchoolOfDemonology",
       "uuid": "cce91277-1ab5-9492-c000-64cf3093a4d2",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.77
+        "brokenInstalls": 0
       }
     },
     {
@@ -28905,6 +30029,17 @@
       }
     },
     {
+      "name": "Scratch Colors",
+      "uuid": "fe7369fb-7f47-4632-a4a2-cd31c2df240c",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Scratch Evolved",
       "uuid": "3a0b775f-bdc1-1bf2-8b95-df894d25bc3f",
       "group": "unsorted",
@@ -28912,17 +30047,6 @@
         "source": "none",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Scribe's Shroud",
-      "uuid": "aa0ecc5e-77cc-43cd-9158-04bd89c60a04",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 1,
-        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -28954,6 +30078,17 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "SecondChance",
+      "uuid": "305a897a-740b-6f63-b681-fe8e43275749",
+      "group": "Spells",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -29260,6 +30395,17 @@
       }
     },
     {
+      "name": "ShadParentsLetters",
+      "uuid": "7327cdbc-075a-3f4e-887b-1f9e26a2c92f",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "SharDice",
       "uuid": "da3a7a5c-aee6-42f1-16f3-ac8dd0568dd2",
       "group": "unsorted",
@@ -29423,7 +30569,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 1
+        "confidence": 0.79
       }
     },
     {
@@ -29440,13 +30586,12 @@
     {
       "name": "Sin Terrna",
       "uuid": "3ddf8fdc-28cb-41b7-8dc4-1ae9977eb935",
-      "group": "Clothing",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.78
+        "brokenInstalls": 0
       }
     },
     {
@@ -29550,6 +30695,17 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Slots",
+      "uuid": "5d109bfd-c3f4-53c1-c1de-9e318e6d4c36",
+      "group": "Utilities",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -29677,6 +30833,17 @@
       }
     },
     {
+      "name": "SolarPlayerFeaturesForVanilla",
+      "uuid": "88d342df-747b-4b6d-81ed-50f46b8bb04d",
+      "group": "Miscellaneous",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Solo Leveling Daggers - Progressive Weapons",
       "uuid": "c538f099-a3d1-f9db-02f9-2494a0f401ac",
       "group": "Weapons",
@@ -29717,6 +30884,28 @@
         "source": "section",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Song of the Sea - Merfolk Race (KAVT Patch)",
+      "uuid": "5018ddc4-bbe4-4673-8938-dcdb3157fc5b",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Song_Of_The_Sea_Merfolk_Race",
+      "uuid": "1a53f940-e3a7-1094-fde9-d28f0ab5e030",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -30053,15 +31242,25 @@
       }
     },
     {
-      "name": "Sprout Necklaces 1",
-      "uuid": "1b017ca4-3a41-8fec-464d-5c10f2c70e7d",
-      "group": "Accessories",
+      "name": "SpiritGuardiansNecroticIcon",
+      "uuid": "0da62a93-340a-1502-862e-e7040e8b4763",
+      "group": "Spells",
       "evidence": {
-        "source": "inferred",
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.71
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Sprout Necklaces 1",
+      "uuid": "1b017ca4-3a41-8fec-464d-5c10f2c70e7d",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
       }
     },
     {
@@ -30277,6 +31476,17 @@
       }
     },
     {
+      "name": "Stellar Nocturne - Outfit Set",
+      "uuid": "3c3fefe1-fc77-03da-dc88-0f0c1edc20a3",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Stepping_Softly",
       "uuid": "4e56743d-0a1c-c32a-0de7-48724e9941a8",
       "group": "unsorted",
@@ -30344,6 +31554,17 @@
       }
     },
     {
+      "name": "Style N Dye",
+      "uuid": "bcc7986a-d2e3-0670-f738-a2973390b798",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "SuccubineSorcerer",
       "uuid": "9d67b4d8-987f-b4ee-ffc2-169e0aa92619",
       "group": "unsorted",
@@ -30371,6 +31592,17 @@
       "group": "Clothing",
       "evidence": {
         "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Suddenly Strong Astarion Begone",
+      "uuid": "af9199c3-5e0e-448e-9feb-40388cefcb6b",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -30654,17 +31886,6 @@
       }
     },
     {
-      "name": "Tasha's Cauldron of Outfits",
-      "uuid": "666afdba-fbd7-4a3c-b5a7-abc97ed552f9",
-      "group": "Clothing",
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Tav Preset - Daisy",
       "uuid": "76f6c40f-d569-4d70-8be5-ddb8e2b4af39",
       "group": "Heads",
@@ -30707,18 +31928,6 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "TC_Dyes",
-      "uuid": "011d7668-c586-4104-8a14-89c46adcfc74",
-      "group": "Dyes",
-      "evidence": {
-        "source": "inferred",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.74
       }
     },
     {
@@ -30766,35 +31975,13 @@
       }
     },
     {
-      "name": "Terpsichore — The Blade's Armour",
-      "uuid": "18b798a4-8ed9-4938-b671-bde042fe863c",
+      "name": "Terpsichore — Ravengard",
+      "uuid": "54fa2f1c-610b-4a94-8dea-b3701182478e",
       "group": "Companions",
       "evidence": {
         "source": "section",
         "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Terpsichore — Wyll Hair",
-      "uuid": "6be5565e-7e0d-4edd-bb35-84e68d98d900",
-      "group": "Companions",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Terpsichore — Wyll Hair Devil Form Patch",
-      "uuid": "14edd72f-efd0-43d9-b0ba-3290485e5c58",
-      "group": "Bug Fixes",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -30936,6 +32123,17 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "The Sparkstruck Scientist",
+      "uuid": "f499d87a-458a-4634-a95b-e092c49ec7e2",
+      "group": "NPC",
+      "evidence": {
+        "source": "section",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -31143,23 +32341,11 @@
     {
       "name": "Tintable Piercings",
       "uuid": "1b12225d-ba01-48da-8b58-6adbf32f62c9",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.78
-      }
-    },
-    {
-      "name": "Toarie's Autosnap Hairpack - Icon Patch",
-      "uuid": "8e8817b1-f50e-46c5-8db6-6d0e0b879fe4",
-      "group": "Bug Fixes",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -31354,13 +32540,12 @@
     {
       "name": "Trips' Emerald Gems Addon",
       "uuid": "dc7a5f8d-f19c-4f77-bc22-f838e9e0438b",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.76
+        "brokenInstalls": 0
       }
     },
     {
@@ -31471,6 +32656,17 @@
         "source": "none",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "TutorialChestMover",
+      "uuid": "7998b46c-d68c-42a8-b633-e9c570e7edf0",
+      "group": "Environment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -31599,6 +32795,61 @@
       }
     },
     {
+      "name": "Unique Tav - Dunmer",
+      "uuid": "578ba6b7-e451-4953-a283-9582e5197b32",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Unique Tav - Eladrin",
+      "uuid": "58fdf747-22b4-42fb-93a3-1cb6e9693189",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Unique Tav - Firbolg",
+      "uuid": "7404a20b-e615-4a8b-9742-9b135cc71a9b",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Unique Tav - Satyr",
+      "uuid": "05d64bf7-5b0e-4f95-b275-e7ed51aadb0e",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Unique Tav - Yuan-ti",
+      "uuid": "910a4c4f-fa99-4c48-bf79-3ea3e6df6615",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "unique_tav_ASTRLGE_patch",
       "uuid": "bf718766-2a35-4254-ae0a-3cbb20bbbe70",
       "group": "Bug Fixes",
@@ -31705,6 +32956,17 @@
         "source": "none",
         "installs": 1,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "UT/KAVT Universal Automatic Patcher",
+      "uuid": "8d23b363-3880-46c1-a378-373223569100",
+      "group": "Bug Fixes",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
       }
     },
@@ -32020,6 +33282,17 @@
       }
     },
     {
+      "name": "Vestments of The Apostate",
+      "uuid": "7ede1cc7-a73a-4517-8620-1e491267d60a",
+      "group": "Equipment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Viconia Circlet",
       "uuid": "3d554afb-b0f9-3cf7-49a2-7f080d7b1932",
       "group": "unsorted",
@@ -32290,13 +33563,12 @@
     {
       "name": "Weeviljester's Accessories",
       "uuid": "7281177d-56f5-4c72-8e27-beb00cfea8ff",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.74
+        "brokenInstalls": 0
       }
     },
     {
@@ -32366,6 +33638,28 @@
       }
     },
     {
+      "name": "Whispers of the Divine: Aasimar Script Extender Edition",
+      "uuid": "4806bd2a-929b-406e-b1d4-2e0e9cc23bb2",
+      "group": "Utilities",
+      "evidence": {
+        "source": "curated",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Whispers of the Fey: Goblins (Race)",
+      "uuid": "ca81f091-bf1b-4bb6-90dd-1c4ef83fd798",
+      "group": "Races",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "White Marble",
       "uuid": "3d914e12-4309-4201-9929-8bfa679cb643",
       "group": "unsorted",
@@ -32419,17 +33713,6 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "confidence": 0.77
-      }
-    },
-    {
-      "name": "Wilderness Camp Lighting Tweaks",
-      "uuid": "6f0098e9-a2ca-4976-a78c-82ecde0ccc61",
-      "group": "Gameplay",
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
       }
     },
     {
@@ -32588,6 +33871,17 @@
       }
     },
     {
+      "name": "wizardly-updo-longer-nexus",
+      "uuid": "ecc5e716-6236-a854-c5f4-d86529780e62",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Wood & Bronze",
       "uuid": "739cd1eb-5708-432e-8574-4a98a90d53e1",
       "group": "Dice",
@@ -32721,16 +34015,37 @@
       }
     },
     {
-      "name": "Wyll's Devil Form",
-      "uuid": "ada71997-5d8a-4614-8188-efd71d6037fb",
+      "name": "Wyll Camp Tweaks",
+      "uuid": "98d92fb5-7ee0-4e80-b2b6-70e193debb5d",
+      "group": "Environment",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Wyll Devil Form Portrait Fix",
+      "uuid": "b268c2e5-8260-46a5-ae25-1d9e6031fa09",
       "group": "Companions",
       "evidence": {
         "source": "section",
         "installs": 1,
-        "workingInstalls": 1,
+        "workingInstalls": 0,
         "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
+      }
+    },
+    {
+      "name": "Wyll Meets His Hero Fix",
+      "uuid": "43922268-70ef-47a6-83ca-20be247c3a34",
+      "group": "Companions",
+      "evidence": {
+        "source": "section",
+        "installs": 1,
+        "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
     },
     {
       "name": "Wyll's KeyArt Armor",
@@ -32808,7 +34123,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.77
+        "confidence": 0.73
       }
     },
     {
@@ -32817,17 +34132,6 @@
       "group": "Equipment",
       "evidence": {
         "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Yuanti",
-      "uuid": "b2d490bc-6e10-4bc2-89e0-69c8f68cd453",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
