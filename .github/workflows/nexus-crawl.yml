@@ -1,0 +1,54 @@
+name: Nexus catalogue crawl
+
+# Walks the Nexus Mods API for BG3 and keeps nexus/catalog.json current.
+# The initial crawl takes several daily runs inside the API's request quota;
+# after that each run just tops up newly published mods.
+#
+# Needs the NEXUS_API_KEY repository secret. Without it the job exits quietly,
+# so the workflow is safe to merge before the secret exists.
+
+on:
+  schedule:
+    - cron: "20 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Crawl within the daily quota
+        env:
+          NEXUS_API_KEY: ${{ secrets.NEXUS_API_KEY }}
+        run: |
+          if [ -z "$NEXUS_API_KEY" ]; then
+            echo "NEXUS_API_KEY secret is not set; skipping."
+            exit 0
+          fi
+          node scripts/crawl-nexus.mjs --max-requests 2300
+
+      - name: Refresh the enrichment report
+        run: |
+          if [ -f nexus/catalog.json ]; then
+            node scripts/enrich-from-nexus.mjs
+          fi
+
+      - name: Commit the updated catalogue
+        run: |
+          if [ -z "$(git status --porcelain nexus)" ]; then
+            echo "No catalogue changes."
+            exit 0
+          fi
+          git config user.name "volo-crawler"
+          git config user.email "crawler@users.noreply.github.com"
+          git add nexus
+          git commit -m "Update the Nexus catalogue"
+          git push
