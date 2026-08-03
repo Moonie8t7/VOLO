@@ -13,7 +13,9 @@ $log = Join-Path $env:TEMP 'volo-nexus-daily.log'
 "=== run started $(Get-Date -Format s) ===" | Add-Content $log
 
 git pull --rebase --quiet 2>&1 | Add-Content $log
-node scripts/crawl-nexus.mjs 2>&1 | Add-Content $log
+node scripts/bulk-list-nexus.mjs 2>&1 | Add-Content $log
+node scripts/bulk-list-nexus.mjs --updates 2>&1 | Add-Content $log
+node scripts/find-masterlist-on-nexus.mjs 2>&1 | Add-Content $log
 node scripts/crawl-requirements.mjs 2>&1 | Add-Content $log
 node scripts/enrich-from-nexus.mjs 2>&1 | Add-Content $log
 

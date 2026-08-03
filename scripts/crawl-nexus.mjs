@@ -57,12 +57,27 @@ if (!KEY) {
   process.exit(2);
 }
 
+// One catalogue writer at a time; concurrent flushes crash each other.
+try {
+  const held = JSON.parse(fs.readFileSync(path.join('nexus', '.lock'), 'utf8'));
+  if (Date.now() - held.at < 3 * 3600_000) {
+    console.log(`another nexus job appears to be running (pid ${held.pid}); exiting`);
+    process.exit(0);
+  }
+} catch {}
+fs.writeFileSync(path.join('nexus', '.lock'), JSON.stringify({ pid: process.pid, at: Date.now() }));
+process.on('exit', () => { try { fs.unlinkSync(path.join('nexus', '.lock')); } catch {} });
+process.on('SIGINT', () => process.exit(130));
+process.on('SIGTERM', () => process.exit(143));
+
 const argMax = process.argv.indexOf('--max-requests');
 const MAX_REQUESTS = argMax !== -1 ? Number(process.argv[argMax + 1]) : Infinity;
 
 const HEADERS = {
   apikey: KEY,
   'User-Agent': 'VOLO/1.0 (volobg3.com; load order tool)',
+        'Application-Name': 'VOLO',
+        'Application-Version': '1.0.0',
   Accept: 'application/json',
 };
 
