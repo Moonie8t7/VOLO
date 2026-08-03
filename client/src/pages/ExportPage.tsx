@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useStore } from '@/lib/store';
 import { EXPORT_FORMATS, exportOrder, download, type ExportFormat } from '@/lib/exporter';
+import dividers from '@/lib/dividers.json';
 
 const MIME: Record<string, string> = {
   json: 'application/json',
@@ -27,6 +28,7 @@ export default function ExportPage() {
   const { result } = useStore();
   const [format, setFormat] = useState<ExportFormat>('bg3mm');
   const [copied, setCopied] = useState(false);
+  const [insertDividers, setInsertDividers] = useState(false);
   const [shared, setShared] = useState(false);
 
   const share = async () => {
@@ -63,7 +65,7 @@ export default function ExportPage() {
   }
 
   const spec = EXPORT_FORMATS.find(f => f.id === format)!;
-  const content = exportOrder(result, format);
+  const content = exportOrder(result, format, { insertDividers: insertDividers && format === 'bg3mm' });
 
   const copy = async () => {
     try {
@@ -113,6 +115,39 @@ export default function ExportPage() {
                 </button>
               ))}
             </div>
+
+            {format === 'bg3mm' && (
+              <div className="border border-border/40 bg-black/25 p-4 space-y-2">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={insertDividers}
+                    onChange={e => setInsertDividers(e.target.checked)}
+                    className="mt-1 h-4 w-4 accent-[#D7A869]"
+                  />
+                  <span className="text-sm font-body">
+                    Insert load order dividers at each category boundary, so the
+                    order arrives in BG3MM already sectioned.
+                  </span>
+                </label>
+                {insertDividers && (
+                  <p className="text-xs text-muted-foreground pl-7">
+                    The divider paks must be installed or BG3MM will list them as
+                    missing.{' '}
+                    <a href="/downloads/astras-dividers.zip" className="underline hover:text-foreground">
+                      Download the VOLO edition
+                    </a>
+                    ; it shares its UUIDs with Astra's original set on Nexus, so
+                    if you already run those the exported order works as-is.{' '}
+                    {dividers.credit}{' '}
+                    <a href={dividers.creditUrl} target="_blank" rel="noreferrer" className="underline hover:text-foreground">
+                      Astralities on Nexus
+                    </a>
+                    .
+                  </p>
+                )}
+              </div>
+            )}
 
             <div className="flex gap-3">
               <Button

@@ -7,6 +7,16 @@
  */
 
 import type { Mod, SortResult } from './types';
+import dividers from './dividers.json';
+
+export interface ExportOptions {
+  /**
+   * Insert Astra's Load Order Dividers above each category in the BG3MM
+   * export. One divider per group, and only for groups present in the order.
+   * The divider paks must be installed for BG3MM to resolve the entries.
+   */
+  insertDividers?: boolean;
+}
 
 export type ExportFormat = 'bg3mm' | 'json' | 'csv' | 'txt' | 'markdown';
 
@@ -20,15 +30,28 @@ export const EXPORT_FORMATS: { id: ExportFormat; label: string; hint: string; ex
 
 const escapeCsv = (v: string) => (/[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
 
-export function exportOrder(result: SortResult, format: ExportFormat): string {
+export function exportOrder(result: SortResult, format: ExportFormat, options: ExportOptions = {}): string {
   const { mods, placements } = result;
 
   switch (format) {
-    case 'bg3mm':
-      return JSON.stringify(
-        { Order: mods.map(m => ({ UUID: realUuid(m), Name: m.name })) },
-        null, 2,
-      );
+    case 'bg3mm': {
+      const entries: { UUID: string; Name: string }[] = [];
+      const usedDividers = new Set<string>();
+      for (const m of mods) {
+        if (options.insertDividers) {
+          const group = placements.get(m.uuid)?.group;
+          const divider = group
+            ? (dividers.byGroup as Record<string, { uuid: string; name: string } | undefined>)[group]
+            : undefined;
+          if (divider && !usedDividers.has(divider.uuid)) {
+            usedDividers.add(divider.uuid);
+            entries.push({ UUID: divider.uuid, Name: divider.name });
+          }
+        }
+        entries.push({ UUID: realUuid(m), Name: m.name });
+      }
+      return JSON.stringify({ Order: entries }, null, 2);
+    }
 
     case 'json':
       return JSON.stringify(

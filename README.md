@@ -15,7 +15,8 @@ Your load order never leaves your machine.
 
 1. **Import.** Reads BG3MM exports in both the short and full-metadata forms, plus
    CSV, TSV and plain text. Section separators you have written yourself are
-   recognised and used as categorisation hints.
+   recognised and used as categorisation hints, as are Astra's Load Order
+   Dividers, which VOLO knows by UUID even when they have been renamed.
 2. **Sort.** Groups set the broad shape of the order, running from `core` and
    `libraries` through content and `ui` to `patches` and `fixes`. Dependencies
    declared in mod metadata are hard constraints. Anything else stays put.
@@ -92,6 +93,14 @@ and opens a pull request for review.
 Not yet built: user overrides that survive masterlist updates, and a desktop
 build that reads `modsettings.lsx` directly.
 
+## Credits
+
+Load order dividers by
+[Astralities](https://forums.nexusmods.com/profile/106303673-astralities/),
+who made the VOLO edition of Astra's Load Order Dividers and gave permission
+to ship and modify it. The divider paks in `public/downloads/astras-dividers.zip` are their
+work; VOLO recognises them by UUID on import and can reinsert them on export.
+
 ## Licence
 
-MIT.
+MIT. The divider paks remain Astralities' work, used with permission.

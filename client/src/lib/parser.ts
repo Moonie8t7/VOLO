@@ -10,6 +10,23 @@
  */
 
 import type { Mod, ParseResult, ModRef } from './types';
+import dividers from './dividers.json';
+
+/**
+ * Astra's Load Order Dividers, recognised by exact UUID. They are real paks a
+ * user may have installed purely to section their order, so they are stripped
+ * from the mod list and their labels reused as section hints, the same way
+ * hand-typed dashed separators are.
+ */
+const DIVIDER_UUIDS = new Set<string>(dividers.uuids);
+
+/** "decorated 047 . Skillset . Spells" style names reduced to their subject. */
+function dividerLabel(name: string): string | null {
+  const parts = name.split(String.fromCharCode(183)).map(p => p.trim());
+  if (parts.length < 2) return null;
+  const label = parts.slice(1).join(' ').replace(/[^\w &'()-]+/gu, ' ').replace(/\s+/g, ' ').trim();
+  return label.length >= 2 ? label : null;
+}
 
 /**
  * Cosmetic dividers modders insert to section their orders. They are not mods,
@@ -101,6 +118,16 @@ function collect(entries: unknown[], format: string): ParseResult {
     const rec = raw as Record<string, unknown>;
     const name = String(rec.Name ?? rec.name ?? '').trim();
     if (!name) continue;
+
+    const rawUuid = String(rec.UUID ?? rec.uuid ?? '').trim();
+    if (rawUuid && DIVIDER_UUIDS.has(rawUuid)) {
+      // Users can rename dividers in their manager, so prefer the canonical
+      // pak name and only then fall back to whatever the file says.
+      const canonical = (dividers.names as Record<string, string | undefined>)[rawUuid];
+      const label = (canonical ? dividerLabel(canonical) : null) ?? dividerLabel(name);
+      if (label) sections.push({ label, afterIndex: mods.length });
+      continue;
+    }
 
     if (isSeparator(name)) {
       const label = sectionLabel(name);
