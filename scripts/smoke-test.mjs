@@ -22,6 +22,8 @@ await build({
     contents: `
       export { parseLoadOrder } from './client/src/lib/parser';
       export { sortLoadOrder } from './client/src/lib/optimiser';
+      export { exportOrder } from './client/src/lib/exporter';
+      export { default as dividers } from './client/src/lib/dividers.json';
     `,
     resolveDir: process.cwd(),
     loader: 'ts',
@@ -33,7 +35,7 @@ await build({
   logLevel: 'error',
 });
 
-const { parseLoadOrder, sortLoadOrder } = await import(`file://${out}`);
+const { parseLoadOrder, sortLoadOrder, exportOrder, dividers } = await import(`file://${out}`);
 const masterlist = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 
 let failures = 0;
@@ -177,6 +179,40 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   } else {
     failures++;
     console.log('  FAIL  uuid not extracted');
+  }
+}
+
+// Astra's dividers: stripped on import by uuid, reinserted on export when asked.
+{
+  const div = dividers.byGroup['User Interface'];
+  const input = JSON.stringify({ Order: [
+    { UUID: div.uuid, Name: div.name },
+    { UUID: '26922ba9-6018-5252-075d-7ff2ba6ed879', Name: 'ImpUI (ImprovedUI)' },
+    { UUID: 'aaaaaaaa-0000-0000-0000-000000000001', Name: 'Zed Probe Mod' },
+  ] });
+  const parsed = parseLoadOrder(input, 'order.json');
+  console.log('');
+  console.log('divider fixtures');
+  if (parsed.mods.length === 2 && parsed.sections.length === 1) {
+    console.log('  ok    divider stripped from mods and kept as a section');
+  } else {
+    failures++;
+    console.log('  FAIL  expected 2 mods and 1 section, got ' + parsed.mods.length + ' and ' + parsed.sections.length);
+  }
+
+  const result = sortLoadOrder(parsed.mods, masterlist);
+  const plain = JSON.parse(exportOrder(result, 'bg3mm'));
+  const withDividers = JSON.parse(exportOrder(result, 'bg3mm', { insertDividers: true }));
+  const dividerEntries = withDividers.Order.filter(e => dividers.uuids.includes(e.UUID));
+  const impuiAt = withDividers.Order.findIndex(e => e.UUID === '26922ba9-6018-5252-075d-7ff2ba6ed879');
+  const uiDividerAt = withDividers.Order.findIndex(e => e.UUID === div.uuid);
+  if (plain.Order.every(e => !dividers.uuids.includes(e.UUID))
+      && dividerEntries.length > 0
+      && uiDividerAt !== -1 && uiDividerAt < impuiAt) {
+    console.log('  ok    export inserts ' + dividerEntries.length + ' dividers, UI divider precedes ImpUI');
+  } else {
+    failures++;
+    console.log('  FAIL  divider insertion incorrect');
   }
 }
 

@@ -39,6 +39,27 @@ const ENGINE_MASTERS = new Set([
 ]);
 
 /**
+ * Astra's Load Order Dividers, recognised by exact UUID. In submitted orders
+ * they are entries like any other, so without this they would be mined as
+ * mods; instead they vanish from the mod list and their labels become section
+ * hints, exactly like hand-typed dashed separators.
+ */
+const DIVIDERS = (() => {
+  try {
+    const d = JSON.parse(fs.readFileSync(path.join('masterlist', 'separator-mods.json'), 'utf8'));
+    return new Map(d.separators.map(x => [x.uuid, x.name]));
+  } catch {
+    return new Map();
+  }
+})();
+
+function dividerSectionLabel(name) {
+  const parts = String(name).split(String.fromCharCode(183)).map(p => p.trim());
+  if (parts.length < 2) return null;
+  return parts.slice(1).join(' ');
+}
+
+/**
  * The base-game packages carry the game build they were shipped with, so a full
  * BG3MM export tells us which patch the load order was actually built against.
  * 4.7.x is Patch 7, 4.8.x is Patch 8. Worth capturing because BG3 patches break
@@ -206,7 +227,13 @@ const SECTION_TO_GROUP = {
   'other': 'Miscellaneous', 'miscellaneous': 'Miscellaneous', 'misc': 'Miscellaneous',
   'patches': 'Bug Fixes', 'patch': 'Bug Fixes', 'compatibility': 'Bug Fixes',
   'compatibility patches': 'Bug Fixes',
-  'fixes': 'Bug Fixes', 'fix': 'Bug Fixes', 'bugfixes': 'Bug Fixes', 'bug fixes': 'Bug Fixes',
+  'fixes': 'Bug Fixes', 'fix': 'Bug Fixes', 'bugfixes': 'Bug Fixes',
+  'ui mods': 'User Interface', 'library mods': 'Resources',
+  'scriptbased mods': 'Gameplay', 'story content': 'Quests',
+  'world content': 'Environment', 'skillset': 'Spells',
+  'customization': 'Character Customization', 'posing': 'Animations',
+  'late loaders': 'Bug Fixes', 'unique': 'Character Customization',
+  'body mods': 'Bodies', 'bug fixes': 'Bug Fixes',
 };
 
 /** Fallback name patterns when a mod sits under no section header. */
@@ -337,6 +364,16 @@ for (const order of orders) {
     const name = entry.Name;
     if (!name) continue;
 
+    if (entry.UUID && DIVIDERS.has(entry.UUID)) {
+      separatorCount++;
+      // Submitters sometimes restyle divider names in their manager, so the
+      // canonical pak name wins over whatever the order file says.
+      currentSection = dividerSectionLabel(DIVIDERS.get(entry.UUID))
+        ?? dividerSectionLabel(name)
+        ?? currentSection;
+      continue;
+    }
+
     if (SEPARATOR_RE.test(name)) {
       separatorCount++;
       currentSection = sectionLabel(name);
@@ -444,7 +481,7 @@ const MIN_VOTERS = 3;
 
 const uuidSequences = orders.map(o =>
   o.entries
-    .filter(e => e?.UUID && e?.Name && !SEPARATOR_RE.test(e.Name))
+    .filter(e => e?.UUID && e?.Name && !SEPARATOR_RE.test(e.Name) && !DIVIDERS.has(e.UUID))
     .map(e => e.UUID),
 );
 const voterGroup = new Map(

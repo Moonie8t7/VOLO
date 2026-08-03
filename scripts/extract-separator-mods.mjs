@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
- * Reads the community "Sorting Category Empty Mods" separator paks and emits the
- * UUID and name of each.
+ * Reads load order divider paks and emits the UUID and name of each.
+ *
+ * The active set is Astra's Load Order Dividers, made for VOLO by Astralities
+ * and used with permission; credit is required wherever they surface.
  *
  * Why this matters: those paks are widely used to divide a load order into named
  * sections. When a submitted order contains them we can recognise the section
@@ -72,10 +74,14 @@ function lz4Decompress(src, start, maxOut) {
 
 /** Pull the mod UUID and name out of a decompressed meta.lsx. */
 function parseMeta(xml) {
+  const decode = (v) => v
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&apos;/g, "'")
+    .replace(/&amp;/g, '&');
   const attr = (id) => {
     const re = new RegExp(`<attribute[^>]*id="${id}"[^>]*value="([^"]*)"`, 'i');
     const m = xml.match(re);
-    return m ? m[1] : null;
+    return m ? decode(m[1]) : null;
   };
   // Some writers put type before value; try the reversed order too.
   const attrAlt = (id) => {
@@ -108,18 +114,24 @@ for (const file of fs.readdirSync(dir).sort()) {
     continue;
   }
 
-  // The XML begins with a UTF-8 BOM. Find the LZ4 token that precedes it so we
-  // start decompressing at a sequence boundary rather than guessing an offset.
+  // The XML begins with a UTF-8 BOM. Some packers store the metadata as plain
+  // uncompressed text; others LZ4 it. Try plaintext first, since it is
+  // unambiguous, and fall back to walking back to the LZ4 token boundary.
   const bom = buf.indexOf(Buffer.from([0xef, 0xbb, 0xbf]));
   if (bom < 2) { failures.push([file, 'no metadata found']); continue; }
 
-  // Walk back over the length-extension bytes to the token itself.
-  let tokenAt = bom - 1;
-  while (tokenAt > 0 && buf[tokenAt] === 255) tokenAt--;
-  if ((buf[tokenAt] >> 4) !== 15) tokenAt = bom - 1;
-  while (tokenAt > 0 && (buf[tokenAt] >> 4) !== 15) tokenAt--;
-
-  const xml = lz4Decompress(buf, tokenAt, 64 * 1024).toString('utf8');
+  let xml;
+  const xmlStart = buf.indexOf(Buffer.from('<?xml'));
+  const xmlEnd = buf.indexOf(Buffer.from('</save>'));
+  if (xmlStart !== -1 && xmlEnd > xmlStart) {
+    xml = buf.subarray(xmlStart, xmlEnd + 7).toString('utf8');
+  } else {
+    let tokenAt = bom - 1;
+    while (tokenAt > 0 && buf[tokenAt] === 255) tokenAt--;
+    if ((buf[tokenAt] >> 4) !== 15) tokenAt = bom - 1;
+    while (tokenAt > 0 && (buf[tokenAt] >> 4) !== 15) tokenAt--;
+    xml = lz4Decompress(buf, tokenAt, 64 * 1024).toString('utf8');
+  }
   const meta = parseMeta(xml);
 
   if (!meta.uuid) { failures.push([file, 'no UUID in metadata']); continue; }
@@ -143,9 +155,11 @@ fs.writeFileSync(
   JSON.stringify(
     {
       description:
-        'Community separator paks used to divide a BG3MM load order into named ' +
-        'sections. Recognised by UUID so section boundaries are exact.',
-      source: 'Sorting Category Empty Mods',
+        'Load order divider paks, recognised by UUID so section boundaries ' +
+        'are exact on import and insertable on export.',
+      source: "Astra's Load Order Dividers",
+      credit: 'Made by Astralities for VOLO, used with permission.',
+      creditUrl: 'https://forums.nexusmods.com/profile/106303673-astralities/',
       separators: results.map(r => ({ uuid: r.uuid, name: r.name, folder: r.folder })),
     },
     null, 2,
