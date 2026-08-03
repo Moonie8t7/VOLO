@@ -17,7 +17,14 @@
   "nexusCategory": "Utilities",
   "suggestedGroup": "Utilities",
   "adult": false,
-  "endorsements": 14186
+  "endorsements": 14186,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Community Library",
+    "nexusId": 1333,
+    "notes": "REQUIRED"
+   }
+  ]
  },
  "cb42bc3a-f1d2-7d9d-16a2-2800154f099a": {
   "nexusId": 1416,
@@ -29,6 +36,62 @@
   "adult": false,
   "endorsements": 14707
  },
+ "6b585be8-ed73-7347-2c58-73146e22b7d4": {
+  "nexusId": 4597,
+  "nexusName": "Better Inventory UI",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 7718,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "ImpUI Patch 8 Slim"
+   }
+  ]
+ },
+ "1186f940-7338-fe24-6649-aff698541b7f": {
+  "nexusId": 3269,
+  "nexusName": "Better Target Info",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 6630,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "ImpUI Patch 8 Slim"
+   }
+  ]
+ },
+ "73928ffc-07c0-46ac-8cf4-86a693b0cd92": {
+  "nexusId": 2617,
+  "nexusName": "Scantily Camp Outfit",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Clothing",
+  "suggestedGroup": "Clothing",
+  "adult": true,
+  "endorsements": 12442
+ },
+ "82c1f53b-5ed3-4e2e-95f5-f84ca6ff0c81": {
+  "nexusId": 2922,
+  "nexusName": "Transmog Enhanced",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 19610
+ },
  "fb5f528d-4d48-4bf2-a668-2274d3cfba96": {
   "nexusId": 125,
   "nexusName": "5e Spells",
@@ -37,7 +100,14 @@
   "nexusCategory": "Spells",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 43275
+  "endorsements": 43275,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "notes": "If you want the configurable options in the mod. Otherwise, it's not needed."
+   }
+  ]
  },
  "7b8366bd-abc1-4f9f-ba9d-585549b4a750": {
   "nexusId": 899,
@@ -49,6 +119,74 @@
   "adult": false,
   "endorsements": 25317
  },
+ "d9582df8-6eef-a756-117f-965e22007ff6": {
+  "nexusId": 2790,
+  "nexusName": "Better Topbar",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 4966,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "ImpUI Patch 8 Slim"
+   }
+  ]
+ },
+ "53480625-d3e4-4cce-86c8-a8a793eb61d7": {
+  "nexusId": 3159,
+  "nexusName": "Aether's Black Dye ITA",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.9,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 37,
+  "requires": [
+   {
+    "name": "Aether's Black Dye - Item Shipment Framework",
+    "nexusId": 1177,
+    "notes": "Senza la mod originale la traduzione non funziona."
+   }
+  ]
+ },
+ "2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a": {
+  "nexusId": 5291,
+  "nexusName": "Better Various Widgets",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 3330
+ },
+ "1e649013-e371-953e-3839-07f02fe1cffa": {
+  "nexusId": 2668,
+  "nexusName": "Dynamic Sidebar",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 5394,
+  "requires": [
+   {
+    "name": "Companions Panel and Camp Chest Everywhere",
+    "nexusId": 4968,
+    "notes": "Optional, to make Companions Panel button work everywhere"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "ImpUI Patch 8 Slim mandatory"
+   }
+  ]
+ },
  "2f1c1686-feaf-4ea4-af2c-13085f056ec4": {
   "nexusId": 293,
   "nexusName": "Honey's Hair Kitchen (WIP)",
@@ -57,7 +195,44 @@
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 4628
+  "endorsements": 4628,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "No need to install this with your mod manager, just drop the .pak file into your mods folder."
+   }
+  ]
+ },
+ "5d74ac8f-e6d5-28d4-0d42-0103999c2d60": {
+  "nexusId": 3617,
+  "nexusName": "Better Context Menu",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 5319
+ },
+ "0c692104-c83f-48b8-9fcd-ca7e33be5099": {
+  "nexusId": 5207,
+  "nexusName": "Combat Extender",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1862
+ },
+ "08e267cf-bf28-4e29-8711-8282ed017fcb": {
+  "nexusId": 5612,
+  "nexusName": "Database Cleaner",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 2564
  },
  "05827e11-37eb-4820-8916-1fa2060a84c7": {
   "nexusId": 1870,
@@ -69,6 +244,16 @@
   "adult": false,
   "endorsements": 1838
  },
+ "55249f39-faa9-4e51-a36c-0ac6560d8a0c": {
+  "nexusId": 4939,
+  "nexusName": "Druid Perfection",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1291
+ },
  "0c036a05-f3e4-4422-87bd-eadadf96c161": {
   "nexusId": 167,
   "nexusName": "Feats Extra",
@@ -77,7 +262,59 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 9341
+  "endorsements": 9341,
+  "requires": [
+   {
+    "name": "5e Spells",
+    "nexusId": 125,
+    "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+    "notes": "Only needed for some fey/ shadow touched spells"
+   }
+  ]
+ },
+ "afface23-2d71-4614-88f9-bdbabdd61e03": {
+  "nexusId": 6148,
+  "nexusName": "Kylin's Heads",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 2742,
+  "requires": [
+   {
+    "name": "Eyes of the Beholder",
+    "nexusId": 315,
+    "notes": "only if you use the EOTB or UTAV &amp; EOTB version of this mod"
+   },
+   {
+    "name": "Unique Tav Custom Appearance",
+    "nexusId": 2754,
+    "notes": "only if you use Unique Tav (UTAV) or UTAV&amp;EOTB version "
+   },
+   {
+    "name": "Whispers of the Divine - Aasimar Definitive Edition",
+    "nexusId": 4159,
+    "notes": "only if you want to use the patch (Optional File) so the heads can be used with this mod"
+   }
+  ]
+ },
+ "1fd44eaf-a4d2-4de4-9560-51a0c8a63987": {
+  "nexusId": 5743,
+  "nexusName": "Silver's Hair Pack",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 8937,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "505c630c-79fa-49b6-9f21-29a5f2322c2d": {
   "nexusId": 457,
@@ -89,6 +326,67 @@
   "adult": false,
   "endorsements": 30306
  },
+ "4176096c-ea85-4c61-a162-0f84409bd8db": {
+  "nexusId": 4718,
+  "nexusName": "Vestments of the Faithful",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1712
+ },
+ "8f4cf5de-c7a4-4733-8d3f-2cdf4f450b5c": {
+  "nexusId": 2327,
+  "nexusName": "All Elemental Adept",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 270,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
+ },
+ "f1890314-1b79-40ae-9055-3036196645bd": {
+  "nexusId": 2385,
+  "nexusName": "Another Face for Lae'zel",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 3073,
+  "requires": [
+   {
+    "name": "New Character Creation Presets",
+    "nexusId": 205,
+    "notes": "Required. Place the mod below the required mod in Load Order."
+   }
+  ]
+ },
+ "0e6b886d-c51f-75fb-f9bd-cf9c0c363c5b": {
+  "nexusId": 4137,
+  "nexusName": "Damage Preview 2",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.96,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 4488,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "ImpUI Patch 8 Slim"
+   }
+  ]
+ },
  "bad404aa-feed-a0ee-9999-feedfeed0002": {
   "nexusId": 936,
   "nexusName": "Everybody Dyes Unlimited Dyeing",
@@ -97,7 +395,14 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 10932
+  "endorsements": 10932,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "\tDoesn't need to be installed, just unzip the .pak file and place it in your mods folder. Does the same thing as \"Patch 3 Mod Fixer\" and \"Full Release Mod Fixer\", only one is necessary (they're all completely identical)"
+   }
+  ]
  },
  "8c611d4b-75d9-40eb-ad61-15f898396e12": {
   "nexusId": 429,
@@ -119,6 +424,45 @@
   "adult": false,
   "endorsements": 61
  },
+ "d65209db-a3a0-4553-937b-d52a39938974": {
+  "nexusId": 4482,
+  "nexusName": "KaiLime Eyes - Daughter of Darkness",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 287,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "Must have this installed or you'll be staring at some weiiiird sights in CC. Also it'll be broken af. I know what you heard but it is, in fact, still needed."
+   },
+   {
+    "name": "Eyes of the Beholder",
+    "nexusId": 315,
+    "notes": "Not a requirement but HIGHLY recommended(with the glow preset) for best look on all races. Only way to get non-tiefling glow."
+   }
+  ]
+ },
+ "bc205581-7040-4f2f-bb67-cdabc08b7664": {
+  "nexusId": 3285,
+  "nexusName": "KaiLime Eyes - Illithid Soul",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 532,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "Must have this installed or you'll be staring at some weiiiird sights in CC. Also it'll be broken af. I know what you heard but it is, in fact, still needed."
+   }
+  ]
+ },
  "93ef226d-e357-490e-b932-5ece2c08e7ef": {
   "nexusId": 718,
   "nexusName": "Martial Adept Feat Enhanced",
@@ -138,6 +482,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 1468
+ },
+ "ec242417-f146-78b8-05f9-fd065380ad91": {
+  "nexusId": 6126,
+  "nexusName": "Myshka Comes To Camp",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1232
  },
  "eb263453-0cc2-4f0c-2375-f4e0f60e8a12": {
   "nexusId": 745,
@@ -159,6 +513,43 @@
   "adult": false,
   "endorsements": 327
  },
+ "14132dd7-c606-42d7-8e3f-816a63bd7a14": {
+  "nexusId": 5614,
+  "nexusName": "Rebalance - Feats",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1569
+ },
+ "78753062-b430-4cbf-9e5a-4c3a87cf224a": {
+  "nexusId": 3423,
+  "nexusName": "Scratch and Shovel",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1769
+ },
+ "c56e4b79-3bf3-446b-b06b-27dc86337663": {
+  "nexusId": 5743,
+  "nexusName": "Silver's Hair Pack",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.97,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 8937,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
  "e8effa9a-20af-4878-97cd-9366be1dccfe": {
   "nexusId": 1597,
   "nexusName": "Spells Enhanced - Friends",
@@ -169,6 +560,112 @@
   "adult": false,
   "endorsements": 187
  },
+ "36a5445b-3388-4042-b066-932c72cf5e66": {
+  "nexusId": 6139,
+  "nexusName": "Spiritmender - Healing Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 228
+ },
+ "cef3bd38-43eb-4e9e-b3ba-8a96ddcb0e38": {
+  "nexusId": 2657,
+  "nexusName": "Strong Female Heads",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 4891,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "Required"
+   }
+  ]
+ },
+ "bb2654d6-92b9-4678-a90e-9955ca5877ca": {
+  "nexusId": 5211,
+  "nexusName": "Wild Heart",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 626
+ },
+ "500363fd-f696-4288-affb-bff7b49cb06e": {
+  "nexusId": 5351,
+  "nexusName": "Aether's Useful Bows",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 389
+ },
+ "e847810e-0d90-4a2b-8e51-65aefdb56f44": {
+  "nexusId": 5352,
+  "nexusName": "Aether's Useful Daggers",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 257
+ },
+ "1c132ec4-4cd2-4c40-aeb9-ff6ee0467da8": {
+  "nexusId": 6086,
+  "nexusName": "Auto Send Food To Camp",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 4706,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "notes": "1.30+"
+   },
+   {
+    "name": "Volition Cabinet",
+    "nexusId": 7676,
+    "notes": "1.14+"
+   }
+  ]
+ },
+ "f9dd909a-3607-f8e1-da13-b795884f68b5": {
+  "nexusId": 3617,
+  "nexusName": "Better Context Menu",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 5319
+ },
+ "03b0b84a-2689-77c2-5ef6-ebcf88b88037": {
+  "nexusId": 5673,
+  "nexusName": "Better Dyeing",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 2976,
+  "requires": [
+   {
+    "name": "Better Inventory UI",
+    "nexusId": 4597,
+    "uuid": "6b585be8-ed73-7347-2c58-73146e22b7d4"
+   }
+  ]
+ },
  "a88d400b-febb-4662-abdd-5d0b5d6e57cc": {
   "nexusId": 206,
   "nexusName": "Choose Your Stats (CYS)",
@@ -177,7 +674,46 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 5690
+  "endorsements": 5690,
+  "requires": [
+   {
+    "name": "Essential Feats",
+    "nexusId": 5623,
+    "uuid": "ca3df55b-c576-41a1-87c4-3cf5f01922e4",
+    "notes": "ONLY required if you adds feats from that mod."
+   },
+   {
+    "name": "Metamagic Extended",
+    "nexusId": 405,
+    "uuid": "da5d2ea8-51c2-42ba-8d0f-34b5b198a19e",
+    "notes": "ONLY require for the new metamagic"
+   },
+   {
+    "name": "War Caster (2014 and 2024)",
+    "nexusId": 5822,
+    "notes": "ONLY required for the better version of War Caster"
+   }
+  ]
+ },
+ "0c692104-c83f-48b8-9fcd-ca7e33be5098": {
+  "nexusId": 5207,
+  "nexusName": "Combat Extender",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1862
+ },
+ "9a5b4585-0677-45a3-be5c-0cdaa30123fa": {
+  "nexusId": 3991,
+  "nexusName": "Custom Item Pack",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1019
  },
  "61838be6-fd54-4399-91ae-c42562e36c4a": {
   "nexusId": 1005,
@@ -189,6 +725,125 @@
   "adult": false,
   "endorsements": 168
  },
+ "406b269d-8a9d-4d6c-ae9f-f460011de2e8": {
+  "nexusId": 5579,
+  "nexusName": "Hairstyles from the continent",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1950
+ },
+ "e8766cb7-3791-4fd9-ba47-1ff7880082d8": {
+  "nexusId": 6068,
+  "nexusName": "Hairstyles of Faerun",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 3074,
+  "requires": [
+   {
+    "name": "P4 Patches",
+    "nexusId": 353,
+    "notes": "Recommended to get horn colors for non-TIF races"
+   }
+  ]
+ },
+ "243f3a0f-38fa-4c5f-8faa-0f0b867c7622": {
+  "nexusId": 2840,
+  "nexusName": "Harpy Hairs",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 899
+ },
+ "ef01b0e3-a4e1-1672-84b3-bc63168888af": {
+  "nexusId": 2602,
+  "nexusName": "Heads (not only) for Tieflings",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1515
+ },
+ "0f86b73c-928c-033f-6d2d-abf4f06f462f": {
+  "nexusId": 4163,
+  "nexusName": "Jerinski's Alt Hairs",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 3408,
+  "requires": [
+   {
+    "name": "P4 Horn Makeup Lip and Tattoo Colours (Custom and Vanilla)",
+    "nexusId": 340,
+    "notes": "ONLY needed if you want the mighty booyahg accessories tintable"
+   }
+  ]
+ },
+ "9b4ebeae-112c-dccf-ca35-b7c1197aee01": {
+  "nexusId": 4023,
+  "nexusName": "Kay's Hair Mod",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1271,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Required"
+   },
+   {
+    "name": "P4 Horn Makeup Lip and Tattoo Colours (Custom and Vanilla)",
+    "nexusId": 340,
+    "notes": "Requires the \"Vanilla CC Colours for All Sections\" file to enable Horn Tip Colour for other races."
+   }
+  ]
+ },
+ "468e4135-72b3-44ff-a15b-3374b502b46d": {
+  "nexusId": 5706,
+  "nexusName": "Lydia's Heads",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1552,
+  "requires": [
+   {
+    "name": "Eyes of the Beholder",
+    "nexusId": 315,
+    "notes": "Optional"
+   },
+   {
+    "name": "Unique Tav Custom Appearance",
+    "nexusId": 2754,
+    "notes": "Optional"
+   }
+  ]
+ },
+ "6667e253-2b0a-48b6-9023-3b5005be0d45": {
+  "nexusId": 4697,
+  "nexusName": "Massive Faerie Fire",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 107
+ },
  "7ddddd0f-6b71-4565-bbd1-a7183ae90d04": {
   "nexusId": 443,
   "nexusName": "Modular Equipment",
@@ -198,6 +853,63 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 5836
+ },
+ "1e9a70c4-11f6-43cd-8cb9-44926f62d44e": {
+  "nexusId": 4044,
+  "nexusName": "P4 NPC and Outfit Inspired Dyes CHS",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.9,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 13,
+  "requires": [
+   {
+    "name": "P4 NPC and Outfit Inspired Dyes (Character Class and Outfit Dyes)",
+    "nexusId": 1318
+   }
+  ]
+ },
+ "af6809f6-2539-4f38-9af8-6f7b28652fb4": {
+  "nexusId": 5217,
+  "nexusName": "Rebalance - Cantrips",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1432
+ },
+ "d4fd8871-1593-4099-900e-b47fedc91578": {
+  "nexusId": 6183,
+  "nexusName": "Sit This One Out 2",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 939,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
+    "nexusId": 2172
+   },
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "notes": "required for 2.3.0.0+"
+   }
+  ]
+ },
+ "f912dac7-282f-4854-82c0-339bb38db9ee": {
+  "nexusId": 4483,
+  "nexusName": "Spells Enhanced - Compelled Duel",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.96,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 59
  },
  "ca47512e-5714-4e3f-b23d-6cc5bb05e615": {
   "nexusId": 850,
@@ -217,7 +929,50 @@
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 4793
+  "endorsements": 4793,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
+ "46d64b8d-41cb-424a-9960-1c19309271a0": {
+  "nexusId": 6188,
+  "nexusName": "Auto Lockpicking",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1615,
+  "requires": [
+   {
+    "name": "Volition Cabinet",
+    "nexusId": 7676,
+    "notes": "1.0.1+"
+   },
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "notes": "1.0.0+"
+   }
+  ]
+ },
+ "72c16261-72fb-4512-946b-858d553903bd": {
+  "nexusId": 3811,
+  "nexusName": "Beholder Fix",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 143
  },
  "621674a3-2366-a411-a746-0ff51b931d90": {
   "nexusId": 1416,
@@ -239,6 +994,16 @@
   "adult": false,
   "endorsements": 3253
  },
+ "a719abd8-3ede-4f72-b1db-7686be26c8e5": {
+  "nexusId": 3810,
+  "nexusName": "Big Dwarven Beards",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 882
+ },
  "71aabc2f-4e89-4eb1-bb36-d12a4b3a9452": {
   "nexusId": 2227,
   "nexusName": "Charisma Cleric",
@@ -249,6 +1014,28 @@
   "adult": false,
   "endorsements": 63
  },
+ "037c6df9-f376-4dc3-addf-afd1f8510e99": {
+  "nexusId": 4774,
+  "nexusName": "Companions - Old Shaders",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 1780,
+  "requires": [
+   {
+    "name": "Trips' Shader Pack",
+    "nexusId": 4752,
+    "notes": "Required"
+   },
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "Required"
+   }
+  ]
+ },
  "b1df86cd-56ac-446c-9c8e-7b80b3e7288a": {
   "nexusId": 1750,
   "nexusName": "Dark Urge Dice",
@@ -257,7 +1044,14 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 1938
+  "endorsements": 1938,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "621b50e9-9ffb-382a-6623-72819c260551": {
   "nexusId": 1339,
@@ -267,7 +1061,37 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 3222
+  "endorsements": 3222,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "As of recent patches this is needed"
+   }
+  ]
+ },
+ "3e3e23b2-c39c-4ef4-82e5-af5a67f49bf0": {
+  "nexusId": 5937,
+  "nexusName": "Drow Weaponry - Rapiers",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.97,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
+  "adult": false,
+  "endorsements": 1211,
+  "requires": [
+   {
+    "name": "Elven Weaponry - Smithing Kit",
+    "nexusId": 4549,
+    "uuid": "46528da0-6d44-4a16-9f14-feb1e30cbaa9",
+    "notes": "OPTIONAL. Require to add the Melee Caster passive to rapiers."
+   },
+   {
+    "name": "Elven Weaponry - Tutorial Chest",
+    "nexusId": 9029,
+    "notes": "OPTIONAL. Require to add  the items to the tutorial chest."
+   }
+  ]
  },
  "139c922a-7657-4514-b393-0f08e992c985": {
   "nexusId": 1394,
@@ -277,7 +1101,40 @@
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 8590
+  "endorsements": 8590,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
+ "dee6dde4-f9f5-456b-b7e3-5ac2eb87f87d": {
+  "nexusId": 2939,
+  "nexusName": "Ellian's heads",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 4371,
+  "requires": [
+   {
+    "name": "Unique Tav Custom Appearance",
+    "nexusId": 2754
+   }
+  ]
+ },
+ "76566d47-a265-4c9e-ae89-ea1b1917f74a": {
+  "nexusId": 6176,
+  "nexusName": "Proficiency Potions",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 305
  },
  "e6daee50-3c37-bf3c-9f42-ef727dc23cbb": {
   "nexusId": 1687,
@@ -287,7 +1144,15 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 471
+  "endorsements": 471,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Required if using multiple dice mods, always recommended."
+   }
+  ]
  },
  "0d77ef52-11ac-4031-8027-1a625834a16c": {
   "nexusId": 1658,
@@ -299,6 +1164,16 @@
   "adult": false,
   "endorsements": 1738
  },
+ "49f60f92-cde9-4621-aeae-7a5c9d412c03": {
+  "nexusId": 5317,
+  "nexusName": "Ghouls Custom Piercings",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 3302
+ },
  "1435a5c7-6993-4bae-af06-998b34d14406": {
   "nexusId": 1470,
   "nexusName": "Golden Death Dice",
@@ -307,7 +1182,29 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 4237
+  "endorsements": 4237,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Makes life easier"
+   },
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
+ },
+ "f0a59ad2-fb94-2e3d-bb7b-4c051b80257b": {
+  "nexusId": 3759,
+  "nexusName": "Graviturgy Magic Ita",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.9,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 7
  },
  "2c19252b-7c26-4c65-9881-dff98fda497a": {
   "nexusId": 1932,
@@ -327,7 +1224,51 @@
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 19662
+  "endorsements": 19662,
+  "requires": [
+   {
+    "name": "P4 Horn Makeup Lip and Tattoo Colours (Custom and Vanilla)",
+    "nexusId": 340,
+    "notes": "Recommended to get more horn colors"
+   }
+  ]
+ },
+ "6dff611f-9f2e-45b1-b43e-06b62753cff9": {
+  "nexusId": 3444,
+  "nexusName": "Boring Dyes",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.9,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 3337,
+  "requires": [
+   {
+    "name": "AV Item Shipment Framework (AV ISF)",
+    "nexusId": 8295,
+    "notes": "optional: to spawn dye bag directly to camp chest &lt;3"
+   }
+  ]
+ },
+ "410dabcc-2249-4e9c-b305-6fd50864494a": {
+  "nexusId": 2493,
+  "nexusName": "Improved Dimension Door",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 367
+ },
+ "a4632918-29e9-4a21-9f10-2e02e77a39fa": {
+  "nexusId": 5907,
+  "nexusName": "Indoct's Subtler Piercings",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 630
  },
  "8f178298-6297-466b-a863-afe2173a7014": {
   "nexusId": 831,
@@ -337,7 +1278,19 @@
   "nexusCategory": "Classes",
   "suggestedGroup": "Classes",
   "adult": false,
-  "endorsements": 1828
+  "endorsements": 1828,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Required for Invocation Selection scrollbar to appear"
+   },
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
  },
  "4270d77d-5448-d88d-4d2b-dd1649b9f9f4": {
   "nexusId": 2218,
@@ -347,7 +1300,37 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 1064
+  "endorsements": 1064,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
+ "5a82464f-4189-423a-a690-37463992f276": {
+  "nexusId": 3695,
+  "nexusName": "Jerinski's Heads for the Short Lads",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 676,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "For additional head slots in CC + other QOL"
+   },
+   {
+    "name": "Unique Tav Custom Appearance",
+    "nexusId": 2754,
+    "notes": "ONLY needed if using Unique Tav / Kaz Virtual Tav patch!"
+   }
+  ]
  },
  "48cc6be3-f1c4-4acb-9172-189f13b1d753": {
   "nexusId": 1475,
@@ -369,6 +1352,26 @@
   "adult": false,
   "endorsements": 4119
  },
+ "72ea866c-ff3b-42f0-92d1-f7567adb8d71": {
+  "nexusId": 2982,
+  "nexusName": "Long Hairs",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 2412
+ },
+ "38db15b2-1d77-45d8-ab2b-6aecf16e147f": {
+  "nexusId": 3964,
+  "nexusName": "Mashed Up Hairs",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 954
+ },
  "aa188042-8c27-d0c8-2d0b-e16f0412825b": {
   "nexusId": 194,
   "nexusName": "NPC Hairs for Tav",
@@ -389,6 +1392,38 @@
   "adult": false,
   "endorsements": 834
  },
+ "84b00ce8-1d55-441f-b86d-96cb757f1e08": {
+  "nexusId": 4821,
+  "nexusName": "Player and NPC - Old Shaders",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 2027,
+  "requires": [
+   {
+    "name": "Trips' Shader Pack",
+    "nexusId": 4752,
+    "notes": "Required"
+   },
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "Required"
+   }
+  ]
+ },
+ "ed7a4f8c-8211-322d-1d44-26158ba59f12": {
+  "nexusId": 2672,
+  "nexusName": "Pyramids Of Teleport",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 200
+ },
  "865d37c5-8c70-4614-b3ce-08df1cb904c4": {
   "nexusId": 1435,
   "nexusName": "Shibariwaluigi's NPC Hair Edits",
@@ -397,7 +1432,129 @@
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 2920
+  "endorsements": 2920,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   },
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
+ },
+ "0c8bb2e9-aa96-4de7-b793-a733d68ee6f0": {
+  "nexusId": 5899,
+  "nexusName": "Smart Autosaving",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1042,
+  "requires": [
+   {
+    "name": "Volition Cabinet",
+    "nexusId": 7676,
+    "notes": "1.0.1+"
+   },
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "notes": "1.0.0+"
+   }
+  ]
+ },
+ "06e7001e-c3ef-228a-1e9f-424cdf7e7ffb": {
+  "nexusId": 5307,
+  "nexusName": "Sword Dancer of Eilistraee",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 324,
+  "requires": [
+   {
+    "name": "Compatibility Framework",
+    "nexusId": 1933,
+    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "IUI asset is needed for class icons (may take a couple days to be updated)"
+   },
+   {
+    "name": "VFX Library by Shivero (Part 1)",
+    "nexusId": 3888,
+    "notes": "for VFX"
+   },
+   {
+    "name": "PF2e Spells",
+    "nexusId": 2460,
+    "notes": "for domain spells"
+   }
+  ]
+ },
+ "22a5106e-1ca0-4fd4-8814-18fad02e8d44": {
+  "nexusId": 5549,
+  "nexusName": "Tasha's Cauldron of Hairstyles",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 5103,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "mandatory"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "mandatory"
+   }
+  ]
+ },
+ "1ccb0216-5a79-4ce6-85e0-a144fc105b9f": {
+  "nexusId": 5549,
+  "nexusName": "Tasha's Cauldron of Hairstyles",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 5103,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "mandatory"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "mandatory"
+   }
+  ]
+ },
+ "a9efdc45-2c5c-4bda-8b2a-824bb7cb8afd": {
+  "nexusId": 3903,
+  "nexusName": "Tasha's Fighting Styles RAW",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 423
  },
  "558bd4c9-260a-40d2-add9-455d95aecb47": {
   "nexusId": 1345,
@@ -417,7 +1574,14 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 389
+  "endorsements": 389,
+  "requires": [
+   {
+    "name": "UnlockLevelCurve - Level 13-20 I PATCH 8",
+    "nexusId": 377,
+    "uuid": "a2ffd0e4-c407-8642-2611-c934ea0b0a77"
+   }
+  ]
  },
  "87d131a1-cf57-74b3-e113-30a226283be8": {
   "nexusId": 492,
@@ -427,7 +1591,33 @@
   "nexusCategory": "Visuals",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 3626
+  "endorsements": 3626,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
+ },
+ "08078959-f783-4d15-ad21-59425424aacd": {
+  "nexusId": 5039,
+  "nexusName": "Weeviljester's Transient Heads",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 300,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   },
+   {
+    "name": "Trips' Shader Pack",
+    "nexusId": 4752
+   }
+  ]
  },
  "7e0d68f6-376c-4fb0-99f7-58dd289bd633": {
   "nexusId": 506,
@@ -447,7 +1637,14 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 2005
+  "endorsements": 2005,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "44fa5e9e-4630-44d4-8fe1-0457fac7614c": {
   "nexusId": 1489,
@@ -457,7 +1654,14 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 2005
+  "endorsements": 2005,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "e222094b-b5f6-4173-b7a0-0b119f296b39": {
   "nexusId": 1269,
@@ -467,7 +1671,15 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 507
+  "endorsements": 507,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Heavily Recommended"
+   }
+  ]
  },
  "b98b64a0-4230-46a2-a5f1-3e7a204ba5b5": {
   "nexusId": 112,
@@ -477,7 +1689,13 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 1279
+  "endorsements": 1279,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
  },
  "10648c86-4837-498e-9a82-bc77f16e518c": {
   "nexusId": 1087,
@@ -507,7 +1725,25 @@
   "nexusCategory": "Armor",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 1393
+  "endorsements": 1393,
+  "requires": [
+   {
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "To obtain the earrings post-tutorial Nautiloid"
+   }
+  ]
+ },
+ "e2799f45-c543-4ac1-b755-6852231d85a7": {
+  "nexusId": 5026,
+  "nexusName": "Astarion Epilogue Outfit Tweak",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 249
  },
  "d829bc1a-b101-145f-f934-d2db3da051c6": {
   "nexusId": 1780,
@@ -547,7 +1783,23 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 428
+  "endorsements": 428,
+  "requires": [
+   {
+    "name": "Full Release Mod Fixer",
+    "nexusId": 550
+   }
+  ]
+ },
+ "b249c1ad-a806-4aaf-bb34-dc8e12908722": {
+  "nexusId": 3488,
+  "nexusName": "Bardic's Tumble",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 527
  },
  "cffcf7ef-0b83-4ece-ad06-12a32f93e982": {
   "nexusId": 744,
@@ -557,7 +1809,19 @@
   "nexusCategory": "Equipment",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 17798
+  "endorsements": 17798,
+  "requires": [
+   {
+    "name": "Basket Full of Equipment. NSFW version",
+    "nexusId": 97,
+    "notes": "This requires either the NSFW or SFW Basket Full of Equipment mod to be loaded first in the mod load order."
+   },
+   {
+    "name": "Basket Full of Equipment. SFW version",
+    "nexusId": 87,
+    "notes": "This requires either the NSFW or SFW Basket Full of Equipment mod to be loaded first in the mod load order."
+   }
+  ]
  },
  "df97a6f1-5be7-4830-84a5-692458fad780": {
   "nexusId": 1257,
@@ -567,7 +1831,90 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 252
+  "endorsements": 252,
+  "requires": [
+   {
+    "name": "Kekyll's Lab (Core Library)",
+    "nexusId": 8083,
+    "notes": "Required by version 2.1.2.3 and higher for some features to function correctly."
+   },
+   {
+    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
+    "nexusId": 2172,
+    "notes": "alternative download: https://github.com/Norbyte/bg3se/releases"
+   }
+  ]
+ },
+ "c08ac6d7-dfbd-fba6-c972-6c9ef5b9a644": {
+  "nexusId": 4907,
+  "nexusName": "Become a Vampire",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 459
+ },
+ "f72580cd-3702-405c-b107-e417101c23e6": {
+  "nexusId": 5644,
+  "nexusName": "Better Companion Cantrips",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 200,
+  "requires": [
+   {
+    "name": "All Cantrips for High and Half Elves",
+    "nexusId": 5776,
+    "notes": "Only required for the files changing their cantrips to Vicious Mockery"
+   }
+  ]
+ },
+ "a43f8334-d0cd-b6b9-4c9f-3914e868e6fa": {
+  "nexusId": 2417,
+  "nexusName": "Better Hotbar 2",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 10271,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "ImpUI Patch 8 Slim"
+   }
+  ]
+ },
+ "d46426de-eb60-3a44-db28-2c384af97b9f": {
+  "nexusId": 5866,
+  "nexusName": "Cambions",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.92,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 167,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   },
+   {
+    "name": "Vlad's Grimoire - Spell VFX Library",
+    "nexusId": 1820,
+    "notes": "Needed for the new Cambion spells"
+   },
+   {
+    "name": "VFX Library by Shivero (Part 1)",
+    "nexusId": 3888,
+    "notes": "Needed for the new Cambion spells"
+   }
+  ]
  },
  "38cffec8-6a4f-7cf4-309a-e8d7400ad275": {
   "nexusId": 2224,
@@ -577,7 +1924,23 @@
   "nexusCategory": "Miscellaneous",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 417
+  "endorsements": 417,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
+ },
+ "de23e93f-9b56-40e0-95bc-83a0e8c1570a": {
+  "nexusId": 3931,
+  "nexusName": "Class Specialization Feats",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1056
  },
  "dbb2ac98-0602-1fc5-2dff-c1f33fd93131": {
   "nexusId": 1487,
@@ -588,6 +1951,36 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 382
+ },
+ "beb361b4-cb75-4e75-8e54-c38fafeccc32": {
+  "nexusId": 3748,
+  "nexusName": "College of Spirits iTA",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 3
+ },
+ "0a30e2a1-5b7a-4066-85e7-118fc0374110": {
+  "nexusId": 5997,
+  "nexusName": "Companions' Packs",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 313
+ },
+ "1ce3f4e7-eb77-4654-af37-e199085b7e91": {
+  "nexusId": 5437,
+  "nexusName": "Concept Art Styled Withers",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 904
  },
  "d2eadd62-25be-4368-8d0d-16261ff5462c": {
   "nexusId": 1688,
@@ -609,6 +2002,60 @@
   "adult": false,
   "endorsements": 1028
  },
+ "5c0f4f2a-0531-4d30-ab84-d50410da0e8f": {
+  "nexusId": 5368,
+  "nexusName": "Damage Combos",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 181
+ },
+ "ef5d3237-69eb-4b98-ab7c-286c29e50364": {
+  "nexusId": 3619,
+  "nexusName": "D'anya's Dyes",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 346,
+  "requires": [
+   {
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "If you don't have this mod, you will only find these dyes in Dammon's inventory (I detest every other vendor having over-stuffed inventories)"
+   }
+  ]
+ },
+ "7cc76845-27b0-40d5-81c7-2fbb302a7c85": {
+  "nexusId": 3021,
+  "nexusName": "Darker Paper",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 358
+ },
+ "28d085ef-620b-a5bd-2602-d40a5b6435a7": {
+  "nexusId": 3305,
+  "nexusName": "Demon Hunter Class GER",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 21,
+  "requires": [
+   {
+    "name": "Demon Hunter Class - Slayer of the Illidari",
+    "nexusId": 3165
+   }
+  ]
+ },
  "cd0d6c80-566d-4c2d-8b5c-59eff1a0c139": {
   "nexusId": 1323,
   "nexusName": "Demon's Simple Dyes",
@@ -617,7 +2064,34 @@
   "nexusCategory": "Equipment",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 793
+  "endorsements": 793,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "No longer required for patch 7. Still required if playing on previous versions for any reason."
+   }
+  ]
+ },
+ "1ae31ed0-8377-4522-acbe-e152d83eee47": {
+  "nexusId": 3129,
+  "nexusName": "Detect Thoughts For All",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 311
+ },
+ "02872d50-56aa-4463-9829-9f8f69a6070f": {
+  "nexusId": 4608,
+  "nexusName": "Find Familiar 2",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.92,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 125
  },
  "3316f1e0-9ed2-4493-967e-80a3a826c72e": {
   "nexusId": 1339,
@@ -627,7 +2101,14 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 3222
+  "endorsements": 3222,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "As of recent patches this is needed"
+   }
+  ]
  },
  "56714631-494f-4da7-919f-4149b2d13d96": {
   "nexusId": 1629,
@@ -637,7 +2118,14 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 302
+  "endorsements": 302,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "5a5c33f8-8cf3-5e0f-5ff8-8ff1f706e941": {
   "nexusId": 1865,
@@ -647,7 +2135,14 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 452
+  "endorsements": 452,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "ae620a20-a88b-433e-9d1a-bdd18317cc79": {
   "nexusId": 802,
@@ -657,7 +2152,15 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 4858
+  "endorsements": 4858,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Recommended"
+   }
+  ]
  },
  "6cbb1532-ae74-47ce-a062-013568b9590b": {
   "nexusId": 1507,
@@ -667,7 +2170,31 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 145
+  "endorsements": 145,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
+ "239127c3-1efe-493d-85d3-8518c8d8819b": {
+  "nexusId": 3382,
+  "nexusName": "Dr. Kekyll's Grappling Framework",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 779,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
+    "nexusId": 2172,
+    "notes": "alternative download: https://github.com/Norbyte/bg3se/releases"
+   }
+  ]
  },
  "da754913-8b5f-49d3-aaf1-da230f8efd45": {
   "nexusId": 1840,
@@ -677,7 +2204,13 @@
   "nexusCategory": "Equipment",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 319
+  "endorsements": 319,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
  },
  "7e0341a5-3798-4a8d-b5da-983883572d25": {
   "nexusId": 1216,
@@ -687,7 +2220,30 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 291
+  "endorsements": 291,
+  "requires": [
+   {
+    "name": "Achievement Enabler",
+    "nexusId": 668,
+    "notes": "Highly Recommended"
+   },
+   {
+    "name": "Customizer's Compendium - NPC Options Unlocker",
+    "nexusId": 10,
+    "notes": "Highly Recommended (Alternative to ImprovedUI)"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Highly Recommended"
+   },
+   {
+    "name": "Full Release Mod Fixer (No DP Edition) - DELETED",
+    "nexusId": 1286,
+    "notes": "Required"
+   }
+  ]
  },
  "1c9f73f8-7513-49a9-8882-b796eab331f5": {
   "nexusId": 794,
@@ -698,6 +2254,28 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 3640
+ },
+ "99c96050-042a-4244-80c4-756f46b7b50e": {
+  "nexusId": 3816,
+  "nexusName": "Flower Power Dyes",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 774,
+  "requires": [
+   {
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "Recommended"
+   },
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
  },
  "430eb583-84b3-4a45-9f78-303a731b3ff8": {
   "nexusId": 813,
@@ -717,7 +2295,90 @@
   "nexusCategory": "Equipment",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 948
+  "endorsements": 948,
+  "requires": [
+   {
+    "name": "Ellian's trinkets",
+    "nexusId": 813,
+    "uuid": "430eb583-84b3-4a45-9f78-303a731b3ff8"
+   }
+  ]
+ },
+ "4408900e-5547-4dc6-89af-82f676dd286c": {
+  "nexusId": 4779,
+  "nexusName": "Ellie's Head",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 590
+ },
+ "37cfbe97-10fc-4476-8585-2bc0241e1c3f": {
+  "nexusId": 5458,
+  "nexusName": "Elven Weaponry - Wands",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
+  "adult": false,
+  "endorsements": 1168,
+  "requires": [
+   {
+    "name": "Elven Weaponry - Smithing Kit",
+    "nexusId": 4549,
+    "uuid": "46528da0-6d44-4a16-9f14-feb1e30cbaa9",
+    "notes": "OPTIONAL. Require if you want to customize the wands to use the ranged weapon slot."
+   },
+   {
+    "name": "Elven Weaponry - Tutorial Chest",
+    "nexusId": 9029,
+    "notes": "OPTIONAL. Require to add  the items to the tutorial chest."
+   }
+  ]
+ },
+ "b481b373-0229-4c86-8675-3208fcc50149": {
+  "nexusId": 4145,
+  "nexusName": "Elven Weaponry - Katana",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.97,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
+  "adult": false,
+  "endorsements": 1507,
+  "requires": [
+   {
+    "name": "Elven Weaponry - Smithing Kit",
+    "nexusId": 4549,
+    "uuid": "46528da0-6d44-4a16-9f14-feb1e30cbaa9",
+    "notes": "OPTIONAL. Require only if you want to change between Versatile and No Versatile versions."
+   },
+   {
+    "name": "Elven Weaponry - Tutorial Chest",
+    "nexusId": 9029,
+    "notes": "OPTIONAL. Require to add  the items to the tutorial chest."
+   }
+  ]
+ },
+ "46528da0-6d44-4a16-9f14-feb1e30cbaa9": {
+  "nexusId": 4549,
+  "nexusName": "Elven Weaponry - Smithing Kit",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 1497
+ },
+ "9e1cf23a-cb47-46bc-b53a-05a6e251fd23": {
+  "nexusId": 5391,
+  "nexusName": "Emerald Dice",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Dice",
+  "suggestedGroup": "Dice",
+  "adult": false,
+  "endorsements": 523
  },
  "b8efd00b-375b-5f97-e28f-c33d3ef7311a": {
   "nexusId": 2037,
@@ -729,6 +2390,16 @@
   "adult": false,
   "endorsements": 1796
  },
+ "ca3df55b-c576-41a1-87c4-3cf5f01922e4": {
+  "nexusId": 5623,
+  "nexusName": "Essential Feats",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 3250
+ },
  "6081d16a-3509-4006-9e01-e7c0636e6b4d": {
   "nexusId": 1218,
   "nexusName": "Expanded Bard Spells",
@@ -737,7 +2408,49 @@
   "nexusCategory": "Classes",
   "suggestedGroup": "Classes",
   "adult": false,
-  "endorsements": 216
+  "endorsements": 216,
+  "requires": [
+   {
+    "name": "Full Release Mod Fixer",
+    "nexusId": 550
+   },
+   {
+    "name": "Bard Fixes and Tweaks",
+    "nexusId": 866,
+    "uuid": "fce5c5da-cd96-4e39-a785-c6234d8915e4",
+    "notes": "Completely optional, but I'd use them together."
+   }
+  ]
+ },
+ "ba4fcd51-f603-4fcb-9575-311e82c0f12c": {
+  "nexusId": 4036,
+  "nexusName": "Extra Attack for Rogue",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 248
+ },
+ "c10a353d-d536-414e-a3ca-eebe90a57a54": {
+  "nexusId": 5475,
+  "nexusName": "Extra Attack Fix SE",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 464
+ },
+ "3ddd8e03-320e-4842-89cc-1cacdd6bd9e5": {
+  "nexusId": 5397,
+  "nexusName": "Fancy noble gear",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 811
  },
  "16f151f9-fddc-fb68-afec-11e9f368bc55": {
   "nexusId": 1658,
@@ -749,6 +2462,26 @@
   "adult": false,
   "endorsements": 1738
  },
+ "dc4041fd-1646-dec4-ea25-0573edd361e0": {
+  "nexusId": 5256,
+  "nexusName": "Fix Hair Accessory Color",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 159
+ },
+ "16d79d43-316e-4c0e-967d-e772fc76c516": {
+  "nexusId": 3098,
+  "nexusName": "Fly For All",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 405
+ },
  "79ec4f7a-1e7f-40bb-8ea2-cdc19282572e": {
   "nexusId": 1365,
   "nexusName": "Full Movement for Short Races",
@@ -757,7 +2490,13 @@
   "nexusCategory": "Races",
   "suggestedGroup": "Races",
   "adult": false,
-  "endorsements": 120
+  "endorsements": 120,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
  },
  "36e273cf-8d8e-44e8-90b9-184f56be1d48": {
   "nexusId": 1190,
@@ -767,7 +2506,30 @@
   "nexusCategory": "Visuals",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 88
+  "endorsements": 88,
+  "requires": [
+   {
+    "name": "Achievement Enabler",
+    "nexusId": 668,
+    "notes": "Highly Recommended"
+   },
+   {
+    "name": "Customizer's Compendium - NPC Options Unlocker",
+    "nexusId": 10,
+    "notes": "Highly Recommended (Alternative to ImprovedUI)"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Highly Recommended"
+   },
+   {
+    "name": "Full Release Mod Fixer (No DP Edition) - DELETED",
+    "nexusId": 1286,
+    "notes": "Required"
+   }
+  ]
  },
  "ee606255-e4a4-496a-8497-1ca38af7d3fb": {
   "nexusId": 1470,
@@ -777,7 +2539,19 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 4237
+  "endorsements": 4237,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Makes life easier"
+   },
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
  },
  "a3fc9aa6-c55d-4822-b4cf-1b00f001ee23": {
   "nexusId": 1804,
@@ -797,7 +2571,40 @@
   "nexusCategory": "Visuals",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 159
+  "endorsements": 159,
+  "requires": [
+   {
+    "name": "Achievement Enabler",
+    "nexusId": 668,
+    "notes": "Highly Recommended"
+   },
+   {
+    "name": "Customizer's Compendium - NPC Options Unlocker",
+    "nexusId": 10,
+    "notes": "Highly Recommended (Alternative to ImprovedUI)"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Highly Recommended"
+   },
+   {
+    "name": "Full Release Mod Fixer (No DP Edition) - DELETED",
+    "nexusId": 1286,
+    "notes": "Required"
+   }
+  ]
+ },
+ "87efe8e7-25ac-47ad-9287-26fd996742f7": {
+  "nexusId": 3185,
+  "nexusName": "Guidance For All",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 125
  },
  "84958e84-fd62-474f-bd1f-cbabc132c4b3": {
   "nexusId": 473,
@@ -807,7 +2614,74 @@
   "nexusCategory": "Spells",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 1531
+  "endorsements": 1531,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "notes": "For the configurable script extender options"
+   }
+  ]
+ },
+ "a2430297-f7ed-48dc-b234-f981f88caead": {
+  "nexusId": 5687,
+  "nexusName": "Increase Jump Distance",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 102,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
+    "nexusId": 2172
+   }
+  ]
+ },
+ "abb9ac66-8d4a-4edb-92ab-c18dab9d97bf": {
+  "nexusId": 5510,
+  "nexusName": "Increase Movement Speed",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 297,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
+    "nexusId": 2172,
+    "notes": "Preferably download from Github or BG3MM"
+   }
+  ]
+ },
+ "1b1a4c35-8ffc-4640-8a5a-f80ff8c6f841": {
+  "nexusId": 5907,
+  "nexusName": "Indoct's Subtler Piercings",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 630
+ },
+ "76ff2472-bd2d-f645-cd23-3cef07559f6f": {
+  "nexusId": 4706,
+  "nexusName": "Izzli's Pigments - A Dye Mod",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1886,
+  "requires": [
+   {
+    "name": "AV Item Shipment Framework (AV ISF)",
+    "nexusId": 8295,
+    "notes": "Not required, but definitely recommended!"
+   }
+  ]
  },
  "5df8e004-e430-4671-b80e-fa377196c056": {
   "nexusId": 1757,
@@ -819,6 +2693,135 @@
   "adult": false,
   "endorsements": 99
  },
+ "d78a776d-b03a-7ecd-6fd3-10e8b406f310": {
+  "nexusId": 5431,
+  "nexusName": "Lae'zel Alt Hair for Tav",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 302
+ },
+ "5243372c-e8e2-438d-8364-03916f6ab0eb": {
+  "nexusId": 2630,
+  "nexusName": "Lara Croft Hairstyle ( Ponytail )",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 885
+ },
+ "bad5fed1-f80a-42e5-a1c2-b5824a454afa": {
+  "nexusId": 5729,
+  "nexusName": "Learn Haste",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 57,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
+    "nexusId": 2172,
+    "notes": "Preferably download from Github or BG3MM"
+   }
+  ]
+ },
+ "28009e9f-59a1-43d8-8292-e181fcfefbe9": {
+  "nexusId": 5764,
+  "nexusName": "lokelani's lovely lads",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 888,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "You will end up in character creation with a bunch of naked men and not be able to do anything!! Make sure you have this"
+   },
+   {
+    "name": "P4 Patches",
+    "nexusId": 353,
+    "notes": "You needs this for speak with dead eye effects"
+   }
+  ]
+ },
+ "329abf1f-f699-4719-8457-71e4112ca9c5": {
+  "nexusId": 5870,
+  "nexusName": "Mass Unsummon",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 243
+ },
+ "cf9f520e-a609-4efc-80b8-8239e6dc71bc": {
+  "nexusId": 4120,
+  "nexusName": "Messy Hair",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1785,
+  "requires": [
+   {
+    "name": "Whispers of the Divine - Aasimar Definitive Edition",
+    "nexusId": 4159,
+    "notes": "Required for the patch."
+   }
+  ]
+ },
+ "decd63fa-4853-7e5a-cceb-f26fe5342dfd": {
+  "nexusId": 5674,
+  "nexusName": "Metamagic Compatibility Patch",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 171,
+  "requires": [
+   {
+    "name": "Death Soul - Sorcerer Subclass",
+    "nexusId": 5763,
+    "notes": "Optional"
+   },
+   {
+    "name": "DND REVAMP (Class and Feat Expansion Mod)",
+    "nexusId": 2865,
+    "notes": "Optional - DND Revamp Feats and Metamagic Only version supported"
+   },
+   {
+    "name": "Metamagic Extended",
+    "nexusId": 405,
+    "uuid": "da5d2ea8-51c2-42ba-8d0f-34b5b198a19e",
+    "notes": "Optional"
+   },
+   {
+    "name": "Shadow Magic - Sorcerer Subclass",
+    "nexusId": 9420,
+    "notes": "Optional"
+   },
+   {
+    "name": "Metamagic Enhanced",
+    "nexusId": 9543,
+    "notes": "Optional"
+   },
+   {
+    "name": "Divine Soul - Sorcerer",
+    "nexusId": 16468,
+    "notes": "Optional"
+   }
+  ]
+ },
  "5fcdeb9d-3185-4267-861a-d5040ba9f20b": {
   "nexusId": 1167,
   "nexusName": "Moonmaiden Armament",
@@ -827,7 +2830,40 @@
   "nexusCategory": "Equipment",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 280
+  "endorsements": 280,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
+ },
+ "138e27e8-4385-e758-ad41-7bf24b4d6f06": {
+  "nexusId": 3055,
+  "nexusName": "More Noblestalk",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 876,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "notes": "Optional. Only if you want to use MCM."
+   }
+  ]
+ },
+ "93c6116d-631a-cdc4-c0d3-37c568de4b76": {
+  "nexusId": 2786,
+  "nexusName": "Mystic Class",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1992
  },
  "575ea88b-b044-7ed7-4edc-0d9852bc614c": {
   "nexusId": 1153,
@@ -847,7 +2883,61 @@
   "nexusCategory": "Classes",
   "suggestedGroup": "Classes",
   "adult": false,
-  "endorsements": 601
+  "endorsements": 601,
+  "requires": [
+   {
+    "name": "Necromancy Reanimated (Formerly Animate Dead Plus Plus)",
+    "nexusId": 642,
+    "notes": "Not strictly required, but HIGHLY recommended"
+   }
+  ]
+ },
+ "cb378b32-01d8-42bc-8593-d621b5e08fff": {
+  "nexusId": 3495,
+  "nexusName": "Neo Eyes",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 421,
+  "requires": [
+   {
+    "name": "Astralities' Glow Eyes",
+    "nexusId": 4964,
+    "notes": "OPTIONAL - If you want the effect with the glow versions for all Races."
+   },
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   },
+   {
+    "name": "Eyes of the Beholder",
+    "nexusId": 315,
+    "notes": "OPTIONAL - If you want the effect with the glow versions for all Races."
+   }
+  ]
+ },
+ "9f421ddc-7fd7-4860-8252-7ca071802429": {
+  "nexusId": 4507,
+  "nexusName": "Neon's Assorted Hairs",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1295,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "7fa55404-7280-11ed-4c26-63116a161862": {
   "nexusId": 680,
@@ -859,6 +2949,101 @@
   "adult": false,
   "endorsements": 6533
  },
+ "2e9e87ed-0fb8-7f5b-7759-2a2a05a652c1": {
+  "nexusId": 5449,
+  "nexusName": "Oath of the Phoenix-CHS",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 17
+ },
+ "0c50deb2-303c-4e00-9bc7-a60a347d6593": {
+  "nexusId": 3940,
+  "nexusName": "Object Character Support",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1600
+ },
+ "c1cfc0d3-1dad-0000-0000-c01200000003": {
+  "nexusId": 5525,
+  "nexusName": "OneDnD Warlock - Magical Cunning",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 173,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Community Library",
+    "nexusId": 1333,
+    "notes": "Requires at least v2.2.3.0"
+   },
+   {
+    "name": "Compatibility Framework",
+    "nexusId": 1933,
+    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"
+   }
+  ]
+ },
+ "c1cfc0d3-1dad-0000-0000-c00200000002": {
+  "nexusId": 6197,
+  "nexusName": "OneDnD Barbarian - Short Rest Rage Recovery",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 195,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Community Library",
+    "nexusId": 1333,
+    "notes": "Requires at least v2.2.3.0"
+   },
+   {
+    "name": "Compatibility Framework",
+    "nexusId": 1933,
+    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"
+   }
+  ]
+ },
+ "bc112f05-f5d1-4b59-9a9f-fd8867616d03": {
+  "nexusId": 4107,
+  "nexusName": "Orin's True Bossfight",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 350
+ },
+ "cc869b59-a2b6-4ed0-a7c6-58801b7a5255": {
+  "nexusId": 3230,
+  "nexusName": "Orthon's Horns",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 511,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
  "ca790fc4-1f72-42d0-b3f8-3ffd4b83f45e": {
   "nexusId": 1563,
   "nexusName": "Overpowered Aylin and Isobel",
@@ -868,6 +3053,118 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 229
+ },
+ "06f797f9-e687-4bd3-8198-c5346dca2a87": {
+  "nexusId": 2981,
+  "nexusName": "P4 Dragonborn Scale Colours",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Races",
+  "suggestedGroup": "Races",
+  "adult": false,
+  "endorsements": 683
+ },
+ "f35632ab-e70c-4c67-9125-0fdbe41d9ea3": {
+  "nexusId": 3740,
+  "nexusName": "Paladin and Sorcerer Combined",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 128
+ },
+ "ddfb2dd0-4ac6-49be-afb4-83da54e0fef4": {
+  "nexusId": 4350,
+  "nexusName": "Priestess of Lolth",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 79,
+  "requires": [
+   {
+    "name": "Basket Full of Equipment. SFW version",
+    "nexusId": 87
+   }
+  ]
+ },
+ "67b6dbfc-53bc-4ae7-9737-b0118f5f87c7": {
+  "nexusId": 5590,
+  "nexusName": "Ranger's Leather Armor",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.92,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1702
+ },
+ "1934572f-4ac6-4fef-8c59-3f0594f24f4c": {
+  "nexusId": 4116,
+  "nexusName": "The Real Protecty Sparkswall",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 237
+ },
+ "c74fdb11-901c-4d0b-adec-1890c309ed10": {
+  "nexusId": 5148,
+  "nexusName": "Reaper of Souls",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 151
+ },
+ "a74a712b-094d-4941-8cc7-bb3a75bc39eb": {
+  "nexusId": 5846,
+  "nexusName": "Rebalance - Class Spells",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 971
+ },
+ "58e080fe-4a02-46c0-beba-5ef16c992197": {
+  "nexusId": 5755,
+  "nexusName": "Rebalance - Common Effects",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1003
+ },
+ "d4405ad7-a4b2-46a8-a397-774d1b549a37": {
+  "nexusId": 5712,
+  "nexusName": "Rebalance - Nerfs",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 614
+ },
+ "65f3ff35-a64b-47c6-8a79-5271bdfa35f5": {
+  "nexusId": 3087,
+  "nexusName": "Remodelled Frame Body",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": true,
+  "endorsements": 4670,
+  "requires": [
+   {
+    "name": "Divine Curse Framework",
+    "nexusId": 3681
+   }
+  ]
  },
  "1e60f514-6e1c-44b9-98a8-786abd946f8f": {
   "nexusId": 463,
@@ -887,7 +3184,14 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 1301
+  "endorsements": 1301,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "Needed"
+   }
+  ]
  },
  "d684f7d4-4533-403d-ae08-76df2f6a73e1": {
   "nexusId": 1338,
@@ -897,7 +3201,15 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 301
+  "endorsements": 301,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Heavily Recommended"
+   }
+  ]
  },
  "397b9bd9-a534-f4e7-4422-09cf8f83c85f": {
   "nexusId": 416,
@@ -919,6 +3231,123 @@
   "adult": false,
   "endorsements": 1958
  },
+ "b093bc44-ccf9-4eec-b5ec-e96a6f2940f9": {
+  "nexusId": 3276,
+  "nexusName": "Secret Scrolls 5e Spells GER",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 18,
+  "requires": [
+   {
+    "name": "Secret Scrolls for 5e Spells",
+    "nexusId": 2145
+   }
+  ]
+ },
+ "5feeed97-d8b8-044b-261a-e48f52497625": {
+  "nexusId": 6105,
+  "nexusName": "Selune Dice",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Dice",
+  "suggestedGroup": "Dice",
+  "adult": false,
+  "endorsements": 861,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
+ "e550e525-99ad-4184-944d-d804f19e3743": {
+  "nexusId": 5926,
+  "nexusName": "Short Flowery Hair",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 603,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
+ "bc3edb26-c957-4184-8e70-edaad46d46c9": {
+  "nexusId": 2483,
+  "nexusName": "Short Rest Sorcery",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 105,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
+ },
+ "1b969de6-19fe-4d2b-9c10-3eea5547f8fb": {
+  "nexusId": 4633,
+  "nexusName": "Simple Piercing Sets",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 508
+ },
+ "7206f566-2196-4960-a728-e3a5f22eb0eb": {
+  "nexusId": 3128,
+  "nexusName": "Speak With Animals For All",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 826
+ },
+ "bfb14a8b-0d5b-449c-8456-7c99620ca98a": {
+  "nexusId": 3127,
+  "nexusName": "Speak With Dead For All",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 523
+ },
+ "e1685622-eaaa-4cc5-b009-3670667a064a": {
+  "nexusId": 6099,
+  "nexusName": "Spiderbabes' Hairstyles",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 514,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   },
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
+ },
  "370839b8-b9f1-4a8e-b646-d00fade45d56": {
   "nexusId": 2214,
   "nexusName": "Stained Glass Dice",
@@ -927,7 +3356,14 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 982
+  "endorsements": 982,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "742aafba-180a-ee14-8aec-48fc007a7a7e": {
   "nexusId": 2214,
@@ -937,7 +3373,14 @@
   "nexusCategory": "Dice",
   "suggestedGroup": "Dice",
   "adult": false,
-  "endorsements": 982
+  "endorsements": 982,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "8e0ddefb-478e-4bad-a807-e0d50c3148fe": {
   "nexusId": 841,
@@ -949,6 +3392,62 @@
   "adult": false,
   "endorsements": 2266
  },
+ "1af5bb45-412a-1f20-8bcb-6d5b6094a98c": {
+  "nexusId": 5549,
+  "nexusName": "Tasha's Cauldron of Hairstyles",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 5103,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "mandatory"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "mandatory"
+   }
+  ]
+ },
+ "2a023bc0-c24b-37ad-31cc-f477e070a361": {
+  "nexusId": 5549,
+  "nexusName": "Tasha's Cauldron of Hairstyles",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 5103,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "mandatory"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "mandatory"
+   }
+  ]
+ },
+ "011d7668-c586-4104-8a14-89c46adcfc74": {
+  "nexusId": 3925,
+  "nexusName": "TC Dyes",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 2467
+ },
  "64e3f7e5-8157-e330-bf89-c97c52fd8894": {
   "nexusId": 2082,
   "nexusName": "Trade With Anyone",
@@ -959,6 +3458,50 @@
   "adult": false,
   "endorsements": 863
  },
+ "a970f777-0368-4803-a0d3-085b96e2d4fe": {
+  "nexusId": 5311,
+  "nexusName": "UA6 Invoke Duplicity",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 337,
+  "requires": [
+   {
+    "name": "Object Character Support",
+    "nexusId": 3940,
+    "uuid": "0c50deb2-303c-4e00-9bc7-a60a347d6593",
+    "notes": "Technically optional, but required for intended behaviour"
+   },
+   {
+    "name": "Database Cleaner",
+    "nexusId": 5612,
+    "uuid": "08e267cf-bf28-4e29-8711-8282ed017fcb",
+    "notes": "(Optional) Helps against gradual performance degradation from summons"
+   }
+  ]
+ },
+ "8ec86e0e-3b6b-4d7a-b62f-821c4f1c4bd5": {
+  "nexusId": 2650,
+  "nexusName": "Ultimate Cheat Spell Collection",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1945
+ },
+ "55a75377-54e0-42c7-b413-8cbb0c7f3a4d": {
+  "nexusId": 4359,
+  "nexusName": "Universal Max Stack",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 538
+ },
  "a2ffd0e4-c407-8642-2611-c934ea0b0a77": {
   "nexusId": 377,
   "nexusName": "UnlockLevelCurve - Level 13-20 I PATCH 8",
@@ -967,7 +3510,25 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 23892
+  "endorsements": 23892,
+  "requires": [
+   {
+    "name": "5e Spells",
+    "nexusId": 125,
+    "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+    "notes": "OPTIONAL MOD - Load Order: 1. 5eSpells,  2. UnlockLevelCurve,  3. UnlockLevelCurve_Patch_5eSpells"
+   }
+  ]
+ },
+ "bca0e000-cd50-4e76-987a-1808e9ece800": {
+  "nexusId": 5963,
+  "nexusName": "Valuable Gemstones",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 319
  },
  "03c1b9df-52a8-30fb-ef72-56b0ba56b641": {
   "nexusId": 1720,
@@ -979,6 +3540,16 @@
   "adult": true,
   "endorsements": 1476
  },
+ "f5e1e6e2-e4af-482f-ba39-01102cc3c888": {
+  "nexusId": 3338,
+  "nexusName": "Warlock Subclasses Combined",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 187
+ },
  "1606234f-48f1-f2ec-9a1a-b386a25d6d9d": {
   "nexusId": 1567,
   "nexusName": "Celestial Warlock",
@@ -987,7 +3558,85 @@
   "nexusCategory": "Classes",
   "suggestedGroup": "Classes",
   "adult": false,
-  "endorsements": 891
+  "endorsements": 891,
+  "requires": [
+   {
+    "name": "Compatibility Framework",
+    "nexusId": 1933,
+    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+    "notes": "Required for 1.3.0 Versions"
+   },
+   {
+    "name": "Baldur's Gate 3 Community Library",
+    "nexusId": 1333,
+    "notes": "Required for subclass framework"
+   }
+  ]
+ },
+ "7281177d-56f5-4c72-8e27-beb00cfea8ff": {
+  "nexusId": 3762,
+  "nexusName": "Weeviljester's Accessories",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 831,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   }
+  ]
+ },
+ "174f1cd4-3b0f-6c6d-2307-13d60f795b2a": {
+  "nexusId": 3829,
+  "nexusName": "Wielder Class",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 244,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "AND ImprovedUI Assets"
+   },
+   {
+    "name": "Vlad's Grimoire - Spell VFX Library",
+    "nexusId": 1820,
+    "notes": "AT LEAST VERSION 1.5 NEEDED!"
+   }
+  ]
+ },
+ "94a1ff35-e09a-0e6a-2956-d942dd316208": {
+  "nexusId": 3490,
+  "nexusName": "Witch Elf (Custom Subrace)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Races",
+  "suggestedGroup": "Races",
+  "adult": false,
+  "endorsements": 979
+ },
+ "2527857d-510f-4587-828f-40a82d4758f7": {
+  "nexusId": 3318,
+  "nexusName": "WoWDeathKnightClassGER",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.92,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 45,
+  "requires": [
+   {
+    "name": "Death Knight Class - Champion of the Lich King",
+    "nexusId": 1725
+   }
+  ]
  },
  "ada71997-5d8a-4614-8188-efd71d6037fb": {
   "nexusId": 1582,
@@ -997,6 +3646,66 @@
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 2010
+  "endorsements": 2010,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
+   },
+   {
+    "name": "Trips' Shader Pack",
+    "nexusId": 4752,
+    "notes": "Only needed for the version requiring this specifically"
+   }
+  ]
+ },
+ "adbc4f0e-4e88-4fe4-9030-5021d533823b": {
+  "nexusId": 4239,
+  "nexusName": "Yves Hair Gallery",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 5688,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
+ "7d6c9a73-729d-4ea5-a06e-73670efbdfce": {
+  "nexusId": 5357,
+  "nexusName": "Zip's Heads",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1718,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   },
+   {
+    "name": "Less Wrinkled Expression and Forehead for Face",
+    "nexusId": 1058,
+    "notes": "If you want less wrinkles on the heads"
+   },
+   {
+    "name": "Unique Tav Custom Appearance",
+    "nexusId": 2754,
+    "notes": "For Unique Tav patch"
+   },
+   {
+    "name": "Eyes of the Beholder",
+    "nexusId": 315,
+    "notes": "For EOTB patch"
+   }
+  ]
  }
 }
