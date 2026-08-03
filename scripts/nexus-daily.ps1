@@ -14,6 +14,7 @@ $log = Join-Path $env:TEMP 'volo-nexus-daily.log'
 
 git pull --rebase --quiet 2>&1 | Add-Content $log
 node scripts/crawl-nexus.mjs 2>&1 | Add-Content $log
+node scripts/crawl-requirements.mjs 2>&1 | Add-Content $log
 node scripts/enrich-from-nexus.mjs 2>&1 | Add-Content $log
 
 git add nexus 2>&1 | Add-Content $log
