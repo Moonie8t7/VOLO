@@ -37,11 +37,15 @@ const DAILY_BUFFER = 25;        // stop while this much quota remains
 const FLUSH_EVERY = 50;         // records between disk writes
 const DELAY_MS = 350;           // pause between requests
 
-// .env loader, deliberately tiny so no dependency is needed.
+// .env loader, deliberately tiny so no dependency is needed. Strips surrounding
+// quotes because pasted keys often arrive wrapped in them, and a quoted key
+// authenticates as nothing.
 try {
   for (const line of fs.readFileSync('.env', 'utf8').split(/\r?\n/)) {
     const m = line.match(/^([A-Z0-9_]+)\s*=\s*(.*)$/);
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim();
+    if (m && !process.env[m[1]]) {
+      process.env[m[1]] = m[2].trim().replace(/^["']|["']$/g, '');
+    }
   }
 } catch {}
 
