@@ -70,6 +70,27 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 let requestsMade = 0;
 let dailyRemaining = Infinity;
+let hourlyRemaining = Infinity;
+let hourlyReset = null;
+
+/** Header format is "2026-08-03 12:00:00 +0000". */
+function parseReset(value) {
+  if (!value) return null;
+  const t = Date.parse(value.replace(' ', 'T').replace(' +0000', 'Z'));
+  return Number.isNaN(t) ? null : t;
+}
+
+/** The hourly window is a pause, not a stop: sleep through it and carry on. */
+async function waitForHourlyWindow() {
+  const wait = hourlyReset
+    ? Math.max(hourlyReset - Date.now() + 30_000, 60_000)
+    : 10 * 60_000;
+  if (wait > 70 * 60_000) return false;
+  console.log(`hourly window spent, waiting ${Math.ceil(wait / 60_000)} minutes`);
+  await sleep(wait);
+  hourlyRemaining = Infinity;
+  return true;
+}
 
 /** One API call with quota tracking and one retry on throttle. */
 async function call(pathname) {
@@ -82,9 +103,12 @@ async function call(pathname) {
 
     const daily = res.headers.get('x-rl-daily-remaining');
     if (daily !== null) dailyRemaining = Number(daily);
+    const hourly = res.headers.get('x-rl-hourly-remaining');
+    if (hourly !== null) hourlyRemaining = Number(hourly);
+    hourlyReset = parseReset(res.headers.get('x-rl-hourly-reset')) ?? hourlyReset;
 
     if (res.status === 429) {
-      if (attempt === 0) { await sleep(65_000); continue; }
+      if (attempt === 0 && await waitForHourlyWindow()) continue;
       return { status: 429 };
     }
     if (res.ok) return { status: 200, body: await res.json() };
@@ -147,6 +171,10 @@ const startedAt = Date.now();
 while (state.nextId <= state.maxId) {
   if (requestsMade >= MAX_REQUESTS) { console.log('request budget reached'); break; }
   if (dailyRemaining <= DAILY_BUFFER) { console.log(`daily quota nearly spent (${dailyRemaining} left), stopping`); break; }
+  if (hourlyRemaining <= 10 && !(await waitForHourlyWindow())) {
+    console.log('hourly window unclear, stopping for this run');
+    break;
+  }
 
   const id = state.nextId;
   const res = await call(`/games/${GAME}/mods/${id}.json`);
