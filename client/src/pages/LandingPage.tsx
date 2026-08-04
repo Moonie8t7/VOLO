@@ -50,14 +50,19 @@ export default function LandingPage() {
         </h2>
         <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
           <p>
-            Export your order from BG3 Mod Manager and drop it in. VOLO reads the
-            full export, the short one, CSV, or a plain list of names.
+            Export your order from BG3 Mod Manager and drop it in, or use the
+            game's own modsettings.lsx. VOLO reads the full export, the short
+            one, CSV, or a plain list of names. Where the mods came from does
+            not matter: Nexus Mods, the official in-game mod manager, or
+            anywhere else.
           </p>
           <p>
             It sorts your mods by category, keeps declared dependencies ahead of
             the mods that need them, and otherwise moves as little as possible.
-            Every mod shows the reason it sits where it does. Mods that have
-            never appeared in a working order get flagged rather than guessed at.
+            Every mod shows the reason it sits where it does. Mods the community
+            has not placed yet borrow the category from their listing on Nexus
+            Mods or mod.io, clearly labelled as such, and anything still unknown
+            is flagged rather than guessed at.
           </p>
           <p>
             Export the result and import it straight back into BG3 Mod Manager.
@@ -76,7 +81,11 @@ export default function LandingPage() {
           <p>
             The masterlist currently knows
             {modCount ? ` ${modCount.toLocaleString()} mods` : " thousands of mods"}
-            {patch ? `, calibrated against BG3 ${patch}` : ""}. All of it is on{" "}
+            {patch ? `, calibrated against BG3 ${patch}` : ""}. Alongside it sit
+            reference catalogues of every published BG3 mod on Nexus Mods and on
+            mod.io, the platform behind the official in-game mod manager, so even
+            a mod nobody has submitted yet can be placed from its own listing.
+            All of it is on{" "}
             <a
               href="https://github.com/Moonie8t7/VOLO"
               target="_blank"
@@ -135,6 +144,20 @@ export default function LandingPage() {
             <AccordionContent className="text-muted-foreground">
               No. Submitting a load order uses GitHub, so that needs a GitHub
               account, but sorting does not.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="sources" className="border-ornate/20">
+            <AccordionTrigger className="text-left font-semibold">
+              Does it matter where my mods are from?
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+              No. VOLO sorts the load order file, and a pak is a pak whether it
+              came from Nexus Mods, the official in-game mod manager at
+              baldursgate3.game (which runs on mod.io), or anywhere else. VOLO
+              also keeps reference catalogues of both platforms, so a mod the
+              community has not placed yet can still be categorised from its
+              own listing.
             </AccordionContent>
           </AccordionItem>
 
