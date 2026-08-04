@@ -7,7 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useStore } from '@/lib/store';
 
-const MASTERLIST_REPO = 'https://github.com/Moonie8t7/VOLO';
+// Straight to the submission form. The repo root strands people in folder
+// listings; .github/ISSUE_TEMPLATE is GitHub's fixed name and unrenamable.
+const SUBMIT_URL =
+  'https://github.com/Moonie8t7/VOLO/issues/new?template=submit-load-order.yml';
 const PAGE_SIZE = 60;
 
 export default function MasterlistPage() {
@@ -47,10 +50,10 @@ export default function MasterlistPage() {
                 : 'Loading'}
             </p>
           </div>
-          <a href={MASTERLIST_REPO} target="_blank" rel="noreferrer">
+          <a href={SUBMIT_URL} target="_blank" rel="noreferrer">
             <Button variant="outline">
               <GitPullRequest className="mr-2 h-4 w-4" />
-              Contribute
+              Submit a load order
               <ExternalLink className="ml-2 h-3 w-3" />
             </Button>
           </a>
