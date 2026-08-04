@@ -65,13 +65,28 @@ for (const [group, code] of Object.entries(GROUP_TO_CODE)) {
   byGroup[group] = { uuid: hit.uuid, name: hit.name };
 }
 
+/**
+ * The whole taxonomy in Astra's own sequence, not just one divider per group.
+ * The sub-dividers are the point: they distinguish a Warlock subclass from a
+ * Wizard one, a library from the patcher that must follow it, and they tell a
+ * player where to put a mod rather than merely what kind of mod it is.
+ */
+const all = data.separators
+  .map(s => {
+    const m = s.name.match(/([0-9]+(?:.[0-9]+)?)/);
+    return m ? { num: parseFloat(m[1]), uuid: s.uuid, name: s.name } : null;
+  })
+  .filter(Boolean)
+  .sort((a, b) => a.num - b.num);
+
 const out = {
   credit: data.credit,
   creditUrl: data.creditUrl,
   uuids: data.separators.map(s => s.uuid),
   names: Object.fromEntries(data.separators.map(s => [s.uuid, s.name])),
+  all,
   byGroup,
 };
 
 fs.writeFileSync(TARGET, JSON.stringify(out, null, 1) + '\n');
-console.log(`wrote ${TARGET}: ${out.uuids.length} dividers, ${Object.keys(byGroup).length} group mappings`);
+console.log(`wrote ${TARGET}: ${out.uuids.length} dividers (${all.length} numbered), ${Object.keys(byGroup).length} group mappings`);
