@@ -216,6 +216,45 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// TSV export fixture, modelled on a real BG3MM "export to file" TSV: engine
+// modules appear as rows, there is no UUID column, and dependencies are one
+// comma-separated string of names.
+{
+  const tsv = [
+    'Index	Name	Author	FileName	Tags	Dependencies	URL',
+    '0	GustavX		GustavX_cb555efe.pak		GustavDev	',
+    '1	HonourX		HonourX_767d0062.pak		GustavX, Honour	',
+    "2	Mystra's Spells	randomkilla	test_4b516620.pak		GustavDev, GustavX	",
+    "3	Mystra's Scrolls	randomkilla	mystrasscrolls_1c1568b8.pak		DiceSet_01, MainUI, ModBrowser, GustavDev, Mystra's Spells	",
+  ].join('\n');
+  const parsed = parseLoadOrder(tsv, 'export.tsv');
+  console.log('');
+  console.log('tsv fixture');
+  const names = parsed.mods.map(m => m.name);
+  if (parsed.mods.length === 2 && !names.includes('GustavX') && !names.includes('HonourX')) {
+    console.log('  ok    engine modules dropped from the list');
+  } else {
+    failures++;
+    console.log('  FAIL  expected 2 mods without engine modules, got ' + JSON.stringify(names));
+  }
+  const scrolls = parsed.mods.find(m => m.name === "Mystra's Scrolls");
+  const depNames = (scrolls?.dependencies ?? []).map(d => d.name);
+  if (depNames.length === 1 && depNames[0] === "Mystra's Spells") {
+    console.log('  ok    string dependencies parsed, engine names filtered');
+  } else {
+    failures++;
+    console.log('  FAIL  dependencies wrong: ' + JSON.stringify(depNames));
+  }
+  const result = sortLoadOrder(parsed.mods, masterlist);
+  const order = result.mods.map(m => m.name);
+  if (order.indexOf("Mystra's Spells") < order.indexOf("Mystra's Scrolls")) {
+    console.log('  ok    name-only dependency creates an ordering edge');
+  } else {
+    failures++;
+    console.log('  FAIL  dependency edge not honoured: ' + JSON.stringify(order));
+  }
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);
