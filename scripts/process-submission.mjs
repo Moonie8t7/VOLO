@@ -208,6 +208,23 @@ const gate = {
         : `agreement fell ${Math.abs(delta)} points`,
 };
 
+/**
+ * A broken order is worth more than a caution counter: read against the
+ * working orders it usually says where it disagrees with orders that run.
+ * That diagnosis is what the reviewer and the submitter actually need.
+ */
+let diagnosis = '';
+if (!working) {
+  try {
+    diagnosis = execSync(
+      `node scripts/diagnose-order.mjs ${JSON.stringify(path.join(CORPUS, filename))}`,
+      { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 },
+    );
+  } catch (err) {
+    diagnosis = `Diagnosis could not be produced: ${err.message.split('\n')[0]}`;
+  }
+}
+
 const afterList = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 const newMods = afterList.plugins.filter(p => !knownBefore.has(p.uuid));
 const newUnsorted = newMods.filter(p => p.group === 'unsorted');
@@ -244,6 +261,7 @@ finish(true, [
   summary.trim(),
   '```',
   '',
+  ...(diagnosis ? [diagnosis.trim(), ''] : []),
   newMods.length
     ? '### New mods\n\n' + newMods.slice(0, 30).map(p => `- ${p.name} (${p.group})`).join('\n') +
       (newMods.length > 30 ? `\n- and ${newMods.length - 30} more` : '')
