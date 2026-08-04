@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import { Database, Search, GitPullRequest, ExternalLink } from 'lucide-react';
+import { Link } from 'wouter';
+import { Database, Search, GitPullRequest } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -7,10 +8,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useStore } from '@/lib/store';
 
-// Straight to the submission form. The repo root strands people in folder
-// listings; .github/ISSUE_TEMPLATE is GitHub's fixed name and unrenamable.
-const SUBMIT_URL =
-  'https://github.com/Moonie8t7/VOLO/issues/new?template=submit-load-order.yml';
 const PAGE_SIZE = 60;
 
 export default function MasterlistPage() {
@@ -50,13 +47,12 @@ export default function MasterlistPage() {
                 : 'Loading'}
             </p>
           </div>
-          <a href={SUBMIT_URL} target="_blank" rel="noreferrer">
+          <Link href="/export">
             <Button variant="outline">
               <GitPullRequest className="mr-2 h-4 w-4" />
               Submit a load order
-              <ExternalLink className="ml-2 h-3 w-3" />
             </Button>
-          </a>
+          </Link>
         </header>
 
         {masterlistError && (
