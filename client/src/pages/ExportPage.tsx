@@ -166,6 +166,12 @@ export default function ExportPage() {
               </Button>
             </div>
 
+            <p className="text-xs text-muted-foreground font-body">
+              The save dialog makes this look like a download, but the file is
+              built inside this page and written straight to your disk. Nothing
+              is fetched from a server and your list is not sent to one.
+            </p>
+
             <div>
               <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Preview</p>
               <pre className="max-h-72 overflow-auto rounded border border-border bg-card/50 p-4 text-xs font-mono">
