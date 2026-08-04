@@ -29,7 +29,20 @@ import path from 'path';
 import crypto from 'crypto';
 
 const CORPUS_DIR = 'Load Orders - Public Submitted';
-const OUT_DIR = 'masterlist';
+
+/**
+ * `--out <dir>` writes elsewhere and `--exclude <file>` leaves one order out,
+ * so a masterlist can be built that has never seen a given order. That is what
+ * makes honest held-out evaluation possible: scoring against orders the
+ * masterlist was built from measures memory, not generalisation.
+ */
+const argOf = (name, fallback) => {
+  const i = process.argv.indexOf(`--${name}`);
+  return i !== -1 && process.argv[i + 1] ? process.argv[i + 1] : fallback;
+};
+const OUT_DIR = argOf('out', 'masterlist');
+const EXCLUDE = argOf('exclude', null);
+fs.mkdirSync(OUT_DIR, { recursive: true });
 
 // Base-game data packages. They appear in Dependencies but are not mods.
 const ENGINE_MASTERS = new Set([
@@ -347,6 +360,7 @@ const skipped = [];
 const seen = new Set();
 
 for (const file of fs.readdirSync(CORPUS_DIR).sort()) {
+  if (EXCLUDE && file === EXCLUDE) { skipped.push([file, 'held out']); continue; }
   const entries = readOrder(file);
   if (!entries || entries.length < 5) { skipped.push([file, 'not a load order']); continue; }
   const fp = crypto.createHash('md5')

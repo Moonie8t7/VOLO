@@ -6,13 +6,10 @@
  * as pull requests against the masterlist repo.
  */
 
-import type { Masterlist, ExternalCategories } from './types';
+import type { Masterlist } from './types';
 
 /** Bundled copy, so the app works on first paint and when GitHub is unreachable. */
 const LOCAL_URL = '/bg3-masterlist.json';
-
-/** Name-to-group map from the Nexus and mod.io catalogues, for mods the masterlist has never seen. */
-const EXTERNAL_URL = '/external-categories.json';
 
 /**
  * The masterlist as it stands on main, which runs ahead of whatever shipped with
@@ -88,38 +85,6 @@ export async function loadMasterlist(): Promise<Masterlist> {
   } finally {
     inflight = null;
   }
-}
-
-let externalCache: ExternalCategories | null = null;
-let externalInflight: Promise<ExternalCategories | null> | null = null;
-
-/**
- * Loads the external category map. Never rejects: sorting works without it,
- * this only improves categorisation of mods the masterlist has never seen.
- */
-export async function loadExternalCategories(): Promise<ExternalCategories | null> {
-  if (externalCache) return externalCache;
-  if (externalInflight) return externalInflight;
-
-  externalInflight = (async () => {
-    try {
-      const res = await fetch(EXTERNAL_URL, { signal: AbortSignal.timeout(15_000) });
-      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-      const data = (await res.json()) as ExternalCategories;
-      if (!Array.isArray(data?.groups) || typeof data?.nexus !== 'object') {
-        throw new Error('Malformed category map.');
-      }
-      externalCache = data;
-      return data;
-    } catch (err) {
-      console.warn('[external-categories] unavailable:', err);
-      return null;
-    } finally {
-      externalInflight = null;
-    }
-  })();
-
-  return externalInflight;
 }
 
 /** Semver-ish comparison. Returns >0 if a is newer. */
