@@ -94,6 +94,18 @@ const MODIO_TAG_TO_GROUP = [
   ['Accessibility', 'Utilities'],
 ];
 
+/**
+ * Pak names that differ from the current listing name, usually because the
+ * author renamed the listing after release. Alias -> the listing name whose
+ * category applies. Each entry should say why it exists.
+ */
+const LISTING_ALIASES = [
+  // Renamed to "Origin Feats" on mod.io (slug origin-feats, shown as
+  // "Initiate Feats - Outdated" in the catalogue); installed paks still
+  // carry the original name.
+  ['Initiate Feats', 'Initiate Feats - Outdated'],
+];
+
 const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
 const readJson = (f) => { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return null; } };
 
@@ -158,6 +170,22 @@ const modioAll = modioCatalog
 const modioNames = {};
 for (const [key, idx] of Object.entries(modioAll)) {
   if (nexusNames[key] === undefined) modioNames[key] = idx;
+}
+
+let aliased = 0;
+for (const [alias, listing] of LISTING_ALIASES) {
+  const aliasKey = norm(alias);
+  const listingKey = norm(listing);
+  if (nexusNames[aliasKey] !== undefined || modioNames[aliasKey] !== undefined) continue;
+  if (nexusNames[listingKey] !== undefined) {
+    nexusNames[aliasKey] = nexusNames[listingKey];
+    aliased++;
+  } else if (modioAll[listingKey] !== undefined) {
+    modioNames[aliasKey] = modioAll[listingKey];
+    aliased++;
+  } else {
+    console.warn(`alias target not in any catalogue: "${listing}"`);
+  }
 }
 
 const out = {
