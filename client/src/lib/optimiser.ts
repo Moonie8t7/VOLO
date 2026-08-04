@@ -105,12 +105,20 @@ export function sortLoadOrder(
   const group = new Map<string, GroupName>();
   const groupSource = new Map<string, Placement['groupSource']>();
   const confidence = new Map<string, number>();
+  const resolvedUuid = new Map<string, string>();
   let known = 0;
 
   for (const mod of mods) {
     const entry =
       byUuid.get(mod.uuid) ??
       byName.get(mod.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
+
+    // Imports without a UUID column get synthetic name: keys. When the name
+    // matches a masterlist entry that knows the real pak UUID, recover it so
+    // the export can round-trip into BG3MM.
+    if (entry?.uuid && mod.uuid.startsWith('name:')) {
+      resolvedUuid.set(mod.uuid, entry.uuid);
+    }
 
     if (entry && entry.group !== DEFAULT_GROUP) {
       group.set(mod.uuid, entry.group);
@@ -290,6 +298,7 @@ export function sortLoadOrder(
     if (position !== mod.originalIndex) moved++;
     placements.set(mod.uuid, {
       uuid: mod.uuid,
+      resolvedUuid: resolvedUuid.get(mod.uuid),
       position,
       group: g,
       groupSource: src,

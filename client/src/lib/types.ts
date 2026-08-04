@@ -87,6 +87,12 @@ export interface ExternalCategories {
 /** Why a mod ended up where it did. LOOT's transparency principle. */
 export interface Placement {
   uuid: string;
+  /**
+   * Real pak UUID recovered from the masterlist when the import had none
+   * (TSV and plain-text exports carry no UUID column). Lets the export
+   * round-trip into BG3MM, which matches entries by UUID.
+   */
+  resolvedUuid?: string;
   position: number;
   group: GroupName;
   /** How we decided the group. */

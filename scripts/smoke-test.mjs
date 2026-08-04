@@ -226,16 +226,17 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     '1	HonourX		HonourX_767d0062.pak		GustavX, Honour	',
     "2	Mystra's Spells	randomkilla	test_4b516620.pak		GustavDev, GustavX	",
     "3	Mystra's Scrolls	randomkilla	mystrasscrolls_1c1568b8.pak		DiceSet_01, MainUI, ModBrowser, GustavDev, Mystra's Spells	",
+    '4	ImpUI (ImprovedUI)	bibsan	impui.pak		MainUI	',
   ].join('\n');
   const parsed = parseLoadOrder(tsv, 'export.tsv');
   console.log('');
   console.log('tsv fixture');
   const names = parsed.mods.map(m => m.name);
-  if (parsed.mods.length === 2 && !names.includes('GustavX') && !names.includes('HonourX')) {
+  if (parsed.mods.length === 3 && !names.includes('GustavX') && !names.includes('HonourX')) {
     console.log('  ok    engine modules dropped from the list');
   } else {
     failures++;
-    console.log('  FAIL  expected 2 mods without engine modules, got ' + JSON.stringify(names));
+    console.log('  FAIL  expected 3 mods without engine modules, got ' + JSON.stringify(names));
   }
   const scrolls = parsed.mods.find(m => m.name === "Mystra's Scrolls");
   const depNames = (scrolls?.dependencies ?? []).map(d => d.name);
@@ -252,6 +253,23 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   } else {
     failures++;
     console.log('  FAIL  dependency edge not honoured: ' + JSON.stringify(order));
+  }
+
+  // UUID-less imports should round-trip: the masterlist knows ImpUI's real
+  // pak UUID, so the BG3MM export must carry it rather than an empty string.
+  const exported = JSON.parse(exportOrder(result, 'bg3mm'));
+  const impui = exported.Order.find(e => e.Name === 'ImpUI (ImprovedUI)');
+  if (impui?.UUID === '26922ba9-6018-5252-075d-7ff2ba6ed879') {
+    console.log('  ok    masterlist recovers real UUIDs for UUID-less imports');
+  } else {
+    failures++;
+    console.log('  FAIL  ImpUI UUID not recovered, got ' + JSON.stringify(impui));
+  }
+  if (exported.Order.every(e => !e.UUID.startsWith('name:'))) {
+    console.log('  ok    no synthetic keys leak into the export');
+  } else {
+    failures++;
+    console.log('  FAIL  synthetic name: keys leaked into the export');
   }
 }
 

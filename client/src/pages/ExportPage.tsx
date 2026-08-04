@@ -67,6 +67,12 @@ export default function ExportPage() {
   const spec = EXPORT_FORMATS.find(f => f.id === format)!;
   const content = exportOrder(result, format, { insertDividers: insertDividers && format === 'bg3mm' });
 
+  // Imports without a UUID column (TSV, plain text) leave gaps BG3MM cannot
+  // match. The masterlist recovers many; count what is still missing.
+  const missingUuids = result.mods.filter(
+    m => m.uuid.startsWith('name:') && !result.placements.get(m.uuid)?.resolvedUuid,
+  ).length;
+
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(content);
@@ -115,6 +121,18 @@ export default function ExportPage() {
                 </button>
               ))}
             </div>
+
+            {format === 'bg3mm' && missingUuids > 0 && (
+              <Alert className="border-destructive/40 bg-destructive/10">
+                <AlertDescription className="font-body text-sm">
+                  Your import had no UUIDs, and {missingUuids}{' '}
+                  {missingUuids === 1 ? 'mod is' : 'mods are'} still missing one
+                  after matching against the masterlist. BG3MM pairs entries
+                  with installed mods by UUID, so it may not reorder those.
+                  Exporting from BG3MM as JSON instead of TSV avoids this.
+                </AlertDescription>
+              </Alert>
+            )}
 
             {format === 'bg3mm' && (
               <div className="border border-border/40 bg-black/25 p-4 space-y-2">
