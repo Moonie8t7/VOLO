@@ -18,15 +18,30 @@ export interface ExportOptions {
   insertDividers?: boolean;
 }
 
-export type ExportFormat = 'bg3mm' | 'json' | 'csv' | 'txt' | 'markdown';
+export type ExportFormat = 'bg3mm' | 'modsettings' | 'json' | 'csv' | 'txt' | 'markdown';
 
 export const EXPORT_FORMATS: { id: ExportFormat; label: string; hint: string; ext: string }[] = [
   { id: 'bg3mm', label: 'BG3 Mod Manager', hint: 'Import straight back into BG3MM', ext: 'json' },
+  { id: 'modsettings', label: 'Game modsettings.lsx', hint: "Replace the game's own load order file", ext: 'lsx' },
   { id: 'json', label: 'JSON (full)', hint: 'Everything VOLO knows, for tools', ext: 'json' },
   { id: 'csv', label: 'CSV', hint: 'Spreadsheets', ext: 'csv' },
   { id: 'txt', label: 'Plain text', hint: 'Readable list', ext: 'txt' },
   { id: 'markdown', label: 'Markdown', hint: 'Paste into Reddit or Discord', ext: 'md' },
 ];
+
+/**
+ * The base-game modules every Patch 8 modsettings.lsx lists before the mods.
+ * Values taken verbatim from a real Patch 8 file; the game requires them and
+ * they never appear in VOLO's mod list because the parser strips them.
+ */
+const ENGINE_PREAMBLE = [
+  { folder: 'GustavDev', name: 'GustavDev', uuid: '28ac9ce2-2aba-8cda-b3b5-6e922f71b6b8', version64: '145242591228395316' },
+  { folder: 'GustavX', name: 'GustavX', uuid: 'cb555efe-2d9e-131f-8195-a89329d218ea', version64: '145241946983300916' },
+  { folder: 'HonourX', name: 'HonourX', uuid: '767d0062-d82c-279c-e16b-dfee7fe94cdd', version64: '36028797026107188' },
+];
+
+const escapeXml = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const escapeCsv = (v: string) => (/[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
 
@@ -58,6 +73,58 @@ export function exportOrder(result: SortResult, format: ExportFormat, options: E
         entries.push({ UUID: realUuid(m), Name: m.name });
       }
       return JSON.stringify({ Order: entries }, null, 2);
+    }
+
+    case 'modsettings': {
+      // Mirrors the structure the game writes, attribute order included.
+      // Mods without a UUID cannot be represented and are left out; the UI
+      // counts them so the user is not surprised.
+      const shortDesc = (e: {
+        folder: string; name: string; uuid: string;
+        md5?: string; publishHandle?: string; version64?: string;
+      }) => [
+        '            <node id="ModuleShortDesc">',
+        `              <attribute id="Folder" type="LSString" value="${escapeXml(e.folder)}" />`,
+        `              <attribute id="MD5" type="LSString" value="${escapeXml(e.md5 ?? '')}" />`,
+        `              <attribute id="Name" type="LSString" value="${escapeXml(e.name)}" />`,
+        `              <attribute id="PublishHandle" type="uint64" value="${e.publishHandle ?? '0'}" />`,
+        `              <attribute id="UUID" type="guid" value="${e.uuid}" />`,
+        `              <attribute id="Version64" type="int64" value="${e.version64 ?? '36028797018963968'}" />`,
+        '            </node>',
+      ].join('\n');
+
+      const nodes = ENGINE_PREAMBLE.map(shortDesc);
+      for (const m of mods) {
+        const uuid = realUuid(m);
+        if (!uuid) continue;
+        nodes.push(shortDesc({
+          folder: m.folder ?? m.name,
+          name: m.name,
+          uuid,
+          md5: m.md5,
+          publishHandle: m.publishHandle,
+          version64: m.version64,
+        }));
+      }
+
+      return [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<save>',
+        '  <version major="4" minor="7" revision="1" build="3" />',
+        '  <region id="ModuleSettings">',
+        '    <node id="root">',
+        '      <children>',
+        '        <node id="Mods">',
+        '          <children>',
+        ...nodes,
+        '          </children>',
+        '        </node>',
+        '      </children>',
+        '    </node>',
+        '  </region>',
+        '</save>',
+        '',
+      ].join('\n');
     }
 
     case 'json':

@@ -13,6 +13,7 @@ const MIME: Record<string, string> = {
   csv: 'text/csv',
   txt: 'text/plain',
   md: 'text/markdown',
+  lsx: 'application/xml',
 };
 
 /**
@@ -122,14 +123,38 @@ export default function ExportPage() {
               ))}
             </div>
 
-            {format === 'bg3mm' && missingUuids > 0 && (
+            {(format === 'bg3mm' || format === 'modsettings') && missingUuids > 0 && (
               <Alert className="border-destructive/40 bg-destructive/10">
                 <AlertDescription className="font-body text-sm">
                   Your import had no UUIDs, and {missingUuids}{' '}
                   {missingUuids === 1 ? 'mod is' : 'mods are'} still missing one
-                  after matching against the masterlist. BG3MM pairs entries
-                  with installed mods by UUID, so it may not reorder those.
-                  Exporting from BG3MM as JSON instead of TSV avoids this.
+                  after matching against the masterlist.{' '}
+                  {format === 'modsettings'
+                    ? 'A modsettings.lsx cannot represent them, so they are left out of this file.'
+                    : 'BG3MM pairs entries with installed mods by UUID, so it may not reorder those.'}{' '}
+                  Exporting from BG3MM as JSON, or importing the game's own
+                  modsettings.lsx, avoids this.
+                </AlertDescription>
+              </Alert>
+            )}
+
+            {format === 'modsettings' && (
+              <Alert className="border-destructive/40 bg-destructive/10">
+                <AlertDescription className="font-body text-sm space-y-2">
+                  <p>
+                    This file replaces the game's own load order.{' '}
+                    <strong>Back up the original before overwriting it</strong>:
+                    make a copy of modsettings.lsx, found at
+                  </p>
+                  <p className="font-mono text-xs break-all">
+                    %LocalAppData%\Larian Studios\Baldur's Gate 3\PlayerProfiles\Public\modsettings.lsx
+                  </p>
+                  <p>
+                    Then swap in the downloaded file, keeping the name
+                    modsettings.lsx, while the game and any mod manager are
+                    closed. Written for BG3 Patch 8. If anything misbehaves,
+                    restore your backup.
+                  </p>
                 </AlertDescription>
               </Alert>
             )}
@@ -172,11 +197,15 @@ export default function ExportPage() {
                 size="lg"
                 className="flex-1"
                 onClick={() =>
-                  download(content, `volo-load-order.${spec.ext}`, MIME[spec.ext] ?? 'text/plain')
+                  download(
+                    content,
+                    format === 'modsettings' ? 'modsettings.lsx' : `volo-load-order.${spec.ext}`,
+                    MIME[spec.ext] ?? 'text/plain',
+                  )
                 }
               >
                 <Download className="mr-2 h-4 w-4" />
-                Download .{spec.ext}
+                {format === 'modsettings' ? 'Download modsettings.lsx' : `Download .${spec.ext}`}
               </Button>
               <Button size="lg" variant="outline" onClick={copy}>
                 {copied ? <Check className="mr-2 h-4 w-4" /> : <Copy className="mr-2 h-4 w-4" />}
