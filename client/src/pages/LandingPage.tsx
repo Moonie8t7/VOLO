@@ -102,15 +102,29 @@ export default function LandingPage() {
             <AccordionTrigger className="text-left font-semibold">
               Is my mod list uploaded anywhere?
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
-              No. When the page loads, your browser downloads VOLO's code and
-              runs it on your computer, the same way a downloaded program runs.
-              Opening your file hands it to that code, not to a server: the
-              sorting happens on your machine, and the sorted file you save is
-              generated there too. You can check this yourself with the
-              browser's network panel; once the page has loaded, using VOLO
-              makes no further requests. The one exception is choosing to
-              submit your order from the Export page.
+            <AccordionContent className="text-muted-foreground space-y-3">
+              <p>
+                No, although two moments make it look that way: picking your
+                file, and saving the sorted one. Neither touches the network.
+              </p>
+              <p>
+                When the page loads, your browser downloads VOLO's code and
+                runs it on your computer, the same way a downloaded program
+                runs. Picking a file hands it to that code through the
+                browser's file picker, which reads it straight from your disk
+                into the page's memory. The sorting happens in that memory.
+                Saving the result reuses the browser's download dialog, which
+                is what makes it feel like a download, but the file it writes
+                is built inside the page and goes from there to your disk. At
+                no point does your list go into a request.
+              </p>
+              <p>
+                You can check this yourself with the browser's network panel;
+                once the page has loaded, using VOLO makes no further
+                requests. The one exception is choosing to submit your order
+                from the Export page, which copies it for a GitHub form you
+                fill in yourself.
+              </p>
             </AccordionContent>
           </AccordionItem>
 
