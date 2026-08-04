@@ -167,7 +167,9 @@ export default function SubmitPage() {
                   <Alert className="border-primary/30 bg-primary/5">
                     <AlertDescription className="font-body flex items-center justify-between gap-4">
                       <span>
-                        {order.count} mods from <strong>{order.label}</strong> ({order.format})
+                        {order.count} mods from <strong>{order.label}</strong> ({order.format}).
+                        {' '}This is submitted as it is; it does not change what the
+                        Import and Export pages are working on.
                       </span>
                       <button
                         onClick={() => setOrder(null)}
