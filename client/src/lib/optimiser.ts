@@ -17,6 +17,7 @@
  * O(n^2) and is not needed.
  */
 
+import dividers from './dividers.json';
 import type {
   Mod, Masterlist, MasterlistPlugin, SortResult, Placement, Reason, Issue, GroupName,
 } from './types';
@@ -211,11 +212,41 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
     });
   }
 
-  // Step 3: Kahn's algorithm, ready set ordered by group rank then original index.
+  // Step 3: Kahn's algorithm, ready set ordered by divider then group rank.
   const rankOf = (m: Mod) =>
     rank.get(group.get(m.uuid) ?? DEFAULT_GROUP) ?? Number.MAX_SAFE_INTEGER;
+
+  /*
+   * The dividers are the skeleton of the order.
+   *
+   * Their sequence decides which section a mod lands in, because that taxonomy
+   * is a working load order in its own right and it is what players read when
+   * they open the list. Inside a section the masterlist decides, falling back
+   * to the order the mods arrived in, so nothing moves without a reason.
+   *
+   * A mod uses the most specific divider known for it: the one it was actually
+   * observed under in a submitted order, otherwise the one its group belongs
+   * to. Mods with no category at all sit at the end, where the corpus says
+   * unplaced mods usually sit.
+   */
+  const groupDividers = dividers.byGroup as Record<string, { num: number } | undefined>;
+  const FIRST_DIVIDER = -1;
+  const LAST_DIVIDER = 1000;
+
+  const dividerOf = (m: Mod): number => {
+    const entry = byUuid.get(m.uuid)
+      ?? byName.get(m.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
+    if (entry?.divider !== undefined) return entry.divider;
+    const g = group.get(m.uuid) ?? DEFAULT_GROUP;
+    if (g === 'Top of Load Order') return FIRST_DIVIDER;
+    if (g === 'Bottom of Load Order' || g === DEFAULT_GROUP) return LAST_DIVIDER;
+    return groupDividers[g]?.num ?? LAST_DIVIDER;
+  };
+
   const before = (a: Mod, b: Mod) =>
-    rankOf(a) - rankOf(b) || a.originalIndex - b.originalIndex;
+    dividerOf(a) - dividerOf(b)
+    || rankOf(a) - rankOf(b)
+    || a.originalIndex - b.originalIndex;
 
   const ready = mods.filter(m => (indegree.get(m.uuid) ?? 0) === 0).sort(before);
   const sorted: Mod[] = [];
@@ -281,11 +312,14 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
             : `Categorised as "${g}", which loads in that part of the order.`,
     });
     if (position !== mod.originalIndex) moved++;
+    const div = dividerOf(mod);
     placements.set(mod.uuid, {
       uuid: mod.uuid,
       resolvedUuid: resolvedUuid.get(mod.uuid),
       position,
       group: g,
+      // Only a real divider, never the sentinels used to pin the ends.
+      divider: div === FIRST_DIVIDER || div === LAST_DIVIDER ? undefined : div,
       groupSource: src,
       groupConfidence: conf,
       reasons: rs,
