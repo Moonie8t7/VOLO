@@ -6,7 +6,9 @@ titles.
 
 Drop in your BG3 Mod Manager export and VOLO sorts it against a community
 masterlist, resolving declared dependencies, grouping mods by what they do, and
-explaining every placement.
+explaining every placement. It supports mods from Nexus Mods and from mod.io,
+the platform behind the official in-game mod manager at baldursgate3.game, with
+reference catalogues of both kept fresh by a daily crawl.
 
 It runs entirely in your browser. There is no server, no account and no upload.
 Your load order never leaves your machine.
