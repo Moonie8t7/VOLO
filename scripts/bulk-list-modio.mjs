@@ -22,7 +22,11 @@
 import fs from 'fs';
 import path from 'path';
 
-const API = 'https://api.mod.io/v1';
+// api.mod.io is deprecated; the live API answers on per-game modapi.io
+// subdomains. BG3 is game 6715 (resolved via the old domain's games search,
+// which still answers that one query).
+const GAME_ID = 6715;
+const API = `https://g-${GAME_ID}.modapi.io/v1`;
 const GAME_NAME_ID = 'baldursgate3';
 const DATA_DIR = 'modio';
 const CATALOG = path.join(DATA_DIR, 'catalog.json');
@@ -120,19 +124,6 @@ async function get(pathname, params = {}) {
   return { status: 429 };
 }
 
-async function resolveGameId() {
-  if (catalog.gameId) return catalog.gameId;
-  const r = await get('/games', { name_id: GAME_NAME_ID });
-  const game = r.body?.data?.[0];
-  if (!game) {
-    console.error(`could not resolve game "${GAME_NAME_ID}" on mod.io (status ${r.status})`);
-    process.exit(1);
-  }
-  catalog.gameId = game.id;
-  console.log(`resolved ${GAME_NAME_ID} to game id ${game.id} (${game.name})`);
-  return game.id;
-}
-
 function storeMod(m) {
   const existing = catalog.mods[m.id];
   const updated = m.date_updated ? new Date(m.date_updated * 1000).toISOString() : null;
@@ -154,7 +145,8 @@ function storeMod(m) {
 
 let stored = 0;
 const startedAt = Date.now();
-const gameId = await resolveGameId();
+const gameId = GAME_ID;
+catalog.gameId = GAME_ID;
 
 if (DEPS_MODE) {
   // Dependency lists cost one request per flagged mod, so only fetch for mods

@@ -255,37 +255,45 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
-// nexus category fixture: the catalogue map fills silence but never overrides
-// a community placement.
+// external category fixture: the catalogue maps fill silence but never
+// override a community placement, and nexus wins over modio.
 {
-  const nexus = JSON.parse(fs.readFileSync('public/nexus-categories.json', 'utf8'));
+  const ext = JSON.parse(fs.readFileSync('public/external-categories.json', 'utf8'));
+  const weapons = ext.groups.indexOf('Weapons') !== -1
+    ? ext.groups.indexOf('Weapons')
+    : (ext.groups.push('Weapons') - 1);
+  const spells = ext.groups.indexOf('Spells') !== -1
+    ? ext.groups.indexOf('Spells')
+    : (ext.groups.push('Spells') - 1);
   const probes = [
     { uuid: 'probe-nx-0', name: 'Zed Utterly Unknown Everywhere', originalIndex: 0 },
     { uuid: 'probe-nx-1', name: 'Zed Known Only To Nexus', originalIndex: 1 },
+    { uuid: 'probe-nx-2', name: 'Zed Known Only To Modio', originalIndex: 2 },
   ];
-  const key = probes[1].name.toLowerCase().replace(/[^a-z0-9]/g, '');
-  nexus.names[key] = nexus.groups.indexOf('Weapons') !== -1
-    ? nexus.groups.indexOf('Weapons')
-    : (nexus.groups.push('Weapons') - 1);
-  const result = sortLoadOrder(probes, masterlist, nexus);
+  const key = (n) => n.toLowerCase().replace(/[^a-z0-9]/g, '');
+  ext.nexus[key(probes[1].name)] = weapons;
+  ext.modio[key(probes[2].name)] = spells;
+  const result = sortLoadOrder(probes, masterlist, ext);
   console.log('');
-  console.log('nexus category fixture');
+  console.log('external category fixture');
   const p1 = result.placements.get('probe-nx-1');
-  if (p1?.group === 'Weapons' && p1?.groupSource === 'nexus') {
-    console.log('  ok    catalogue category used when the masterlist is silent');
+  const p2 = result.placements.get('probe-nx-2');
+  if (p1?.group === 'Weapons' && p1?.groupSource === 'nexus'
+      && p2?.group === 'Spells' && p2?.groupSource === 'modio') {
+    console.log('  ok    catalogue categories used when the masterlist is silent');
   } else {
     failures++;
-    console.log('  FAIL  expected Weapons from nexus, got ' + p1?.group + ' via ' + p1?.groupSource);
+    console.log(`  FAIL  expected nexus Weapons and modio Spells, got ${p1?.groupSource} ${p1?.group} and ${p2?.groupSource} ${p2?.group}`);
   }
   const impui = [{ uuid: '26922ba9-6018-5252-075d-7ff2ba6ed879', name: 'ImpUI (ImprovedUI)', originalIndex: 0 }];
-  nexus.names['impuiimprovedui'] = nexus.groups.indexOf('Weapons');
-  const r2 = sortLoadOrder(impui, masterlist, nexus);
-  const p2 = r2.placements.get(impui[0].uuid);
-  if (p2?.groupSource === 'masterlist' || p2?.groupSource === 'inferred') {
-    console.log('  ok    community placement wins over the catalogue');
+  ext.nexus['impuiimprovedui'] = weapons;
+  const r2 = sortLoadOrder(impui, masterlist, ext);
+  const p3 = r2.placements.get(impui[0].uuid);
+  if (p3?.groupSource === 'masterlist' || p3?.groupSource === 'inferred') {
+    console.log('  ok    community placement wins over the catalogues');
   } else {
     failures++;
-    console.log('  FAIL  catalogue overrode community placement: ' + p2?.groupSource);
+    console.log('  FAIL  catalogue overrode community placement: ' + p3?.groupSource);
   }
 }
 
