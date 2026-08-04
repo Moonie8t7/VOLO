@@ -184,7 +184,14 @@ const CURATED = [
   [/^communitylibrary|community\s*library/i,                      'Resources'],
   [/^volitioncabinet/i,                                           'Resources'],
   [/^aahzlib|material\s*library|^tagframework/i,                  'Resources'],
-  [/compatibility\s*framework|^compatibilityframework/i,          'Resources'],
+  // Patchers, not libraries. They rewrite what other mods added, so they must
+  // run after them. Astra's dividers place Compatibility Framework at 105 and
+  // Appearance Edit at 104, both under Late Loaders, and the corpus agrees:
+  // Compatibility Framework sits at the very end of the working order holding
+  // it, while CommunityLibrary sits 2 percent in. Filing both as Resources
+  // collapsed that distinction and loaded the patcher far too early.
+  [/compatibilitys*framework|^compatibilityframework/i,          'Bottom of Load Order'],
+  [/appearances*edits*enhanced|^appearanceedit/i,               'Bug Fixes'],
   [/mod\s*configuration\s*menu|^bg3mcm/i,                         'Resources'],
   [/item\s*shipment\s*framework/i,                                'Resources'],
 ];
@@ -253,7 +260,7 @@ const SECTION_TO_GROUP = {
 const NAME_PATTERNS = [
   [/script\s*extender|nativemodloader|native mod loader|^bg3se|^mod\s*fixer/i, 'Utilities'],
   [/improvedui|^impui|hotbar|tooltip|sidebar|inventory ui|\bui\b|interface|topbar|context menu/i, 'User Interface'],
-  [/communitylibrary|community library|volitioncabinet|materiallibrary|material library|^lib[A-Z]|modders?\s*resource|compatibilityframework|compatibility framework|mod configuration menu|^bg3mcm|framework$|framework\b/i, 'Resources'],
+  [/communitylibrary|community library|volitioncabinet|materiallibrary|material library|^lib[A-Z]|modders?\s*resource|mod configuration menu|^bg3mcm|framework$|framework\b/i, 'Resources'],
   [/\bspell|cantrip|\bmagic\b/i, 'Spells'],
   [/subclass|\bclass\b|\bfeat\b|deity|deities/i, 'Classes'],
   [/\brace\b|subrace|tiefling|githyanki|dragonborn|drow\b/i, 'Races'],
