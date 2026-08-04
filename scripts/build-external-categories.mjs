@@ -3,8 +3,13 @@
  * Builds the external category map for mods the masterlist has never seen,
  * from both catalogues: Nexus and mod.io. Replaces build-nexus-categories.mjs.
  *
- * The rule stands: where the community has placed a mod, no external source
- * ever overrides it; this map only fills silence. Between the externals,
+ * NOT used for ordering. Held-out evaluation on 2026-08-04 measured listing
+ * categories lowering agreement with working orders (63.6 percent without,
+ * 63.2 with Nexus, 63.0 with both), so scripts/verify-holdout.mjs keeps this
+ * around as reference data and an experiment to rerun as the corpus grows.
+ *
+ * The rule stood, while it was used: where the community has placed a mod, no
+ * external source ever overrides it; this map only filled silence. Between the externals,
  * Nexus wins name ties because its curated category tree is the richer
  * signal; mod.io covers the official in-game catalogue, which includes mods
  * that are not on Nexus at all.
@@ -22,7 +27,7 @@ import path from 'path';
 
 const NEXUS_CATALOG = path.join('nexus', 'catalog.json');
 const MODIO_CATALOG = path.join('modio', 'catalog.json');
-const OUT = path.join('public', 'external-categories.json');
+const OUT = path.join('masterlist', 'external-categories.json');
 
 /** Nexus category names to masterlist group vocabulary. Identity unless listed. */
 const NEXUS_CATEGORY_TO_GROUP = {
