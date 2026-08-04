@@ -69,12 +69,6 @@ function shuffled(arr, seed = 7) {
 }
 
 const isWorking = f => /^working_/i.test(f) || /^current_/i.test(f);
-const external = fs.existsSync('masterlist/external-categories.json')
-  ? JSON.parse(fs.readFileSync('masterlist/external-categories.json', 'utf8'))
-  : null;
-// Nexus curates a category tree; mod.io categorises with loosely applied tags.
-// Measuring them apart shows whether either is worth consulting at all.
-const nexusOnly = external ? { ...external, modio: {} } : null;
 const inSampleList = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 
 const files = fs.readdirSync(CORPUS).filter(isWorking).sort();
@@ -98,14 +92,6 @@ for (const file of files) {
       mods: parsed.mods.length,
       inSample: agreement(reference, sortLoadOrder(parsed.mods, inSampleList).mods.map(m => m.uuid)),
       heldOut: agreement(reference, sortLoadOrder(parsed.mods, heldList).mods.map(m => m.uuid)),
-      heldOutNexus: agreement(
-        reference,
-        sortLoadOrder(parsed.mods, heldList, nexusOnly).mods.map(m => m.uuid),
-      ),
-      heldOutExternal: agreement(
-        reference,
-        sortLoadOrder(parsed.mods, heldList, external).mods.map(m => m.uuid),
-      ),
       random: agreement(reference, shuffled(reference)),
       // How much of this order the masterlist recognises once it has not read it.
       known: sortLoadOrder(parsed.mods, heldList).stats.knownToMasterlist / parsed.mods.length,
@@ -121,10 +107,10 @@ const pct = v => (100 * v).toFixed(1).padStart(6);
 const mean = k => rows.reduce((a, b) => a + b[k], 0) / (rows.length || 1);
 
 console.log('Held-out evaluation: each order sorted by a masterlist built without it.\n');
-console.log('order                                        mods  in-sample  held-out  +nexus  +both  random');
+console.log('order                                        mods  in-sample  held-out  random   known');
 for (const r of rows) {
   console.log(
-    `${r.file.slice(0, 42).padEnd(44)}${String(r.mods).padStart(5)}  ${pct(r.inSample)}   ${pct(r.heldOut)} ${pct(r.heldOutNexus)} ${pct(r.heldOutExternal)} ${pct(r.random)}`,
+    `${r.file.slice(0, 42).padEnd(44)}${String(r.mods).padStart(5)}  ${pct(r.inSample)}   ${pct(r.heldOut)} ${pct(r.random)} ${pct(r.known)}`,
   );
 }
 
@@ -132,13 +118,10 @@ console.log('\n=== SUMMARY ===');
 console.log(`orders evaluated        ${rows.length}`);
 console.log(`in-sample agreement     ${pct(mean('inSample'))}%   (what verify-order reports)`);
 console.log(`held-out agreement      ${pct(mean('heldOut'))}%   (what a new user gets)`);
-console.log(`held-out + Nexus only   ${pct(mean('heldOutNexus'))}%   (Nexus categories consulted)`);
-console.log(`held-out + both         ${pct(mean('heldOutExternal'))}%   (Nexus and mod.io consulted)`);
 console.log(`random baseline         ${pct(mean('random'))}%`);
 
 const optimism = mean('inSample') - mean('heldOut');
-const best = Math.max(mean('heldOut'), mean('heldOutNexus'), mean('heldOutExternal'));
-const lift = best - mean('random');
+const lift = mean('heldOut') - mean('random');
 console.log(`\noptimism of the in-sample figure: ${(100 * optimism).toFixed(1)} points`);
 console.log(`honest lift over chance:          ${(100 * lift).toFixed(1)} points`);
 
