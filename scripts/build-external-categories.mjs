@@ -4,9 +4,11 @@
  * from both catalogues: Nexus and mod.io. Replaces build-nexus-categories.mjs.
  *
  * NOT used for ordering. Held-out evaluation on 2026-08-04 measured listing
- * categories lowering agreement with working orders (63.6 percent without,
- * 63.2 with Nexus, 63.0 with both), so scripts/verify-holdout.mjs keeps this
- * around as reference data and an experiment to rerun as the corpus grows.
+ * categories lowering agreement with working orders: 63.6 percent without
+ * them, 63.2 with Nexus, 63.0 with both. A listing says what a mod is, which
+ * is a different question from where it loads. The map is kept as reference
+ * data for display and for the requirements work; re-testing it as a sorting
+ * signal means reinstating the tier removed from client/src/lib/optimiser.ts.
  *
  * The rule stood, while it was used: where the community has placed a mod, no
  * external source ever overrides it; this map only filled silence. Between the externals,
