@@ -69,13 +69,26 @@ export interface Masterlist {
   plugins: MasterlistPlugin[];
 }
 
+/**
+ * Name-to-group map built from the Nexus catalogue at build time. Consulted
+ * only for mods with no community evidence at all; where the community has
+ * placed a mod, Nexus never overrides it.
+ */
+export interface NexusCategories {
+  generated: string;
+  source: string;
+  groups: GroupName[];
+  /** Normalised mod name to index into groups. */
+  names: Record<string, number>;
+}
+
 /** Why a mod ended up where it did. LOOT's transparency principle. */
 export interface Placement {
   uuid: string;
   position: number;
   group: GroupName;
   /** How we decided the group. */
-  groupSource: 'masterlist' | 'inferred' | 'name-pattern' | 'default';
+  groupSource: 'masterlist' | 'inferred' | 'nexus' | 'name-pattern' | 'default';
   /** Neighbour agreement behind an inferred group, when that is the source. */
   groupConfidence?: number;
   /** Mods that had to load before this one, and why. */

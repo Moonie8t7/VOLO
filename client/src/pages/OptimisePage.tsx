@@ -157,6 +157,7 @@ export default function OptimisePage() {
                         <p className="text-xs pt-1 opacity-70">
                           {p.groupSource === 'masterlist' && 'Category from the community masterlist.'}
                           {p.groupSource === 'inferred' && 'Category inferred from submitted load orders.'}
+                          {p.groupSource === 'nexus' && 'Category from its Nexus Mods listing.'}
                           {p.groupSource === 'name-pattern' && 'Category guessed from the mod name.'}
                           {p.groupSource === 'default' && 'No category information yet.'}
                         </p>
