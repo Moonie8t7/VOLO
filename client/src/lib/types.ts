@@ -51,10 +51,12 @@ export interface MasterlistPlugin {
   featureFlags?: string[];
   /** Newest BG3 build this mod has been seen in a load order for. */
   lastSeenGameBuild?: string;
+  /** Astra divider this mod belongs under, e.g. 58.11 for a Warlock subclass. */
+  divider?: number;
   /** Relies on the Script Extender, which is a dll and never appears in a load order. */
   usesScriptExtender?: boolean;
   evidence?: {
-    source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'inferred' | 'none';
+    source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'divider-vocabulary' | 'inferred' | 'none';
     installs: number;
     workingInstalls: number;
     brokenInstalls?: number;
@@ -87,6 +89,8 @@ export interface Placement {
   resolvedUuid?: string;
   position: number;
   group: GroupName;
+  /** Astra divider this mod sits under, when known. */
+  divider?: number;
   /** How we decided the group. */
   groupSource: 'masterlist' | 'inferred' | 'name-pattern' | 'default';
   /** Neighbour agreement behind an inferred group, when that is the source. */
