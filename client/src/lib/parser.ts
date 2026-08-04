@@ -99,6 +99,12 @@ function toMod(raw: Record<string, unknown>, index: number): Mod | null {
   const se = raw.ScriptExtenderData as Record<string, unknown> | undefined;
   const flags = Array.isArray(se?.FeatureFlags) ? (se!.FeatureFlags as string[]) : undefined;
 
+  const verObj = raw.Version;
+  const versionInt =
+    verObj && typeof verObj === 'object' && (verObj as Record<string, unknown>).VersionInt != null
+      ? String((verObj as Record<string, unknown>).VersionInt)
+      : undefined;
+
   return {
     // Nameless-but-real mods can lack a UUID in hand-written lists; synthesise a
     // stable key so they still sort rather than silently collapsing together.
@@ -112,6 +118,9 @@ function toMod(raw: Record<string, unknown>, index: number): Mod | null {
     fileName: str(raw.FileName ?? raw.fileName),
     dependencies: toModRefs(raw.Dependencies ?? raw.dependencies),
     featureFlags: flags,
+    version64: str(raw.Version64) ?? versionInt,
+    md5: str(raw.MD5 ?? raw.md5),
+    publishHandle: str(raw.PublishHandle),
   };
 }
 
@@ -227,6 +236,13 @@ const empty = (format: string, errors: string[]): ParseResult =>
  *     <attribute id="Folder" value="..."/>
  *   </node>
  */
+/** Entity decoding for attribute values; &amp; must come last. */
+const decodeXml = (s: string) =>
+  s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&#(\d+);/g, (_, n: string) => String.fromCharCode(Number(n)))
+    .replace(/&amp;/g, '&');
+
 function parseModsettings(content: string): ParseResult {
   const blocks = content.split(/<node\s+id="ModuleShortDesc"/).slice(1);
   if (!blocks.length) {
@@ -240,7 +256,7 @@ function parseModsettings(content: string): ParseResult {
     const scope = block.split('</node>')[0];
     const rec: Record<string, unknown> = {};
     for (const m of scope.matchAll(/<attribute\s+id="([^"]+)"[^>]*\bvalue="([^"]*)"/g)) {
-      rec[m[1]] = m[2];
+      rec[m[1]] = decodeXml(m[2]);
     }
     // The base game ships as modules too; the engine master list already knows
     // their folder names.

@@ -8,8 +8,13 @@
   Cache-Control: public, max-age=3600
 
 # The masterlist keeps a stable URL and changes when submissions merge. An hour
-# of caching keeps it fast without holding users on stale data for long.
+# of caching keeps it fast without holding users on stale data for long. The
+# category map gets the same treatment; without an explicit rule, browsers
+# apply heuristic caching and can hold a stale copy for days.
 /bg3-masterlist.json
+  Cache-Control: public, max-age=3600
+
+/external-categories.json
   Cache-Control: public, max-age=3600
 
 /index.html

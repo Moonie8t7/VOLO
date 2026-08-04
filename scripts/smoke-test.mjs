@@ -346,6 +346,37 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// modsettings round trip: what we write back must be a file the game and our
+// own parser accept, with the engine preamble restored and versions kept.
+{
+  const src = [
+    { UUID: '26922ba9-6018-5252-075d-7ff2ba6ed879', Name: 'ImpUI (ImprovedUI)', Folder: 'ImpUI_26922ba9', Version64: '72198331526283346', MD5: 'abc123' },
+    { UUID: '11111111-2222-3333-4444-555555555555', Name: 'Probe & Test <Mod>', Folder: 'TestMod', Version64: '36028797018963968' },
+  ];
+  const parsed = parseLoadOrder(JSON.stringify({ Order: src }), 'order.json');
+  const result = sortLoadOrder(parsed.mods, masterlist);
+  const lsx = exportOrder(result, 'modsettings');
+  console.log('');
+  console.log('modsettings round trip');
+  const hasPreamble = lsx.includes('value="GustavDev"') && lsx.includes('value="GustavX"') && lsx.includes('value="HonourX"');
+  const keptVersion = lsx.includes('value="72198331526283346"') && lsx.includes('value="abc123"');
+  const escaped = lsx.includes('Probe &amp; Test &lt;Mod&gt;');
+  if (hasPreamble && keptVersion && escaped) {
+    console.log('  ok    engine preamble restored, versions kept, names escaped');
+  } else {
+    failures++;
+    console.log('  FAIL  preamble ' + hasPreamble + ', versions ' + keptVersion + ', escaping ' + escaped);
+  }
+  const reparsed = parseLoadOrder(lsx, 'modsettings.lsx');
+  const names = reparsed.mods.map(m => m.name);
+  if (reparsed.mods.length === 2 && names.includes('ImpUI (ImprovedUI)') && names.includes('Probe & Test <Mod>')) {
+    console.log('  ok    exported file re-imports to the same mods');
+  } else {
+    failures++;
+    console.log('  FAIL  re-import got ' + JSON.stringify(names));
+  }
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);
