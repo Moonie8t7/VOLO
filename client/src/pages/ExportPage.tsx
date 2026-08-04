@@ -16,8 +16,29 @@ const MIME: Record<string, string> = {
   lsx: 'application/xml',
 };
 
+/** "just now", "12 minutes ago", "yesterday". Null when we do not know. */
+function ageOf(iso: string | null): string | null {
+  if (!iso) return null;
+  const ms = Date.now() - new Date(iso).getTime();
+  if (!Number.isFinite(ms) || ms < 0) return null;
+  const mins = Math.round(ms / 60_000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins} minute${mins === 1 ? '' : 's'} ago`;
+  const hours = Math.round(mins / 60);
+  if (hours < 24) return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+  const days = Math.round(hours / 24);
+  return days === 1 ? 'yesterday' : `${days} days ago`;
+}
+
+/** An import older than this probably predates whatever the user is doing now. */
+const STALE_AFTER_MS = 60 * 60_000;
+
 export default function ExportPage() {
-  const { result } = useStore();
+  const { result, sourceName, importedAt } = useStore();
+  const importedAge = ageOf(importedAt);
+  const staleImport = importedAt
+    ? Date.now() - new Date(importedAt).getTime() > STALE_AFTER_MS
+    : false;
   const [format, setFormat] = useState<ExportFormat>('bg3mm');
   const [copied, setCopied] = useState(false);
   const [insertDividers, setInsertDividers] = useState(false);
@@ -69,6 +90,29 @@ export default function ExportPage() {
             {result.mods.length} mods, ready to go back into BG3 Mod Manager.
           </p>
         </header>
+
+        {/*
+          Says out loud which import this came from.
+
+          The session is kept in localStorage so a tab can be closed and
+          reopened, which means this page will happily export an order imported
+          days ago. Someone who has since picked a different file elsewhere,
+          on the Submit page for instance, would otherwise export the old one
+          and only find out when their mod manager reports mods they do not
+          have installed.
+        */}
+        <Alert className={staleImport ? 'border-destructive/40 bg-destructive/10' : 'border-primary/30 bg-primary/5'}>
+          <AlertDescription className="font-body flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+            <span>
+              Exporting <strong>{sourceName || 'the order you imported'}</strong>
+              {importedAge && <>, imported {importedAge}</>}.
+              {staleImport && ' Check this is the order you meant.'}
+            </span>
+            <Link href="/import" className="underline hover:text-foreground text-sm shrink-0">
+              Import a different file
+            </Link>
+          </AlertDescription>
+        </Alert>
 
         <Alert className="border-primary/30 bg-primary/5">
           <AlertDescription className="font-body">
