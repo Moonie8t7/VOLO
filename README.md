@@ -19,17 +19,19 @@ Your load order never leaves your machine.
    CSV, TSV and plain text. Section separators you have written yourself are
    recognised and used as categorisation hints, as are Astra's Load Order
    Dividers, which VOLO knows by UUID even when they have been renamed.
-2. **Sort.** Groups set the broad shape of the order, learned from where
-   working orders actually put things. Declared dependencies are hard
-   constraints. Mods the community has never placed fall back to name patterns,
-   and anything still unknown stays where you put it.
+2. **Sort.** Astra's Load Order Dividers give the order its shape: their
+   sequence decides which section a mod belongs in, and within a section the
+   masterlist decides, learned from where working orders actually put things.
+   Declared dependencies are hard constraints and can override both. Mods the
+   community has never placed fall back to name patterns, and anything still
+   unknown sorts to the end.
 3. **Explain.** Every mod tells you why it sits where it does.
 4. **Export.** Back to BG3MM, or as JSON, CSV, text or Markdown.
 
-The sort is Kahn's algorithm with the ready set ordered by group rank then
-original position. That last detail matters: a sorter that reshuffles a working
-load order without cause is worse than useless, so VOLO moves mods only when a
-rule requires it.
+The sort is Kahn's algorithm with the ready set ordered by divider, then group
+rank, then original position. That last detail matters: a sorter that reshuffles
+a working load order without cause is worse than useless, so VOLO moves mods
+only when a rule requires it.
 
 Sorting 1,000 mods takes about 3ms.
 
@@ -107,10 +109,19 @@ browsing, and submission straight from the site. A workflow validates each
 submission, rebuilds the masterlist and either lands it or opens a pull request
 for review.
 
-Measured on held-out orders, VOLO agrees with orders it has never seen 63.5
+Measured on held-out orders, VOLO agrees with orders it has never seen 60.3
 percent of the time, against 50.5 percent for a random shuffle. See
 `scripts/verify-holdout.mjs`; the in-sample figure that `verify-order.mjs`
 prints is several points higher and should not be quoted.
+
+That figure is a deliberate trade. Ordering purely by the sequence learned from
+the corpus measures 63.6 percent, but produces exports whose divider headings
+run out of numeric order and read as scrambled. The divider skeleton costs
+about three points of agreement and returns a structure players already know.
+Part of the gap is also an artefact: the learned sequence was derived from all
+nine working orders and is fixed across folds, while Astra's taxonomy had no
+such exposure, so the comparison flatters the learned order by an unmeasured
+amount.
 
 Not yet built: user overrides that survive masterlist updates, and placement for
 the mods still showing as `unsorted`.
