@@ -59,12 +59,18 @@ export function exportOrder(result: SortResult, format: ExportFormat, options: E
     case 'bg3mm': {
       const entries: { UUID: string; Name: string }[] = [];
       const usedDividers = new Set<string>();
+      const numbered = dividers.all as { num: number; uuid: string; name: string }[];
       for (const m of mods) {
         if (options.insertDividers) {
-          const group = placements.get(m.uuid)?.group;
-          const divider = group
-            ? (dividers.byGroup as Record<string, { uuid: string; name: string } | undefined>)[group]
+          const placement = placements.get(m.uuid);
+          // The specific divider when we have one, so a Warlock subclass lands
+          // under Subclasses / Warlock rather than a bare Classes heading.
+          const exact = placement?.divider !== undefined
+            ? numbered.find(d => d.num === placement.divider)
             : undefined;
+          const divider = exact ?? (placement?.group
+            ? (dividers.byGroup as Record<string, { uuid: string; name: string } | undefined>)[placement.group]
+            : undefined);
           if (divider && !usedDividers.has(divider.uuid)) {
             usedDividers.add(divider.uuid);
             entries.push({ UUID: divider.uuid, Name: divider.name });

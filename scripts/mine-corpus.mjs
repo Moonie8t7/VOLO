@@ -546,7 +546,9 @@ for (const r of mods.values()) {
   // Last resort before giving up: Astra's divider vocabulary. It names a
   // hundred things our groups do not, and mod titles are full of those words.
   let dividerFromName = null;
-  if (!group && !process.env.VOLO_NO_DIVIDER_VOCAB) {
+  // Opt-in: measured at 0.6 points below leaving these mods unplaced, because
+  // mods the corpus cannot place tend to sit at the end of real orders anyway.
+  if (!group && process.env.VOLO_DIVIDER_VOCAB) {
     const guess = dividerGuess(name);
     if (guess) {
       group = guess.group;
