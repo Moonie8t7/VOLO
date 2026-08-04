@@ -1,13 +1,13 @@
 # Masterlist coverage report
 
-Generated 2026-08-04T10:32:59.535Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-04T10:37:54.133Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 13 |
-| labelled working | 8 |
+| Load orders analysed | 14 |
+| labelled working | 9 |
 | labelled broken | 2 |
 | unlabelled | 3 |
 | Separator headers parsed | 249 |
@@ -23,7 +23,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 1 of 13 orders carry it, because the short
+this comes from. Only 1 of 14 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -84,7 +84,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 8
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 9
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
