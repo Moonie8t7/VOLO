@@ -1,7 +1,11 @@
-# Vite fingerprints everything under /assets, so those files never change at a
-# given URL and can be cached forever.
+# Vite fingerprints everything under /assets, so in principle these URLs never
+# change and could be cached forever. In practice "forever" is dangerous: if a
+# request lands in the moment between a new index.html going live and its
+# assets propagating, the SPA fallback answers with HTML at 200, and a forever
+# rule pins that broken answer in the edge and browser caches. That took the
+# site down on 2026-08-04. An hour keeps the speed and caps the damage.
 /assets/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=3600
 
 # The masterlist keeps a stable URL and changes when submissions merge. An hour
 # of caching keeps it fast without holding users on stale data for long.
