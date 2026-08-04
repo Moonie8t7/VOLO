@@ -6,10 +6,13 @@
  * as pull requests against the masterlist repo.
  */
 
-import type { Masterlist } from './types';
+import type { Masterlist, NexusCategories } from './types';
 
 /** Bundled copy, so the app works on first paint and when GitHub is unreachable. */
 const LOCAL_URL = '/bg3-masterlist.json';
+
+/** Name-to-group map from the Nexus catalogue, for mods the masterlist has never seen. */
+const NEXUS_URL = '/nexus-categories.json';
 
 /**
  * The masterlist as it stands on main, which runs ahead of whatever shipped with
@@ -85,6 +88,38 @@ export async function loadMasterlist(): Promise<Masterlist> {
   } finally {
     inflight = null;
   }
+}
+
+let nexusCache: NexusCategories | null = null;
+let nexusInflight: Promise<NexusCategories | null> | null = null;
+
+/**
+ * Loads the Nexus category map. Never rejects: sorting works without it, this
+ * only improves categorisation of mods the masterlist has never seen.
+ */
+export async function loadNexusCategories(): Promise<NexusCategories | null> {
+  if (nexusCache) return nexusCache;
+  if (nexusInflight) return nexusInflight;
+
+  nexusInflight = (async () => {
+    try {
+      const res = await fetch(NEXUS_URL, { signal: AbortSignal.timeout(8_000) });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      const data = (await res.json()) as NexusCategories;
+      if (!Array.isArray(data?.groups) || typeof data?.names !== 'object') {
+        throw new Error('Malformed category map.');
+      }
+      nexusCache = data;
+      return data;
+    } catch (err) {
+      console.warn('[nexus-categories] unavailable:', err);
+      return null;
+    } finally {
+      nexusInflight = null;
+    }
+  })();
+
+  return nexusInflight;
 }
 
 /** Semver-ish comparison. Returns >0 if a is newer. */

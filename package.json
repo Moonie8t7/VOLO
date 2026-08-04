@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "check": "tsc",
     "test": "node scripts/smoke-test.mjs",
-    "masterlist": "node scripts/mine-corpus.mjs && node scripts/build-divider-map.mjs && node -e \"require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')\""
+    "masterlist": "node scripts/mine-corpus.mjs && node scripts/build-divider-map.mjs && node scripts/build-nexus-categories.mjs && node -e \"require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

@@ -18,7 +18,8 @@
  */
 
 import type {
-  Mod, Masterlist, MasterlistPlugin, SortResult, Placement, Reason, Issue, GroupName,
+  Mod, Masterlist, MasterlistPlugin, NexusCategories, SortResult, Placement, Reason, Issue,
+  GroupName,
 } from './types';
 
 const DEFAULT_GROUP = 'unsorted';
@@ -91,7 +92,11 @@ function indexMasterlist(masterlist: Masterlist) {
   return { byUuid, byName };
 }
 
-export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
+export function sortLoadOrder(
+  mods: Mod[],
+  masterlist: Masterlist,
+  nexus?: NexusCategories | null,
+): SortResult {
   const rank = rankGroups(masterlist);
   const { byUuid, byName } = indexMasterlist(masterlist);
   const issues: Issue[] = [];
@@ -119,6 +124,16 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
       continue;
     }
     if (entry) known++;
+
+    // No community evidence. The Nexus catalogue's own category is the next
+    // best signal: mod-specific and human-chosen, unlike a name regex. It is
+    // never allowed to override a community placement, only to fill silence.
+    const nexusGroup = nexus?.groups[nexus.names[mod.name.toLowerCase().replace(/[^a-z0-9]/g, '')] ?? -1];
+    if (nexusGroup && rank.has(nexusGroup)) {
+      group.set(mod.uuid, nexusGroup);
+      groupSource.set(mod.uuid, 'nexus');
+      continue;
+    }
 
     const guessed = NAME_PATTERNS.find(([re]) => re.test(mod.name))?.[1];
     group.set(mod.uuid, guessed ?? DEFAULT_GROUP);
@@ -260,7 +275,9 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
           : src === 'inferred'
             ? `Categorised as "${g}" from where it sits in submitted load orders` +
               (conf ? `, with ${Math.round(conf * 100)} percent of its neighbours agreeing.` : '.')
-            : `Categorised as "${g}", which loads in that part of the order.`,
+            : src === 'nexus'
+              ? `Categorised as "${g}" from its Nexus Mods listing; no community placement exists yet.`
+              : `Categorised as "${g}", which loads in that part of the order.`,
     });
     if (position !== mod.originalIndex) moved++;
     placements.set(mod.uuid, {
