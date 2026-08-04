@@ -17,6 +17,13 @@ export interface Mod {
   dependencies?: ModRef[];
   /** Script Extender feature flags, e.g. ["Lua"]. */
   featureFlags?: string[];
+  /**
+   * Fields modsettings.lsx and full BG3MM exports carry, preserved so the
+   * order can be written back as a modsettings.lsx the game will accept.
+   */
+  version64?: string;
+  md5?: string;
+  publishHandle?: string;
 }
 
 export interface ModRef {
