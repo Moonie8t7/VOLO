@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-04T10:58:45.893Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-04T11:57:50.769Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -38,8 +38,8 @@ the tool flag a mod as last verified on an older patch.
 
 | Source | Count | Trust |
 |---|---|---|
-| Curated override | 13 | highest, hand-verified infrastructure |
-| Human-authored section header | 1642 | high, a modder put it there |
+| Curated override | 14 | highest, hand-verified infrastructure |
+| Human-authored section header | 1641 | high, a modder put it there |
 | Name pattern fallback | 546 | medium, needs review |
 | Neighbour inference, 0.85 agreement or better | 60 | high, measured 97 percent accurate at this band |
 | Neighbour inference, 0.70 to 0.85 | 97 | medium, roughly 75 percent accurate, carries a confidence score |
@@ -59,17 +59,17 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Dyes`: 17
 - `Clothing`: 127
 - `Character Customization`: 145
-- `Resources`: 92
+- `Resources`: 88
 - `Equipment`: 121
 - `Armor`: 212
-- `Utilities`: 12
+- `Utilities`: 13
 - `Races`: 80
 - `Animations`: 10
 - `Spells`: 126
 - `Classes`: 212
 - `Bodies`: 3
 - `Miscellaneous`: 54
-- `Bug Fixes`: 101
+- `Bug Fixes`: 103
 - `Gameplay`: 84
 - `Accessories`: 58
 - `Quests`: 10
@@ -80,7 +80,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Dice`: 197
 - `Companions`: 119
 - `NPC`: 73
-- `Bottom of Load Order`: 0
+- `Bottom of Load Order`: 1
 - `unsorted`: 650
 
 ## Known limitations
