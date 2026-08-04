@@ -89,7 +89,7 @@ export interface Placement {
   resolvedUuid?: string;
   position: number;
   group: GroupName;
-  /** Astra divider this mod sits under, when known. */
+  /** Astra divider this mod sits under, when one applies. */
   divider?: number;
   /** How we decided the group. */
   groupSource: 'masterlist' | 'inferred' | 'name-pattern' | 'default';
