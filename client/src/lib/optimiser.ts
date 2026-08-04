@@ -316,6 +316,75 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
     });
   }
 
+  /*
+   * Diagnosis of the order as it arrived, not as we left it.
+   *
+   * The sort silently repairs dependency violations, which hides the single
+   * most useful thing we can tell someone: their order had a real problem.
+   * Comparing the incoming positions against the dependency edges names it,
+   * before they play rather than after they report a failure.
+   */
+  const incomingPosition = new Map(mods.map(m => [m.uuid, m.originalIndex]));
+  const repaired: string[] = [];
+  const repairedDetail: string[] = [];
+  for (const mod of mods) {
+    const declared = [
+      ...(mod.dependencies ?? []),
+      ...(byUuid.get(mod.uuid)?.dependencies ?? []),
+    ];
+    for (const dep of declared) {
+      const target = present.get(dep.uuid)
+        ?? byNormName.get(dep.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
+      if (!target) continue;
+      const depWas = incomingPosition.get(target.uuid);
+      const modWas = incomingPosition.get(mod.uuid);
+      if (depWas === undefined || modWas === undefined || depWas < modWas) continue;
+      repaired.push(mod.uuid);
+      if (repairedDetail.length < 5) {
+        repairedDetail.push(`${mod.name} needs ${target.name}`);
+      }
+    }
+  }
+  if (repaired.length) {
+    issues.push({
+      severity: 'warning',
+      kind: 'fixed-dependency',
+      message:
+        `${repaired.length} mod${repaired.length > 1 ? 's' : ''} in the order you ` +
+        `imported loaded before something ${repaired.length > 1 ? 'they' : 'it'} ` +
+        `require${repaired.length > 1 ? '' : 's'}. VOLO has moved them: ` +
+        repairedDetail.join(', ') +
+        (repaired.length > repairedDetail.length ? ', and more' : '') + '.',
+      uuids: [...new Set(repaired)],
+      resolution: 'Export the sorted order to apply the fix.',
+    });
+  }
+
+  /*
+   * Mods the community has only ever run in orders reported as broken. Not
+   * proof of fault, and deliberately worded that way, but it is the first
+   * place to look when an order misbehaves for no obvious reason.
+   */
+  const neverVerified = sorted.filter(m => {
+    const entry = byUuid.get(m.uuid)
+      ?? byName.get(m.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
+    return entry?.evidence
+      && (entry.evidence.brokenInstalls ?? 0) > 0
+      && entry.evidence.workingInstalls === 0;
+  });
+  if (neverVerified.length) {
+    issues.push({
+      severity: 'info',
+      kind: 'never-verified',
+      message:
+        `${neverVerified.length} mod${neverVerified.length > 1 ? 's have' : ' has'} only ` +
+        'appeared in load orders someone reported as broken, never in one confirmed working.',
+      uuids: neverVerified.map(m => m.uuid),
+      resolution:
+        'That is not proof of fault, but if this order misbehaves, start here.',
+    });
+  }
+
   const unsortedMods = sorted.filter(m => group.get(m.uuid) === DEFAULT_GROUP);
   if (unsortedMods.length) {
     issues.push({

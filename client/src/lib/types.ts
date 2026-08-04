@@ -107,7 +107,8 @@ export type IssueSeverity = 'critical' | 'warning' | 'info';
 
 export interface Issue {
   severity: IssueSeverity;
-  kind: 'missing-dependency' | 'cycle' | 'duplicate' | 'unsorted' | 'unknown-mod' | 'script-extender';
+  kind: 'missing-dependency' | 'cycle' | 'duplicate' | 'unsorted' | 'unknown-mod'
+    | 'script-extender' | 'fixed-dependency' | 'never-verified';
   message: string;
   /** Mods this issue concerns. */
   uuids: string[];
