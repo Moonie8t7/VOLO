@@ -1,0 +1,88 @@
+# Contributing to VOLO
+
+The most valuable thing you can contribute is a load order you have actually
+played on. Everything the sorter knows was learned from those.
+
+## Submitting a load order
+
+Go to [volobg3.com/submit](https://volobg3.com/submit). No GitHub account
+needed; the site opens an issue on your behalf, a workflow validates the order,
+and orders that validate cleanly and leave the verification metric intact land
+automatically.
+
+Send the file untouched, a BG3 Mod Manager export or the game's own
+`modsettings.lsx`. The full BG3MM export (File, then Export Order to File)
+carries dependency and version data the short one does not, and dividers and
+section headers are evidence in their own right, so tidying up before
+submitting throws away half of what we learn.
+
+Broken orders are wanted too. They teach the warnings, and the report you get
+back diagnoses where your order disagrees with orders known to work.
+
+## Licensing of contributions
+
+VOLO is split deliberately, so please note which half you are contributing to.
+
+**Code.** By submitting a code contribution you agree that it is licensed under
+the MIT Licence, as in `LICENSE`.
+
+**Masterlist data, load orders, rules and metadata.** By submitting these you
+agree that your contribution is made available under
+[CC0 1.0 Universal](masterlist/LICENSE), waiving copyright and related rights
+as far as the law allows. Submitted load orders are published in
+`Load Orders - Public Submitted/` and are public.
+
+**Documentation.** Prose contributed to the README and other docs is made
+available under CC BY 4.0.
+
+In every case you confirm that you have the right to submit the contribution.
+
+## What not to paste in
+
+VOLO cannot place other people's writing under CC0, so please do not copy
+substantial text from Nexus Mods descriptions, Discord posts, guides or other
+masterlists. Link to the source and write a short factual summary in your own
+words instead.
+
+Factual entries are what the masterlist wants:
+
+```json
+{
+  "name": "Example Mod",
+  "group": "Spells",
+  "dependencies": [{ "name": "CommunityLibrary" }]
+}
+```
+
+## Working on the code
+
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run check      # typecheck
+npm test           # the optimiser against the real corpus
+npm run build      # regenerate the masterlist, then build
+```
+
+Two things to know before changing how sorting works:
+
+`npm test` asserts the properties the sort promises: nothing lost, dependencies
+never violated, divider order holds except where dependencies force otherwise,
+deterministic, and fast.
+
+`node scripts/verify-holdout.mjs` is the honest measure of quality. It rebuilds
+the masterlist once per working order with that order left out, sorts it, and
+reports agreement. Run it before and after anything that touches placement, and
+quote that number rather than the higher one `verify-order.mjs` prints, which
+scores against orders the masterlist has already read.
+
+Several plausible ideas have been measured and rejected on that basis, and the
+reasons are recorded in comments where they were tried. Measure first.
+
+## House style
+
+Real mod names are reproduced exactly, punctuation and all, because they are
+matched against what players have installed.
+
+Source files are plain ASCII. No em dashes, en dashes, emoji or arrows. The one
+exception is Astra's divider names, whose decoration is deliberate.
