@@ -23,6 +23,7 @@
 
 import { build } from 'esbuild';
 import { execSync } from 'child_process';
+import crypto from 'crypto';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -71,7 +72,16 @@ function shuffled(arr, seed = 7) {
 const isWorking = f => /^working_/i.test(f) || /^current_/i.test(f);
 const inSampleList = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 
-const files = fs.readdirSync(CORPUS).filter(isWorking).sort();
+// The corpus holds byte-identical orders under two names; counting one twice
+// would weight it double in the mean.
+const files = [];
+const seenFingerprints = new Set();
+for (const f of fs.readdirSync(CORPUS).filter(isWorking).sort()) {
+  const fp = crypto.createHash('md5').update(fs.readFileSync(path.join(CORPUS, f))).digest('hex');
+  if (seenFingerprints.has(fp)) continue;
+  seenFingerprints.add(fp);
+  files.push(f);
+}
 const rows = [];
 
 for (const file of files) {
