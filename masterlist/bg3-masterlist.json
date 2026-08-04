@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-04T12:11:15.907Z",
+  "generated": "2026-08-04T13:28:12.610Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -30,135 +30,37 @@
       "description": "Interface frameworks, hotbar, tooltips and menus"
     },
     {
-      "name": "Visuals",
-      "after": [
-        "User Interface"
-      ],
-      "description": "Textures and visual effects"
-    },
-    {
-      "name": "Weapons",
-      "after": [
-        "Visuals"
-      ],
-      "description": "Weapons"
-    },
-    {
-      "name": "Dyes",
-      "after": [
-        "Weapons"
-      ],
-      "description": "Dyes and colour options"
-    },
-    {
-      "name": "Clothing",
-      "after": [
-        "Dyes"
-      ],
-      "description": "Outfits and camp clothing"
-    },
-    {
-      "name": "Character Customization",
-      "after": [
-        "Clothing"
-      ],
-      "description": "Creation options, presets, makeup and tattoos"
-    },
-    {
       "name": "Resources",
       "after": [
-        "Character Customization"
+        "User Interface"
       ],
       "description": "Shared libraries and frameworks other mods depend on"
     },
     {
-      "name": "Equipment",
+      "name": "Visuals",
       "after": [
         "Resources"
       ],
-      "description": "General gear, consumables and containers"
-    },
-    {
-      "name": "Armor",
-      "after": [
-        "Equipment"
-      ],
-      "description": "Armour sets and pieces"
-    },
-    {
-      "name": "Utilities",
-      "after": [
-        "Armor"
-      ],
-      "description": "Loaders, mod fixers and script extender support"
-    },
-    {
-      "name": "Races",
-      "after": [
-        "Utilities"
-      ],
-      "description": "Races, subraces and lineages"
-    },
-    {
-      "name": "Animations",
-      "after": [
-        "Races"
-      ],
-      "description": "Animation replacements and additions"
-    },
-    {
-      "name": "Spells",
-      "after": [
-        "Animations"
-      ],
-      "description": "Spell additions and overhauls"
-    },
-    {
-      "name": "Classes",
-      "after": [
-        "Spells"
-      ],
-      "description": "Classes, subclasses and feats"
-    },
-    {
-      "name": "Bodies",
-      "after": [
-        "Classes"
-      ],
-      "description": "Body models and skins"
-    },
-    {
-      "name": "Miscellaneous",
-      "after": [
-        "Bodies"
-      ],
-      "description": "Everything without a better home"
-    },
-    {
-      "name": "Bug Fixes",
-      "after": [
-        "Miscellaneous"
-      ],
-      "description": "Fixes and compatibility patches"
+      "description": "Textures and visual effects"
     },
     {
       "name": "Gameplay",
       "after": [
-        "Bug Fixes"
+        "Visuals"
       ],
       "description": "Rules, mechanics, combat and progression"
     },
     {
-      "name": "Accessories",
+      "name": "Utilities",
       "after": [
         "Gameplay"
       ],
-      "description": "Jewellery, cloaks and trinkets"
+      "description": "Loaders, mod fixers and script extender support"
     },
     {
       "name": "Quests",
       "after": [
-        "Accessories"
+        "Utilities"
       ],
       "description": "New and altered quests"
     },
@@ -170,60 +72,158 @@
       "description": "World, lighting and level changes"
     },
     {
-      "name": "Audio",
+      "name": "Equipment",
       "after": [
         "Environment"
       ],
-      "description": "Sound and music"
+      "description": "General gear, consumables and containers"
     },
     {
-      "name": "Hair",
+      "name": "Accessories",
       "after": [
-        "Audio"
+        "Equipment"
       ],
-      "description": "Hairstyles and beards"
+      "description": "Jewellery, cloaks and trinkets"
+    },
+    {
+      "name": "Armor",
+      "after": [
+        "Accessories"
+      ],
+      "description": "Armour sets and pieces"
+    },
+    {
+      "name": "Clothing",
+      "after": [
+        "Armor"
+      ],
+      "description": "Outfits and camp clothing"
+    },
+    {
+      "name": "Dyes",
+      "after": [
+        "Clothing"
+      ],
+      "description": "Dyes and colour options"
+    },
+    {
+      "name": "Weapons",
+      "after": [
+        "Dyes"
+      ],
+      "description": "Weapons"
+    },
+    {
+      "name": "Spells",
+      "after": [
+        "Weapons"
+      ],
+      "description": "Spell additions and overhauls"
+    },
+    {
+      "name": "Races",
+      "after": [
+        "Spells"
+      ],
+      "description": "Races, subraces and lineages"
+    },
+    {
+      "name": "Classes",
+      "after": [
+        "Races"
+      ],
+      "description": "Classes, subclasses and feats"
+    },
+    {
+      "name": "Character Customization",
+      "after": [
+        "Classes"
+      ],
+      "description": "Creation options, presets, makeup and tattoos"
     },
     {
       "name": "Heads",
       "after": [
-        "Hair"
+        "Character Customization"
       ],
       "description": "Heads, faces and eyes"
     },
     {
-      "name": "Dice",
+      "name": "Hair",
       "after": [
         "Heads"
       ],
-      "description": "Dice skins"
+      "description": "Hairstyles and beards"
     },
     {
       "name": "Companions",
       "after": [
-        "Dice"
+        "Hair"
       ],
       "description": "Companion edits and new party members"
     },
     {
-      "name": "NPC",
+      "name": "Animations",
       "after": [
         "Companions"
+      ],
+      "description": "Animation replacements and additions"
+    },
+    {
+      "name": "Miscellaneous",
+      "after": [
+        "Animations"
+      ],
+      "description": "Everything without a better home"
+    },
+    {
+      "name": "Dice",
+      "after": [
+        "Miscellaneous"
+      ],
+      "description": "Dice skins"
+    },
+    {
+      "name": "NPC",
+      "after": [
+        "Dice"
       ],
       "description": "Non-companion character changes"
     },
     {
-      "name": "Bottom of Load Order",
+      "name": "Audio",
       "after": [
         "NPC"
       ],
-      "description": "Explicit tail marker"
+      "description": "Sound and music"
+    },
+    {
+      "name": "Bodies",
+      "after": [
+        "Audio"
+      ],
+      "description": "Body models and skins"
+    },
+    {
+      "name": "Bug Fixes",
+      "after": [
+        "Bodies"
+      ],
+      "description": "Fixes and compatibility patches"
     },
     {
       "name": "unsorted",
       "after": [
-        "NPC"
+        "Bug Fixes"
       ],
       "description": "Not yet categorised by the community"
+    },
+    {
+      "name": "Bottom of Load Order",
+      "after": [
+        "unsorted"
+      ],
+      "description": "Explicit tail marker"
     }
   ],
   "plugins": [

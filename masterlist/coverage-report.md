@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-04T12:11:15.907Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-04T13:28:12.610Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -54,34 +54,34 @@ inferred entry stores its agreement score as `evidence.confidence`.
 
 - `Top of Load Order`: 9
 - `User Interface`: 62
-- `Visuals`: 27
-- `Weapons`: 101
-- `Dyes`: 17
-- `Clothing`: 128
-- `Character Customization`: 151
 - `Resources`: 86
-- `Equipment`: 121
-- `Armor`: 212
-- `Utilities`: 15
-- `Races`: 83
-- `Animations`: 10
-- `Spells`: 130
-- `Classes`: 255
-- `Bodies`: 3
-- `Miscellaneous`: 54
-- `Bug Fixes`: 102
+- `Visuals`: 27
 - `Gameplay`: 86
-- `Accessories`: 63
+- `Utilities`: 15
 - `Quests`: 10
 - `Environment`: 3
-- `Audio`: 1
-- `Hair`: 166
+- `Equipment`: 121
+- `Accessories`: 63
+- `Armor`: 212
+- `Clothing`: 128
+- `Dyes`: 17
+- `Weapons`: 101
+- `Spells`: 130
+- `Races`: 83
+- `Classes`: 255
+- `Character Customization`: 151
 - `Heads`: 136
-- `Dice`: 197
+- `Hair`: 166
 - `Companions`: 121
+- `Animations`: 10
+- `Miscellaneous`: 54
+- `Dice`: 197
 - `NPC`: 73
-- `Bottom of Load Order`: 1
+- `Audio`: 1
+- `Bodies`: 3
+- `Bug Fixes`: 102
 - `unsorted`: 585
+- `Bottom of Load Order`: 1
 
 ## Known limitations
 
