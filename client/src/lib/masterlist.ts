@@ -103,7 +103,7 @@ export async function loadExternalCategories(): Promise<ExternalCategories | nul
 
   externalInflight = (async () => {
     try {
-      const res = await fetch(EXTERNAL_URL, { signal: AbortSignal.timeout(8_000) });
+      const res = await fetch(EXTERNAL_URL, { signal: AbortSignal.timeout(15_000) });
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
       const data = (await res.json()) as ExternalCategories;
       if (!Array.isArray(data?.groups) || typeof data?.nexus !== 'object') {
