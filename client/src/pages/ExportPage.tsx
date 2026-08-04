@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
-import { Download, Copy, Check, ArrowRight, Heart, ExternalLink } from 'lucide-react';
+import { Download, Copy, Check, ArrowRight, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Textarea } from '@/components/ui/textarea';
 import { useStore } from '@/lib/store';
 import { EXPORT_FORMATS, exportOrder, download, type ExportFormat } from '@/lib/exporter';
+import { submitOrder, mountTurnstile, TURNSTILE_SITE_KEY } from '@/lib/submit';
 import dividers from '@/lib/dividers.json';
 
 const MIME: Record<string, string> = {
@@ -17,26 +19,60 @@ const MIME: Record<string, string> = {
 };
 
 /**
- * Submissions go through a GitHub issue form. An Action validates the order,
- * adds it to the corpus, regenerates the masterlist and opens a pull request,
- * so the site needs no server of its own. Orders are too large for a URL, so
- * the flow is copy to clipboard, then paste into the form that opens.
+ * Submissions become a labelled GitHub issue either way: the on-site form
+ * posts through /api/submit so no GitHub account is needed, and the GitHub
+ * issue form remains as the fallback. An Action validates the order, adds it
+ * to the corpus, regenerates the masterlist and opens a pull request.
  */
 const SUBMIT_URL =
   'https://github.com/Moonie8t7/VOLO/issues/new?template=submit-load-order.yml';
 
 export default function ExportPage() {
-  const { result } = useStore();
+  const { result, masterlist } = useStore();
   const [format, setFormat] = useState<ExportFormat>('bg3mm');
   const [copied, setCopied] = useState(false);
   const [insertDividers, setInsertDividers] = useState(false);
   const [shared, setShared] = useState(false);
 
+  const [verdict, setVerdict] = useState<'working' | 'broken' | null>(null);
+  const [notes, setNotes] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [submittedUrl, setSubmittedUrl] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const turnstileToken = useRef<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (turnstileRef.current) {
+      mountTurnstile(turnstileRef.current, token => { turnstileToken.current = token; });
+    }
+  }, []);
+
+  const submit = async () => {
+    if (!result || !verdict) return;
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      // Always submit BG3MM JSON regardless of the selected export format,
+      // because that is the format the intake pipeline validates.
+      const { url } = await submitOrder({
+        order: exportOrder(result, 'bg3mm'),
+        verdict,
+        notes: notes.trim() || undefined,
+        patch: masterlist?.gamePatch ?? undefined,
+        turnstileToken: turnstileToken.current,
+      });
+      setSubmittedUrl(url);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Submission failed.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   const share = async () => {
     if (!result) return;
     try {
-      // Always submit the BG3MM form regardless of the selected export format,
-      // because that is the format the intake pipeline validates.
       await navigator.clipboard.writeText(exportOrder(result, 'bg3mm'));
       setShared(true);
       setTimeout(() => setShared(false), 4000);
@@ -242,13 +278,75 @@ export default function ExportPage() {
               Working orders sharpen where mods belong; broken ones sharpen the warnings.
               Every future user sorts against what you verified.
             </p>
-            <Button onClick={share}>
-              {shared ? <Check className="mr-2 h-4 w-4" /> : <ExternalLink className="mr-2 h-4 w-4" />}
-              {shared ? 'Copied, paste it into the form' : 'Submit this load order'}
-            </Button>
+
+            {submittedUrl ? (
+              <Alert className="border-primary/30 bg-primary/5">
+                <AlertDescription className="font-body">
+                  <Check className="inline h-4 w-4 mr-1" />
+                  Submitted. It joins the queue for review, and the masterlist
+                  learns from it once approved.{' '}
+                  <a href={submittedUrl} target="_blank" rel="noreferrer" className="underline hover:text-foreground">
+                    Follow it here
+                  </a>
+                  .
+                </AlertDescription>
+              </Alert>
+            ) : (
+              <div className="space-y-3">
+                <div className="flex flex-col gap-2">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="verdict"
+                      checked={verdict === 'working'}
+                      onChange={() => setVerdict('working')}
+                      className="h-4 w-4 accent-[#D7A869]"
+                    />
+                    <span className="text-sm">It worked, I have played on it</span>
+                  </label>
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="verdict"
+                      checked={verdict === 'broken'}
+                      onChange={() => setVerdict('broken')}
+                      className="h-4 w-4 accent-[#D7A869]"
+                    />
+                    <span className="text-sm">It had problems</span>
+                  </label>
+                </div>
+
+                <Textarea
+                  value={notes}
+                  onChange={e => setNotes(e.target.value)}
+                  placeholder={
+                    verdict === 'broken'
+                      ? 'What went wrong? That detail is the most valuable part.'
+                      : 'Anything worth knowing (optional)'
+                  }
+                  className="font-body text-sm h-20"
+                />
+
+                <div ref={turnstileRef} className={TURNSTILE_SITE_KEY ? '' : 'hidden'} />
+
+                <Button onClick={submit} disabled={!verdict || submitting}>
+                  {submitting ? 'Submitting' : 'Submit this load order'}
+                </Button>
+
+                {submitError && (
+                  <p className="text-sm text-destructive">{submitError}</p>
+                )}
+              </div>
+            )}
+
             <p className="text-xs text-muted-foreground">
-              Copies the order to your clipboard and opens the submission form on GitHub,
-              where you say whether it worked. Submissions are public.
+              Goes to VOLO's public submission queue on GitHub, where every
+              order is validated and reviewed before the masterlist changes.
+              Prefer doing it yourself?{' '}
+              <button onClick={share} className="underline hover:text-foreground">
+                {shared ? 'Copied, paste it into the form' : 'Open the GitHub form'}
+              </button>
+              , which copies your order to the clipboard first.
             </p>
           </CardContent>
         </Card>
