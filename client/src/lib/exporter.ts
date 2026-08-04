@@ -33,6 +33,13 @@ const escapeCsv = (v: string) => (/[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"
 export function exportOrder(result: SortResult, format: ExportFormat, options: ExportOptions = {}): string {
   const { mods, placements } = result;
 
+  // Prefer the mod's own UUID; fall back to one the masterlist recovered for
+  // imports that arrived without UUIDs. Synthetic name: keys never leak out.
+  const realUuid = (m: Mod): string => {
+    if (!m.uuid.startsWith('name:')) return m.uuid;
+    return placements.get(m.uuid)?.resolvedUuid ?? '';
+  };
+
   switch (format) {
     case 'bg3mm': {
       const entries: { UUID: string; Name: string }[] = [];
@@ -58,7 +65,15 @@ export function exportOrder(result: SortResult, format: ExportFormat, options: E
         {
           generator: 'VOLO',
           generated: new Date().toISOString(),
-          stats: result.stats,
+          // Plain-language stats. "Dependency rules" are declared requirements
+          // where both mods are present, enforced as load-before constraints.
+          stats: {
+            mods: result.stats.total,
+            movedBySort: result.stats.moved,
+            knownToMasterlist: result.stats.knownToMasterlist,
+            dependencyRulesApplied: result.stats.hardEdges,
+            notYetCategorised: result.stats.unsorted,
+          },
           mods: mods.map((m, i) => ({
             index: i,
             uuid: realUuid(m),
@@ -100,9 +115,6 @@ export function exportOrder(result: SortResult, format: ExportFormat, options: E
     }
   }
 }
-
-/** Strip the synthetic key we generate for entries that arrived without a UUID. */
-const realUuid = (m: Mod) => (m.uuid.startsWith('name:') ? '' : m.uuid);
 
 export function download(content: string, filename: string, mime: string): void {
   const url = URL.createObjectURL(new Blob([content], { type: mime }));
