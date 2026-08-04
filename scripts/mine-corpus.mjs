@@ -284,6 +284,61 @@ const NAME_PATTERNS = [
   [/\bpatch(es)?\b|compatibility|\bfix(es)?\b|hotfix/i, 'Bug Fixes'],
 ];
 
+
+/**
+ * Placement vocabulary taken from Astra's sub-dividers.
+ *
+ * The divider set names a hundred things our thirty groups do not: a Warlock
+ * subclass, a Tiefling subrace, Waypoints, Summons, Instruments, Pose Packs,
+ * the Compatibility Framework. Mod names carry those words constantly, so the
+ * taxonomy doubles as a classifier for mods no submitted order has placed.
+ *
+ * Applied only after every other signal has failed, so it can add placements
+ * but never overrule a human one. Ordered most specific first: a name holding
+ * both "Warlock" and "Armor" is a class mod carrying gear, not the reverse.
+ */
+const DIVIDER_PATTERNS = [
+  [/compatibilitys*framework/i,                        'Bottom of Load Order', 105],
+  [/universals*patcher|majors*patch/i,                'Bug Fixes',            94],
+  [/appearances*edit/i,                                'Bug Fixes',            104],
+  [/volitions*cabinet|communitys*library/i,           'Resources',            7],
+  [/shader|texture|material/i,                         'Resources',            9],
+  [/vfx|visuals*effect/i,                           'Resources',            11],
+  [/mcm|mods*configuration/i,                       'Resources',            14],
+  [/waypoint/i,                                         'Utilities',            18],
+  [/restoreds*content/i,                               'Gameplay',             17],
+  [/tutorials*chest/i,                                 'Gameplay',             29],
+  [/encounter|miniboss/i,                               'Gameplay',             31],
+  [/dialogue|banter/i,                              'NPC',                  22],
+  [/astarion|shadowheart|karlach|lae.?zel|gale|wyll|halsin|minthara|minsc|jaheira|scratch|owlbears*cub/i,
+                                                        'Companions',           71],
+  [/location|map/i,                                'Environment',          26],
+  [/instrument|lute|flute/i,                     'Equipment',            39],
+  [/jewel|amulet|ring|earring|necklace/i,            'Accessories',          40],
+  [/underwear|lingerie/i,                               'Clothing',             41],
+  [/feat(s)?/i,                                      'Classes',              45],
+  [/summon|familiar/i,                                  'Spells',               49],
+  [/barbarian|bard|cleric|druid|fighter|monk|paladin|ranger|rogue|sorcerer|warlock|wizard|artificer/i,
+                                                        'Classes',              58],
+  [/tiefling|githyanki|gith|dragonborn|halfling|half.?orc|half.?elf|drow|gnome|dwarf|dwarves|elves|elf|aasimar|orc/i,
+                                                        'Races',                53],
+  [/horns?/i,                                        'Character Customization', 65],
+  [/tails?|wings?/i,                              'Character Customization', 66],
+  [/piercing/i,                                         'Character Customization', 67],
+  [/tattoo|makeup|scars?/i,                          'Character Customization', 100],
+  [/pose|qsat|lightys*lights/i,                   'Animations',           86],
+  [/body|bodies/i,                                'Bodies',               99],
+  [/eyes?|glows*eyes|eotb/i,                    'Heads',                96],
+];
+
+/** First divider pattern a name matches, or null. */
+function dividerGuess(name) {
+  for (const [re, group, num] of DIVIDER_PATTERNS) {
+    if (re.test(name)) return { group, num };
+  }
+  return null;
+}
+
 // Corpus loading
 
 function readOrder(file) {
@@ -387,6 +442,7 @@ function record(uuid) {
       uuid,
       names: new Map(),
       sections: new Map(),
+      dividers: new Map(),
       dependencies: new Map(),
       featureFlags: new Set(),
       author: null, version: null, folder: null, description: null,
@@ -396,10 +452,17 @@ function record(uuid) {
   return mods.get(uuid);
 }
 
+/** Divider number from a canonical divider name, e.g. 058.01 -> 58.01. */
+function dividerNumber(name) {
+  const m = String(name).match(/([0-9]+(?:.[0-9]+)?)/);
+  return m ? parseFloat(m[1]) : null;
+}
+
 let separatorCount = 0;
 
 for (const order of orders) {
   let currentSection = null;
+  let currentDivider = null;
   for (const entry of order.entries) {
     const name = entry.Name;
     if (!name) continue;
@@ -411,6 +474,10 @@ for (const order of orders) {
       currentSection = dividerSectionLabel(DIVIDERS.get(entry.UUID))
         ?? dividerSectionLabel(name)
         ?? currentSection;
+      // The divider itself is the finest placement statement available. It
+      // says not merely "a class mod" but "a Warlock subclass", and exactly
+      // where that sits relative to everything else in the order.
+      currentDivider = dividerNumber(DIVIDERS.get(entry.UUID)) ?? currentDivider;
       continue;
     }
 
@@ -430,6 +497,7 @@ for (const order of orders) {
       r.lastGameBuild = order.gameBuild;
     }
     if (currentSection) r.sections.set(currentSection, (r.sections.get(currentSection) || 0) + 1);
+    if (currentDivider !== null) r.dividers.set(currentDivider, (r.dividers.get(currentDivider) || 0) + 1);
 
     if (entry.Author && !r.author) r.author = entry.Author;
     if (entry.Folder && !r.folder) r.folder = entry.Folder;
@@ -447,7 +515,7 @@ for (const order of orders) {
 
 // Resolve each mod to a canonical name + group.
 const plugins = [];
-const stats = { curated: 0, fromSection: 0, fromName: 0, inferredHigh: 0, inferredLow: 0, unsorted: 0 };
+const stats = { fromDivider: 0, curated: 0, fromSection: 0, fromName: 0, inferredHigh: 0, inferredLow: 0, unsorted: 0 };
 
 for (const r of mods.values()) {
   const name = [...r.names.entries()].sort((a, b) => b[1] - a[1])[0][0];
@@ -475,6 +543,18 @@ for (const r of mods.values()) {
     group = groupForName(name);
     if (group) { confidence = 'name-pattern'; stats.fromName++; }
   }
+  // Last resort before giving up: Astra's divider vocabulary. It names a
+  // hundred things our groups do not, and mod titles are full of those words.
+  let dividerFromName = null;
+  if (!group && !process.env.VOLO_NO_DIVIDER_VOCAB) {
+    const guess = dividerGuess(name);
+    if (guess) {
+      group = guess.group;
+      dividerFromName = guess.num;
+      confidence = 'divider-vocabulary';
+      stats.fromDivider = (stats.fromDivider ?? 0) + 1;
+    }
+  }
   if (!group) { group = 'unsorted'; confidence = 'none'; stats.unsorted++; }
 
   const plugin = { name, uuid: r.uuid, group };
@@ -486,6 +566,12 @@ for (const r of mods.values()) {
   }
   if (r.featureFlags.size) plugin.featureFlags = [...r.featureFlags];
   if (r.lastGameBuild) plugin.lastSeenGameBuild = r.lastGameBuild;
+  // The divider this mod was most often filed under by the people who use
+  // them. Finer than a group: it distinguishes a Warlock subclass from a
+  // Wizard one, and a library from the patcher that has to follow it.
+  if (r.dividers.size) {
+    plugin.divider = [...r.dividers.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0][0];
+  }
   plugin.evidence = {
     source: confidence,
     installs: r.seenIn.size,
