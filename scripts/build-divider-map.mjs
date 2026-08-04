@@ -62,7 +62,8 @@ for (const [group, code] of Object.entries(GROUP_TO_CODE)) {
     console.error(`no divider found for ${group} (code ${code})`);
     process.exit(1);
   }
-  byGroup[group] = { uuid: hit.uuid, name: hit.name };
+  const num = parseFloat((hit.name.match(/([0-9]+(?:.[0-9]+)?)/) || [])[1]);
+  byGroup[group] = { uuid: hit.uuid, name: hit.name, num };
 }
 
 /**
