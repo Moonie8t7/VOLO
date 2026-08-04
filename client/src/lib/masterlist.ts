@@ -6,13 +6,13 @@
  * as pull requests against the masterlist repo.
  */
 
-import type { Masterlist, NexusCategories } from './types';
+import type { Masterlist, ExternalCategories } from './types';
 
 /** Bundled copy, so the app works on first paint and when GitHub is unreachable. */
 const LOCAL_URL = '/bg3-masterlist.json';
 
-/** Name-to-group map from the Nexus catalogue, for mods the masterlist has never seen. */
-const NEXUS_URL = '/nexus-categories.json';
+/** Name-to-group map from the Nexus and mod.io catalogues, for mods the masterlist has never seen. */
+const EXTERNAL_URL = '/external-categories.json';
 
 /**
  * The masterlist as it stands on main, which runs ahead of whatever shipped with
@@ -90,36 +90,36 @@ export async function loadMasterlist(): Promise<Masterlist> {
   }
 }
 
-let nexusCache: NexusCategories | null = null;
-let nexusInflight: Promise<NexusCategories | null> | null = null;
+let externalCache: ExternalCategories | null = null;
+let externalInflight: Promise<ExternalCategories | null> | null = null;
 
 /**
- * Loads the Nexus category map. Never rejects: sorting works without it, this
- * only improves categorisation of mods the masterlist has never seen.
+ * Loads the external category map. Never rejects: sorting works without it,
+ * this only improves categorisation of mods the masterlist has never seen.
  */
-export async function loadNexusCategories(): Promise<NexusCategories | null> {
-  if (nexusCache) return nexusCache;
-  if (nexusInflight) return nexusInflight;
+export async function loadExternalCategories(): Promise<ExternalCategories | null> {
+  if (externalCache) return externalCache;
+  if (externalInflight) return externalInflight;
 
-  nexusInflight = (async () => {
+  externalInflight = (async () => {
     try {
-      const res = await fetch(NEXUS_URL, { signal: AbortSignal.timeout(8_000) });
+      const res = await fetch(EXTERNAL_URL, { signal: AbortSignal.timeout(8_000) });
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-      const data = (await res.json()) as NexusCategories;
-      if (!Array.isArray(data?.groups) || typeof data?.names !== 'object') {
+      const data = (await res.json()) as ExternalCategories;
+      if (!Array.isArray(data?.groups) || typeof data?.nexus !== 'object') {
         throw new Error('Malformed category map.');
       }
-      nexusCache = data;
+      externalCache = data;
       return data;
     } catch (err) {
-      console.warn('[nexus-categories] unavailable:', err);
+      console.warn('[external-categories] unavailable:', err);
       return null;
     } finally {
-      nexusInflight = null;
+      externalInflight = null;
     }
   })();
 
-  return nexusInflight;
+  return externalInflight;
 }
 
 /** Semver-ish comparison. Returns >0 if a is newer. */

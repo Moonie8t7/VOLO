@@ -158,6 +158,7 @@ export default function OptimisePage() {
                           {p.groupSource === 'masterlist' && 'Category from the community masterlist.'}
                           {p.groupSource === 'inferred' && 'Category inferred from submitted load orders.'}
                           {p.groupSource === 'nexus' && 'Category from its Nexus Mods listing.'}
+                          {p.groupSource === 'modio' && 'Category from its mod.io listing.'}
                           {p.groupSource === 'name-pattern' && 'Category guessed from the mod name.'}
                           {p.groupSource === 'default' && 'No category information yet.'}
                         </p>
