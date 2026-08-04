@@ -10,7 +10,7 @@
  * endpoint (whose secret would also be unset) skips verification. Fill both
  * to turn bot protection on; neither half works alone.
  */
-export const TURNSTILE_SITE_KEY = '';
+export const TURNSTILE_SITE_KEY = '0x4AAAAAAEGIQn-dVyznAC5a';
 
 export interface SubmissionPayload {
   /** The order as BG3MM JSON, the format the intake pipeline validates. */
