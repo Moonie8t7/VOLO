@@ -355,6 +355,8 @@ function groupForName(name) {
 
 // Main
 
+let externalDependencyStats = { added: 0, fromNexus: 0, fromModio: 0, skippedOptional: 0, cycles: 0 };
+
 const orders = [];
 const skipped = [];
 const seen = new Set();
@@ -580,6 +582,165 @@ for (const p of plugins) {
   console.log(`script extender: ${seCount} mods marked as relying on it`);
 }
 
+/**
+ * Promote crawled requirement data into load-after constraints.
+ *
+ * Dependencies are the only hard evidence the sorter has; everything else is
+ * statistical. Submitted exports declare very few, but both catalogues carry
+ * author-declared requirements, so the ones that resolve to two mods we know
+ * are worth having.
+ *
+ * Deliberately conservative, because a wrong hard edge forces a wrong order:
+ *
+ *   - Nexus requirement tables are free text and include optional suggestions
+ *     ("Works without, but...", "(Optional) Recommended Installation Tool")
+ *     and install tools. Anything whose note reads as optional is dropped.
+ *   - Only exact name matches join a mod to its Nexus entry. Fuzzy matches are
+ *     fine for a category guess and not fine for a constraint.
+ *   - mod.io names must match exactly and unambiguously; a name shared by two
+ *     mods is skipped rather than guessed.
+ *   - Any edge that would close a cycle is dropped, so the sort can never be
+ *     handed an impossible graph.
+ */
+if (process.env.VOLO_NO_EXTERNAL_DEPS) {
+  console.log('external deps: skipped (VOLO_NO_EXTERNAL_DEPS set)');
+} else {
+  const norm = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const OPTIONAL = /optional|recommend|works without|not required|if you |alternative/i;
+
+  const byUuid = new Map(plugins.map(p => [p.uuid, p]));
+  const nameToUuid = new Map();
+  const ambiguous = new Set();
+  for (const p of plugins) {
+    const key = norm(p.name);
+    if (!key) continue;
+    if (nameToUuid.has(key)) ambiguous.add(key);
+    else nameToUuid.set(key, p.uuid);
+  }
+  for (const key of ambiguous) nameToUuid.delete(key);
+
+  /** dependent uuid -> set of uuids that must load before it. */
+  const proposed = new Map();
+  const add = (dependent, dependency) => {
+    if (!dependent || !dependency || dependent === dependency) return;
+    if (!proposed.has(dependent)) proposed.set(dependent, new Set());
+    proposed.get(dependent).add(dependency);
+  };
+
+  const readJson = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return null; } };
+  const enrichment = readJson(path.join('nexus', 'enrichment.json'));
+  const nexusCatalog = readJson(path.join('nexus', 'catalog.json'));
+  let fromNexus = 0, skippedOptional = 0;
+  if (enrichment && nexusCatalog) {
+    const nexusIdToUuid = new Map();
+    for (const [uuid, e] of Object.entries(enrichment)) {
+      if (e.matchKind === 'exact') nexusIdToUuid.set(e.nexusId, uuid);
+    }
+    for (const [id, mod] of Object.entries(nexusCatalog.mods)) {
+      const dependent = nexusIdToUuid.get(Number(id));
+      if (!dependent) continue;
+      for (const req of mod.req ?? []) {
+        if (req.external) continue;
+        if (OPTIONAL.test(req.notes ?? '')) { skippedOptional++; continue; }
+        const dependency = nexusIdToUuid.get(req.id);
+        if (dependency) { add(dependent, dependency); fromNexus++; }
+      }
+    }
+  }
+
+  const modioCatalog = readJson(path.join('modio', 'catalog.json'));
+  let fromModio = 0;
+  if (modioCatalog) {
+    const modioIdToUuid = new Map();
+    for (const [id, mod] of Object.entries(modioCatalog.mods)) {
+      const uuid = nameToUuid.get(norm(mod.name));
+      if (uuid) modioIdToUuid.set(Number(id), uuid);
+    }
+    for (const [id, mod] of Object.entries(modioCatalog.mods)) {
+      const dependent = modioIdToUuid.get(Number(id));
+      if (!dependent) continue;
+      for (const dep of mod.dependsOn ?? []) {
+        const dependency = modioIdToUuid.get(dep.id);
+        if (dependency) { add(dependent, dependency); fromModio++; }
+      }
+    }
+  }
+
+  /*
+   * A catalogue requirement means "install this too", which is not quite the
+   * same claim as "load this first". Working orders respect these edges about
+   * 85 percent of the time; the rest are cases where the requirement is real
+   * but the load position is not. Where the corpus actively contradicts an
+   * edge, the people who played the game win over the requirements table.
+   *
+   * Computed from whatever orders this run is building from, so a held-out
+   * evaluation cannot leak the answer into its own training data.
+   */
+  const workingPositions = orders.filter(o => o.label === 'working').map(o => {
+    const pos = new Map();
+    o.entries.forEach((e, i) => { if (e.UUID && !pos.has(e.UUID)) pos.set(e.UUID, i); });
+    return pos;
+  });
+  const corpusContradicts = (dependent, dependency) => {
+    let ok = 0, bad = 0;
+    for (const pos of workingPositions) {
+      const a = pos.get(dependent), b = pos.get(dependency);
+      if (a === undefined || b === undefined) continue;
+      if (b < a) ok++; else bad++;
+    }
+    return ok + bad >= 2 && bad > ok;
+  };
+
+  // Existing pak-declared edges seed the graph, so a promoted edge cannot
+  // contradict what a mod states about itself.
+  const edges = new Map();
+  const link = (dependent, dependency) => {
+    if (!edges.has(dependency)) edges.set(dependency, new Set());
+    edges.get(dependency).add(dependent);
+  };
+  for (const p of plugins) {
+    for (const d of p.dependencies ?? []) if (byUuid.has(d.uuid)) link(p.uuid, d.uuid);
+  }
+
+  /** Can `from` already reach `to` following load-before edges? */
+  const reaches = (from, to) => {
+    const stack = [from];
+    const seenNodes = new Set();
+    while (stack.length) {
+      const node = stack.pop();
+      if (node === to) return true;
+      if (seenNodes.has(node)) continue;
+      seenNodes.add(node);
+      for (const next of edges.get(node) ?? []) stack.push(next);
+    }
+    return false;
+  };
+
+  let added = 0, cycles = 0, contradicted = 0;
+  // Sorted for determinism: the same corpus must always produce the same list.
+  for (const dependent of [...proposed.keys()].sort()) {
+    for (const dependency of [...proposed.get(dependent)].sort()) {
+      const target = byUuid.get(dependent);
+      const source = byUuid.get(dependency);
+      if (!target || !source) continue;
+      if ((target.dependencies ?? []).some(d => d.uuid === dependency)) continue;
+      if (corpusContradicts(dependent, dependency)) { contradicted++; continue; }
+      if (reaches(dependent, dependency)) { cycles++; continue; }
+      target.dependencies = [...(target.dependencies ?? []), { uuid: dependency, name: source.name }];
+      link(dependent, dependency);
+      added++;
+    }
+  }
+
+  externalDependencyStats = { fromNexus, fromModio, skippedOptional, added, cycles, contradicted };
+  console.log(
+    `external deps: ${added} load-after edges promoted ` +
+    `(${fromNexus} nexus candidates, ${fromModio} modio, ` +
+    `${skippedOptional} optional skipped, ${contradicted} contradicted by the corpus, ` +
+    `${cycles} cycle-forming dropped)`,
+  );
+}
+
 plugins.sort((a, b) =>
   b.evidence.installs - a.evidence.installs || a.name.localeCompare(b.name));
 
@@ -603,6 +764,7 @@ const masterlist = {
     working: orders.filter(o => o.label === 'working').length,
     broken: orders.filter(o => o.label === 'broken').length,
     unlabelled: orders.filter(o => o.label === 'unlabelled').length,
+    externalDependencyEdges: externalDependencyStats.added,
     ordersWithKnownBuild: orders.filter(o => o.gameBuild).length,
   },
   groups: GROUPS,
@@ -631,6 +793,7 @@ Generated ${masterlist.generated} by \`scripts/mine-corpus.mjs\`.
 | Load orders analysed | ${orders.length} |
 | labelled working | ${masterlist.provenance.working} |
 | labelled broken | ${masterlist.provenance.broken} |
+| load-after edges promoted from catalogues | ${externalDependencyStats.added} |
 | unlabelled | ${masterlist.provenance.unlabelled} |
 | Separator headers parsed | ${separatorCount} |
 | **Unique mods indexed** | **${plugins.length}** |
