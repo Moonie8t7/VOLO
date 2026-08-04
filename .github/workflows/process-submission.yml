@@ -54,13 +54,22 @@ jobs:
           git add "Load Orders - Public Submitted" masterlist public/bg3-masterlist.json
           git commit -m "Add load order from issue #${{ github.event.issue.number }} and regenerate the masterlist"
           git push -f origin "$BRANCH"
+          # Merging the pull request closes the submitter's issue.
+          printf '\nCloses #%s\n' "${{ github.event.issue.number }}" >> /tmp/report.md
           gh pr create \
             --title "Load order submission #${{ github.event.issue.number }}" \
             --body-file /tmp/report.md \
             --head "$BRANCH" || gh pr edit "$BRANCH" --body-file /tmp/report.md
 
+      # Always runs. A submitter who hears nothing assumes the tool is broken,
+      # and the report is the only feedback they get, so a failure to open the
+      # pull request must not also swallow the explanation.
       - name: Report back on the issue
+        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          if [ ! -s /tmp/report.md ]; then
+            printf 'The intake job did not complete. A maintainer will look at this submission.\n' > /tmp/report.md
+          fi
           gh issue comment "${{ github.event.issue.number }}" --body-file /tmp/report.md
