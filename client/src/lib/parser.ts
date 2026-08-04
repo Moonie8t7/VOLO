@@ -52,18 +52,32 @@ export function sectionLabel(name: string): string | null {
   return stripped.length >= 2 ? stripped : null;
 }
 
-/** Base-game packages that show up as dependencies but aren't mods. */
+/** Base-game packages that show up as list entries or dependencies but aren't mods. */
 const ENGINE_MASTERS = new Set([
   'GustavDev', 'GustavX', 'Gustav', 'Shared', 'SharedDev',
   'Honour', 'HonourX', 'Engine', 'ModBrowser',
+  'MainUI', 'CrossplayUI', 'PhotoMode',
+  'DiceSet_01', 'DiceSet_02', 'DiceSet_03', 'DiceSet_04', 'DiceSet_05', 'DiceSet_06',
 ]);
 
+/**
+ * Dependencies arrive as an array of objects in JSON exports, or as one
+ * comma-separated string of names in TSV/CSV exports. Both matter: the
+ * optimiser resolves name-only references against the mods present, so even
+ * the string form yields real ordering constraints.
+ */
 function toModRefs(raw: unknown): ModRef[] | undefined {
-  if (!Array.isArray(raw)) return undefined;
-  const refs = raw
-    .filter((d): d is Record<string, unknown> => !!d && typeof d === 'object')
-    .map(d => ({ uuid: String(d.UUID ?? d.uuid ?? ''), name: String(d.Name ?? d.name ?? '') }))
-    .filter(d => d.name && !ENGINE_MASTERS.has(d.name));
+  let refs: ModRef[];
+  if (Array.isArray(raw)) {
+    refs = raw
+      .filter((d): d is Record<string, unknown> => !!d && typeof d === 'object')
+      .map(d => ({ uuid: String(d.UUID ?? d.uuid ?? ''), name: String(d.Name ?? d.name ?? '') }));
+  } else if (typeof raw === 'string') {
+    refs = raw.split(',').map(s => ({ uuid: '', name: s.trim() }));
+  } else {
+    return undefined;
+  }
+  refs = refs.filter(d => d.name && !ENGINE_MASTERS.has(d.name));
   return refs.length ? refs : undefined;
 }
 
@@ -118,6 +132,11 @@ function collect(entries: unknown[], format: string): ParseResult {
     const rec = raw as Record<string, unknown>;
     const name = String(rec.Name ?? rec.name ?? '').trim();
     if (!name) continue;
+
+    // The base game ships as modules and some managers export them in the
+    // list. They are not mods and always load first, so sorting them is
+    // wrong; drop them the way the modsettings parser already does.
+    if (ENGINE_MASTERS.has(name)) continue;
 
     const rawUuid = String(rec.UUID ?? rec.uuid ?? '').trim();
     if (rawUuid && DIVIDER_UUIDS.has(rawUuid)) {
