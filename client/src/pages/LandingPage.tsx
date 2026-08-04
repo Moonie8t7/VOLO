@@ -131,8 +131,8 @@ export default function LandingPage() {
                 You can check this yourself with the browser's network panel;
                 once the page has loaded, using VOLO makes no further
                 requests. The one exception is choosing to submit your order
-                from the Export page, which copies it for a GitHub form you
-                fill in yourself.
+                from the Export page, which sends it to VOLO's public
+                submission queue and nowhere else.
               </p>
             </AccordionContent>
           </AccordionItem>
