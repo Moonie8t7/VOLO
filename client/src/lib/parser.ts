@@ -195,9 +195,16 @@ function parseText(content: string): ParseResult {
     .map(l => l.trim())
     .filter(l => l && !l.startsWith('#') && !l.startsWith('//'))
     .map(line => {
-      // "Mod Name [1.0.0]" or "Mod Name (Author)"
-      const m = line.match(/^(.+?)\s*[[(]([^\])]+)[\])]\s*$/);
-      return m ? { Name: m[1].trim(), Version: m[2].trim() } : { Name: line };
+      // Hand-written and exported lists number their lines: "37. Mod Name".
+      // Strip the numbering or nothing matches the masterlist by name.
+      let clean = line.replace(/^\d+\s*[.)]\s*/, '');
+      // BG3MM's text export appends the pak: "Mod Name (modname_ab12.pak)".
+      clean = clean.replace(/\s*\([^()]*\.pak\)\s*$/i, '');
+      // "Mod Name [1.0.0]" or "Mod Name (1.0.0)". Only version-shaped
+      // suffixes are split off: parentheses are common in real mod names
+      // ("ImpUI (ImprovedUI)"), and guessing author strips those.
+      const m = clean.match(/^(.+?)\s*[[(](v?[\d.]+)[\])]\s*$/);
+      return m ? { Name: m[1].trim(), Version: m[2].trim() } : { Name: clean };
     });
   return collect(entries, 'Plain text');
 }
@@ -285,6 +292,9 @@ export function parseLoadOrder(content: string, filename = ''): ParseResult {
   }
 
   if (ext === 'tsv' || trimmed.includes('\t')) return parseDelimited(content, '\t', 'TSV');
+  // A named .txt is a list of names, never CSV: mod names contain commas
+  // ("ASE - Gnoll, Harpy, ..."), and splitting on them shreds the names.
+  if (ext === 'txt') return parseText(content);
   if (ext === 'csv' || /,.*\n/.test(trimmed)) return parseDelimited(content, ',', 'CSV');
   return parseText(content);
 }

@@ -315,6 +315,37 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// numbered text fixture: BG3MM's text export writes "NN. Name (file.pak)".
+// Numbering and filenames must strip, commas in names must survive, and
+// engine modules must still be recognised and dropped.
+{
+  const txt = [
+    '0. GustavX (GustavX_cb555efe-2d9e-131f-8195-a89329d218ea.pak) ',
+    '10. ASE - Gnoll, Harpy, Hobgoblin, Hag, Djinni (ase_nr_fav_races_bad311ff-bbf9-2f2w.pak) ',
+    '12. ImpUI (ImprovedUI) (impui_26922ba9-6018-5252-075d-eqgb.pak) ',
+  ].join('\n');
+  const parsed = parseLoadOrder(txt, 'order.txt');
+  console.log('');
+  console.log('numbered text fixture');
+  const names = parsed.mods.map(m => m.name);
+  const wantAse = 'ASE - Gnoll, Harpy, Hobgoblin, Hag, Djinni';
+  if (parsed.mods.length === 2 && names.includes(wantAse) && names.includes('ImpUI (ImprovedUI)')) {
+    console.log('  ok    numbering and filenames stripped, commas kept, engine dropped');
+  } else {
+    failures++;
+    console.log('  FAIL  got ' + JSON.stringify(names));
+  }
+  const result = sortLoadOrder(parsed.mods, masterlist);
+  const exported = JSON.parse(exportOrder(result, 'bg3mm'));
+  const impui = exported.Order.find(e => e.Name === 'ImpUI (ImprovedUI)');
+  if (impui?.UUID === '26922ba9-6018-5252-075d-7ff2ba6ed879') {
+    console.log('  ok    cleaned names still recover real UUIDs');
+  } else {
+    failures++;
+    console.log('  FAIL  UUID not recovered from cleaned name');
+  }
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);
