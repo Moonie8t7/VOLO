@@ -45,18 +45,26 @@ export async function onRequestPost({ request, env }) {
     return json(400, { error: 'No load order in the submission.' });
   }
 
-  // Sanity check the order without trusting it: valid JSON, a recognisable
-  // list, plausible size. Full validation happens in the intake workflow with
-  // the app's own parser.
-  let entries;
-  try {
-    const data = JSON.parse(order);
-    entries = Array.isArray(data) ? data : (data.Order ?? data.Mods ?? null);
-  } catch {
-    return json(400, { error: 'The load order is not valid JSON. Export it from the site first.' });
-  }
-  if (!Array.isArray(entries) || entries.length < 5 || entries.length > 5000) {
-    return json(400, { error: 'The load order needs at least five mods.' });
+  // Sanity check the order without trusting it: BG3MM JSON or the game's own
+  // modsettings.lsx, a recognisable list, plausible size. Full validation
+  // happens in the intake workflow with the app's own parser.
+  const trimmed = order.trim();
+  if (trimmed.startsWith('<?xml')) {
+    const modules = (trimmed.match(/ModuleShortDesc/g) ?? []).length;
+    if (!trimmed.includes('ModuleSettings') || modules < 5 || modules > 10000) {
+      return json(400, { error: 'That does not look like a modsettings.lsx with mods in it.' });
+    }
+  } else {
+    let entries;
+    try {
+      const data = JSON.parse(order);
+      entries = Array.isArray(data) ? data : (data.Order ?? data.Mods ?? null);
+    } catch {
+      return json(400, { error: 'The load order is not valid JSON. Export it from the site first.' });
+    }
+    if (!Array.isArray(entries) || entries.length < 5 || entries.length > 5000) {
+      return json(400, { error: 'The load order needs at least five mods.' });
+    }
   }
 
   if (env.TURNSTILE_SECRET) {

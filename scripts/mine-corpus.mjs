@@ -276,6 +276,23 @@ function readOrder(file) {
       return Object.fromEntries(hdr.map((h, i) => [h, cells[i]]));
     });
   }
+  // The game's own modsettings.lsx, submitted raw. The base-game modules it
+  // lists are not mods and are dropped here, the same as everywhere else.
+  if (raw.trimStart().startsWith('<?xml') && raw.includes('ModuleShortDesc')) {
+    const entries = [];
+    for (const block of raw.split(/<node\s+id="ModuleShortDesc"/).slice(1)) {
+      const scope = block.split('</node>')[0];
+      const rec = {};
+      for (const m of scope.matchAll(/<attribute\s+id="([^"]+)"[^>]*\bvalue="([^"]*)"/g)) {
+        rec[m[1]] = m[2]
+          .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+          .replace(/&apos;/g, "'").replace(/&amp;/g, '&');
+      }
+      if (ENGINE_MASTERS.has(rec.Folder) || ENGINE_MASTERS.has(rec.Name)) continue;
+      entries.push(rec);
+    }
+    return entries;
+  }
   let json;
   try { json = JSON.parse(raw); } catch { return null; }
   if (Array.isArray(json?.Order)) return json.Order;

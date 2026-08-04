@@ -47,7 +47,7 @@ export default function MasterlistPage() {
                 : 'Loading'}
             </p>
           </div>
-          <Link href="/export">
+          <Link href="/submit">
             <Button variant="outline">
               <GitPullRequest className="mr-2 h-4 w-4" />
               Submit a load order
