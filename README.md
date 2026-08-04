@@ -137,4 +137,5 @@ UUID on import and can reinsert them on export.
 
 ## Licence
 
-MIT. The divider paks remain Astralities' work, used with permission.
+MIT, in `LICENSE`. Third party material that the MIT grant does not cover, in
+particular Astra's divider paks, is listed in `NOTICE`.
