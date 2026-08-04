@@ -198,6 +198,8 @@ export default function SubmitPage() {
                     >
                       <input
                         type="file"
+                        name="submissionFile"
+                        aria-label="Load order file to submit"
                         accept=".json,.lsx,.txt,.tsv,.csv"
                         className="hidden"
                         onChange={e => { if (e.target.files?.[0]) onFile(e.target.files[0]); }}
