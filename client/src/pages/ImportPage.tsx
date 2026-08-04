@@ -104,7 +104,7 @@ export default function ImportPage() {
               <Button
                 className="mt-3"
                 disabled={!pasted.trim()}
-                onClick={() => ingest(pasted, 'pasted.json')}
+                onClick={() => ingest(pasted, 'pasted')}
               >
                 Read pasted list
               </Button>
