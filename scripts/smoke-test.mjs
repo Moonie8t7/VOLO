@@ -78,17 +78,19 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     ? fail(`${violations} dependencies load after their dependent`)
     : ok('all declared dependencies load first');
 
-  // 3. group order holds wherever dependencies don't force otherwise
+  // 3. Divider order holds wherever dependencies don't force otherwise. The
+  //    dividers are the skeleton of the sort, so this is the shape invariant;
+  //    group rank only breaks ties inside a divider section.
   let inversions = 0;
   for (let i = 1; i < result.mods.length; i++) {
-    const prev = groupRank.get(result.placements.get(result.mods[i - 1].uuid)?.group) ?? 99;
-    const curr = groupRank.get(result.placements.get(result.mods[i].uuid)?.group) ?? 99;
+    const prev = result.placements.get(result.mods[i - 1].uuid)?.divider ?? Infinity;
+    const curr = result.placements.get(result.mods[i].uuid)?.divider ?? Infinity;
     if (curr < prev) inversions++;
   }
   const forced = result.stats.hardEdges;
   inversions > forced
-    ? fail(`${inversions} group inversions, only ${forced} dependency edges to explain them`)
-    : ok(`group order holds (${inversions} inversions, ${forced} dependency edges)`);
+    ? fail(`${inversions} divider inversions, only ${forced} dependency edges to explain them`)
+    : ok(`divider order holds (${inversions} inversions, ${forced} dependency edges)`);
 
   // 4. deterministic
   const again = sortLoadOrder(parsed.mods, masterlist);
@@ -205,14 +207,26 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   const withDividers = JSON.parse(exportOrder(result, 'bg3mm', { insertDividers: true }));
   const dividerEntries = withDividers.Order.filter(e => dividers.uuids.includes(e.UUID));
   const impuiAt = withDividers.Order.findIndex(e => e.UUID === '26922ba9-6018-5252-075d-7ff2ba6ed879');
-  const uiDividerAt = withDividers.Order.findIndex(e => e.UUID === div.uuid);
+  const firstDividerAt = withDividers.Order.findIndex(e => dividers.uuids.includes(e.UUID));
   if (plain.Order.every(e => !dividers.uuids.includes(e.UUID))
       && dividerEntries.length > 0
-      && uiDividerAt !== -1 && uiDividerAt < impuiAt) {
-    console.log('  ok    export inserts ' + dividerEntries.length + ' dividers, UI divider precedes ImpUI');
+      && firstDividerAt !== -1 && firstDividerAt < impuiAt) {
+    console.log('  ok    export inserts ' + dividerEntries.length + ' dividers ahead of the mods they head');
   } else {
     failures++;
     console.log('  FAIL  divider insertion incorrect');
+  }
+
+  // Inserted dividers must run in the taxonomy's own sequence, which is the
+  // whole point of using it as the skeleton.
+  const byNum = new Map(dividers.all.map(d => [d.uuid, d.num]));
+  const seq = withDividers.Order.filter(e => byNum.has(e.UUID)).map(e => byNum.get(e.UUID));
+  const ascending = seq.every((n, i) => i === 0 || seq[i - 1] <= n);
+  if (ascending) {
+    console.log('  ok    dividers appear in taxonomy order (' + seq.length + ' of them)');
+  } else {
+    failures++;
+    console.log('  FAIL  dividers out of sequence: ' + seq.join(', '));
   }
 }
 

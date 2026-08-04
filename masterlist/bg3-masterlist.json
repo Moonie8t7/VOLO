@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-04T12:11:15.907Z",
+  "generated": "2026-08-04T14:15:29.366Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -7119,12 +7119,12 @@
     {
       "name": "Artificer",
       "uuid": "88fadf2c-152d-404e-b863-c12273559e1c",
-      "group": "Classes",
+      "group": "unsorted",
       "author": "Lykon, multiple authors, see https://github.com/Kidel/BG3_Artificer/graphs/contributors",
       "version": "2.22.0.0",
       "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1
@@ -8483,9 +8483,9 @@
     {
       "name": "Extra encounters and Minibosses",
       "uuid": "6324f71c-80f2-6c13-b2e8-1c3441fa6072",
-      "group": "Gameplay",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -10905,9 +10905,9 @@
     {
       "name": "Summon Tutorial Chest",
       "uuid": "8b8624ed-6b98-781b-659f-7e8be5ef5856",
-      "group": "Spells",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -12289,20 +12289,21 @@
     {
       "name": "2024PHB_Race_Halfelf",
       "uuid": "fdb414df-5ede-f241-2f8d-c8fb0eff0bb5",
-      "group": "Races",
+      "group": "Hair",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.78
       }
     },
     {
       "name": "2024PHB_Race_Halfling",
       "uuid": "0dbdcc11-666c-137c-adf7-49d50df40dd9",
-      "group": "Races",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -12322,9 +12323,9 @@
     {
       "name": "2024PHB_Spells_Sorcerer",
       "uuid": "a13aa92e-3814-2e56-b12e-55f37e2e5e5e",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -12377,7 +12378,7 @@
     {
       "name": "5eE Monk Rework",
       "uuid": "25eeb987-d8c1-4462-9f80-b7932e8d09ca",
-      "group": "unsorted",
+      "group": "Resources",
       "folder": "5eEMonkRework",
       "author": "drkekyll",
       "version": "1.0.0.1",
@@ -12386,10 +12387,11 @@
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 1
+        "brokenInstalls": 1,
+        "confidence": 0.76
       },
       "usesScriptExtender": true,
       "dependencies": [
@@ -13143,10 +13145,11 @@
       "version": "1.1.0.0",
       "lastSeenGameBuild": "4.8.700.7143220",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 1
+        "brokenInstalls": 1,
+        "confidence": 0.8
       }
     },
     {
@@ -13276,9 +13279,9 @@
     {
       "name": "Arcane Caster Pistol - Artificer Set",
       "uuid": "d6a73a22-0613-33ff-ac45-23380a462a8b",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -13446,12 +13449,13 @@
     {
       "name": "Artificer for Home Brew - Comprehensive Reworks ",
       "uuid": "722a4fdd-cdac-20c9-abc9-b84ff9b0f17f",
-      "group": "Classes",
+      "group": "Races",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.76
       },
       "dependencies": [
         {
@@ -13463,9 +13467,9 @@
     {
       "name": "Artificer Tweaks",
       "uuid": "47b2b8a0-637e-45dd-8adf-fd50a434f529",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -13481,34 +13485,37 @@
     {
       "name": "ASE - 5 Shadow Cats Of Ill Omen",
       "uuid": "dc262fa7-5f2b-482a-8e8d-353b7e0ad6d9",
-      "group": "unsorted",
+      "group": "Races",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.78
       }
     },
     {
       "name": "ASE - Ghost And Undead",
       "uuid": "86335b09-b090-8f6a-56b7-16230298cc40",
-      "group": "unsorted",
+      "group": "Races",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.74
       }
     },
     {
       "name": "ASE - Gnoll, Harpy, Hobgoblin, Hag, Djinni",
       "uuid": "bad311ff-bbf9-72e7-c9c1-f74fbb653cd7",
-      "group": "unsorted",
+      "group": "Races",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.81
       }
     },
     {
@@ -14166,9 +14173,9 @@
     {
       "name": "AutoHideSummons",
       "uuid": "4d35a99d-f33a-40aa-afa6-ab4a7770ab71",
-      "group": "Spells",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -14296,12 +14303,13 @@
     {
       "name": "AW's Babarian Overhaul",
       "uuid": "f8f07c2a-7718-4fd9-6b80-0f09cb9a2d80",
-      "group": "unsorted",
+      "group": "Character Customization",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.73
       },
       "dependencies": [
         {
@@ -14365,13 +14373,12 @@
     {
       "name": "AW's Monk Overhaul",
       "uuid": "f167f772-0faf-573d-14cf-14acbe65250a",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.82
+        "brokenInstalls": 0
       },
       "dependencies": [
         {
@@ -14424,9 +14431,9 @@
     {
       "name": "AW's Ranger Overhaul",
       "uuid": "e09c3fc3-f182-3d82-91ea-ba2c0b46f4b1",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -14465,13 +14472,12 @@
     {
       "name": "AW's Rogue Overhaul",
       "uuid": "5f383163-a979-581d-814a-1cee54429719",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.88
+        "brokenInstalls": 0
       },
       "dependencies": [
         {
@@ -14507,9 +14513,9 @@
     {
       "name": "AW's Wizard Overhaul",
       "uuid": "9434d97e-49e9-9374-122b-8d3b4fdf3181",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -14739,13 +14745,12 @@
     {
       "name": "Bag Of Holding",
       "uuid": "3c0d5efc-3e23-3ecb-89f8-c5678ebd26db",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.75
+        "brokenInstalls": 0
       }
     },
     {
@@ -14795,9 +14800,9 @@
     {
       "name": "Barbarian 2024 (w/ World Tree & Zealot)",
       "uuid": "a73c5379-d3d3-8d57-6c5a-22ccaacba78c",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -14953,9 +14958,9 @@
     {
       "name": "BDS Heartstrings Necklace",
       "uuid": "044e24aa-2726-a8ce-9bd7-4af7b2266a5e",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -15030,9 +15035,9 @@
     {
       "name": "BellNecklace",
       "uuid": "2c7de7d2-36f7-48bb-80fb-d02312cc2770",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -16037,12 +16042,13 @@
     {
       "name": "Bububull's Astromancer Piercings",
       "uuid": "0826ae2e-7d8a-4d31-9c0b-f2a7975b4ad5",
-      "group": "Character Customization",
+      "group": "Accessories",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.76
       }
     },
     {
@@ -16145,7 +16151,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.71
+        "confidence": 0.77
       }
     },
     {
@@ -16275,9 +16281,9 @@
     {
       "name": "BW_Dark_Druid_Set",
       "uuid": "b40c7801-e4f5-51b9-1479-0811a8a713f3",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -16286,13 +16292,12 @@
     {
       "name": "BW_DAV_Morrigan_Set",
       "uuid": "d389f476-3448-23a8-d29b-00acb5c9c533",
-      "group": "Weapons",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.88
+        "brokenInstalls": 0
       }
     },
     {
@@ -16419,13 +16424,12 @@
     {
       "name": "BW_FFVII_Sephiroth_Set",
       "uuid": "3511ac23-f1f8-2bdc-76c8-8858456cf87c",
-      "group": "Weapons",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.83
+        "brokenInstalls": 0
       }
     },
     {
@@ -16442,9 +16446,9 @@
     {
       "name": "BW_LA_Elegant_Warlock_Set",
       "uuid": "8c96fe5d-6822-10e5-755f-a8b892255302",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -16619,13 +16623,12 @@
     {
       "name": "BW_OVR_Sorceress_Set",
       "uuid": "9e44b15f-3123-1fb9-b9cb-263dda6e8116",
-      "group": "Weapons",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.75
+        "brokenInstalls": 0
       }
     },
     {
@@ -16908,9 +16911,9 @@
     {
       "name": "CBR_Piercings",
       "uuid": "36db45ac-c11b-4075-94a7-1ed54abc640c",
-      "group": "Character Customization",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -18359,9 +18362,9 @@
     {
       "name": "DarthRen_Piercing",
       "uuid": "3785a86d-d399-44ab-8108-a808af72fe77",
-      "group": "Character Customization",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -18447,13 +18450,12 @@
     {
       "name": "Death Soul",
       "uuid": "4e7b12d6-f7e7-47c3-ad16-e5732bd43688",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.73
+        "brokenInstalls": 0
       }
     },
     {
@@ -18660,9 +18662,9 @@
     {
       "name": "Devil Soul Sorcerer: Devilish Duellist",
       "uuid": "ebf6f6b6-0f4e-d951-3366-a9785ef321b3",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -18682,9 +18684,9 @@
     {
       "name": "DFindFamiliar",
       "uuid": "02872d50-56aa-4463-9829-9f8f69a6070f",
-      "group": "Spells",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -19074,9 +19076,9 @@
     {
       "name": "DiceSet_HQ_Themed_Druid_Glow",
       "uuid": "256a1ca6-4bba-420c-b25a-db0bc6e4a6f9",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -19085,9 +19087,9 @@
     {
       "name": "DiceSet_HQ_Themed_Druid_Simple",
       "uuid": "64f7084a-4bba-420c-b25a-db0bc6e4a6f9",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -19096,45 +19098,42 @@
     {
       "name": "DiceSet_HQ_Themed_Fire",
       "uuid": "13d7716a-3158-439d-a0a8-f2cb96c0c59a",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 1
+        "brokenInstalls": 0
       }
     },
     {
       "name": "DiceSet_HQ_Themed_Lava",
       "uuid": "a9462009-1360-4c59-b7b3-61e4ee2b9144",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 1
+        "brokenInstalls": 0
       }
     },
     {
       "name": "DiceSet_HQ_Themed_Necromancer",
       "uuid": "d6f60b7d-a859-4878-ab87-81788635747b",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 1
+        "brokenInstalls": 0
       }
     },
     {
       "name": "DiceSet_HQ_Themed_Paladin",
       "uuid": "65e7134c-3068-4b54-86ab-80907f929fb4",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -19154,33 +19153,31 @@
     {
       "name": "DiceSet_HQ_Themed_Pink_Leopard",
       "uuid": "61a278e8-6e63-4652-9c55-31d0c6f31a64",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 1
+        "brokenInstalls": 0
       }
     },
     {
       "name": "DiceSet_HQ_Themed_Shield",
       "uuid": "2c95f6c0-46f7-4bdf-8788-254d030c2584",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.92
+        "brokenInstalls": 0
       }
     },
     {
       "name": "DiceSet_HQ_Themed_Warlock",
       "uuid": "256a1ca6-5733-482b-a618-19ed454186e2",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -19445,7 +19442,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.76
+        "confidence": 0.81
       }
     },
     {
@@ -19503,12 +19500,13 @@
     {
       "name": "Dragon Born Wings",
       "uuid": "221405a6-aa9c-abf0-6ab4-26a3829e15f2",
-      "group": "unsorted",
+      "group": "Races",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.79
       }
     },
     {
@@ -19642,7 +19640,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.81
+        "confidence": 0.76
       }
     },
     {
@@ -19659,9 +19657,9 @@
     {
       "name": "Drakewarden Ranger",
       "uuid": "44b67e76-6a3f-73e8-eaf6-53885753bdd8",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -20397,7 +20395,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.85
+        "confidence": 0.78
       },
       "dependencies": [
         {
@@ -20872,9 +20870,9 @@
     {
       "name": "Evelyn's Default Human Underwear",
       "uuid": "84a7a370-f9cc-95b3-1155-795f0a3cce57",
-      "group": "Clothing",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -21778,9 +21776,9 @@
     {
       "name": "FighterWizard",
       "uuid": "6705e0ac-a3c4-48b3-9e16-a0d2c6260a0e",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -22218,9 +22216,9 @@
     {
       "name": "Gale's Wizardly Updo - Default",
       "uuid": "623966ce-7cef-5f2b-2704-d469fe7949db",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -22602,7 +22600,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.81
+        "confidence": 0.79
       }
     },
     {
@@ -22981,9 +22979,9 @@
     {
       "name": "Half_Elf_Half_Orc_Race",
       "uuid": "7e0df9dd-40b4-f4e8-8fba-7e9be7e94bed",
-      "group": "Races",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -22992,21 +22990,21 @@
     {
       "name": "Half-Azer Dwarf",
       "uuid": "87785329-3990-25e9-5265-e8b6097f7a30",
-      "group": "Races",
+      "group": "Hair",
       "evidence": {
         "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.7
+        "confidence": 0.81
       }
     },
     {
       "name": "Half-Elf Bhaalspawn",
       "uuid": "597c26d9-8e4e-7e2c-9e42-d40afdb75bce",
-      "group": "Races",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -23027,9 +23025,9 @@
     {
       "name": "Half-Orc 5e 2024",
       "uuid": "aa9bad27-7b2e-5d4e-d420-e735c0ebcefc",
-      "group": "Races",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -23038,9 +23036,9 @@
     {
       "name": "Half-Orc With Orc 5e 2022 Traits",
       "uuid": "ba181b24-0b23-4217-e8f8-1b591529c308",
-      "group": "Races",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -23049,12 +23047,13 @@
     {
       "name": "HalfDemonRealistic",
       "uuid": "d2a95f38-6025-4e83-b753-fecf0de209ae",
-      "group": "unsorted",
+      "group": "Hair",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.78
       }
     },
     {
@@ -23392,9 +23391,9 @@
     {
       "name": "HolyPaladin",
       "uuid": "1c55f04f-da67-aaac-63d3-4404b1ff5c54",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -24003,9 +24002,9 @@
     {
       "name": "Indoct's Subtler Piercings",
       "uuid": "1b1a4c35-8ffc-4640-8a5a-f80ff8c6f841",
-      "group": "Character Customization",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -24648,9 +24647,9 @@
     {
       "name": "Kas's Lingerie (CAMP ADDON)",
       "uuid": "eb28c42e-2173-42b7-a4a7-948bbe5a076b",
-      "group": "Clothing",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -24980,9 +24979,9 @@
     {
       "name": "Lady Of The Lake Necklace",
       "uuid": "5aa8156c-135a-4d7d-9abd-954746a330ea",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -25955,7 +25954,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.9
+        "confidence": 0.87
       }
     },
     {
@@ -27202,9 +27201,9 @@
     {
       "name": "NachoPango's Half-Orc Edits",
       "uuid": "575ea88b-b044-7ed7-4edc-0d9852bc614c",
-      "group": "Races",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -27672,9 +27671,9 @@
     {
       "name": "Noira_PhysicsPiercingImprovement",
       "uuid": "67cbbaaf-09a1-ef6e-662a-0925f44eb8a0",
-      "group": "Character Customization",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -28468,13 +28467,12 @@
     {
       "name": "OnyxStarrySkyDice",
       "uuid": "1d5762ab-5538-4b1f-a8fa-2855ec2c5e88",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.8
+        "brokenInstalls": 0
       }
     },
     {
@@ -28785,12 +28783,13 @@
     {
       "name": "P4_Blooming_Circlets_and_Piercings",
       "uuid": "562f1adf-a345-43c5-a909-b359660bd82c",
-      "group": "Character Customization",
+      "group": "Accessories",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.75
       }
     },
     {
@@ -28818,9 +28817,9 @@
     {
       "name": "Paladin and Oaths DnD 5R PHB2024",
       "uuid": "9b9367cc-77ff-7773-7327-75dd42089bea",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -28829,9 +28828,9 @@
     {
       "name": "Paladin and Sorcerer Combined",
       "uuid": "f35632ab-e70c-4c67-9125-0fdbe41d9ea3",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -28884,9 +28883,9 @@
     {
       "name": "PaladinClericFullCaster",
       "uuid": "fe85cef2-dd4c-4671-b938-2a36e0a9d56b",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -28895,9 +28894,9 @@
     {
       "name": "Paladins have gods",
       "uuid": "590456d7-ced6-29bc-f827-1c562346e7bd",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -29033,9 +29032,9 @@
     {
       "name": "Pearl Necklaces",
       "uuid": "af23b501-b769-4cc3-907e-3daf164e6c93",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -29168,23 +29167,25 @@
     {
       "name": "PK [R2] Elegant Dress [NonVT]",
       "uuid": "32ee55af-06f0-ab4f-c04a-1042c7a32263",
-      "group": "unsorted",
+      "group": "Clothing",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.72
       }
     },
     {
       "name": "PK [R2] Fierce Conqueror Set [NonVT]",
       "uuid": "eaab9c66-70ad-5d4b-3c9d-40f283c175c1",
-      "group": "unsorted",
+      "group": "Clothing",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.73
       }
     },
     {
@@ -29716,13 +29717,12 @@
     {
       "name": "PreciousPetCollar",
       "uuid": "2b95f342-3419-475e-94c5-6e8b01e095fe",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.8
+        "brokenInstalls": 0
       }
     },
     {
@@ -30059,9 +30059,9 @@
     {
       "name": "Ranger_2024ish",
       "uuid": "654b2e1d-08fc-c5e5-a42c-e8958ab8722f",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -30081,9 +30081,9 @@
     {
       "name": "RangerHorizonWalker",
       "uuid": "fd7cde56-8139-7f85-783b-4cd909198cf4",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -30314,9 +30314,9 @@
     {
       "name": "Recruit Minsc Act 1  ",
       "uuid": "601f7d96-f9fc-e7fb-e91a-57964552f0d5",
-      "group": "Companions",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -31023,9 +31023,9 @@
     {
       "name": "SB_BloodWizard",
       "uuid": "029ca9b2-1797-494e-9ca9-9754eaade9bb",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -31051,7 +31051,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.82
+        "confidence": 0.76
       }
     },
     {
@@ -31193,9 +31193,9 @@
     {
       "name": "Scratch Evolved",
       "uuid": "3a0b775f-bdc1-1bf2-8b95-df894d25bc3f",
-      "group": "Companions",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -31814,9 +31814,9 @@
     {
       "name": "Skirbie's Comfy Clothie / Underwear",
       "uuid": "6683385d-365d-dd2c-5797-be1ee64aefab",
-      "group": "Clothing",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -31831,7 +31831,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.81
+        "confidence": 0.78
       }
     },
     {
@@ -32068,13 +32068,12 @@
     {
       "name": "Solo Leveling ShadowMonarch ",
       "uuid": "b8f75e37-afcd-19b2-fe7b-138b9997fd71",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.7
+        "brokenInstalls": 0
       }
     },
     {
@@ -32162,9 +32161,9 @@
     {
       "name": "Sorcerer 2024 (w/ Aberrant and Clockwork Sorcery)",
       "uuid": "7def3be0-8559-73df-2205-e5a5517c9ad7",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -32190,9 +32189,9 @@
     {
       "name": "Sorcerer-Knight",
       "uuid": "b3e71ef9-2d27-fdb4-dfb3-df552c151ac7",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -32306,9 +32305,9 @@
     {
       "name": "SpawnTutorialChest",
       "uuid": "210daf61-48c2-4b4b-a1e0-5a2e022a8106",
-      "group": "Gameplay",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -32502,9 +32501,9 @@
     {
       "name": "Sprout Necklaces 1",
       "uuid": "1b017ca4-3a41-8fec-464d-5c10f2c70e7d",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -32719,7 +32718,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.88
+        "confidence": 0.84
       }
     },
     {
@@ -32828,9 +32827,9 @@
     {
       "name": "SuccubineSorcerer",
       "uuid": "9d67b4d8-987f-b4ee-ffc2-169e0aa92619",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -33095,9 +33094,9 @@
     {
       "name": "Tara, Wizard's Apprentice",
       "uuid": "84dbf8db-eac6-1dba-59c6-3fbda767f495",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -33623,9 +33622,9 @@
     {
       "name": "Tintable Piercings",
       "uuid": "1b12225d-ba01-48da-8b58-6adbf32f62c9",
-      "group": "Character Customization",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0
@@ -33697,10 +33696,11 @@
       "uuid": "82459866-bbde-46ad-b1b8-25eec172fc48",
       "group": "Classes",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 1
       }
     },
     {
@@ -33938,9 +33938,9 @@
     {
       "name": "Tutorial Chest Summoner",
       "uuid": "d7d810fc-0e7a-7340-c7b6-476e564db016",
-      "group": "Spells",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -34024,7 +34024,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "confidence": 0.96
+        "confidence": 0.93
       }
     },
     {
@@ -34745,9 +34745,9 @@
     {
       "name": "WarlockCelestial",
       "uuid": "1606234f-48f1-f2ec-9a1a-b386a25d6d9d",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -34756,9 +34756,9 @@
     {
       "name": "WarlockUndead",
       "uuid": "95ba3595-2004-4f3c-96b0-4ab671fa1e23",
-      "group": "Classes",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -34795,7 +34795,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.87
+        "confidence": 1
       }
     },
     {
@@ -34807,7 +34807,7 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 0,
-        "confidence": 0.87
+        "confidence": 1
       }
     },
     {
@@ -34847,9 +34847,9 @@
     {
       "name": "Waypoint Inside Emerald Grove",
       "uuid": "c05d3d9a-ae0d-4893-140b-65efcb9c4302",
-      "group": "Utilities",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -34865,9 +34865,9 @@
     {
       "name": "Waypoints Unlocked",
       "uuid": "47329fae-28a0-4ab7-8b01-43949e8fa785",
-      "group": "Utilities",
+      "group": "unsorted",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -34876,13 +34876,12 @@
     {
       "name": "Weeviljester's Accessories",
       "uuid": "7281177d-56f5-4c72-8e27-beb00cfea8ff",
-      "group": "Accessories",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0,
-        "confidence": 0.81
+        "brokenInstalls": 0
       }
     },
     {
@@ -35040,12 +35039,13 @@
     {
       "name": "Wifi potions",
       "uuid": "3d336cc8-b1a1-4fd7-a4f0-06b92a8cc312",
-      "group": "unsorted",
+      "group": "Bug Fixes",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.77
       }
     },
     {
@@ -35152,10 +35152,11 @@
       "uuid": "be02a930-2bca-49fc-aa53-79e7d58f00db",
       "group": "Classes",
       "evidence": {
-        "source": "divider-vocabulary",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.86
       }
     },
     {
@@ -35430,12 +35431,13 @@
     {
       "name": "Xara's Library",
       "uuid": "d7d81317-2aef-49ca-b24a-9ce43cc8e8a8",
-      "group": "unsorted",
+      "group": "Resources",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
-        "brokenInstalls": 0
+        "brokenInstalls": 0,
+        "confidence": 0.8
       }
     },
     {
