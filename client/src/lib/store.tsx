@@ -10,8 +10,8 @@ import {
   createContext, useContext, useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import type { ReactNode } from 'react';
-import type { Masterlist, Mod, ParseResult, SortResult } from './types';
-import { loadMasterlist } from './masterlist';
+import type { Masterlist, Mod, NexusCategories, ParseResult, SortResult } from './types';
+import { loadMasterlist, loadNexusCategories } from './masterlist';
 import { sortLoadOrder } from './optimiser';
 
 const STORAGE_KEY = 'volo.session.v1';
@@ -66,9 +66,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [masterlist, setMasterlist] = useState<Masterlist | null>(null);
   const [masterlistError, setMasterlistError] = useState<string | null>(null);
   const [isLoadingMasterlist, setLoading] = useState(true);
+  const [nexusCategories, setNexusCategories] = useState<NexusCategories | null>(null);
 
   useEffect(() => {
     let cancelled = false;
+    loadNexusCategories().then(nc => { if (!cancelled && nc) setNexusCategories(nc); });
     loadMasterlist()
       .then(ml => {
         if (cancelled) return;
@@ -100,8 +102,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, [mods, sourceName, format, importedAt]);
 
   const result = useMemo(
-    () => (mods.length && masterlist ? sortLoadOrder(mods, masterlist) : null),
-    [mods, masterlist],
+    () => (mods.length && masterlist ? sortLoadOrder(mods, masterlist, nexusCategories) : null),
+    [mods, masterlist, nexusCategories],
   );
 
   const importParsed = useCallback((parsed: ParseResult, name: string) => {

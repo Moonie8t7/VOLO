@@ -19,7 +19,10 @@ Your load order never leaves your machine.
    Dividers, which VOLO knows by UUID even when they have been renamed.
 2. **Sort.** Groups set the broad shape of the order, running from `core` and
    `libraries` through content and `ui` to `patches` and `fixes`. Dependencies
-   declared in mod metadata are hard constraints. Anything else stays put.
+   declared in mod metadata are hard constraints. Mods the community has never
+   placed fall back to the category on their Nexus listing, then to name
+   patterns; the community placement always wins where one exists. Anything
+   else stays put.
 3. **Explain.** Every mod tells you why it sits where it does.
 4. **Export.** Back to BG3MM, or as JSON, CSV, text or Markdown.
 
