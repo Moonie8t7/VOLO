@@ -1,0 +1,59 @@
+name: Regenerate the masterlist
+
+# The corpus is the source of truth; the masterlist is derived from all of it.
+# Whenever the corpus changes on main by any route (a merged submission pull
+# request, a hand-added order), this rebuilds the masterlist so it can never
+# reflect only some of the orders present.
+#
+# Submissions that land directly already commit a fresh masterlist, and pushes
+# made with GITHUB_TOKEN do not start new runs, so this does not duplicate that
+# work or loop on its own commit.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Load Orders - Public Submitted/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: masterlist
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Rebuild from the whole corpus
+        run: |
+          node scripts/mine-corpus.mjs
+          node scripts/learn-category-order.mjs
+          node scripts/build-divider-map.mjs
+          node scripts/build-external-categories.mjs
+          node -e "require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')"
+          node scripts/verify-order.mjs | tail -6 >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit whatever changed
+        run: |
+          git config user.name "volo-submissions"
+          git config user.email "submissions@users.noreply.github.com"
+          git add masterlist public/bg3-masterlist.json public/external-categories.json client/src/lib/dividers.json
+          if git diff --cached --quiet; then
+            echo "masterlist already matches the corpus"
+          else
+            git commit -m "Regenerate the masterlist from the corpus"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi

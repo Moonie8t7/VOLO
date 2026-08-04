@@ -1,8 +1,13 @@
 name: Process load order submission
 
-# A submission issue arrives, the corpus and masterlist are regenerated from it,
-# and the result is opened as a pull request for human approval. Nothing lands
-# on main without a person merging it.
+# A submission issue arrives and is validated. A working order that leaves the
+# verification metric intact lands on main directly, with the masterlist
+# regenerated from the whole corpus in the same commit. Anything else becomes a
+# pull request carrying only the corpus file, for a person to look at.
+#
+# Runs are serialised: two submissions regenerating the masterlist at once
+# would each build it without the other's order, and the later push would
+# silently drop the earlier one.
 
 on:
   issues:
@@ -12,6 +17,10 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+
+concurrency:
+  group: masterlist
+  cancel-in-progress: false
 
 jobs:
   process:
@@ -39,22 +48,49 @@ jobs:
           node scripts/process-submission.mjs \
             --body /tmp/issue-body.txt \
             --number "${{ github.event.issue.number }}" \
-            --report /tmp/report.md
-          echo "accepted=$([ $? -eq 0 ] && echo yes || echo no)" >> "$GITHUB_OUTPUT"
+            --report /tmp/report.md \
+            --gate /tmp/gate.json
+          code=$?
+          set -e
+          if [ $code -eq 0 ]; then accepted=yes; else accepted=no; fi
+          automerge=$(node -e "try{process.stdout.write(String(require('/tmp/gate.json').autoMerge===true))}catch{process.stdout.write('false')}")
+          echo "accepted=$accepted" >> "$GITHUB_OUTPUT"
+          echo "automerge=$automerge" >> "$GITHUB_OUTPUT"
+          echo "accepted=$accepted automerge=$automerge"
 
-      - name: Open a pull request with the changes
-        if: steps.process.outputs.accepted == 'yes'
+      - name: Land it on main
+        if: steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "volo-submissions"
+          git config user.email "submissions@users.noreply.github.com"
+          # The masterlist in this commit was regenerated from the full corpus
+          # including this order, moments ago, so it is never stale.
+          git add "Load Orders - Public Submitted" masterlist public/bg3-masterlist.json
+          git commit -m "Add load order from issue #${{ github.event.issue.number }} and regenerate the masterlist"
+          # Another run may have landed between checkout and now.
+          git pull --rebase origin main
+          git push origin HEAD:main
+          gh issue close "${{ github.event.issue.number }}" \
+            --comment "Merged automatically: the order validated and left the verification metric intact. Thank you."
+
+      - name: Open a pull request for review
+        if: steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           BRANCH="submission/issue-${{ github.event.issue.number }}"
           git config user.name "volo-submissions"
           git config user.email "submissions@users.noreply.github.com"
+          # Only the corpus file. The masterlist is derived, and regenerating it
+          # on main after the merge is what keeps it consistent with every
+          # order rather than with whichever branch merged last.
+          git checkout -- masterlist public/bg3-masterlist.json
           git checkout -B "$BRANCH"
-          git add "Load Orders - Public Submitted" masterlist public/bg3-masterlist.json
-          git commit -m "Add load order from issue #${{ github.event.issue.number }} and regenerate the masterlist"
+          git add "Load Orders - Public Submitted"
+          git commit -m "Add load order from issue #${{ github.event.issue.number }}"
           git push -f origin "$BRANCH"
-          # Merging the pull request closes the submitter's issue.
           printf '\nCloses #%s\n' "${{ github.event.issue.number }}" >> /tmp/report.md
           gh pr create \
             --title "Load order submission #${{ github.event.issue.number }}" \
@@ -62,8 +98,8 @@ jobs:
             --head "$BRANCH" || gh pr edit "$BRANCH" --body-file /tmp/report.md
 
       # Always runs. A submitter who hears nothing assumes the tool is broken,
-      # and the report is the only feedback they get, so a failure to open the
-      # pull request must not also swallow the explanation.
+      # and the report is the only feedback they get, so a failure earlier must
+      # not also swallow the explanation.
       - name: Report back on the issue
         if: always()
         env:

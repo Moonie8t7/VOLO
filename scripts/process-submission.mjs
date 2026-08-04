@@ -39,6 +39,14 @@ const opt = (name, fallback = null) => {
 const bodyFile = opt('body');
 const issueNumber = opt('number');
 const reportFile = opt('report', 'submission-report.md');
+const gateFile = opt('gate', 'submission-gate.json');
+
+/**
+ * How far agreement with working orders may fall before a submission needs a
+ * human. Small movements are noise, since adding an order also changes the
+ * set being measured; a real regression is much larger than this.
+ */
+const MAX_AGREEMENT_DROP = 1.0;
 
 if (!bodyFile || !issueNumber || !fs.existsSync(bodyFile)) {
   console.error('usage: node scripts/process-submission.mjs --body <file> --number <issue> [--report <file>]');
@@ -47,11 +55,33 @@ if (!bodyFile || !issueNumber || !fs.existsSync(bodyFile)) {
 
 const body = fs.readFileSync(bodyFile, 'utf8');
 
-function finish(accepted, lines) {
+/**
+ * The gate file tells the workflow what to do with the result: land it
+ * straight on main, or open a pull request and wait for a person. Anything
+ * that is not a clean, metric-preserving working order waits.
+ */
+function finish(accepted, lines, gate = {}) {
   const text = lines.join('\n') + '\n';
   fs.writeFileSync(reportFile, text);
+  fs.writeFileSync(gateFile, JSON.stringify({ accepted, autoMerge: false, ...gate }, null, 2));
   console.log(text);
   process.exit(accepted ? 0 : 1);
+}
+
+/** Pairwise agreement against working orders, the metric the sort is judged on. */
+function measureAgreement() {
+  let out;
+  try {
+    out = execSync('node scripts/verify-order.mjs', { encoding: 'utf8' });
+  } catch (err) {
+    out = err.stdout ?? '';
+  }
+  const m = out.match(/working orders\s+n=(\d+)\s+VOLO\s+([\d.]+)%/);
+  return {
+    text: out.slice(out.indexOf('=== SUMMARY ===')),
+    orders: m ? Number(m[1]) : null,
+    agreement: m ? Number(m[2]) : null,
+  };
 }
 
 // Step 1: status, from the dropdown answer the template guarantees.
@@ -139,19 +169,49 @@ const filename = `${prefix}_issue-${issueNumber}_${stamp}.${ext}`;
 const before = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 const knownBefore = new Set(before.plugins.map(p => p.uuid));
 
+// Measure before the order exists, so its effect on the metric is knowable.
+const baseline = measureAgreement();
+
 fs.writeFileSync(path.join(CORPUS, filename), orderText.trim() + '\n');
 
 // Step 6: regenerate everything and capture the verification numbers.
 execSync('node scripts/mine-corpus.mjs', { stdio: 'pipe' });
 execSync('node scripts/learn-category-order.mjs', { stdio: 'pipe' });
 fs.copyFileSync('masterlist/bg3-masterlist.json', path.join('public', 'bg3-masterlist.json'));
-const verify = execSync('node scripts/verify-order.mjs', { encoding: 'utf8' });
-const summary = verify.slice(verify.indexOf('=== SUMMARY ==='));
+const after = measureAgreement();
+const summary = after.text;
 
-const after = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
-const newMods = after.plugins.filter(p => !knownBefore.has(p.uuid));
+const delta = baseline.agreement !== null && after.agreement !== null
+  ? Number((after.agreement - baseline.agreement).toFixed(2))
+  : null;
+
+/**
+ * Auto-merge only what a reviewer would wave through anyway: a working order
+ * that leaves agreement intact. Broken orders always wait for a person. Their
+ * value is the written explanation of what went wrong, which only a human can
+ * act on, and the caution flags they raise are shown to users as warnings.
+ */
+const metricHeld = delta !== null && delta >= -MAX_AGREEMENT_DROP;
+const autoMerge = working && metricHeld;
+const gate = {
+  working,
+  agreementBefore: baseline.agreement,
+  agreementAfter: after.agreement,
+  delta,
+  autoMerge,
+  heldBecause: autoMerge
+    ? null
+    : !working
+      ? 'a broken order needs a human read'
+      : delta === null
+        ? 'the verification numbers could not be read'
+        : `agreement fell ${Math.abs(delta)} points`,
+};
+
+const afterList = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
+const newMods = afterList.plugins.filter(p => !knownBefore.has(p.uuid));
 const newUnsorted = newMods.filter(p => p.group === 'unsorted');
-const cautionMods = after.plugins.filter(
+const cautionMods = afterList.plugins.filter(
   p => p.evidence.brokenInstalls > 0 && p.evidence.workingInstalls === 0,
 );
 
@@ -164,9 +224,19 @@ finish(true, [
   '',
   '### Masterlist changes',
   '',
-  `- Mods known: ${before.plugins.length} to ${after.plugins.length} (${newMods.length} new)`,
+  `- Mods known: ${before.plugins.length} to ${afterList.plugins.length} (${newMods.length} new)`,
   `- New mods still uncategorised: ${newUnsorted.length}`,
   `- Mods now seen only in broken orders: ${cautionMods.length}`,
+  '',
+  '### Effect on the metric',
+  '',
+  delta === null
+    ? '- Agreement could not be measured.'
+    : `- Agreement with working orders: ${baseline.agreement}% to ${after.agreement}% ` +
+      `(${delta >= 0 ? '+' : ''}${delta})`,
+  `- ${autoMerge
+    ? 'Within tolerance, so this lands automatically.'
+    : `Held for review: ${gate.heldBecause}.`}`,
   '',
   '### Verification after this submission',
   '',
@@ -178,4 +248,4 @@ finish(true, [
     ? '### New mods\n\n' + newMods.slice(0, 30).map(p => `- ${p.name} (${p.group})`).join('\n') +
       (newMods.length > 30 ? `\n- and ${newMods.length - 30} more` : '')
     : 'No new mods; this order refined evidence for mods already known.',
-]);
+], gate);
