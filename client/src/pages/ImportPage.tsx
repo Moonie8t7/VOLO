@@ -65,9 +65,9 @@ export default function ImportPage() {
         <Alert className="border-primary/30 bg-primary/5">
           <ShieldCheck className="h-4 w-4" />
           <AlertDescription className="font-body">
-            VOLO's code runs in your browser, so the file you open here is processed
-            on your own computer. The site is static and has no server that could
-            receive it.
+            VOLO's code runs in your browser. Opening a file here reads it from
+            your disk into this page; it is not an upload, and the site has no
+            server that could receive one.
           </AlertDescription>
         </Alert>
 
