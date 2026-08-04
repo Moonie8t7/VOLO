@@ -10,8 +10,8 @@ import {
   createContext, useContext, useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import type { ReactNode } from 'react';
-import type { Masterlist, Mod, ExternalCategories, ParseResult, SortResult } from './types';
-import { loadMasterlist, loadExternalCategories } from './masterlist';
+import type { Masterlist, Mod, ParseResult, SortResult } from './types';
+import { loadMasterlist } from './masterlist';
 import { sortLoadOrder } from './optimiser';
 
 const STORAGE_KEY = 'volo.session.v1';
@@ -66,11 +66,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [masterlist, setMasterlist] = useState<Masterlist | null>(null);
   const [masterlistError, setMasterlistError] = useState<string | null>(null);
   const [isLoadingMasterlist, setLoading] = useState(true);
-  const [externalCategories, setExternalCategories] = useState<ExternalCategories | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-    loadExternalCategories().then(ec => { if (!cancelled && ec) setExternalCategories(ec); });
     loadMasterlist()
       .then(ml => {
         if (cancelled) return;
@@ -102,8 +100,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, [mods, sourceName, format, importedAt]);
 
   const result = useMemo(
-    () => (mods.length && masterlist ? sortLoadOrder(mods, masterlist, externalCategories) : null),
-    [mods, masterlist, externalCategories],
+    () => (mods.length && masterlist ? sortLoadOrder(mods, masterlist) : null),
+    [mods, masterlist],
   );
 
   const importParsed = useCallback((parsed: ParseResult, name: string) => {

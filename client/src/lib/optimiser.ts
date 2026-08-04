@@ -18,8 +18,7 @@
  */
 
 import type {
-  Mod, Masterlist, MasterlistPlugin, ExternalCategories, SortResult, Placement, Reason, Issue,
-  GroupName,
+  Mod, Masterlist, MasterlistPlugin, SortResult, Placement, Reason, Issue, GroupName,
 } from './types';
 
 const DEFAULT_GROUP = 'unsorted';
@@ -92,11 +91,7 @@ function indexMasterlist(masterlist: Masterlist) {
   return { byUuid, byName };
 }
 
-export function sortLoadOrder(
-  mods: Mod[],
-  masterlist: Masterlist,
-  external?: ExternalCategories | null,
-): SortResult {
+export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
   const rank = rankGroups(masterlist);
   const { byUuid, byName } = indexMasterlist(masterlist);
   const issues: Issue[] = [];
@@ -133,22 +128,16 @@ export function sortLoadOrder(
     }
     if (entry) known++;
 
-    // No community evidence. The catalogues' own categories are the next best
-    // signal: mod-specific and human-chosen, unlike a name regex. Never
-    // allowed to override a community placement, only to fill silence. Nexus
-    // first; the modio map holds only names Nexus lacks.
-    if (external) {
-      const key = mod.name.toLowerCase().replace(/[^a-z0-9]/g, '');
-      const fromNexus = external.groups[external.nexus[key] ?? -1];
-      const fromModio = fromNexus ? undefined : external.groups[external.modio[key] ?? -1];
-      const externalGroup = fromNexus ?? fromModio;
-      if (externalGroup && rank.has(externalGroup)) {
-        group.set(mod.uuid, externalGroup);
-        groupSource.set(mod.uuid, fromNexus ? 'nexus' : 'modio');
-        continue;
-      }
-    }
-
+    /*
+     * Nexus and mod.io listing categories were tried here and removed on
+     * 2026-08-04. Held-out evaluation (scripts/verify-holdout.mjs) measured
+     * them lowering agreement with working orders: 63.6 percent without them,
+     * 63.2 with Nexus, 63.0 with both. A listing category describes what a mod
+     * is, which is not the same question as where it loads, and a mod nobody
+     * has placed sits closer to where working orders put it when left at the
+     * end than when moved on a category guess. The catalogues remain valuable
+     * for requirements, Script Extender flags and diagnosis; just not for this.
+     */
     const guessed = NAME_PATTERNS.find(([re]) => re.test(mod.name))?.[1];
     group.set(mod.uuid, guessed ?? DEFAULT_GROUP);
     groupSource.set(mod.uuid, guessed ? 'name-pattern' : 'default');
@@ -289,11 +278,7 @@ export function sortLoadOrder(
           : src === 'inferred'
             ? `Categorised as "${g}" from where it sits in submitted load orders` +
               (conf ? `, with ${Math.round(conf * 100)} percent of its neighbours agreeing.` : '.')
-            : src === 'nexus'
-              ? `Categorised as "${g}" from its Nexus Mods listing; no community placement exists yet.`
-              : src === 'modio'
-                ? `Categorised as "${g}" from its mod.io listing; no community placement exists yet.`
-                : `Categorised as "${g}", which loads in that part of the order.`,
+            : `Categorised as "${g}", which loads in that part of the order.`,
     });
     if (position !== mod.originalIndex) moved++;
     placements.set(mod.uuid, {
