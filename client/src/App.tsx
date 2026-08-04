@@ -7,6 +7,7 @@ import LandingPage from "@/pages/LandingPage";
 import ImportPage from "@/pages/ImportPage";
 import OptimisePage from "@/pages/OptimisePage";
 import ExportPage from "@/pages/ExportPage";
+import SubmitPage from "@/pages/SubmitPage";
 import MasterlistPage from "@/pages/MasterlistPage";
 import DonationsPage from "@/pages/DonationsPage";
 import NotFound from "@/pages/not-found";
@@ -21,6 +22,7 @@ function Router() {
         {/* Legacy US-spelled path, kept so old links don't break. */}
         <Route path="/optimizer" component={OptimisePage} />
         <Route path="/export" component={ExportPage} />
+        <Route path="/submit" component={SubmitPage} />
         <Route path="/masterlist" component={MasterlistPage} />
         <Route path="/donations" component={DonationsPage} />
         <Route path="/support" component={DonationsPage} />

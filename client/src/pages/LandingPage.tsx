@@ -41,6 +41,13 @@ export default function LandingPage() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
+          <p className="mt-4 text-sm" style={{ color: "hsl(var(--bg3-main) / 0.8)" }}>
+            Played on an order already?{" "}
+            <Link href="/submit" className="underline hover:text-foreground">
+              Submit it and teach the sorter
+            </Link>
+            .
+          </p>
         </div>
       </div>
 
@@ -98,8 +105,11 @@ export default function LandingPage() {
             <Link href="/masterlist" className="underline hover:text-foreground">
               browse it here
             </Link>
-            . When you have played on an order, working or not, submitting it
-            from the Export page makes the sorter better for everyone.
+            . When you have played on an order, working or not,{" "}
+            <Link href="/submit" className="underline hover:text-foreground">
+              submitting it
+            </Link>{" "}
+            makes the sorter better for everyone. No account needed.
           </p>
         </div>
 
@@ -131,7 +141,7 @@ export default function LandingPage() {
                 You can check this yourself with the browser's network panel;
                 once the page has loaded, using VOLO makes no further
                 requests. The one exception is choosing to submit your order
-                from the Export page, which sends it to VOLO's public
+                from the Submit page, which sends it to VOLO's public
                 submission queue and nowhere else.
               </p>
             </AccordionContent>

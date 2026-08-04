@@ -133,7 +133,8 @@ for (const f of fs.readdirSync(CORPUS)) {
 // script, so the convention is the contract.
 const stamp = new Date().toISOString().slice(0, 10);
 const prefix = working ? 'working' : 'not_working';
-const filename = `${prefix}_issue-${issueNumber}_${stamp}.json`;
+const ext = orderText.trimStart().startsWith('<?xml') ? 'lsx' : 'json';
+const filename = `${prefix}_issue-${issueNumber}_${stamp}.${ext}`;
 
 const before = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 const knownBefore = new Set(before.plugins.map(p => p.uuid));
