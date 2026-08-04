@@ -23,7 +23,7 @@ export default function DonationsPage() {
           </p>
           <p>
             If you would rather give something more useful than money: play on
-            an order, then submit it from the Export page. Verified orders are
+            an order, then submit it from the Submit page. Verified orders are
             the thing this tool actually runs on.
           </p>
         </div>
