@@ -18,7 +18,7 @@
  */
 
 import type {
-  Mod, Masterlist, MasterlistPlugin, NexusCategories, SortResult, Placement, Reason, Issue,
+  Mod, Masterlist, MasterlistPlugin, ExternalCategories, SortResult, Placement, Reason, Issue,
   GroupName,
 } from './types';
 
@@ -95,7 +95,7 @@ function indexMasterlist(masterlist: Masterlist) {
 export function sortLoadOrder(
   mods: Mod[],
   masterlist: Masterlist,
-  nexus?: NexusCategories | null,
+  external?: ExternalCategories | null,
 ): SortResult {
   const rank = rankGroups(masterlist);
   const { byUuid, byName } = indexMasterlist(masterlist);
@@ -125,14 +125,20 @@ export function sortLoadOrder(
     }
     if (entry) known++;
 
-    // No community evidence. The Nexus catalogue's own category is the next
-    // best signal: mod-specific and human-chosen, unlike a name regex. It is
-    // never allowed to override a community placement, only to fill silence.
-    const nexusGroup = nexus?.groups[nexus.names[mod.name.toLowerCase().replace(/[^a-z0-9]/g, '')] ?? -1];
-    if (nexusGroup && rank.has(nexusGroup)) {
-      group.set(mod.uuid, nexusGroup);
-      groupSource.set(mod.uuid, 'nexus');
-      continue;
+    // No community evidence. The catalogues' own categories are the next best
+    // signal: mod-specific and human-chosen, unlike a name regex. Never
+    // allowed to override a community placement, only to fill silence. Nexus
+    // first; the modio map holds only names Nexus lacks.
+    if (external) {
+      const key = mod.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const fromNexus = external.groups[external.nexus[key] ?? -1];
+      const fromModio = fromNexus ? undefined : external.groups[external.modio[key] ?? -1];
+      const externalGroup = fromNexus ?? fromModio;
+      if (externalGroup && rank.has(externalGroup)) {
+        group.set(mod.uuid, externalGroup);
+        groupSource.set(mod.uuid, fromNexus ? 'nexus' : 'modio');
+        continue;
+      }
     }
 
     const guessed = NAME_PATTERNS.find(([re]) => re.test(mod.name))?.[1];
@@ -277,7 +283,9 @@ export function sortLoadOrder(
               (conf ? `, with ${Math.round(conf * 100)} percent of its neighbours agreeing.` : '.')
             : src === 'nexus'
               ? `Categorised as "${g}" from its Nexus Mods listing; no community placement exists yet.`
-              : `Categorised as "${g}", which loads in that part of the order.`,
+              : src === 'modio'
+                ? `Categorised as "${g}" from its mod.io listing; no community placement exists yet.`
+                : `Categorised as "${g}", which loads in that part of the order.`,
     });
     if (position !== mod.originalIndex) moved++;
     placements.set(mod.uuid, {
