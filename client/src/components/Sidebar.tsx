@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Upload, ArrowUpDown, Download, Database, Heart, Menu, X } from "lucide-react";
+import { Upload, ArrowUpDown, Download, Send, Database, Heart, Menu, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useStore } from "@/lib/store";
 
@@ -8,6 +8,7 @@ const NAV = [
   { href: "/import", icon: Upload, label: "Import" },
   { href: "/optimise", icon: ArrowUpDown, label: "Sorted Order" },
   { href: "/export", icon: Download, label: "Export" },
+  { href: "/submit", icon: Send, label: "Submit an Order" },
   { href: "/masterlist", icon: Database, label: "Community Masterlist" },
 ];
 
