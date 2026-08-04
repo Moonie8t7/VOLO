@@ -292,8 +292,18 @@ export default function SubmitPage() {
 
                 <p className="text-xs text-muted-foreground">
                   Goes to VOLO's public submission queue on GitHub, where every
-                  order is validated and reviewed before the masterlist changes.
-                  Prefer doing it yourself?{' '}
+                  order is validated before the masterlist changes. Submitted
+                  orders are published under{' '}
+                  <a
+                    href="https://creativecommons.org/publicdomain/zero/1.0/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline hover:text-foreground"
+                  >
+                    CC0
+                  </a>
+                  , so anyone can build on them, the same way you are building
+                  on everyone else's. Prefer doing it yourself?{' '}
                   <button onClick={githubFallback} className="underline hover:text-foreground">
                     Open the GitHub form
                   </button>

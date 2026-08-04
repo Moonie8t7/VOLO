@@ -137,5 +137,24 @@ UUID on import and can reinsert them on export.
 
 ## Licence
 
-MIT, in `LICENSE`. Third party material that the MIT grant does not cover, in
-particular Astra's divider paks, is listed in `NOTICE`.
+VOLO is licensed in parts, because the code and the data want different terms.
+
+| Part | Licence | Where |
+|---|---|---|
+| Application code | MIT | `LICENSE` |
+| Masterlist and submitted corpus | CC0-1.0 | `masterlist/LICENSE` |
+| Documentation | CC BY 4.0 | this file and `masterlist/README.md` |
+| Name, logo, visual identity | All rights reserved | `TRADEMARKS.md` |
+| Third party components | Their own terms | `NOTICE` |
+
+The data is CC0 on purpose. Load order information is more useful as shared
+infrastructure than as anyone's property, and it was contributed by players so
+that everyone sorts better; another BG3 tool is welcome to take the masterlist
+wholesale. What is not licensed is the project's identity, so a fork can use
+everything here but should not present itself as VOLO. See `TRADEMARKS.md`.
+
+MIT rather than GPL because VOLO is a hosted web application, where ordinary
+GPL would add friction for contributors and integrations without actually
+covering the likeliest copying scenario: someone running a modified copy as a
+service, which is not distribution. If preventing that ever matters more than
+ease of adoption, AGPL-3.0-or-later is the licence that addresses it, not GPL.
