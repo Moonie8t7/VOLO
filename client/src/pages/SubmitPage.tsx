@@ -180,9 +180,11 @@ export default function SubmitPage() {
                 ) : (
                   <>
                     <p className="text-sm text-muted-foreground">
-                      The most useful submission is the untouched file you
-                      played with: a BG3 Mod Manager export or the game's own
-                      modsettings.lsx, exactly as it is.
+                      What helps most is an order you have actually played on,
+                      working or broken. Send the file as it is, a BG3 Mod
+                      Manager export or the game's own modsettings.lsx, rather
+                      than tidying it up first: the dividers, section headers
+                      and version data are half of what VOLO learns from.
                     </p>
 
                     {mods.length >= 5 && (
