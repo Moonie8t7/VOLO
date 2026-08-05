@@ -53,6 +53,19 @@ const PAGES: Record<string, PageMeta> = {
       'Played on a load order that worked, or one that broke? Submitting it ' +
       'teaches the sorter. No account needed, and submissions are public domain.',
   },
+  '/about': {
+    title: 'About VOLO',
+    description:
+      'Who builds VOLO, why a Baldur\'s Gate 3 load order sorter needed to exist, '
+      + 'how the masterlist is put together, and the reasons to be sceptical of it.',
+  },
+  '/measured': {
+    title: 'How well does VOLO sort? | VOLO',
+    description:
+      'The measurements behind VOLO: 57.5 percent agreement with load orders it '
+      + 'has never seen, against 50.5 percent for a random shuffle, plus the ideas '
+      + 'that measured worse and were thrown out.',
+  },
   '/donations': {
     title: 'Support VOLO',
     description: 'VOLO is free and has no ads. If it saved you an evening, you can chip in.',

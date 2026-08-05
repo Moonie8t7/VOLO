@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#161411" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Page not found | VOLO</title>
+    <link rel="icon" href="/assets/volo-logo.png" />
+    <!--
+      Deliberately standalone. Cloudflare serves this with a real 404 status for
+      any address that is not a route, and it has to work without the app
+      bundle, so the few styles it needs are inline rather than imported.
+    -->
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #161411;
+        color: #cfcfce;
+        font-family: Georgia, "Times New Roman", serif;
+        text-align: center;
+        padding: 2rem;
+      }
+      main { max-width: 32rem; }
+      p.code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.875rem; margin: 0; }
+      h1 { color: #fde5cd; font-size: 1.875rem; margin: 0.5rem 0 0; }
+      p.body { line-height: 1.6; }
+      a.button {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.75rem 1.5rem;
+        border: 1px solid rgba(215, 168, 105, 0.6);
+        background: rgba(0, 0, 0, 0.35);
+        color: #fde5cd;
+        text-decoration: none;
+      }
+      a.button:hover, a.button:focus-visible { border-color: #d7a869; }
+      a.quiet { color: #cfcfce; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="code">404</p>
+      <h1>There is no page here</h1>
+      <p class="body">
+        The link may be out of date, or the address may have a typo in it.
+      </p>
+      <a class="button" href="/import">Sort a load order</a>
+      <p class="body"><a class="quiet" href="/">Back to the start</a></p>
+    </main>
+  </body>
+</html>

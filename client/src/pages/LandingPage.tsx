@@ -21,20 +21,38 @@ export default function LandingPage() {
     <main className="min-h-screen bg-background">
       <div className="relative bg-gradient-bg3 overflow-hidden">
         <div className="relative max-w-4xl mx-auto px-6 py-20 text-center">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <img
-              src="/assets/volo-logo-256.png"
-              alt=""
-              width={256}
-              height={256}
-              fetchPriority="high"
-              className="w-16 h-16 md:w-20 md:h-20 border border-border shadow-bg3"
-            />
-            <h1 className="font-display text-5xl md:text-6xl font-bold text-gradient-bg3 leading-tight">
-              VOLO
-            </h1>
-          </div>
-          <p className="font-display text-xl md:text-2xl mb-6" style={{ color: "hsl(var(--bg3-small))" }}>
+          {/*
+            The wordmark and the descriptive line are one heading.
+            "VOLO" alone told a reader arriving from a search nothing, and it
+            collides with a Forgotten Realms character and several unrelated
+            products, so the words people actually search on belong here rather
+            than in a paragraph underneath.
+          */}
+          <h1 className="mb-6">
+            <span className="flex items-center justify-center gap-4">
+              <img
+                src="/assets/volo-logo-256.png"
+                alt=""
+                width={256}
+                height={256}
+                fetchPriority="high"
+                className="w-16 h-16 md:w-20 md:h-20 border border-border shadow-bg3"
+              />
+              <span className="font-display text-5xl md:text-6xl font-bold text-gradient-bg3 leading-tight">
+                VOLO
+              </span>
+            </span>
+            {/* The two spans are separate blocks visually, but they run
+                together in the heading's text unless a space is written in. */}
+            {' '}
+            <span
+              className="mt-5 block font-display text-xl md:text-2xl"
+              style={{ color: "hsl(var(--bg3-small))" }}
+            >
+              Load order sorting for Baldur's Gate 3
+            </span>
+          </h1>
+          <p className="text-sm mb-6" style={{ color: "hsl(var(--bg3-main) / 0.75)" }}>
             Verified Order and Load Optimisation
           </p>
           <p className="text-lg mb-3 max-w-2xl mx-auto leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
@@ -87,6 +105,32 @@ export default function LandingPage() {
           <p>
             Export the result and import it straight back into BG3 Mod Manager.
           </p>
+
+          <figure className="mt-8">
+            {/*
+              WebP first at a fifth of the weight, with the PNG behind it for
+              anything that will not take WebP. Dimensions are set so the page
+              does not jump as it loads, and it is lazy because it sits well
+              below the fold.
+            */}
+            <picture>
+              <source srcSet="/assets/volo-sorted-order-preview.webp" type="image/webp" />
+              <img
+                src="/assets/volo-sorted-order-preview.png"
+                alt="A sorted load order in VOLO. Each mod shows its position, how far it moved, the section it belongs to such as UI Mods or Body Mods, and a note reading listing or guessed where the placement came from something weaker than a played order."
+                width={1200}
+                height={630}
+                loading="lazy"
+                decoding="async"
+                className="w-full rounded border border-border/60 shadow-bg3"
+              />
+            </picture>
+            <figcaption className="mt-3 text-sm" style={{ color: "hsl(var(--bg3-main) / 0.75)" }}>
+              Every row says where the mod landed and why. Mods placed from
+              something weaker than a played order are labelled, so a guess
+              never looks like evidence.
+            </figcaption>
+          </figure>
         </div>
 
         <h2 className="font-display text-2xl font-bold mb-8" style={{ color: "hsl(var(--bg3-header))" }}>

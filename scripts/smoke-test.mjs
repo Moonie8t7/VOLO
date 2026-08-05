@@ -432,6 +432,53 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+/**
+ * Every client route needs a rewrite rule, or it 404s in production.
+ *
+ * public/404.html turns off Cloudflare's fallback to index.html, which is what
+ * makes a real 404 possible for addresses that are not pages. The cost is that
+ * a route missing from public/_redirects stops existing once deployed, and
+ * nothing local would show it: vite preview does not read _redirects.
+ */
+{
+  console.log('');
+  console.log('routes and redirects');
+
+  const app = fs.readFileSync('client/src/App.tsx', 'utf8');
+  const routes = [...app.matchAll(/<Route\s+path="([^"]+)"/g)]
+    .map(m => m[1])
+    .filter(p => p !== '/');
+
+  const redirects = fs.readFileSync('public/_redirects', 'utf8')
+    .split(/\r?\n/)
+    .filter(l => l.trim() && !l.trim().startsWith('#'))
+    .map(l => l.trim().split(/\s+/)[0]);
+
+  const missing = routes.filter(r => !redirects.includes(r));
+  const extra = redirects.filter(r => !routes.includes(r));
+
+  if (!missing.length && !extra.length) {
+    console.log(`  ok    all ${routes.length} routes have a rewrite rule`);
+  } else {
+    failures++;
+    if (missing.length) console.log(`  FAIL  routes with no rule, will 404 live: ${missing.join(', ')}`);
+    if (extra.length) console.log(`  FAIL  rules for routes that do not exist: ${extra.join(', ')}`);
+  }
+
+  if (fs.existsSync('public/404.html')) {
+    const page = fs.readFileSync('public/404.html', 'utf8');
+    if (page.includes('noindex')) {
+      console.log('  ok    404 page is present and noindex');
+    } else {
+      failures++;
+      console.log('  FAIL  404.html is missing its noindex tag');
+    }
+  } else {
+    failures++;
+    console.log('  FAIL  public/404.html is missing, so unknown URLs answer 200');
+  }
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);
