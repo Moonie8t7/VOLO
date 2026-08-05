@@ -38,12 +38,16 @@ before rebuilding one.
 ## After deploying
 
 ```bash
-npm run verify-deploy
+npm run verify-deploy -- https://volobg3.com --expect "some new string"
 ```
 
-Waits for the deployment, then checks every asset serves the right content type
-in both plain and browser-style CORS requests, repairing the edge cache if it is
-holding a bad answer.
+Checks every asset the live page references, in both plain and browser-style
+CORS requests, repairing the edge cache if it is holding a bad answer. Pass
+`--expect` with a string unique to the change to wait for that change to land.
+
+It reads the live page rather than the local build on purpose: the host runs its
+own build, which regenerates the masterlist and so produces different content
+hashes. Comparing against local filenames waits forever.
 
 ## Scripts
 
