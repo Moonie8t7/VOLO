@@ -54,20 +54,20 @@ function countByProvenance(result: SortResult): Record<Placement['groupSource'],
  * keyboard, and dragging through a list of several hundred mods is miserable.
  */
 function MoveControls({ name, onMove }: { name: string; onMove: (d: -1 | 1) => void }) {
+  const button =
+    'flex h-5 w-6 items-center justify-center text-muted-foreground/50 ' +
+    'opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100 ' +
+    'hover:text-foreground focus-visible:opacity-100 focus-visible:outline-none ' +
+    'focus-visible:ring-1 focus-visible:ring-ring';
+
   return (
-    <span className="absolute right-0 top-1/2 -translate-y-1/2 hidden group-hover:flex group-focus-within:flex flex-col">
-      <button
-        aria-label={`Move ${name} earlier`}
-        onClick={e => { e.stopPropagation(); onMove(-1); }}
-        className="px-2 text-muted-foreground hover:text-foreground leading-none"
-      >
+    <span className="flex w-6 shrink-0 flex-col pl-1">
+      <button type="button" aria-label={`Move ${name} earlier`} className={button}
+        onClick={() => onMove(-1)}>
         <ChevronUp className="h-3.5 w-3.5" />
       </button>
-      <button
-        aria-label={`Move ${name} later`}
-        onClick={e => { e.stopPropagation(); onMove(1); }}
-        className="px-2 text-muted-foreground hover:text-foreground leading-none"
-      >
+      <button type="button" aria-label={`Move ${name} later`} className={button}
+        onClick={() => onMove(1)}>
         <ChevronDown className="h-3.5 w-3.5" />
       </button>
     </span>
@@ -198,12 +198,15 @@ export default function OptimisePage() {
                 const p = placements.get(mod.uuid);
                 const isOpen = expanded === mod.uuid;
                 return (
-                  <li key={mod.uuid} className="relative group">
+                  <li key={mod.uuid}>
+                    <div className="group flex items-center rounded transition-colors hover:bg-primary/5">
+                    <MoveControls name={mod.name} onMove={d => moveMod(mod.uuid, d)} />
                     <button
-                      className="w-full flex items-center gap-4 py-3 text-left hover:bg-primary/5 px-2 rounded transition-colors"
+                      className="flex-1 min-w-0 flex items-center gap-4 py-3 text-left px-2"
                       onClick={() => setExpanded(isOpen ? null : mod.uuid)}
+                      aria-expanded={isOpen}
                     >
-                      <span className="w-10 text-right text-xs text-muted-foreground font-mono">
+                      <span className="w-8 text-right text-xs text-muted-foreground font-mono">
                         {(p?.position ?? 0) + 1}
                       </span>
                       <span className="flex-1 min-w-0">
@@ -239,11 +242,10 @@ export default function OptimisePage() {
                         }`}
                       />
                     </button>
-
-                    <MoveControls name={mod.name} onMove={d => moveMod(mod.uuid, d)} />
+                    </div>
 
                     {isOpen && p && (
-                      <div className="pl-14 pr-2 pb-4 space-y-1 text-sm text-muted-foreground font-body">
+                      <div className="pl-16 pr-2 pb-4 space-y-1 text-sm text-muted-foreground font-body">
                         {p.reasons.map((r, i) => (
                           <p key={i} className="flex gap-2">
                             <span className="text-primary/60">-</span>
