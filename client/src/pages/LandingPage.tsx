@@ -69,13 +69,15 @@ export default function LandingPage() {
             anywhere else.
           </p>
           <p>
-            It sorts your mods by category, keeps declared dependencies ahead of
-            the mods that need them, and otherwise moves as little as possible.
-            Every mod shows the reason it sits where it does, and how much that
-            reason is worth: a placement drawn from orders people played on is
-            marked differently from one guessed at from the mod's name. Mods
-            nobody has placed yet sit at the end rather than being filed
-            somewhere plausible, and you can move anything yourself.
+            It sorts your mods into the sections a working load order already
+            uses, keeps declared dependencies ahead of the mods that need them,
+            and otherwise moves as little as possible. Every mod shows the
+            reason it sits where it does, and how much that reason is worth: a
+            placement drawn from orders people played on is marked differently
+            from one read off the mod's Nexus or mod.io listing, and both are
+            marked differently from a guess at its name. Only mods we can find
+            nothing at all about sit at the end, and you can move anything
+            yourself.
           </p>
           <p>
             Export the result and import it straight back into BG3 Mod Manager.

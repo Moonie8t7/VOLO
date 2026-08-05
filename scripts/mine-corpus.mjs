@@ -73,6 +73,52 @@ function dividerSectionLabel(name) {
 }
 
 /**
+ * The divider each group opens at, so a group can always name a slot.
+ *
+ * The dividers are the skeleton of the order whether or not the divider paks
+ * are installed; they are positions first and labels second. A mod that only
+ * ever resolves to a group still belongs somewhere on that skeleton, and this
+ * is where.
+ */
+const GROUP_DIVIDER = (() => {
+  try {
+    const d = JSON.parse(fs.readFileSync(path.join('client', 'src', 'lib', 'dividers.json'), 'utf8'));
+    return new Map(Object.entries(d.byGroup).map(([group, entry]) => [group, entry.num]));
+  } catch {
+    return new Map();
+  }
+})();
+
+/**
+ * Nexus and mod.io categories for mods no submitted order contains.
+ *
+ * The published category is the author's own statement of what the mod is, so
+ * it outranks reading the title. It is only ever group-coarse, which puts the
+ * mod in the right section but not on a precise slot within it.
+ */
+const EXTERNAL = (() => {
+  try {
+    const d = JSON.parse(fs.readFileSync(path.join('masterlist', 'external-categories.json'), 'utf8'));
+    return { groups: d.groups, nexus: d.nexus, modio: d.modio };
+  } catch {
+    return null;
+  }
+})();
+
+/** Key used by the external catalogues: lowercase, alphanumeric only. */
+const externalKey = name => String(name).toLowerCase().replace(/[^a-z0-9]/g, '');
+
+/** Published category for a mod name, preferring Nexus, or null. */
+function groupFromExternal(name) {
+  if (!EXTERNAL) return null;
+  const key = externalKey(name);
+  const index = EXTERNAL.nexus[key] ?? EXTERNAL.modio[key];
+  if (index === undefined) return null;
+  const group = EXTERNAL.groups[index];
+  return group && group !== 'unsorted' ? group : null;
+}
+
+/**
  * The base-game packages carry the game build they were shipped with, so a full
  * BG3MM export tells us which patch the load order was actually built against.
  * 4.7.x is Patch 7, 4.8.x is Patch 8. Worth capturing because BG3 patches break
@@ -256,32 +302,77 @@ const SECTION_TO_GROUP = {
   'body mods': 'Bodies', 'bug fixes': 'Bug Fixes',
 };
 
-/** Fallback name patterns when a mod sits under no section header. */
+/**
+ * Fallback name patterns for mods no submitted order has placed.
+ *
+ * Each entry names the divider the mod belongs under, not merely its group.
+ * A feat mod is 045 Skillset Feats; calling it "Classes" would file it at the
+ * category divider 056 and sort it below every spell and ability mod, which is
+ * both wrong and visibly wrong to anyone reading the exported order.
+ *
+ * First match wins, so the list runs most specific first.
+ */
 const NAME_PATTERNS = [
-  [/script\s*extender|nativemodloader|native mod loader|^bg3se|^mod\s*fixer/i, 'Utilities'],
-  [/improvedui|^impui|hotbar|tooltip|sidebar|inventory ui|\bui\b|interface|topbar|context menu/i, 'User Interface'],
-  [/communitylibrary|community library|volitioncabinet|materiallibrary|material library|^lib[A-Z]|modders?\s*resource|mod configuration menu|^bg3mcm|framework$|framework\b/i, 'Resources'],
-  [/\bspell|cantrip|\bmagic\b/i, 'Spells'],
-  [/subclass|\bclass\b|\bfeat\b|deity|deities/i, 'Classes'],
-  [/\brace\b|subrace|tiefling|githyanki|dragonborn|drow\b/i, 'Races'],
-  [/hair|beard/i, 'Hair'],
-  [/\bheads?\b|\beyes?\b|\bfaces?\b/i, 'Heads'],
-  [/\bbod(y|ies)\b|skin\s*tone/i, 'Bodies'],
-  [/tattoo|makeup|preset|character\s*creat/i, 'Character Customization'],
-  [/\bdyes?\b/i, 'Dyes'],
-  [/outfit|clothing|clothes|camp\s*(clothes|outfit)/i, 'Clothing'],
-  [/armou?r/i, 'Armor'],
-  [/weapon|\bswords?\b|\bblades?\b|\bbows?\b|dagger/i, 'Weapons'],
-  [/jewel|amulet|\brings?\b|cloak|earring/i, 'Accessories'],
-  [/equipment|\bgear\b|basket.*equipment|container/i, 'Equipment'],
-  [/companion|astarion|shadowheart|karlach|lae.?zel|halsin|minthara/i, 'Companions'],
-  [/\bnpcs?\b/i, 'NPC'],
-  [/\bquests?\b/i, 'Quests'],
-  [/animation/i, 'Animations'],
-  [/\bdice\b/i, 'Dice'],
-  [/audio|sound|music|voice/i, 'Audio'],
-  [/texture|colou?rs?\b|vfx|visual/i, 'Visuals'],
-  [/\bpatch(es)?\b|compatibility|\bfix(es)?\b|hotfix/i, 'Bug Fixes'],
+  [/script\s*extender|nativemodloader|native mod loader|^bg3se|^mod\s*fixer/i, 'Utilities', 19],
+  [/improvedui|^impui/i,                                'User Interface', 1],
+  [/hotbar|tooltip|sidebar|inventory ui|\bui\b|interface|topbar|context menu/i, 'User Interface', 5],
+  [/volitioncabinet|volition\s*cabinet/i,               'Resources', 7],
+  [/communitylibrary|community\s*library/i,             'Resources', 8],
+  [/materiallibrary|material\s*library/i,               'Resources', 10],
+  [/mod configuration menu|^bg3mcm|\bmcm\b/i,           'Resources', 14],
+  // Ahead of the generic framework rule, which would otherwise swallow it.
+  [/compatibility\s*framework/i,                        'Bottom of Load Order', 105],
+  [/^lib[A-Z]|modders?\s*resource|framework$|framework\b/i, 'Resources', 15],
+  [/waypoint/i,                                         'Utilities', 18],
+  [/encounter|miniboss/i,                               'Gameplay', 31],
+  [/\bfeats?\b/i,                                      'Classes', 45],
+  [/\babilit(y|ies)\b/i,                               'Spells', 46],
+  [/summon|familiar/i,                                  'Spells', 49],
+  [/\bspell|cantrip|\bmagic\b/i,                       'Spells', 47],
+  [/subclass/i,                                         'Classes', 58],
+  [/\bclass(es)?\b|deity|deities/i,                    'Classes', 56],
+  [/subraces?/i,                                        'Races', 53],
+  [/tiefling|githyanki|dragonborn|drow\b/i,             'Races', 52],
+  [/\braces?\b/i,                                      'Races', 51],
+  [/hair|beard/i,                                       'Hair', 64],
+  [/\bheads?\b|\beyes?\b|\bfaces?\b/i,                'Heads', 63],
+  [/\bbod(y|ies)\b|skin\s*tone/i,                      'Bodies', 99],
+  [/tattoo|makeup|\bscars?\b/i,                        'Character Customization', 100],
+  [/\bhorns?\b/i,                                       'Character Customization', 65],
+  [/\btails?\b|\bwings?\b/i,                            'Character Customization', 66],
+  [/piercing/i,                                         'Character Customization', 67],
+  [/preset|character\s*creat/i,                         'Character Customization', 61],
+  [/\bdyes?\b/i,                                       'Dyes', 38],
+  [/outfit|clothing|clothes|camp\s*(clothes|outfit)/i,  'Clothing', 37],
+  [/underwear|lingerie/i,                               'Clothing', 41],
+  [/armou?r/i,                                          'Armor', 36],
+  [/weapon|\bswords?\b|\bblades?\b|\bbows?\b|dagger/i,  'Weapons', 42],
+  [/jewel|amulet|\brings?\b|earring/i,                 'Accessories', 40],
+  [/cloak/i,                                            'Accessories', 35],
+  [/instrument|\blute\b|\bflute\b/i,                     'Equipment', 39],
+  [/equipment|\bgear\b|basket.*equipment|container/i,   'Equipment', 43],
+  [/astarion/i,                                         'Companions', 71],
+  [/\bgale\b/i,                                        'Companions', 72],
+  [/halsin/i,                                           'Companions', 73],
+  [/jaheira/i,                                          'Companions', 74],
+  [/karlach/i,                                          'Companions', 75],
+  [/lae.?zel/i,                                         'Companions', 76],
+  [/minsc/i,                                            'Companions', 77],
+  [/minthara/i,                                         'Companions', 78],
+  [/shadowheart/i,                                      'Companions', 79],
+  [/\bwyll\b/i,                                        'Companions', 80],
+  [/scratch|owlbear\s*cub/i,                            'Companions', 81],
+  [/companion/i,                                        'Companions', 82],
+  [/\bnpcs?\b/i,                                       'NPC', 23],
+  [/\bquests?\b/i,                                     'Quests', 25],
+  [/\bposes?\b/i,                                      'Animations', 86],
+  [/animation|\bidles?\b/i,                            'Animations', 83],
+  [/\bdice\b/i,                                        'Dice', 90],
+  [/audio|sound|music|voice/i,                          'Audio', 92],
+  [/\bvfx\b|visual/i,                                  'Visuals', 11],
+  [/texture/i,                                          'Visuals', 10],
+  [/colou?rs?\b/i,                                      'Visuals', 62],
+  [/\bpatch(es)?\b|compatibility|\bfix(es)?\b|hotfix/i, 'Bug Fixes', 98],
 ];
 
 
@@ -298,41 +389,42 @@ const NAME_PATTERNS = [
  * both "Warlock" and "Armor" is a class mod carrying gear, not the reverse.
  */
 const DIVIDER_PATTERNS = [
-  [/compatibilitys*framework/i,                        'Bottom of Load Order', 105],
-  [/universals*patcher|majors*patch/i,                'Bug Fixes',            94],
-  [/appearances*edit/i,                                'Bug Fixes',            104],
-  [/volitions*cabinet|communitys*library/i,           'Resources',            7],
-  [/shader|texture|material/i,                         'Resources',            9],
-  [/vfx|visuals*effect/i,                           'Resources',            11],
-  [/mcm|mods*configuration/i,                       'Resources',            14],
-  [/waypoint/i,                                         'Utilities',            18],
-  [/restoreds*content/i,                               'Gameplay',             17],
-  [/tutorials*chest/i,                                 'Gameplay',             29],
-  [/encounter|miniboss/i,                               'Gameplay',             31],
-  [/dialogue|banter/i,                              'NPC',                  22],
-  [/astarion|shadowheart|karlach|lae.?zel|gale|wyll|halsin|minthara|minsc|jaheira|scratch|owlbears*cub/i,
-                                                        'Companions',           71],
-  [/location|map/i,                                'Environment',          26],
-  [/instrument|lute|flute/i,                     'Equipment',            39],
-  [/jewel|amulet|ring|earring|necklace/i,            'Accessories',          40],
-  [/underwear|lingerie/i,                               'Clothing',             41],
-  [/feat(s)?/i,                                      'Classes',              45],
-  [/summon|familiar/i,                                  'Spells',               49],
-  [/barbarian|bard|cleric|druid|fighter|monk|paladin|ranger|rogue|sorcerer|warlock|wizard|artificer/i,
-                                                        'Classes',              58],
-  [/tiefling|githyanki|gith|dragonborn|halfling|half.?orc|half.?elf|drow|gnome|dwarf|dwarves|elves|elf|aasimar|orc/i,
-                                                        'Races',                53],
-  [/horns?/i,                                        'Character Customization', 65],
-  [/tails?|wings?/i,                              'Character Customization', 66],
-  [/piercing/i,                                         'Character Customization', 67],
-  [/tattoo|makeup|scars?/i,                          'Character Customization', 100],
-  [/pose|qsat|lightys*lights/i,                   'Animations',           86],
-  [/body|bodies/i,                                'Bodies',               99],
-  [/eyes?|glows*eyes|eotb/i,                    'Heads',                96],
+  [/compatibility\s*framework/i,                        'Bottom of Load Order', 105],
+  [/universal\s*patcher|major\s*patch/i,                'Bug Fixes',            94],
+  [/appearance\s*edit/i,                                 'Bug Fixes',            104],
+  [/volition\s*cabinet|community\s*library/i,           'Resources',            7],
+  [/\bshader|texture|material/i,                         'Resources',            9],
+  [/\bvfx\b|visual\s*effect/i,                          'Resources',            11],
+  [/\bmcm\b|mod\s*configuration/i,                      'Resources',            14],
+  [/waypoint/i,                                          'Utilities',            18],
+  [/restored\s*content/i,                                'Gameplay',             17],
+  [/tutorial\s*chest/i,                                  'Gameplay',             29],
+  [/encounter|miniboss/i,                                'Gameplay',             31],
+  [/\bdialogue\b|banter/i,                               'NPC',                  22],
+  [/astarion|shadowheart|karlach|lae.?zel|\bgale\b|wyll|halsin|minthara|minsc|jaheira|scratch|owlbear\s*cub/i,
+                                                         'Companions',           71],
+  [/\blocation|\bmap\b/i,                                'Environment',          26],
+  [/instrument|\blute\b|\bflute\b/i,                     'Equipment',            39],
+  [/jewel|amulet|\bring\b|earring|necklace/i,            'Accessories',          40],
+  [/underwear|lingerie/i,                                'Clothing',             41],
+  [/\bfeats?\b/i,                                        'Classes',              45],
+  [/summon|familiar/i,                                   'Spells',               49],
+  [/barbarian|\bbard\b|cleric|druid|fighter|\bmonk\b|paladin|ranger|\brogue\b|sorcerer|warlock|wizard|artificer/i,
+                                                         'Classes',              58],
+  [/tiefling|githyanki|\bgith\b|dragonborn|halfling|half.?orc|half.?elf|\bdrow\b|\bgnome\b|\bdwarf|\bdwarves\b|\belves\b|\belf\b|aasimar|\borc\b/i,
+                                                         'Races',                53],
+  [/\bhorns?\b/i,                                        'Character Customization', 65],
+  [/\btails?\b|\bwings?\b/i,                             'Character Customization', 66],
+  [/piercing/i,                                          'Character Customization', 67],
+  [/tattoo|makeup|\bscars?\b/i,                          'Character Customization', 100],
+  [/\bpose|\bqsat\b|lighty\s*lights/i,                   'Animations',           86],
+  [/\bbody\b|\bbodies\b/i,                               'Bodies',               99],
+  [/\beyes?\b|glow\s*eyes|\beotb\b/i,                    'Heads',                96],
 ];
 
 /** First divider pattern a name matches, or null. */
-function dividerGuess(name) {
+function dividerGuess(rawName) {
+  const name = searchableName(rawName);
   for (const [re, group, num] of DIVIDER_PATTERNS) {
     if (re.test(name)) return { group, num };
   }
@@ -410,8 +502,27 @@ function groupForSection(label) {
   return null;
 }
 
-function groupForName(name) {
-  for (const [re, group] of NAME_PATTERNS) if (re.test(name)) return group;
+/**
+ * Mod names as the patterns need to see them.
+ *
+ * Authors write "FeatsOverhaul" and "Essential_Feats" as often as they write
+ * "Extra Feats", and a word boundary matches none of the first two. Splitting
+ * camel case and punctuation into spaces costs nothing and recovers them. The
+ * mod's real name is never touched, only this throwaway copy used for matching.
+ */
+function searchableName(name) {
+  return String(name)
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+    .replace(/[_\-.]+/g, ' ');
+}
+
+/** Group and divider for a mod name, or null when nothing matches. */
+function groupForName(rawName) {
+  const name = searchableName(rawName);
+  for (const [re, group, divider] of NAME_PATTERNS) {
+    if (re.test(name)) return { group, divider };
+  }
   return null;
 }
 
@@ -539,15 +650,33 @@ for (const r of mods.values()) {
       stats.fromSection++;
     }
   }
+  let dividerFromName = null;
   if (!group) {
-    group = groupForName(name);
-    if (group) { confidence = 'name-pattern'; stats.fromName++; }
+    const named = groupForName(name);
+    if (named) {
+      group = named.group;
+      dividerFromName = named.divider;
+      confidence = 'name-pattern';
+      stats.fromName++;
+    }
+  }
+  // The mod's own listing on Nexus or mod.io. Coarser than a name match, which
+  // can hit a precise slot, so it runs second; but it is the author speaking
+  // rather than us guessing, so it beats giving up.
+  if (!group) {
+    const external = groupFromExternal(name);
+    if (external) {
+      group = external;
+      confidence = 'external-category';
+      stats.fromExternal = (stats.fromExternal ?? 0) + 1;
+    }
   }
   // Last resort before giving up: Astra's divider vocabulary. It names a
   // hundred things our groups do not, and mod titles are full of those words.
-  let dividerFromName = null;
-  // Opt-in: measured at 0.6 points below leaving these mods unplaced, because
+  // Opt-in: measured at 0.7 points below leaving these mods unplaced, because
   // mods the corpus cannot place tend to sit at the end of real orders anyway.
+  // Re-measured after the patterns themselves were repaired, so the figure is
+  // now a judgement about the vocabulary rather than about a broken table.
   if (!group && process.env.VOLO_DIVIDER_VOCAB) {
     const guess = dividerGuess(name);
     if (guess) {
@@ -571,8 +700,19 @@ for (const r of mods.values()) {
   // The divider this mod was most often filed under by the people who use
   // them. Finer than a group: it distinguishes a Warlock subclass from a
   // Wizard one, and a library from the patcher that has to follow it.
+  //
+  // Where nobody has filed the mod, the name pattern names a divider itself,
+  // which is the difference between placing a feat mod at 045 Skillset Feats
+  // and dumping it on the 056 Classes category marker.
+  //
+  // Failing both, the group still names the slot it opens at, so every
+  // categorised mod lands on the skeleton rather than at the end of the order.
   if (r.dividers.size) {
     plugin.divider = [...r.dividers.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0][0];
+  } else if (dividerFromName !== null) {
+    plugin.divider = dividerFromName;
+  } else if (GROUP_DIVIDER.has(group)) {
+    plugin.divider = GROUP_DIVIDER.get(group);
   }
   plugin.evidence = {
     source: confidence,
@@ -641,6 +781,9 @@ for (const p of plugins) {
   if (agreement < MIN_AGREEMENT) continue;
 
   p.group = best;
+  // Inference runs after the slot has been chosen, so a mod placed here would
+  // otherwise keep a group and no position on the skeleton.
+  if (p.divider === undefined && GROUP_DIVIDER.has(best)) p.divider = GROUP_DIVIDER.get(best);
   p.evidence.source = 'inferred';
   p.evidence.confidence = Math.round(agreement * 100) / 100;
   stats.unsorted--;
@@ -920,6 +1063,7 @@ the tool flag a mod as last verified on an older patch.
 | Curated override | ${stats.curated} | highest, hand-verified infrastructure |
 | Human-authored section header | ${stats.fromSection} | high, a modder put it there |
 | Name pattern fallback | ${stats.fromName} | medium, needs review |
+| Nexus or mod.io listing category | ${stats.fromExternal ?? 0} | medium, the author's own words about what the mod is |
 | Neighbour inference, 0.85 agreement or better | ${stats.inferredHigh} | high, measured 97 percent accurate at this band |
 | Neighbour inference, 0.70 to 0.85 | ${stats.inferredLow} | medium, roughly 75 percent accurate, carries a confidence score |
 | Uncategorised | ${stats.unsorted} | none, needs community input |
@@ -953,8 +1097,9 @@ fs.writeFileSync(path.join(OUT_DIR, 'coverage-report.md'), report);
 console.log(`corpus:    ${orders.length} orders (${masterlist.provenance.working} working, ${masterlist.provenance.broken} broken, ${masterlist.provenance.unlabelled} unlabelled)`);
 console.log(`separators:${String(separatorCount).padStart(5)} headers parsed`);
 console.log(`indexed:   ${plugins.length} unique mods`);
-console.log(`grouped:   ${stats.fromSection} by section header, ${stats.fromName} by name pattern`);
+console.log(`grouped:   ${stats.fromSection} by section header, ${stats.fromName} by name pattern, ${stats.fromExternal ?? 0} by Nexus or mod.io category`);
 console.log(`inferred:  ${stats.inferredHigh + stats.inferredLow} from position in submitted orders (${stats.inferredHigh} high confidence), ${stats.unsorted} still unsorted`);
+console.log(`skeleton:  ${plugins.filter(p => p.divider !== undefined).length} of ${plugins.length} mods placed on a divider slot`);
 console.log(`hard deps: ${withDeps.length} mods with declared dependencies`);
 console.log(`game:      ${masterlist.gamePatch ?? 'unknown'} (build ${masterlist.gameBuild ?? 'unknown'}), ${builds.length} builds seen`);
 console.log(`\nwrote ${OUT_DIR}/bg3-masterlist.json`);
