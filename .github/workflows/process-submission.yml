@@ -67,7 +67,7 @@ jobs:
           git config user.email "submissions@users.noreply.github.com"
           # The masterlist in this commit was regenerated from the full corpus
           # including this order, moments ago, so it is never stale.
-          git add "Load Orders - Public Submitted" masterlist public/bg3-masterlist.json
+          git add "Load Orders - Public Submitted" masterlist public/bg3-masterlist.json client/src/lib/masterlist-summary.json
           git commit -m "Add load order from issue #${{ github.event.issue.number }} and regenerate the masterlist"
           # Another run may have landed between checkout and now.
           git pull --rebase origin main
