@@ -1,3 +1,10 @@
+/**
+ * Primary navigation.
+ *
+ * Collapses into a top bar below the large breakpoint, where a fixed sidebar
+ * would eat most of the viewport.
+ */
+
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Upload, ArrowUpDown, Download, Send, Database, Heart, Menu, X } from "lucide-react";

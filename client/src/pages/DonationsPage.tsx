@@ -1,3 +1,7 @@
+/**
+ * Support page. Explains what running VOLO actually costs.
+ */
+
 import DonationSection from "@/components/DonationSection";
 
 export default function DonationsPage() {

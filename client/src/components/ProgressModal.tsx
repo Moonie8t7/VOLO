@@ -1,3 +1,7 @@
+/**
+ * Progress dialog for long-running work.
+ */
+
 import { Settings } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";

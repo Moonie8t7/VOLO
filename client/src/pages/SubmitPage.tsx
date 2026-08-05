@@ -1,3 +1,8 @@
+/**
+ * Submit a load order to the public queue. Works standalone: sorting first is
+ * not required, and the raw file is preferred over a converted one.
+ */
+
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
 import { Check, Heart, Upload, ArrowRight } from 'lucide-react';

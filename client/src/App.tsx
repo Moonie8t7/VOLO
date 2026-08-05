@@ -1,3 +1,10 @@
+/**
+ * Routes and providers.
+ *
+ * Client-side routing only, so the host must rewrite unmatched paths to
+ * index.html or a refresh on /optimise returns a 404.
+ */
+
 import { Switch, Route } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";

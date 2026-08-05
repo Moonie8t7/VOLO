@@ -1,3 +1,7 @@
+/**
+ * 404 page for unmatched client-side routes.
+ */
+
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
 

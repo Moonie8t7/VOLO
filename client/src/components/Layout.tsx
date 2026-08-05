@@ -1,3 +1,7 @@
+/**
+ * Page shell: sidebar plus the routed page, with a skip link for keyboard use.
+ */
+
 import { useEffect, useRef } from "react";
 import { useLocation } from "wouter";
 import Sidebar from "./Sidebar";
