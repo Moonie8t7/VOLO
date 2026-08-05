@@ -13,13 +13,17 @@ it against a masterlist built from load orders players actually played on,
 resolves declared dependencies, explains every placement, and hands the file
 back.
 
-It runs entirely in your browser. There is no server, no account and no upload;
-your load order never leaves your machine. Mods from Nexus Mods and from mod.io,
-the platform behind the official in-game mod manager, are both supported.
+Sorting runs entirely in your browser and needs no account. Your load order is
+never uploaded; the only endpoint on the site is `functions/api/submit.js`, and
+nothing reaches it unless you choose to submit an order from the Submit page.
+Mods from Nexus Mods and from mod.io, the platform behind the official in-game
+mod manager, are both supported.
 
-Measured on orders it has never seen, VOLO agrees with them **60.3 percent** of
-the time against **50.5 percent** for a random shuffle. It is a sorting aid with
-evidence behind it, not an oracle.
+Measured on orders it has never seen, VOLO agrees with them **57.5 percent** of
+the time against **50.5 percent** for a random shuffle. That figure averages
+orders rather than mods, so a 41-mod order weighs as much as a 999-mod one;
+weighted by mods it is nearer 59 percent. It is a sorting aid with evidence
+behind it, not an oracle.
 
 ## Quick start
 
@@ -53,20 +57,28 @@ flowchart LR
     corpus --> masterlist
 ```
 
-Placement is decided by evidence, strongest first: declared dependencies, then
-curated overrides, then section headers modders wrote themselves, then
-neighbour inference, then name patterns. Anything still unknown keeps its place
-rather than being guessed at. Astra's Load Order Dividers give the order its
-skeleton; the sequence learned from working orders decides within each section.
+Astra's Load Order Dividers are the skeleton: a hundred-odd labelled positions
+that a mod is placed on whether or not the divider paks are installed. Which
+position comes from the strongest evidence available, in order: curated
+overrides, section headers modders wrote in their own orders, the mod's name
+read against the divider vocabulary, its Nexus or mod.io listing category, then
+inference from its neighbours in submitted orders. A mod with none of these
+waits at the end of the order, where submitted orders put mods nobody has
+placed. Within a position, the sequence learned from working orders decides,
+and mods it knows nothing about keep the order you gave them.
+
+Declared dependencies sit outside all of that as hard graph edges: a mod is
+never emitted before something it requires, whatever the positions say.
 
 Full detail in [docs/architecture.md](docs/architecture.md).
 
 ## The masterlist
 
-`masterlist/bg3-masterlist.json` covers just over 3,000 mods, built from
-submitted orders. Around 1,600 were categorised from section headers modders
-wrote in their own orders, 546 from name patterns, 157 inferred from their
-neighbours, and 650 are not categorised yet.
+`masterlist/bg3-masterlist.json` covers 3,008 mods. 1,641 were categorised from
+section headers modders wrote in their own orders, 700 from name patterns, 219
+from a Nexus or mod.io listing, 96 inferred from their neighbours, 14 from
+curated overrides, and 338 are not categorised at all. 2,662 of the 3,008 sit on
+a divider position.
 
 See [masterlist/coverage-report.md](masterlist/coverage-report.md) for what is
 known versus guessed, and [masterlist/README.md](masterlist/README.md) for the
@@ -75,16 +87,24 @@ data licence.
 ## Known constraints
 
 Nine working orders is a small corpus, and it is the binding constraint on
-quality rather than the algorithm. Four plausible improvements have measured
+quality rather than the algorithm. Several plausible improvements have measured
 *worse* than doing nothing, all recorded in
 [docs/decisions.md](docs/decisions.md). More submissions beat more cleverness.
 
-650 mods have no category. Almost all appeared in exactly one submitted order,
-so there is nothing to infer from.
+Held-out agreement is a weak guide to whether a change is good. It scores the
+sort against orders that already work, so any movement costs points and doing
+nothing scores well; a mod left at the end because nothing is known about it is
+rewarded precisely because unplaced mods cluster there. Read it alongside the
+per-order and mod-weighted splits rather than on its own.
 
-The sort has never been validated against the game itself. Every check is
-against VOLO's own parser, which is circular. Loading an exported
-`modsettings.lsx` in BG3 remains the outstanding test.
+338 mods have no category from any source. Almost all appeared in exactly one
+submitted order, so there is nothing to infer from.
+
+The automated checks parse VOLO's own output with VOLO's own parser, which is
+circular and cannot tell you the game accepts the file. Exports have been loaded
+in BG3 by hand and worked, but that is a manual step outside the test suite, so
+treat a green `npm test` as evidence the sorter is consistent rather than proof
+the game is happy.
 
 ## Licence
 

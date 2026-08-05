@@ -46,17 +46,26 @@ settles is never revisited by a weaker one.
 
 ```mermaid
 flowchart LR
-    A["Declared dependencies<br/>hard constraints"] --> B["Curated overrides"]
-    B --> C["Section headers<br/>written by modders"]
-    C --> D["Neighbour inference<br/>with confidence"]
-    D --> E["Name patterns"]
-    E --> F["Uncategorised<br/>sorts to the end"]
+    A["Curated overrides"] --> B["Section headers<br/>written by modders"]
+    B --> C["Name patterns<br/>read as divider vocabulary"]
+    C --> D["Nexus or mod.io<br/>listing category"]
+    D --> E["Neighbour inference<br/>with confidence"]
+    E --> F["Uncategorised<br/>waits at the end"]
 ```
 
-Within that, the sequence itself comes from two sources. Astra's Load Order
-Dividers provide the skeleton: their numbering decides which section a mod
-belongs in. Inside a section, the order learned from submitted working orders
-decides. Declared dependencies are graph edges and can override both.
+Name patterns run ahead of listing categories because a name can name a precise
+position (`045 Skillset Feats`) where a listing only ever gives a coarse group.
+Neighbour inference runs last because it is the only tier that reads other
+mods' answers, so it should see them settled first.
+
+Astra's Load Order Dividers are the skeleton, and a mod is placed on one whether
+or not the divider paks are installed. Inside a position, the order learned from
+submitted working orders decides, and mods it knows nothing about keep the order
+the user gave them.
+
+Declared dependencies sit outside the tiers entirely, as hard graph edges in
+Kahn's algorithm. No position or learned sequence can emit a mod before
+something it requires.
 
 ## The client
 

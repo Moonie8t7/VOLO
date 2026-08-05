@@ -42,9 +42,19 @@ const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
+  /*
+   * forceMount keeps closed answers in the DOM.
+   *
+   * Radix unmounts a closed panel by default, which meant every answer in the
+   * FAQ existed only after a click: absent from the rendered page, and so
+   * absent from search results and from anything summarising the site. Mounted
+   * and hidden is indexed; unmounted is not. The hidden class does the hiding,
+   * because forceMount stops Radix setting the hidden attribute itself.
+   */
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    forceMount
+    className="overflow-hidden text-sm transition-all data-[state=closed]:hidden data-[state=open]:animate-accordion-down"
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>

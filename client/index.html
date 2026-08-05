@@ -8,9 +8,14 @@
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#161411" />
     <title>VOLO: Load Order Optimisation for Baldur's Gate 3</title>
-    <meta name="description" content="VOLO sorts your Baldur's Gate 3 mod load order using a community-curated masterlist, resolving dependencies and explaining every placement. Free, and runs entirely in your browser." />
-    <meta name="keywords" content="Baldur's Gate 3, BG3, mods, load order, LOOT, BG3 Mod Manager, masterlist" />
+    <meta name="description" content="Sort your Baldur's Gate 3 mod load order against orders players have actually played on. Runs in your browser, nothing to install, and every placement shows its reasoning." />
     <link rel="icon" href="/assets/volo-logo.png" />
+    <!--
+      Defaults for the home page and for anything reading the HTML before the
+      app runs. src/lib/head.ts rewrites both as the route changes.
+    -->
+    <link rel="canonical" href="https://volobg3.com/" />
+    <meta name="robots" content="index, follow" />
 
     <meta property="og:title" content="VOLO: Load Order Optimisation for Baldur's Gate 3" />
     <meta property="og:description" content="Sort your BG3 mod load order against a community-curated masterlist. Free, no upload, no account." />
@@ -18,6 +23,35 @@
     <meta property="og:url" content="https://volobg3.com/" />
     <meta property="og:image" content="https://volobg3.com/assets/volo-logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!--
+      Describes the tool itself. Kept in the static HTML so it is readable
+      without executing the app, and deliberately limited to what is true:
+      a free browser tool, no ratings invented, no offers.
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "VOLO",
+      "alternateName": [
+        "Verified Order and Load Optimisation",
+        "VOLO BG3",
+        "VOLO Baldur's Gate 3"
+      ],
+      "url": "https://volobg3.com/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any, runs in a web browser",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Sorts Baldur's Gate 3 mod load orders against a masterlist built from load orders players have played on, resolving declared dependencies and explaining every placement.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+      "license": "https://github.com/Moonie8t7/VOLO/blob/main/LICENSE",
+      "codeRepository": "https://github.com/Moonie8t7/VOLO",
+      "sameAs": ["https://github.com/Moonie8t7/VOLO"],
+      "about": { "@type": "VideoGame", "name": "Baldur's Gate 3" }
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
