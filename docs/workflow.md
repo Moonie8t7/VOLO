@@ -49,6 +49,11 @@ It reads the live page rather than the local build on purpose: the host runs its
 own build, which regenerates the masterlist and so produces different content
 hashes. Comparing against local filenames waits forever.
 
+It then requests every route and asserts an address that is not a route answers
+404. Since each route is served from its own prerendered file rather than
+through a rewrite, a route the prerenderer does not know about disappears in
+production, and this is the only check that runs against the real host.
+
 ## Scripts
 
 | Script | Purpose |
@@ -65,11 +70,14 @@ hashes. Comparing against local filenames waits forever.
 | `bulk-list-nexus.mjs` | Crawls the Nexus catalogue. `--updates` for the daily top-up. |
 | `bulk-list-modio.mjs` | Crawls mod.io. `--updates` and `--deps`. |
 | `crawl-requirements.mjs` | Harvests author-declared requirement tables. |
+| `build-external-categories.mjs` | Maps both catalogues onto the group vocabulary. |
+| `find-masterlist-on-nexus.mjs` | Matches masterlist mods to Nexus by name, ahead of the id crawl. |
+| `enrich-from-nexus.mjs` | Reports what the Nexus catalogue can add to the masterlist. |
 | `build-divider-map.mjs` | Turns the divider paks into the client's taxonomy. |
 | `crawl-summary.mjs` | One readable summary of catalogue and masterlist state. |
-| `verify-deploy.mjs` | Verifies and repairs a deployment. |
+| `verify-deploy.mjs` | Verifies and repairs a deployment, and checks every route. |
 
-Two more are run by hand rather than by any pipeline, and exist for when the
+The rest are run by hand rather than by any pipeline, and exist for when the
 question comes up again:
 
 | Script | Run it when |
