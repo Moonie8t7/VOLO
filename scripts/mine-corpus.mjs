@@ -1102,5 +1102,26 @@ console.log(`inferred:  ${stats.inferredHigh + stats.inferredLow} from position 
 console.log(`skeleton:  ${plugins.filter(p => p.divider !== undefined).length} of ${plugins.length} mods placed on a divider slot`);
 console.log(`hard deps: ${withDeps.length} mods with declared dependencies`);
 console.log(`game:      ${masterlist.gamePatch ?? 'unknown'} (build ${masterlist.gameBuild ?? 'unknown'}), ${builds.length} builds seen`);
+/**
+ * A few numbers small enough to bundle.
+ *
+ * The pages quote the size of the masterlist, and the masterlist itself is
+ * megabytes fetched after the page loads, so those figures could only appear
+ * once the download finished. Writing them out separately lets the text render
+ * with the real numbers immediately, which matters most for the prerendered
+ * HTML, where "thousands of mods" would otherwise be what a reader and a
+ * search engine got.
+ */
+fs.writeFileSync(
+  path.join('client', 'src', 'lib', 'masterlist-summary.json'),
+  `${JSON.stringify({
+    mods: plugins.length,
+    placed: plugins.filter(p => p.divider !== undefined).length,
+    gamePatch: masterlist.gamePatch ?? null,
+    workingOrders: masterlist.provenance.working,
+  }, null, 2)}\n`,
+);
+
 console.log(`\nwrote ${OUT_DIR}/bg3-masterlist.json`);
+console.log('wrote client/src/lib/masterlist-summary.json');
 console.log(`wrote ${OUT_DIR}/coverage-report.md`);

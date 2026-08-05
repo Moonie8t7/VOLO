@@ -433,36 +433,29 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
- * Every client route needs a rewrite rule, or it 404s in production.
+ * Every client route needs prerendering, or it 404s in production.
  *
- * public/404.html turns off Cloudflare's fallback to index.html, which is what
- * makes a real 404 possible for addresses that are not pages. The cost is that
- * a route missing from public/_redirects stops existing once deployed, and
- * nothing local would show it: vite preview does not read _redirects.
+ * public/404.html turns off the host's fallback to index.html, which is what
+ * makes a real 404 possible for addresses that are not pages. Each route earns
+ * its 200 by having a file of its own, so a route the prerenderer does not know
+ * about simply stops existing once deployed.
  */
 {
   console.log('');
-  console.log('routes and redirects');
+  console.log('routes and prerendering');
 
   const app = fs.readFileSync('client/src/App.tsx', 'utf8');
-  const routes = [...app.matchAll(/<Route\s+path="([^"]+)"/g)]
-    .map(m => m[1])
-    .filter(p => p !== '/');
+  const routes = [...app.matchAll(/<Route\s+path="([^"]+)"/g)].map(m => m[1]);
 
-  const redirects = fs.readFileSync('public/_redirects', 'utf8')
-    .split(/\r?\n/)
-    .filter(l => l.trim() && !l.trim().startsWith('#'))
-    .map(l => l.trim().split(/\s+/)[0]);
+  const prerender = fs.readFileSync('scripts/prerender.mjs', 'utf8');
+  const listed = [...prerender.matchAll(/'(\/[a-z]*)'/g)].map(m => m[1]);
 
-  const missing = routes.filter(r => !redirects.includes(r));
-  const extra = redirects.filter(r => !routes.includes(r));
-
-  if (!missing.length && !extra.length) {
-    console.log(`  ok    all ${routes.length} routes have a rewrite rule`);
+  const missing = routes.filter(r => !listed.includes(r));
+  if (!missing.length) {
+    console.log(`  ok    all ${routes.length} routes are prerendered`);
   } else {
     failures++;
-    if (missing.length) console.log(`  FAIL  routes with no rule, will 404 live: ${missing.join(', ')}`);
-    if (extra.length) console.log(`  FAIL  rules for routes that do not exist: ${extra.join(', ')}`);
+    console.log(`  FAIL  routes the prerenderer does not know, will 404 live: ${missing.join(', ')}`);
   }
 
   if (fs.existsSync('public/404.html')) {
@@ -476,6 +469,25 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   } else {
     failures++;
     console.log('  FAIL  public/404.html is missing, so unknown URLs answer 200');
+  }
+
+  // The point of the exercise: real text in the file the host serves.
+  const home = 'dist/index.html';
+  if (fs.existsSync(home)) {
+    const body = fs.readFileSync(home, 'utf8').split('<body')[1] ?? '';
+    const text = body
+      .replace(/<script[\s\S]*?<\/script>/g, '')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (text.length > 1000) {
+      console.log(`  ok    home page ships ${text.length} characters without JavaScript`);
+    } else {
+      failures++;
+      console.log(`  FAIL  home page ships only ${text.length} characters; prerendering did not run`);
+    }
+  } else {
+    console.log('  skip  no dist/ yet, run the build to check the prerendered output');
   }
 }
 

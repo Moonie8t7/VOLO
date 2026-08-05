@@ -9,11 +9,19 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import DonationSection from "@/components/DonationSection";
 import { useStore } from "@/lib/store";
+import summary from "@/lib/masterlist-summary.json";
 
 export default function LandingPage() {
   const { masterlist } = useStore();
-  const modCount = masterlist?.plugins.length;
-  const patch = masterlist?.gamePatch;
+
+  /**
+   * The live masterlist once it has downloaded, the figures recorded at build
+   * time until then. The masterlist is megabytes fetched after the page loads,
+   * so without the fallback this sentence would read "thousands of mods" on
+   * first paint and in the prerendered HTML that search engines read.
+   */
+  const modCount = masterlist?.plugins.length ?? summary.mods;
+  const patch = masterlist?.gamePatch ?? summary.gamePatch;
 
   return (
     /* The landing page renders outside the app shell, so it carries its own
@@ -35,7 +43,6 @@ export default function LandingPage() {
                 alt=""
                 width={256}
                 height={256}
-                fetchPriority="high"
                 className="w-16 h-16 md:w-20 md:h-20 border border-border shadow-bg3"
               />
               <span className="font-display text-5xl md:text-6xl font-bold text-gradient-bg3 leading-tight">
@@ -165,8 +172,7 @@ export default function LandingPage() {
             order alone, so what you see moved is what it had a reason to move.
           </p>
           <p>
-            The masterlist currently knows
-            {modCount ? ` ${modCount.toLocaleString()} mods` : " thousands of mods"}
+            The masterlist currently knows {modCount.toLocaleString()} mods
             {patch ? `, calibrated against BG3 ${patch}` : ""}. Alongside it sit
             catalogues of published BG3 mods on Nexus Mods and on mod.io, the
             platform behind the official in-game mod manager. Those supply two

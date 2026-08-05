@@ -16,7 +16,7 @@ npm run dev        # http://localhost:5173
 ```bash
 npm run check      # typecheck
 npm test           # the optimiser against the real corpus
-npm run build      # regenerate the masterlist, then build to dist/
+npm run build      # regenerate the masterlist, build, then prerender every route
 ```
 
 `npm run masterlist` re-mines `Load Orders - Public Submitted/` on its own. Run
@@ -54,6 +54,9 @@ hashes. Comparing against local filenames waits forever.
 | Script | Purpose |
 |---|---|
 | `mine-corpus.mjs` | Builds the masterlist from the corpus. Supports `--exclude` and `--out`. |
+| `prerender.mjs` | Renders every route to its own HTML file after the build. |
+| `serve-dist.mjs` | Serves `dist/` the way the host does, which `vite preview` does not. |
+| `build-sitemap.mjs` | Writes the sitemap, taking each `lastmod` from git. |
 | `verify-order.mjs` | In-sample agreement. Relative comparisons only. |
 | `verify-holdout.mjs` | Held-out agreement. The honest number. |
 | `smoke-test.mjs` | Asserts the sort's promises against every corpus order. |
