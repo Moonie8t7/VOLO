@@ -26,7 +26,7 @@ const CATALOG = path.join('nexus', 'catalog.json');
 const MASTERLIST = path.join('masterlist', 'bg3-masterlist.json');
 
 if (!fs.existsSync(CATALOG)) {
-  console.error('No nexus/catalog.json yet. Run scripts/crawl-nexus.mjs first.');
+  console.error('No nexus/catalog.json yet. Run scripts/bulk-list-nexus.mjs first.');
   process.exit(2);
 }
 

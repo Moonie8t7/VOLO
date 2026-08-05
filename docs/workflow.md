@@ -62,6 +62,15 @@ holding a bad answer.
 | `crawl-summary.mjs` | One readable summary of catalogue and masterlist state. |
 | `verify-deploy.mjs` | Verifies and repairs a deployment. |
 
+Two more are run by hand rather than by any pipeline, and exist for when the
+question comes up again:
+
+| Script | Run it when |
+|---|---|
+| `extract-separator-mods.mjs` | Astra ships new or changed divider paks |
+| `learn-breakage.mjs` | Asking what broken orders do that working ones never do |
+| `learn-category-order.mjs` | Re-deriving the category sequence as the corpus grows |
+
 ## Environment
 
 `.env` holds `NEXUS_API_KEY` and `MODIO_API_KEY` for local crawling. The same
