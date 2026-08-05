@@ -17,12 +17,22 @@
     <link rel="canonical" href="https://volobg3.com/" />
     <meta name="robots" content="index, follow" />
 
-    <meta property="og:title" content="VOLO: Load Order Optimisation for Baldur's Gate 3" />
-    <meta property="og:description" content="Sort your BG3 mod load order against a community-curated masterlist. Free, no upload, no account." />
+    <meta property="og:title" content="VOLO: Load Order Sorting for Baldur's Gate 3" />
+    <meta property="og:description" content="Sort your Baldur's Gate 3 mod load order against orders players have actually played on. Runs in your browser, and every placement shows its reasoning." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://volobg3.com/" />
-    <meta property="og:image" content="https://volobg3.com/assets/volo-logo.png" />
+    <meta property="og:site_name" content="VOLO" />
+    <!--
+      The sorted order rather than the logo. A preview image is meant to show
+      what the page is about, and a wordmark shows nothing; this is the tool
+      doing the one thing it exists to do, labels and all.
+    -->
+    <meta property="og:image" content="https://volobg3.com/assets/volo-sorted-order-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A sorted Baldur's Gate 3 load order in VOLO, each mod labelled with the section it belongs to and how its placement was decided." />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://volobg3.com/assets/volo-sorted-order-preview.png" />
 
     <!--
       Describes the tool itself. Kept in the static HTML so it is readable
@@ -45,6 +55,7 @@
       "browserRequirements": "Requires JavaScript",
       "description": "Sorts Baldur's Gate 3 mod load orders against a masterlist built from load orders players have played on, resolving declared dependencies and explaining every placement.",
       "isAccessibleForFree": true,
+      "primaryImageOfPage": "https://volobg3.com/assets/volo-sorted-order-preview.png",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
       "license": "https://github.com/Moonie8t7/VOLO/blob/main/LICENSE",
       "codeRepository": "https://github.com/Moonie8t7/VOLO",
@@ -55,7 +66,23 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <!--
+      Loaded without blocking the first paint. A stylesheet in the head holds
+      rendering until it arrives, and this one comes from another origin, so a
+      slow response from Google delayed the whole page. Requesting it as print
+      takes it off the critical path, and the onload flip applies it the moment
+      it lands. display=swap means text is readable in the fallback face until
+      then, rather than invisible.
+    -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+      media="print"
+      onload="this.media='all';this.onload=null"
+    >
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    </noscript>
   </head>
   <body class="dark bg-background text-foreground">
     <div id="root"></div>

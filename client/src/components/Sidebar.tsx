@@ -7,7 +7,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Upload, ArrowUpDown, Download, Send, Database, Heart, Menu, X } from "lucide-react";
+import { Upload, ArrowUpDown, Download, Send, Database, Heart, Menu, X, LineChart, Info } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useStore } from "@/lib/store";
 
@@ -17,6 +17,8 @@ const NAV = [
   { href: "/export", icon: Download, label: "Export" },
   { href: "/submit", icon: Send, label: "Submit an Order" },
   { href: "/masterlist", icon: Database, label: "Community Masterlist" },
+  { href: "/measured", icon: LineChart, label: "How Well It Sorts" },
+  { href: "/about", icon: Info, label: "About" },
 ];
 
 /**
