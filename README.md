@@ -32,8 +32,13 @@ npm install
 npm run dev        # http://localhost:5173
 npm run check      # typecheck
 npm test           # the optimiser against the real corpus
-npm run build      # regenerate the masterlist, then build to dist/
+npm run build      # masterlist, sitemap, bundle, then prerender every route
+node scripts/serve-dist.mjs   # serve dist/ the way the host does
 ```
+
+Use `serve-dist.mjs` rather than `npm run preview` to check anything about
+routing. Vite's preview server answers every unknown path with `index.html`,
+so it reports a missing or misnamed route as working.
 
 ## Documentation
 
