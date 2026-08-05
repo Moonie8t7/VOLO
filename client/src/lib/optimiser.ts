@@ -416,8 +416,9 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
       severity: 'info',
       kind: 'unsorted',
       message:
-        `${unsortedMods.length} mods are not in the masterlist yet, ` +
-        'so VOLO left them where they were.',
+        `${unsortedMods.length} mod${unsortedMods.length === 1 ? ' is' : 's are'} ` +
+        'not in the masterlist yet. They keep their order relative to each other, ' +
+        'but sit after the mods VOLO could place.',
       uuids: unsortedMods.map(m => m.uuid),
       resolution: 'Know where these belong? Contribute a category to help everyone.',
     });
