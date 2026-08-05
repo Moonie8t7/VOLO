@@ -12,7 +12,7 @@ import type { ParseResult } from '@/lib/types';
 
 export default function ImportPage() {
   const [, navigate] = useLocation();
-  const { importParsed, mods } = useStore();
+  const { importParsed, mods, remember, setRemember } = useStore();
   const [pasted, setPasted] = useState('');
   const [preview, setPreview] = useState<{ parsed: ParseResult; name: string } | null>(null);
 
@@ -108,6 +108,31 @@ export default function ImportPage() {
               >
                 Read pasted list
               </Button>
+            </div>
+
+            {/*
+              Off by default. VOLO holding on to an order across visits is a
+              convenience for people who come back to the same list, and a trap
+              for everyone else, so it is the user's call rather than ours.
+            */}
+            <div className="mt-8 border-t border-border/40 pt-4">
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="rememberOrder"
+                  checked={remember}
+                  onChange={e => setRemember(e.target.checked)}
+                  className="mt-1 h-4 w-4 accent-[#D7A869]"
+                />
+                <span className="text-sm font-body">
+                  Remember this load order on this device
+                  <span className="block text-xs text-muted-foreground mt-1">
+                    {remember
+                      ? 'Your order stays here when you close the tab. It is kept in this browser only, and clearing it removes it.'
+                      : 'Off, so VOLO forgets your order as soon as you close the tab. Turn it on if you want to come back to the same list.'}
+                  </span>
+                </span>
+              </label>
             </div>
           </CardContent>
         </Card>
