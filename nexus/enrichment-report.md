@@ -49,7 +49,6 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 - TransmogEnhanced: ours Character Customization (section-majority), Nexus says Gameplay
 - Actually Infernal Rapier: ours Equipment (section-majority), Nexus says Weapons
-- AppearanceEditEnhanced: ours Resources (section-majority), Nexus says Gameplay
 - Fix Stragglers: ours Bug Fixes (section-majority), Nexus says Utilities
 - HT_Minthara's Poison Kiss: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Preemptively Label Containers: ours Bug Fixes (section), Nexus says Gameplay
@@ -62,6 +61,7 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Better Hex Icons: ours Bug Fixes (section-majority), Nexus says User Interface
 - Better Mirror of Loss: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Combat Extender AI: ours Resources (section-majority), Nexus says Gameplay
+- Druid_Perfection: ours Bug Fixes (section-majority), Nexus says Gameplay
 
 ## Unmapped Nexus categories
 
