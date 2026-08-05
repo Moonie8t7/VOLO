@@ -1,5 +1,10 @@
 /**
  * Browse the community masterlist and what is known about each mod.
+ *
+ * The category filters run in load order rather than alphabetically, which is
+ * information in itself and so is labelled; unlabelled they read as an
+ * arbitrary wall of chips. They collapse below the small breakpoint, where
+ * thirty-one of them would fill the viewport before a single mod appeared.
  */
 
 import { useMemo, useState } from 'react';
@@ -87,6 +92,10 @@ export default function MasterlistPage() {
                 className="pl-9"
               />
             </div>
+            <details open={typeof window !== 'undefined' && window.innerWidth >= 640}>
+              <summary className="cursor-pointer text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground mb-3">
+                Filter by category, listed in load order
+              </summary>
             <div className="flex flex-wrap gap-2">
               <GroupChip
                 label="all" count={masterlist?.plugins.length ?? 0}
@@ -101,6 +110,7 @@ export default function MasterlistPage() {
                 />
               ))}
             </div>
+            </details>
           </CardHeader>
           <CardContent>
             {isLoadingMasterlist && (

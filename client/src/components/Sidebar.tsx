@@ -75,7 +75,7 @@ function Brand({ compact = false }: { compact?: boolean }) {
         focus-visible:ring-2 focus-visible:ring-ring"
     >
       <img
-        src="/assets/volo-logo.png"
+        src="/assets/volo-logo-256.png"
         alt=""
         width={compact ? 40 : 56}
         height={compact ? 40 : 56}
