@@ -29,32 +29,97 @@ const DEFAULT_GROUP = 'unsorted';
  * must match the masterlist's group vocabulary exactly: an unknown name ranks
  * as nothing and silently sorts to the end of the order.
  */
-const NAME_PATTERNS: [RegExp, GroupName][] = [
-  [/script\s*extender|native\s*mod\s*loader|^bg3se|mod\s*fixer/i, 'Utilities'],
-  [/improvedui|^impui|hotbar|tooltip|sidebar|\bui\b|interface|topbar|context menu/i, 'User Interface'],
-  [/communitylibrary|community\s*library|volitioncabinet|material\s*library|modders?\s*resource|compatibility\s*framework|mod\s*configuration\s*menu|^bg3mcm|framework\b/i, 'Resources'],
-  [/\bspell|cantrip|\bmagic\b/i, 'Spells'],
-  [/subclass|\bclass\b|\bfeat\b|deit(y|ies)/i, 'Classes'],
-  [/\brace\b|subrace/i, 'Races'],
-  [/hair|beard/i, 'Hair'],
-  [/\bheads?\b|\beyes?\b|\bface\b/i, 'Heads'],
-  [/\bbod(y|ies)\b|skin\s*tone/i, 'Bodies'],
-  [/tattoo|makeup|preset|character\s*creat/i, 'Character Customization'],
-  [/\bdyes?\b/i, 'Dyes'],
-  [/outfit|clothing|clothes|camp\s*(clothes|outfit)/i, 'Clothing'],
-  [/armou?r/i, 'Armor'],
-  [/weapon|sword|blade|\bbow\b|dagger/i, 'Weapons'],
-  [/jewel|amulet|\brings?\b|cloak|earring/i, 'Accessories'],
-  [/equipment|\bgear\b|container/i, 'Equipment'],
-  [/companion|astarion|shadowheart|karlach|\bgale\b|wyll|lae.?zel/i, 'Companions'],
-  [/\bnpcs?\b/i, 'NPC'],
-  [/\bquests?\b/i, 'Quests'],
-  [/animation/i, 'Animations'],
-  [/\bdice\b/i, 'Dice'],
-  [/audio|sound|music|voice/i, 'Audio'],
-  [/texture|colou?rs?\b|vfx|visual/i, 'Visuals'],
-  [/\bpatch(es)?\b|compatibility|\bfix(es)?\b|hotfix/i, 'Bug Fixes'],
+/**
+ * Last-resort classification for mods the masterlist has never seen.
+ *
+ * Each entry names the divider slot the mod belongs on, not just its group.
+ * The dividers are the skeleton of the order whether or not the divider paks
+ * are installed, so a feat mod belongs at 045 Skillset Feats; filing it under
+ * "Classes" would land it on the 056 category marker, below every spell.
+ *
+ * Kept deliberately in step with NAME_PATTERNS in scripts/mine-corpus.mjs.
+ * That table classifies the corpus at build time and this one classifies
+ * whatever the user imports that the corpus has never seen; if they disagree,
+ * the same mod sorts differently depending on how it arrived.
+ *
+ * First match wins, so the list runs most specific first.
+ */
+const NAME_PATTERNS: [RegExp, GroupName, number][] = [
+  [/script\s*extender|native\s*mod\s*loader|^bg3se|mod\s*fixer/i, 'Utilities', 19],
+  [/improvedui|^impui/i, 'User Interface', 1],
+  [/hotbar|tooltip|sidebar|\bui\b|interface|topbar|context menu/i, 'User Interface', 5],
+  [/volitioncabinet|volition\s*cabinet/i, 'Resources', 7],
+  [/communitylibrary|community\s*library/i, 'Resources', 8],
+  [/material\s*library/i, 'Resources', 10],
+  [/mod\s*configuration\s*menu|^bg3mcm|\bmcm\b/i, 'Resources', 14],
+  // Ahead of the generic framework rule, which would otherwise swallow it.
+  [/compatibility\s*framework/i, 'Bottom of Load Order', 105],
+  [/modders?\s*resource|framework\b/i, 'Resources', 15],
+  [/\bfeats?\b/i, 'Classes', 45],
+  [/\babilit(y|ies)\b/i, 'Spells', 46],
+  [/summon|familiar/i, 'Spells', 49],
+  [/\bspell|cantrip|\bmagic\b/i, 'Spells', 47],
+  [/subclass/i, 'Classes', 58],
+  [/\bclass(es)?\b|deit(y|ies)/i, 'Classes', 56],
+  [/subraces?/i, 'Races', 53],
+  [/tiefling|githyanki|dragonborn|drow\b/i, 'Races', 52],
+  [/\braces?\b/i, 'Races', 51],
+  [/hair|beard/i, 'Hair', 64],
+  [/\bheads?\b|\beyes?\b|\bfaces?\b/i, 'Heads', 63],
+  [/\bbod(y|ies)\b|skin\s*tone/i, 'Bodies', 99],
+  [/tattoo|makeup|\bscars?\b/i, 'Character Customization', 100],
+  [/preset|character\s*creat/i, 'Character Customization', 61],
+  [/\bhorns?\b/i, 'Character Customization', 65],
+  [/\btails?\b|\bwings?\b/i, 'Character Customization', 66],
+  [/piercing/i, 'Character Customization', 67],
+  [/\bdyes?\b/i, 'Dyes', 38],
+  [/outfit|clothing|clothes|camp\s*(clothes|outfit)/i, 'Clothing', 37],
+  [/underwear|lingerie/i, 'Clothing', 41],
+  [/armou?r/i, 'Armor', 36],
+  [/weapon|sword|blade|\bbow\b|dagger/i, 'Weapons', 42],
+  [/jewel|amulet|\brings?\b|earring|necklace/i, 'Accessories', 40],
+  [/cloak/i, 'Accessories', 35],
+  [/instrument|\blute\b|\bflute\b/i, 'Equipment', 39],
+  [/equipment|\bgear\b|container/i, 'Equipment', 43],
+  [/astarion/i, 'Companions', 71],
+  [/\bgale\b/i, 'Companions', 72],
+  [/halsin/i, 'Companions', 73],
+  [/jaheira/i, 'Companions', 74],
+  [/karlach/i, 'Companions', 75],
+  [/lae.?zel/i, 'Companions', 76],
+  [/minsc/i, 'Companions', 77],
+  [/minthara/i, 'Companions', 78],
+  [/shadowheart/i, 'Companions', 79],
+  [/\bwyll\b/i, 'Companions', 80],
+  [/scratch|owlbear\s*cub/i, 'Companions', 81],
+  [/companion/i, 'Companions', 82],
+  [/\bnpcs?\b/i, 'NPC', 23],
+  [/\bquests?\b/i, 'Quests', 25],
+  [/waypoint/i, 'Utilities', 18],
+  [/encounter|miniboss/i, 'Gameplay', 31],
+  [/\bposes?\b/i, 'Animations', 86],
+  [/animation|\bidles?\b/i, 'Animations', 83],
+  [/\bdice\b/i, 'Dice', 90],
+  [/audio|sound|music|voice/i, 'Audio', 92],
+  [/\bvfx\b|visual/i, 'Visuals', 11],
+  [/texture/i, 'Visuals', 10],
+  [/colou?rs?\b/i, 'Visuals', 62],
+  [/\bpatch(es)?\b|compatibility|\bfix(es)?\b|hotfix/i, 'Bug Fixes', 98],
 ];
+
+/**
+ * A mod name as the patterns need to see it.
+ *
+ * Authors write "FeatsOverhaul" and "Essential_Feats" as often as "Extra
+ * Feats", and a word boundary matches neither of the first two. The mod's real
+ * name is never altered, only this throwaway copy used for matching.
+ */
+function searchableName(name: string): string {
+  return name
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+    .replace(/[_\-.]+/g, ' ');
+}
 
 /**
  * Rank groups from their `after` relations rather than array order, so that
@@ -100,6 +165,8 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
   // Step 1: assign a group to every mod.
   const group = new Map<string, GroupName>();
   const groupSource = new Map<string, Placement['groupSource']>();
+  /** Slot read off the mod's name, for mods the masterlist has never seen. */
+  const guessedDivider = new Map<string, number>();
   const confidence = new Map<string, number>();
   const resolvedUuid = new Map<string, string>();
   let known = 0;
@@ -121,6 +188,11 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
       if (entry.evidence?.source === 'inferred') {
         groupSource.set(mod.uuid, 'inferred');
         if (entry.evidence.confidence) confidence.set(mod.uuid, entry.evidence.confidence);
+      } else if (entry.evidence?.source === 'external-category') {
+        // Read off a Nexus or mod.io listing, not from anyone's played order.
+        groupSource.set(mod.uuid, 'listing');
+      } else if (entry.evidence?.source === 'name-pattern') {
+        groupSource.set(mod.uuid, 'name-pattern');
       } else {
         groupSource.set(mod.uuid, 'masterlist');
       }
@@ -129,10 +201,12 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
     }
     if (entry) known++;
 
-    // Listing categories were tried here and measured worse. See docs/decisions.md.
-    const guessed = NAME_PATTERNS.find(([re]) => re.test(mod.name))?.[1];
-    group.set(mod.uuid, guessed ?? DEFAULT_GROUP);
+    // Nexus and mod.io categories are folded into the masterlist at build time
+    // rather than consulted here, so this stays a pure name read.
+    const guessed = NAME_PATTERNS.find(([re]) => re.test(searchableName(mod.name)));
+    group.set(mod.uuid, guessed?.[1] ?? DEFAULT_GROUP);
     groupSource.set(mod.uuid, guessed ? 'name-pattern' : 'default');
+    if (guessed) guessedDivider.set(mod.uuid, guessed[2]);
   }
 
   // Step 2: build the dependency graph. An edge from dep to mod means the dep
@@ -228,6 +302,8 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
     const entry = byUuid.get(m.uuid)
       ?? byName.get(m.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
     if (entry?.divider !== undefined) return entry.divider;
+    const named = guessedDivider.get(m.uuid);
+    if (named !== undefined) return named;
     const g = group.get(m.uuid) ?? DEFAULT_GROUP;
     if (g === 'Top of Load Order') return FIRST_DIVIDER;
     if (g === 'Bottom of Load Order' || g === DEFAULT_GROUP) return LAST_DIVIDER;
@@ -296,11 +372,15 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
       kind: 'group',
       text:
         g === DEFAULT_GROUP
-          ? 'Not yet categorised by the community, so it stayed in its original position.'
+          ? 'Not yet categorised by anyone, so it sits at the end, where the ' +
+            'submitted orders put mods nobody has placed.'
           : src === 'inferred'
             ? `Categorised as "${g}" from where it sits in submitted load orders` +
               (conf ? `, with ${Math.round(conf * 100)} percent of its neighbours agreeing.` : '.')
-            : `Categorised as "${g}", which loads in that part of the order.`,
+            : src === 'listing'
+              ? `Categorised as "${g}" from its Nexus or mod.io listing, because ` +
+                'no submitted order has placed it yet.'
+              : `Categorised as "${g}", which loads in that part of the order.`,
     });
     if (position !== mod.originalIndex) moved++;
     const div = dividerOf(mod);

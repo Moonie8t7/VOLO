@@ -137,6 +137,14 @@ export default function MasterlistPage() {
                       inferred, {Math.round(p.evidence.confidence * 100)}%
                     </span>
                   )}
+                  {p.evidence?.source === 'external-category' && (
+                    <span
+                      className="text-xs text-muted-foreground shrink-0"
+                      title="Category taken from the mod's own Nexus or mod.io listing, not from a played order."
+                    >
+                      listing
+                    </span>
+                  )}
                   {p.evidence && p.evidence.installs > 1 && (
                     <span className="text-xs text-muted-foreground shrink-0">
                       seen in {p.evidence.installs}

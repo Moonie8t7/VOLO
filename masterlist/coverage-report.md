@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-05T10:08:26.561Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-05T18:12:51.783Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -40,10 +40,11 @@ the tool flag a mod as last verified on an older patch.
 |---|---|---|
 | Curated override | 14 | highest, hand-verified infrastructure |
 | Human-authored section header | 1641 | high, a modder put it there |
-| Name pattern fallback | 546 | medium, needs review |
-| Neighbour inference, 0.85 agreement or better | 60 | high, measured 97 percent accurate at this band |
-| Neighbour inference, 0.70 to 0.85 | 97 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 650 | none, needs community input |
+| Name pattern fallback | 700 | medium, needs review |
+| Nexus or mod.io listing category | 219 | medium, the author's own words about what the mod is |
+| Neighbour inference, 0.85 agreement or better | 36 | high, measured 97 percent accurate at this band |
+| Neighbour inference, 0.70 to 0.85 | 60 | medium, roughly 75 percent accurate, carries a confidence score |
+| Uncategorised | 338 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -53,35 +54,35 @@ inferred entry stores its agreement score as `evidence.confidence`.
 ## Group distribution
 
 - `Top of Load Order`: 9
-- `User Interface`: 62
-- `Visuals`: 27
-- `Weapons`: 98
-- `Dyes`: 17
-- `Clothing`: 127
-- `Character Customization`: 145
-- `Resources`: 88
-- `Equipment`: 121
-- `Armor`: 212
-- `Utilities`: 13
-- `Races`: 80
-- `Animations`: 10
-- `Spells`: 126
-- `Classes`: 212
-- `Bodies`: 3
-- `Miscellaneous`: 54
-- `Bug Fixes`: 103
-- `Gameplay`: 84
-- `Accessories`: 58
+- `User Interface`: 67
+- `Visuals`: 30
+- `Weapons`: 110
+- `Dyes`: 22
+- `Clothing`: 132
+- `Character Customization`: 170
+- `Resources`: 84
+- `Equipment`: 140
+- `Armor`: 225
+- `Utilities`: 23
+- `Races`: 104
+- `Animations`: 48
+- `Spells`: 151
+- `Classes`: 256
+- `Bodies`: 5
+- `Miscellaneous`: 59
+- `Bug Fixes`: 105
+- `Gameplay`: 124
+- `Accessories`: 55
 - `Quests`: 10
-- `Environment`: 3
-- `Audio`: 1
-- `Hair`: 169
-- `Heads`: 136
-- `Dice`: 197
-- `Companions`: 119
-- `NPC`: 73
+- `Environment`: 6
+- `Audio`: 2
+- `Hair`: 156
+- `Heads`: 148
+- `Dice`: 221
+- `Companions`: 133
+- `NPC`: 74
 - `Bottom of Load Order`: 1
-- `unsorted`: 650
+- `unsorted`: 338
 
 ## Known limitations
 
@@ -89,7 +90,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **650 mods are `unsorted`.** These need community categorisation.
+- **338 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 

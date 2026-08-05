@@ -55,27 +55,48 @@ agreed against us.
 
 ## Rejected
 
-**Listing categories as a placement fallback.** Nexus and mod.io categories for
-mods the community has never placed. Measured 63.6 percent without them, 63.2
-with Nexus, 63.0 with both, and the orders with the most uncategorised mods lost
-the most. A listing says what a mod *is*, which is a different question from
-where it *loads*; 286 mods had a catalogue category contradicting where the
-community actually loads them.
-
 **Keeping uncategorised mods in place.** Rather than sorting them to the end,
 give them the position of the last categorised mod above them. Measured 61.8
 against 63.6. Unplaced mods genuinely do cluster at the end of real orders.
 
 **The divider vocabulary as a classifier.** Using the sub-divider labels
 (Warlock, Tiefling, Waypoints, Summons) to place mods nothing else could reach.
-Placed 67 mods, cost 0.6 points. Available behind `VOLO_DIVIDER_VOCAB=1`.
+Placed 67 mods, cost 0.7 points. Available behind `VOLO_DIVIDER_VOCAB=1`.
+
+The first measurement of this was worthless: the pattern table had been written
+through a JS string literal, which turned every `\b` into a backspace byte and
+dropped every `\s`, so the rules matched text that cannot occur. Repaired and
+re-measured, the conclusion held. `scripts/smoke-test.mjs` now asserts the
+tables are reachable and internally consistent, which is the check that would
+have caught it.
 
 **Astra's category order wholesale.** Replacing the learned sequence entirely
 measured 60.4 percent against 63.6. Preserved on branch
 `experiment/astra-order`.
 
-The pattern across four of these: with nine working orders, the corpus is the
-binding constraint, not the algorithm. More submissions beat more cleverness.
+The pattern across these: with nine working orders, the corpus is the binding
+constraint, not the algorithm. More submissions beat more cleverness.
+
+## Reversed
+
+**Listing categories as a placement fallback.** Nexus and mod.io categories were
+rejected on a 0.6 point loss, then adopted, because the measurement was
+answering the wrong question. Held-out agreement is scored against orders that
+already work, so any movement costs points and doing nothing scores well; a mod
+parked at the end of the list because we know nothing about it is scored
+generously precisely because unplaced mods cluster there. That is a statement
+about the corpus, not about whether the sort is useful.
+
+The rule now is that the dividers are the skeleton of the order whether or not
+the divider paks are installed. Every mod earns a slot on that skeleton, from
+where the community filed it, else its published category, else what its name
+plainly says; the masterlist then orders mods within a slot. Skeleton coverage
+went from 967 of 3,008 mods to 2,662, and uncategorised from 650 to 338.
+
+The cost, stated plainly: held-out agreement 60.3 to 57.5 percent. That figure
+averages orders rather than mods, so a 41-mod order counts as much as a 999-mod
+one; weighted by mods the gap is roughly a point. It is a knowing trade of a
+metric fitted to nine orders for a structure a player can read.
 
 ## Constraints that shaped the design
 
