@@ -14,6 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useStore } from '@/lib/store';
+import dividers from '@/lib/dividers.json';
 import type { Issue, IssueSeverity, Placement, SortResult } from '@/lib/types';
 
 /**
@@ -26,6 +27,7 @@ import type { Issue, IssueSeverity, Placement, SortResult } from '@/lib/types';
 const PROVENANCE: Record<Placement['groupSource'], { short: string; full: string }> = {
   masterlist: { short: '', full: 'Category from the community masterlist.' },
   inferred: { short: 'inferred', full: 'Inferred from where this mod sits in submitted orders.' },
+  listing: { short: 'listing', full: "From the mod's own Nexus or mod.io listing. Nobody has placed it in an order yet." },
   'name-pattern': { short: 'guessed', full: 'Guessed from the mod name. Nobody has placed this one yet.' },
   default: { short: 'unplaced', full: 'No category information yet.' },
 };
@@ -39,7 +41,7 @@ const PROVENANCE: Record<Placement['groupSource'], { short: string; full: string
  */
 function countByProvenance(result: SortResult): Record<Placement['groupSource'], number> {
   const counts: Record<Placement['groupSource'], number> = {
-    masterlist: 0, inferred: 0, 'name-pattern': 0, default: 0,
+    masterlist: 0, inferred: 0, listing: 0, 'name-pattern': 0, default: 0,
   };
   for (const mod of result.mods) {
     counts[result.placements.get(mod.uuid)?.groupSource ?? 'default'] += 1;
@@ -73,6 +75,21 @@ function MoveControls({ name, onMove }: { name: string; onMove: (d: -1 | 1) => v
     </span>
   );
 }
+
+/**
+ * Divider slot numbers to the leaf of their label, e.g. 45 to "Feats".
+ *
+ * The slot is what actually decides where a mod sits, and it is finer than the
+ * group: calling a feats mod "Classes" is true but not the reason it sits
+ * where it does, and it reads as wrong to anyone who knows the taxonomy.
+ */
+const SLOT_LABEL: Map<number, string> = new Map(
+  (dividers.all as { num: number; name: string }[]).map(d => {
+    const parts = d.name.split(String.fromCharCode(183)).map(p => p.trim());
+    const leaf = parts[parts.length - 1] ?? d.name;
+    return [d.num, leaf.replace(/[^\x20-\x7E]/g, '').trim()];
+  }),
+);
 
 const SEVERITY_ICON: Record<IssueSeverity, typeof Info> = {
   critical: XCircle,
@@ -155,6 +172,7 @@ export default function OptimisePage() {
           <Metric label="mods" value={stats.total} />
           <Metric label="placed by the community" value={byProvenance.masterlist} />
           <Metric label="inferred" value={byProvenance.inferred} />
+          <Metric label="from the mod's listing" value={byProvenance.listing} muted />
           <Metric label="guessed from the name" value={byProvenance['name-pattern']} muted />
           <Metric label="unplaced" value={byProvenance.default} muted />
         </dl>
@@ -224,8 +242,10 @@ export default function OptimisePage() {
                         <Badge
                           variant={p?.group === 'unsorted' ? 'outline' : 'secondary'}
                           className="text-xs"
+                          title={p?.group}
                         >
-                          {p?.group ?? 'unsorted'}
+                          {(p?.divider !== undefined && SLOT_LABEL.get(p.divider))
+                            || p?.group || 'unsorted'}
                         </Badge>
                         {p && PROVENANCE[p.groupSource].short && (
                           <span

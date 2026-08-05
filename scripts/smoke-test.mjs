@@ -349,6 +349,89 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+/**
+ * The two name-pattern tables must classify a mod identically.
+ *
+ * mine-corpus.mjs classifies the corpus at build time; the copy in optimiser.ts
+ * classifies whatever a user imports that the corpus has never seen. They were
+ * found disagreeing once, which made the same mod sort differently depending on
+ * whether it happened to be in the masterlist.
+ */
+{
+  console.log('');
+  console.log('name-pattern tables');
+
+  const tableFrom = (src, start) => {
+    const a = src.indexOf(start);
+    if (a === -1) throw new Error(`table not found: ${start}`);
+    const b = src.indexOf('\n];', a);
+    return eval(`${src.slice(a + start.length - 1, b)}\n]`);
+  };
+
+  const miner = tableFrom(
+    fs.readFileSync('scripts/mine-corpus.mjs', 'utf8'),
+    'const NAME_PATTERNS = [',
+  );
+  const client = tableFrom(
+    fs.readFileSync('client/src/lib/optimiser.ts', 'utf8').replace(': [RegExp, GroupName, number][] =', ' ='),
+    'const NAME_PATTERNS = [',
+  );
+
+  const searchable = n => n
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+    .replace(/[_\-.]+/g, ' ');
+  const classify = (table, name) => {
+    const hit = table.find(([re]) => re.test(searchable(name)));
+    return hit ? `${hit[1]}/${hit[2]}` : 'none';
+  };
+
+  const probes = [
+    "Ghost's Deck Of Many Feats (v6.0)", 'FeatsOverhaul', 'Essential_Feats',
+    'Subraces of Faerun', 'Warlock Subclass Pack', 'Compatibility Framework',
+    'Extra encounters and Minibosses', 'Horns of Faerun', 'Community Library',
+    'Pose Pack', 'More Dice Sets', 'Glowing Eyes', 'ImpUI (ImprovedUI)', '5eSpells',
+  ];
+  const disagreements = probes.filter(n => classify(miner, n) !== classify(client, n));
+
+  if (!disagreements.length) {
+    console.log(`  ok    both tables agree on ${probes.length} probe names`);
+  } else {
+    failures++;
+    console.log(`  FAIL  tables disagree on ${disagreements.join(', ')}`);
+  }
+
+  // A slot only means something if it exists in Astra's taxonomy.
+  const slots = new Set(dividers.all.map(d => d.num));
+  const unknown = [...miner, ...client].map(row => row[2]).filter(n => !slots.has(n));
+  if (!unknown.length) {
+    console.log('  ok    every pattern points at a real divider slot');
+  } else {
+    failures++;
+    console.log(`  FAIL  patterns point at slots that do not exist: ${[...new Set(unknown)].join(', ')}`);
+  }
+
+  // A rule that a broader earlier rule already swallows can never fire.
+  const shadowed = [];
+  for (let i = 0; i < miner.length; i++) {
+    for (let j = 0; j < i; j++) {
+      const sample = miner[i][0].source
+        .replace(/\\b|\\s\*|\(\?:|[()?^$]/g, ' ')
+        .split('|')[0].trim();
+      if (sample.length > 4 && !/[\\[\]*+.]/.test(sample) && miner[j][0].test(sample)
+          && miner[i][1] !== miner[j][1]) {
+        shadowed.push(`${miner[i][0].source} behind ${miner[j][0].source}`);
+      }
+    }
+  }
+  if (!shadowed.length) {
+    console.log('  ok    no pattern is shadowed by an earlier one');
+  } else {
+    failures++;
+    for (const s of shadowed) console.log(`  FAIL  unreachable: ${s}`);
+  }
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);

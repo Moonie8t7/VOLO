@@ -56,7 +56,7 @@ export interface MasterlistPlugin {
   /** Relies on the Script Extender, which is a dll and never appears in a load order. */
   usesScriptExtender?: boolean;
   evidence?: {
-    source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'divider-vocabulary' | 'inferred' | 'none';
+    source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'external-category' | 'divider-vocabulary' | 'inferred' | 'none';
     installs: number;
     workingInstalls: number;
     brokenInstalls?: number;
@@ -92,7 +92,7 @@ export interface Placement {
   /** Astra divider this mod sits under, when one applies. */
   divider?: number;
   /** How we decided the group. */
-  groupSource: 'masterlist' | 'inferred' | 'name-pattern' | 'default';
+  groupSource: 'masterlist' | 'inferred' | 'listing' | 'name-pattern' | 'default';
   /** Neighbour agreement behind an inferred group, when that is the source. */
   groupConfidence?: number;
   /** Mods that had to load before this one, and why. */
