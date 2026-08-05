@@ -1,3 +1,7 @@
+/**
+ * Browse the community masterlist and what is known about each mod.
+ */
+
 import { useMemo, useState } from 'react';
 import { Link } from 'wouter';
 import { Database, Search, GitPullRequest } from 'lucide-react';
