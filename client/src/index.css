@@ -230,4 +230,14 @@
   .bg-error {
     background-color: hsl(var(--error));
   }
+
+  /* A large load order is a thousand rows, and laying out the ones nobody has
+     scrolled to yet costs real time on a mid-range machine. This lets the
+     browser skip that work until a row approaches the viewport. The size hint
+     matches a collapsed row, so the scrollbar does not jump as rows resolve.
+     Cheaper than virtualising, and it keeps find-in-page working. */
+  .row-defer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 57px;
+  }
 }

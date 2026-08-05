@@ -297,7 +297,7 @@ export default function ExportPage() {
             <p className="text-sm text-muted-foreground">
               Once you have actually played on this order, submitting it teaches VOLO.
               Working orders sharpen where mods belong; broken ones sharpen the warnings.
-              Every future user sorts against what you verified. No account needed.
+              Every future user sorts against what you verified.
             </p>
             <Link href="/submit">
               <Button>
