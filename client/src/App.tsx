@@ -18,8 +18,10 @@ import SubmitPage from "@/pages/SubmitPage";
 import MasterlistPage from "@/pages/MasterlistPage";
 import DonationsPage from "@/pages/DonationsPage";
 import NotFound from "@/pages/not-found";
+import { usePageMeta } from "@/lib/head";
 
 function Router() {
+  usePageMeta();
   return (
     <Layout>
       <Switch>

@@ -58,7 +58,7 @@ export default function MasterlistPage() {
           </div>
           <Link href="/submit">
             <Button variant="outline">
-              <GitPullRequest className="mr-2 h-4 w-4" />
+              <GitPullRequest className="mr-2 h-4 w-4" aria-hidden="true" />
               Submit a load order
             </Button>
           </Link>
@@ -71,7 +71,7 @@ export default function MasterlistPage() {
         )}
 
         <Alert className="border-primary/30 bg-primary/5">
-          <Database className="h-4 w-4" />
+          <Database className="h-4 w-4" aria-hidden="true" />
           <AlertDescription className="font-body">
             Built from load orders the community sent in, topped up from Nexus
             and mod.io listings where nobody has placed a mod yet. Entries
@@ -87,7 +87,7 @@ export default function MasterlistPage() {
           <CardHeader className="space-y-4">
             <CardTitle className="font-display">Browse</CardTitle>
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <Input
                 value={query}
                 onChange={e => { setQuery(e.target.value); setLimit(PAGE_SIZE); }}

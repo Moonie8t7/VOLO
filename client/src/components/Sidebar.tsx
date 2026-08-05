@@ -161,7 +161,7 @@ export default function Sidebar() {
               text-foreground/80 transition-colors hover:bg-primary/10 hover:text-foreground
               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
           </button>
         </div>
         {open && (

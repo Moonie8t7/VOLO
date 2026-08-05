@@ -24,7 +24,7 @@ export default function ProgressModal({ isOpen }: ProgressModalProps) {
         
         <div className="text-center p-6">
           <div className="w-16 h-16 bg-bg3-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Settings className="text-bg3-gold text-2xl animate-spin" />
+            <Settings className="text-bg3-gold text-2xl animate-spin" aria-hidden="true" />
           </div>
           <h3 className="text-lg font-semibold text-foreground mb-2 font-display">Optimising Load Order</h3>
           <p className="text-sm text-muted-foreground mb-6">
