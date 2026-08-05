@@ -2,8 +2,11 @@
  * Application state.
  *
  * All of it lives in the browser. There is no server, no session and no upload,
- * so a load order never leaves the user's machine. State survives refreshes via
- * localStorage so someone can sort, close the tab, and come back to it.
+ * so a load order never leaves the user's machine.
+ *
+ * Nothing is written to localStorage unless the user turns remembering on. It
+ * defaults off: a remembered order is as much a trap as a convenience, because
+ * the export page will otherwise hand back a list imported days ago.
  */
 
 import {
@@ -15,6 +18,7 @@ import { loadMasterlist } from './masterlist';
 import { sortLoadOrder } from './optimiser';
 
 const STORAGE_KEY = 'volo.session.v1';
+const REMEMBER_KEY = 'volo.remember.v1';
 
 interface Session {
   mods: Mod[];
@@ -36,6 +40,10 @@ interface StoreValue {
   /** Recomputed whenever mods or the masterlist change. */
   result: SortResult | null;
 
+  /** Whether the order survives closing the tab. Off unless the user asks. */
+  remember: boolean;
+  setRemember: (remember: boolean) => void;
+
   importParsed: (parsed: ParseResult, sourceName: string) => void;
   reorder: (from: number, to: number) => void;
   removeMod: (uuid: string) => void;
@@ -55,8 +63,28 @@ function readSession(): Session | null {
   }
 }
 
+/**
+ * Remembering is off unless asked for.
+ *
+ * A remembered order is a trap as much as a convenience: the export page will
+ * happily hand back something imported days ago, and someone who has moved on
+ * to a different list finds out only when their mod manager reports mods they
+ * do not have. Forgetting by default also matches what the site promises,
+ * which is that VOLO holds on to nothing.
+ */
+function readRemember(): boolean {
+  try {
+    return localStorage.getItem(REMEMBER_KEY) === 'true';
+  } catch {
+    return false;
+  }
+}
+
 export function StoreProvider({ children }: { children: ReactNode }) {
-  const restored = useRef(readSession()).current;
+  const rememberedAtStart = useRef(readRemember()).current;
+  // Only look for a stored order if the user asked us to keep one.
+  const restored = useRef(rememberedAtStart ? readSession() : null).current;
+  const [remember, setRememberState] = useState(rememberedAtStart);
 
   const [mods, setMods] = useState<Mod[]>(restored?.mods ?? []);
   const [sourceName, setSourceName] = useState(restored?.sourceName ?? '');
@@ -86,10 +114,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     return () => { cancelled = true; };
   }, []);
 
-  // Persist. Wrapped because localStorage throws in private mode and when full.
+  // Persist only when asked. Wrapped because localStorage throws in private
+  // mode and when full. Turning remembering off clears whatever was stored,
+  // including anything left behind by an earlier visit.
   useEffect(() => {
     try {
-      if (!mods.length) localStorage.removeItem(STORAGE_KEY);
+      if (!remember || !mods.length) localStorage.removeItem(STORAGE_KEY);
       else localStorage.setItem(
         STORAGE_KEY,
         JSON.stringify({ mods, sourceName, format, importedAt } satisfies Session),
@@ -97,7 +127,20 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     } catch {
       // Not worth interrupting the user over. The saved session is a convenience.
     }
-  }, [mods, sourceName, format, importedAt]);
+  }, [remember, mods, sourceName, format, importedAt]);
+
+  const setRemember = useCallback((next: boolean) => {
+    setRememberState(next);
+    try {
+      if (next) localStorage.setItem(REMEMBER_KEY, 'true');
+      else {
+        localStorage.removeItem(REMEMBER_KEY);
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    } catch {
+      // Preference is best effort; the in-memory session still works.
+    }
+  }, []);
 
   const result = useMemo(
     () => (mods.length && masterlist ? sortLoadOrder(mods, masterlist) : null),
@@ -138,6 +181,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     mods, sourceName, format, importedAt,
     masterlist, masterlistError, isLoadingMasterlist,
     result,
+    remember, setRemember,
     importParsed, reorder, removeMod, clear,
   };
 
