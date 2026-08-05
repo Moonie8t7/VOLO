@@ -21,7 +21,7 @@ export default function LandingPage() {
         <div className="relative max-w-4xl mx-auto px-6 py-20 text-center">
           <div className="flex items-center justify-center gap-4 mb-6">
             <img
-              src="/assets/volo-logo.png"
+              src="/assets/volo-logo-256.png"
               alt=""
               className="w-16 h-16 md:w-20 md:h-20 border border-border shadow-bg3"
             />
@@ -71,10 +71,11 @@ export default function LandingPage() {
           <p>
             It sorts your mods by category, keeps declared dependencies ahead of
             the mods that need them, and otherwise moves as little as possible.
-            Every mod shows the reason it sits where it does. Mods the community
-            has not placed yet borrow the category from their listing on Nexus
-            Mods or mod.io, clearly labelled as such, and anything still unknown
-            is flagged rather than guessed at.
+            Every mod shows the reason it sits where it does, and how much that
+            reason is worth: a placement drawn from orders people played on is
+            marked differently from one guessed at from the mod's name. Mods
+            nobody has placed yet sit at the end rather than being filed
+            somewhere plausible, and you can move anything yourself.
           </p>
           <p>
             Export the result and import it straight back into BG3 Mod Manager.
@@ -95,8 +96,8 @@ export default function LandingPage() {
             {modCount ? ` ${modCount.toLocaleString()} mods` : " thousands of mods"}
             {patch ? `, calibrated against BG3 ${patch}` : ""}. Alongside it sit
             reference catalogues of every published BG3 mod on Nexus Mods and on
-            mod.io, the platform behind the official in-game mod manager, so even
-            a mod nobody has submitted yet can be placed from its own listing.
+            mod.io, the platform behind the official in-game mod manager, which
+            supply the requirements one mod declares on another.
             All of it is on{" "}
             <a
               href="https://github.com/Moonie8t7/VOLO"

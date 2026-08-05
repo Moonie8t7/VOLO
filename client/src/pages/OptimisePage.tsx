@@ -6,7 +6,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'wouter';
 import {
-  Search, AlertTriangle, Info, XCircle, ArrowRight, Download, ChevronDown, Layers,
+  Search, AlertTriangle, Info, XCircle, ArrowRight, Download, ChevronDown, ChevronUp, Layers,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,7 +14,65 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useStore } from '@/lib/store';
-import type { Issue, IssueSeverity } from '@/lib/types';
+import type { Issue, IssueSeverity, Placement, SortResult } from '@/lib/types';
+
+/**
+ * How a category was decided, and how loudly to say so.
+ *
+ * A placement from the corpus is the silent default; anything weaker is
+ * labelled in the row itself. The product is called Verified, so a keyword
+ * guess must not be indistinguishable from evidence at a glance.
+ */
+const PROVENANCE: Record<Placement['groupSource'], { short: string; full: string }> = {
+  masterlist: { short: '', full: 'Category from the community masterlist.' },
+  inferred: { short: 'inferred', full: 'Inferred from where this mod sits in submitted orders.' },
+  'name-pattern': { short: 'guessed', full: 'Guessed from the mod name. Nobody has placed this one yet.' },
+  default: { short: 'unplaced', full: 'No category information yet.' },
+};
+
+/**
+ * Counts mods by how their category was decided.
+ *
+ * The buckets are exclusive and sum to the total, which the previous strip did
+ * not: it counted some mods twice and omitted others, so the figures never
+ * reconciled against the number of mods on screen.
+ */
+function countByProvenance(result: SortResult): Record<Placement['groupSource'], number> {
+  const counts: Record<Placement['groupSource'], number> = {
+    masterlist: 0, inferred: 0, 'name-pattern': 0, default: 0,
+  };
+  for (const mod of result.mods) {
+    counts[result.placements.get(mod.uuid)?.groupSource ?? 'default'] += 1;
+  }
+  return counts;
+}
+
+/**
+ * Nudges one mod earlier or later in the order.
+ *
+ * Buttons rather than a drag handle: they work on a phone, they work from a
+ * keyboard, and dragging through a list of several hundred mods is miserable.
+ */
+function MoveControls({ name, onMove }: { name: string; onMove: (d: -1 | 1) => void }) {
+  return (
+    <span className="absolute right-0 top-1/2 -translate-y-1/2 hidden group-hover:flex group-focus-within:flex flex-col">
+      <button
+        aria-label={`Move ${name} earlier`}
+        onClick={e => { e.stopPropagation(); onMove(-1); }}
+        className="px-2 text-muted-foreground hover:text-foreground leading-none"
+      >
+        <ChevronUp className="h-3.5 w-3.5" />
+      </button>
+      <button
+        aria-label={`Move ${name} later`}
+        onClick={e => { e.stopPropagation(); onMove(1); }}
+        className="px-2 text-muted-foreground hover:text-foreground leading-none"
+      >
+        <ChevronDown className="h-3.5 w-3.5" />
+      </button>
+    </span>
+  );
+}
 
 const SEVERITY_ICON: Record<IssueSeverity, typeof Info> = {
   critical: XCircle,
@@ -23,7 +81,10 @@ const SEVERITY_ICON: Record<IssueSeverity, typeof Info> = {
 };
 
 export default function OptimisePage() {
-  const { mods, result, isLoadingMasterlist, masterlistError, sourceName } = useStore();
+  const {
+    mods, result, isLoadingMasterlist, masterlistError, sourceName,
+    manualMoves, moveMod, clearManual,
+  } = useStore();
   const [query, setQuery] = useState('');
   const [expanded, setExpanded] = useState<string | null>(null);
 
@@ -55,6 +116,8 @@ export default function OptimisePage() {
   }
 
   const { stats, issues, placements } = result;
+
+  const byProvenance = countByProvenance(result);
 
   return (
     <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
@@ -90,10 +153,26 @@ export default function OptimisePage() {
             metric cards is the stock dashboard treatment. */}
         <dl className="flex flex-wrap items-baseline gap-x-8 gap-y-3 border-y border-border/40 py-4">
           <Metric label="mods" value={stats.total} />
-          <Metric label="moved" value={stats.moved} />
-          <Metric label="known to the masterlist" value={stats.knownToMasterlist} />
-          <Metric label="not yet categorised" value={stats.unsorted} muted />
+          <Metric label="placed by the community" value={byProvenance.masterlist} />
+          <Metric label="inferred" value={byProvenance.inferred} />
+          <Metric label="guessed from the name" value={byProvenance['name-pattern']} muted />
+          <Metric label="unplaced" value={byProvenance.default} muted />
         </dl>
+
+        {manualMoves > 0 && (
+          <Alert className="border-primary/40 bg-primary/5">
+            <AlertDescription className="font-body flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+              <span>
+                You have moved {manualMoves} mod{manualMoves === 1 ? '' : 's'} by hand.
+                The export follows your order, not ours. If it works, submitting it
+                teaches VOLO the placement.
+              </span>
+              <button onClick={clearManual} className="underline hover:text-foreground text-sm shrink-0">
+                Undo my changes
+              </button>
+            </AlertDescription>
+          </Alert>
+        )}
 
         {issues.map((issue, i) => <IssueCard key={i} issue={issue} />)}
 
@@ -119,7 +198,7 @@ export default function OptimisePage() {
                 const p = placements.get(mod.uuid);
                 const isOpen = expanded === mod.uuid;
                 return (
-                  <li key={mod.uuid}>
+                  <li key={mod.uuid} className="relative group">
                     <button
                       className="w-full flex items-center gap-4 py-3 text-left hover:bg-primary/5 px-2 rounded transition-colors"
                       onClick={() => setExpanded(isOpen ? null : mod.uuid)}
@@ -134,22 +213,34 @@ export default function OptimisePage() {
                         )}
                       </span>
                       {p && p.movedBy !== 0 && (
-                        <Badge variant="outline" className="text-xs shrink-0">
+                        <Badge variant="outline" className="text-xs shrink-0 hidden sm:inline-flex">
                           {p.movedBy < 0 ? 'up' : 'down'} {Math.abs(p.movedBy)}
                         </Badge>
                       )}
-                      <Badge
-                        variant={p?.group === 'unsorted' ? 'outline' : 'secondary'}
-                        className="text-xs shrink-0 hidden sm:inline-flex"
-                      >
-                        {p?.group ?? 'unsorted'}
-                      </Badge>
+                      <span className="shrink-0 flex items-center gap-1.5">
+                        <Badge
+                          variant={p?.group === 'unsorted' ? 'outline' : 'secondary'}
+                          className="text-xs"
+                        >
+                          {p?.group ?? 'unsorted'}
+                        </Badge>
+                        {p && PROVENANCE[p.groupSource].short && (
+                          <span
+                            className="text-[10px] uppercase tracking-wider text-muted-foreground/80"
+                            title={PROVENANCE[p.groupSource].full}
+                          >
+                            {PROVENANCE[p.groupSource].short}
+                          </span>
+                        )}
+                      </span>
                       <ChevronDown
                         className={`h-4 w-4 text-muted-foreground shrink-0 transition-transform ${
                           isOpen ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
+
+                    <MoveControls name={mod.name} onMove={d => moveMod(mod.uuid, d)} />
 
                     {isOpen && p && (
                       <div className="pl-14 pr-2 pb-4 space-y-1 text-sm text-muted-foreground font-body">
@@ -159,12 +250,7 @@ export default function OptimisePage() {
                             {r.text}
                           </p>
                         ))}
-                        <p className="text-xs pt-1 opacity-70">
-                          {p.groupSource === 'masterlist' && 'Category from the community masterlist.'}
-                          {p.groupSource === 'inferred' && 'Category inferred from submitted load orders.'}
-                          {p.groupSource === 'name-pattern' && 'Category guessed from the mod name.'}
-                          {p.groupSource === 'default' && 'No category information yet.'}
-                        </p>
+                        <p className="text-xs pt-1 opacity-70">{PROVENANCE[p.groupSource].full}</p>
                       </div>
                     )}
                   </li>
