@@ -3,7 +3,13 @@
  * Verifies a deployment actually serves its own assets, and repairs the edge
  * cache when it does not.
  *
- *   node scripts/verify-deploy.mjs [url]
+ *   node scripts/verify-deploy.mjs [url] [--expect <string>]
+ *
+ * Checks whatever the live page references rather than whatever the local
+ * build produced. The host runs its own build, which regenerates the masterlist
+ * and so yields different content hashes; waiting for local filenames to appear
+ * meant waiting forever. Pass --expect to also assert the served bundle
+ * contains a string unique to the change being shipped.
  *
  * Why this exists: Cloudflare Pages answers a request for a missing file with
  * index.html and a 200 status. During the seconds where a new index.html is
@@ -19,31 +25,13 @@
  * Exit codes: 0 verified, 1 still wrong after retries, 2 usage or network.
  */
 
-import fs from 'fs';
-
 const SITE = process.argv[2] ?? 'https://volobg3.com';
-const DIST = 'dist/index.html';
 const ATTEMPTS = 20;
 const GAP_MS = 15_000;
 
 const EXPECTED_TYPE = { css: 'text/css', js: 'javascript' };
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-
-if (!fs.existsSync(DIST)) {
-  console.error(`no ${DIST}; run npm run build first`);
-  process.exit(2);
-}
-
-const localAssets = [...fs.readFileSync(DIST, 'utf8').matchAll(/\/assets\/[A-Za-z0-9._-]+/g)]
-  .map(m => m[0]);
-const unique = [...new Set(localAssets)];
-if (!unique.length) {
-  console.error('no /assets/ references found in the built index.html');
-  process.exit(2);
-}
-console.log(`expecting ${unique.length} assets:`);
-for (const a of unique) console.log(`  ${a}`);
 
 /** Browser-like requests, because the edge caches variants separately. */
 const VARIANTS = [
@@ -68,24 +56,44 @@ async function typeOf(url, headers) {
   };
 }
 
-/** Wait until the live index.html references the assets we just built. */
-let live = false;
-for (let i = 1; i <= ATTEMPTS; i++) {
+const expect = process.argv.includes('--expect')
+  ? process.argv[process.argv.indexOf('--expect') + 1]
+  : null;
+
+/** Asset paths the live page actually asks for. */
+async function liveAssets() {
   const html = await fetch(`${SITE}/?deploy-check=${Date.now()}`, {
     headers: { 'Cache-Control': 'no-cache' },
     signal: AbortSignal.timeout(20_000),
-  }).then(r => r.text()).catch(() => '');
+  }).then(r => r.text());
+  return [...new Set([...html.matchAll(/\/assets\/[A-Za-z0-9._-]+/g)].map(m => m[0]))];
+}
 
-  if (unique.every(a => html.includes(a))) { live = true; break; }
-  console.log(`attempt ${i}: deployment not live yet`);
+let unique = [];
+for (let i = 1; i <= ATTEMPTS; i++) {
+  unique = await liveAssets().catch(() => []);
+  if (!unique.length) {
+    console.log(`attempt ${i}: no assets referenced yet`);
+    await sleep(GAP_MS);
+    continue;
+  }
+  if (!expect) break;
+
+  const js = unique.find(a => a.endsWith('.js'));
+  const body = js
+    ? await fetch(SITE + js, { signal: AbortSignal.timeout(30_000) }).then(r => r.text()).catch(() => '')
+    : '';
+  if (body.includes(expect)) break;
+  console.log(`attempt ${i}: live bundle does not contain "${expect}" yet`);
+  if (i === ATTEMPTS) {
+    console.error(`gave up waiting for "${expect}" to appear`);
+    process.exit(1);
+  }
   await sleep(GAP_MS);
 }
 
-if (!live) {
-  console.error('the deployment never went live within the wait window');
-  process.exit(1);
-}
-console.log('deployment is live; checking assets');
+console.log(`live page references ${unique.length} assets:`);
+for (const a of unique) console.log(`  ${a}`);
 
 let failures = 0;
 for (const asset of unique) {
