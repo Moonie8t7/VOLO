@@ -73,10 +73,13 @@ export default function MasterlistPage() {
         <Alert className="border-primary/30 bg-primary/5">
           <Database className="h-4 w-4" />
           <AlertDescription className="font-body">
-            Built from load orders the community sent in. Mods in{' '}
-            <Badge variant="outline" className="mx-1">unsorted</Badge> haven't been
-            categorised yet. If you know where one belongs, that is the most useful
-            thing you can contribute.
+            Built from load orders the community sent in, topped up from Nexus
+            and mod.io listings where nobody has placed a mod yet. Entries
+            marked <span className="mx-1 text-xs uppercase tracking-wider">listing</span>
+            came from the second sort, and mods in{' '}
+            <Badge variant="outline" className="mx-1">unsorted</Badge> from neither.
+            If you know where one belongs, that is the most useful thing you can
+            contribute.
           </AlertDescription>
         </Alert>
 
@@ -89,6 +92,10 @@ export default function MasterlistPage() {
                 value={query}
                 onChange={e => { setQuery(e.target.value); setLimit(PAGE_SIZE); }}
                 placeholder="Search by mod name or author"
+                aria-label="Search the masterlist by mod name or author"
+                type="search"
+                name="masterlistSearch"
+                spellCheck={false}
                 className="pl-9"
               />
             </div>

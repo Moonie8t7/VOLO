@@ -73,8 +73,9 @@ export default function ImportPage() {
           <ShieldCheck className="h-4 w-4" />
           <AlertDescription className="font-body">
             VOLO's code runs in your browser. Opening a file here reads it from
-            your disk into this page; it is not an upload, and the site has no
-            server that could receive one.
+            your disk into this page, which is not an upload: nothing about this
+            file leaves your machine. The site has exactly one endpoint that
+            accepts anything, and only the Submit page ever calls it.
           </AlertDescription>
         </Alert>
 
@@ -144,8 +145,10 @@ export default function ImportPage() {
           </CardContent>
         </Card>
 
+        {/* Reading a file swaps this card in without moving focus, so it is
+            announced rather than sat there silently. */}
         {parsed && (
-          <Card className="border-ornate shadow-bg3">
+          <Card className="border-ornate shadow-bg3" aria-live="polite">
             <CardHeader>
               <CardTitle className="font-display flex items-center gap-2">
                 {parsed.mods.length
@@ -188,7 +191,10 @@ export default function ImportPage() {
               {parsed.sections.length > 0 && (
                 <p className="text-sm text-muted-foreground">
                   Found your own section headers ({parsed.sections.slice(0, 6).map(s => s.label).join(', ')}
-                  {parsed.sections.length > 6 ? ', and more' : ''}). VOLO uses these to categorise unknown mods.
+                  {parsed.sections.length > 6 ? ', and more' : ''}). They are not
+                  used to sort this order, but they are the most valuable thing
+                  in a submission: most of what the masterlist knows about
+                  categories came from headers somebody wrote by hand.
                 </p>
               )}
 

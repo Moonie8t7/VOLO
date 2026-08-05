@@ -206,6 +206,10 @@ export default function OptimisePage() {
                 value={query}
                 onChange={e => setQuery(e.target.value)}
                 placeholder="Filter by name or author"
+                aria-label="Filter the sorted order by mod name or author"
+                type="search"
+                name="orderFilter"
+                spellCheck={false}
                 className="pl-9"
               />
             </div>
@@ -216,7 +220,7 @@ export default function OptimisePage() {
                 const p = placements.get(mod.uuid);
                 const isOpen = expanded === mod.uuid;
                 return (
-                  <li key={mod.uuid}>
+                  <li key={mod.uuid} className={isOpen ? undefined : 'row-defer'}>
                     <div className="group flex items-center rounded transition-colors hover:bg-primary/5">
                     <MoveControls name={mod.name} onMove={d => moveMod(mod.uuid, d)} />
                     <button

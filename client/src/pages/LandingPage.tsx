@@ -16,13 +16,18 @@ export default function LandingPage() {
   const patch = masterlist?.gamePatch;
 
   return (
-    <div className="min-h-screen bg-background">
+    /* The landing page renders outside the app shell, so it carries its own
+       main landmark rather than inheriting the one in Layout. */
+    <main className="min-h-screen bg-background">
       <div className="relative bg-gradient-bg3 overflow-hidden">
         <div className="relative max-w-4xl mx-auto px-6 py-20 text-center">
           <div className="flex items-center justify-center gap-4 mb-6">
             <img
               src="/assets/volo-logo-256.png"
               alt=""
+              width={256}
+              height={256}
+              fetchPriority="high"
               className="w-16 h-16 md:w-20 md:h-20 border border-border shadow-bg3"
             />
             <h1 className="font-display text-5xl md:text-6xl font-bold text-gradient-bg3 leading-tight">
@@ -34,7 +39,7 @@ export default function LandingPage() {
           </p>
           <p className="text-lg mb-3 max-w-2xl mx-auto leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
             Sorts your Baldur's Gate 3 mod list the way load orders that actually
-            work are sorted. Free, no account, nothing to install.
+            work are sorted. It runs in your browser and costs nothing.
           </p>
           <p className="text-sm mb-8 italic" style={{ color: "hsl(var(--bg3-main) / 0.7)" }}>
             Named after the Realms' most confident chronicler. Unlike Volo... we verify.
@@ -71,13 +76,13 @@ export default function LandingPage() {
           <p>
             It sorts your mods into the sections a working load order already
             uses, keeps declared dependencies ahead of the mods that need them,
-            and otherwise moves as little as possible. Every mod shows the
-            reason it sits where it does, and how much that reason is worth: a
-            placement drawn from orders people played on is marked differently
-            from one read off the mod's Nexus or mod.io listing, and both are
-            marked differently from a guess at its name. Only mods we can find
-            nothing at all about sit at the end, and you can move anything
-            yourself.
+            and otherwise moves as little as possible. Every mod shows why it
+            sits where it does, and how much that reason is worth. A placement
+            taken from an order somebody played on counts for more than one
+            read off a Nexus page, which counts for more than a guess at the
+            mod's title, and each row says which of those you are looking at.
+            Mods it can find nothing about wait at the end, and you can move
+            anything by hand.
           </p>
           <p>
             Export the result and import it straight back into BG3 Mod Manager.
@@ -89,17 +94,40 @@ export default function LandingPage() {
         </h2>
         <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
           <p>
-            The sorting rules are learned from load orders
-            players submitted after actually playing on them. Orders that worked
-            teach placement; orders that broke teach warnings.
+            A working BG3 load order is already divided into sections, and the
+            community has settled on a set of divider mods that name them, a
+            hundred-odd labelled positions running from interface mods at the
+            top to compatibility patches at the bottom. VOLO treats those
+            positions as the frame of the order. You do not need the divider
+            mods installed for this; they are a shared map of where things go,
+            and VOLO uses the map whether or not you use the signposts.
+          </p>
+          <p>
+            That leaves two questions. Which position does a mod belong at, and
+            in what order do the mods sharing a position go? For
+            the first, VOLO takes the best evidence it has: where players
+            actually filed the mod in orders they submitted, failing that the
+            category on its Nexus or mod.io page, failing that what its name
+            plainly says. A mod nothing is known about waits at the end rather
+            than being filed somewhere flattering. For the second, VOLO counts
+            every pair of mods across every submitted order to work out which
+            categories tend to load before which, and follows that. Some of the
+            result contradicts the usual advice, and the played orders win.
+          </p>
+          <p>
+            Two rules override all of it. Dependencies are absolute: a mod that
+            declares it needs another is never placed before it, whatever the
+            sections say. And where VOLO has nothing to go on, it leaves your
+            order alone, so what you see moved is what it had a reason to move.
           </p>
           <p>
             The masterlist currently knows
             {modCount ? ` ${modCount.toLocaleString()} mods` : " thousands of mods"}
             {patch ? `, calibrated against BG3 ${patch}` : ""}. Alongside it sit
-            reference catalogues of every published BG3 mod on Nexus Mods and on
-            mod.io, the platform behind the official in-game mod manager, which
-            supply the requirements one mod declares on another.
+            catalogues of published BG3 mods on Nexus Mods and on mod.io, the
+            platform behind the official in-game mod manager. Those supply two
+            things: the requirements one mod declares on another, and a category
+            for a mod no submitted order has placed yet.
             All of it is on{" "}
             <a
               href="https://github.com/Moonie8t7/VOLO"
@@ -117,7 +145,7 @@ export default function LandingPage() {
             <Link href="/submit" className="underline hover:text-foreground">
               submitting it
             </Link>{" "}
-            makes the sorter better for everyone. No account needed.
+            makes the sorter better for everyone.
           </p>
         </div>
 
@@ -142,15 +170,16 @@ export default function LandingPage() {
                 into the page's memory. The sorting happens in that memory.
                 Saving the result reuses the browser's download dialog, which
                 is what makes it feel like a download, but the file it writes
-                is built inside the page and goes from there to your disk. At
-                no point does your list go into a request.
+                is built inside the page and goes from there to your disk.
               </p>
               <p>
-                You can check this yourself with the browser's network panel;
-                once the page has loaded, using VOLO makes no further
-                requests. The one exception is choosing to submit your order
-                from the Submit page, which sends it to VOLO's public
-                submission queue and nowhere else.
+                Check it in the browser's network panel. You will see VOLO's own
+                code and styles, a typeface from Google Fonts, and the
+                masterlist it sorts against, which is one file of public data
+                served the same way to everybody. Your mod list is in none of
+                them. The Submit page adds Cloudflare's anti-spam widget, and
+                sends your order only once you press the button. That button is
+                the only thing on the site that sends your list anywhere.
               </p>
             </AccordionContent>
           </AccordionItem>
@@ -177,6 +206,32 @@ export default function LandingPage() {
               also keeps reference catalogues of both platforms, so a mod the
               community has not placed yet can still be categorised from its
               own listing.
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="labels" className="border-ornate/20">
+            <AccordionTrigger className="text-left font-semibold">
+              What do the labels next to each mod mean?
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-3">
+              <p>
+                They say how much the placement is worth, because a guess and a
+                verified position should not look alike. No label at all is the
+                strongest case: players filed that mod there themselves. An
+                inferred placement was voted on by the mods either side of it in
+                submitted orders, and the percentage is how much they agreed. A
+                listing placement came from the mod's own Nexus or mod.io page,
+                which tells you what the mod is rather than where anyone
+                actually loads it. A guess means VOLO read the title and had
+                nothing else to go on, and unplaced means it had not even that,
+                so the mod waits at the end.
+              </p>
+              <p>
+                Expanding a row gives the reasoning in full, including any
+                dependency that forced it. If a placement looks wrong, move it,
+                and if the moved order works, submitting it is what corrects
+                VOLO for the next person.
+              </p>
             </AccordionContent>
           </AccordionItem>
 
@@ -234,6 +289,6 @@ export default function LandingPage() {
           <DonationSection />
         </div>
       </div>
-    </div>
+    </main>
   );
 }
