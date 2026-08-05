@@ -24,6 +24,7 @@ export default function MasterlistPage() {
   const [query, setQuery] = useState('');
   const [group, setGroup] = useState<string>('all');
   const [limit, setLimit] = useState(PAGE_SIZE);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const filtered = useMemo(() => {
     if (!masterlist) return [];
@@ -99,11 +100,31 @@ export default function MasterlistPage() {
                 className="pl-9"
               />
             </div>
-            <details open={typeof window !== 'undefined' && window.innerWidth >= 640}>
-              <summary className="cursor-pointer text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground mb-3">
-                Filter by category, listed in load order
-              </summary>
-            <div className="flex flex-wrap gap-2">
+            {/*
+              Open on a wide screen, collapsed on a narrow one, decided by CSS
+              rather than by reading the window width during render. The old
+              version measured once and never again, so a resize left it wrong,
+              and it disagreed with itself between the prerendered HTML and the
+              browser. The toggle is only reachable below the breakpoint, where
+              thirty-one chips would otherwise fill the screen before a single
+              mod appeared.
+            */}
+            <button
+              type="button"
+              onClick={() => setFiltersOpen(open => !open)}
+              aria-expanded={filtersOpen}
+              aria-controls="category-filters"
+              className="sm:hidden cursor-pointer text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground mb-3 text-left"
+            >
+              Filter by category, listed in load order
+            </button>
+            <p className="hidden sm:block text-xs uppercase tracking-wider text-muted-foreground mb-3">
+              Filter by category, listed in load order
+            </p>
+            <div
+              id="category-filters"
+              className={`${filtersOpen ? 'flex' : 'hidden'} sm:flex flex-wrap gap-2`}
+            >
               <GroupChip
                 label="all" count={masterlist?.plugins.length ?? 0}
                 active={group === 'all'}
@@ -117,7 +138,6 @@ export default function MasterlistPage() {
                 />
               ))}
             </div>
-            </details>
           </CardHeader>
           <CardContent>
             {isLoadingMasterlist && (

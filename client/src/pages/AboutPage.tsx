@@ -11,12 +11,13 @@ import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useStore } from '@/lib/store';
+import summary from '@/lib/masterlist-summary.json';
 
 const REPO = 'https://github.com/Moonie8t7/VOLO';
 
 export default function AboutPage() {
   const { masterlist } = useStore();
-  const modCount = masterlist?.plugins.length;
+  const modCount = masterlist?.plugins.length ?? summary.mods;
 
   return (
     <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
@@ -80,7 +81,7 @@ export default function AboutPage() {
             Submitted orders go into a public corpus. A script reads them,
             works out which category each mod belongs to and where categories
             sit relative to each other, and writes a masterlist of{' '}
-            {modCount ? modCount.toLocaleString() : 'around three thousand'} mods.
+            {modCount.toLocaleString()} mods.
             The site downloads that file and does the sorting in your browser.
             Nothing about your own list is sent anywhere unless you choose to
             submit it.

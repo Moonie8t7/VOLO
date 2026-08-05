@@ -77,6 +77,20 @@ something it requires.
 | `client/src/lib/masterlist.ts` | Fetches the masterlist. Degrades to the bundled copy. |
 | `client/src/lib/store.tsx` | Session state. Persists only if the user opts in. |
 | `client/src/lib/submit.ts` | Posts a submission to `/api/submit`. |
+| `client/src/lib/head.ts` | Per-route title, description, canonical and robots tags. |
+
+Every route is rendered to its own HTML file at build time by
+`scripts/prerender.mjs`, so the served page contains its text before any
+JavaScript runs. The browser hydrates that markup rather than rebuilding it.
+
+Two things follow from each route being a real file. The host needs no rewrite
+rules to map paths onto the shell, and an address that is not a route matches
+nothing, which is what lets `public/404.html` answer with a genuine 404 instead
+of a page that returns 200 and then says it does not exist.
+
+`scripts/serve-dist.mjs` serves `dist/` the way the host resolves it, because
+`vite preview` answers every unknown path with `index.html` and would report a
+missing route as working.
 
 The sort runs in O(V + E). A thousand mods take about three milliseconds, which
 matters because an earlier hosted version timed out and was misdiagnosed as a
