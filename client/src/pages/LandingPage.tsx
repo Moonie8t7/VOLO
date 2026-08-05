@@ -157,8 +157,9 @@ export default function LandingPage() {
               Do I need an account?
             </AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
-              No. Submitting a load order uses GitHub, so that needs a GitHub
-              account, but sorting does not.
+              No, for either. Sorting needs nothing, and submitting an order
+              goes through this site rather than requiring you to sign up
+              anywhere.
             </AccordionContent>
           </AccordionItem>
 
@@ -184,8 +185,9 @@ export default function LandingPage() {
               It will, sometimes. The masterlist is only as good as the orders
               behind it, and plenty of mods have not been categorised yet. Every
               placement shows its reasoning, so you can see why a mod landed
-              where it did and move it yourself. If you know better, submit a
-              correction; that is the whole idea.
+              where it did and judge it for yourself. If you know better, put it
+              right in your mod manager and submit that order; correcting VOLO
+              is the whole idea.
             </AccordionContent>
           </AccordionItem>
 
