@@ -17,6 +17,8 @@ import ExportPage from "@/pages/ExportPage";
 import SubmitPage from "@/pages/SubmitPage";
 import MasterlistPage from "@/pages/MasterlistPage";
 import DonationsPage from "@/pages/DonationsPage";
+import AboutPage from "@/pages/AboutPage";
+import MeasuredPage from "@/pages/MeasuredPage";
 import NotFound from "@/pages/not-found";
 import { usePageMeta } from "@/lib/head";
 
@@ -33,6 +35,8 @@ function Router() {
         <Route path="/export" component={ExportPage} />
         <Route path="/submit" component={SubmitPage} />
         <Route path="/masterlist" component={MasterlistPage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/measured" component={MeasuredPage} />
         <Route path="/donations" component={DonationsPage} />
         <Route path="/support" component={DonationsPage} />
         <Route component={NotFound} />

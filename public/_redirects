@@ -1,0 +1,20 @@
+# Client routes rewritten to the app shell, so everything else can be a real 404.
+#
+# Cloudflare Pages falls back to index.html for unknown paths only while no
+# 404.html exists. Adding one turns that fallback off, which is the point: an
+# address that is not a page should answer 404 rather than 200 with an app that
+# then says "not found". Every real route therefore needs a line here.
+#
+# scripts/smoke-test.mjs asserts this list matches the routes in App.tsx, because
+# a route missing from here is a page that silently disappears in production.
+
+/import      /index.html  200
+/optimise    /index.html  200
+/optimizer   /index.html  200
+/export      /index.html  200
+/submit      /index.html  200
+/masterlist  /index.html  200
+/measured    /index.html  200
+/about       /index.html  200
+/donations   /index.html  200
+/support     /index.html  200

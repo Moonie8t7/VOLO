@@ -124,5 +124,47 @@ for (const asset of unique) {
   }
 }
 
-console.log(failures ? `\n${failures} asset checks failed\n` : '\nDeployment verified.\n');
+/**
+ * Routing, which nothing local can check.
+ *
+ * public/404.html turns off Cloudflare's fallback to index.html, so every real
+ * route depends on a rewrite rule in public/_redirects. Get one wrong and that
+ * page is simply gone in production while everything still passes locally,
+ * because vite preview does not read either file. This is the only place the
+ * arrangement is ever exercised.
+ */
+const ROUTES = [
+  '/', '/import', '/optimise', '/optimizer', '/export',
+  '/submit', '/masterlist', '/measured', '/about', '/donations', '/support',
+];
+
+console.log('\nroutes:');
+for (const route of ROUTES) {
+  const res = await fetch(SITE + route, {
+    headers: { 'Cache-Control': 'no-cache' },
+    signal: AbortSignal.timeout(20_000),
+  }).catch(() => null);
+
+  if (res?.status === 200) {
+    console.log(`  ok    ${route} 200`);
+  } else {
+    failures++;
+    console.log(`  FAIL  ${route} answered ${res ? res.status : 'no response'}`);
+  }
+}
+
+const missing = `/definitely-not-a-page-${Date.now()}`;
+const res404 = await fetch(SITE + missing, {
+  headers: { 'Cache-Control': 'no-cache' },
+  signal: AbortSignal.timeout(20_000),
+}).catch(() => null);
+
+if (res404?.status === 404) {
+  console.log('  ok    unknown paths answer 404');
+} else {
+  failures++;
+  console.log(`  FAIL  unknown path answered ${res404 ? res404.status : 'no response'}, expected 404`);
+}
+
+console.log(failures ? `\n${failures} checks failed\n` : '\nDeployment verified.\n');
 process.exit(failures ? 1 : 0);
