@@ -59,6 +59,11 @@ agreed against us.
 
 ## Rejected
 
+Each experiment below quotes the figure it was measured against at the time,
+so compare a result with its own baseline rather than with the current
+headline. The 63.6 appearing here is the in-sample number from before held-out
+evaluation existed; it is not comparable to the 57.5 at the top of this file.
+
 **Keeping uncategorised mods in place.** Rather than sorting them to the end,
 give them the position of the last categorised mod above them. Measured 61.8
 against 63.6. Unplaced mods genuinely do cluster at the end of real orders.
