@@ -139,7 +139,7 @@ export default function SubmitPage() {
           <p className="text-muted-foreground mt-2 font-body">
             Orders you have actually played on are what VOLO learns from.
             Working orders sharpen where mods belong; broken ones sharpen the
-            warnings. No account needed.
+            warnings. You do not need an account for any of it.
           </p>
         </header>
 
@@ -243,7 +243,9 @@ export default function SubmitPage() {
                   </>
                 )}
 
-                {orderError && <p className="text-sm text-destructive">{orderError}</p>}
+                {orderError && (
+                  <p className="text-sm text-destructive" role="alert">{orderError}</p>
+                )}
               </CardContent>
             </Card>
 
@@ -295,7 +297,9 @@ export default function SubmitPage() {
                   {submitting ? 'Submitting' : 'Submit this load order'}
                 </Button>
 
-                {submitError && <p className="text-sm text-destructive">{submitError}</p>}
+                {submitError && (
+                  <p className="text-sm text-destructive" role="alert">{submitError}</p>
+                )}
 
                 <p className="text-xs text-muted-foreground">
                   Goes to VOLO's public submission queue on GitHub, where every
