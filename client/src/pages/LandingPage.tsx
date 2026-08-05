@@ -48,7 +48,7 @@ export default function LandingPage() {
           <Link href="/import">
             <Button size="lg" className="px-8 text-lg">
               Sort my load order
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </Button>
           </Link>
           <p className="mt-4 text-sm" style={{ color: "hsl(var(--bg3-main) / 0.8)" }}>
@@ -278,7 +278,7 @@ export default function LandingPage() {
           <Link href="/import">
             <Button size="lg" className="px-8 text-lg">
               Sort my load order
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </Button>
           </Link>
         </div>

@@ -70,7 +70,7 @@ export default function ExportPage() {
           <Link href="/import">
             <Button size="lg" className="mt-6">
               Import a load order
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Button>
           </Link>
         </div>
@@ -261,11 +261,11 @@ export default function ExportPage() {
                   )
                 }
               >
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="mr-2 h-4 w-4" aria-hidden="true" />
                 {format === 'modsettings' ? 'Download modsettings.lsx' : `Download .${spec.ext}`}
               </Button>
               <Button size="lg" variant="outline" onClick={copy}>
-                {copied ? <Check className="mr-2 h-4 w-4" /> : <Copy className="mr-2 h-4 w-4" />}
+                {copied ? <Check className="mr-2 h-4 w-4" aria-hidden="true" /> : <Copy className="mr-2 h-4 w-4" aria-hidden="true" />}
                 {copied ? 'Copied' : 'Copy'}
               </Button>
             </div>
@@ -289,7 +289,7 @@ export default function ExportPage() {
         <Card className="border-ornate shadow-bg3">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2">
-              <Heart className="h-5 w-5 text-destructive/80" />
+              <Heart className="h-5 w-5 text-destructive/80" aria-hidden="true" />
               Share it back
             </CardTitle>
           </CardHeader>
@@ -302,7 +302,7 @@ export default function ExportPage() {
             <Link href="/submit">
               <Button>
                 Submit this load order
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Button>
             </Link>
           </CardContent>

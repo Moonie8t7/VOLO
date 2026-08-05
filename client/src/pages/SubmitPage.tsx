@@ -147,7 +147,7 @@ export default function SubmitPage() {
           <Card className="border-ornate shadow-bg3">
             <CardContent className="pt-6 font-body space-y-3">
               <p className="font-subheader text-lg flex items-center gap-2">
-                <Check className="h-5 w-5 text-primary" />
+                <Check className="h-5 w-5 text-primary" aria-hidden="true" />
                 Submitted. Thank you.
               </p>
               <p className="text-sm text-muted-foreground">
@@ -196,7 +196,7 @@ export default function SubmitPage() {
 
                     {mods.length >= 5 && (
                       <Button variant="outline" onClick={useSession}>
-                        <ArrowRight className="mr-2 h-4 w-4" />
+                        <ArrowRight className="mr-2 h-4 w-4" aria-hidden="true" />
                         Use the order imported here ({mods.length} mods)
                       </Button>
                     )}
@@ -213,7 +213,7 @@ export default function SubmitPage() {
                         className="hidden"
                         onChange={e => { if (e.target.files?.[0]) onFile(e.target.files[0]); }}
                       />
-                      <Upload className="h-8 w-8 mx-auto mb-2 text-primary/70" />
+                      <Upload className="h-8 w-8 mx-auto mb-2 text-primary/70" aria-hidden="true" />
                       <span className="font-subheader">Choose the load order file</span>
                       <span className="block text-xs text-muted-foreground mt-1">
                         BG3MM export (.json), modsettings.lsx, .csv, .tsv or .txt
@@ -252,7 +252,7 @@ export default function SubmitPage() {
             <Card className="border-ornate shadow-bg3">
               <CardHeader>
                 <CardTitle className="font-display flex items-center gap-2">
-                  <Heart className="h-5 w-5 text-destructive/80" />
+                  <Heart className="h-5 w-5 text-destructive/80" aria-hidden="true" />
                   The verdict
                 </CardTitle>
               </CardHeader>

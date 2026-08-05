@@ -66,11 +66,11 @@ function MoveControls({ name, onMove }: { name: string; onMove: (d: -1 | 1) => v
     <span className="flex w-6 shrink-0 flex-col pl-1">
       <button type="button" aria-label={`Move ${name} earlier`} className={button}
         onClick={() => onMove(-1)}>
-        <ChevronUp className="h-3.5 w-3.5" />
+        <ChevronUp className="h-3.5 w-3.5" aria-hidden="true" />
       </button>
       <button type="button" aria-label={`Move ${name} later`} className={button}
         onClick={() => onMove(1)}>
-        <ChevronDown className="h-3.5 w-3.5" />
+        <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
       </button>
     </span>
   );
@@ -151,16 +151,16 @@ export default function OptimisePage() {
           </div>
           <Link href="/export">
             <Button size="lg">
-              <Download className="mr-2 h-4 w-4" />
+              <Download className="mr-2 h-4 w-4" aria-hidden="true" />
               Export
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Button>
           </Link>
         </header>
 
         {masterlistError && (
           <Alert variant="destructive">
-            <AlertTriangle className="h-4 w-4" />
+            <AlertTriangle className="h-4 w-4" aria-hidden="true" />
             <AlertDescription>{masterlistError}</AlertDescription>
           </Alert>
         )}
@@ -197,11 +197,11 @@ export default function OptimisePage() {
         <Card className="border-ornate shadow-bg3">
           <CardHeader className="flex-row items-center justify-between space-y-0 gap-4">
             <CardTitle className="font-display flex items-center gap-2">
-              <Layers className="h-5 w-5 text-primary/70" />
+              <Layers className="h-5 w-5 text-primary/70" aria-hidden="true" />
               Load order
             </CardTitle>
             <div className="relative w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <Input
                 value={query}
                 onChange={e => setQuery(e.target.value)}
@@ -263,8 +263,7 @@ export default function OptimisePage() {
                       <ChevronDown
                         className={`h-4 w-4 text-muted-foreground shrink-0 transition-transform ${
                           isOpen ? 'rotate-180' : ''
-                        }`}
-                      />
+                        }`} aria-hidden="true" />
                     </button>
                     </div>
 
@@ -310,7 +309,7 @@ function IssueCard({ issue }: { issue: Issue }) {
   const Icon = SEVERITY_ICON[issue.severity];
   return (
     <Alert variant={issue.severity === 'critical' ? 'destructive' : 'default'}>
-      <Icon className="h-4 w-4" />
+      <Icon className="h-4 w-4" aria-hidden="true" />
       <AlertTitle className="font-subheader capitalize">{issue.kind.replace('-', ' ')}</AlertTitle>
       <AlertDescription className="font-body">
         {issue.message}
@@ -333,7 +332,7 @@ function EmptyState() {
         <Link href="/import">
           <Button size="lg" className="mt-6">
             Import a load order
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </Button>
         </Link>
       </div>

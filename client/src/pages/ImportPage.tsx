@@ -70,7 +70,7 @@ export default function ImportPage() {
         </header>
 
         <Alert className="border-primary/30 bg-primary/5">
-          <ShieldCheck className="h-4 w-4" />
+          <ShieldCheck className="h-4 w-4" aria-hidden="true" />
           <AlertDescription className="font-body">
             VOLO's code runs in your browser. Opening a file here reads it from
             your disk into this page, which is not an upload: nothing about this
@@ -88,7 +88,7 @@ export default function ImportPage() {
               }`}
             >
               <input {...getInputProps({ name: 'loadOrderFile', 'aria-label': 'Load order file' })} />
-              <Upload className="h-12 w-12 mx-auto mb-4 text-primary/70" />
+              <Upload className="h-12 w-12 mx-auto mb-4 text-primary/70" aria-hidden="true" />
               <p className="font-subheader text-lg">
                 {isDragActive ? 'Drop it' : 'Drag a file here, or click to browse'}
               </p>
@@ -152,8 +152,8 @@ export default function ImportPage() {
             <CardHeader>
               <CardTitle className="font-display flex items-center gap-2">
                 {parsed.mods.length
-                  ? <CheckCircle2 className="h-5 w-5 text-green-500" />
-                  : <AlertCircle className="h-5 w-5 text-destructive" />}
+                  ? <CheckCircle2 className="h-5 w-5 text-green-500" aria-hidden="true" />
+                  : <AlertCircle className="h-5 w-5 text-destructive" aria-hidden="true" />}
                 {parsed.mods.length
                   ? `Read ${parsed.mods.length} mods`
                   : 'Nothing could be read from that file'}
@@ -174,7 +174,7 @@ export default function ImportPage() {
 
               {parsed.errors.map((e, i) => (
                 <Alert key={i} variant="destructive">
-                  <AlertCircle className="h-4 w-4" />
+                  <AlertCircle className="h-4 w-4" aria-hidden="true" />
                   <AlertDescription>{e}</AlertDescription>
                 </Alert>
               ))}
@@ -200,7 +200,7 @@ export default function ImportPage() {
 
               {parsed.mods.length > 0 && (
                 <Button size="lg" className="w-full" onClick={() => navigate('/optimise')}>
-                  <FileJson className="mr-2 h-4 w-4" />
+                  <FileJson className="mr-2 h-4 w-4" aria-hidden="true" />
                   Sort {parsed.mods.length} mods
                 </Button>
               )}
