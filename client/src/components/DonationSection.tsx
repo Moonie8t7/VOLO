@@ -1,3 +1,7 @@
+/**
+ * Donation links. Rendered on the support page and the landing page.
+ */
+
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

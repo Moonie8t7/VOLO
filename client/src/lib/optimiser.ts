@@ -129,16 +129,7 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
     }
     if (entry) known++;
 
-    /*
-     * Nexus and mod.io listing categories were tried here and removed on
-     * 2026-08-04. Held-out evaluation (scripts/verify-holdout.mjs) measured
-     * them lowering agreement with working orders: 63.6 percent without them,
-     * 63.2 with Nexus, 63.0 with both. A listing category describes what a mod
-     * is, which is not the same question as where it loads, and a mod nobody
-     * has placed sits closer to where working orders put it when left at the
-     * end than when moved on a category guess. The catalogues remain valuable
-     * for requirements, Script Extender flags and diagnosis; just not for this.
-     */
+    // Listing categories were tried here and measured worse. See docs/decisions.md.
     const guessed = NAME_PATTERNS.find(([re]) => re.test(mod.name))?.[1];
     group.set(mod.uuid, guessed ?? DEFAULT_GROUP);
     groupSource.set(mod.uuid, guessed ? 'name-pattern' : 'default');

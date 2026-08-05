@@ -1,3 +1,8 @@
+/**
+ * Landing page: what VOLO does, where its rules come from, and the questions
+ * people actually ask. Mod counts are read from the live masterlist.
+ */
+
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";

@@ -1,3 +1,8 @@
+/**
+ * The sorted order, with the reasoning behind every placement and any issues
+ * found in the order as it arrived.
+ */
+
 import { useMemo, useState } from 'react';
 import { Link } from 'wouter';
 import {

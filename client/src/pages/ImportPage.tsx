@@ -1,3 +1,10 @@
+/**
+ * Import: reads a load order file into the session.
+ *
+ * The file is read from disk into this page; nothing is uploaded. Persisting
+ * the result across visits is opt-in.
+ */
+
 import { useCallback, useState } from 'react';
 import { useLocation } from 'wouter';
 import { useDropzone } from 'react-dropzone';

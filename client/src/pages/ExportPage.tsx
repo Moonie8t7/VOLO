@@ -1,3 +1,10 @@
+/**
+ * Export: writes the sorted order back out in the format the user needs.
+ *
+ * Names the import it came from, because the session can outlive the file the
+ * user has in mind.
+ */
+
 import { useState } from 'react';
 import { Link } from 'wouter';
 import { Download, Copy, Check, ArrowRight, Heart } from 'lucide-react';
