@@ -115,13 +115,20 @@ export default function LandingPage() {
 
           <figure className="mt-8">
             {/*
-              WebP first at a fifth of the weight, with the PNG behind it for
-              anything that will not take WebP. Dimensions are set so the page
+              WebP first at a fraction of the weight, with the PNG behind it for
+              anything that will not take WebP. Two widths, because the figure is
+              never wider than 720 points: a phone was downloading the 1200 wide
+              file to paint it at a third of that. Dimensions are set so the page
               does not jump as it loads, and it is lazy because it sits well
               below the fold.
             */}
             <picture>
-              <source srcSet="/assets/volo-sorted-order-preview.webp" type="image/webp" />
+              <source
+                type="image/webp"
+                srcSet="/assets/volo-sorted-order-preview-900.webp 900w,
+                        /assets/volo-sorted-order-preview.webp 1200w"
+                sizes="(min-width: 768px) 720px, calc(100vw - 3rem)"
+              />
               <img
                 src="/assets/volo-sorted-order-preview.png"
                 alt="A sorted load order in VOLO. Each mod shows its position, how far it moved, the section it belongs to such as UI Mods or Body Mods, and a note reading listing or guessed where the placement came from something weaker than a played order."

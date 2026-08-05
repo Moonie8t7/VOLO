@@ -37,7 +37,12 @@
     <!--
       Describes the tool itself. Kept in the static HTML so it is readable
       without executing the app, and deliberately limited to what is true:
-      a free browser tool, no ratings invented, no offers.
+      a free browser tool, with no ratings invented.
+
+      Every property here belongs to WebApplication or something it inherits
+      from. primaryImageOfPage and codeRepository were both wrong: the first
+      belongs to WebPage and the second to SoftwareSourceCode, neither of which
+      this is. `image` carries the preview and `sameAs` carries the repository.
     -->
     <script type="application/ld+json">
     {
@@ -55,10 +60,9 @@
       "browserRequirements": "Requires JavaScript",
       "description": "Sorts Baldur's Gate 3 mod load orders against a masterlist built from load orders players have played on, resolving declared dependencies and explaining every placement.",
       "isAccessibleForFree": true,
-      "primaryImageOfPage": "https://volobg3.com/assets/volo-sorted-order-preview.png",
+      "image": "https://volobg3.com/assets/volo-sorted-order-preview.png",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
       "license": "https://github.com/Moonie8t7/VOLO/blob/main/LICENSE",
-      "codeRepository": "https://github.com/Moonie8t7/VOLO",
       "sameAs": ["https://github.com/Moonie8t7/VOLO"],
       "about": { "@type": "VideoGame", "name": "Baldur's Gate 3" }
     }
