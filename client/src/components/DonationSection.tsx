@@ -74,8 +74,10 @@ export default function DonationSection({ variant = "full", className = "" }: Do
           >
             {platform.icon}
             <span>{platform.name}</span>
-            <span className="opacity-60 normal-case">({platform.description})</span>
-            <ExternalLink className="h-3 w-3 opacity-60" aria-hidden="true" />
+            {/* 0.75 rather than 0.6: the quieter text sat exactly on the 4.5
+                contrast threshold against the button and failed in practice. */}
+            <span className="opacity-75 normal-case">({platform.description})</span>
+            <ExternalLink className="h-3 w-3 opacity-75" aria-hidden="true" />
           </Button>
         ))}
       </div>
@@ -123,8 +125,10 @@ export default function DonationSection({ variant = "full", className = "" }: Do
           >
             {platform.icon}
             <span>{platform.name}</span>
-            <span className="opacity-60 normal-case">({platform.description})</span>
-            <ExternalLink className="h-3 w-3 opacity-60" aria-hidden="true" />
+            {/* 0.75 rather than 0.6: the quieter text sat exactly on the 4.5
+                contrast threshold against the button and failed in practice. */}
+            <span className="opacity-75 normal-case">({platform.description})</span>
+            <ExternalLink className="h-3 w-3 opacity-75" aria-hidden="true" />
           </Button>
         ))}
       </div>
