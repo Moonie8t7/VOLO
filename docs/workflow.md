@@ -95,12 +95,7 @@ The gate is deliberately narrow: a working order that parses, is not a
 duplicate, and does not drop agreement by more than one point lands on its own.
 Everything else waits for a person.
 
-## House style
-
-Real mod names are reproduced exactly, punctuation and all.
-
-Source files are plain ASCII. No em dashes, en dashes, emoji or arrows. Astra's
-divider names are the one exception, and their decoration is deliberate.
+## Where explanation lives
 
 Comments explain why, never what. Anything longer than a sentence or two
 belongs in this directory rather than in a source file.
