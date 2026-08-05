@@ -94,12 +94,11 @@ export default function ExportPage() {
         {/*
           Says out loud which import this came from.
 
-          The session is kept in localStorage so a tab can be closed and
-          reopened, which means this page will happily export an order imported
-          days ago. Someone who has since picked a different file elsewhere,
-          on the Submit page for instance, would otherwise export the old one
-          and only find out when their mod manager reports mods they do not
-          have installed.
+          Someone who has picked a different file elsewhere, on the Submit
+          page for instance, would otherwise export whatever the session still
+          held and find out only when their mod manager reports mods they do
+          not have installed. Relevant mainly when remembering is switched on,
+          since the order can then be days old.
         */}
         <Alert className={staleImport ? 'border-destructive/40 bg-destructive/10' : 'border-primary/30 bg-primary/5'}>
           <AlertDescription className="font-body flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
