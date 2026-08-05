@@ -76,13 +76,11 @@ reports agreement. Run it before and after anything that touches placement, and
 quote that number rather than the higher one `verify-order.mjs` prints, which
 scores against orders the masterlist has already read.
 
-Several plausible ideas have been measured and rejected on that basis, and the
-reasons are recorded in comments where they were tried. Measure first.
+Several plausible ideas have been measured and rejected on that basis. They are
+recorded in [docs/decisions.md](docs/decisions.md). Measure first.
 
-## House style
+## One rule that will bite you
 
-Real mod names are reproduced exactly, punctuation and all, because they are
-matched against what players have installed.
-
-Source files are plain ASCII. No em dashes, en dashes, emoji or arrows. The one
-exception is Astra's divider names, whose decoration is deliberate.
+Never normalise a mod name. They are reproduced exactly, punctuation and all,
+because they are matched against what players have installed; tidying one up
+silently drops that mod from sorting.
