@@ -4,9 +4,11 @@ name: Catalogue crawl
 # everything derived from them. Runs on GitHub's machines so it does not depend
 # on any particular computer being switched on.
 #
-# Needs the NEXUS_API_KEY and MODIO_API_KEY repository secrets. Each half skips
-# itself with a clear line when its key is absent, so a missing key degrades
-# one source rather than failing the run.
+# Needs the NEXUS_API_KEY and MODIO_API_KEY repository secrets. A half whose key
+# is missing is skipped by the step's own `if`, so it shows as a skipped step in
+# the run rather than printing a message that reads like a failure. Actions
+# echoes every line of a shell block before running it, so guards written in
+# shell appear in the log whether or not they fire, which is misleading.
 #
 # Both crawlers are resumable and quota-aware: they record their own progress,
 # so a run that stops early simply continues tomorrow. Shares the masterlist
@@ -29,6 +31,9 @@ jobs:
   crawl:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      NEXUS_API_KEY: ${{ secrets.NEXUS_API_KEY }}
+      MODIO_API_KEY: ${{ secrets.MODIO_API_KEY }}
     steps:
       - uses: actions/checkout@v4
 
@@ -39,16 +44,11 @@ jobs:
 
       - run: npm ci
 
+      # Listing first (most endorsed, then newest updates), then the joins that
+      # turn a catalogue into usable metadata.
       - name: Nexus catalogue
-        env:
-          NEXUS_API_KEY: ${{ secrets.NEXUS_API_KEY }}
+        if: env.NEXUS_API_KEY != ''
         run: |
-          if [ -z "$NEXUS_API_KEY" ]; then
-            echo "NEXUS_API_KEY is not set; skipping the Nexus half."
-            exit 0
-          fi
-          # Listing first (most endorsed, then newest updates), then the joins
-          # that turn a catalogue into usable metadata.
           node scripts/bulk-list-nexus.mjs
           node scripts/bulk-list-nexus.mjs --updates
           node scripts/find-masterlist-on-nexus.mjs
@@ -56,37 +56,48 @@ jobs:
           node scripts/enrich-from-nexus.mjs
 
       - name: mod.io catalogue
-        env:
-          MODIO_API_KEY: ${{ secrets.MODIO_API_KEY }}
+        if: env.MODIO_API_KEY != ''
         run: |
-          if [ -z "$MODIO_API_KEY" ]; then
-            echo "MODIO_API_KEY is not set; skipping the mod.io half."
-            exit 0
-          fi
           node scripts/bulk-list-modio.mjs
           node scripts/bulk-list-modio.mjs --updates
           node scripts/bulk-list-modio.mjs --deps
 
-      # Catalogue data feeds the category fallback map and the Script Extender
-      # flags in the masterlist, so a crawl that does not rebuild these leaves
-      # the site running on yesterday's derivation.
+      # Catalogue data feeds the Script Extender flags and the promoted
+      # dependency edges, so a crawl that does not rebuild these leaves the site
+      # running on yesterday's derivation.
       - name: Rebuild what the catalogues feed
         run: |
           node scripts/mine-corpus.mjs
           node scripts/build-divider-map.mjs
           node scripts/build-external-categories.mjs
           node -e "require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')"
-          node scripts/verify-order.mjs | tail -6 >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit whatever changed
+        id: commit
         run: |
           git config user.name "volo-crawler"
           git config user.email "crawler@users.noreply.github.com"
           git add nexus modio masterlist public client/src/lib/dividers.json
           if git diff --cached --quiet; then
-            echo "nothing changed"
+            echo "changed=no" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Update the catalogues"
             git pull --rebase origin main
             git push origin HEAD:main
+            echo "changed=yes" >> "$GITHUB_OUTPUT"
           fi
+
+      # The whole point of the run, in one place, whatever happened above.
+      - name: Summary
+        if: always()
+        run: |
+          {
+            node scripts/crawl-summary.mjs
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Nexus half | ${{ env.NEXUS_API_KEY != '' && 'ran' || 'skipped, no NEXUS_API_KEY' }} |"
+            echo "| mod.io half | ${{ env.MODIO_API_KEY != '' && 'ran' || 'skipped, no MODIO_API_KEY' }} |"
+            echo "| Committed | ${{ steps.commit.outputs.changed == 'yes' && 'yes' || 'nothing changed' }} |"
+            echo
+            node scripts/verify-order.mjs | tail -5
+          } >> "$GITHUB_STEP_SUMMARY"
