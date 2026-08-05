@@ -53,7 +53,7 @@ process.on('SIGINT', () => process.exit(130));
 process.on('SIGTERM', () => process.exit(143));
 
 if (!fs.existsSync(CATALOG)) {
-  console.error('No nexus/catalog.json yet. Run scripts/crawl-nexus.mjs first.');
+  console.error('No nexus/catalog.json yet. Run scripts/bulk-list-nexus.mjs first.');
   process.exit(2);
 }
 
