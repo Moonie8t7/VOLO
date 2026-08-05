@@ -15,6 +15,15 @@ import { useStore } from '@/lib/store';
 import { EXPORT_FORMATS, exportOrder, download, type ExportFormat } from '@/lib/exporter';
 import dividers from '@/lib/dividers.json';
 
+/**
+ * Formats that go back into the game, as opposed to into a spreadsheet.
+ *
+ * These two are shown as the choice; the rest fold away behind a disclosure.
+ * Presenting six as peers buried the one almost everybody wants, and gave the
+ * one that can overwrite a live game file the same weight as CSV.
+ */
+const GOES_BACK_INTO_THE_GAME = (id: ExportFormat) => id === 'bg3mm' || id === 'modsettings';
+
 const MIME: Record<string, string> = {
   json: 'application/json',
   csv: 'text/csv',
@@ -132,8 +141,23 @@ export default function ExportPage() {
             <CardTitle className="font-display">Format</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
+            {(format === 'bg3mm' || format === 'modsettings') && missingUuids > 0 && (
+              <Alert className="border-destructive/40 bg-destructive/10">
+                <AlertDescription className="font-body text-sm">
+                  Your import had no UUIDs, and {missingUuids}{' '}
+                  {missingUuids === 1 ? 'mod is' : 'mods are'} still missing one
+                  after matching against the masterlist.{' '}
+                  {format === 'modsettings'
+                    ? 'A modsettings.lsx cannot represent them, so they are left out of this file.'
+                    : 'BG3MM pairs entries with installed mods by UUID, so it may not reorder those.'}{' '}
+                  Exporting from BG3MM as JSON, or importing the game's own
+                  modsettings.lsx, avoids this.
+                </AlertDescription>
+              </Alert>
+            )}
+
             <div className="grid gap-3 sm:grid-cols-2">
-              {EXPORT_FORMATS.map(f => (
+              {EXPORT_FORMATS.filter(f => GOES_BACK_INTO_THE_GAME(f.id)).map(f => (
                 <button
                   key={f.id}
                   onClick={() => setFormat(f.id)}
@@ -149,20 +173,27 @@ export default function ExportPage() {
               ))}
             </div>
 
-            {(format === 'bg3mm' || format === 'modsettings') && missingUuids > 0 && (
-              <Alert className="border-destructive/40 bg-destructive/10">
-                <AlertDescription className="font-body text-sm">
-                  Your import had no UUIDs, and {missingUuids}{' '}
-                  {missingUuids === 1 ? 'mod is' : 'mods are'} still missing one
-                  after matching against the masterlist.{' '}
-                  {format === 'modsettings'
-                    ? 'A modsettings.lsx cannot represent them, so they are left out of this file.'
-                    : 'BG3MM pairs entries with installed mods by UUID, so it may not reorder those.'}{' '}
-                  Exporting from BG3MM as JSON, or importing the game's own
-                  modsettings.lsx, avoids this.
-                </AlertDescription>
-              </Alert>
-            )}
+            <details className="group">
+              <summary className="cursor-pointer text-sm text-muted-foreground hover:text-foreground font-body">
+                Other formats, for spreadsheets and posts
+              </summary>
+              <div className="grid gap-3 sm:grid-cols-2 mt-3">
+                {EXPORT_FORMATS.filter(f => !GOES_BACK_INTO_THE_GAME(f.id)).map(f => (
+                  <button
+                    key={f.id}
+                    onClick={() => setFormat(f.id)}
+                    className={`text-left rounded-lg border p-4 transition-colors ${
+                      format === f.id
+                        ? 'border-primary bg-primary/10'
+                        : 'border-border hover:border-primary/50'
+                    }`}
+                  >
+                    <p className="font-medium font-subheader">{f.label}</p>
+                    <p className="text-xs text-muted-foreground mt-1 font-body">{f.hint}</p>
+                  </button>
+                ))}
+              </div>
+            </details>
 
             {format === 'modsettings' && (
               <Alert className="border-destructive/40 bg-destructive/10">

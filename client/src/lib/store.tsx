@@ -44,6 +44,11 @@ interface StoreValue {
   remember: boolean;
   setRemember: (remember: boolean) => void;
 
+  /** How many mods the user has moved by hand, overriding the sort. */
+  manualMoves: number;
+  moveMod: (uuid: string, direction: -1 | 1) => void;
+  clearManual: () => void;
+
   importParsed: (parsed: ParseResult, sourceName: string) => void;
   reorder: (from: number, to: number) => void;
   removeMod: (uuid: string) => void;
@@ -142,12 +147,59 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const result = useMemo(
+  const sorted = useMemo(
     () => (mods.length && masterlist ? sortLoadOrder(mods, masterlist) : null),
     [mods, masterlist],
   );
 
+  /**
+   * A hand-moved mod stays where the user put it.
+   *
+   * Applying the move to the input would not work: the next sort would place
+   * it by category all over again and silently undo the correction. So the
+   * override is applied to the sorted output instead. The sort proposes, the
+   * user disposes, and the export follows what is on screen. Mods the override
+   * does not mention keep the position the sort gave them.
+   */
+  const [manualOrder, setManualOrder] = useState<string[] | null>(null);
+
+  const result = useMemo(() => {
+    if (!sorted || !manualOrder) return sorted;
+    const byUuid = new Map(sorted.mods.map(m => [m.uuid, m]));
+    const ordered = manualOrder.map(u => byUuid.get(u)).filter((m): m is Mod => !!m);
+    for (const m of sorted.mods) if (!manualOrder.includes(m.uuid)) ordered.push(m);
+
+    const placements = new Map(sorted.placements);
+    ordered.forEach((m, position) => {
+      const p = placements.get(m.uuid);
+      if (p) placements.set(m.uuid, { ...p, position, movedBy: position - m.originalIndex });
+    });
+    return { ...sorted, mods: ordered, placements };
+  }, [sorted, manualOrder]);
+
+  const moveMod = useCallback((uuid: string, direction: -1 | 1) => {
+    setManualOrder(prev => {
+      const base = prev ?? result?.mods.map(m => m.uuid) ?? [];
+      const from = base.indexOf(uuid);
+      const to = from + direction;
+      if (from === -1 || to < 0 || to >= base.length) return prev;
+      const next = [...base];
+      [next[from], next[to]] = [next[to], next[from]];
+      return next;
+    });
+  }, [result]);
+
+  const clearManual = useCallback(() => setManualOrder(null), []);
+
+  /** How many mods sit somewhere the sort did not put them. */
+  const manualMoves = useMemo(() => {
+    if (!sorted || !manualOrder) return 0;
+    const suggested = sorted.mods.map(m => m.uuid);
+    return manualOrder.filter((u, i) => suggested[i] !== u).length;
+  }, [sorted, manualOrder]);
+
   const importParsed = useCallback((parsed: ParseResult, name: string) => {
+    setManualOrder(null);
     setMods(parsed.mods);
     setSourceName(name);
     setFormat(parsed.format);
@@ -171,6 +223,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const clear = useCallback(() => {
+    setManualOrder(null);
     setMods([]);
     setSourceName('');
     setFormat('');
@@ -182,6 +235,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     masterlist, masterlistError, isLoadingMasterlist,
     result,
     remember, setRemember,
+    manualMoves, moveMod, clearManual,
     importParsed, reorder, removeMod, clear,
   };
 
