@@ -14,7 +14,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
 
-const SITE = 'https://volobg3.com';
+export const SITE = 'https://volobg3.com';
 
 interface PageMeta {
   title: string;
@@ -27,7 +27,7 @@ interface PageMeta {
  * Descriptions are written to be read in a result, not stuffed. Titles stay
  * under about sixty characters so they survive truncation.
  */
-const PAGES: Record<string, PageMeta> = {
+export const PAGES: Record<string, PageMeta> = {
   '/': {
     title: "VOLO: Load Order Sorting for Baldur's Gate 3",
     description:
@@ -83,12 +83,13 @@ const PAGES: Record<string, PageMeta> = {
 };
 
 /** Aliases resolve to the canonical route so they do not compete with it. */
-const ALIASES: Record<string, string> = {
+export const ALIASES: Record<string, string> = {
   '/optimizer': '/optimise',
   '/support': '/donations',
 };
 
-const NOT_FOUND: PageMeta = {
+/** Used for any address with no entry above, so a stray URL is never indexed. */
+export const NOT_FOUND: PageMeta = {
   title: 'Page not found | VOLO',
   description: 'That page does not exist.',
   noindex: true,
@@ -104,7 +105,15 @@ function setMeta(selector: string, create: () => HTMLElement, apply: (el: HTMLEl
   apply(el);
 }
 
-/** Keeps the document head in step with the current route. */
+/**
+ * Keeps the document head in step with the current route.
+ *
+ * Each route is prerendered with these tags already in place, so this exists
+ * for what happens afterwards: moving between routes in the browser changes the
+ * URL without a page load, and the title, canonical and robots tags have to
+ * follow. The robots tag matters most, because a route reached by client-side
+ * navigation would otherwise keep whichever value the previous page carried.
+ */
 export function usePageMeta(): void {
   const [location] = useLocation();
 
@@ -127,9 +136,6 @@ export function usePageMeta(): void {
       el => el.setAttribute('href', canonical),
     );
 
-    // A client-side router cannot answer with a 404 status, so an unknown URL
-    // would otherwise be indexed as a real page with a 200. This is the only
-    // way to tell a crawler the page is not worth keeping.
     setMeta(
       'meta[name="robots"]',
       () => Object.assign(document.createElement('meta'), { name: 'robots' }),

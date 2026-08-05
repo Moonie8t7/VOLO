@@ -1,11 +1,12 @@
 /**
  * Routes and providers.
  *
- * Client-side routing only, so the host must rewrite unmatched paths to
- * index.html or a refresh on /optimise returns a 404.
+ * Each route is rendered to its own HTML file at build time, so a refresh or a
+ * cold link lands on a real page rather than on the shell. Routing after that
+ * is client side as usual.
  */
 
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router as WouterRouter } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { StoreProvider } from "@/lib/store";
@@ -22,6 +23,13 @@ import MeasuredPage from "@/pages/MeasuredPage";
 import NotFound from "@/pages/not-found";
 import { usePageMeta } from "@/lib/head";
 
+/**
+ * The route table, inside the page shell.
+ *
+ * Every path here also needs an entry in scripts/prerender.mjs, or it has no
+ * file of its own once deployed and the host answers 404. The smoke test
+ * asserts the two lists match.
+ */
 function Router() {
   usePageMeta();
   return (
@@ -45,13 +53,20 @@ function Router() {
   );
 }
 
-export default function App() {
+/**
+ * `ssrPath` renders one route to HTML at build time, where there is no address
+ * bar for wouter to read. In the browser it is left undefined and routing works
+ * from the URL as usual.
+ */
+export default function App({ ssrPath }: { ssrPath?: string }) {
   return (
-    <StoreProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </StoreProvider>
+    <WouterRouter ssrPath={ssrPath}>
+      <StoreProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </StoreProvider>
+    </WouterRouter>
   );
 }
