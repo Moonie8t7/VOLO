@@ -31,7 +31,7 @@ behind it, not an oracle.
 npm install
 npm run dev        # http://localhost:5173
 npm run check      # typecheck
-npm test           # the optimiser against the real corpus
+npm test           # the optimiser against the real corpus, then every tracked file
 npm run build      # masterlist, sitemap, bundle, then prerender every route
 node scripts/serve-dist.mjs   # serve dist/ the way the host does
 ```

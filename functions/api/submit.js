@@ -51,7 +51,7 @@ export async function onRequestPost({ request, env }) {
   const order = typeof rawOrder === 'string'
     ? rawOrder
       .replace(/(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g, '$1')
-      .replace(/\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g, '$1')
+      .replace(/(?<![A-Za-z0-9])\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g, '$1')
     : rawOrder;
   if (verdict !== 'working' && verdict !== 'broken') {
     return json(400, { error: 'Say whether the order worked.' });

@@ -537,11 +537,14 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     ['/home/someone/.local/share/Larian Studios/Mods/C.pak', 'C.pak'],
     ['/Users/someone/Library/Application Support/Mods/D.pak', 'D.pak'],
     ['https://github.com/author/repo/blob/main/README.md', null],
+    // A URL whose path merely contains /Users/ is an address, not a home
+    // directory, and rewriting it destroys a working link.
+    ['https://cdn.example.com/Users/team/file.pak', null],
     ['ModFixer.pak', null],
   ];
 
   const win = /(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g;
-  const nix = /\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g;
+  const nix = /(?<![A-Za-z0-9])\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g;
   const scrub = t => t.replace(win, '$1').replace(nix, '$1');
 
   const wrong = probes.filter(([input, expected]) => scrub(input) !== (expected ?? input));
