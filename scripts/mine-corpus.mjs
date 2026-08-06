@@ -49,7 +49,7 @@ const OUT_DIR = argOf('out', 'masterlist');
 const EXCLUDE = argOf('exclude', null);
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
-// Base-game data packages. They appear in Dependencies but are not mods.
+/** Base-game data packages. They appear in Dependencies but are not mods. */
 const ENGINE_MASTERS = new Set([
   'GustavDev', 'GustavX', 'Gustav', 'Shared', 'SharedDev',
   'Honour', 'HonourX', 'Engine', 'ModBrowser', 'DiceSet_01',
@@ -465,10 +465,12 @@ function labelOf(file) {
   return 'unlabelled';
 }
 
-// A separator is a cosmetic divider, not a mod. Modders write them many ways:
-//   ---------------------------|   Spells   |---------------------------
-//   ] Armor [
-//   >             Jewelry
+/**
+ * A separator is a cosmetic divider, not a mod. Modders write them many ways:
+ *   ---------------------------|   Spells   |---------------------------
+ *   ] Armor [
+ *   >             Jewelry
+ */
 const SEPARATOR_RE = /[-=_~]{4,}|^\s*[\]>]\s*\S|^\s*\|.*\|\s*$/;
 
 function sectionLabel(name) {
@@ -625,7 +627,7 @@ for (const order of orders) {
   }
 }
 
-// Resolve each mod to a canonical name + group.
+/** Resolve each mod to a canonical name + group. */
 const plugins = [];
 const stats = { fromDivider: 0, curated: 0, fromSection: 0, fromName: 0, inferredHigh: 0, inferredLow: 0, unsorted: 0 };
 
@@ -769,8 +771,10 @@ const K_NEIGHBOURS = 6;
 const MIN_AGREEMENT = 0.7;
 const MIN_VOTERS = 3;
 
-// Neighbour voting reads position directly, so orders VOLO sorted are left out
-// entirely rather than allowed to vote for the placements VOLO already chose.
+/**
+ * Neighbour voting reads position directly, so orders VOLO sorted are left out
+ * entirely rather than allowed to vote for the placements VOLO already chose.
+ */
 const uuidSequences = orders
   .filter(o => o.positional)
   .map(o =>
@@ -1008,7 +1012,7 @@ if (process.env.VOLO_NO_EXTERNAL_DEPS) {
 plugins.sort((a, b) =>
   b.evidence.installs - a.evidence.installs || a.name.localeCompare(b.name));
 
-// Every distinct base-game build the corpus was built against, newest first.
+/** Every distinct base-game build the corpus was built against, newest first. */
 const builds = [...new Set(orders.map(o => o.gameBuild).filter(Boolean))]
   .sort((a, b) => compareBuilds(b, a));
 const newestBuild = builds[0] ?? null;

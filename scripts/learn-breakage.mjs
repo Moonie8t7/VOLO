@@ -41,7 +41,7 @@ function readOrder(f) {
 const isWorking = f => /^working_/i.test(f) || /^current_/i.test(f);
 const isBroken = f => /not[-_]working/i.test(f);
 
-// Build the strong working consensus at category level.
+/** Build the strong working consensus at category level. */
 const files = fs.readdirSync(CORPUS).sort();
 const wins = new Map();
 const key = (a, b) => `${a}|${b}`;
