@@ -126,6 +126,8 @@ together, and whether it worked. It is dropped from section headers, divider
 evidence, neighbour inference and held-out scoring. Verified by flagging the
 999-mod order: section-header placements fell from 1,641 to 983 and uncategorised
 rose from 338 to 544, while it still counted among the nine working orders.
+Those were the figures the day it was measured, and the corpus has moved since;
+what matters is the shape of the change, not the exact numbers.
 
 ## Constraints that shaped the design
 
