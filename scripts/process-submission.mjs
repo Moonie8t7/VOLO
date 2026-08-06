@@ -24,6 +24,7 @@
 import { execSync } from 'child_process';
 import { build } from 'esbuild';
 import crypto from 'crypto';
+import { writeProvenance, judge } from './corpus-provenance.mjs';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -145,13 +146,16 @@ if (!orderText) {
 const bundle = path.join(os.tmpdir(), `volo-intake-${process.pid}.mjs`);
 await build({
   stdin: {
-    contents: `export { parseLoadOrder } from './client/src/lib/parser';`,
+    contents: `
+      export { parseLoadOrder } from './client/src/lib/parser';
+      export { sortLoadOrder } from './client/src/lib/optimiser';
+    `,
     resolveDir: process.cwd(),
     loader: 'ts',
   },
   bundle: true, format: 'esm', platform: 'node', outfile: bundle, logLevel: 'error',
 });
-const { parseLoadOrder } = await import(`file://${bundle}`);
+const { parseLoadOrder, sortLoadOrder } = await import(`file://${bundle}`);
 fs.rmSync(bundle, { force: true });
 
 const parsed = parseLoadOrder(orderText, 'submission.json');
@@ -191,10 +195,55 @@ const filename = `${prefix}_issue-${issueNumber}_${stamp}.${ext}`;
 const before = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 const knownBefore = new Set(before.plugins.map(p => p.uuid));
 
+/**
+ * How closely the submitted sequence matches what VOLO would produce for it.
+ *
+ * The same pairwise measure the evaluation scripts use, so the numbers mean the
+ * same thing. Near 1 says the order is VOLO's own output returning, because the
+ * sort is deterministic and a person arranging several hundred mods by hand
+ * does not reproduce it.
+ */
+function agreementWithVolo() {
+  const reference = parsed.mods.map(m => m.uuid);
+  const rank = new Map(reference.map((u, i) => [u, i]));
+  const sorted = sortLoadOrder(parsed.mods, before).mods.map(m => m.uuid);
+  const seq = sorted.filter(u => rank.has(u)).map(u => rank.get(u));
+
+  let concordant = 0;
+  let total = 0;
+  for (let i = 0; i < seq.length; i++) {
+    for (let j = i + 1; j < seq.length; j++) {
+      total++;
+      if (seq[i] < seq[j]) concordant++;
+    }
+  }
+  return total ? concordant / total : null;
+}
+
+/**
+ * What the submitter said about how the order was arranged.
+ *
+ * Absent when the issue predates the question or nobody answered, which is
+ * treated as unknown rather than as either answer.
+ */
+const declared = /sorted (?:it )?with volo/i.test(body) ? 'volo'
+  : /arranged (?:it )?myself|my own order/i.test(body) ? 'self'
+    : 'unknown';
+
+const matchesVolo = agreementWithVolo();
+
 // Measure before the order exists, so its effect on the metric is knowable.
 const baseline = measureAgreement();
 
 fs.writeFileSync(path.join(CORPUS, filename), orderText.trim() + '\n');
+
+// Recorded before mining, so the miner sees it on the very first pass and never
+// reads a VOLO-sorted order as evidence of where mods belong.
+writeProvenance(filename, {
+  declared,
+  agreementWithVolo: matchesVolo === null ? null : Math.round(matchesVolo * 1000) / 1000,
+  sortedByVolo: judge({ declared, agreementWithVolo: matchesVolo }),
+});
 
 // Step 6: regenerate everything and capture the verification numbers.
 execSync('node scripts/mine-corpus.mjs', { stdio: 'pipe' });

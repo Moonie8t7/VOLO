@@ -526,6 +526,44 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+/**
+ * Orders VOLO sorted must not be read as evidence of where mods belong.
+ *
+ * The declared answer decides in both directions and the measurement only
+ * settles the cases nobody answered, so a threshold drifting or an answer being
+ * ignored would quietly reopen the feedback loop this exists to close.
+ */
+{
+  console.log('');
+  console.log('corpus provenance');
+
+  const { judge, isVoloSorted } = await import('./corpus-provenance.mjs');
+
+  const cases = [
+    ['a submitter saying VOLO sorted it is believed', { declared: 'volo', agreementWithVolo: 0.4 }, true],
+    ['a submitter saying they arranged it is believed', { declared: 'self', agreementWithVolo: 1 }, false],
+    ['an unanswered order matching almost exactly is flagged', { declared: 'unknown', agreementWithVolo: 0.99 }, true],
+    ['an unanswered order merely agreeing is not', { declared: 'unknown', agreementWithVolo: 0.8 }, false],
+    ['an unmeasurable unanswered order is not', { declared: 'unknown', agreementWithVolo: null }, false],
+  ];
+
+  const wrong = cases.filter(([, input, expected]) => judge(input) !== expected);
+  if (!wrong.length) {
+    console.log(`  ok    provenance decided correctly in ${cases.length} cases`);
+  } else {
+    failures++;
+    for (const [name] of wrong) console.log(`  FAIL  ${name}`);
+  }
+
+  // Absence must read as independent, or the whole existing corpus is discarded.
+  if (isVoloSorted('an-order-nobody-recorded.json') === false) {
+    console.log('  ok    an unrecorded order counts as independent');
+  } else {
+    failures++;
+    console.log('  FAIL  an unrecorded order is being treated as VOLO-sorted');
+  }
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);

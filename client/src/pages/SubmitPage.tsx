@@ -58,6 +58,7 @@ export default function SubmitPage() {
   const [orderError, setOrderError] = useState<string | null>(null);
   const [pasted, setPasted] = useState('');
   const [verdict, setVerdict] = useState<'working' | 'broken' | null>(null);
+  const [arrangement, setArrangement] = useState<'volo' | 'self' | null>(null);
   const [notes, setNotes] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submittedUrl, setSubmittedUrl] = useState<string | null>(null);
@@ -112,6 +113,7 @@ export default function SubmitPage() {
         verdict,
         notes: notes.trim() || undefined,
         patch: masterlist?.gamePatch ?? undefined,
+        sortedByVolo: arrangement ?? undefined,
         turnstileToken: turnstileToken.current,
       });
       setSubmittedUrl(url);
@@ -278,6 +280,37 @@ export default function SubmitPage() {
                     />
                     <span className="text-sm">It had problems</span>
                   </label>
+                </div>
+
+                {/*
+                  Asked because VOLO cannot tell on its own. The file goes
+                  through BG3 Mod Manager before it comes back, which strips
+                  anything VOLO could have written into it.
+                */}
+                <div className="border-t border-border/40 pt-4 space-y-2">
+                  <p className="text-sm">
+                    How did this order get its sequence?
+                    <span className="block text-xs text-muted-foreground mt-1">
+                      An order VOLO sorted still teaches it which mods work
+                      together. It cannot teach it where they go, because that
+                      part came from VOLO. Saying so keeps the numbers honest.
+                    </span>
+                  </p>
+                  {([
+                    ['self', 'I arranged it myself'],
+                    ['volo', 'I sorted it with VOLO'],
+                  ] as const).map(([value, label]) => (
+                    <label key={value} className="flex items-center gap-3 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="arrangement"
+                        checked={arrangement === value}
+                        onChange={() => setArrangement(value)}
+                        className="h-4 w-4 accent-[#D7A869]"
+                      />
+                      <span className="text-sm">{label}</span>
+                    </label>
+                  ))}
                 </div>
 
                 <Textarea

@@ -18,6 +18,14 @@ export interface SubmissionPayload {
   verdict: 'working' | 'broken';
   notes?: string;
   patch?: string;
+  /**
+   * Whether VOLO produced this order.
+   *
+   * An order VOLO sorted and someone played is real evidence that the mods work
+   * together, and no evidence at all about the sequence, which VOLO chose.
+   * Unanswered is left undefined rather than assumed either way.
+   */
+  sortedByVolo?: 'volo' | 'self';
   turnstileToken?: string;
 }
 
