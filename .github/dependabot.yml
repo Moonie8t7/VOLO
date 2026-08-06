@@ -17,8 +17,17 @@ updates:
     # Everything here is a build or development tool; nothing ships to a
     # visitor's browser except what Vite compiles. One pull request a month is
     # enough, and a single grouped one is easier to test than five.
+    #
+    # Both kinds are grouped, and they have to be listed separately: a group
+    # with no applies-to covers version updates only, which is why the vite
+    # advisories still arrived as their own pull requests.
     groups:
       build-tooling:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      security:
+        applies-to: security-updates
         patterns:
           - "*"
     open-pull-requests-limit: 3
@@ -31,6 +40,11 @@ updates:
       interval: monthly
     groups:
       actions:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      actions-security:
+        applies-to: security-updates
         patterns:
           - "*"
     commit-message:
