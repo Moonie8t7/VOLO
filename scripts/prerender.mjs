@@ -154,9 +154,17 @@ for (const route of ROUTES) {
     `<meta property="og:url" content="${canonical}" />`,
   );
 
+  /*
+   * A flat about.html, not about/index.html.
+   *
+   * The host serves a directory's index at the path with a trailing slash and
+   * permanently redirects the version without one, so every canonical and every
+   * sitemap entry we publish would have pointed at a redirect. A flat file is
+   * served at the address as written, which is the address we advertise.
+   */
   const target = route === '/'
     ? path.join(DIST, 'index.html')
-    : path.join(DIST, route.slice(1), 'index.html');
+    : path.join(DIST, `${route.slice(1)}.html`);
 
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, html);

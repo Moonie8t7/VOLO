@@ -35,12 +35,22 @@ const TYPES = {
   '.xml': 'application/xml; charset=utf-8',
 };
 
-/** The file a path resolves to, or null when nothing matches. */
+/**
+ * The file a path resolves to, or null when nothing matches.
+ *
+ * Mirrors the host's order: the file as asked for, then the same name with
+ * .html, then a directory index. The middle step is the one that matters,
+ * because it is what serves /about from about.html without the redirect a
+ * directory index would force.
+ */
 function resolve(urlPath) {
   const clean = decodeURIComponent(urlPath.split('?')[0]).replace(/\.\./g, '');
   const direct = path.join(DIST, clean);
 
   if (fs.existsSync(direct) && fs.statSync(direct).isFile()) return direct;
+
+  const asHtml = `${direct.replace(/[/\\]$/, '')}.html`;
+  if (clean !== '/' && fs.existsSync(asHtml)) return asHtml;
 
   const indexed = path.join(direct, 'index.html');
   if (fs.existsSync(indexed)) return indexed;
