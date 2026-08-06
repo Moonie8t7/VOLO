@@ -1,0 +1,37 @@
+# Dependency updates.
+#
+# Without this file Dependabot opens one pull request per advisory, which is how
+# a single vite upgrade arrived as two overlapping pull requests. Grouping makes
+# it one, and one is reviewable.
+#
+# Actions are included because a workflow pinned to an old third-party action is
+# a supply chain risk that no npm audit will ever mention, and these workflows
+# hold write access to the repository.
+
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    # Everything here is a build or development tool; nothing ships to a
+    # visitor's browser except what Vite compiles. One pull request a month is
+    # enough, and a single grouped one is easier to test than five.
+    groups:
+      build-tooling:
+        patterns:
+          - "*"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: Update
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: Update
