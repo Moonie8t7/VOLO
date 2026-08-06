@@ -109,9 +109,31 @@ async function extractOrderText() {
   return braced ? braced[0] : null;
 }
 
+/**
+ * Strips absolute Windows paths out of a submission.
+ *
+ * BG3MM writes the full path of a pak into the FileName column for some
+ * entries, which carries the submitter's Windows account name with it. The
+ * corpus is published under CC0, so anything left here is published under
+ * someone's name without them ever choosing to. Only the file name is used.
+ *
+ * Backslashes only. Allowing forward slashes as well makes "https://host/a/b"
+ * match the drive-letter pattern, and rewriting a mod's URL is its own kind of
+ * damage. A Windows path uses backslashes; a URL never does.
+ */
+function stripLocalPaths(text) {
+  // Null when nothing was found; the caller reports that more usefully than a
+  // TypeError would.
+  if (!text) return text;
+  return text.replace(
+    /(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g,
+    (_full, basename) => basename,
+  );
+}
+
 let orderText;
 try {
-  orderText = await extractOrderText();
+  orderText = stripLocalPaths(await extractOrderText());
 } catch (err) {
   finish(false, ['## Submission rejected', '', `Could not retrieve the order: ${err.message}`]);
 }
