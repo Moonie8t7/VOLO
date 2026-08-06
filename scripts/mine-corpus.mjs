@@ -28,8 +28,10 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { readProvenance, isVoloSorted } from './corpus-provenance.mjs';
+import { loadCuratedRules } from './curated-rules.mjs';
 
 const provenance = readProvenance();
+const curated = loadCuratedRules();
 
 const CORPUS_DIR = 'Load Orders - Public Submitted';
 
@@ -226,24 +228,7 @@ const GROUPS = [
  * use "Essentials"/"Core" to mean "mods I won't play without" rather than "loads
  * first". Content mods infer fine; the foundation has to be stated.
  */
-const CURATED = [
-  [/^bg3se|script\s*extender|^norbyte/i,                          'Utilities'],
-  [/native\s*mod\s*loader|^nativemodloader|^mod\s*fixer|modfixer/i, 'Utilities'],
-  [/^impui|improvedui/i,                                          'User Interface'],
-  [/^communitylibrary|community\s*library/i,                      'Resources'],
-  [/^volitioncabinet/i,                                           'Resources'],
-  [/^aahzlib|material\s*library|^tagframework/i,                  'Resources'],
-  // Patchers, not libraries. They rewrite what other mods added, so they must
-  // run after them. Astra's dividers place Compatibility Framework at 105 and
-  // Appearance Edit at 104, both under Late Loaders, and the corpus agrees:
-  // Compatibility Framework sits at the very end of the working order holding
-  // it, while CommunityLibrary sits 2 percent in. Filing both as Resources
-  // collapsed that distinction and loaded the patcher far too early.
-  [/compatibilitys*framework|^compatibilityframework/i,          'Bottom of Load Order'],
-  [/appearances*edits*enhanced|^appearanceedit/i,               'Bug Fixes'],
-  [/mod\s*configuration\s*menu|^bg3mcm/i,                         'Resources'],
-  [/item\s*shipment\s*framework/i,                                'Resources'],
-];
+
 
 /**
  * Section header text (lowercased) -> canonical group.
@@ -648,9 +633,18 @@ for (const r of mods.values()) {
   const name = [...r.names.entries()].sort((a, b) => b[1] - a[1])[0][0];
 
   let group = null, confidence = null;
+  let dividerFromCurated = null;
 
-  for (const [re, g] of CURATED) {
-    if (re.test(name)) { group = g; confidence = 'curated'; stats.curated++; break; }
+  // A curated rule names the divider slot itself, not merely the group, so a
+  // person can say "this belongs at 105" and be obeyed exactly.
+  for (const rule of curated.placements) {
+    if (rule.re.test(name)) {
+      group = rule.group;
+      dividerFromCurated = rule.divider ?? null;
+      confidence = 'curated';
+      stats.curated++;
+      break;
+    }
   }
 
   if (!group && r.sections.size) {
@@ -723,12 +717,24 @@ for (const r of mods.values()) {
   //
   // Failing both, the group still names the slot it opens at, so every
   // categorised mod lands on the skeleton rather than at the end of the order.
-  if (r.dividers.size) {
+  // A curated slot outranks observation. It is the one tier where somebody has
+  // stated the constraint, and the corpus filing Compatibility Framework as a
+  // library is exactly the case it exists to overrule.
+  if (dividerFromCurated !== null) {
+    plugin.divider = dividerFromCurated;
+  } else if (r.dividers.size) {
     plugin.divider = [...r.dividers.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0][0];
   } else if (dividerFromName !== null) {
     plugin.divider = dividerFromName;
   } else if (GROUP_DIVIDER.has(group)) {
     plugin.divider = GROUP_DIVIDER.get(group);
+  }
+
+  // Curated warnings ride with the mod so the sorter can show them without
+  // needing the rules file at runtime.
+  const notes = curated.messages.filter(m => m.re.test(name));
+  if (notes.length) {
+    plugin.messages = notes.map(m => ({ text: m.text, severity: m.severity ?? 'info' }));
   }
   plugin.evidence = {
     source: confidence,
@@ -1017,6 +1023,13 @@ const masterlist = {
   gameBuild: newestBuild,
   gamePatch: patchLabel(newestBuild),
   gameBuildsObserved: builds,
+  /*
+   * Pairs that must not be installed together. Hand-written, never mined: the
+   * corpus can show that two mods co-occurred in an order that broke, which is
+   * not the same as them conflicting, and publishing "A conflicts with B" about
+   * someone's work on that basis would be a false claim about a real person.
+   */
+  incompatible: curated.incompatible,
   provenance: {
     ordersAnalysed: orders.length,
     working: orders.filter(o => o.label === 'working').length,

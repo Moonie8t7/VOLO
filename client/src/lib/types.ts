@@ -55,6 +55,8 @@ export interface MasterlistPlugin {
   divider?: number;
   /** Relies on the Script Extender, which is a dll and never appears in a load order. */
   usesScriptExtender?: boolean;
+  /** Curated warnings attached to this mod, shown whenever it is present. */
+  messages?: { text: string; severity: IssueSeverity }[];
   evidence?: {
     source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'external-category' | 'divider-vocabulary' | 'inferred' | 'none';
     installs: number;
@@ -74,8 +76,24 @@ export interface Masterlist {
   gamePatch?: string | null;
   gameBuildsObserved?: string[];
   provenance?: Record<string, number>;
+  /**
+   * Mods that must not be installed together.
+   *
+   * Hand-written only. Two mods appearing in an order that broke is not
+   * evidence they conflict, and saying so about a real author's work on that
+   * basis would be a false claim rather than a cautious one.
+   */
+  incompatible?: Incompatibility[];
   groups: Group[];
   plugins: MasterlistPlugin[];
+}
+
+export interface Incompatibility {
+  /** Names or UUIDs. Two or more present together triggers the warning. */
+  mods: string[];
+  /** Why they conflict, shown to the user verbatim. */
+  why: string;
+  severity?: IssueSeverity;
 }
 
 /** Why a mod ended up where it did. LOOT's transparency principle. */
@@ -111,7 +129,7 @@ export type IssueSeverity = 'critical' | 'warning' | 'info';
 
 export interface Issue {
   severity: IssueSeverity;
-  kind: 'missing-dependency' | 'cycle' | 'duplicate' | 'unsorted' | 'unknown-mod'
+  kind: 'missing-dependency' | 'cycle' | 'duplicate' | 'unsorted' | 'unknown-mod' | 'incompatible' | 'curated-note'
     | 'script-extender' | 'fixed-dependency' | 'never-verified';
   message: string;
   /** Mods this issue concerns. */

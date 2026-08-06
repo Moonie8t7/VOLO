@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-06T07:07:30.753Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-06T09:55:51.639Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -38,8 +38,8 @@ the tool flag a mod as last verified on an older patch.
 
 | Source | Count | Trust |
 |---|---|---|
-| Curated override | 14 | highest, hand-verified infrastructure |
-| Human-authored section header | 1641 | high, a modder put it there |
+| Curated override | 15 | highest, hand-verified infrastructure |
+| Human-authored section header | 1640 | high, a modder put it there |
 | Name pattern fallback | 700 | medium, needs review |
 | Nexus or mod.io listing category | 219 | medium, the author's own words about what the mod is |
 | Neighbour inference, 0.85 agreement or better | 36 | high, measured 97 percent accurate at this band |
@@ -63,7 +63,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Resources`: 84
 - `Equipment`: 140
 - `Armor`: 225
-- `Utilities`: 23
+- `Utilities`: 22
 - `Races`: 104
 - `Animations`: 48
 - `Spells`: 151
@@ -81,7 +81,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Dice`: 221
 - `Companions`: 133
 - `NPC`: 74
-- `Bottom of Load Order`: 1
+- `Bottom of Load Order`: 2
 - `unsorted`: 338
 
 ## Known limitations

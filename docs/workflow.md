@@ -68,6 +68,7 @@ production, and this is the only check that runs against the real host.
 | `diagnose-order.mjs` | Explains what is probably wrong with a broken order. |
 | `process-submission.mjs` | Validates a submission, gates it, writes the report. |
 | `corpus-provenance.mjs` | Records and reads whether an order is VOLO's own output. |
+| `curated-rules.mjs` | Loads `masterlist/curated-rules.json` and checks each pattern. |
 | `bulk-list-nexus.mjs` | Crawls the Nexus catalogue. `--updates` for the daily top-up. |
 | `bulk-list-modio.mjs` | Crawls mod.io. `--updates` and `--deps`. |
 | `crawl-requirements.mjs` | Harvests author-declared requirement tables. |
