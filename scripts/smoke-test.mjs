@@ -670,6 +670,47 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+/**
+ * Figures quoted in the README must match the masterlist they describe.
+ *
+ * README is the first thing anyone reads and the last thing anyone regenerates.
+ * Repairing two dead curated patterns moved a single mod from one tier to
+ * another, and the README was wrong in two places for a day without anything
+ * noticing. A number in prose is a claim, and this is the only thing that
+ * checks it.
+ */
+{
+  console.log('');
+  console.log('README figures');
+
+  const readme = fs.readFileSync('README.md', 'utf8');
+  const tier = src => masterlist.plugins.filter(p => p.evidence?.source === src).length;
+  const withCommas = n => n.toLocaleString('en-GB');
+
+  const figures = [
+    ['total mods', masterlist.plugins.length],
+    ['from section headers', tier('section') + tier('section-majority')],
+    ['from name patterns', tier('name-pattern')],
+    ['from listings', tier('external-category')],
+    ['inferred', tier('inferred')],
+    ['curated', tier('curated')],
+    ['uncategorised', tier('none')],
+    ['on a divider slot', masterlist.plugins.filter(p => p.divider !== undefined).length],
+  ];
+
+  const stale = figures.filter(([, value]) =>
+    !readme.includes(withCommas(value)) && !readme.includes(String(value)));
+
+  if (!stale.length) {
+    console.log(`  ok    all ${figures.length} quoted figures match the masterlist`);
+  } else {
+    failures++;
+    for (const [label, value] of stale) {
+      console.log(`  FAIL  README does not quote the current ${label} (${withCommas(value)})`);
+    }
+  }
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);

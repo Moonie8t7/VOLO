@@ -68,7 +68,10 @@ report and it will jump the queue.
 
 ## Known advisories
 
-Four open advisories affect `vite` and `esbuild`. All four are development
-server issues, none of them reachable in the deployed static site, and the fix
-is a major version upgrade being tested rather than a patch. They are listed
-here so their presence is not mistaken for them being unnoticed.
+None open. Four development server advisories against `vite` and `esbuild` were
+cleared by upgrading to Vite 8, which also required declaring `esbuild` as a
+direct dependency, since Vite 8 no longer supplies it.
+
+This section exists so that open advisories are never mistaken for unnoticed
+ones. If it says none, check the Security tab rather than trusting it: a
+sentence in a file cannot go stale as loudly as a dashboard.
