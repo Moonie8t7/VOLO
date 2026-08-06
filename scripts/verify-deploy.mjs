@@ -127,11 +127,11 @@ for (const asset of unique) {
 /**
  * Routing, which nothing local can check.
  *
- * public/404.html turns off Cloudflare's fallback to index.html, so every real
- * route depends on a rewrite rule in public/_redirects. Get one wrong and that
- * page is simply gone in production while everything still passes locally,
- * because vite preview does not read either file. This is the only place the
- * arrangement is ever exercised.
+ * public/404.html turns off the host's fallback to index.html, so every real
+ * route depends on having been prerendered to a file of its own. Miss one and
+ * that page is simply gone in production while everything still passes locally,
+ * because vite preview answers any unknown path with index.html. This is the
+ * only place the arrangement is exercised against the real host.
  */
 const ROUTES = [
   '/', '/import', '/optimise', '/optimizer', '/export',
