@@ -13,37 +13,26 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 ## What the match would add
 
-- 91 currently unsorted mods would receive a category from their
+- 9 currently unsorted mods would receive a category from their
   Nexus listing.
-- 286 mods have a Nexus category that disagrees with the
+- 289 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 588 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 256 of them resolved to a uuid on both
+- 586 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 246 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
 
-- Show Camp Night Notification: Gameplay (fuzzy match)
-- Smart Autosaving: Gameplay (exact match)
-- Auto Lockpicking: Gameplay (exact match)
 - EW_Proficiency_Potion: Utilities (fuzzy match)
-- FeywildDice: Dice (exact match)
-- FireballDice: Dice (exact match)
 - Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
-- Horns of Faerun: Character Customization (exact match)
-- ActualMarkoheshkir: Weapons (exact match)
-- Aitze's Shields: Weapons (exact match)
-- AlfiraJoinsTheParty: Gameplay (exact match)
-- Arcane Vanguard: Classes (fuzzy match)
-- ArcaneRings: Gameplay (exact match)
 - AstralElves: Races (fuzzy match)
-- Auntie Ethel Always Surrenders: Gameplay (exact match)
-- BagsBagsBags: Gameplay (exact match)
-- Become a Vampire: Gameplay (exact match)
-- Better Hex Icons: User Interface (exact match)
-- Better Potion of Everlasting Vigour: Gameplay (exact match)
-- BetterElfsongRoomService: Gameplay (exact match)
+- Blackguard: Classes (fuzzy match)
+- HT_Early Access Scenes Restored: Gameplay (fuzzy match)
+- PrettyParticles: User Interface (fuzzy match)
+- RecklessAttack5e: Gameplay (fuzzy match)
+- Treasure Goblins: User Interface (fuzzy match)
+- WarlockCelestial: Classes (fuzzy match)
 
 ### Sample disagreements
 
