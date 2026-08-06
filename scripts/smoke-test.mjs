@@ -524,6 +524,48 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     failures++;
     for (const o of offenders) console.log(`  FAIL  personal path in ${o}`);
   }
+
+  /*
+   * The same scrub exists in three places, because an order can reach the
+   * corpus through the browser, through the API without the browser, or through
+   * the GitHub issue form which touches neither. If they drift, the weakest one
+   * decides what gets published, and the strongest gives false assurance.
+   */
+  const probes = [
+    ['C:\\Users\\someone\\AppData\\Local\\Larian Studios\\Mods\\A.pak', 'A.pak'],
+    ['D:\\Games\\BG3\\Mods\\B.pak', 'B.pak'],
+    ['/home/someone/.local/share/Larian Studios/Mods/C.pak', 'C.pak'],
+    ['/Users/someone/Library/Application Support/Mods/D.pak', 'D.pak'],
+    ['https://github.com/author/repo/blob/main/README.md', null],
+    ['ModFixer.pak', null],
+  ];
+
+  const win = /(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g;
+  const nix = /\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g;
+  const scrub = t => t.replace(win, '$1').replace(nix, '$1');
+
+  const wrong = probes.filter(([input, expected]) => scrub(input) !== (expected ?? input));
+  if (!wrong.length) {
+    console.log(`  ok    the scrub handles ${probes.length} path shapes, and leaves URLs alone`);
+  } else {
+    failures++;
+    for (const [input] of wrong) console.log(`  FAIL  scrub wrong for ${input}`);
+  }
+
+  // All three copies must contain the same two patterns.
+  const copies = {
+    'client/src/lib/scrub.ts': fs.readFileSync('client/src/lib/scrub.ts', 'utf8'),
+    'functions/api/submit.js': fs.readFileSync('functions/api/submit.js', 'utf8'),
+    'scripts/process-submission.mjs': fs.readFileSync('scripts/process-submission.mjs', 'utf8'),
+  };
+  const missing = Object.entries(copies).filter(([, src]) =>
+    !src.includes('home|Users') || !src.includes('[A-Za-z]:'));
+  if (!missing.length) {
+    console.log('  ok    all three scrub points cover Windows and Unix paths');
+  } else {
+    failures++;
+    for (const [file] of missing) console.log(`  FAIL  ${file} is missing a scrub pattern`);
+  }
 }
 
 /**

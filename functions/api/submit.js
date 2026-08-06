@@ -37,7 +37,22 @@ export async function onRequestPost({ request, env }) {
     return json(400, { error: 'Malformed request.' });
   }
 
-  const { order, verdict, notes, patch, sortedByVolo, turnstileToken } = payload ?? {};
+  const { order: rawOrder, verdict, notes, patch, sortedByVolo, turnstileToken } = payload ?? {};
+
+  /*
+   * Scrubbed again here, having already been scrubbed in the browser.
+   *
+   * This is the last point before the order becomes a public GitHub issue,
+   * which is permanent. A cached copy of the app could be months old, and a
+   * request can be made without the app at all, so the guarantee cannot rest on
+   * the client having done it. Kept in step with client/src/lib/scrub.ts by a
+   * check in scripts/smoke-test.mjs.
+   */
+  const order = typeof rawOrder === 'string'
+    ? rawOrder
+      .replace(/(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g, '$1')
+      .replace(/\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g, '$1')
+    : rawOrder;
   if (verdict !== 'working' && verdict !== 'broken') {
     return json(400, { error: 'Say whether the order worked.' });
   }
