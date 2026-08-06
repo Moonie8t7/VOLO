@@ -73,8 +73,10 @@ function shuffled(arr, seed = 7) {
 const isWorking = f => /^working_/i.test(f) || /^current_/i.test(f);
 const inSampleList = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 
-// The corpus holds byte-identical orders under two names; counting one twice
-// would weight it double in the mean.
+/**
+ * The corpus holds byte-identical orders under two names; counting one twice
+ * would weight it double in the mean.
+ */
 const files = [];
 const seenFingerprints = new Set();
 let selfScored = 0;

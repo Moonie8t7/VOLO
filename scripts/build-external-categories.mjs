@@ -173,7 +173,7 @@ const modioAll = modioCatalog
       .filter(Boolean))
   : {};
 
-// Nexus wins ties, so mod.io only contributes names Nexus does not know.
+/** Nexus wins ties, so mod.io only contributes names Nexus does not know. */
 const modioNames = {};
 for (const [key, idx] of Object.entries(modioAll)) {
   if (nexusNames[key] === undefined) modioNames[key] = idx;

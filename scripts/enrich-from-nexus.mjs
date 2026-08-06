@@ -88,8 +88,10 @@ function similarity(a, b) {
   return (2 * hits) / (a.length + b.length - 2);
 }
 
-// Index the catalogue by normalised name. Collisions keep the more popular mod,
-// since that is the likelier referent of an ambiguous name.
+/**
+ * Index the catalogue by normalised name. Collisions keep the more popular mod,
+ * since that is the likelier referent of an ambiguous name.
+ */
 const byNorm = new Map();
 for (const [id, m] of Object.entries(catalog.mods)) {
   if (!m.name || m.status !== 'published') continue;
@@ -158,10 +160,12 @@ for (const plugin of masterlist.plugins) {
   }
 }
 
-// Requirements harvested from the GraphQL side become load-after proposals.
-// An edge is only proposed when the requiring mod matched the masterlist; the
-// required side resolves to a uuid when it also matched, and otherwise stays a
-// name so the report can show what a fuller catalogue would resolve.
+/**
+ * Requirements harvested from the GraphQL side become load-after proposals.
+ * An edge is only proposed when the requiring mod matched the masterlist; the
+ * required side resolves to a uuid when it also matched, and otherwise stays a
+ * name so the report can show what a fuller catalogue would resolve.
+ */
 const uuidByNexusId = new Map(
   Object.entries(enrichment).map(([uuid, e]) => [e.nexusId, uuid]),
 );

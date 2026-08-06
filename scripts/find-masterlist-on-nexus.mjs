@@ -82,7 +82,7 @@ function similarity(a, b) {
   return (2 * hits) / (a.length + b.length - 2);
 }
 
-// Names already represented in the catalogue need no search.
+/** Names already represented in the catalogue need no search. */
 const inCatalog = new Set(
   Object.values(catalog.mods).filter(m => m.name).map(m => norm(m.name)),
 );

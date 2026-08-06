@@ -22,9 +22,11 @@
 import fs from 'fs';
 import path from 'path';
 
-// api.mod.io is deprecated; the live API answers on per-game modapi.io
-// subdomains. BG3 is game 6715 (resolved via the old domain's games search,
-// which still answers that one query).
+/**
+ * api.mod.io is deprecated; the live API answers on per-game modapi.io
+ * subdomains. BG3 is game 6715 (resolved via the old domain's games search,
+ * which still answers that one query).
+ */
 const GAME_ID = 6715;
 const API = `https://g-${GAME_ID}.modapi.io/v1`;
 const GAME_NAME_ID = 'baldursgate3';

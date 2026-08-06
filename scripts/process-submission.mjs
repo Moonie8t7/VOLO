@@ -31,7 +31,7 @@ import path from 'path';
 
 const CORPUS = 'Load Orders - Public Submitted';
 
-// Command line
+/** Command line */
 const args = process.argv.slice(2);
 const opt = (name, fallback = null) => {
   const i = args.indexOf(`--${name}`);
@@ -85,7 +85,7 @@ function measureAgreement() {
   };
 }
 
-// Step 1: status, from the dropdown answer the template guarantees.
+/** Step 1: status, from the dropdown answer the template guarantees. */
 const working = /working, i have played on it/i.test(body);
 const broken = /not working, it has problems/i.test(body);
 if (!working && !broken) {
@@ -142,7 +142,7 @@ if (!orderText) {
   finish(false, ['## Submission rejected', '', 'No load order found in the issue. Paste the JSON or attach the exported file.']);
 }
 
-// Step 3: validate with the app parser, so intake and app agree on formats.
+/** Step 3: validate with the app parser, so intake and app agree on formats. */
 const bundle = path.join(os.tmpdir(), `volo-intake-${process.pid}.mjs`);
 await build({
   stdin: {
@@ -168,7 +168,7 @@ if (parsed.errors.length || parsed.mods.length < 5) {
   ]);
 }
 
-// Step 4: reject exact duplicates, using the same fingerprint as the miner.
+/** Step 4: reject exact duplicates, using the same fingerprint as the miner. */
 const fingerprint = list =>
   crypto.createHash('md5').update(list.map(m => m.uuid || m.name).join('|')).digest('hex');
 
@@ -185,8 +185,10 @@ for (const f of fs.readdirSync(CORPUS)) {
   }
 }
 
-// Step 5: file it. The filename prefix is what labels it for every downstream
-// script, so the convention is the contract.
+/**
+ * Step 5: file it. The filename prefix is what labels it for every downstream
+ * script, so the convention is the contract.
+ */
 const stamp = new Date().toISOString().slice(0, 10);
 const prefix = working ? 'working' : 'not_working';
 const ext = orderText.trimStart().startsWith('<?xml') ? 'lsx' : 'json';
@@ -232,7 +234,7 @@ const declared = /sorted (?:it )?with volo/i.test(body) ? 'volo'
 
 const matchesVolo = agreementWithVolo();
 
-// Measure before the order exists, so its effect on the metric is knowable.
+/** Measure before the order exists, so its effect on the metric is knowable. */
 const baseline = measureAgreement();
 
 fs.writeFileSync(path.join(CORPUS, filename), orderText.trim() + '\n');

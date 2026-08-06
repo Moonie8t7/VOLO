@@ -90,7 +90,7 @@ if (!workingOrders.length) {
   process.exit(0);
 }
 
-// How much evidence exists at all: a mod nobody has run tells us nothing.
+/** How much evidence exists at all: a mod nobody has run tells us nothing. */
 const seenInWorking = new Map();
 for (const seq of workingOrders) {
   for (const uuid of new Set(seq)) {
@@ -104,7 +104,7 @@ lines.push(
   '',
 );
 
-// 1. Declared dependencies pointing the wrong way. Stated by the mod itself.
+/** 1. Declared dependencies pointing the wrong way. Stated by the mod itself. */
 const depFindings = [];
 for (const mod of subject.mods) {
   for (const dep of mod.dependencies ?? []) {
@@ -122,8 +122,10 @@ if (depFindings.length) {
   lines.push('');
 }
 
-// 2. Pairs the working orders order the other way round. Only pairs where both
-// mods are in this order matter, which keeps the comparison cheap.
+/**
+ * 2. Pairs the working orders order the other way round. Only pairs where both
+ * mods are in this order matter, which keeps the comparison cheap.
+ */
 const pairs = new Map();
 for (const seq of workingOrders) {
   const kept = seq.filter(u => present.has(u));
@@ -139,8 +141,10 @@ for (const seq of workingOrders) {
   }
 }
 
-// Aggregate by mod rather than listing every pair: one misplaced mod generates
-// hundreds of contradicted pairs, and the mod is the actionable unit.
+/**
+ * Aggregate by mod rather than listing every pair: one misplaced mod generates
+ * hundreds of contradicted pairs, and the mod is the actionable unit.
+ */
 const against = new Map();
 for (let i = 0; i < subjectUuids.length; i++) {
   for (let j = i + 1; j < subjectUuids.length; j++) {
@@ -190,7 +194,7 @@ if (ranked.length) {
   );
 }
 
-// 3. Mods no working order contains. Not proof of fault, but the place to look.
+/** 3. Mods no working order contains. Not proof of fault, but the place to look. */
 const unverified = subjectUuids.filter(u => !seenInWorking.has(u));
 if (unverified.length) {
   lines.push('#### Mods not present in any working order', '');
