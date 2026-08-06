@@ -1,0 +1,81 @@
+{
+  "note": "Hand-written rules, the one tier that states a constraint rather than measuring a habit. Edit this file, not the scripts. Every pattern must carry an example it matches; scripts/smoke-test.mjs fails the build otherwise, because three separate pattern tables in this project have silently stopped matching anything.",
+  "documentation": "docs/architecture.md",
+
+  "placements": [
+    {
+      "pattern": "^bg3se|script\\s*extender|^norbyte",
+      "group": "Utilities",
+      "divider": 19,
+      "why": "Script Extender support loads before anything that calls into it.",
+      "examples": ["BG3SE", "Script Extender", "Norbyte's Script Extender"]
+    },
+    {
+      "pattern": "native\\s*mod\\s*loader|^nativemodloader|^mod\\s*fixer|modfixer",
+      "group": "Utilities",
+      "divider": 19,
+      "why": "Loaders and fixers have to be in place before the mods they serve.",
+      "examples": ["Native Mod Loader", "NativeModLoader", "ModFixer", "Mod Fixer"]
+    },
+    {
+      "pattern": "^impui|improvedui",
+      "group": "User Interface",
+      "divider": 1,
+      "why": "The interface framework a great many UI mods depend on.",
+      "examples": ["ImpUI (ImprovedUI)", "ImprovedUI", "ImpUI_Assets"]
+    },
+    {
+      "pattern": "^communitylibrary|community\\s*library",
+      "group": "Resources",
+      "divider": 8,
+      "why": "A library, and Astra gives it a divider of its own.",
+      "examples": ["CommunityLibrary", "Community Library"]
+    },
+    {
+      "pattern": "^volitioncabinet|volition\\s*cabinet",
+      "group": "Resources",
+      "divider": 7,
+      "why": "A library, and Astra gives it a divider of its own.",
+      "examples": ["VolitionCabinet", "Volition Cabinet"]
+    },
+    {
+      "pattern": "^aahzlib|material\\s*library|^tagframework",
+      "group": "Resources",
+      "divider": 10,
+      "why": "Shared assets other mods read from.",
+      "examples": ["AahzLib", "Material Library", "TagFramework"]
+    },
+    {
+      "pattern": "mod\\s*configuration\\s*menu|^bg3mcm",
+      "group": "Resources",
+      "divider": 14,
+      "why": "MCM itself, ahead of the mods that register settings with it.",
+      "examples": ["Mod Configuration Menu", "BG3MCM"]
+    },
+    {
+      "pattern": "item\\s*shipment\\s*framework",
+      "group": "Resources",
+      "divider": 15,
+      "why": "A framework other mods deliver items through.",
+      "examples": ["AV Item Shipment Framework", "Item Shipment Framework"]
+    },
+    {
+      "pattern": "compatibility\\s*framework|^compatibilityframework",
+      "group": "Bottom of Load Order",
+      "divider": 105,
+      "why": "A patcher, not a library: it rewrites what other mods added, so it has to run after them. Astra places it at 105 and the corpus puts it at the very end of the order holding it. Filing it as a Resource loaded it far too early.",
+      "examples": ["Compatibility Framework", "CompatibilityFramework"]
+    },
+    {
+      "pattern": "appearance\\s*edit\\s*enhanced|^appearanceedit",
+      "group": "Bug Fixes",
+      "divider": 104,
+      "why": "Also a patcher, and Astra places it at 104 under Late Loaders.",
+      "examples": ["Appearance Edit Enhanced", "AppearanceEditEnhanced"]
+    }
+  ],
+
+  "incompatible": [],
+
+  "messages": []
+}

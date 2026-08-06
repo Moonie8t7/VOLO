@@ -44,6 +44,22 @@ flowchart TD
 Placement is decided by evidence, strongest first. Anything a stronger tier
 settles is never revisited by a weaker one.
 
+Curated rules are the only tier that states a constraint rather than measuring
+a habit, and they live in `masterlist/curated-rules.json` so that curating does
+not mean editing code. A rule names a divider slot directly, so a person can say
+"Compatibility Framework belongs at 105" and be obeyed exactly, overruling a
+corpus that files it as a library.
+
+That file also carries the two things a statistic cannot express: mods that must
+not be installed together, and warnings written about a specific mod. Neither is
+ever mined. Two mods appearing in an order that broke is not evidence they
+conflict, and publishing that claim about a real author's work on that basis
+would be false rather than cautious.
+
+Every pattern carries examples it must match, and the smoke test fails the build
+otherwise. Three pattern tables in this project have silently stopped matching
+anything, twice through an escape being eaten in an edit.
+
 ```mermaid
 flowchart LR
     A["Curated overrides"] --> B["Section headers<br/>written by modders"]

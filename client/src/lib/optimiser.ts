@@ -466,6 +466,47 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
   }
 
   /*
+   * Curated incompatibilities: the one thing a statistic cannot express.
+   *
+   * Everything else here says where a mod usually goes. This says two mods must
+   * not both be installed, which no amount of counting co-occurrences can
+   * establish, and which no reordering can fix. Matched on UUID or name so a
+   * rule can be written without looking a UUID up.
+   */
+  const byNameLower = new Map(sorted.map(m => [m.name.toLowerCase(), m]));
+  const findMod = (ref: string) =>
+    present.get(ref) ?? byNameLower.get(ref.toLowerCase());
+
+  for (const rule of masterlist.incompatible ?? []) {
+    const found = rule.mods.map(findMod).filter((m): m is Mod => !!m);
+    if (found.length < 2) continue;
+    issues.push({
+      severity: rule.severity ?? 'critical',
+      kind: 'incompatible',
+      message: `${found.map(m => m.name).join(' and ')} should not be installed together.`,
+      uuids: found.map(m => m.uuid),
+      resolution: rule.why,
+    });
+  }
+
+  /*
+   * Curated notes on individual mods. Shown because someone wrote them down,
+   * not because anything was measured.
+   */
+  for (const mod of sorted) {
+    const entry = byUuid.get(mod.uuid)
+      ?? byName.get(mod.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
+    for (const note of entry?.messages ?? []) {
+      issues.push({
+        severity: note.severity,
+        kind: 'curated-note',
+        message: `${mod.name}: ${note.text}`,
+        uuids: [mod.uuid],
+      });
+    }
+  }
+
+  /*
    * Mods the community has only ever run in orders reported as broken. Not
    * proof of fault, and deliberately worded that way, but it is the first
    * place to look when an order misbehaves for no obvious reason.

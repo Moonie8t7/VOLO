@@ -564,6 +564,70 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+/**
+ * Curated rules: the tier that states a constraint instead of measuring a habit.
+ *
+ * Two failure modes are checked. A pattern that matches nothing looks like the
+ * case is handled while the mod falls through to a guess, which is how
+ * Compatibility Framework was filed as a library for months. And an
+ * incompatibility that never fires is a warning nobody will ever see.
+ */
+{
+  console.log('');
+  console.log('curated rules');
+
+  const { loadCuratedRules } = await import('./curated-rules.mjs');
+
+  let rules;
+  try {
+    rules = loadCuratedRules();
+    console.log(`  ok    ${rules.placements.length} placements match their own examples`);
+  } catch (err) {
+    failures++;
+    console.log(`  FAIL  ${err.message.split('\n')[0]}`);
+    rules = { placements: [], incompatible: [], messages: [] };
+  }
+
+  // Every curated slot must exist in Astra's taxonomy, or the sort sends the
+  // mod somewhere that has no meaning.
+  const slots = new Set(dividers.all.map(d => d.num));
+  const unknown = rules.placements.filter(p => p.divider !== undefined && !slots.has(p.divider));
+  if (!unknown.length) {
+    console.log('  ok    every curated placement names a real divider slot');
+  } else {
+    failures++;
+    for (const p of unknown) console.log(`  FAIL  ${p.pattern} points at slot ${p.divider}`);
+  }
+
+  // The detection itself, against two mods that really are in the masterlist.
+  const real = masterlist.plugins.filter(p => p.uuid && !p.uuid.startsWith('name:')).slice(0, 2);
+  const probe = {
+    ...masterlist,
+    incompatible: [{ mods: real.map(p => p.uuid), why: 'Test rule.', severity: 'critical' }],
+  };
+  const order = real.map((p, i) => ({ UUID: p.uuid, Name: p.name, Index: i }));
+  const result = sortLoadOrder(parseLoadOrder(JSON.stringify({ Order: order }), 'probe.json').mods, probe);
+  const raised = result.issues.filter(i => i.kind === 'incompatible');
+
+  if (raised.length === 1 && raised[0].uuids.length === 2) {
+    console.log('  ok    an incompatible pair present together is reported');
+  } else {
+    failures++;
+    console.log(`  FAIL  incompatibility not detected (${raised.length} issues raised)`);
+  }
+
+  // One of the pair alone must stay quiet, or every order gets a false alarm.
+  const single = sortLoadOrder(
+    parseLoadOrder(JSON.stringify({ Order: [order[0]] }), 'probe.json').mods, probe,
+  );
+  if (!single.issues.some(i => i.kind === 'incompatible')) {
+    console.log('  ok    one of the pair alone raises nothing');
+  } else {
+    failures++;
+    console.log('  FAIL  a single mod triggered an incompatibility warning');
+  }
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);
