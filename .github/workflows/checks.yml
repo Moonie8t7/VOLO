@@ -1,0 +1,37 @@
+# The same three commands the workflow docs tell a person to run, on every
+# push and pull request. Until this existed nothing ran the tests except
+# someone remembering to: the host builds on push but never tests, so a
+# dependency bump that could not even install sat open as "mergeable" with
+# no failing check to say otherwise. One did exactly that.
+#
+# Build runs before test on purpose: the smoke test asserts against the
+# prerendered output in dist/, and skips those assertions when dist/ is
+# absent. Testing after the build makes them real.
+
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+      - run: npm test

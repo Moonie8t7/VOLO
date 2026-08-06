@@ -15,9 +15,14 @@ npm run dev        # http://localhost:5173
 
 ```bash
 npm run check      # typecheck
-npm test           # the optimiser against the real corpus
+npm test           # the optimiser against the real corpus, then every tracked file
 npm run build      # regenerate the masterlist, build, then prerender every route
 ```
+
+The same three commands run on every push and pull request through
+`.github/workflows/checks.yml`, so a dependency bump that does not even
+install fails its pull request instead of waiting for someone to try it
+locally. One did exactly that.
 
 `npm run masterlist` re-mines `Load Orders - Public Submitted/` on its own. Run
 it when new submissions arrive.

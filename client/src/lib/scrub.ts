@@ -26,8 +26,15 @@
  */
 const WINDOWS_PATH = /(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g;
 
-/** macOS and Linux home directories, where the segment after home is the name. */
-const UNIX_HOME = /\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g;
+/**
+ * macOS and Linux home directories, where the segment after home is the name.
+ *
+ * The lookbehind keeps URLs intact: in "example.com/Users/team/file" the
+ * character before the slash is a letter, so it is a path inside an address
+ * rather than a filesystem root, and rewriting somebody's URL is its own kind
+ * of damage.
+ */
+const UNIX_HOME = /(?<![A-Za-z0-9])\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g;
 
 /**
  * The order with personal paths reduced to bare file names.
