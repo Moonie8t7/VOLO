@@ -48,6 +48,7 @@ so it reports a missing or misnamed route as working.
 | [docs/decisions.md](docs/decisions.md) | What was measured, adopted and rejected |
 | [docs/workflow.md](docs/workflow.md) | Scripts, evaluation and the automated pipelines |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Submitting load orders, and the licence split |
+| [SECURITY.md](SECURITY.md) | What is in scope, and how to report something privately |
 
 ## Architecture
 
