@@ -37,7 +37,7 @@ export async function onRequestPost({ request, env }) {
     return json(400, { error: 'Malformed request.' });
   }
 
-  const { order, verdict, notes, patch, turnstileToken } = payload ?? {};
+  const { order, verdict, notes, patch, sortedByVolo, turnstileToken } = payload ?? {};
   if (verdict !== 'working' && verdict !== 'broken') {
     return json(400, { error: 'Say whether the order worked.' });
   }
@@ -90,10 +90,26 @@ export async function onRequestPost({ request, env }) {
   const clean = (s, max) =>
     typeof s === 'string' ? s.replace(/`/g, "'").slice(0, max).trim() : '';
 
+  /*
+   * An order VOLO sorted, played and sent back is not a second opinion: its
+   * sequence is VOLO's own. Recorded so the miner can use it for which mods
+   * exist and ignore it for where they go. Unanswered stays unknown, because
+   * guessing either way is worse than measuring it at intake.
+   */
+  const arrangement = sortedByVolo === 'volo'
+    ? 'I sorted it with VOLO'
+    : sortedByVolo === 'self'
+      ? 'I arranged it myself'
+      : '_No response_';
+
   const body = [
     '### Does this load order work?',
     '',
     status,
+    '',
+    '### How was it arranged?',
+    '',
+    arrangement,
     '',
     '### BG3 patch',
     '',

@@ -27,6 +27,9 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
+import { readProvenance, isVoloSorted } from './corpus-provenance.mjs';
+
+const provenance = readProvenance();
 
 const CORPUS_DIR = 'Load Orders - Public Submitted';
 
@@ -542,7 +545,15 @@ for (const file of fs.readdirSync(CORPUS_DIR).sort()) {
     .update(entries.map(e => e.UUID || e.Name).join('|')).digest('hex');
   if (seen.has(fp)) { skipped.push([file, 'duplicate of another file']); continue; }
   seen.add(fp);
-  orders.push({ file, label: labelOf(file), entries, gameBuild: detectGameBuild(entries) });
+  orders.push({
+    file,
+    label: labelOf(file),
+    entries,
+    gameBuild: detectGameBuild(entries),
+    // VOLO's own output coming back proves the mods exist and that someone
+    // played them, and proves nothing about the sequence, which is VOLO's.
+    positional: !isVoloSorted(file, provenance),
+  });
 }
 
 /** uuid -> record */
@@ -607,8 +618,13 @@ for (const order of orders) {
     if (order.gameBuild && compareBuilds(order.gameBuild, r.lastGameBuild ?? '0') > 0) {
       r.lastGameBuild = order.gameBuild;
     }
-    if (currentSection) r.sections.set(currentSection, (r.sections.get(currentSection) || 0) + 1);
-    if (currentDivider !== null) r.dividers.set(currentDivider, (r.dividers.get(currentDivider) || 0) + 1);
+    // Section headers and dividers are both statements about where a mod goes,
+    // so neither is taken from an order VOLO sorted: it would be reading back
+    // its own answer, including any dividers the export inserted.
+    if (order.positional) {
+      if (currentSection) r.sections.set(currentSection, (r.sections.get(currentSection) || 0) + 1);
+      if (currentDivider !== null) r.dividers.set(currentDivider, (r.dividers.get(currentDivider) || 0) + 1);
+    }
 
     if (entry.Author && !r.author) r.author = entry.Author;
     if (entry.Folder && !r.folder) r.folder = entry.Folder;
@@ -747,11 +763,15 @@ const K_NEIGHBOURS = 6;
 const MIN_AGREEMENT = 0.7;
 const MIN_VOTERS = 3;
 
-const uuidSequences = orders.map(o =>
-  o.entries
-    .filter(e => e?.UUID && e?.Name && !SEPARATOR_RE.test(e.Name) && !DIVIDERS.has(e.UUID))
-    .map(e => e.UUID),
-);
+// Neighbour voting reads position directly, so orders VOLO sorted are left out
+// entirely rather than allowed to vote for the placements VOLO already chose.
+const uuidSequences = orders
+  .filter(o => o.positional)
+  .map(o =>
+    o.entries
+      .filter(e => e?.UUID && e?.Name && !SEPARATOR_RE.test(e.Name) && !DIVIDERS.has(e.UUID))
+      .map(e => e.UUID),
+  );
 const voterGroup = new Map(
   plugins.filter(p => p.group !== 'unsorted').map(p => [p.uuid, p.group]),
 );

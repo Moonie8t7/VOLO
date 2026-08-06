@@ -24,6 +24,7 @@
 import { build } from 'esbuild';
 import { execSync } from 'child_process';
 import crypto from 'crypto';
+import { isVoloSorted } from './corpus-provenance.mjs';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -76,11 +77,18 @@ const inSampleList = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json'
 // would weight it double in the mean.
 const files = [];
 const seenFingerprints = new Set();
+let selfScored = 0;
 for (const f of fs.readdirSync(CORPUS).filter(isWorking).sort()) {
+  // Scoring VOLO against an order VOLO produced measures nothing except that
+  // the sort is deterministic, and it would drag the mean upwards for free.
+  if (isVoloSorted(f)) { selfScored++; continue; }
   const fp = crypto.createHash('md5').update(fs.readFileSync(path.join(CORPUS, f))).digest('hex');
   if (seenFingerprints.has(fp)) continue;
   seenFingerprints.add(fp);
   files.push(f);
+}
+if (selfScored) {
+  console.log(`excluded ${selfScored} order(s) that VOLO sorted itself\n`);
 }
 const rows = [];
 

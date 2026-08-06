@@ -107,6 +107,26 @@ averages orders rather than mods, so a 41-mod order counts as much as a 999-mod
 one; weighted by mods the gap is roughly a point. It is a knowing trade of a
 metric fitted to nine orders for a structure a player can read.
 
+**Orders VOLO sorted are not evidence of order.** Someone sorts with VOLO,
+plays on the result, and submits it. That order looks like a second person
+agreeing and contains nothing VOLO did not already believe, so counting it
+raises every agreement figure while teaching the masterlist nothing, and each
+round makes the next submission likelier to match.
+
+Tagging the export cannot detect it. The real path is VOLO, then BG3MM, then
+play, then export from BG3MM, then submit, and BG3MM rewrites the file. Two
+signals are recorded instead: the submitter's own answer, and how closely the
+sequence matches what VOLO would produce. The answer decides in both
+directions, including when someone says they arranged it themselves and the
+sequence happens to agree, because VOLO agreeing with a player is the goal
+rather than a fault. Measurement only settles the unanswered cases, at 0.98.
+
+A flagged order still counts for which mods exist, whether they were played
+together, and whether it worked. It is dropped from section headers, divider
+evidence, neighbour inference and held-out scoring. Verified by flagging the
+999-mod order: section-header placements fell from 1,641 to 983 and uncategorised
+rose from 338 to 544, while it still counted among the nine working orders.
+
 ## Constraints that shaped the design
 
 **No per-request network calls.** The first version scraped mod pages per mod
