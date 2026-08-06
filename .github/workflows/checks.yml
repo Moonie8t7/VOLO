@@ -14,6 +14,10 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Manual runs, because the first run of this workflow had to be forced:
+  # GitHub sat on the push events for long enough that an untriggerable
+  # gate was indistinguishable from a broken one.
+  workflow_dispatch:
 
 permissions:
   contents: read
