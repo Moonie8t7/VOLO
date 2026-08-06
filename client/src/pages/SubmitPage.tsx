@@ -12,6 +12,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Textarea } from '@/components/ui/textarea';
 import { useStore } from '@/lib/store';
 import { parseLoadOrder } from '@/lib/parser';
+import { scrubPersonalPaths } from '@/lib/scrub';
 import { submitOrder, mountTurnstile, TURNSTILE_SITE_KEY } from '@/lib/submit';
 
 /** The GitHub fallback, for people who prefer submitting under their own name. */
@@ -32,7 +33,10 @@ interface PreparedOrder {
  * dependency and version metadata. Other formats are converted to the BG3MM
  * shape the pipeline validates.
  */
-function prepare(raw: string, filename: string): PreparedOrder | { error: string } {
+function prepare(rawInput: string, filename: string): PreparedOrder | { error: string } {
+  // Scrubbed here, before anything is parsed or sent, so a submitter's account
+  // name never leaves their machine rather than being removed after it arrives.
+  const raw = scrubPersonalPaths(rawInput);
   const parsed = parseLoadOrder(raw, filename);
   if (parsed.errors.length) return { error: parsed.errors[0] };
   if (parsed.mods.length < 5) {

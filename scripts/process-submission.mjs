@@ -126,10 +126,9 @@ function stripLocalPaths(text) {
   // Null when nothing was found; the caller reports that more usefully than a
   // TypeError would.
   if (!text) return text;
-  return text.replace(
-    /(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g,
-    (_full, basename) => basename,
-  );
+  return text
+    .replace(/(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g, '$1')
+    .replace(/\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g, '$1');
 }
 
 let orderText;
