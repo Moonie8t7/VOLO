@@ -65,6 +65,7 @@ production, and this is the only check that runs against the real host.
 | `verify-order.mjs` | In-sample agreement. Relative comparisons only. |
 | `verify-holdout.mjs` | Held-out agreement. The honest number. |
 | `smoke-test.mjs` | Asserts the sort's promises against every corpus order. |
+| `audit-repo.mjs` | Every tracked file: parses, links, secrets, personal data, style. |
 | `diagnose-order.mjs` | Explains what is probably wrong with a broken order. |
 | `process-submission.mjs` | Validates a submission, gates it, writes the report. |
 | `corpus-provenance.mjs` | Records and reads whether an order is VOLO's own output. |

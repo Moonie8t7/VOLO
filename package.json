@@ -12,9 +12,9 @@
     "build": "npm run masterlist && node scripts/build-sitemap.mjs && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "check": "tsc",
-    "test": "node scripts/smoke-test.mjs",
+    "test": "node scripts/smoke-test.mjs && node scripts/audit-repo.mjs",
     "verify-deploy": "node scripts/verify-deploy.mjs",
-    "masterlist": "node scripts/mine-corpus.mjs && node scripts/build-divider-map.mjs && node -e \"require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')\""
+    "masterlist": "node scripts/mine-corpus.mjs && node scripts/build-divider-map.mjs && node -e \"const f=require('fs');f.copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json');f.copyFileSync('masterlist/masterlist.schema.json','public/masterlist.schema.json')\""
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.4",

@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://volobg3.com/masterlist.schema.json",
+  "title": "VOLO BG3 masterlist",
+  "description": "Load order data for Baldur's Gate 3, mined from load orders players submitted. Published under CC0-1.0: take it, fork it, build on it. The file declared this schema from the start and the schema did not exist, which is a poor welcome for anyone trying to consume the data.",
+  "type": "object",
+  "required": ["version", "generated", "groups", "plugins"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": {
+      "type": "string",
+      "description": "Schema version of this artefact, not the game or the tool."
+    },
+    "generated": { "type": "string", "format": "date-time" },
+    "generator": {
+      "type": "string",
+      "description": "The script that wrote it. Nothing here is hand-edited."
+    },
+    "gameBuild": {
+      "type": ["string", "null"],
+      "description": "Newest base-game build seen in the corpus, e.g. 4.8.700.7143220.",
+      "examples": ["4.8.700.7143220"]
+    },
+    "gamePatch": {
+      "type": ["string", "null"],
+      "description": "Human form of gameBuild.",
+      "examples": ["Patch 8"]
+    },
+    "gameBuildsObserved": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "incompatible": {
+      "type": "array",
+      "description": "Mods that must not be installed together. Hand-written only: two mods appearing in an order that broke is not evidence they conflict.",
+      "items": {
+        "type": "object",
+        "required": ["mods", "why"],
+        "properties": {
+          "mods": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "type": "string" },
+            "description": "Names or UUIDs. Two or more present together triggers the warning."
+          },
+          "why": { "type": "string" },
+          "severity": { "enum": ["critical", "warning", "info"] }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "description": "How much evidence stands behind this build of the masterlist.",
+      "properties": {
+        "ordersAnalysed": { "type": "integer" },
+        "working": {
+          "type": "integer",
+          "description": "Orders someone reported playing without load order problems. Only these teach sequence."
+        },
+        "broken": { "type": "integer" },
+        "unlabelled": { "type": "integer" },
+        "externalDependencyEdges": { "type": "integer" },
+        "ordersWithKnownBuild": { "type": "integer" }
+      }
+    },
+    "groups": {
+      "type": "array",
+      "description": "Categories and the order relation between them, the way LOOT models groups.",
+      "items": {
+        "type": "object",
+        "required": ["name", "after"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "after": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Groups this one loads after."
+          }
+        }
+      }
+    },
+    "plugins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "uuid", "group"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Exactly as the author wrote it. Never normalised: the name is matched against what a user has installed, so tidying it breaks the match."
+          },
+          "uuid": { "type": "string" },
+          "group": { "type": "string" },
+          "folder": { "type": "string" },
+          "author": { "type": "string" },
+          "version": { "type": "string" },
+          "lastSeenGameBuild": { "type": "string" },
+          "divider": {
+            "type": "number",
+            "description": "Position on Astra's Load Order Dividers, 0 to 105, with fractions for sub-dividers such as 58.11 for a Warlock subclass. The skeleton applies whether or not the divider paks are installed.",
+            "examples": [45, 58.11, 105]
+          },
+          "usesScriptExtender": { "type": "boolean" },
+          "dependencies": {
+            "type": "array",
+            "description": "Declared in the mod's own metadata. Hard constraints: never violated by any group or divider decision.",
+            "items": {
+              "type": "object",
+              "required": ["uuid", "name"],
+              "properties": {
+                "uuid": { "type": "string" },
+                "name": { "type": "string" }
+              }
+            }
+          },
+          "featureFlags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "messages": {
+            "type": "array",
+            "description": "Curated warnings, shown whenever the mod is present.",
+            "items": {
+              "type": "object",
+              "required": ["text", "severity"],
+              "properties": {
+                "text": { "type": "string" },
+                "severity": { "enum": ["critical", "warning", "info"] }
+              }
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "description": "How the category was decided and how much weight it carries. Kept separate so consumers can trust the tiers differently rather than treating a guess as a fact.",
+            "required": ["source"],
+            "properties": {
+              "source": {
+                "enum": [
+                  "curated",
+                  "section",
+                  "section-majority",
+                  "name-pattern",
+                  "external-category",
+                  "divider-vocabulary",
+                  "inferred",
+                  "none"
+                ],
+                "description": "curated is hand-written and outranks everything. section comes from a header a modder wrote. external-category is the mod's own Nexus or mod.io listing. inferred is a vote by neighbouring mods. none means uncategorised, and the mod sorts to the end."
+              },
+              "installs": {
+                "type": "integer",
+                "description": "Submitted orders containing this mod."
+              },
+              "workingInstalls": { "type": "integer" },
+              "brokenInstalls": { "type": "integer" },
+              "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "For inferred entries, neighbour agreement from 0.7 to 1."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
