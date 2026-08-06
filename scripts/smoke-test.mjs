@@ -491,6 +491,41 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+/**
+ * The corpus is published under CC0, so it must not carry anyone's account name.
+ *
+ * BG3MM writes the full path of a pak into the FileName column for some entries.
+ * One submitted order reached the repository with a submitter's Windows username
+ * inside it. process-submission.mjs strips these on intake now; this checks the
+ * files already committed, because intake cannot fix what is already here.
+ */
+{
+  console.log('');
+  console.log('corpus privacy');
+
+  const dir = 'Load Orders - Public Submitted';
+  const windowsPath = /(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)+[^\\\t"\r\n]+/g;
+  const homePath = /(?:\/home\/|\/Users\/)[A-Za-z0-9._-]+\//g;
+
+  const offenders = [];
+  for (const name of fs.readdirSync(dir)) {
+    const file = path.join(dir, name);
+    if (!fs.statSync(file).isFile()) continue;
+    const text = fs.readFileSync(file, 'utf8');
+    for (const re of [windowsPath, homePath]) {
+      const hits = [...text.matchAll(re)];
+      if (hits.length) offenders.push(`${name}: ${hits[0][0].slice(0, 50)}`);
+    }
+  }
+
+  if (!offenders.length) {
+    console.log('  ok    no local filesystem paths in the corpus');
+  } else {
+    failures++;
+    for (const o of offenders) console.log(`  FAIL  personal path in ${o}`);
+  }
+}
+
 fs.rmSync(out, { force: true });
 console.log(failures ? `\n${failures} FAILURES\n` : '\nAll checks passed.\n');
 process.exit(failures ? 1 : 0);
