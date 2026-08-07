@@ -19,6 +19,24 @@ submitting throws away half of what we learn.
 Broken orders are wanted too. They teach the warnings, and the report you get
 back diagnoses where your order disagrees with orders known to work.
 
+## Contributing a rule
+
+Some knowledge never appears in a load order: that two mods must not be
+installed together, that a patcher belongs at position 105 whatever the data
+says, that a particular mod deserves a warning. Those live in
+[masterlist/curated-rules.json](masterlist/curated-rules.json), and a pull
+request against that file is the most direct way to teach VOLO something a
+thousand submissions could not.
+
+Placement and warning rules carry a reason and examples their pattern must
+match, and loading fails if a pattern misses its own examples, because a rule
+that silently stopped applying is how a patcher spent months filed as a
+library. Keep the examples current: a pattern whose examples still pass but
+whose mod has been renamed matches nothing real, and only a person notices
+that. Incompatibilities are checked for shape, a `why` and at least two mods;
+whether the claim is true is on you. State only what you know, not what you
+infer from a crash: the file is public and it names other people's work.
+
 ## Licensing of contributions
 
 VOLO is split deliberately, so please note which half you are contributing to.
@@ -60,7 +78,7 @@ Factual entries are what the masterlist wants:
 npm install
 npm run dev        # http://localhost:5173
 npm run check      # typecheck
-npm test           # the optimiser against the real corpus
+npm test           # the optimiser against the real corpus, then every tracked file
 npm run build      # regenerate the masterlist, then build
 ```
 

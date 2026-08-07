@@ -25,14 +25,13 @@ import type {
 const DEFAULT_GROUP = 'unsorted';
 
 /**
- * Fallback categorisation for mods the masterlist has not seen. Group names
- * must match the masterlist's group vocabulary exactly: an unknown name ranks
- * as nothing and silently sorts to the end of the order.
- */
-/**
  * Last-resort classification for mods the masterlist has never seen.
  *
- * Each entry names the divider slot the mod belongs on, not just its group.
+ * Each entry names the exact divider slot the mod belongs on, and its group
+ * name must match the masterlist vocabulary exactly. A typo'd group does not
+ * push the mod to the end, because the slot still places it; it silently
+ * loses only the within-slot ranking, which is why the smoke test checks
+ * every entry against the group list rather than trusting eyes.
  * The dividers are the skeleton of the order whether or not the divider paks
  * are installed, so a feat mod belongs at 045 Skillset Feats; filing it under
  * "Classes" would land it on the 056 category marker, below every spell.
@@ -45,22 +44,23 @@ const DEFAULT_GROUP = 'unsorted';
  * First match wins, so the list runs most specific first.
  */
 const NAME_PATTERNS: [RegExp, GroupName, number][] = [
-  [/script\s*extender|native\s*mod\s*loader|^bg3se|mod\s*fixer/i, 'Utilities', 19],
+  [/script\s*extender|nativemodloader|native mod loader|^bg3se|^mod\s*fixer/i, 'Utilities', 19],
   [/improvedui|^impui/i, 'User Interface', 1],
-  [/hotbar|tooltip|sidebar|\bui\b|interface|topbar|context menu/i, 'User Interface', 5],
+  [/hotbar|tooltip|sidebar|inventory ui|\bui\b|interface|topbar|context menu/i, 'User Interface', 5],
   [/volitioncabinet|volition\s*cabinet/i, 'Resources', 7],
   [/communitylibrary|community\s*library/i, 'Resources', 8],
-  [/material\s*library/i, 'Resources', 10],
-  [/mod\s*configuration\s*menu|^bg3mcm|\bmcm\b/i, 'Resources', 14],
-  // Ahead of the generic framework rule, which would otherwise swallow it.
+  [/materiallibrary|material\s*library/i, 'Resources', 10],
+  [/mod configuration menu|^bg3mcm|\bmcm\b/i, 'Resources', 14],
   [/compatibility\s*framework/i, 'Bottom of Load Order', 105],
-  [/modders?\s*resource|framework\b/i, 'Resources', 15],
+  [/^lib[A-Z]|modders?\s*resource|framework$|framework\b/i, 'Resources', 15],
+  [/waypoint/i, 'Utilities', 18],
+  [/encounter|miniboss/i, 'Gameplay', 31],
   [/\bfeats?\b/i, 'Classes', 45],
   [/\babilit(y|ies)\b/i, 'Spells', 46],
   [/summon|familiar/i, 'Spells', 49],
   [/\bspell|cantrip|\bmagic\b/i, 'Spells', 47],
   [/subclass/i, 'Classes', 58],
-  [/\bclass(es)?\b|deit(y|ies)/i, 'Classes', 56],
+  [/\bclass(es)?\b|deity|deities/i, 'Classes', 56],
   [/subraces?/i, 'Races', 53],
   [/tiefling|githyanki|dragonborn|drow\b/i, 'Races', 52],
   [/\braces?\b/i, 'Races', 51],
@@ -68,19 +68,19 @@ const NAME_PATTERNS: [RegExp, GroupName, number][] = [
   [/\bheads?\b|\beyes?\b|\bfaces?\b/i, 'Heads', 63],
   [/\bbod(y|ies)\b|skin\s*tone/i, 'Bodies', 99],
   [/tattoo|makeup|\bscars?\b/i, 'Character Customization', 100],
-  [/preset|character\s*creat/i, 'Character Customization', 61],
   [/\bhorns?\b/i, 'Character Customization', 65],
   [/\btails?\b|\bwings?\b/i, 'Character Customization', 66],
   [/piercing/i, 'Character Customization', 67],
+  [/preset|character\s*creat/i, 'Character Customization', 61],
   [/\bdyes?\b/i, 'Dyes', 38],
   [/outfit|clothing|clothes|camp\s*(clothes|outfit)/i, 'Clothing', 37],
   [/underwear|lingerie/i, 'Clothing', 41],
   [/armou?r/i, 'Armor', 36],
-  [/weapon|sword|blade|\bbow\b|dagger/i, 'Weapons', 42],
-  [/jewel|amulet|\brings?\b|earring|necklace/i, 'Accessories', 40],
+  [/weapon|\bswords?\b|\bblades?\b|\bbows?\b|dagger/i, 'Weapons', 42],
+  [/jewel|amulet|\brings?\b|earring/i, 'Accessories', 40],
   [/cloak/i, 'Accessories', 35],
   [/instrument|\blute\b|\bflute\b/i, 'Equipment', 39],
-  [/equipment|\bgear\b|container/i, 'Equipment', 43],
+  [/equipment|\bgear\b|basket.*equipment|container/i, 'Equipment', 43],
   [/astarion/i, 'Companions', 71],
   [/\bgale\b/i, 'Companions', 72],
   [/halsin/i, 'Companions', 73],
@@ -95,8 +95,6 @@ const NAME_PATTERNS: [RegExp, GroupName, number][] = [
   [/companion/i, 'Companions', 82],
   [/\bnpcs?\b/i, 'NPC', 23],
   [/\bquests?\b/i, 'Quests', 25],
-  [/waypoint/i, 'Utilities', 18],
-  [/encounter|miniboss/i, 'Gameplay', 31],
   [/\bposes?\b/i, 'Animations', 86],
   [/animation|\bidles?\b/i, 'Animations', 83],
   [/\bdice\b/i, 'Dice', 90],
@@ -191,8 +189,15 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
       } else if (entry.evidence?.source === 'external-category') {
         // Read off a Nexus or mod.io listing, not from anyone's played order.
         groupSource.set(mod.uuid, 'listing');
-      } else if (entry.evidence?.source === 'name-pattern') {
+      } else if (entry.evidence?.source === 'name-pattern'
+        || entry.evidence?.source === 'divider-vocabulary') {
+        // Both are read off the mod's title. A keyword guess must never be
+        // indistinguishable from evidence, whichever vocabulary produced it.
         groupSource.set(mod.uuid, 'name-pattern');
+      } else if (entry.evidence?.source === 'curated') {
+        // A maintainer's hand-written rule, labelled so a reader can tell a
+        // person's judgement from a crowd's habit.
+        groupSource.set(mod.uuid, 'curated');
       } else {
         groupSource.set(mod.uuid, 'masterlist');
       }

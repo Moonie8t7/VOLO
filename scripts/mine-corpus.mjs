@@ -163,10 +163,8 @@ function patchLabel(build) {
 
 /**
  * Canonical group order. `after` encodes the load-order relation the way LOOT
- * does. Each group loads after the ones named. Derived from the section
- * headers modders actually wrote in their own working orders.
- */
-/**
+ * does: each group loads after the ones named.
+ *
  * Categories use the community "Sorting Category Empty Mods" vocabulary, so the
  * names match the separators people already put in their load orders.
  *
@@ -293,7 +291,13 @@ const SECTION_TO_GROUP = {
 /**
  * Fallback name patterns for mods no submitted order has placed.
  *
- * Each entry names the divider the mod belongs under, not merely its group.
+ * This table has a twin in client/src/lib/optimiser.ts that classifies user
+ * imports the corpus has never seen. The smoke test asserts the two are
+ * structurally identical, row for row, because they once drifted in nine rows
+ * and thirty-eight positions and the same mod sorted differently depending on
+ * how it arrived. Change them together.
+ *
+ * Each entry names the exact divider the mod belongs under.
  * A feat mod is 045 Skillset Feats; calling it "Classes" would file it at the
  * category divider 056 and sort it below every spell and ability mod, which is
  * both wrong and visibly wrong to anyone reading the exported order.
@@ -563,7 +567,7 @@ function record(uuid) {
 
 /** Divider number from a canonical divider name, e.g. 058.01 -> 58.01. */
 function dividerNumber(name) {
-  const m = String(name).match(/([0-9]+(?:.[0-9]+)?)/);
+  const m = String(name).match(/([0-9]+(?:\.[0-9]+)?)/);
   return m ? parseFloat(m[1]) : null;
 }
 
@@ -584,8 +588,8 @@ for (const order of orders) {
         ?? dividerSectionLabel(name)
         ?? currentSection;
       // The divider itself is the finest placement statement available. It
-      // says not merely "a class mod" but "a Warlock subclass", and exactly
-      // where that sits relative to everything else in the order.
+      // can say "a Warlock subclass" where the groups can only say "a class
+      // mod", and it fixes where that sits relative to everything else.
       currentDivider = dividerNumber(DIVIDERS.get(entry.UUID)) ?? currentDivider;
       continue;
     }
@@ -593,6 +597,10 @@ for (const order of orders) {
     if (SEPARATOR_RE.test(name)) {
       separatorCount++;
       currentSection = sectionLabel(name);
+      // A hand-typed header starts a section the divider paks know nothing
+      // about, so the last pak divider must not leak past it: every mod below
+      // would be credited to a slot the submitter never put it under.
+      currentDivider = null;
       continue;
     }
     if (!entry.UUID) continue;
@@ -637,8 +645,8 @@ for (const r of mods.values()) {
   let group = null, confidence = null;
   let dividerFromCurated = null;
 
-  // A curated rule names the divider slot itself, not merely the group, so a
-  // person can say "this belongs at 105" and be obeyed exactly.
+  // A curated rule names the divider slot itself, so a person can say
+  // "this belongs at 105" and be obeyed exactly.
   for (const rule of curated.placements) {
     if (rule.re.test(name)) {
       group = rule.group;

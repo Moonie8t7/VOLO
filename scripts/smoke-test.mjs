@@ -401,6 +401,30 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     console.log(`  FAIL  tables disagree on ${disagreements.join(', ')}`);
   }
 
+  /*
+   * Structural identity, not just probe agreement. The probes once passed while
+   * the tables differed in nine rows and thirty-eight positions, because a
+   * probe list can only catch drift someone thought to probe for. Row-for-row
+   * equality catches all of it, and position matters because first match wins.
+   */
+  const structural = [];
+  if (miner.length !== client.length) {
+    structural.push(`row counts differ: miner ${miner.length}, client ${client.length}`);
+  }
+  miner.forEach((row, i) => {
+    const twin = client[i];
+    if (!twin) return;
+    if (row[0].source !== twin[0].source || row[1] !== twin[1] || row[2] !== twin[2]) {
+      structural.push(`row ${i}: ${row[0].source.slice(0, 40)} vs ${twin[0].source.slice(0, 40)}`);
+    }
+  });
+  if (!structural.length) {
+    console.log(`  ok    the two tables are structurally identical, all ${miner.length} rows`);
+  } else {
+    failures++;
+    for (const s of structural.slice(0, 5)) console.log(`  FAIL  ${s}`);
+  }
+
   // A slot only means something if it exists in Astra's taxonomy.
   const slots = new Set(dividers.all.map(d => d.num));
   const unknown = [...miner, ...client].map(row => row[2]).filter(n => !slots.has(n));

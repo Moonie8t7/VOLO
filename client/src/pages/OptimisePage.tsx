@@ -26,6 +26,7 @@ import type { Issue, IssueSeverity, Placement, SortResult } from '@/lib/types';
  */
 const PROVENANCE: Record<Placement['groupSource'], { short: string; full: string }> = {
   masterlist: { short: '', full: 'Category from the community masterlist.' },
+  curated: { short: 'curated', full: 'Placed by a hand-written maintainer rule, not mined from data.' },
   inferred: { short: 'inferred', full: 'Inferred from where this mod sits in submitted orders.' },
   listing: { short: 'listing', full: "From the mod's own Nexus or mod.io listing. Nobody has placed it in an order yet." },
   'name-pattern': { short: 'guessed', full: 'Guessed from the mod name. Nobody has placed this one yet.' },
@@ -41,7 +42,7 @@ const PROVENANCE: Record<Placement['groupSource'], { short: string; full: string
  */
 function countByProvenance(result: SortResult): Record<Placement['groupSource'], number> {
   const counts: Record<Placement['groupSource'], number> = {
-    masterlist: 0, inferred: 0, listing: 0, 'name-pattern': 0, default: 0,
+    masterlist: 0, curated: 0, inferred: 0, listing: 0, 'name-pattern': 0, default: 0,
   };
   for (const mod of result.mods) {
     counts[result.placements.get(mod.uuid)?.groupSource ?? 'default'] += 1;
@@ -171,6 +172,7 @@ export default function OptimisePage() {
         <dl className="flex flex-wrap items-baseline gap-x-8 gap-y-3 border-y border-border/40 py-4">
           <Metric label="mods" value={stats.total} />
           <Metric label="placed by the community" value={byProvenance.masterlist} />
+          <Metric label="curated" value={byProvenance.curated} />
           <Metric label="inferred" value={byProvenance.inferred} />
           <Metric label="from the mod's listing" value={byProvenance.listing} muted />
           <Metric label="guessed from the name" value={byProvenance['name-pattern']} muted />

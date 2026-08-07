@@ -20,13 +20,21 @@ import path from 'path';
 
 const FILE = path.join('masterlist', 'curated-rules.json');
 
-/** Empty rather than throwing, so a fresh checkout without the file still builds. */
+/**
+ * A missing file means no rules yet, and the build proceeds empty. A file that
+ * exists but does not parse means somebody's rules are about to be silently
+ * dropped, every curated placement with them, and that must stop the build:
+ * swallowing it once would have shipped Compatibility Framework as a library
+ * again, which is the exact regression this tier exists to prevent.
+ */
 function read() {
+  let text;
   try {
-    return JSON.parse(fs.readFileSync(FILE, 'utf8'));
+    text = fs.readFileSync(FILE, 'utf8');
   } catch {
     return { placements: [], incompatible: [], messages: [] };
   }
+  return JSON.parse(text);
 }
 
 /**
@@ -52,13 +60,34 @@ export function loadCuratedRules() {
   const messages = (raw.messages ?? []).map(rule => {
     const re = new RegExp(rule.pattern, 'i');
     const missed = (rule.examples ?? []).filter(e => !re.test(e));
+    if (!rule.examples?.length) problems.push(`${rule.pattern}: no examples to check against`);
     if (missed.length) problems.push(`${rule.pattern}: does not match ${missed.join(', ')}`);
+    if (typeof rule.text !== 'string' || !rule.text.trim()) {
+      problems.push(`${rule.pattern}: a message rule with no text warns nobody of nothing`);
+    }
     return { ...rule, re };
   });
 
+  /*
+   * Incompatibilities have no pattern to compile, but a malformed entry fails
+   * just as silently: a pair that never matches is a warning nobody ever sees,
+   * shipped in a file that names other people's work.
+   */
+  const incompatible = (raw.incompatible ?? []).map((rule, i) => {
+    const label = `incompatible[${i}]`;
+    if (!Array.isArray(rule.mods) || rule.mods.length < 2
+      || rule.mods.some(m => typeof m !== 'string' || !m.trim())) {
+      problems.push(`${label}: needs at least two mod names or UUIDs`);
+    }
+    if (typeof rule.why !== 'string' || !rule.why.trim()) {
+      problems.push(`${label}: needs a why, because it makes a public claim about someone's work`);
+    }
+    return rule;
+  });
+
   if (problems.length) {
-    throw new Error(`curated rules do not match their own examples:\n  ${problems.join('\n  ')}`);
+    throw new Error(`curated rules failed validation:\n  ${problems.join('\n  ')}`);
   }
 
-  return { placements, messages, incompatible: raw.incompatible ?? [] };
+  return { placements, messages, incompatible };
 }

@@ -231,7 +231,7 @@ export default function LandingPage() {
               </p>
               <p>
                 Check it in the browser's network panel. You will see VOLO's own
-                code and styles, a typeface from Google Fonts, and the
+                code, styles and images, a typeface from Google Fonts, and the
                 masterlist it sorts against, which is one file of public data
                 served the same way to everybody. Your mod list is in none of
                 them. The Submit page adds Cloudflare's anti-spam widget, and
@@ -273,12 +273,13 @@ export default function LandingPage() {
             <AccordionContent className="text-muted-foreground space-y-3">
               <p>
                 They say how much the placement is worth, because a guess and a
-                verified position should not look alike. No label at all is the
-                strongest case: players filed that mod there themselves. An
-                inferred placement was voted on by the mods either side of it in
-                submitted orders, and the percentage is how much they agreed. A
-                listing placement came from the mod's own Nexus or mod.io page,
-                which tells you what the mod is rather than where anyone
+                verified position should not look alike. No label means players
+                filed that mod there themselves, which is the strongest evidence
+                VOLO has. A curated placement is a maintainer's hand-written
+                rule. An inferred one was voted on by the mods either side of it
+                in submitted orders, and the percentage is how much they agreed.
+                A listing placement came from the mod's own Nexus or mod.io
+                page, which tells you what the mod is rather than where anyone
                 actually loads it. A guess means VOLO read the title and had
                 nothing else to go on, and unplaced means it had not even that,
                 so the mod waits at the end.
