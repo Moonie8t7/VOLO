@@ -19,7 +19,7 @@ Nothing here needs to ask permission.
 | `coverage-report.md` | What is known versus guessed, regenerated with the masterlist |
 | `curated-rules.json` | Hand-written rules: exact placements, incompatibilities, warnings |
 | `separator-mods.json` | Astra's divider paks by UUID, so they can be recognised on import |
-| `external-categories.json` | Name to category map from the Nexus and mod.io catalogues |
+| `external-categories.json` | Name to category map from the Nexus and mod.io catalogues, including names listings had before a rename |
 | `learned-order.json` | The category sequence learned from working orders |
 
 Most of this is generated from the submitted orders in

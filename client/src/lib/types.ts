@@ -58,7 +58,7 @@ export interface MasterlistPlugin {
   /** Curated warnings attached to this mod, shown whenever it is present. */
   messages?: { text: string; severity: IssueSeverity }[];
   evidence?: {
-    source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'external-category' | 'divider-vocabulary' | 'inferred' | 'none';
+    source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'external-category' | 'author-catalogue' | 'divider-vocabulary' | 'inferred' | 'none';
     installs: number;
     workingInstalls: number;
     brokenInstalls?: number;
@@ -125,7 +125,7 @@ export interface Placement {
   /** Astra divider this mod sits under, when one applies. */
   divider?: number;
   /** How we decided the group. */
-  groupSource: 'masterlist' | 'curated' | 'inferred' | 'listing' | 'name-pattern' | 'default';
+  groupSource: 'masterlist' | 'curated' | 'inferred' | 'listing' | 'author' | 'name-pattern' | 'default';
   /** Neighbour agreement behind an inferred group, when that is the source. */
   groupConfidence?: number;
   /** Mods that had to load before this one, and why. */

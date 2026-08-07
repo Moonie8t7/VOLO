@@ -105,8 +105,19 @@ function flush() {
 function storeNode(n) {
   const id = Number(n.modId);
   const existing = catalog.mods[id];
+  /*
+   * Authors rename listings, and installed paks keep whatever name the mod
+   * shipped under, so an overwritten name is a match lost forever. Every name
+   * this id has ever answered to is kept in aliases. Nexus has no frozen slug
+   * the way mod.io does, so this list is the only rename record there is.
+   */
+  const aliases = existing?.aliases ?? [];
+  if (existing?.name && n.name && existing.name !== n.name && !aliases.includes(existing.name)) {
+    aliases.push(existing.name);
+  }
   catalog.mods[id] = {
     ...(existing ?? {}),
+    ...(aliases.length ? { aliases } : {}),
     name: n.name,
     author: n.uploader?.name ?? existing?.author ?? null,
     category: n.modCategory?.name ?? existing?.category ?? null,

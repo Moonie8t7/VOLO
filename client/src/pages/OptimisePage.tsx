@@ -29,6 +29,7 @@ const PROVENANCE: Record<Placement['groupSource'], { short: string; full: string
   curated: { short: 'curated', full: 'Placed by a hand-written maintainer rule, not mined from data.' },
   inferred: { short: 'inferred', full: 'Inferred from where this mod sits in submitted orders.' },
   listing: { short: 'listing', full: "From the mod's own Nexus or mod.io listing. Nobody has placed it in an order yet." },
+  author: { short: 'author', full: "Placed where this author's other catalogued mods sit. Nobody has placed or listed this mod itself yet." },
   'name-pattern': { short: 'guessed', full: 'Guessed from the mod name. Nobody has placed this one yet.' },
   default: { short: 'unplaced', full: 'No category information yet.' },
 };
@@ -42,7 +43,7 @@ const PROVENANCE: Record<Placement['groupSource'], { short: string; full: string
  */
 function countByProvenance(result: SortResult): Record<Placement['groupSource'], number> {
   const counts: Record<Placement['groupSource'], number> = {
-    masterlist: 0, curated: 0, inferred: 0, listing: 0, 'name-pattern': 0, default: 0,
+    masterlist: 0, curated: 0, inferred: 0, listing: 0, author: 0, 'name-pattern': 0, default: 0,
   };
   for (const mod of result.mods) {
     counts[result.placements.get(mod.uuid)?.groupSource ?? 'default'] += 1;
@@ -195,6 +196,14 @@ export default function OptimisePage() {
             hint={PROVENANCE.listing.full}
             muted
           />
+          {byProvenance.author > 0 && (
+            <Metric
+              label="from the author's other mods"
+              value={byProvenance.author}
+              hint={PROVENANCE.author.full}
+              muted
+            />
+          )}
           <Metric
             label="guessed from the name"
             value={byProvenance['name-pattern']}

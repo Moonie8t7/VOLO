@@ -57,6 +57,27 @@ because our groups could not distinguish a library from a patcher. Astra places
 it at 105 and the corpus puts it at the very end of the order holding it. Both
 agreed against us.
 
+**Every name a listing has answered to.** Authors rename listings, and
+installed paks keep the name they shipped under, so a rename silently breaks
+the exact-name match against the catalogues. The crawlers now record old names
+as aliases when a rename comes through, and the category map also indexes
+mod.io's nameId slug, which the platform freezes at creation and which
+therefore preserves the original title. Matching stays exact; fuzzy matching
+against twenty-four thousand catalogue names was considered and rejected as a
+false-positive machine. Found 38 mods on the first build, including a Races
+bundle whose listing had been renamed twice-over. Held-out moved 57.3 to 57.4.
+
+**The author's other catalogued mods, as the tier below the listing.** Some
+names defeat every tier: a dice set called "ElectricBlue" says nothing, its
+listing does not exist, and its neighbours in submitted orders are
+alphabetical accidents. But its author has ten catalogued mods and every one
+is dice. An author with at least three categorised mods, at least eighty
+percent of them in one group, places their otherwise-unplaceable mods with the
+rest of their work, labelled `author` so it never reads as evidence. Placed 29
+mods at a cost of 0.1 held-out points, the same shape of trade as the listing
+tier above: the metric rewards leaving unknown mods parked at the end, and a
+mod placed in the right section beats a mod at the end of the file.
+
 ## Rejected
 
 Each experiment below quotes the figure it was measured against at the time,
@@ -98,8 +119,9 @@ about the corpus, not about whether the sort is useful.
 
 The rule now is that the dividers are the skeleton of the order whether or not
 the divider paks are installed. Every mod earns a slot on that skeleton, from
-where the community filed it, else its published category, else what its name
-plainly says; the masterlist then orders mods within a slot. Skeleton coverage
+where the community filed it, else what its name plainly says, because a name
+can hit an exact slot, else its published category; the masterlist then orders
+mods within a slot. Skeleton coverage
 went from 967 of 3,008 mods to 2,662, and uncategorised from 650 to 338.
 
 The cost, stated plainly: held-out agreement 60.3 to 57.5 percent. That figure

@@ -281,7 +281,10 @@ export default function LandingPage() {
                 in submitted orders, and the percentage is how much they agreed.
                 A listing placement came from the mod's own Nexus or mod.io
                 page, which tells you what the mod is rather than where anyone
-                actually loads it. A guess means VOLO read the title and had
+                actually loads it. An author placement means the mod itself is
+                listed nowhere, but its author's other catalogued mods
+                overwhelmingly sit in one section, so the mod is filed with
+                them. A guess means VOLO read the title and had
                 nothing else to go on, and unplaced means it had not even that,
                 so the mod waits at the end.
               </p>

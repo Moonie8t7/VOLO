@@ -719,6 +719,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     ['from section headers', tier('section') + tier('section-majority')],
     ['from name patterns', tier('name-pattern')],
     ['from listings', tier('external-category')],
+    ['from the author\'s other mods', tier('author-catalogue')],
     ['inferred', tier('inferred')],
     ['curated', tier('curated')],
     ['uncategorised', tier('none')],
