@@ -62,19 +62,19 @@ for (const [group, code] of Object.entries(GROUP_TO_CODE)) {
     console.error(`no divider found for ${group} (code ${code})`);
     process.exit(1);
   }
-  const num = parseFloat((hit.name.match(/([0-9]+(?:.[0-9]+)?)/) || [])[1]);
+  const num = parseFloat((hit.name.match(/([0-9]+(?:\.[0-9]+)?)/) || [])[1]);
   byGroup[group] = { uuid: hit.uuid, name: hit.name, num };
 }
 
 /**
- * The whole taxonomy in Astra's own sequence, not just one divider per group.
- * The sub-dividers are the point: they distinguish a Warlock subclass from a
- * Wizard one, a library from the patcher that must follow it, and they tell a
- * player where to put a mod rather than merely what kind of mod it is.
+ * The whole taxonomy in Astra's own sequence, where byGroup above keeps one
+ * divider per group. The sub-dividers are the point: they distinguish a
+ * Warlock subclass from a Wizard one, a library from the patcher that must
+ * follow it, and they tell a player where a mod goes, and what kind it is.
  */
 const all = data.separators
   .map(s => {
-    const m = s.name.match(/([0-9]+(?:.[0-9]+)?)/);
+    const m = s.name.match(/([0-9]+(?:\.[0-9]+)?)/);
     return m ? { num: parseFloat(m[1]), uuid: s.uuid, name: s.name } : null;
   })
   .filter(Boolean)

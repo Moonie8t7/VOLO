@@ -92,7 +92,7 @@ if (!working && !broken) {
   finish(false, ['## Submission rejected', '', 'Could not read the working or not working answer from the issue.']);
 }
 
-// Step 2: the order itself. Prefer a fenced block; fall back to an attachment.
+/** Step 2: the order itself. Prefer a fenced block; fall back to an attachment. */
 async function extractOrderText() {
   const fence = body.match(/```(?:json)?\s*\n([\s\S]*?)```/);
   if (fence && fence[1].trim().length > 2) return fence[1];

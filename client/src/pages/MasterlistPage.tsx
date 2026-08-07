@@ -164,6 +164,22 @@ export default function MasterlistPage() {
                       inferred, {Math.round(p.evidence.confidence * 100)}%
                     </span>
                   )}
+                  {p.evidence?.source === 'curated' && (
+                    <span
+                      className="text-xs text-muted-foreground shrink-0"
+                      title="Placed by a hand-written maintainer rule."
+                    >
+                      curated
+                    </span>
+                  )}
+                  {p.evidence?.source === 'name-pattern' && (
+                    <span
+                      className="text-xs text-muted-foreground shrink-0"
+                      title="Guessed from the mod name. Nobody has placed this one yet."
+                    >
+                      guessed
+                    </span>
+                  )}
                   {p.evidence?.source === 'external-category' && (
                     <span
                       className="text-xs text-muted-foreground shrink-0"

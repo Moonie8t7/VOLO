@@ -222,6 +222,20 @@ const empty = (format: string, errors: string[]): ParseResult =>
   ({ mods: [], sections: [], format, warnings: [], errors });
 
 /**
+ * Entity decoding for attribute values; &amp; must come last.
+ *
+ * Numeric entities cover decimal and hex, decoded with fromCodePoint because
+ * fromCharCode truncates anything above the basic plane: a mod name containing
+ * an emoji would round-trip as a lone surrogate and never match anything.
+ */
+const decodeXml = (s: string) =>
+  s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, n: string) => String.fromCodePoint(parseInt(n, 16)))
+    .replace(/&#(\d+);/g, (_, n: string) => String.fromCodePoint(Number(n)))
+    .replace(/&amp;/g, '&');
+
+/**
  * modsettings.lsx is the game's own load order file, the one BG3 reads at
  * launch. Every modded install has it regardless of manager, and for users of
  * the official in-game manager it is the only exportable format there is.
@@ -236,13 +250,6 @@ const empty = (format: string, errors: string[]): ParseResult =>
  *     <attribute id="Folder" value="..."/>
  *   </node>
  */
-/** Entity decoding for attribute values; &amp; must come last. */
-const decodeXml = (s: string) =>
-  s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'")
-    .replace(/&#(\d+);/g, (_, n: string) => String.fromCharCode(Number(n)))
-    .replace(/&amp;/g, '&');
-
 function parseModsettings(content: string): ParseResult {
   const blocks = content.split(/<node\s+id="ModuleShortDesc"/).slice(1);
   if (!blocks.length) {

@@ -12,18 +12,16 @@ import type { Masterlist } from './types';
 const LOCAL_URL = '/bg3-masterlist.json';
 
 /**
- * The masterlist as it stands on main, which runs ahead of whatever shipped with
- * this build. Lets a correction reach users without a redeploy.
+ * The masterlist as it stands on main, which can run ahead of whatever shipped
+ * with this build. Lets a correction reach users without waiting for a deploy.
  *
- * Disabled while the repository is private: raw.githubusercontent.com answers 404
- * for anonymous requests to a private repo, so every visitor would collect a
- * console error on every page load for no benefit. The bundled copy is identical
- * data in the meantime.
- *
- * Re-enable by restoring the URL below once the repository is public.
+ * This was disabled while the repository was private, because
+ * raw.githubusercontent.com answers 404 anonymously for private repos and every
+ * visitor collected a console error for no benefit. The repository is public
+ * now, so the comment that said "re-enable once public" is honoured.
  */
-const REMOTE_URL: string | null = null;
-// 'https://raw.githubusercontent.com/Moonie8t7/VOLO/main/masterlist/bg3-masterlist.json'
+const REMOTE_URL: string | null =
+  'https://raw.githubusercontent.com/Moonie8t7/VOLO/main/masterlist/bg3-masterlist.json';
 
 const EMPTY: Masterlist = {
   version: '0.0.0',
@@ -67,7 +65,13 @@ export async function loadMasterlist(): Promise<Masterlist> {
     if (REMOTE_URL) {
       try {
         const remote = await fetchJson(REMOTE_URL, 6_000);
-        if (compareVersions(remote.version, local.version) > 0) {
+        /*
+         * Newer wins, judged by generation time rather than version. The
+         * version field is the schema version and sits at the same value for
+         * months, so comparing it meant the remote copy could never win and
+         * the whole mechanism was quietly inert.
+         */
+        if (newerThan(remote, local)) {
           cache = remote;
           return remote;
         }
@@ -85,6 +89,20 @@ export async function loadMasterlist(): Promise<Masterlist> {
   } finally {
     inflight = null;
   }
+}
+
+/**
+ * Whether one masterlist was generated after another.
+ *
+ * Falls back to the version comparison when either timestamp is unparsable,
+ * so a malformed date degrades to the old behaviour rather than to a wrong
+ * answer.
+ */
+function newerThan(a: Masterlist, b: Masterlist): boolean {
+  const ta = Date.parse(a.generated);
+  const tb = Date.parse(b.generated);
+  if (Number.isFinite(ta) && Number.isFinite(tb)) return ta > tb;
+  return compareVersions(a.version, b.version) > 0;
 }
 
 /** Semver-ish comparison. Returns >0 if a is newer. */

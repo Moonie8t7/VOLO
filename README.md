@@ -21,8 +21,8 @@ mod manager, are both supported.
 
 Measured on orders it has never seen, VOLO agrees with them **57.5 percent** of
 the time against **50.5 percent** for a random shuffle. That figure averages
-orders rather than mods, so a 41-mod order weighs as much as a 999-mod one;
-weighted by mods it is nearer 59 percent. It is a sorting aid with evidence
+orders rather than mods, so a 41-mod order weighs as much as a 999-mod one,
+though weighting by mods barely moves it. It is a sorting aid with evidence
 behind it, not an oracle.
 
 ## Quick start

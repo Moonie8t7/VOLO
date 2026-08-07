@@ -13,15 +13,29 @@ import { Button } from '@/components/ui/button';
 /** Held-out agreement per submitted order, from scripts/verify-holdout.mjs. */
 const ORDERS = [
   { name: 'working_07062025', mods: 999, held: 61.9, random: 49.5 },
-  { name: 'Current_13.09.2025', mods: 704, held: 57.6, random: 50.3 },
-  { name: 'Current_Working_Order', mods: 434, held: 51.6, random: 50.4 },
+  { name: 'Current_13.09.2025', mods: 704, held: 57.7, random: 50.3 },
+  { name: 'Current_Working_Order', mods: 434, held: 51.5, random: 50.4 },
   { name: 'Patch 8 Origin Custom (Lvl 20)', mods: 422, held: 55.1, random: 52.0 },
   { name: 'Patch 8 Origin Custom', mods: 419, held: 54.7, random: 50.4 },
-  { name: 'Patch 8 Vanilla+', mods: 379, held: 56.2, random: 49.1 },
+  { name: 'Patch 8 Vanilla+', mods: 379, held: 56.1, random: 49.1 },
   { name: 'Gamer Time', mods: 203, held: 58.9, random: 46.3 },
   { name: 'issue-1', mods: 59, held: 59.5, random: 55.5 },
   { name: 'Current_22.11.2025', mods: 41, held: 62.1, random: 51.2 },
 ];
+
+/**
+ * Every figure derived from ORDERS is computed, never typed. A hand-copied
+ * "nearer 59 percent" sat on this page contradicting the table above it by
+ * one and a half points, and nothing could catch it because prose is not
+ * checked against data. Interpolation cannot disagree with its own table.
+ */
+const pct = (v: number) => (Math.round(v * 10) / 10).toFixed(1);
+const mean = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / xs.length;
+const HELD_OUT = pct(mean(ORDERS.map(o => o.held)));
+const RANDOM = pct(mean(ORDERS.map(o => o.random)));
+const WEIGHTED = pct(
+  ORDERS.reduce((a, o) => a + o.held * o.mods, 0) / ORDERS.reduce((a, o) => a + o.mods, 0),
+);
 
 export default function MeasuredPage() {
   return (
@@ -56,8 +70,8 @@ export default function MeasuredPage() {
           <h2 className="font-display text-2xl font-bold">The result</h2>
           <p>
             Across nine working orders, VOLO agrees with the player{' '}
-            <strong>57.5 percent</strong> of the time, against{' '}
-            <strong>50.5 percent</strong> for a random shuffle. So it is doing
+            <strong>{HELD_OUT} percent</strong> of the time, against{' '}
+            <strong>{RANDOM} percent</strong> for a random shuffle. So it is doing
             real work, and it is nowhere near a solved problem.
           </p>
           <div className="overflow-x-auto">
@@ -91,7 +105,7 @@ export default function MeasuredPage() {
             The average treats every order equally, so a 41-mod list counts as
             much as a 999-mod one. Weighted by the number of mods, which is
             closer to what someone with a real load order experiences, it comes
-            out near 59 percent.
+            out at {WEIGHTED} percent.
           </p>
         </section>
 
@@ -101,7 +115,11 @@ export default function MeasuredPage() {
           </h2>
           <p>
             Most of what was tried made the sort worse. Recording the failures
-            is the only way to stop them being tried again.
+            is the only way to stop them being tried again. Each figure below is
+            against the baseline of its own run, from an older scoring pass, so
+            the pairs compare with each other and not with the headline above;
+            where only a cost in points is given, that cost is against the same
+            run it was measured in.
           </p>
           <dl className="space-y-4">
             <div>
