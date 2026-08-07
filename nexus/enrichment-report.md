@@ -15,7 +15,7 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 - 9 currently unsorted mods would receive a category from their
   Nexus listing.
-- 289 mods have a Nexus category that disagrees with the
+- 288 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
 - 586 dependency edges from author-maintained Requirements tables land
