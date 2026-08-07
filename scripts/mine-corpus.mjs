@@ -71,6 +71,21 @@ const DIVIDERS = (() => {
   }
 })();
 
+/** Canonical divider names, so a thin export that lists a divider by name and
+ * not by uuid is still read as a skeleton marker rather than as a mod. */
+const DIVIDER_NAMES = new Set(DIVIDERS.values());
+
+/**
+ * The key a load order entry is recorded under.
+ *
+ * Thin exports carry names and empty UUID strings; the name is still an
+ * observation about a real mod, so it must not be dropped. Such entries key by
+ * the same `name:` convention the client synthesises on import, and records
+ * that later turn out to share a name with a uuid-keyed record are merged
+ * before resolution.
+ */
+const keyOf = entry => entry.UUID || `name:${externalKey(entry.Name)}`;
+
 function dividerSectionLabel(name) {
   const parts = String(name).split(String.fromCharCode(183)).map(p => p.trim());
   if (parts.length < 2) return null;
@@ -88,7 +103,9 @@ function dividerSectionLabel(name) {
 const GROUP_DIVIDER = (() => {
   try {
     const d = JSON.parse(fs.readFileSync(path.join('client', 'src', 'lib', 'dividers.json'), 'utf8'));
-    return new Map(Object.entries(d.byGroup).map(([group, entry]) => [group, entry.num]));
+    // sortNum, not num: a group mapped to a CATEGORY heading sorts at its
+    // Other slot, so category-level evidence never outranks an exact slot.
+    return new Map(Object.entries(d.byGroup).map(([group, entry]) => [group, entry.sortNum ?? entry.num]));
   } catch {
     return new Map();
   }
@@ -580,17 +597,20 @@ for (const order of orders) {
     const name = entry.Name;
     if (!name) continue;
 
-    if (entry.UUID && DIVIDERS.has(entry.UUID)) {
+    const dividerName = entry.UUID && DIVIDERS.has(entry.UUID)
+      ? DIVIDERS.get(entry.UUID)
+      : DIVIDER_NAMES.has(name) ? name : null;
+    if (dividerName !== null) {
       separatorCount++;
       // Submitters sometimes restyle divider names in their manager, so the
       // canonical pak name wins over whatever the order file says.
-      currentSection = dividerSectionLabel(DIVIDERS.get(entry.UUID))
+      currentSection = dividerSectionLabel(dividerName)
         ?? dividerSectionLabel(name)
         ?? currentSection;
       // The divider itself is the finest placement statement available. It
       // can say "a Warlock subclass" where the groups can only say "a class
       // mod", and it fixes where that sits relative to everything else.
-      currentDivider = dividerNumber(DIVIDERS.get(entry.UUID)) ?? currentDivider;
+      currentDivider = dividerNumber(dividerName) ?? currentDivider;
       continue;
     }
 
@@ -603,9 +623,7 @@ for (const order of orders) {
       currentDivider = null;
       continue;
     }
-    if (!entry.UUID) continue;
-
-    const r = record(entry.UUID);
+    const r = record(keyOf(entry));
     r.names.set(name, (r.names.get(name) || 0) + 1);
     r.seenIn.add(order.file);
     if (order.label === 'working') r.seenInWorking++;
@@ -632,6 +650,46 @@ for (const order of orders) {
       if (!dep?.Name || ENGINE_MASTERS.has(dep.Name) || dep.UUID === entry.UUID) continue;
       r.dependencies.set(dep.UUID, dep.Name);
     }
+  }
+}
+
+/*
+ * Fold name-keyed records into uuid-keyed ones. A mod submitted once with its
+ * uuid and once through a thin export is one mod, not two; the fold only fires
+ * when exactly one uuid record owns the name, because a shared name split
+ * across two uuids is a fact about the corpus, not a tie to break here.
+ */
+const mergedInto = new Map();
+/** A record key with any name-to-uuid merge applied. */
+const canonicalKey = k => mergedInto.get(k) ?? k;
+{
+  const owners = new Map();
+  for (const r of mods.values()) {
+    if (r.uuid.startsWith('name:')) continue;
+    for (const n of r.names.keys()) {
+      const k = externalKey(n);
+      owners.set(k, owners.has(k) && owners.get(k) !== r ? 'ambiguous' : r);
+    }
+  }
+  for (const [key, r] of [...mods.entries()]) {
+    if (!key.startsWith('name:')) continue;
+    const target = owners.get(key.slice('name:'.length));
+    if (!target || target === 'ambiguous') continue;
+    mergedInto.set(key, target.uuid);
+    for (const [n, c] of r.names) target.names.set(n, (target.names.get(n) || 0) + c);
+    for (const [s, c] of r.sections) target.sections.set(s, (target.sections.get(s) || 0) + c);
+    for (const [d, c] of r.dividers) target.dividers.set(d, (target.dividers.get(d) || 0) + c);
+    for (const [u, n] of r.dependencies) if (!target.dependencies.has(u)) target.dependencies.set(u, n);
+    for (const f of r.featureFlags) target.featureFlags.add(f);
+    for (const f of r.seenIn) target.seenIn.add(f);
+    target.seenInWorking += r.seenInWorking;
+    target.seenInBroken += r.seenInBroken;
+    target.author ??= r.author; target.version ??= r.version;
+    target.folder ??= r.folder; target.description ??= r.description;
+    if (r.lastGameBuild && compareBuilds(r.lastGameBuild, target.lastGameBuild ?? '0') > 0) {
+      target.lastGameBuild = r.lastGameBuild;
+    }
+    mods.delete(key);
   }
 }
 
@@ -787,8 +845,9 @@ const uuidSequences = orders
   .filter(o => o.positional)
   .map(o =>
     o.entries
-      .filter(e => e?.UUID && e?.Name && !SEPARATOR_RE.test(e.Name) && !DIVIDERS.has(e.UUID))
-      .map(e => e.UUID),
+      .filter(e => e?.Name && !SEPARATOR_RE.test(e.Name)
+        && !(e.UUID && DIVIDERS.has(e.UUID)) && !DIVIDER_NAMES.has(e.Name))
+      .map(e => canonicalKey(keyOf(e))),
   );
 const voterGroup = new Map(
   plugins.filter(p => p.group !== 'unsorted').map(p => [p.uuid, p.group]),
@@ -954,7 +1013,12 @@ if (process.env.VOLO_NO_EXTERNAL_DEPS) {
    */
   const workingPositions = orders.filter(o => o.label === 'working').map(o => {
     const pos = new Map();
-    o.entries.forEach((e, i) => { if (e.UUID && !pos.has(e.UUID)) pos.set(e.UUID, i); });
+    o.entries.forEach((e, i) => {
+      if (!e.Name || SEPARATOR_RE.test(e.Name) || DIVIDER_NAMES.has(e.Name)) return;
+      if (e.UUID && DIVIDERS.has(e.UUID)) return;
+      const k = canonicalKey(keyOf(e));
+      if (!pos.has(k)) pos.set(k, i);
+    });
     return pos;
   });
   const corpusContradicts = (dependent, dependency) => {

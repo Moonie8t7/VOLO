@@ -103,9 +103,9 @@ export default function LandingPage() {
             uses, keeps declared dependencies ahead of the mods that need them,
             and otherwise moves as little as possible. Every mod shows why it
             sits where it does, and how much that reason is worth. A placement
-            taken from an order somebody played on counts for more than one
-            read off a Nexus page, which counts for more than a guess at the
-            mod's title, and each row says which of those you are looking at.
+            taken from an order somebody played on counts for more than
+            anything read off a Nexus listing or guessed from the mod's title,
+            and each row says which of those you are looking at.
             Mods it can find nothing about wait at the end, and you can move
             anything by hand.
           </p>
@@ -131,7 +131,7 @@ export default function LandingPage() {
               />
               <img
                 src="/assets/volo-sorted-order-preview.png"
-                alt="A sorted load order in VOLO. Each mod shows its position, how far it moved, the section it belongs to such as UI Mods or Body Mods, and a note reading listing or guessed where the placement came from something weaker than a played order."
+                alt="A sorted load order in VOLO. ImpUI sits first on its ImprovedUI slot, and each mod shows how far it moved, the slot it landed on such as Caites' UI Mods or Gameplay, and a note reading curated, listing or guessed wherever the placement came from something other than a played order."
                 width={1200}
                 height={630}
                 loading="lazy"
@@ -141,7 +141,7 @@ export default function LandingPage() {
             </picture>
             <figcaption className="mt-3 text-sm" style={{ color: "hsl(var(--bg3-main) / 0.75)" }}>
               Every row says where the mod landed and why. Mods placed from
-              something weaker than a played order are labelled, so a guess
+              anything other than a played order are labelled, so a guess
               never looks like evidence.
             </figcaption>
           </figure>
@@ -164,10 +164,11 @@ export default function LandingPage() {
             That leaves two questions. Which position does a mod belong at, and
             in what order do the mods sharing a position go? For
             the first, VOLO takes the best evidence it has: where players
-            actually filed the mod in orders they submitted, failing that the
-            category on its Nexus or mod.io page, failing that what its name
-            plainly says. A mod nothing is known about waits at the end rather
-            than being filed somewhere flattering. For the second, VOLO counts
+            actually filed the mod in orders they submitted, failing that what
+            its name plainly says, because a name like Tasha's Feats points at
+            an exact slot, failing that the category on its Nexus or mod.io
+            page. A mod nothing is known about waits at the end rather than
+            being filed somewhere flattering. For the second, VOLO counts
             every pair of mods across every submitted order to work out which
             categories tend to load before which, and follows that. Some of the
             result contradicts the usual advice, and the played orders win.

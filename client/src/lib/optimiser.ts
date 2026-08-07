@@ -20,6 +20,7 @@
 import dividers from './dividers.json';
 import type {
   Mod, Masterlist, MasterlistPlugin, SortResult, Placement, Reason, Issue, GroupName,
+  ExternalListing,
 } from './types';
 
 const DEFAULT_GROUP = 'unsorted';
@@ -155,7 +156,27 @@ function indexMasterlist(masterlist: Masterlist) {
   return { byUuid, byName };
 }
 
-export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
+/**
+ * Group from the mod's own listing on Nexus or mod.io, or null.
+ *
+ * Nexus wins when both list the name, matching the miner. The catalogues key
+ * by lowercased alphanumeric name, the same normalisation the masterlist
+ * name index uses.
+ */
+function listedGroup(name: string, listing?: ExternalListing | null): GroupName | null {
+  if (!listing) return null;
+  const key = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+  if (!key) return null;
+  const index = listing.nexus[key] ?? listing.modio[key];
+  const group = index === undefined ? undefined : listing.groups[index];
+  return group ?? null;
+}
+
+export function sortLoadOrder(
+  mods: Mod[],
+  masterlist: Masterlist,
+  listing?: ExternalListing | null,
+): SortResult {
   const rank = rankGroups(masterlist);
   const { byUuid, byName } = indexMasterlist(masterlist);
   const issues: Issue[] = [];
@@ -176,8 +197,10 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
 
     // Imports without a UUID column get synthetic name: keys. When the name
     // matches a masterlist entry that knows the real pak UUID, recover it so
-    // the export can round-trip into BG3MM.
-    if (entry?.uuid && mod.uuid.startsWith('name:')) {
+    // the export can round-trip into BG3MM. Masterlist entries mined from thin
+    // exports carry synthetic keys of their own, and those must never be
+    // written into an export as if they were pak UUIDs.
+    if (entry?.uuid && !entry.uuid.startsWith('name:') && mod.uuid.startsWith('name:')) {
       resolvedUuid.set(mod.uuid, entry.uuid);
     }
 
@@ -206,12 +229,20 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
     }
     if (entry) known++;
 
-    // Nexus and mod.io categories are folded into the masterlist at build time
-    // rather than consulted here, so this stays a pure name read.
+    // Same ladder as the miner: an exact slot read off the name first, then
+    // the mod's own listing on Nexus or mod.io. The name patterns carry a
+    // divider slot, which is finer than the coarse category a listing gives.
     const guessed = NAME_PATTERNS.find(([re]) => re.test(searchableName(mod.name)));
-    group.set(mod.uuid, guessed?.[1] ?? DEFAULT_GROUP);
-    groupSource.set(mod.uuid, guessed ? 'name-pattern' : 'default');
-    if (guessed) guessedDivider.set(mod.uuid, guessed[2]);
+    if (guessed) {
+      group.set(mod.uuid, guessed[1]);
+      groupSource.set(mod.uuid, 'name-pattern');
+      guessedDivider.set(mod.uuid, guessed[2]);
+      continue;
+    }
+
+    const listed = listedGroup(mod.name, listing);
+    group.set(mod.uuid, listed ?? DEFAULT_GROUP);
+    groupSource.set(mod.uuid, listed ? 'listing' : 'default');
   }
 
   // Step 2: build the dependency graph. An edge from dep to mod means the dep
@@ -296,10 +327,12 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
    *
    * A mod uses the most specific divider known for it: the one it was actually
    * observed under in a submitted order, otherwise the one its group belongs
-   * to. Mods with no category at all sit at the end, where the corpus says
-   * unplaced mods usually sit.
+   * to. A group rank is sortNum, not num: a group mapped to a CATEGORY heading
+   * sorts at its Other slot, so a mod known only as "User Interface" cannot
+   * outrank ImpUI on its exact slot. Mods with no category at all sit at the
+   * end, where the corpus says unplaced mods usually sit.
    */
-  const groupDividers = dividers.byGroup as Record<string, { num: number } | undefined>;
+  const groupDividers = dividers.byGroup as Record<string, { num: number; sortNum?: number } | undefined>;
   const FIRST_DIVIDER = -1;
   const LAST_DIVIDER = 1000;
 
@@ -312,7 +345,8 @@ export function sortLoadOrder(mods: Mod[], masterlist: Masterlist): SortResult {
     const g = group.get(m.uuid) ?? DEFAULT_GROUP;
     if (g === 'Top of Load Order') return FIRST_DIVIDER;
     if (g === 'Bottom of Load Order' || g === DEFAULT_GROUP) return LAST_DIVIDER;
-    return groupDividers[g]?.num ?? LAST_DIVIDER;
+    const slot = groupDividers[g];
+    return slot?.sortNum ?? slot?.num ?? LAST_DIVIDER;
   };
 
   const before = (a: Mod, b: Mod) =>

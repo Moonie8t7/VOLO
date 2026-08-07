@@ -22,14 +22,14 @@ Two scripts report it, and the difference matters.
 The in-sample figure runs about four points high because the masterlist has
 already read the answer. **Quote the held-out number.**
 
-Current: **57.5 percent held out**, against a 50.5 percent random baseline,
+Current: **57.3 percent held out**, against a 50.5 percent random baseline,
 over nine distinct working orders.
 
 Two caveats on the held-out figure itself. The group sequence is fixed across
 folds rather than re-learned per fold, so it is very slightly optimistic. And
 the summary is a mean over orders, not over mods, so a 41-mod order counts as
 much as a 999-mod one; on the same data, weighting by mods barely moves the
-figure, and the seven orders above 200 mods average 56.6 on their own. Read
+figure, and the seven orders above 200 mods average 56.5 on their own. Read
 the per-order table before treating a change in the summary as real.
 
 ## Adopted
@@ -62,7 +62,7 @@ agreed against us.
 Each experiment below quotes the figure it was measured against at the time,
 so compare a result with its own baseline rather than with the current
 headline. The 63.6 appearing here is the in-sample number from before held-out
-evaluation existed; it is not comparable to the 57.5 at the top of this file.
+evaluation existed; it is not comparable to the 57.3 at the top of this file.
 
 **Keeping uncategorised mods in place.** Rather than sorting them to the end,
 give them the position of the last categorised mod above them. Measured 61.8
