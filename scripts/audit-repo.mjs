@@ -66,7 +66,7 @@ const PERSONAL = [
  * has installed. House style applies to prose this project writes, not to data
  * it faithfully repeats.
  */
-const VERBATIM = /^(Load Orders - Public Submitted|nexus\/|modio\/|masterlist\/bg3-masterlist\.json|public\/bg3-masterlist\.json)/;
+const VERBATIM = /^(Load Orders - Public Submitted|nexus\/|modio\/|masterlist\/(bg3-masterlist|external-categories)\.json|public\/(bg3-masterlist|external-categories)\.json)/;
 
 /** Test fixtures deliberately contain the shapes the scrubbers must catch. */
 const FIXTURES = /^scripts\/(smoke-test|audit-repo)\.mjs$/;

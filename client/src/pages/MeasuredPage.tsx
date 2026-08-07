@@ -12,15 +12,15 @@ import { Button } from '@/components/ui/button';
 
 /** Held-out agreement per submitted order, from scripts/verify-holdout.mjs. */
 const ORDERS = [
-  { name: 'working_07062025', mods: 999, held: 61.9, random: 49.5 },
-  { name: 'Current_13.09.2025', mods: 704, held: 57.7, random: 50.3 },
-  { name: 'Current_Working_Order', mods: 434, held: 51.5, random: 50.4 },
-  { name: 'Patch 8 Origin Custom (Lvl 20)', mods: 422, held: 55.1, random: 52.0 },
-  { name: 'Patch 8 Origin Custom', mods: 419, held: 54.7, random: 50.4 },
-  { name: 'Patch 8 Vanilla+', mods: 379, held: 56.1, random: 49.1 },
-  { name: 'Gamer Time', mods: 203, held: 58.9, random: 46.3 },
-  { name: 'issue-1', mods: 59, held: 59.5, random: 55.5 },
-  { name: 'Current_22.11.2025', mods: 41, held: 62.1, random: 51.2 },
+  { name: 'working_07062025', mods: 999, held: 62.0, random: 49.5 },
+  { name: 'Current_13.09.2025', mods: 704, held: 57.1, random: 50.3 },
+  { name: 'Current_Working_Order', mods: 434, held: 52.1, random: 50.4 },
+  { name: 'Patch 8 Origin Custom (Lvl 20)', mods: 422, held: 54.9, random: 52.0 },
+  { name: 'Patch 8 Origin Custom', mods: 419, held: 54.4, random: 50.4 },
+  { name: 'Patch 8 Vanilla+', mods: 379, held: 55.8, random: 49.1 },
+  { name: 'Gamer Time', mods: 203, held: 59.1, random: 46.3 },
+  { name: 'issue-1', mods: 59, held: 57.9, random: 55.5 },
+  { name: 'Current_22.11.2025', mods: 41, held: 62.3, random: 51.2 },
 ];
 
 /**

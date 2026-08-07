@@ -14,7 +14,7 @@
     "check": "tsc",
     "test": "node scripts/smoke-test.mjs && node scripts/audit-repo.mjs",
     "verify-deploy": "node scripts/verify-deploy.mjs",
-    "masterlist": "node scripts/mine-corpus.mjs && node scripts/build-divider-map.mjs && node -e \"const f=require('fs');f.copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json');f.copyFileSync('masterlist/masterlist.schema.json','public/masterlist.schema.json')\""
+    "masterlist": "node scripts/mine-corpus.mjs && node scripts/build-divider-map.mjs && node -e \"const f=require('fs');f.copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json');f.copyFileSync('masterlist/masterlist.schema.json','public/masterlist.schema.json');f.copyFileSync('masterlist/external-categories.json','public/external-categories.json')\""
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.4",

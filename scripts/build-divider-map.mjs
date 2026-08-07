@@ -55,6 +55,8 @@ const GROUP_TO_CODE = {
 
 const data = JSON.parse(fs.readFileSync(SOURCE, 'utf8'));
 
+const numOf = name => parseFloat((name.match(/([0-9]+(?:\.[0-9]+)?)/) || [])[1]);
+
 const byGroup = {};
 for (const [group, code] of Object.entries(GROUP_TO_CODE)) {
   const hit = data.separators.find(s => s.name.includes(` ${code} `));
@@ -62,8 +64,48 @@ for (const [group, code] of Object.entries(GROUP_TO_CODE)) {
     console.error(`no divider found for ${group} (code ${code})`);
     process.exit(1);
   }
-  const num = parseFloat((hit.name.match(/([0-9]+(?:\.[0-9]+)?)/) || [])[1]);
-  byGroup[group] = { uuid: hit.uuid, name: hit.name, num };
+  byGroup[group] = { uuid: hit.uuid, name: hit.name, num: numOf(hit.name) };
+}
+
+/*
+ * Where a group's mods actually sort. A group mapped to a CATEGORY heading
+ * must not sort at the heading's number: the heading sits above every
+ * subsection, so a mod known only as "User Interface" would outrank ImpUI on
+ * its exact curated slot, and the whole point of the skeleton is that exact
+ * slots beat category-level evidence. Such a group sorts at its category's
+ * "Other" slot instead, the catch-all Astra ends each category with.
+ *
+ * Two bounds on that. The learned order interleaves groups by borrowing
+ * subsection numbers as rank points (Visuals sits on 010 inside the library
+ * span), so the Other slot is clamped below the next group's rank point to
+ * keep every learned pairwise order intact. And LATE LOADERS has no Other
+ * slot because its subsections are patchers that must run last of all, so a
+ * heading-mapped group with no Other sorts just after its heading, ahead of
+ * the patcher slots.
+ *
+ * The uuid and name stay on the heading either way: sortNum decides where the
+ * pile goes, the heading still labels it.
+ */
+const numbered = data.separators
+  .map(s => ({ num: numOf(s.name), name: s.name }))
+  .filter(s => Number.isFinite(s.num))
+  .sort((a, b) => a.num - b.num);
+const rankPoints = Object.values(byGroup).map(e => e.num).sort((a, b) => a - b);
+for (const entry of Object.values(byGroup)) {
+  if (!entry.name.includes('· CATEGORY ·')) {
+    entry.sortNum = entry.num;
+    continue;
+  }
+  const nextHeading = numbered.find(s => s.num > entry.num && s.name.includes('· CATEGORY ·'));
+  const span = numbered.filter(s =>
+    s.num > entry.num && (nextHeading === undefined || s.num < nextHeading.num));
+  const others = span.filter(s => /· Other ❧/.test(s.name));
+  // The category-level Other, not a nested one like Subraces · Other.
+  const other = others.length ? others[others.length - 1] : undefined;
+  const nextRank = rankPoints.find(n => n > entry.num);
+  entry.sortNum = other === undefined
+    ? entry.num + 0.5
+    : Math.min(other.num, nextRank === undefined ? Infinity : nextRank - 0.5);
 }
 
 /**
@@ -73,11 +115,8 @@ for (const [group, code] of Object.entries(GROUP_TO_CODE)) {
  * follow it, and they tell a player where a mod goes, and what kind it is.
  */
 const all = data.separators
-  .map(s => {
-    const m = s.name.match(/([0-9]+(?:\.[0-9]+)?)/);
-    return m ? { num: parseFloat(m[1]), uuid: s.uuid, name: s.name } : null;
-  })
-  .filter(Boolean)
+  .map(s => ({ num: numOf(s.name), uuid: s.uuid, name: s.name }))
+  .filter(s => Number.isFinite(s.num))
   .sort((a, b) => a.num - b.num);
 
 const out = {

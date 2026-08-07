@@ -88,6 +88,21 @@ export interface Masterlist {
   plugins: MasterlistPlugin[];
 }
 
+/**
+ * The published Nexus and mod.io catalogues, reduced to name -> group.
+ *
+ * Keys are lowercased alphanumeric mod names; values index into `groups`.
+ * This is the last placement tier before giving up: a mod no order has placed
+ * and no name pattern recognises can still be filed where its own listing
+ * says it belongs.
+ */
+export interface ExternalListing {
+  generated: string;
+  groups: GroupName[];
+  nexus: Record<string, number>;
+  modio: Record<string, number>;
+}
+
 export interface Incompatibility {
   /** Names or UUIDs. Two or more present together triggers the warning. */
   mods: string[];

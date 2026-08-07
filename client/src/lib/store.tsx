@@ -13,8 +13,9 @@ import {
   createContext, useContext, useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import type { ReactNode } from 'react';
-import type { Masterlist, Mod, ParseResult, SortResult } from './types';
+import type { ExternalListing, Masterlist, Mod, ParseResult, SortResult } from './types';
 import { loadMasterlist } from './masterlist';
+import { loadListing } from './listing';
 import { sortLoadOrder } from './optimiser';
 
 const STORAGE_KEY = 'volo.session.v1';
@@ -100,8 +101,16 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [masterlistError, setMasterlistError] = useState<string | null>(null);
   const [isLoadingMasterlist, setLoading] = useState(true);
 
+  /*
+   * The Nexus and mod.io catalogues, for mods nothing else places. Loaded
+   * alongside the masterlist but never waited on: sorting without it is the
+   * old behaviour, and the sort re-runs when it arrives.
+   */
+  const [listing, setListing] = useState<ExternalListing | null>(null);
+
   useEffect(() => {
     let cancelled = false;
+    loadListing().then(l => { if (!cancelled && l) setListing(l); });
     loadMasterlist()
       .then(ml => {
         if (cancelled) return;
@@ -148,8 +157,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const sorted = useMemo(
-    () => (mods.length && masterlist ? sortLoadOrder(mods, masterlist) : null),
-    [mods, masterlist],
+    () => (mods.length && masterlist ? sortLoadOrder(mods, masterlist, listing) : null),
+    [mods, masterlist, listing],
   );
 
   /**

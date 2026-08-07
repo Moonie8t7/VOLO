@@ -87,7 +87,10 @@ function MoveControls({ name, onMove }: { name: string; onMove: (d: -1 | 1) => v
 const SLOT_LABEL: Map<number, string> = new Map(
   (dividers.all as { num: number; name: string }[]).map(d => {
     const parts = d.name.split(String.fromCharCode(183)).map(p => p.trim());
-    const leaf = parts[parts.length - 1] ?? d.name;
+    let leaf = parts[parts.length - 1] ?? d.name;
+    // Catch-all leaves are meaningless alone: "Other" says nothing, "UI Other"
+    // says where. The section is the second segment, after the number.
+    if (/^Other/i.test(leaf) && parts.length >= 3) leaf = `${parts[parts.length - 2]} ${leaf}`;
     return [d.num, leaf.replace(/[^\x20-\x7E]/g, '').trim()];
   }),
 );
@@ -171,12 +174,39 @@ export default function OptimisePage() {
             metric cards is the stock dashboard treatment. */}
         <dl className="flex flex-wrap items-baseline gap-x-8 gap-y-3 border-y border-border/40 py-4">
           <Metric label="mods" value={stats.total} />
-          <Metric label="placed by the community" value={byProvenance.masterlist} />
-          <Metric label="curated" value={byProvenance.curated} />
-          <Metric label="inferred" value={byProvenance.inferred} />
-          <Metric label="from the mod's listing" value={byProvenance.listing} muted />
-          <Metric label="guessed from the name" value={byProvenance['name-pattern']} muted />
-          <Metric label="unplaced" value={byProvenance.default} muted />
+          <Metric
+            label="placed by the community"
+            value={byProvenance.masterlist}
+            hint="Filed here by players in the load orders they submitted. The strongest evidence VOLO has."
+          />
+          <Metric
+            label="curated"
+            value={byProvenance.curated}
+            hint={PROVENANCE.curated.full}
+          />
+          <Metric
+            label="inferred"
+            value={byProvenance.inferred}
+            hint={PROVENANCE.inferred.full}
+          />
+          <Metric
+            label="from the mod's listing"
+            value={byProvenance.listing}
+            hint={PROVENANCE.listing.full}
+            muted
+          />
+          <Metric
+            label="guessed from the name"
+            value={byProvenance['name-pattern']}
+            hint={PROVENANCE['name-pattern'].full}
+            muted
+          />
+          <Metric
+            label="unplaced"
+            value={byProvenance.default}
+            hint="Nothing places this mod yet: no submitted order, no listing category, and a name that gives nothing away. It waits at the end rather than being guessed somewhere."
+            muted
+          />
         </dl>
 
         {manualMoves > 0 && (
@@ -296,13 +326,23 @@ export default function OptimisePage() {
   );
 }
 
-function Metric({ label, value, muted }: { label: string; value: number; muted?: boolean }) {
+function Metric({ label, value, hint, muted }: {
+  label: string; value: number; hint?: string; muted?: boolean;
+}) {
+  /*
+   * The hint rides on the whole tile, not an icon: these are short jargon
+   * labels and the question a reader has is "what does this word mean", so
+   * hovering the word itself must answer it. The dotted underline is the only
+   * signal there is something to hover; screen readers get the same text.
+   */
   return (
-    <div className="flex items-baseline gap-2">
+    <div className="flex items-baseline gap-2" title={hint}>
       <dd className={`font-display text-2xl font-bold tabular-nums ${muted ? 'text-muted-foreground' : 'text-primary'}`}>
         {value.toLocaleString()}
       </dd>
-      <dt className="text-sm text-muted-foreground">{label}</dt>
+      <dt className={`text-sm text-muted-foreground ${hint ? 'cursor-help underline decoration-dotted decoration-muted-foreground/50 underline-offset-4' : ''}`}>
+        {label}
+      </dt>
     </div>
   );
 }
