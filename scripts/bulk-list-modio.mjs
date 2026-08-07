@@ -129,8 +129,19 @@ async function get(pathname, params = {}) {
 function storeMod(m) {
   const existing = catalog.mods[m.id];
   const updated = m.date_updated ? new Date(m.date_updated * 1000).toISOString() : null;
+  /*
+   * Authors rename listings, and installed paks keep whatever name the mod
+   * shipped under, so an overwritten name is a match lost forever. Every name
+   * this id has ever answered to is kept in aliases. The nameId slug catches
+   * renames from before this existed, because mod.io freezes it at creation.
+   */
+  const aliases = existing?.aliases ?? [];
+  if (existing?.name && m.name && existing.name !== m.name && !aliases.includes(existing.name)) {
+    aliases.push(existing.name);
+  }
   catalog.mods[m.id] = {
     ...(existing ?? {}),
+    ...(aliases.length ? { aliases } : {}),
     name: m.name ?? existing?.name ?? null,
     nameId: m.name_id ?? existing?.nameId ?? null,
     author: m.submitted_by?.username ?? existing?.author ?? null,

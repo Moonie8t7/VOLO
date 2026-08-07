@@ -67,8 +67,9 @@ Astra's Load Order Dividers are the skeleton: a hundred-odd labelled positions
 that a mod is placed on whether or not the divider paks are installed. Which
 position comes from the strongest evidence available, in order: curated
 overrides, section headers modders wrote in their own orders, the mod's name
-read against the divider vocabulary, its Nexus or mod.io listing category, then
-inference from its neighbours in submitted orders. A mod with none of these
+read against the divider vocabulary, its Nexus or mod.io listing category,
+where its author's other catalogued mods sit, then inference from its
+neighbours in submitted orders. A mod with none of these
 waits at the end of the order, where submitted orders put mods nobody has
 placed. Within a position, the sequence learned from working orders decides,
 and mods it knows nothing about keep the order you gave them.
@@ -81,10 +82,10 @@ Full detail in [docs/architecture.md](docs/architecture.md).
 ## The masterlist
 
 `masterlist/bg3-masterlist.json` covers 3,138 mods. 1,640 were categorised from
-section headers modders wrote in their own orders, 772 from name patterns, 243
-from a Nexus or mod.io listing, 103 inferred from their neighbours, 16 from
-curated overrides, and 364 are not categorised at all. 2,766 of the 3,138 sit on
-a divider position.
+section headers modders wrote in their own orders, 772 from name patterns, 281
+from a Nexus or mod.io listing, 29 from where their author's other catalogued
+mods sit, 84 inferred from their neighbours, 16 from curated overrides, and 316
+are not categorised at all. 2,814 of the 3,138 sit on a divider position.
 
 These move as the corpus grows.
 [masterlist/coverage-report.md](masterlist/coverage-report.md) is regenerated on
@@ -105,7 +106,7 @@ nothing scores well; a mod left at the end because nothing is known about it is
 rewarded precisely because unplaced mods cluster there. Read it alongside the
 per-order and mod-weighted splits rather than on its own.
 
-364 mods have no category from any source. Almost all appeared in exactly one
+316 mods have no category from any source. Almost all appeared in exactly one
 submitted order, so there is nothing to infer from.
 
 The automated checks parse VOLO's own output with VOLO's own parser, which is

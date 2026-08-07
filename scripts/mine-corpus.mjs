@@ -130,6 +130,42 @@ const EXTERNAL = (() => {
 /** Key used by the external catalogues: lowercase, alphanumeric only. */
 const externalKey = name => String(name).toLowerCase().replace(/[^a-z0-9]/g, '');
 
+/**
+ * Author -> the one group that author's catalogued mods overwhelmingly sit in.
+ *
+ * Some mods defeat every name-based tier: "ElectricBlue" says nothing, but its
+ * author has ten mods in the catalogues and every one of them is a dice set.
+ * The prior only exists for authors with at least three categorised mods, at
+ * least eighty percent of them in a single group, so a versatile author
+ * contributes nothing and a specialist's habit is allowed to speak.
+ */
+const AUTHOR_PRIOR = (() => {
+  if (!EXTERNAL) return new Map();
+  const dist = new Map();
+  const feed = (author, name) => {
+    if (!author || !name) return;
+    const idx = EXTERNAL.nexus[externalKey(name)] ?? EXTERNAL.modio[externalKey(name)];
+    if (idx === undefined) return;
+    const g = EXTERNAL.groups[idx];
+    const m = dist.get(author) ?? new Map();
+    m.set(g, (m.get(g) || 0) + 1);
+    dist.set(author, m);
+  };
+  for (const file of [path.join('nexus', 'catalog.json'), path.join('modio', 'catalog.json')]) {
+    try {
+      const cat = JSON.parse(fs.readFileSync(file, 'utf8'));
+      for (const m of Object.values(cat.mods ?? {})) feed(m.author, m.name);
+    } catch {}
+  }
+  const prior = new Map();
+  for (const [author, m] of dist) {
+    const total = [...m.values()].reduce((a, b) => a + b, 0);
+    const [best, n] = [...m.entries()].sort((a, b) => b[1] - a[1])[0];
+    if (total >= 3 && n / total >= 0.8) prior.set(author, best);
+  }
+  return prior;
+})();
+
 /** Published category for a mod name, preferring Nexus, or null. */
 function groupFromExternal(name) {
   if (!EXTERNAL) return null;
@@ -338,8 +374,36 @@ const NAME_PATTERNS = [
   [/\babilit(y|ies)\b/i,                               'Spells', 46],
   [/summon|familiar/i,                                  'Spells', 49],
   [/\bspell|cantrip|\bmagic\b/i,                       'Spells', 47],
+  // Astra numbers a sub-slot per class, alphabetically. A name that says both
+  // which class and that it is a subclass lands on the exact one; a multi-class
+  // pack stays on the 058 parent, where a compilation belongs.
+  [/(?=.*subclass)(?=.*barbarian)/i,                    'Classes', 58.01],
+  [/(?=.*subclass)(?=.*\bbard\b)/i,                     'Classes', 58.02],
+  [/(?=.*subclass)(?=.*cleric)/i,                       'Classes', 58.03],
+  [/(?=.*subclass)(?=.*druid)/i,                        'Classes', 58.04],
+  [/(?=.*subclass)(?=.*fighter)/i,                      'Classes', 58.05],
+  [/(?=.*subclass)(?=.*\bmonk\b)/i,                     'Classes', 58.06],
+  [/(?=.*subclass)(?=.*paladin)/i,                      'Classes', 58.07],
+  [/(?=.*subclass)(?=.*ranger)/i,                       'Classes', 58.08],
+  [/(?=.*subclass)(?=.*rogue)/i,                        'Classes', 58.09],
+  [/(?=.*subclass)(?=.*sorcerer)/i,                     'Classes', 58.1],
+  [/(?=.*subclass)(?=.*warlock)/i,                      'Classes', 58.11],
+  [/(?=.*subclass)(?=.*wizard)/i,                       'Classes', 58.12],
   [/subclass/i,                                         'Classes', 58],
   [/\bclass(es)?\b|deity|deities/i,                    'Classes', 56],
+  // Same per-race routing for subraces. Compound races run ahead of the races
+  // their names contain, so a half-elf pack is not filed under elves.
+  [/(?=.*subrace)(?=.*half.?orc)/i,                     'Races', 53.05],
+  [/(?=.*subrace)(?=.*half.?el(f|ves))/i,               'Races', 53.04],
+  [/(?=.*subrace)(?=.*dragonborn)/i,                    'Races', 53.11],
+  [/(?=.*subrace)(?=.*tiefling)/i,                      'Races', 53.09],
+  [/(?=.*subrace)(?=.*gith)/i,                          'Races', 53.1],
+  [/(?=.*subrace)(?=.*drow)/i,                          'Races', 53.03],
+  [/(?=.*subrace)(?=.*(dwarf|dwarves|duergar))/i,       'Races', 53.07],
+  [/(?=.*subrace)(?=.*gnome)/i,                         'Races', 53.08],
+  [/(?=.*subrace)(?=.*halfling)/i,                      'Races', 53.06],
+  [/(?=.*subrace)(?=.*el(f|ves))/i,                     'Races', 53.02],
+  [/(?=.*subrace)(?=.*human)/i,                         'Races', 53.01],
   [/subraces?/i,                                        'Races', 53],
   [/tiefling|githyanki|dragonborn|drow\b/i,             'Races', 52],
   [/\braces?\b/i,                                      'Races', 51],
@@ -748,6 +812,14 @@ for (const r of mods.values()) {
       confidence = 'external-category';
       stats.fromExternal = (stats.fromExternal ?? 0) + 1;
     }
+  }
+  // The author's other catalogued mods. Weaker than the mod's own listing,
+  // which is why it runs after: it places the dice set whose name is a colour,
+  // from the fact that everything its author publishes is dice.
+  if (!group && r.author && AUTHOR_PRIOR.has(r.author)) {
+    group = AUTHOR_PRIOR.get(r.author);
+    confidence = 'author-catalogue';
+    stats.fromAuthor = (stats.fromAuthor ?? 0) + 1;
   }
   // Last resort before giving up: Astra's divider vocabulary. It names a
   // hundred things our groups do not, and mod titles are full of those words.
@@ -1173,6 +1245,7 @@ the tool flag a mod as last verified on an older patch.
 | Human-authored section header | ${stats.fromSection} | high, a modder put it there |
 | Name pattern fallback | ${stats.fromName} | medium, needs review |
 | Nexus or mod.io listing category | ${stats.fromExternal ?? 0} | medium, the author's own words about what the mod is |
+| Author's other catalogued mods | ${stats.fromAuthor ?? 0} | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | ${stats.inferredHigh} | high, measured 97 percent accurate at this band |
 | Neighbour inference, 0.70 to 0.85 | ${stats.inferredLow} | medium, roughly 75 percent accurate, carries a confidence score |
 | Uncategorised | ${stats.unsorted} | none, needs community input |
@@ -1206,7 +1279,7 @@ fs.writeFileSync(path.join(OUT_DIR, 'coverage-report.md'), report);
 console.log(`corpus:    ${orders.length} orders (${masterlist.provenance.working} working, ${masterlist.provenance.broken} broken, ${masterlist.provenance.unlabelled} unlabelled)`);
 console.log(`separators:${String(separatorCount).padStart(5)} headers parsed`);
 console.log(`indexed:   ${plugins.length} unique mods`);
-console.log(`grouped:   ${stats.fromSection} by section header, ${stats.fromName} by name pattern, ${stats.fromExternal ?? 0} by Nexus or mod.io category`);
+console.log(`grouped:   ${stats.fromSection} by section header, ${stats.fromName} by name pattern, ${stats.fromExternal ?? 0} by Nexus or mod.io category, ${stats.fromAuthor ?? 0} by author's other mods`);
 console.log(`inferred:  ${stats.inferredHigh + stats.inferredLow} from position in submitted orders (${stats.inferredHigh} high confidence), ${stats.unsorted} still unsorted`);
 console.log(`skeleton:  ${plugins.filter(p => p.divider !== undefined).length} of ${plugins.length} mods placed on a divider slot`);
 console.log(`hard deps: ${withDeps.length} mods with declared dependencies`);

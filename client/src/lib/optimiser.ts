@@ -60,8 +60,31 @@ const NAME_PATTERNS: [RegExp, GroupName, number][] = [
   [/\babilit(y|ies)\b/i, 'Spells', 46],
   [/summon|familiar/i, 'Spells', 49],
   [/\bspell|cantrip|\bmagic\b/i, 'Spells', 47],
+  [/(?=.*subclass)(?=.*barbarian)/i, 'Classes', 58.01],
+  [/(?=.*subclass)(?=.*\bbard\b)/i, 'Classes', 58.02],
+  [/(?=.*subclass)(?=.*cleric)/i, 'Classes', 58.03],
+  [/(?=.*subclass)(?=.*druid)/i, 'Classes', 58.04],
+  [/(?=.*subclass)(?=.*fighter)/i, 'Classes', 58.05],
+  [/(?=.*subclass)(?=.*\bmonk\b)/i, 'Classes', 58.06],
+  [/(?=.*subclass)(?=.*paladin)/i, 'Classes', 58.07],
+  [/(?=.*subclass)(?=.*ranger)/i, 'Classes', 58.08],
+  [/(?=.*subclass)(?=.*rogue)/i, 'Classes', 58.09],
+  [/(?=.*subclass)(?=.*sorcerer)/i, 'Classes', 58.1],
+  [/(?=.*subclass)(?=.*warlock)/i, 'Classes', 58.11],
+  [/(?=.*subclass)(?=.*wizard)/i, 'Classes', 58.12],
   [/subclass/i, 'Classes', 58],
   [/\bclass(es)?\b|deity|deities/i, 'Classes', 56],
+  [/(?=.*subrace)(?=.*half.?orc)/i, 'Races', 53.05],
+  [/(?=.*subrace)(?=.*half.?el(f|ves))/i, 'Races', 53.04],
+  [/(?=.*subrace)(?=.*dragonborn)/i, 'Races', 53.11],
+  [/(?=.*subrace)(?=.*tiefling)/i, 'Races', 53.09],
+  [/(?=.*subrace)(?=.*gith)/i, 'Races', 53.1],
+  [/(?=.*subrace)(?=.*drow)/i, 'Races', 53.03],
+  [/(?=.*subrace)(?=.*(dwarf|dwarves|duergar))/i, 'Races', 53.07],
+  [/(?=.*subrace)(?=.*gnome)/i, 'Races', 53.08],
+  [/(?=.*subrace)(?=.*halfling)/i, 'Races', 53.06],
+  [/(?=.*subrace)(?=.*el(f|ves))/i, 'Races', 53.02],
+  [/(?=.*subrace)(?=.*human)/i, 'Races', 53.01],
   [/subraces?/i, 'Races', 53],
   [/tiefling|githyanki|dragonborn|drow\b/i, 'Races', 52],
   [/\braces?\b/i, 'Races', 51],
@@ -212,6 +235,10 @@ export function sortLoadOrder(
       } else if (entry.evidence?.source === 'external-category') {
         // Read off a Nexus or mod.io listing, not from anyone's played order.
         groupSource.set(mod.uuid, 'listing');
+      } else if (entry.evidence?.source === 'author-catalogue') {
+        // Placed by the author's habit across their other catalogued mods,
+        // which is weaker than this mod's own listing and labelled apart.
+        groupSource.set(mod.uuid, 'author');
       } else if (entry.evidence?.source === 'name-pattern'
         || entry.evidence?.source === 'divider-vocabulary') {
         // Both are read off the mod's title. A keyword guess must never be

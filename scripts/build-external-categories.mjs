@@ -3,18 +3,24 @@
  * Builds the external category map for mods the masterlist has never seen,
  * from both catalogues: Nexus and mod.io. Replaces build-nexus-categories.mjs.
  *
- * NOT used for ordering. Held-out evaluation on 2026-08-04 measured listing
- * categories lowering agreement with working orders: 63.6 percent without
- * them, 63.2 with Nexus, 63.0 with both. A listing says what a mod is, which
- * is a different question from where it loads. The map is kept as reference
- * data for display and for the requirements work; re-testing it as a sorting
- * signal means reinstating the tier removed from client/src/lib/optimiser.ts.
+ * Used as the last placement tier before unsorted, never as an override.
+ * Held-out evaluation on 2026-08-04 measured listing categories lowering
+ * agreement when they competed with community placements: 63.6 percent
+ * without them, 63.2 with Nexus, 63.0 with both. A listing says what a mod
+ * is, which is a different question from where it loads. Hence the standing
+ * rule: where the community has placed a mod, no external source ever
+ * overrides it; this map only fills silence, for mods that would otherwise
+ * wait unsorted at the end. Between the externals, Nexus wins name ties
+ * because its curated category tree is the richer signal; mod.io covers the
+ * official in-game catalogue, which includes mods that are not on Nexus at
+ * all.
  *
- * The rule stood, while it was used: where the community has placed a mod, no
- * external source ever overrides it; this map only filled silence. Between the externals,
- * Nexus wins name ties because its curated category tree is the richer
- * signal; mod.io covers the official in-game catalogue, which includes mods
- * that are not on Nexus at all.
+ * Every mod contributes every name it has ever answered to: the current
+ * listing name, older names the crawlers saw before a rename, and on mod.io
+ * the nameId slug, which the platform freezes at creation and so preserves
+ * the original title through any rename. Installed paks keep the name they
+ * shipped under, which makes old names exactly what stale paks match. The
+ * current display name wins if a key collides.
  *
  * Nexus categorises with a category tree. mod.io categorises with per-game
  * tags that mix real categories with attributes (languages, "Patch 8 Tested",
@@ -143,24 +149,36 @@ function collect(entries) {
   return out;
 }
 
+/**
+ * One entry per name a mod has answered to. The current display name carries
+ * the full score; aliases and the mod.io slug sit half a point below it, so
+ * whenever an old title of one mod collides with the current title of
+ * another, the current title wins.
+ */
+function withVariants(m, group, score, slug) {
+  const entries = [{ name: m.name, group, score }];
+  for (const alias of m.aliases ?? []) entries.push({ name: alias, group, score: score - 0.5 });
+  if (slug && norm(slug) !== norm(m.name)) entries.push({ name: slug, group, score: score - 0.5 });
+  return entries;
+}
+
 const nexusCatalog = readJson(NEXUS_CATALOG);
 const nexusNames = nexusCatalog
   ? collect(Object.values(nexusCatalog.mods)
       .filter((m) => m.name && m.category)
-      .map((m) => {
+      .flatMap((m) => {
         const mapped = NEXUS_CATEGORY_TO_GROUP[m.category] === undefined
           ? m.category
           : NEXUS_CATEGORY_TO_GROUP[m.category];
-        return mapped ? { name: m.name, group: mapped, score: m.endorsements ?? 0 } : null;
-      })
-      .filter(Boolean))
+        return mapped ? withVariants(m, mapped, m.endorsements ?? 0, null) : [];
+      }))
   : {};
 
 const modioCatalog = readJson(MODIO_CATALOG);
 const modioAll = modioCatalog
   ? collect(Object.values(modioCatalog.mods)
       .filter((m) => m.name && m.tags?.length && m.status === 'published')
-      .map((m) => {
+      .flatMap((m) => {
         const tags = new Set(m.tags);
         // Armor and Weapons together mark a mixed gear pack, which belongs
         // with Equipment rather than either single type. Overhaul still
@@ -168,9 +186,8 @@ const modioAll = modioCatalog
         const hit = !tags.has('Overhaul') && tags.has('Armor') && tags.has('Weapons')
           ? [null, 'Equipment']
           : MODIO_TAG_TO_GROUP.find(([tag]) => tags.has(tag));
-        return hit ? { name: m.name, group: hit[1], score: m.subscribers ?? m.downloads ?? 0 } : null;
-      })
-      .filter(Boolean))
+        return hit ? withVariants(m, hit[1], m.subscribers ?? m.downloads ?? 0, m.nameId) : [];
+      }))
   : {};
 
 /** Nexus wins ties, so mod.io only contributes names Nexus does not know. */

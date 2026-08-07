@@ -12,6 +12,7 @@ flowchart TD
         file[/"BG3MM export<br/>or modsettings.lsx"/] --> parser["parser.ts"]
         parser --> optimiser["optimiser.ts"]
         masterlist[("bg3-masterlist.json")] --> optimiser
+        listing[("external-categories.json")] --> optimiser
         dividers[("dividers.json")] --> optimiser
         optimiser --> exporter["exporter.ts"]
         exporter --> out[/"Sorted order,<br/>back to disk"/]
@@ -65,14 +66,23 @@ flowchart LR
     A["Curated overrides"] --> B["Section headers<br/>written by modders"]
     B --> C["Name patterns<br/>read as divider vocabulary"]
     C --> D["Nexus or mod.io<br/>listing category"]
-    D --> E["Neighbour inference<br/>with confidence"]
-    E --> F["Uncategorised<br/>waits at the end"]
+    D --> E["Author's other<br/>catalogued mods"]
+    E --> F["Neighbour inference<br/>with confidence"]
+    F --> G["Uncategorised<br/>waits at the end"]
 ```
 
 Name patterns run ahead of listing categories because a name can name a precise
 position (`045 Skillset Feats`) where a listing only ever gives a coarse group.
-Neighbour inference runs last because it is the only tier that reads other
-mods' answers, so it should see them settled first.
+The author tier speaks only for a specialist: at least three catalogued mods,
+at least eighty percent of them in one group, which is what places the dice set
+whose name is a colour. Neighbour inference runs last because it is the only
+tier that reads other mods' answers, so it should see them settled first.
+
+The listing tier is also consulted in the browser at sort time, over the full
+Nexus and mod.io catalogues, so a mod published yesterday sorts by its own
+listing without waiting for anyone to submit it. The catalogues index every
+name a listing has answered to, including names from before a rename, because
+installed paks keep the name they shipped under.
 
 Astra's Load Order Dividers are the skeleton, and a mod is placed on one whether
 or not the divider paks are installed. Inside a position, the order learned from
@@ -91,6 +101,7 @@ something it requires.
 | `client/src/lib/optimiser.ts` | Kahn's algorithm over the dependency graph. Pure, no I/O. |
 | `client/src/lib/exporter.ts` | Writes BG3MM JSON, modsettings.lsx, CSV, text, Markdown. |
 | `client/src/lib/masterlist.ts` | Fetches the masterlist. Degrades to the bundled copy. |
+| `client/src/lib/listing.ts` | Fetches the Nexus and mod.io category index, the same way. |
 | `client/src/lib/store.tsx` | Session state. Persists only if the user opts in. |
 | `client/src/lib/submit.ts` | Posts a submission to `/api/submit`. |
 | `client/src/lib/head.ts` | Per-route title, description, canonical and robots tags. |
@@ -128,4 +139,6 @@ regenerate over each other.
 An earlier version fetched mod pages per request, which meant a thousand-mod
 list spent about eighteen minutes on network calls and rate limits. Everything
 external is now crawled ahead of time into committed JSON, so a user's browser
-makes no third-party requests at all. See [decisions.md](decisions.md).
+never talks to Nexus or mod.io at all. The only fetches beyond the site itself
+are the masterlist and category index from this repository on GitHub, when a
+copy newer than the bundled one exists. See [decisions.md](decisions.md).
