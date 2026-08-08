@@ -213,7 +213,7 @@ export default function OptimisePage() {
           <Metric
             label="unplaced"
             value={byProvenance.default}
-            hint="Nothing places this mod yet: no submitted order, no listing category, and a name that gives nothing away. It waits at the end rather than being guessed somewhere."
+            hint="Nothing places this mod yet: nobody has filed it in a submitted order, no listing gives it a category, and its name gives nothing away. It waits at the end rather than being guessed somewhere."
             muted
           />
         </dl>
@@ -342,7 +342,9 @@ function Metric({ label, value, hint, muted }: {
    * The hint rides on the whole tile, not an icon: these are short jargon
    * labels and the question a reader has is "what does this word mean", so
    * hovering the word itself must answer it. The dotted underline is the only
-   * signal there is something to hover; screen readers get the same text.
+   * signal there is something to hover. A title attribute is hover-only, so
+   * the same text also sits in the label as visually hidden copy, which is
+   * what a screen reader actually announces.
    */
   return (
     <div className="flex items-baseline gap-2" title={hint}>
@@ -351,6 +353,7 @@ function Metric({ label, value, hint, muted }: {
       </dd>
       <dt className={`text-sm text-muted-foreground ${hint ? 'cursor-help underline decoration-dotted decoration-muted-foreground/50 underline-offset-4' : ''}`}>
         {label}
+        {hint && <span className="sr-only">. {hint}</span>}
       </dt>
     </div>
   );

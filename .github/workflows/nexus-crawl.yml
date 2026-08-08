@@ -44,12 +44,21 @@ jobs:
 
       - run: npm ci
 
+      # The daily updates crawl only sees mods whose update timestamp moved,
+      # and not every listing change moves it. Once a month the full sweep
+      # restarts from offset zero so every listing gets re-read regardless.
+      - name: Monthly full resweep
+        run: |
+          if [ "$(date -u +%d)" = "01" ]; then
+            echo "RESWEEP=--restart" >> "$GITHUB_ENV"
+          fi
+
       # Listing first (most endorsed, then newest updates), then the joins that
       # turn a catalogue into usable metadata.
       - name: Nexus catalogue
         if: env.NEXUS_API_KEY != ''
         run: |
-          node scripts/bulk-list-nexus.mjs
+          node scripts/bulk-list-nexus.mjs $RESWEEP
           node scripts/bulk-list-nexus.mjs --updates
           node scripts/find-masterlist-on-nexus.mjs
           node scripts/crawl-requirements.mjs
@@ -58,7 +67,7 @@ jobs:
       - name: mod.io catalogue
         if: env.MODIO_API_KEY != ''
         run: |
-          node scripts/bulk-list-modio.mjs
+          node scripts/bulk-list-modio.mjs $RESWEEP
           node scripts/bulk-list-modio.mjs --updates
           node scripts/bulk-list-modio.mjs --deps
 

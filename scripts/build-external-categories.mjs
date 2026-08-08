@@ -15,12 +15,13 @@
  * official in-game catalogue, which includes mods that are not on Nexus at
  * all.
  *
- * Every mod contributes every name it has ever answered to: the current
- * listing name, older names the crawlers saw before a rename, and on mod.io
- * the nameId slug, which the platform freezes at creation and so preserves
- * the original title through any rename. Installed paks keep the name they
- * shipped under, which makes old names exactly what stale paks match. The
- * current display name wins if a key collides.
+ * Every mod contributes every name the crawlers have seen it under: the
+ * current listing name, older names and slugs recorded before a rename, and
+ * on mod.io the nameId slug, which usually still carries the title the mod
+ * was created under because renaming the listing does not rename the URL.
+ * Installed paks keep the name they shipped under, which makes old names
+ * exactly what stale paks match. A current display name always outranks an
+ * old name; the precedence order is spelled out above `claim`.
  *
  * Nexus categorises with a category tree. mod.io categorises with per-game
  * tags that mix real categories with attributes (languages, "Patch 8 Tested",
@@ -135,77 +136,74 @@ const indexOf = (group) => {
   return groupIndex.get(group);
 };
 
-function collect(entries) {
-  const best = new Map();
-  for (const { name, group, score } of entries) {
-    if (!vocabulary.has(group)) continue;
-    const key = norm(name);
-    if (!key) continue;
-    const rival = best.get(key);
-    if (!rival || score > rival.score) best.set(key, { group, score });
-  }
-  const out = {};
-  for (const [key, { group }] of best) out[key] = indexOf(group);
-  return out;
-}
-
-/**
- * One entry per name a mod has answered to. The current display name carries
- * the full score; aliases and the mod.io slug sit half a point below it, so
- * whenever an old title of one mod collides with the current title of
- * another, the current title wins.
+/*
+ * Precedence when the same key is claimed twice, strongest first:
+ *
+ *   1. a current Nexus display name
+ *   2. a current mod.io display name
+ *   3. a Nexus alias
+ *   4. a mod.io alias or slug
+ *
+ * Current names outrank old ones absolutely, not by a score margin: a stale
+ * alias of a 100,000-subscriber mod must not shadow the current title of a
+ * small one. Nexus outranks mod.io at equal standing because its curated
+ * category tree is the richer signal. Popularity only breaks ties inside one
+ * level.
  */
-function withVariants(m, group, score, slug) {
-  const entries = [{ name: m.name, group, score }];
-  for (const alias of m.aliases ?? []) entries.push({ name: alias, group, score: score - 0.5 });
-  if (slug && norm(slug) !== norm(m.name)) entries.push({ name: slug, group, score: score - 0.5 });
-  return entries;
+const best = new Map();
+const claim = (name, group, source, tier, score) => {
+  if (!vocabulary.has(group)) return;
+  const key = norm(name);
+  if (!key) return;
+  const rival = best.get(key);
+  if (!rival || tier > rival.tier || (tier === rival.tier && score > rival.score)) {
+    best.set(key, { group, source, tier, score });
+  }
+};
+
+/** Every name a mod has answered to, claimed at the right precedence level. */
+function claimVariants(m, group, source, primaryTier, variantTier, score, slug) {
+  claim(m.name, group, source, primaryTier, score);
+  for (const alias of m.aliases ?? []) claim(alias, group, source, variantTier, score);
+  if (slug && norm(slug) !== norm(m.name)) claim(slug, group, source, variantTier, score);
 }
 
 const nexusCatalog = readJson(NEXUS_CATALOG);
-const nexusNames = nexusCatalog
-  ? collect(Object.values(nexusCatalog.mods)
-      .filter((m) => m.name && m.category)
-      .flatMap((m) => {
-        const mapped = NEXUS_CATEGORY_TO_GROUP[m.category] === undefined
-          ? m.category
-          : NEXUS_CATEGORY_TO_GROUP[m.category];
-        return mapped ? withVariants(m, mapped, m.endorsements ?? 0, null) : [];
-      }))
-  : {};
+for (const m of Object.values(nexusCatalog?.mods ?? {})) {
+  if (!m.name || !m.category) continue;
+  const mapped = NEXUS_CATEGORY_TO_GROUP[m.category] === undefined
+    ? m.category
+    : NEXUS_CATEGORY_TO_GROUP[m.category];
+  if (mapped) claimVariants(m, mapped, 'nexus', 3, 1, m.endorsements ?? 0, null);
+}
 
 const modioCatalog = readJson(MODIO_CATALOG);
-const modioAll = modioCatalog
-  ? collect(Object.values(modioCatalog.mods)
-      .filter((m) => m.name && m.tags?.length && m.status === 'published')
-      .flatMap((m) => {
-        const tags = new Set(m.tags);
-        // Armor and Weapons together mark a mixed gear pack, which belongs
-        // with Equipment rather than either single type. Overhaul still
-        // outranks the combination.
-        const hit = !tags.has('Overhaul') && tags.has('Armor') && tags.has('Weapons')
-          ? [null, 'Equipment']
-          : MODIO_TAG_TO_GROUP.find(([tag]) => tags.has(tag));
-        return hit ? withVariants(m, hit[1], m.subscribers ?? m.downloads ?? 0, m.nameId) : [];
-      }))
-  : {};
+for (const m of Object.values(modioCatalog?.mods ?? {})) {
+  if (!m.name || !m.tags?.length || m.status !== 'published') continue;
+  const tags = new Set(m.tags);
+  // Armor and Weapons together mark a mixed gear pack, which belongs
+  // with Equipment rather than either single type. Overhaul still
+  // outranks the combination.
+  const hit = !tags.has('Overhaul') && tags.has('Armor') && tags.has('Weapons')
+    ? [null, 'Equipment']
+    : MODIO_TAG_TO_GROUP.find(([tag]) => tags.has(tag));
+  if (hit) claimVariants(m, hit[1], 'modio', 2, 0, m.subscribers ?? m.downloads ?? 0, m.nameId);
+}
 
-/** Nexus wins ties, so mod.io only contributes names Nexus does not know. */
+const nexusNames = {};
 const modioNames = {};
-for (const [key, idx] of Object.entries(modioAll)) {
-  if (nexusNames[key] === undefined) modioNames[key] = idx;
+for (const [key, { group, source }] of best) {
+  (source === 'nexus' ? nexusNames : modioNames)[key] = indexOf(group);
 }
 
 let aliased = 0;
 for (const [alias, listing] of LISTING_ALIASES) {
   const aliasKey = norm(alias);
   const listingKey = norm(listing);
-  if (nexusNames[aliasKey] !== undefined || modioNames[aliasKey] !== undefined) continue;
-  if (nexusNames[listingKey] !== undefined) {
-    nexusNames[aliasKey] = nexusNames[listingKey];
-    aliased++;
-  } else if (modioAll[listingKey] !== undefined) {
-    modioNames[aliasKey] = modioAll[listingKey];
+  if (best.has(aliasKey)) continue;
+  const target = best.get(listingKey);
+  if (target) {
+    (target.source === 'nexus' ? nexusNames : modioNames)[aliasKey] = indexOf(target.group);
     aliased++;
   } else {
     console.warn(`alias target not in any catalogue: "${listing}"`);

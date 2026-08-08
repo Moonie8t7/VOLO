@@ -74,15 +74,19 @@ flowchart LR
 Name patterns run ahead of listing categories because a name can name a precise
 position (`045 Skillset Feats`) where a listing only ever gives a coarse group.
 The author tier speaks only for a specialist: at least three catalogued mods,
-at least eighty percent of them in one group, which is what places the dice set
-whose name is a colour. Neighbour inference runs last because it is the only
-tier that reads other mods' answers, so it should see them settled first.
+at least eighty percent of them in one group, so an author who only ever makes
+one kind of thing can vouch for a mod whose name says nothing. Neighbour
+inference runs last because it is the only tier that reads other mods'
+answers, so it should see them settled first.
 
 The listing tier is also consulted in the browser at sort time, over the full
 Nexus and mod.io catalogues, so a mod published yesterday sorts by its own
 listing without waiting for anyone to submit it. The catalogues index every
-name a listing has answered to, including names from before a rename, because
-installed paks keep the name they shipped under.
+name the crawlers have seen a listing under, plus the mod.io URL slug, which
+usually still carries the title the mod was created with; installed paks keep
+the name they shipped under, so those older names are exactly what stale paks
+match. A rename from before the crawlers watched, on a mod whose slug was
+edited too, is the one case that still misses.
 
 Astra's Load Order Dividers are the skeleton, and a mod is placed on one whether
 or not the divider paks are installed. Inside a position, the order learned from
@@ -140,5 +144,6 @@ An earlier version fetched mod pages per request, which meant a thousand-mod
 list spent about eighteen minutes on network calls and rate limits. Everything
 external is now crawled ahead of time into committed JSON, so a user's browser
 never talks to Nexus or mod.io at all. The only fetches beyond the site itself
-are the masterlist and category index from this repository on GitHub, when a
-copy newer than the bundled one exists. See [decisions.md](decisions.md).
+are the masterlist and category index from this repository on GitHub; each is
+requested on load and used only when newer than the bundled copy. See
+[decisions.md](decisions.md).

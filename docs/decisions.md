@@ -40,8 +40,9 @@ three points against ordering purely by the learned sequence, and returns a
 structure players already recognise and exports whose headings read in order.
 A deliberate trade, taken knowingly.
 
-**Requirements promoted from the catalogues.** 193 load-after edges from Nexus
-and mod.io requirement tables, where both ends resolve to a mod we know. Gated
+**Requirements promoted from the catalogues.** 194 load-after edges from Nexus
+and mod.io requirement tables, where both ends resolve to a mod we know; the
+count drifts a little as the catalogues grow. Gated
 hard: exact name matches only, optional-sounding entries dropped, cycle-forming
 edges discarded, and the corpus overrules a catalogue that contradicts it.
 Measured effect on agreement is nil, because working orders already respect
@@ -57,15 +58,16 @@ because our groups could not distinguish a library from a patcher. Astra places
 it at 105 and the corpus puts it at the very end of the order holding it. Both
 agreed against us.
 
-**Every name a listing has answered to.** Authors rename listings, and
+**Every name a listing has been seen under.** Authors rename listings, and
 installed paks keep the name they shipped under, so a rename silently breaks
 the exact-name match against the catalogues. The crawlers now record old names
-as aliases when a rename comes through, and the category map also indexes
-mod.io's nameId slug, which the platform freezes at creation and which
-therefore preserves the original title. Matching stays exact; fuzzy matching
-against twenty-four thousand catalogue names was considered and rejected as a
-false-positive machine. Found 38 mods on the first build, including a Races
-bundle whose listing had been renamed twice-over. Held-out moved 57.3 to 57.4.
+and old slugs as aliases when a change comes through, and the category map
+also indexes mod.io's nameId slug, which usually still carries the title the
+mod was created with because renaming a listing does not rename its URL.
+Matching stays exact; fuzzy matching against twenty-four thousand catalogue
+names was considered and rejected as a false-positive machine. Found 38 mods
+on the first build, including a Races bundle that had outgrown its original
+five-race title. Held-out moved 57.3 to 57.4.
 
 **The author's other catalogued mods, as the tier below the listing.** Some
 names defeat every tier: a dice set called "ElectricBlue" says nothing, its
