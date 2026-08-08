@@ -80,11 +80,15 @@ const DIVIDER_NAMES = new Set(DIVIDERS.values());
  *
  * Thin exports carry names and empty UUID strings; the name is still an
  * observation about a real mod, so it must not be dropped. Such entries key by
- * the same `name:` convention the client synthesises on import, and records
- * that later turn out to share a name with a uuid-keyed record are merged
- * before resolution.
+ * the `name:` prefix the client also uses for synthetic ids; the two sides
+ * normalise differently and are bridged by the client's name index, so only
+ * the prefix is shared, not the exact key. A name that strips to nothing under
+ * the alphanumeric normalisation, which localisation patches titled entirely
+ * in CJK or Cyrillic do, falls back to the lowercased name itself: keying them
+ * all as a bare `name:` would pool every such mod into one record.
  */
-const keyOf = entry => entry.UUID || `name:${externalKey(entry.Name)}`;
+const keyOf = entry =>
+  entry.UUID || `name:${externalKey(entry.Name) || String(entry.Name).toLowerCase()}`;
 
 function dividerSectionLabel(name) {
   const parts = String(name).split(String.fromCharCode(183)).map(p => p.trim());
@@ -131,6 +135,13 @@ const EXTERNAL = (() => {
 const externalKey = name => String(name).toLowerCase().replace(/[^a-z0-9]/g, '');
 
 /**
+ * Own-property lookup into a catalogue table. JSON.parse objects inherit
+ * Object.prototype, so a mod named "Constructor" would otherwise read the
+ * constructor function out of the table and poison whatever consumes it.
+ */
+const tableGet = (table, key) => (Object.hasOwn(table, key) ? table[key] : undefined);
+
+/**
  * Author -> the one group that author's catalogued mods overwhelmingly sit in.
  *
  * Some mods defeat every name-based tier: "ElectricBlue" says nothing, but its
@@ -141,15 +152,20 @@ const externalKey = name => String(name).toLowerCase().replace(/[^a-z0-9]/g, '')
  */
 const AUTHOR_PRIOR = (() => {
   if (!EXTERNAL) return new Map();
-  const dist = new Map();
+  /*
+   * One count per distinct mod, not per listing: authors cross-post to both
+   * platforms, and counting a mod once per catalogue let an author with two
+   * mods clear a threshold that promises three.
+   */
+  const modsOf = new Map();
   const feed = (author, name) => {
     if (!author || !name) return;
-    const idx = EXTERNAL.nexus[externalKey(name)] ?? EXTERNAL.modio[externalKey(name)];
+    const key = externalKey(name);
+    const idx = tableGet(EXTERNAL.nexus, key) ?? tableGet(EXTERNAL.modio, key);
     if (idx === undefined) return;
-    const g = EXTERNAL.groups[idx];
-    const m = dist.get(author) ?? new Map();
-    m.set(g, (m.get(g) || 0) + 1);
-    dist.set(author, m);
+    const m = modsOf.get(author) ?? new Map();
+    if (!m.has(key)) m.set(key, EXTERNAL.groups[idx]);
+    modsOf.set(author, m);
   };
   for (const file of [path.join('nexus', 'catalog.json'), path.join('modio', 'catalog.json')]) {
     try {
@@ -158,9 +174,11 @@ const AUTHOR_PRIOR = (() => {
     } catch {}
   }
   const prior = new Map();
-  for (const [author, m] of dist) {
-    const total = [...m.values()].reduce((a, b) => a + b, 0);
-    const [best, n] = [...m.entries()].sort((a, b) => b[1] - a[1])[0];
+  for (const [author, m] of modsOf) {
+    const tally = new Map();
+    for (const g of m.values()) tally.set(g, (tally.get(g) || 0) + 1);
+    const total = m.size;
+    const [best, n] = [...tally.entries()].sort((a, b) => b[1] - a[1])[0];
     if (total >= 3 && n / total >= 0.8) prior.set(author, best);
   }
   return prior;
@@ -170,7 +188,7 @@ const AUTHOR_PRIOR = (() => {
 function groupFromExternal(name) {
   if (!EXTERNAL) return null;
   const key = externalKey(name);
-  const index = EXTERNAL.nexus[key] ?? EXTERNAL.modio[key];
+  const index = tableGet(EXTERNAL.nexus, key) ?? tableGet(EXTERNAL.modio, key);
   if (index === undefined) return null;
   const group = EXTERNAL.groups[index];
   return group && group !== 'unsorted' ? group : null;
@@ -613,8 +631,11 @@ for (const file of fs.readdirSync(CORPUS_DIR).sort()) {
   if (EXCLUDE && file === EXCLUDE) { skipped.push([file, 'held out']); continue; }
   const entries = readOrder(file);
   if (!entries || entries.length < 5) { skipped.push([file, 'not a load order']); continue; }
+  // Fingerprint by name first: a thin export and a full export of the same
+  // order differ in every UUID field but agree on every name, and keying the
+  // hash on UUIDs let such a pair through to be counted twice.
   const fp = crypto.createHash('md5')
-    .update(entries.map(e => e.UUID || e.Name).join('|')).digest('hex');
+    .update(entries.map(e => e.Name || e.UUID).join('|')).digest('hex');
   if (seen.has(fp)) { skipped.push([file, 'duplicate of another file']); continue; }
   seen.add(fp);
   orders.push({
@@ -732,6 +753,9 @@ const canonicalKey = k => mergedInto.get(k) ?? k;
     if (r.uuid.startsWith('name:')) continue;
     for (const n of r.names.keys()) {
       const k = externalKey(n);
+      // A name that strips to nothing owns nothing; without this, one CJK-named
+      // uuid record would absorb every CJK-named thin entry in the corpus.
+      if (!k) continue;
       owners.set(k, owners.has(k) && owners.get(k) !== r ? 'ambiguous' : r);
     }
   }
@@ -814,8 +838,8 @@ for (const r of mods.values()) {
     }
   }
   // The author's other catalogued mods. Weaker than the mod's own listing,
-  // which is why it runs after: it places the dice set whose name is a colour,
-  // from the fact that everything its author publishes is dice.
+  // which is why it runs after; a specialist's habit is real information, but
+  // it is about the author, not about this mod.
   if (!group && r.author && AUTHOR_PRIOR.has(r.author)) {
     group = AUTHOR_PRIOR.get(r.author);
     confidence = 'author-catalogue';
@@ -921,8 +945,14 @@ const uuidSequences = orders
         && !(e.UUID && DIVIDERS.has(e.UUID)) && !DIVIDER_NAMES.has(e.Name))
       .map(e => canonicalKey(keyOf(e))),
   );
+// The voter pool the doc comment above promises: human signals and name
+// patterns only. Listing categories and author priors are guesses of their
+// own, and a guess must not campaign for more of itself any more than an
+// inference may.
+const VOTER_SOURCES = new Set(['curated', 'section', 'section-majority', 'name-pattern']);
 const voterGroup = new Map(
-  plugins.filter(p => p.group !== 'unsorted').map(p => [p.uuid, p.group]),
+  plugins.filter(p => p.group !== 'unsorted' && VOTER_SOURCES.has(p.evidence.source))
+    .map(p => [p.uuid, p.group]),
 );
 
 for (const p of plugins) {
@@ -1293,17 +1323,27 @@ console.log(`game:      ${masterlist.gamePatch ?? 'unknown'} (build ${masterlist
  * with the real numbers immediately, which matters most for the prerendered
  * HTML, where "thousands of mods" would otherwise be what a reader and a
  * search engine got.
+ *
+ * Only a full run may write it. Held-out evaluation rebuilds the masterlist
+ * once per fold with --exclude and --out, and an unconditional write here let
+ * the last fold's shrunken figures ship to every page, which is exactly what
+ * happened once.
  */
-fs.writeFileSync(
-  path.join('client', 'src', 'lib', 'masterlist-summary.json'),
-  `${JSON.stringify({
-    mods: plugins.length,
-    placed: plugins.filter(p => p.divider !== undefined).length,
-    gamePatch: masterlist.gamePatch ?? null,
-    workingOrders: masterlist.provenance.working,
-  }, null, 2)}\n`,
-);
+const foldRun = EXCLUDE !== null || OUT_DIR !== 'masterlist';
+if (!foldRun) {
+  fs.writeFileSync(
+    path.join('client', 'src', 'lib', 'masterlist-summary.json'),
+    `${JSON.stringify({
+      mods: plugins.length,
+      placed: plugins.filter(p => p.divider !== undefined).length,
+      gamePatch: masterlist.gamePatch ?? null,
+      workingOrders: masterlist.provenance.working,
+    }, null, 2)}\n`,
+  );
+}
 
 console.log(`\nwrote ${OUT_DIR}/bg3-masterlist.json`);
-console.log('wrote client/src/lib/masterlist-summary.json');
+console.log(foldRun
+  ? 'masterlist-summary.json untouched: fold run'
+  : 'wrote client/src/lib/masterlist-summary.json');
 console.log(`wrote ${OUT_DIR}/coverage-report.md`);

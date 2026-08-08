@@ -68,6 +68,13 @@ process.on('SIGTERM', () => process.exit(143));
 
 const UPDATES_MODE = process.argv.includes('--updates');
 const DEPS_MODE = process.argv.includes('--deps');
+/*
+ * Restarts the full listing sweep from offset zero. The daily updates crawl
+ * only sees mods whose update timestamp moved, so a change that does not bump
+ * it, which some renames do not, is invisible until the next full pass; a
+ * periodic restart is what guarantees every listing gets re-read eventually.
+ */
+const RESTART_MODE = process.argv.includes('--restart');
 
 const readJson = (f, fb) => { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return fb; } };
 const catalog = readJson(CATALOG, { game: GAME_NAME_ID, gameId: null, mods: {} });
@@ -132,13 +139,15 @@ function storeMod(m) {
   /*
    * Authors rename listings, and installed paks keep whatever name the mod
    * shipped under, so an overwritten name is a match lost forever. Every name
-   * this id has ever answered to is kept in aliases. The nameId slug catches
-   * renames from before this existed, because mod.io freezes it at creation.
+   * this id has ever answered to is kept in aliases. The nameId slug usually
+   * still carries the creation-time title, which catches renames from before
+   * this existed, but authors can edit the slug too, so a changed slug is
+   * recorded the same way rather than trusted to persist.
    */
   const aliases = existing?.aliases ?? [];
-  if (existing?.name && m.name && existing.name !== m.name && !aliases.includes(existing.name)) {
-    aliases.push(existing.name);
-  }
+  const keep = old => { if (old && !aliases.includes(old)) aliases.push(old); };
+  if (existing?.name && m.name && existing.name !== m.name) keep(existing.name);
+  if (existing?.nameId && m.name_id && existing.nameId !== m.name_id) keep(existing.nameId);
   catalog.mods[m.id] = {
     ...(existing ?? {}),
     ...(aliases.length ? { aliases } : {}),
@@ -184,9 +193,10 @@ if (DEPS_MODE) {
   const since = state.lastSync ? Date.parse(state.lastSync) : 0;
   const syncStartedAt = new Date().toISOString();
   let offset = 0;
+  let aborted = false;
   while (true) {
     const r = await get(`/games/${gameId}/mods`, { _limit: PAGE, _offset: offset, _sort: '-date_updated' });
-    if (r.status !== 200) { console.log(`stopping on status ${r.status}`); break; }
+    if (r.status !== 200) { console.log(`stopping on status ${r.status}`); aborted = true; break; }
     let anyNew = false;
     for (const m of r.body.data) {
       const unchanged = storeMod(m);
@@ -198,9 +208,15 @@ if (DEPS_MODE) {
     if (!anyNew || r.body.data.length < PAGE) break;
     await sleep(DELAY_MS);
   }
-  state.lastSync = syncStartedAt;
+  // A run that broke on an error has not seen everything since lastSync, and
+  // advancing the marker anyway would strand whatever the outage hid.
+  if (!aborted) state.lastSync = syncStartedAt;
   flush();
 } else {
+  if (RESTART_MODE) {
+    state.offset = 0;
+    state.complete = false;
+  }
   while (!state.complete) {
     const r = await get(`/games/${gameId}/mods`, { _limit: PAGE, _offset: state.offset, _sort: '-downloads' });
     if (r.status !== 200) { console.log(`stopping on status ${r.status}, resuming next run`); break; }

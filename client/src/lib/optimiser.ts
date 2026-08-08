@@ -190,7 +190,12 @@ function listedGroup(name: string, listing?: ExternalListing | null): GroupName 
   if (!listing) return null;
   const key = name.toLowerCase().replace(/[^a-z0-9]/g, '');
   if (!key) return null;
-  const index = listing.nexus[key] ?? listing.modio[key];
+  // Own properties only: parsed JSON objects still inherit Object.prototype,
+  // and a mod named "Constructor" would otherwise read a function out of the
+  // table instead of missing cleanly.
+  const index = Object.hasOwn(listing.nexus, key) ? listing.nexus[key]
+    : Object.hasOwn(listing.modio, key) ? listing.modio[key]
+    : undefined;
   const group = index === undefined ? undefined : listing.groups[index];
   return group ?? null;
 }

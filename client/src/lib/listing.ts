@@ -22,7 +22,11 @@ async function fetchJson(url: string, timeoutMs: number): Promise<ExternalListin
   const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
   const data = (await res.json()) as ExternalListing;
-  if (!Array.isArray(data?.groups) || typeof data?.nexus !== 'object' || typeof data?.modio !== 'object') {
+  // typeof null is 'object', so the null checks are load-bearing: a malformed
+  // file that passed here would crash the sort on its first lookup.
+  if (!Array.isArray(data?.groups)
+    || typeof data?.nexus !== 'object' || data.nexus === null
+    || typeof data?.modio !== 'object' || data.modio === null) {
     throw new Error('Malformed listing: missing groups, nexus or modio.');
   }
   return data;

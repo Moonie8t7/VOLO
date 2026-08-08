@@ -59,6 +59,13 @@ process.on('SIGINT', () => process.exit(130));
 process.on('SIGTERM', () => process.exit(143));
 
 const UPDATES_MODE = process.argv.includes('--updates');
+/*
+ * Restarts the full listing sweep from offset zero. The daily updates crawl
+ * only sees mods whose update timestamp moved, so a change that does not bump
+ * it is invisible until the next full pass; a periodic restart is what
+ * guarantees every listing gets re-read eventually.
+ */
+const RESTART_MODE = process.argv.includes('--restart');
 
 const readJson = (f, fb) => { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return fb; } };
 const catalog = readJson(CATALOG, { game: 'baldursgate3', categories: {}, mods: {} });
@@ -165,10 +172,11 @@ if (UPDATES_MODE) {
   const since = state.lastSync ? Date.parse(state.lastSync) : 0;
   const syncStartedAt = new Date().toISOString();
   let offset = 0;
+  let aborted = false;
   while (true) {
-    if (dailyRemaining <= DAILY_BUFFER) { console.log('daily quota nearly spent'); break; }
+    if (dailyRemaining <= DAILY_BUFFER) { console.log('daily quota nearly spent'); aborted = true; break; }
     const p = await page(offset, 'updatedAt');
-    if (p.status !== 200) { console.log(`stopping on status ${p.status} ${p.message ?? ''}`); break; }
+    if (p.status !== 200) { console.log(`stopping on status ${p.status} ${p.message ?? ''}`); aborted = true; break; }
     let anyNew = false;
     for (const n of p.nodes) {
       const unchanged = storeNode(n);
@@ -180,9 +188,15 @@ if (UPDATES_MODE) {
     if (!anyNew || p.nodes.length < PAGE) break;
     await sleep(DELAY_MS);
   }
-  state.lastSync = syncStartedAt;
+  // A run that broke early has not seen everything since lastSync, and
+  // advancing the marker anyway would strand whatever the outage hid.
+  if (!aborted) state.lastSync = syncStartedAt;
   flush();
 } else {
+  if (RESTART_MODE) {
+    state.offset = 0;
+    state.complete = false;
+  }
   while (!state.complete) {
     if (dailyRemaining <= DAILY_BUFFER) { console.log('daily quota nearly spent, resuming next run'); break; }
     const p = await page(state.offset, 'endorsements');

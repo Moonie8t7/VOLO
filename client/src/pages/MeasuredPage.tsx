@@ -12,9 +12,9 @@ import { Button } from '@/components/ui/button';
 
 /** Held-out agreement per submitted order, from scripts/verify-holdout.mjs. */
 const ORDERS = [
-  { name: 'working_07062025', mods: 999, held: 61.9, random: 49.5 },
+  { name: 'working_07062025', mods: 999, held: 61.8, random: 49.5 },
   { name: 'Current_13.09.2025', mods: 704, held: 57.0, random: 50.3 },
-  { name: 'Current_Working_Order', mods: 434, held: 52.1, random: 50.4 },
+  { name: 'Current_Working_Order', mods: 434, held: 51.9, random: 50.4 },
   { name: 'Patch 8 Origin Custom (Lvl 20)', mods: 422, held: 54.9, random: 52.0 },
   { name: 'Patch 8 Origin Custom', mods: 419, held: 54.4, random: 50.4 },
   { name: 'Patch 8 Vanilla+', mods: 379, held: 55.8, random: 49.1 },
