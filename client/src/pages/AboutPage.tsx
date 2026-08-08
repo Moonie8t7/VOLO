@@ -12,12 +12,14 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useStore } from '@/lib/store';
 import summary from '@/lib/masterlist-summary.json';
+import { countWordCap } from '@/lib/words';
 
 const REPO = 'https://github.com/Moonie8t7/VOLO';
 
 export default function AboutPage() {
   const { masterlist } = useStore();
   const modCount = masterlist?.plugins.length ?? summary.mods;
+  const workingOrders = masterlist?.provenance?.working ?? summary.workingOrders;
 
   return (
     <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
@@ -103,9 +105,9 @@ export default function AboutPage() {
             Reasons to be sceptical
           </h2>
           <p>
-            The corpus is small. Ten working orders is not a lot of evidence,
-            and it is the thing holding quality back rather than the sorting
-            itself. Several sensible-sounding improvements have measured worse
+            The corpus is small. {countWordCap(workingOrders)} working orders
+            is not a lot of evidence, and it is the thing holding quality back
+            rather than the sorting itself. Several sensible-sounding improvements have measured worse
             than doing nothing.
           </p>
           <p>

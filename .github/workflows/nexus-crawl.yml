@@ -73,20 +73,30 @@ jobs:
 
       # Catalogue data feeds the Script Extender flags and the promoted
       # dependency edges, so a crawl that does not rebuild these leaves the site
-      # running on yesterday's derivation.
+      # running on yesterday's derivation. The category map rebuilds before the
+      # mine, because the mine reads it; the other order fed every crawl's
+      # masterlist the previous day's map.
       - name: Rebuild what the catalogues feed
         run: |
+          node scripts/build-external-categories.mjs
           node scripts/mine-corpus.mjs
           node scripts/build-divider-map.mjs
-          node scripts/build-external-categories.mjs
           node -e "require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')"
+          node -e "require('fs').copyFileSync('masterlist/external-categories.json','public/external-categories.json')"
+
+      # New catalogue data moves the figures the prose quotes; the measurement
+      # JSON feeds the site and the sync rewrites the README and decisions.
+      - name: Re-measure and sync the quoted figures
+        run: |
+          node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
+          node scripts/sync-figures.mjs
 
       - name: Commit whatever changed
         id: commit
         run: |
           git config user.name "volo-crawler"
           git config user.email "crawler@users.noreply.github.com"
-          git add nexus modio masterlist public client/src/lib/dividers.json client/src/lib/masterlist-summary.json
+          git add nexus modio masterlist public client/src/lib/dividers.json client/src/lib/masterlist-summary.json client/src/lib/measured.json README.md docs/decisions.md
           if git diff --cached --quiet; then
             echo "changed=no" >> "$GITHUB_OUTPUT"
           else

@@ -9,20 +9,17 @@
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import measured from '@/lib/measured.json';
+import { countWord, countWordCap } from '@/lib/words';
 
-/** Held-out agreement per submitted order, from scripts/verify-holdout.mjs. */
-const ORDERS = [
-  { name: 'working_07062025', mods: 999, held: 62.0, random: 49.5 },
-  { name: 'Current_13.09.2025', mods: 704, held: 56.8, random: 50.3 },
-  { name: 'Current_Working_Order', mods: 434, held: 51.9, random: 50.4 },
-  { name: 'Patch 8 Origin Custom (Lvl 20)', mods: 422, held: 54.9, random: 52.0 },
-  { name: 'Patch 8 Origin Custom', mods: 419, held: 54.4, random: 50.4 },
-  { name: 'Patch 8 Vanilla+', mods: 379, held: 55.8, random: 49.1 },
-  { name: 'Gamer Time', mods: 203, held: 59.2, random: 46.3 },
-  { name: 'issue-10', mods: 126, held: 57.4, random: 49.0 },
-  { name: 'issue-1', mods: 59, held: 57.3, random: 55.5 },
-  { name: 'Current_22.11.2025', mods: 41, held: 62.3, random: 51.2 },
-];
+/**
+ * Held-out agreement per submitted order, written by verify-holdout.mjs.
+ * Rendered from the file rather than transcribed: the hand-typed copy of
+ * this table went stale the day a stranger's submission landed on its own,
+ * and a page about honest measurement cannot open with a number nobody
+ * measured lately.
+ */
+const ORDERS = [...measured.orders].sort((a, b) => b.mods - a.mods);
 
 /**
  * Every figure derived from ORDERS is computed, never typed. A hand-copied
@@ -70,7 +67,7 @@ export default function MeasuredPage() {
         <section className="space-y-4 font-body leading-relaxed">
           <h2 className="font-display text-2xl font-bold">The result</h2>
           <p>
-            Across ten working orders, VOLO agrees with the player{' '}
+            Across {countWord(ORDERS.length)} working orders, VOLO agrees with the player{' '}
             <strong>{HELD_OUT} percent</strong> of the time, against{' '}
             <strong>{RANDOM} percent</strong> for a random shuffle. So it is doing
             real work, and it is nowhere near a solved problem.
@@ -188,10 +185,10 @@ export default function MeasuredPage() {
         <section className="space-y-4 font-body leading-relaxed">
           <h2 className="font-display text-2xl font-bold">The honest limits</h2>
           <p>
-            Ten working orders is a small corpus, and it is the thing holding
-            the tool back rather than the sorting itself. Only a handful of
-            independent submitters sit behind them. Every measurement on this
-            page should be read with that in mind.
+            {countWordCap(ORDERS.length)} working orders is a small corpus,
+            and it is the thing holding the tool back rather than the sorting
+            itself. Only a handful of independent submitters sit behind them.
+            Every measurement on this page should be read with that in mind.
           </p>
           <p>
             The automated tests parse VOLO's own output with VOLO's own parser,

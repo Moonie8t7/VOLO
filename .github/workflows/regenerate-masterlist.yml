@@ -45,11 +45,20 @@ jobs:
           node -e "require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')"
           node scripts/verify-order.mjs | tail -6 >> "$GITHUB_STEP_SUMMARY"
 
+      # A new corpus means new figures, and every place that quotes them is
+      # generated or synced: the measurement JSON feeds the site, and the sync
+      # rewrites the README and decisions prose. Without this step the checks
+      # workflow fails on stale figures the moment this commit lands.
+      - name: Re-measure and sync the quoted figures
+        run: |
+          node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
+          node scripts/sync-figures.mjs
+
       - name: Commit whatever changed
         run: |
           git config user.name "volo-submissions"
           git config user.email "submissions@users.noreply.github.com"
-          git add masterlist public/bg3-masterlist.json client/src/lib/dividers.json client/src/lib/masterlist-summary.json
+          git add masterlist public/bg3-masterlist.json client/src/lib/dividers.json client/src/lib/masterlist-summary.json client/src/lib/measured.json README.md docs/decisions.md
           if git diff --cached --quiet; then
             echo "masterlist already matches the corpus"
           else
