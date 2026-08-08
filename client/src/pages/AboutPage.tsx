@@ -161,6 +161,13 @@ export default function AboutPage() {
             <a href={REPO} target="_blank" rel="noreferrer">
               <Button variant="outline">View the source</Button>
             </a>
+            <a
+              href="https://www.nexusmods.com/baldursgate3/mods/24316"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Button variant="outline">VOLO on Nexus Mods</Button>
+            </a>
           </div>
         </section>
       </div>
