@@ -62,8 +62,8 @@ export const PAGES: Record<string, PageMeta> = {
   '/measured': {
     title: 'How well does VOLO sort? | VOLO',
     description:
-      'The measurements behind VOLO: 57.3 percent agreement with load orders it '
-      + 'has never seen, against 50.5 percent for a random shuffle, plus the ideas '
+      'The measurements behind VOLO: 57.2 percent agreement with load orders it '
+      + 'has never seen, against 50.4 percent for a random shuffle, plus the ideas '
       + 'that measured worse and were thrown out.',
   },
   '/donations': {
