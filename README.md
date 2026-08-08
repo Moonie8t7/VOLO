@@ -6,7 +6,7 @@ Verified Order and Load Optimisation: a community-curated load order tool for
 **Baldur's Gate 3**, in the spirit of [LOOT](https://loot.github.io/) for
 Bethesda titles.
 
-[volobg3.com](https://volobg3.com)
+[volobg3.com](https://volobg3.com) · [VOLO on Nexus Mods](https://www.nexusmods.com/baldursgate3/mods/24316)
 
 ## What it does
 
