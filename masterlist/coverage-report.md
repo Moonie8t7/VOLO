@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-07T20:01:14.054Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-08T05:12:14.492Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-08-07T20:01:14.054Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 14 |
 | labelled working | 9 |
 | labelled broken | 2 |
-| load-after edges promoted from catalogues | 194 |
+| load-after edges promoted from catalogues | 200 |
 | unlabelled | 3 |
 | Separator headers parsed | 249 |
 | **Unique mods indexed** | **3138** |
 | Seen in more than one order | 1068 |
-| With declared dependencies | 160 |
+| With declared dependencies | 165 |
 | With Script Extender flags | 43 |
 | With author metadata | 483 |
 
