@@ -1,5 +1,7 @@
 # VOLO
 
+[![Checks](https://github.com/Moonie8t7/VOLO/actions/workflows/checks.yml/badge.svg)](https://github.com/Moonie8t7/VOLO/actions/workflows/checks.yml)
+
 Verified Order and Load Optimisation: a community-curated load order tool for
 **Baldur's Gate 3**, in the spirit of [LOOT](https://loot.github.io/) for
 Bethesda titles.
