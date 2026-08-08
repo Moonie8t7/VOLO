@@ -119,7 +119,28 @@ export default function AboutPage() {
         <section className="space-y-4 font-body leading-relaxed">
           <h2 className="font-display text-2xl font-bold">Getting in touch</h2>
           <p>
-            Bugs, wrong placements and disagreements all go to{' '}
+            If a mod is filed wrongly,{' '}
+            <a
+              href={`${REPO}/issues/new?template=wrong-placement.yml`}
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-foreground"
+            >
+              report the placement
+            </a>
+            ; the form asks for where it belongs and how you know, and the most
+            useful thing you can attach is the order you actually played on,
+            because that corrects the evidence rather than one entry. Something
+            on the site misbehaving is{' '}
+            <a
+              href={`${REPO}/issues/new?template=bug-report.yml`}
+              target="_blank"
+              rel="noreferrer"
+              className="underline hover:text-foreground"
+            >
+              a bug report
+            </a>
+            , and anything else goes to{' '}
             <a
               href={`${REPO}/issues`}
               target="_blank"
@@ -128,9 +149,7 @@ export default function AboutPage() {
             >
               the issue tracker
             </a>
-            . If a mod is filed wrongly, the most useful thing you can send is
-            the order you actually played on, because that corrects the evidence
-            rather than one entry.
+            .
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Link href="/submit">

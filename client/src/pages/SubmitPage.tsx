@@ -9,6 +9,7 @@ import { Check, Heart, Upload, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useStore } from '@/lib/store';
 import { parseLoadOrder } from '@/lib/parser';
@@ -56,7 +57,7 @@ function prepare(rawInput: string, filename: string): PreparedOrder | { error: s
 }
 
 export default function SubmitPage() {
-  const { mods, sourceName, masterlist } = useStore();
+  const { mods, sourceName } = useStore();
 
   const [order, setOrder] = useState<PreparedOrder | null>(null);
   const [orderError, setOrderError] = useState<string | null>(null);
@@ -64,6 +65,7 @@ export default function SubmitPage() {
   const [verdict, setVerdict] = useState<'working' | 'broken' | null>(null);
   const [arrangement, setArrangement] = useState<'volo' | 'self' | null>(null);
   const [notes, setNotes] = useState('');
+  const [patch, setPatch] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submittedUrl, setSubmittedUrl] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -116,7 +118,7 @@ export default function SubmitPage() {
         order: order.text,
         verdict,
         notes: notes.trim() || undefined,
-        patch: masterlist?.gamePatch ?? undefined,
+        patch: patch.trim() || undefined,
         sortedByVolo: arrangement ?? undefined,
         turnstileToken: turnstileToken.current,
       });
@@ -315,6 +317,27 @@ export default function SubmitPage() {
                       <span className="text-sm">{label}</span>
                     </label>
                   ))}
+                </div>
+
+                {/*
+                  Asked rather than assumed. Stamping the masterlist's current
+                  calibration patch onto every submission labelled old orders
+                  with a version their submitter never claimed.
+                */}
+                <div className="space-y-1">
+                  <label htmlFor="submit-patch" className="text-sm font-medium font-subheader">
+                    BG3 patch this order was played on
+                    <span className="block text-xs font-normal text-muted-foreground mt-1">
+                      Leave it blank if you are not sure.
+                    </span>
+                  </label>
+                  <Input
+                    id="submit-patch"
+                    value={patch}
+                    onChange={e => setPatch(e.target.value)}
+                    placeholder="Patch 8"
+                    className="font-body text-sm max-w-48"
+                  />
                 </div>
 
                 <Textarea
