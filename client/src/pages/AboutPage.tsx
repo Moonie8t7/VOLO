@@ -103,7 +103,7 @@ export default function AboutPage() {
             Reasons to be sceptical
           </h2>
           <p>
-            The corpus is small. Nine working orders is not a lot of evidence,
+            The corpus is small. Ten working orders is not a lot of evidence,
             and it is the thing holding quality back rather than the sorting
             itself. Several sensible-sounding improvements have measured worse
             than doing nothing.

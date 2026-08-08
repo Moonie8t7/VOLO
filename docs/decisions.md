@@ -22,14 +22,14 @@ Two scripts report it, and the difference matters.
 The in-sample figure runs about four points high because the masterlist has
 already read the answer. **Quote the held-out number.**
 
-Current: **57.3 percent held out**, against a 50.5 percent random baseline,
-over nine distinct working orders.
+Current: **57.2 percent held out**, against a 50.4 percent random baseline,
+over ten distinct working orders.
 
 Two caveats on the held-out figure itself. The group sequence is fixed across
 folds rather than re-learned per fold, so it is very slightly optimistic. And
 the summary is a mean over orders, not over mods, so a 41-mod order counts as
 much as a 999-mod one; on the same data, weighting by mods barely moves the
-figure, and the seven orders above 200 mods average 56.5 on their own. Read
+figure, and the seven orders above 200 mods average 56.4 on their own. Read
 the per-order table before treating a change in the summary as real.
 
 ## Adopted
@@ -40,7 +40,7 @@ three points against ordering purely by the learned sequence, and returns a
 structure players already recognise and exports whose headings read in order.
 A deliberate trade, taken knowingly.
 
-**Requirements promoted from the catalogues.** 194 load-after edges from Nexus
+**Requirements promoted from the catalogues.** 206 load-after edges from Nexus
 and mod.io requirement tables, where both ends resolve to a mod we know; the
 count drifts a little as the catalogues grow. Gated
 hard: exact name matches only, optional-sounding entries dropped, cycle-forming
@@ -85,7 +85,7 @@ mod placed in the right section beats a mod at the end of the file.
 Each experiment below quotes the figure it was measured against at the time,
 so compare a result with its own baseline rather than with the current
 headline. The 63.6 appearing here is the in-sample number from before held-out
-evaluation existed; it is not comparable to the 57.3 at the top of this file.
+evaluation existed; it is not comparable to the current figure at the top of this file.
 
 **Keeping uncategorised mods in place.** Rather than sorting them to the end,
 give them the position of the last categorised mod above them. Measured 61.8
@@ -106,7 +106,7 @@ have caught it.
 measured 60.4 percent against 63.6. Preserved on branch
 `experiment/astra-order`.
 
-The pattern across these: with nine working orders, the corpus is the binding
+The pattern across these: with so few working orders, the corpus is the binding
 constraint, not the algorithm. More submissions beat more cleverness.
 
 ## Reversed
