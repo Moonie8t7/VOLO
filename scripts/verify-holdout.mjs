@@ -145,4 +145,34 @@ const lift = mean('heldOut') - mean('random');
 console.log(`\noptimism of the in-sample figure: ${(100 * optimism).toFixed(1)} points`);
 console.log(`honest lift over chance:          ${(100 * lift).toFixed(1)} points`);
 
+/*
+ * The measurement as data, so nothing quotes it from memory. The measured
+ * page renders this file, the route description reads it at build, and
+ * sync-figures.mjs rewrites the README from it. Hand-maintained copies of
+ * these numbers went stale the first time a stranger's submission landed
+ * without a human awake to transcribe them.
+ */
+const round1 = v => Math.round(1000 * v) / 10;
+const display = f => f
+  .replace(/\.(json|tsv|csv|txt)$/i, '')
+  .replace(/^working_/, '')
+  .replace(/^not[-_ ]?working_/i, '');
+fs.writeFileSync(
+  path.join('client', 'src', 'lib', 'measured.json'),
+  `${JSON.stringify({
+    generated: new Date().toISOString(),
+    ordersEvaluated: rows.length,
+    heldOut: round1(mean('heldOut')),
+    random: round1(mean('random')),
+    inSample: round1(mean('inSample')),
+    orders: rows.map(r => ({
+      name: display(r.file),
+      mods: r.mods,
+      held: round1(r.heldOut),
+      random: round1(r.random),
+    })),
+  }, null, 2)}\n`,
+);
+console.log('\nwrote client/src/lib/measured.json');
+
 fs.rmSync(bundle, { force: true });

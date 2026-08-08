@@ -58,6 +58,16 @@ jobs:
           echo "automerge=$automerge" >> "$GITHUB_OUTPUT"
           echo "accepted=$accepted automerge=$automerge"
 
+      # A landed order changes every figure the prose quotes, and nobody is
+      # awake to transcribe them: the last submission arrived at night and the
+      # checks failed on stale figures until morning. The measurement JSON
+      # feeds the site; the sync rewrites the README and decisions prose.
+      - name: Re-measure and sync the quoted figures
+        if: steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge == 'true'
+        run: |
+          node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
+          node scripts/sync-figures.mjs
+
       - name: Land it on main
         if: steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge == 'true'
         env:
@@ -67,7 +77,7 @@ jobs:
           git config user.email "submissions@users.noreply.github.com"
           # The masterlist in this commit was regenerated from the full corpus
           # including this order, moments ago, so it is never stale.
-          git add "Load Orders - Public Submitted" masterlist public/bg3-masterlist.json client/src/lib/masterlist-summary.json
+          git add "Load Orders - Public Submitted" masterlist public/bg3-masterlist.json client/src/lib/masterlist-summary.json client/src/lib/measured.json README.md docs/decisions.md
           git commit -m "Add load order from issue #${{ github.event.issue.number }} and regenerate the masterlist"
           # Another run may have landed between checkout and now.
           git pull --rebase origin main

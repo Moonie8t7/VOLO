@@ -13,6 +13,7 @@
 
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
+import measured from './measured.json';
 
 export const SITE = 'https://volobg3.com';
 
@@ -61,9 +62,11 @@ export const PAGES: Record<string, PageMeta> = {
   },
   '/measured': {
     title: 'How well does VOLO sort? | VOLO',
+    // Built from the measurement itself, so the description cannot promise a
+    // figure the page no longer shows.
     description:
-      'The measurements behind VOLO: 57.2 percent agreement with load orders it '
-      + 'has never seen, against 50.4 percent for a random shuffle, plus the ideas '
+      `The measurements behind VOLO: ${measured.heldOut} percent agreement with load orders it `
+      + `has never seen, against ${measured.random} percent for a random shuffle, plus the ideas `
       + 'that measured worse and were thrown out.',
   },
   '/donations': {
