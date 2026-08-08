@@ -146,6 +146,17 @@
   .font-body {
     color: hsl(var(--bg3-main)); /* #CFCFCE */
   }
+
+  /* Inline text links. An underline alone disappears into serif body copy, so
+     links take the gold that already means interactive on buttons and borders.
+     Scoped to anchors carrying the underline utility, which is every prose
+     link and nothing else; nav and button links keep their own treatment.
+     Hover utilities on the elements still win, so hover brightens as before. */
+  a.underline {
+    color: hsl(var(--bg3-gold)); /* #D7A869 */
+    text-decoration-color: hsl(var(--bg3-gold) / 0.45);
+    text-underline-offset: 3px;
+  }
   
   .text-subheading {
     color: hsl(var(--bg3-small)); /* #FBCEA0 */
