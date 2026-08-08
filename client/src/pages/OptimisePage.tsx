@@ -359,6 +359,10 @@ function Metric({ label, value, hint, muted }: {
   );
 }
 
+/** Where "know where this belongs?" actually leads. */
+const WRONG_PLACEMENT_URL =
+  'https://github.com/Moonie8t7/VOLO/issues/new?template=wrong-placement.yml';
+
 function IssueCard({ issue }: { issue: Issue }) {
   const Icon = SEVERITY_ICON[issue.severity];
   return (
@@ -368,7 +372,25 @@ function IssueCard({ issue }: { issue: Issue }) {
       <AlertDescription className="font-body">
         {issue.message}
         {issue.resolution && (
-          <span className="block mt-1 text-sm opacity-80">{issue.resolution}</span>
+          <span className="block mt-1 text-sm opacity-80">
+            {issue.resolution}
+            {/* An ask with no path is a dead end: the unsorted card invites a
+                category, so it links to the form built for exactly that. */}
+            {issue.kind === 'unsorted' && (
+              <>
+                {' '}
+                <a
+                  href={WRONG_PLACEMENT_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline hover:opacity-100"
+                >
+                  Tell us where they go
+                </a>
+                .
+              </>
+            )}
+          </span>
         )}
       </AlertDescription>
     </Alert>

@@ -147,7 +147,9 @@ export default function LandingPage() {
           </figure>
         </div>
 
-        <h2 className="font-display text-2xl font-bold mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
+        {/* Anchored so the issue templates can point straight at the evidence
+            ladder rather than at the top of the page. */}
+        <h2 id="where-the-order-comes-from" className="font-display text-2xl font-bold mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
           Where the order comes from
         </h2>
         <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>

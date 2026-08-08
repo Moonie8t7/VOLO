@@ -1,0 +1,67 @@
+name: Report a wrong placement
+description: VOLO put a mod somewhere you know is wrong. Tell us where it belongs and how you know.
+title: "Wrong placement: "
+labels: ["wrong-placement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Placements come from evidence, so the most useful report
+        carries some: where the mod belongs, and ideally an order you have
+        actually played on with it there. A report corrects one entry; an
+        order corrects the evidence underneath it.
+  - type: input
+    id: mod
+    attributes:
+      label: Mod name
+      description: Exactly as it appears in your load order, punctuation and all, so it can be matched.
+      placeholder: "ASE - Gnoll, Harpy, Hobgoblin, Hag, Djinni"
+    validations:
+      required: true
+  - type: input
+    id: landed
+    attributes:
+      label: Where VOLO put it
+      description: The section badge shown on the row, for example "Gameplay" or "UI Other" or "unsorted".
+    validations:
+      required: true
+  - type: input
+    id: belongs
+    attributes:
+      label: Where it belongs
+      description: The section it should sit in, and roughly where within it if that matters.
+    validations:
+      required: true
+  - type: input
+    id: label
+    attributes:
+      label: The small label next to the badge, if any
+      description: >
+        curated, inferred, listing, author, guessed, or unplaced. This says
+        which evidence tier made the call, which is where the fix goes.
+  - type: dropdown
+    id: basis
+    attributes:
+      label: How do you know?
+      description: Be honest here. A placement backed by play is worth more than one backed by expectation.
+      options:
+        - I play with it there and it works
+        - It caused problems where VOLO put it
+        - The mod page or its author says so
+        - Something else, explained in the notes
+    validations:
+      required: true
+  - type: textarea
+    id: order
+    attributes:
+      label: The order you play it in
+      description: >
+        Optional, but this is the thing that actually fixes placements. Paste
+        your BG3 Mod Manager export here or drag the file in, and the mod's
+        placement is corrected by evidence rather than by hand.
+      render: json
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything else worth knowing, including links to the mod page or author guidance.
