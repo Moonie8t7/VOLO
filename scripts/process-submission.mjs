@@ -159,6 +159,26 @@ async function fetchAttachment(url) {
  * parsed as an order and both failed, while the real order sat one candidate
  * further down the list.
  */
+/**
+ * Entries in an order as the submitting site counted them, or null.
+ *
+ * Deliberately counts rows rather than mods, mirroring functions/api/submit.js,
+ * so the two ends of the transport are comparing the same quantity. The parsed
+ * mod count is a different number and using it here rejected a real order:
+ * see the truncation check below.
+ */
+function countRawEntries(text) {
+  const trimmed = text.trim();
+  if (trimmed.startsWith('<?xml')) return (trimmed.match(/ModuleShortDesc/g) ?? []).length;
+  try {
+    const data = JSON.parse(trimmed);
+    const entries = Array.isArray(data) ? data : (data.Order ?? data.Mods ?? null);
+    return Array.isArray(entries) ? entries.length : null;
+  } catch {
+    return null;
+  }
+}
+
 async function orderCandidates() {
   const candidates = [];
 
@@ -187,7 +207,11 @@ async function orderCandidates() {
           throw new Error('staged order does not match the checksum recorded when it was submitted');
         }
       }
-      staged = { expectedEntries };
+      staged = {
+        expectedEntries,
+        digestVerified: Boolean(expectedDigest),
+        rawEntries: countRawEntries(text),
+      };
       return text;
     });
     return candidates;
@@ -266,11 +290,23 @@ for (const candidate of await orderCandidates()) {
     continue;
   }
   if (!result.errors.length && result.mods.length >= MIN_ENTRIES) {
-    // A staged order that arrives short was truncated in transit, and landing
-    // it would quietly replace someone's list with the part that survived.
-    if (staged?.expectedEntries && result.mods.length < staged.expectedEntries * 0.9) {
+    /*
+     * A staged order that arrives short was truncated in transit, and landing
+     * it would quietly replace someone's list with the part that survived.
+     *
+     * Only reached when no checksum was recorded, because a checksum that
+     * matches has already proved the bytes arrived whole and this can then
+     * only be wrong. It counts rows rather than mods for the same reason: the
+     * parser drops separators and engine modules, so a 958 entry order
+     * carrying 119 hand-written section headers read as 839 and was refused
+     * as truncated while its checksum matched exactly. Those headers are the
+     * strongest evidence the corpus has, which made it the worst possible
+     * order to turn away.
+     */
+    if (staged && !staged.digestVerified && staged.expectedEntries && staged.rawEntries !== null
+      && staged.rawEntries < staged.expectedEntries * 0.9) {
       attempts.push(
-        `staged order looks truncated: ${result.mods.length} entries read, ${staged.expectedEntries} were submitted`,
+        `staged order looks truncated: ${staged.rawEntries} entries read, ${staged.expectedEntries} were submitted`,
       );
       continue;
     }
