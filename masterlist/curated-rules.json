@@ -89,6 +89,18 @@
       "why": "Nexus 18883 publishes as 'Mazzle's EZ-Documentation (MazzleDocs)' and the pak folder is Mazzle_Docs. Reported alongside Vlad's Grimoire by the same person, from a load order holding both."
     }
   ],
+  "requirementSatisfiedBy": [
+    {
+      "requirement": "Origin Mirror Unlock",
+      "satisfiedBy": "AppearanceEditEnhanced",
+      "why": "Reported by a player told they were missing it while it was installed: the function was folded into Appearance Edit Enhanced and the requirement still names the old mod. The corpus cannot show this on its own, since Appearance Edit Enhanced is in most orders anyway, so co-occurrence proves nothing here."
+    },
+    {
+      "requirement": "TutorialChestSummoning",
+      "satisfiedBy": "AV Item Shipment Framework",
+      "why": "Both deliver mod-added items to the player, and mods requiring one work with the other. Four of the five working orders that want it and lack it carry AV Item Shipment Framework, against it appearing in under a third of orders overall, so this is measured rather than assumed."
+    }
+  ],
   "incompatible": [],
 
   "messages": []

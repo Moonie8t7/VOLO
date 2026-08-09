@@ -80,6 +80,11 @@
         }
       }
     },
+    "requirementSatisfiedBy": {
+      "type": "object",
+      "description": "Requirements another mod can meet instead, keyed by the required mod's uuid, valued by the uuids of mods that stand in for it. Hand-written in curated-rules.json: two mods doing the same job share no name, author or metadata, so nothing in the data can find this.",
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+    },
     "requirementAliases": {
       "type": "object",
       "description": "Names a requirement may use for a mod that none of the mod's own strings match, mapped to that mod's uuid. Keyed by lowercased alphanumeric name. Hand-written in curated-rules.json: nothing measurable joins a mod page's title to a differently named pak, and matching on resemblance would invent links between unrelated mods.",
@@ -107,6 +112,10 @@
             "examples": [45, 58.11, 105]
           },
           "usesScriptExtender": { "type": "boolean" },
+          "oftenAbsent": {
+            "type": "boolean",
+            "description": "Most working orders declaring this as a requirement do not have it installed, so its absence is reported as a warning rather than as something the load order is broken without. Measured from the corpus, never hand-set. A real library scores zero here."
+          },
           "loadsAfterDependents": {
             "type": "boolean",
             "description": "This mod is loaded after the mods that require it, so its dependencies stop being ordering constraints. Set only where the working orders say so, and only with pooled evidence across several dependants. A patcher reads the mods it patches, so 'requires X' does not mean 'X loads first' for it."
