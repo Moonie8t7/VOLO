@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-09T13:03:53.510Z",
+  "generated": "2026-08-09T13:55:10.480Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -10,8 +10,8 @@
   ],
   "incompatible": [],
   "provenance": {
-    "ordersAnalysed": 31,
-    "working": 25,
+    "ordersAnalysed": 32,
+    "working": 26,
     "broken": 3,
     "unlabelled": 3,
     "externalDependencyEdges": 328,
@@ -239,8 +239,8 @@
       "divider": 1,
       "evidence": {
         "source": "curated",
-        "installs": 31,
-        "workingInstalls": 25,
+        "installs": 32,
+        "workingInstalls": 26,
         "brokenInstalls": 3
       }
     },
@@ -253,8 +253,8 @@
       "divider": 3,
       "evidence": {
         "source": "section",
-        "installs": 27,
-        "workingInstalls": 23,
+        "installs": 28,
+        "workingInstalls": 24,
         "brokenInstalls": 2
       },
       "dependencies": [
@@ -278,8 +278,8 @@
       "divider": 14,
       "evidence": {
         "source": "curated",
-        "installs": 26,
-        "workingInstalls": 21,
+        "installs": 27,
+        "workingInstalls": 22,
         "brokenInstalls": 2
       },
       "usesScriptExtender": true
@@ -301,10 +301,30 @@
       "divider": 2,
       "evidence": {
         "source": "section",
-        "installs": 23,
-        "workingInstalls": 20,
+        "installs": 24,
+        "workingInstalls": 21,
         "brokenInstalls": 3
       }
+    },
+    {
+      "name": "Better Topbar",
+      "uuid": "d9582df8-6eef-a756-117f-965e22007ff6",
+      "group": "User Interface",
+      "folder": "BetterTopbar_d9582df8-6eef-a756-117f-965e22007ff6",
+      "author": "Caites",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 23,
+        "workingInstalls": 20,
+        "brokenInstalls": 2
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "BetterTooltips",
@@ -316,26 +336,6 @@
       "evidence": {
         "source": "section",
         "installs": 23,
-        "workingInstalls": 19,
-        "brokenInstalls": 2
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
-    },
-    {
-      "name": "Better Topbar",
-      "uuid": "d9582df8-6eef-a756-117f-965e22007ff6",
-      "group": "User Interface",
-      "folder": "BetterTopbar_d9582df8-6eef-a756-117f-965e22007ff6",
-      "author": "Caites",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 22,
         "workingInstalls": 19,
         "brokenInstalls": 2
       },
@@ -442,11 +442,25 @@
       "divider": 7,
       "evidence": {
         "source": "curated",
-        "installs": 19,
-        "workingInstalls": 16,
+        "installs": 20,
+        "workingInstalls": 17,
         "brokenInstalls": 2
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "Better Dyeing",
+      "uuid": "03b0b84a-2689-77c2-5ef6-ebcf88b88037",
+      "group": "User Interface",
+      "folder": "BetterDyeing_03b0b84a-2689-77c2-5ef6-ebcf88b88037",
+      "author": "Caites",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 19,
+        "workingInstalls": 16,
+        "brokenInstalls": 2
+      }
     },
     {
       "name": "5eSpells",
@@ -468,11 +482,29 @@
       "usesScriptExtender": true
     },
     {
-      "name": "Better Dyeing",
-      "uuid": "03b0b84a-2689-77c2-5ef6-ebcf88b88037",
+      "name": "AddonBetterInventoryUI",
+      "uuid": "8c7d3408-a746-5022-348b-1635e14af044",
       "group": "User Interface",
-      "folder": "BetterDyeing_03b0b84a-2689-77c2-5ef6-ebcf88b88037",
+      "folder": "AddonBetterInventoryUI_8c7d3408-a746-5022-348b-1635e14af044",
       "author": "Caites",
+      "version": "1.2.9.6",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 3,
+      "evidence": {
+        "source": "section",
+        "installs": 18,
+        "workingInstalls": 14,
+        "brokenInstalls": 3
+      }
+    },
+    {
+      "name": "Better Various Widgets",
+      "uuid": "2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a",
+      "group": "User Interface",
+      "folder": "BetterVariousWidgets_2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a",
+      "author": "Caites",
+      "version": "1.0.9.8",
+      "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 2,
       "evidence": {
         "source": "section",
@@ -480,6 +512,25 @@
         "workingInstalls": 15,
         "brokenInstalls": 2
       }
+    },
+    {
+      "name": "Dynamic Sidebar",
+      "uuid": "1e649013-e371-953e-3839-07f02fe1cffa",
+      "group": "User Interface",
+      "author": "Caites",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 18,
+        "workingInstalls": 15,
+        "brokenInstalls": 1
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "TransmogEnhanced",
@@ -501,57 +552,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "AddonBetterInventoryUI",
-      "uuid": "8c7d3408-a746-5022-348b-1635e14af044",
-      "group": "User Interface",
-      "folder": "AddonBetterInventoryUI_8c7d3408-a746-5022-348b-1635e14af044",
-      "author": "Caites",
-      "version": "1.2.9.6",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 3,
-      "evidence": {
-        "source": "section",
-        "installs": 17,
-        "workingInstalls": 13,
-        "brokenInstalls": 3
-      }
-    },
-    {
-      "name": "Better Various Widgets",
-      "uuid": "2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a",
-      "group": "User Interface",
-      "folder": "BetterVariousWidgets_2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a",
-      "author": "Caites",
-      "version": "1.0.9.8",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 17,
-        "workingInstalls": 14,
-        "brokenInstalls": 2
-      }
-    },
-    {
-      "name": "Dynamic Sidebar",
-      "uuid": "1e649013-e371-953e-3839-07f02fe1cffa",
-      "group": "User Interface",
-      "author": "Caites",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 17,
-        "workingInstalls": 14,
-        "brokenInstalls": 1
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
-    },
-    {
       "name": "AppearanceEditEnhanced",
       "uuid": "7b8366bd-abc1-4f9f-ba9d-585549b4a750",
       "group": "Bug Fixes",
@@ -564,11 +564,37 @@
       "divider": 104,
       "evidence": {
         "source": "curated",
-        "installs": 16,
-        "workingInstalls": 14,
+        "installs": 17,
+        "workingInstalls": 15,
         "brokenInstalls": 2
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "Better Context Menu",
+      "uuid": "f9dd909a-3607-f8e1-da13-b795884f68b5",
+      "group": "User Interface",
+      "folder": "BetterContextMenu_f9dd909a-3607-f8e1-da13-b795884f68b5",
+      "author": "Caites",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 17,
+        "workingInstalls": 15,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Myky's Hairstyles",
+      "uuid": "680b2b14-1663-0701-506a-c5c23c68247e",
+      "group": "Hair",
+      "divider": 64,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 17,
+        "workingInstalls": 14,
+        "brokenInstalls": 1
+      }
     },
     {
       "name": "AppearanceEditOrigins",
@@ -586,44 +612,6 @@
       }
     },
     {
-      "name": "Better Context Menu",
-      "uuid": "f9dd909a-3607-f8e1-da13-b795884f68b5",
-      "group": "User Interface",
-      "folder": "BetterContextMenu_f9dd909a-3607-f8e1-da13-b795884f68b5",
-      "author": "Caites",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 16,
-        "workingInstalls": 14,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Myky's Hairstyles",
-      "uuid": "680b2b14-1663-0701-506a-c5c23c68247e",
-      "group": "Hair",
-      "divider": 64,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 16,
-        "workingInstalls": 13,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Vanilla CC Colours For All Sections",
-      "uuid": "470714b1-7b5b-1866-4730-056ba9d258e8",
-      "group": "Character Customization",
-      "divider": 62,
-      "evidence": {
-        "source": "section",
-        "installs": 16,
-        "workingInstalls": 15,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Better Hotbar [Vova's Edition]",
       "uuid": "191c52f3-07bb-f83e-e1db-bb06ea262000",
       "group": "User Interface",
@@ -632,8 +620,8 @@
       "divider": 2,
       "evidence": {
         "source": "section",
-        "installs": 15,
-        "workingInstalls": 12,
+        "installs": 16,
+        "workingInstalls": 13,
         "brokenInstalls": 2
       },
       "dependencies": [
@@ -660,8 +648,8 @@
       "divider": 2,
       "evidence": {
         "source": "section",
-        "installs": 15,
-        "workingInstalls": 12,
+        "installs": 16,
+        "workingInstalls": 13,
         "brokenInstalls": 2
       }
     },
@@ -674,34 +662,20 @@
       "divider": 0,
       "evidence": {
         "source": "section-majority",
-        "installs": 15,
-        "workingInstalls": 13,
+        "installs": 16,
+        "workingInstalls": 14,
         "brokenInstalls": 1
       }
     },
     {
-      "name": "PixellBytes' Adjustable Party Limit",
-      "uuid": "33c1de88-dfd0-351d-8904-a5ee730880c6",
-      "group": "Companions",
-      "folder": "ConfigurablePartyLimit_33c1de88-dfd0-351d-8904-a5ee730880c6",
-      "author": "PixellBytes",
-      "divider": 82,
-      "evidence": {
-        "source": "external-category",
-        "installs": 15,
-        "workingInstalls": 13,
-        "brokenInstalls": 2
-      }
-    },
-    {
-      "name": "ASTRL Demon Eyes",
-      "uuid": "b0c1b53b-0d9b-43b4-803d-1cc62aa9389c",
+      "name": "Vanilla CC Colours For All Sections",
+      "uuid": "470714b1-7b5b-1866-4730-056ba9d258e8",
       "group": "Character Customization",
       "divider": 62,
       "evidence": {
-        "source": "section-majority",
-        "installs": 14,
-        "workingInstalls": 13,
+        "source": "section",
+        "installs": 16,
+        "workingInstalls": 15,
         "brokenInstalls": 0
       }
     },
@@ -714,8 +688,8 @@
       "divider": 2,
       "evidence": {
         "source": "section",
-        "installs": 14,
-        "workingInstalls": 12,
+        "installs": 15,
+        "workingInstalls": 13,
         "brokenInstalls": 1
       }
     },
@@ -733,8 +707,8 @@
       "divider": 52,
       "evidence": {
         "source": "section-majority",
-        "installs": 14,
-        "workingInstalls": 11,
+        "installs": 15,
+        "workingInstalls": 12,
         "brokenInstalls": 1
       },
       "usesScriptExtender": true
@@ -747,9 +721,68 @@
       "divider": 16,
       "evidence": {
         "source": "section-majority",
-        "installs": 14,
-        "workingInstalls": 12,
+        "installs": 15,
+        "workingInstalls": 13,
         "brokenInstalls": 1
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        }
+      ]
+    },
+    {
+      "name": "PixellBytes' Adjustable Party Limit",
+      "uuid": "33c1de88-dfd0-351d-8904-a5ee730880c6",
+      "group": "Companions",
+      "folder": "ConfigurablePartyLimit_33c1de88-dfd0-351d-8904-a5ee730880c6",
+      "author": "PixellBytes",
+      "divider": 82,
+      "evidence": {
+        "source": "external-category",
+        "installs": 15,
+        "workingInstalls": 13,
+        "brokenInstalls": 2
+      }
+    },
+    {
+      "name": "TutorialChestSummoning",
+      "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+      "group": "Spells",
+      "author": "wesslen",
+      "divider": 29,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 15,
+        "workingInstalls": 13,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "ASTRL Demon Eyes",
+      "uuid": "b0c1b53b-0d9b-43b4-803d-1cc62aa9389c",
+      "group": "Character Customization",
+      "divider": 62,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 14,
+        "workingInstalls": 13,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Fix Stragglers",
+      "uuid": "310ba0c7-374e-4e56-8c42-b7c7ad3a38b0",
+      "group": "Bug Fixes",
+      "divider": 16,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 14,
+        "workingInstalls": 13,
+        "brokenInstalls": 0
       },
       "usesScriptExtender": true,
       "dependencies": [
@@ -770,20 +803,6 @@
         "workingInstalls": 13,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "TutorialChestSummoning",
-      "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
-      "group": "Spells",
-      "author": "wesslen",
-      "divider": 29,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 14,
-        "workingInstalls": 12,
-        "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "WrinkleMapeSmoothn",
@@ -843,6 +862,19 @@
       }
     },
     {
+      "name": "DatabaseCleaner",
+      "uuid": "08e267cf-bf28-4e29-8711-8282ed017fcb",
+      "group": "Utilities",
+      "divider": 19,
+      "evidence": {
+        "source": "section",
+        "installs": 13,
+        "workingInstalls": 13,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "EasyCheat",
       "uuid": "5b5ad5b6-ce37-4a63-8dea-a1fee4cee156",
       "group": "Gameplay",
@@ -853,25 +885,6 @@
         "workingInstalls": 13,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "Fix Stragglers",
-      "uuid": "310ba0c7-374e-4e56-8c42-b7c7ad3a38b0",
-      "group": "Bug Fixes",
-      "divider": 16,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 13,
-        "workingInstalls": 12,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true,
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        }
-      ]
     },
     {
       "name": "HT_Lesser Restoration: Assorted Bug Fixes",
@@ -897,6 +910,18 @@
         "installs": 13,
         "workingInstalls": 12,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "KaiLime UI",
+      "uuid": "baf029fa-af6e-4080-bd6a-abacdea9e684",
+      "group": "User Interface",
+      "divider": 4,
+      "evidence": {
+        "source": "section",
+        "installs": 13,
+        "workingInstalls": 11,
+        "brokenInstalls": 0
       }
     },
     {
@@ -963,17 +988,30 @@
       }
     },
     {
-      "name": "DatabaseCleaner",
-      "uuid": "08e267cf-bf28-4e29-8711-8282ed017fcb",
-      "group": "Utilities",
-      "divider": 19,
+      "name": "ASTRL Natural Skintones",
+      "uuid": "af7f742c-c484-441e-8d06-eda735233068",
+      "group": "Bodies",
+      "author": "Astralities",
+      "divider": 99,
       "evidence": {
         "source": "section",
         "installs": 12,
-        "workingInstalls": 12,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
+        "workingInstalls": 9,
+        "brokenInstalls": 2
+      }
+    },
+    {
+      "name": "Better Map",
+      "uuid": "02ffe10e-ac53-8877-a3d5-3098fdbb8f5b",
+      "group": "User Interface",
+      "author": "Caites",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 12,
+        "workingInstalls": 11,
+        "brokenInstalls": 1
+      }
     },
     {
       "name": "Expansion",
@@ -993,6 +1031,19 @@
         "brokenInstalls": 2
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "Extra encounters and Minibosses",
+      "uuid": "6324f71c-80f2-6c13-b2e8-1c3441fa6072",
+      "group": "Gameplay",
+      "folder": "Extra_encounters_plus_6324f71c-80f2-6c13-b2e8-1c3441fa6072",
+      "divider": 31,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 12,
+        "workingInstalls": 12,
+        "brokenInstalls": 0
+      }
     },
     {
       "name": "Faces of Faerun",
@@ -1032,18 +1083,6 @@
       }
     },
     {
-      "name": "KaiLime UI",
-      "uuid": "baf029fa-af6e-4080-bd6a-abacdea9e684",
-      "group": "User Interface",
-      "divider": 4,
-      "evidence": {
-        "source": "section",
-        "installs": 12,
-        "workingInstalls": 10,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Myky's Heads",
       "uuid": "56f43956-b1cb-43c6-badc-782c1e0def0f",
       "group": "Heads",
@@ -1079,6 +1118,18 @@
         "installs": 12,
         "workingInstalls": 8,
         "brokenInstalls": 2
+      }
+    },
+    {
+      "name": "PL_Fantastical_Hairstyles",
+      "uuid": "06ba1746-2bcf-774d-3589-6b2f58c6c2ce",
+      "group": "Hair",
+      "divider": 64,
+      "evidence": {
+        "source": "section",
+        "installs": 12,
+        "workingInstalls": 9,
+        "brokenInstalls": 1
       }
     },
     {
@@ -1188,42 +1239,37 @@
       }
     },
     {
-      "name": "ASTRL Natural Skintones",
-      "uuid": "af7f742c-c484-441e-8d06-eda735233068",
-      "group": "Bodies",
-      "author": "Astralities",
-      "divider": 99,
+      "name": "BCPP 16x9 4 5x10",
+      "uuid": "f43d53cb-aef6-6476-15dc-d71d25c2f1cc",
+      "group": "User Interface",
+      "folder": "BCPPfourfiveten_f43d53cb-aef6-6476-15dc-d71d25c2f1cc",
+      "author": "Caites",
+      "version": "1.7.2.11",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 2,
       "evidence": {
         "source": "section",
         "installs": 11,
         "workingInstalls": 8,
-        "brokenInstalls": 2
+        "brokenInstalls": 1
       }
     },
     {
-      "name": "Better Map",
-      "uuid": "02ffe10e-ac53-8877-a3d5-3098fdbb8f5b",
-      "group": "User Interface",
-      "author": "Caites",
-      "divider": 2,
+      "name": "Facial Animations",
+      "uuid": "f8e39ac7-87d1-716d-4f36-342d69094e75",
+      "group": "Animations",
+      "divider": 88,
       "evidence": {
         "source": "section",
         "installs": 11,
         "workingInstalls": 10,
         "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Extra encounters and Minibosses",
-      "uuid": "6324f71c-80f2-6c13-b2e8-1c3441fa6072",
-      "group": "Gameplay",
-      "folder": "Extra_encounters_plus_6324f71c-80f2-6c13-b2e8-1c3441fa6072",
-      "divider": 31,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 11,
-        "workingInstalls": 11,
-        "brokenInstalls": 0
       }
     },
     {
@@ -1270,18 +1316,6 @@
         "source": "section-majority",
         "installs": 11,
         "workingInstalls": 10,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "PL_Fantastical_Hairstyles",
-      "uuid": "06ba1746-2bcf-774d-3589-6b2f58c6c2ce",
-      "group": "Hair",
-      "divider": 64,
-      "evidence": {
-        "source": "section",
-        "installs": 11,
-        "workingInstalls": 8,
         "brokenInstalls": 1
       }
     },
@@ -1457,28 +1491,6 @@
       ]
     },
     {
-      "name": "BCPP 16x9 4 5x10",
-      "uuid": "f43d53cb-aef6-6476-15dc-d71d25c2f1cc",
-      "group": "User Interface",
-      "folder": "BCPPfourfiveten_f43d53cb-aef6-6476-15dc-d71d25c2f1cc",
-      "author": "Caites",
-      "version": "1.7.2.11",
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 10,
-        "workingInstalls": 7,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "Carry Weight Increased 9000",
       "uuid": "92af0ebd-a04c-4e9c-8306-b947aac4c127",
       "group": "Gameplay",
@@ -1508,18 +1520,6 @@
       }
     },
     {
-      "name": "Facial Animations",
-      "uuid": "f8e39ac7-87d1-716d-4f36-342d69094e75",
-      "group": "Animations",
-      "divider": 88,
-      "evidence": {
-        "source": "section",
-        "installs": 10,
-        "workingInstalls": 9,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "Fade's Assorted Treasure Expansion",
       "uuid": "fef3fbd7-4a38-01e2-d37c-14c217c4b31e",
       "group": "Resources",
@@ -1541,6 +1541,19 @@
         "installs": 10,
         "workingInstalls": 8,
         "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Horns of Faerun",
+      "uuid": "192f57e4-a961-47be-ab94-e70042f9d211",
+      "group": "Character Customization",
+      "author": "Aloija",
+      "divider": 65,
+      "evidence": {
+        "source": "section",
+        "installs": 10,
+        "workingInstalls": 9,
+        "brokenInstalls": 1
       }
     },
     {
@@ -1909,6 +1922,25 @@
       }
     },
     {
+      "name": "Auto Send Read Books To Camp",
+      "uuid": "e49ba956-192e-451f-8dde-9c1299ec8881",
+      "group": "Bug Fixes",
+      "divider": 102.5,
+      "evidence": {
+        "source": "section",
+        "installs": 9,
+        "workingInstalls": 9,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        }
+      ]
+    },
+    {
       "name": "AV Item Shipment Framework",
       "uuid": "e6333436-9cf0-4464-aaf2-39246292575e",
       "group": "Resources",
@@ -2069,19 +2101,6 @@
       }
     },
     {
-      "name": "Horns of Faerun",
-      "uuid": "192f57e4-a961-47be-ab94-e70042f9d211",
-      "group": "Character Customization",
-      "author": "Aloija",
-      "divider": 65,
-      "evidence": {
-        "source": "section",
-        "installs": 9,
-        "workingInstalls": 8,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "HT_Minthara's Poison Kiss",
       "uuid": "0d3c8e22-0376-d0a9-41ec-2d4a6f9bceec",
       "group": "Bug Fixes",
@@ -2189,6 +2208,18 @@
       }
     },
     {
+      "name": "Race CC Universal Automatic Patcher (UAP)",
+      "uuid": "390fe96d-d38a-49ef-a522-9335d0a948d6",
+      "group": "Bug Fixes",
+      "divider": 16,
+      "evidence": {
+        "source": "section",
+        "installs": 9,
+        "workingInstalls": 8,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Rox's Vivid Aquarelle eyes",
       "uuid": "8975f24a-8128-9ee8-b363-0f15f535df3d",
       "group": "Character Customization",
@@ -2257,6 +2288,19 @@
       "usesScriptExtender": true
     },
     {
+      "name": "xx Head HEL",
+      "uuid": "8377a991-ae75-4286-8841-a9be74aada4d",
+      "group": "Character Customization",
+      "author": "csxx520",
+      "divider": 62.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 9,
+        "workingInstalls": 7,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "[Aza] Better Starting Gear (Gale) + Tutorial Chest",
       "uuid": "32378f72-9a6a-9601-7481-c2117ba648d2",
       "group": "Companions",
@@ -2306,6 +2350,18 @@
       }
     },
     {
+      "name": "Armory",
+      "uuid": "b1f292a4-f484-4631-8c58-532b53fd1c11",
+      "group": "Clothing",
+      "divider": 16,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 8,
+        "workingInstalls": 8,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "ASTRL Sublime Skintones",
       "uuid": "da0e8d69-535c-4218-a42f-118c377184ca",
       "group": "Character Customization",
@@ -2318,23 +2374,26 @@
       }
     },
     {
-      "name": "Auto Send Read Books To Camp",
-      "uuid": "e49ba956-192e-451f-8dde-9c1299ec8881",
-      "group": "Bug Fixes",
-      "divider": 102.5,
+      "name": "Better Combat Log Default",
+      "uuid": "9757088d-43ff-9c67-1a53-365f2d6fea94",
+      "group": "User Interface",
+      "folder": "BetterCombatLogDefault_9757088d-43ff-9c67-1a53-365f2d6fea94",
+      "author": "Caites",
+      "version": "1.2.9.4",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 2,
       "evidence": {
         "source": "section",
         "installs": 8,
-        "workingInstalls": 8,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true,
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        }
-      ]
+        "workingInstalls": 5,
+        "brokenInstalls": 2
+      }
     },
     {
       "name": "Clear Map",
@@ -2479,6 +2538,18 @@
       }
     },
     {
+      "name": "Normal Volo's Eye",
+      "uuid": "045a6ef0-4e3b-4150-ae92-7f53bf4fd84a",
+      "group": "Miscellaneous",
+      "divider": 89.5,
+      "evidence": {
+        "source": "section",
+        "installs": 8,
+        "workingInstalls": 8,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Owlbear Cub Evolved",
       "uuid": "f82f9dde-83c8-3f72-efec-2b213bd027c1",
       "group": "Companions",
@@ -2509,18 +2580,6 @@
           "name": "VolitionCabinet"
         }
       ]
-    },
-    {
-      "name": "Race CC Universal Automatic Patcher (UAP)",
-      "uuid": "390fe96d-d38a-49ef-a522-9335d0a948d6",
-      "group": "Bug Fixes",
-      "divider": 16,
-      "evidence": {
-        "source": "section",
-        "installs": 8,
-        "workingInstalls": 7,
-        "brokenInstalls": 0
-      }
     },
     {
       "name": "Scratch Evolved",
@@ -2636,19 +2695,6 @@
       }
     },
     {
-      "name": "xx Head HEL",
-      "uuid": "8377a991-ae75-4286-8841-a9be74aada4d",
-      "group": "Character Customization",
-      "author": "csxx520",
-      "divider": 62.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 8,
-        "workingInstalls": 6,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "♡ Mantis' Preset Collection [VOL. I]",
       "uuid": "92f9a38d-2429-4d03-8e36-e98534e854b9",
       "group": "Heads",
@@ -2659,18 +2705,6 @@
         "installs": 7,
         "workingInstalls": 4,
         "brokenInstalls": 2
-      }
-    },
-    {
-      "name": "Armory",
-      "uuid": "b1f292a4-f484-4631-8c58-532b53fd1c11",
-      "group": "Clothing",
-      "divider": 16,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 7,
-        "workingInstalls": 7,
-        "brokenInstalls": 0
       }
     },
     {
@@ -2742,28 +2776,6 @@
         "installs": 7,
         "workingInstalls": 4,
         "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Better Combat Log Default",
-      "uuid": "9757088d-43ff-9c67-1a53-365f2d6fea94",
-      "group": "User Interface",
-      "folder": "BetterCombatLogDefault_9757088d-43ff-9c67-1a53-365f2d6fea94",
-      "author": "Caites",
-      "version": "1.2.9.4",
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 7,
-        "workingInstalls": 4,
-        "brokenInstalls": 2
       }
     },
     {
@@ -2855,6 +2867,19 @@
         "workingInstalls": 3,
         "brokenInstalls": 2
       }
+    },
+    {
+      "name": "Configurable Party Limit",
+      "uuid": "16b5fbb6-72fe-4a08-814a-87a9fc0b14bc",
+      "group": "Utilities",
+      "divider": 16,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 7,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Consort_Dyes",
@@ -3193,18 +3218,6 @@
       }
     },
     {
-      "name": "Normal Volo's Eye",
-      "uuid": "045a6ef0-4e3b-4150-ae92-7f53bf4fd84a",
-      "group": "Miscellaneous",
-      "divider": 89.5,
-      "evidence": {
-        "source": "section",
-        "installs": 7,
-        "workingInstalls": 7,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Quothe Evolved",
       "uuid": "6345e0b1-9e08-7421-ede3-5d2e625aaf3d",
       "group": "Companions",
@@ -3254,6 +3267,25 @@
         "workingInstalls": 7,
         "brokenInstalls": 0
       }
+    },
+    {
+      "name": "Smart Autosaving",
+      "uuid": "0c8bb2e9-aa96-4de7-b793-a733d68ee6f0",
+      "group": "Utilities",
+      "divider": 16,
+      "evidence": {
+        "source": "section",
+        "installs": 7,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        }
+      ]
     },
     {
       "name": "Strong Female Heads ",
@@ -3411,6 +3443,18 @@
       }
     },
     {
+      "name": "AdvancedCharacterSheet",
+      "uuid": "78f36b61-5c72-0eb4-0b7b-45f0adfd5999",
+      "group": "User Interface",
+      "divider": 5,
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Animate Dead++",
       "uuid": "f323b958-b845-4c79-b139-d39570658fbb",
       "group": "Resources",
@@ -3472,6 +3516,22 @@
       }
     },
     {
+      "name": "Better Containers 8x9",
+      "uuid": "621674a3-2366-a411-a746-0ff51b931d90",
+      "group": "User Interface",
+      "folder": "BetterContainerseightnine_621674a3-2366-a411-a746-0ff51b931d90",
+      "author": "Caites",
+      "version": "1.7.9.3",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 5,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "Better Context Menu 130%",
       "uuid": "5d74ac8f-e6d5-28d4-0d42-0103999c2d60",
       "group": "User Interface",
@@ -3493,6 +3553,21 @@
         "installs": 6,
         "workingInstalls": 6,
         "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "BetterMapAssets",
+      "uuid": "304dea97-faed-44d4-a39c-66d2824b5b35",
+      "group": "User Interface",
+      "author": "Caites",
+      "version": "1.2.3.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 2
       }
     },
     {
@@ -3639,19 +3714,6 @@
         "workingInstalls": 5,
         "brokenInstalls": 1
       }
-    },
-    {
-      "name": "Configurable Party Limit",
-      "uuid": "16b5fbb6-72fe-4a08-814a-87a9fc0b14bc",
-      "group": "Utilities",
-      "divider": 16,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Custom Dices In Passive Rolls",
@@ -3826,6 +3888,18 @@
       }
     },
     {
+      "name": "Head VFX Universal Automatic Patcher (UAP)",
+      "uuid": "b42552c8-4642-4c3a-b0e2-422822348fd6",
+      "group": "Utilities",
+      "divider": 103,
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "HGY Heads (EOTB + UTav)",
       "uuid": "1d03bb84-5fa3-4f99-be8b-11d2190a097a",
       "group": "Character Customization",
@@ -3834,6 +3908,18 @@
         "source": "section-majority",
         "installs": 6,
         "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Highlight_North",
+      "uuid": "7f07fa84-836c-7774-ef5c-ed6b0f94b0f9",
+      "group": "User Interface",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 6,
         "brokenInstalls": 0
       }
     },
@@ -4315,25 +4401,6 @@
       }
     },
     {
-      "name": "Smart Autosaving",
-      "uuid": "0c8bb2e9-aa96-4de7-b793-a733d68ee6f0",
-      "group": "Utilities",
-      "divider": 16,
-      "evidence": {
-        "source": "section",
-        "installs": 6,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true,
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        }
-      ]
-    },
-    {
       "name": "Squire Evolved",
       "uuid": "4db7fba5-b28c-abf1-29ab-8f9e1152b095",
       "group": "Companions",
@@ -4406,6 +4473,18 @@
         "installs": 6,
         "workingInstalls": 4,
         "brokenInstalls": 2
+      }
+    },
+    {
+      "name": "UT/KAVT Universal Automatic Patcher",
+      "uuid": "8d23b363-3880-46c1-a378-373223569100",
+      "group": "Bug Fixes",
+      "divider": 94,
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
       }
     },
     {
@@ -4513,18 +4592,6 @@
         "installs": 5,
         "workingInstalls": 4,
         "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "AdvancedCharacterSheet",
-      "uuid": "78f36b61-5c72-0eb4-0b7b-45f0adfd5999",
-      "group": "User Interface",
-      "divider": 5,
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
       }
     },
     {
@@ -4735,22 +4802,6 @@
       }
     },
     {
-      "name": "Better Containers 8x9",
-      "uuid": "621674a3-2366-a411-a746-0ff51b931d90",
-      "group": "User Interface",
-      "folder": "BetterContainerseightnine_621674a3-2366-a411-a746-0ff51b931d90",
-      "author": "Caites",
-      "version": "1.7.9.3",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 4,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "Better Mirror of Loss",
       "uuid": "556ee609-f262-fb23-2e7a-a69ed9a93c95",
       "group": "Bug Fixes",
@@ -4760,21 +4811,6 @@
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "BetterMapAssets",
-      "uuid": "304dea97-faed-44d4-a39c-66d2824b5b35",
-      "group": "User Interface",
-      "author": "Caites",
-      "version": "1.2.3.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 3,
-        "brokenInstalls": 2
       }
     },
     {
@@ -4912,6 +4948,18 @@
       "uuid": "533a435e-8c13-bc21-7cfc-48c3a322e29a",
       "group": "Races",
       "divider": 55,
+      "evidence": {
+        "source": "section",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Clear Map No Grid Only",
+      "uuid": "92613a09-b6f4-20cc-32fa-d2449777b5ea",
+      "group": "User Interface",
+      "divider": 5,
       "evidence": {
         "source": "section",
         "installs": 5,
@@ -5172,6 +5220,18 @@
       }
     },
     {
+      "name": "EnhancedWorldTooltips",
+      "uuid": "b8efd00b-375b-5f97-e28f-c33d3ef7311a",
+      "group": "User Interface",
+      "divider": 5,
+      "evidence": {
+        "source": "section",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Eternal Queen Set",
       "uuid": "01296564-0f8a-19b0-e639-32f8e1d903a1",
       "group": "Armor",
@@ -5315,30 +5375,6 @@
         "source": "section",
         "installs": 5,
         "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Head VFX Universal Automatic Patcher (UAP)",
-      "uuid": "b42552c8-4642-4c3a-b0e2-422822348fd6",
-      "group": "Utilities",
-      "divider": 103,
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Highlight_North",
-      "uuid": "7f07fa84-836c-7774-ef5c-ed6b0f94b0f9",
-      "group": "User Interface",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 5,
         "brokenInstalls": 0
       }
     },
@@ -5685,6 +5721,30 @@
         "brokenInstalls": 0
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "Mazzle's EZ-Documentation",
+      "uuid": "ad95bd1c-1a80-45fb-b73b-9eea1f8e58d0",
+      "group": "Resources",
+      "divider": 15,
+      "evidence": {
+        "source": "section",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "MB0_MoonlightHC",
+      "uuid": "ee8c8f2f-df9b-e671-67b9-5480c3db2d15",
+      "group": "Character Customization",
+      "divider": 62.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
     },
     {
       "name": "MiYaThs_Head_PBE",
@@ -6311,18 +6371,6 @@
         "source": "section-majority",
         "installs": 5,
         "workingInstalls": 5,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "UT/KAVT Universal Automatic Patcher",
-      "uuid": "8d23b363-3880-46c1-a378-373223569100",
-      "group": "Bug Fixes",
-      "divider": 94,
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 4,
         "brokenInstalls": 0
       }
     },
@@ -7263,18 +7311,6 @@
       }
     },
     {
-      "name": "Clear Map No Grid Only",
-      "uuid": "92613a09-b6f4-20cc-32fa-d2449777b5ea",
-      "group": "User Interface",
-      "divider": 5,
-      "evidence": {
-        "source": "section",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Clothing Physics Repair Patch For Mix armour",
       "uuid": "ed0d063a-0dca-4f8e-ac2a-020a7247eab2",
       "group": "Clothing",
@@ -7677,18 +7713,6 @@
       }
     },
     {
-      "name": "EnhancedWorldTooltips",
-      "uuid": "b8efd00b-375b-5f97-e28f-c33d3ef7311a",
-      "group": "User Interface",
-      "divider": 5,
-      "evidence": {
-        "source": "section",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Eredin's Armour",
       "uuid": "000582d4-c280-4b71-befd-248f9f11abea",
       "group": "Clothing",
@@ -7851,6 +7875,18 @@
       "divider": 64,
       "evidence": {
         "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "FullRestoreFix",
+      "uuid": "ba4e395a-674a-4443-a7a5-0afad2f17326",
+      "group": "Miscellaneous",
+      "divider": 20,
+      "evidence": {
+        "source": "section",
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
@@ -8092,6 +8128,18 @@
       "divider": 102.5,
       "evidence": {
         "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Immersive Character Lighting",
+      "uuid": "b4b089c2-a627-4dfc-8b15-739c818895c7",
+      "group": "Visuals",
+      "divider": 10,
+      "evidence": {
+        "source": "external-category",
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
@@ -8588,30 +8636,6 @@
       "divider": 60,
       "evidence": {
         "source": "section-majority",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Mazzle's EZ-Documentation",
-      "uuid": "ad95bd1c-1a80-45fb-b73b-9eea1f8e58d0",
-      "group": "Resources",
-      "divider": 15,
-      "evidence": {
-        "source": "section",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "MB0_MoonlightHC",
-      "uuid": "ee8c8f2f-df9b-e671-67b9-5480c3db2d15",
-      "group": "Character Customization",
-      "divider": 62.5,
-      "evidence": {
-        "source": "external-category",
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
@@ -9520,6 +9544,37 @@
       }
     },
     {
+      "name": "Records",
+      "uuid": "7a671e11-7692-463b-a873-c4353743db2d",
+      "group": "Miscellaneous",
+      "divider": 20,
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Reduce NPC Banter Repetitiveness",
+      "uuid": "b162762e-a791-4a4a-a894-7772ada387dd",
+      "group": "NPC",
+      "divider": 16,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 4,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        }
+      ]
+    },
+    {
       "name": "Reforged Assets - Dark Urge Dragonborn CC",
       "uuid": "68df2229-1684-00ba-49a7-68ad954a64e6",
       "group": "Races",
@@ -10052,6 +10107,18 @@
       "uuid": "db8e3e9e-e4f7-4bee-a808-70c2be8151ba",
       "group": "User Interface",
       "divider": 5,
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Verbena's nymph clothes",
+      "uuid": "d8976fcb-6671-41db-a786-69a8eb60f279",
+      "group": "Armor",
+      "divider": 36,
       "evidence": {
         "source": "section",
         "installs": 4,
@@ -11209,6 +11276,19 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Blueberry Bliss Dice",
+      "uuid": "79beb0c1-340d-45ea-b112-569a7df9f2e7",
+      "group": "Dice",
+      "author": " MentalHygiene",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 1
       }
     },
     {
@@ -12677,18 +12757,6 @@
       }
     },
     {
-      "name": "FullRestoreFix",
-      "uuid": "ba4e395a-674a-4443-a7a5-0afad2f17326",
-      "group": "Miscellaneous",
-      "divider": 20,
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Gabes Auto Depositor (Modders Resource)",
       "uuid": "c37d6364-49bd-b4aa-8a91-8a58ae601f9a",
       "group": "Resources",
@@ -12734,6 +12802,19 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Glassy Gleam Dice",
+      "uuid": "42273b05-58d8-4fc1-a1e6-16d034c7d828",
+      "group": "Dice",
+      "author": " MentalHygiene",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 1
       }
     },
     {
@@ -13096,6 +13177,18 @@
       }
     },
     {
+      "name": "HT_Sassier Dream Guardian",
+      "uuid": "6350e269-8a2d-13b6-d119-07ecbb59502a",
+      "group": "Bug Fixes",
+      "divider": 102.5,
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "HT_Spawn Astarion - Epilogue Edits",
       "uuid": "d378662a-9ed5-4c0d-827e-4c94f9d04ad0",
       "group": "Companions",
@@ -13163,18 +13256,6 @@
       "divider": 9.5,
       "evidence": {
         "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Immersive Character Lighting",
-      "uuid": "b4b089c2-a627-4dfc-8b15-739c818895c7",
-      "group": "Visuals",
-      "divider": 10,
-      "evidence": {
-        "source": "external-category",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
@@ -13515,6 +13596,19 @@
       }
     },
     {
+      "name": "Lavender haze dice",
+      "uuid": "84e98e22-75c5-4f1e-a868-ca52c3b19fb7",
+      "group": "Dice",
+      "author": " MentalHygiene",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "Less Dead Withers - Hood Up",
       "uuid": "f8d708bb-f00a-4f6d-add6-d65e05041b13",
       "group": "Bug Fixes",
@@ -13545,6 +13639,19 @@
       "author": "arideyya (tuckingfypo2)",
       "evidence": {
         "source": "none",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Lilac Cream Dice",
+      "uuid": "4b4a5142-42b1-41a6-9b35-63f991dbf20e",
+      "group": "Dice",
+      "author": " MentalHygiene",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
         "installs": 3,
         "workingInstalls": 1,
         "brokenInstalls": 1
@@ -13784,6 +13891,19 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Mellow Mint Dice",
+      "uuid": "35aa9457-14c8-4cb7-9251-b04ccd0a2bd7",
+      "group": "Dice",
+      "author": " MentalHygiene",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 1
       }
     },
     {
@@ -14171,6 +14291,18 @@
       }
     },
     {
+      "name": "Nymph Playable Race: Beyond Simple Nymph",
+      "uuid": "04c29312-0713-b84c-76a8-0598dbda7927",
+      "group": "Races",
+      "divider": 51,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Oath and Order: Paladin Equipment",
       "uuid": "78929dee-d6e8-f714-c3cb-c8bcea2d4091",
       "group": "Armor",
@@ -14485,6 +14617,32 @@
       ]
     },
     {
+      "name": "Pink Luminary Dice",
+      "uuid": "e6e87aa2-5baa-4d9d-887e-f48d4eacd196",
+      "group": "Dice",
+      "author": " MentalHygiene",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Pink Milk Dice",
+      "uuid": "dd5796ec-a5d3-4a48-938c-c1e359e0e870",
+      "group": "Dice",
+      "author": " MentalHygiene",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "PK [AIO2] Holylight Vestments [NonVT]",
       "uuid": "5f4f80d1-96e0-d737-32f8-6e84b1962065",
       "group": "unsorted",
@@ -14722,6 +14880,20 @@
       }
     },
     {
+      "name": "Raspberry Crystal",
+      "uuid": "74b6bfc1-dd7c-4a5c-a148-f64f9aeb6213",
+      "group": "Dice",
+      "author": " MentalHygiene",
+      "evidence": {
+        "source": "inferred",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 1,
+        "confidence": 0.91
+      },
+      "divider": 90
+    },
+    {
       "name": "Rathgor - Reforged head - Dark Urge Dragonborn CC",
       "uuid": "56bee93d-ecd1-4680-cca1-44ee52514b9c",
       "group": "Races",
@@ -14779,37 +14951,6 @@
         "workingInstalls": 2,
         "brokenInstalls": 1
       }
-    },
-    {
-      "name": "Records",
-      "uuid": "7a671e11-7692-463b-a873-c4353743db2d",
-      "group": "Miscellaneous",
-      "divider": 20,
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Reduce NPC Banter Repetitiveness",
-      "uuid": "b162762e-a791-4a4a-a894-7772ada387dd",
-      "group": "NPC",
-      "divider": 16,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true,
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        }
-      ]
     },
     {
       "name": "REPLACER - Lynia's Dither Shader Fix",
@@ -15076,6 +15217,19 @@
       }
     },
     {
+      "name": "Rose Crown Dice",
+      "uuid": "19cf3023-b22b-46ce-b2aa-357aa26f7d20",
+      "group": "Dice",
+      "author": " MentalHygiene",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "RosymornDice",
       "uuid": "a342f648-c07d-e94a-a2ae-7bcfe7a3964c",
       "group": "Dice",
@@ -15278,6 +15432,19 @@
           "name": "ImpUI (ImprovedUI)"
         }
       ]
+    },
+    {
+      "name": "Short Rest Cooldown",
+      "uuid": "01b8caa6-0ee8-4817-ad4f-bf17541c07c5",
+      "group": "Utilities",
+      "divider": 19,
+      "evidence": {
+        "source": "external-category",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Silver's Hair Mixer",
@@ -15525,6 +15692,19 @@
       }
     },
     {
+      "name": "Strawberry Gummy Dice",
+      "uuid": "1fd3c66b-6952-486a-8364-d5e67c636b71",
+      "group": "Dice",
+      "author": " MentalHygiene",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 1,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "Sun Princess Dress",
       "uuid": "886c7dac-29e3-4cd3-b907-0ec06e232e60",
       "group": "Armor",
@@ -15641,6 +15821,18 @@
         "source": "section-majority",
         "installs": 3,
         "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Tooltip Manager",
+      "uuid": "863ed0c4-df37-4734-8d50-76571e13c85d",
+      "group": "User Interface",
+      "divider": 16,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 3,
         "brokenInstalls": 0
       }
     },
@@ -15872,18 +16064,6 @@
       }
     },
     {
-      "name": "Verbena's nymph clothes",
-      "uuid": "d8976fcb-6671-41db-a786-69a8eb60f279",
-      "group": "Armor",
-      "divider": 36,
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Vexa - Dark Urge Slayer Dragonborn CC",
       "uuid": "0571ff38-d7c9-f409-4591-33bb086c5f52",
       "group": "Races",
@@ -15928,6 +16108,17 @@
       "divider": 10,
       "evidence": {
         "source": "section",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "VividLandscapes_AllinOne",
+      "uuid": "aa219e2d-ede7-4662-840d-826c6f468c54",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
@@ -16558,6 +16749,19 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "a1_distinctive_dyes",
+      "uuid": "bf41067d-b809-499f-803e-47a62fbf5daf",
+      "group": "Dyes",
+      "author": "grimsyxd",
+      "divider": 38,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 2,
+        "workingInstalls": 1,
+        "brokenInstalls": 1
       }
     },
     {
@@ -17205,6 +17409,18 @@
       }
     },
     {
+      "name": "Auto Wares",
+      "uuid": "45963092-e2d4-44d4-bd29-d10ba8db0aae",
+      "group": "Gameplay",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Auto-KO | Story NPCs",
       "uuid": "ec02a98c-4cd7-5c64-4b35-96b5f0d735e4",
       "group": "Gameplay",
@@ -17674,6 +17890,18 @@
       "divider": 5
     },
     {
+      "name": "Better Tooltips for Heavy Weapons RAW",
+      "uuid": "4bf2fe07-c5b6-bdf9-fd1c-dff83851dcc8",
+      "group": "User Interface",
+      "divider": 5,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Better Topbar 1610",
       "uuid": "86777f82-576a-bd65-85af-35dd1fed5362",
       "group": "User Interface",
@@ -17925,19 +18153,6 @@
       "uuid": "358f5c02-84d0-4e9e-83c1-fed8230e99d0",
       "group": "Dice",
       "author": "Lisannissan",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 0,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Blueberry Bliss Dice",
-      "uuid": "79beb0c1-340d-45ea-b112-569a7df9f2e7",
-      "group": "Dice",
-      "author": " MentalHygiene",
       "divider": 90,
       "evidence": {
         "source": "name-pattern",
@@ -18637,6 +18852,18 @@
       "divider": 64,
       "evidence": {
         "source": "section",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Character Appearance Presets",
+      "uuid": "81e1bb8a-7fb8-4cec-b4a7-d89abf1283cc",
+      "group": "Character Customization",
+      "divider": 61,
+      "evidence": {
+        "source": "name-pattern",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -20600,6 +20827,18 @@
       }
     },
     {
+      "name": "Dynamic Camp Supply Cost",
+      "uuid": "6b8a9298-e0bc-402c-b8e9-5c1a5fa556a1",
+      "group": "Gameplay",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Dynamic Sidebar 16 10",
       "uuid": "29f6c042-51ec-acb2-b7c2-929fb234da12",
       "group": "User Interface",
@@ -20653,6 +20892,18 @@
       "divider": 36,
       "evidence": {
         "source": "section",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Eclipse Preset Collection",
+      "uuid": "c08637f7-707e-e8d7-513b-2580884d3b10",
+      "group": "Character Customization",
+      "divider": 61,
+      "evidence": {
+        "source": "name-pattern",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -20894,6 +21145,18 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Enchanted Preset Collection",
+      "uuid": "24287780-2850-97d4-807f-a70bcd8356cc",
+      "group": "Character Customization",
+      "divider": 61,
+      "evidence": {
+        "source": "name-pattern",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -21788,19 +22051,6 @@
       }
     },
     {
-      "name": "Glassy Gleam Dice",
-      "uuid": "42273b05-58d8-4fc1-a1e6-16d034c7d828",
-      "group": "Dice",
-      "author": " MentalHygiene",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 0,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "Gnome Beauties Head Pack",
       "uuid": "name:gnomebeautiesheadpack",
       "group": "Heads",
@@ -22430,18 +22680,6 @@
     {
       "name": "HT_Missed Connections: Shadowheart",
       "uuid": "e97c9aef-ee55-dfa2-5c9f-3e67cf99e9b2",
-      "group": "Bug Fixes",
-      "divider": 102.5,
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "HT_Sassier Dream Guardian",
-      "uuid": "6350e269-8a2d-13b6-d119-07ecbb59502a",
       "group": "Bug Fixes",
       "divider": 102.5,
       "evidence": {
@@ -23172,19 +23410,6 @@
       }
     },
     {
-      "name": "Lavender haze dice",
-      "uuid": "84e98e22-75c5-4f1e-a868-ca52c3b19fb7",
-      "group": "Dice",
-      "author": " MentalHygiene",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 0,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "LazyHeads",
       "uuid": "840e1a86-df25-4f31-b60e-a0f009fe142a",
       "group": "Hair",
@@ -23370,19 +23595,6 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Lilac Cream Dice",
-      "uuid": "4b4a5142-42b1-41a6-9b35-63f991dbf20e",
-      "group": "Dice",
-      "author": " MentalHygiene",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 0,
-        "brokenInstalls": 1
       }
     },
     {
@@ -23694,19 +23906,6 @@
           "name": "ImpUI (ImprovedUI)"
         }
       ]
-    },
-    {
-      "name": "Mellow Mint Dice",
-      "uuid": "35aa9457-14c8-4cb7-9251-b04ccd0a2bd7",
-      "group": "Dice",
-      "author": " MentalHygiene",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 0,
-        "brokenInstalls": 1
-      }
     },
     {
       "name": "Mercenary_Weaponry_Landsknecht",
@@ -24587,18 +24786,6 @@
       }
     },
     {
-      "name": "Nymph Playable Race: Beyond Simple Nymph",
-      "uuid": "04c29312-0713-b84c-76a8-0598dbda7927",
-      "group": "Races",
-      "divider": 51,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Oath of Redemption",
       "uuid": "3933b821-ccb1-48d6-b2ac-f5a4d7d5a375",
       "group": "Classes",
@@ -25365,32 +25552,6 @@
       }
     },
     {
-      "name": "Pink Luminary Dice",
-      "uuid": "e6e87aa2-5baa-4d9d-887e-f48d4eacd196",
-      "group": "Dice",
-      "author": " MentalHygiene",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 0,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Pink Milk Dice",
-      "uuid": "dd5796ec-a5d3-4a48-938c-c1e359e0e870",
-      "group": "Dice",
-      "author": " MentalHygiene",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 0,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "Pixie Blessing Plus",
       "uuid": "7ec43efd-8c57-8e62-ad97-f90cd6276564",
       "group": "Gameplay",
@@ -26017,20 +26178,6 @@
       }
     },
     {
-      "name": "Raspberry Crystal",
-      "uuid": "74b6bfc1-dd7c-4a5c-a148-f64f9aeb6213",
-      "group": "Dice",
-      "author": " MentalHygiene",
-      "evidence": {
-        "source": "inferred",
-        "installs": 2,
-        "workingInstalls": 0,
-        "brokenInstalls": 1,
-        "confidence": 0.96
-      },
-      "divider": 90
-    },
-    {
       "name": "Raven Queen Outfit by REN",
       "uuid": "42706b53-771f-43d1-9d57-06796d7a04c1",
       "group": "Clothing",
@@ -26349,19 +26496,6 @@
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Rose Crown Dice",
-      "uuid": "19cf3023-b22b-46ce-b2aa-357aa26f7d20",
-      "group": "Dice",
-      "author": " MentalHygiene",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 0,
-        "brokenInstalls": 1
       }
     },
     {
@@ -26840,19 +26974,6 @@
       }
     },
     {
-      "name": "Short Rest Cooldown",
-      "uuid": "01b8caa6-0ee8-4817-ad4f-bf17541c07c5",
-      "group": "Utilities",
-      "divider": 19,
-      "evidence": {
-        "source": "external-category",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "Shovel Fix",
       "uuid": "b350f68c-96b9-4263-b964-1ed5f91213ab",
       "group": "Miscellaneous",
@@ -27296,19 +27417,6 @@
       }
     },
     {
-      "name": "Strawberry Gummy Dice",
-      "uuid": "1fd3c66b-6952-486a-8364-d5e67c636b71",
-      "group": "Dice",
-      "author": " MentalHygiene",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 0,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "StrongerBosses",
       "uuid": "57d87816-ac58-4a37-90ad-0fda409c5557",
       "group": "unsorted",
@@ -27340,6 +27448,17 @@
         "source": "section-majority",
         "installs": 2,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Succubus",
+      "uuid": "d5174a79-675d-4e77-b412-1dd05f051eb2",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 2,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -27809,18 +27928,6 @@
       "divider": 18.5,
       "evidence": {
         "source": "external-category",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Tooltip Manager",
-      "uuid": "863ed0c4-df37-4734-8d50-76571e13c85d",
-      "group": "User Interface",
-      "divider": 16,
-      "evidence": {
-        "source": "name-pattern",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -28412,17 +28519,6 @@
       "divider": 42,
       "evidence": {
         "source": "external-category",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "VividLandscapes_AllinOne",
-      "uuid": "aa219e2d-ede7-4662-840d-826c6f468c54",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -30249,6 +30345,17 @@
       }
     },
     {
+      "name": "(SN) Items",
+      "uuid": "name:snitems",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "(WIP) Ferrum Race",
       "uuid": "a8a80f6a-bfbf-40c4-9031-44c2dc18ea50",
       "group": "Races",
@@ -31646,19 +31753,6 @@
       "group": "Companions",
       "author": "Yveslight",
       "divider": 72,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 0,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "a1_distinctive_dyes",
-      "uuid": "name:a1distinctivedyes",
-      "group": "Dyes",
-      "author": "grimsyxd",
-      "divider": 38,
       "evidence": {
         "source": "name-pattern",
         "installs": 1,
@@ -34084,18 +34178,6 @@
       }
     },
     {
-      "name": "Auto Wares",
-      "uuid": "45963092-e2d4-44d4-bd29-d10ba8db0aae",
-      "group": "Gameplay",
-      "divider": 18.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Auto-Summon",
       "uuid": "eb18ba0f-1670-4aba-b5ea-2124cd596e4d",
       "group": "Spells",
@@ -35751,18 +35833,6 @@
       "uuid": "4b82dc6c-06af-32a7-275a-b58d8f801030",
       "group": "Equipment",
       "divider": 43,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Better Tooltips for Heavy Weapons RAW",
-      "uuid": "4bf2fe07-c5b6-bdf9-fd1c-dff83851dcc8",
-      "group": "User Interface",
-      "divider": 5,
       "evidence": {
         "source": "name-pattern",
         "installs": 1,
@@ -37678,18 +37748,6 @@
         "confidence": 0.96
       },
       "divider": 63
-    },
-    {
-      "name": "Character Appearance Presets",
-      "uuid": "81e1bb8a-7fb8-4cec-b4a7-d89abf1283cc",
-      "group": "Character Customization",
-      "divider": 61,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
     },
     {
       "name": "Character Creation Overhaul",
@@ -39671,6 +39729,18 @@
       "divider": 37,
       "evidence": {
         "source": "section",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Deities Dice Pack",
+      "uuid": "49480de6-8296-974e-ed7c-c19df7f76d8f",
+      "group": "Classes",
+      "divider": 56,
+      "evidence": {
+        "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -41866,18 +41936,6 @@
       }
     },
     {
-      "name": "Dynamic Camp Supply Cost",
-      "uuid": "name:dynamiccampsupplycost",
-      "group": "Gameplay",
-      "divider": 18.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Dynamic Permanent Summons",
       "uuid": "name:dynamicpermanentsummons",
       "group": "Spells",
@@ -41956,18 +42014,6 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Eclipse Preset Collection",
-      "uuid": "name:eclipsepresetcollection",
-      "group": "Character Customization",
-      "divider": 61,
-      "evidence": {
-        "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -42613,18 +42659,6 @@
         "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Enchanted Preset Collection",
-      "uuid": "name:enchantedpresetcollection",
-      "group": "Character Customization",
-      "divider": 61,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -47530,6 +47564,17 @@
       }
     },
     {
+      "name": "HT_Cursed Loading Screens",
+      "uuid": "f210b92e-436e-3234-ddee-b30d9bcadeb8",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "HT_DarkUrgeTweeaks - Compatibility Patch - Hug Your Companions",
       "uuid": "67424a86-38fa-424f-ab07-19273cdaff12",
       "group": "Companions",
@@ -48743,6 +48788,17 @@
       "divider": 47,
       "evidence": {
         "source": "external-category",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ISKLL Lone Wolf",
+      "uuid": "050261bf-d5eb-29cd-6871-51145e7d4117",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -55458,6 +55514,18 @@
       }
     },
     {
+      "name": "OsirisPackFramework",
+      "uuid": "name:osirispackframework",
+      "group": "Resources",
+      "divider": 15,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "OumyAndNdeye",
       "uuid": "40ac32c6-36ce-4729-8e60-421cb3596928",
       "group": "Heads",
@@ -58387,6 +58455,17 @@
       "divider": 63,
       "evidence": {
         "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "RunandWalkSwap",
+      "uuid": "b9612058-2e09-42d2-8db7-65fd35a0e452",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -61583,19 +61662,6 @@
       }
     },
     {
-      "name": "Succubus",
-      "uuid": "d5174a79-675d-4e77-b412-1dd05f051eb2",
-      "group": "Classes",
-      "evidence": {
-        "source": "inferred",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 1
-      },
-      "divider": 60
-    },
-    {
       "name": "Succubus Class",
       "uuid": "f27bd72a-4912-f15d-8852-d4350824e58a",
       "group": "Classes",
@@ -63238,6 +63304,18 @@
       "uuid": "9ce64edf-a5d8-5c0f-5c84-2e2f830fba10",
       "group": "Dyes",
       "divider": 38,
+      "evidence": {
+        "source": "external-category",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "True Consequences (Anti-Savescum)",
+      "uuid": "27b34069-dadb-4e4f-8dc1-71e0421c98de",
+      "group": "Gameplay",
+      "divider": 18.5,
       "evidence": {
         "source": "external-category",
         "installs": 1,
