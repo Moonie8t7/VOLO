@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-09T07:11:04.272Z",
+  "generated": "2026-08-09T08:25:36.326Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -10,8 +10,8 @@
   ],
   "incompatible": [],
   "provenance": {
-    "ordersAnalysed": 19,
-    "working": 14,
+    "ordersAnalysed": 20,
+    "working": 15,
     "broken": 2,
     "unlabelled": 3,
     "externalDependencyEdges": 292,
@@ -239,8 +239,8 @@
       "divider": 1,
       "evidence": {
         "source": "curated",
-        "installs": 19,
-        "workingInstalls": 14,
+        "installs": 20,
+        "workingInstalls": 15,
         "brokenInstalls": 2
       }
     },
@@ -871,6 +871,20 @@
       }
     },
     {
+      "name": "TutorialChestSummoning",
+      "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+      "group": "Spells",
+      "author": "wesslen",
+      "divider": 47,
+      "evidence": {
+        "source": "section",
+        "installs": 10,
+        "workingInstalls": 8,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "AahzLib",
       "uuid": "5d1bd6cb-6361-45ef-b20c-d997acfba822",
       "group": "Resources",
@@ -1064,20 +1078,6 @@
           "name": "ImpUI (ImprovedUI)"
         }
       ]
-    },
-    {
-      "name": "TutorialChestSummoning",
-      "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
-      "group": "Spells",
-      "author": "wesslen",
-      "divider": 47,
-      "evidence": {
-        "source": "section",
-        "installs": 9,
-        "workingInstalls": 7,
-        "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Aether's Black Dye",
@@ -3683,6 +3683,18 @@
       }
     },
     {
+      "name": "Scratch And Shovel",
+      "uuid": "78753062-b430-4cbf-9e5a-4c3a87cf224a",
+      "group": "Bug Fixes",
+      "divider": 102.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "ShanesUniqueHeads",
       "uuid": "1a2b549d-7dce-4f69-de4b-28c530e7438d",
       "group": "Character Customization",
@@ -5865,18 +5877,6 @@
       }
     },
     {
-      "name": "Scratch And Shovel",
-      "uuid": "78753062-b430-4cbf-9e5a-4c3a87cf224a",
-      "group": "Bug Fixes",
-      "divider": 102.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Scratch Evolved",
       "uuid": "3a0b775f-bdc1-1bf2-8b95-df894d25bc3f",
       "group": "Companions",
@@ -6085,6 +6085,19 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "UnlockLevelCurve",
+      "uuid": "d903677e-f24b-48ec-ab20-98dcc116a371",
+      "group": "Resources",
+      "author": "Charis",
+      "divider": 9.5,
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 1
       }
     },
     {
@@ -8363,6 +8376,18 @@
       }
     },
     {
+      "name": "Justice For Nessa",
+      "uuid": "593b02e9-e8c6-8e0e-f1b5-9487f3182d52",
+      "group": "Companions",
+      "divider": 82,
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Kagha Sells Broodmother's Revenge",
       "uuid": "7ad504ee-cf4a-4906-a7f1-820617062b9b",
       "group": "Gameplay",
@@ -10065,19 +10090,6 @@
         "source": "name-pattern",
         "installs": 3,
         "workingInstalls": 1,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "UnlockLevelCurve",
-      "uuid": "d903677e-f24b-48ec-ab20-98dcc116a371",
-      "group": "Resources",
-      "author": "Charis",
-      "divider": 9.5,
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 2,
         "brokenInstalls": 1
       }
     },
@@ -14318,18 +14330,6 @@
       }
     },
     {
-      "name": "Justice For Nessa",
-      "uuid": "593b02e9-e8c6-8e0e-f1b5-9487f3182d52",
-      "group": "Companions",
-      "divider": 82,
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "JWL Drop All The Loot",
       "uuid": "48cc6be3-f1c4-4acb-9172-189f13b1d753",
       "group": "Gameplay",
@@ -15165,6 +15165,18 @@
       }
     },
     {
+      "name": "MoonlightSliverDeva",
+      "uuid": "83e11d95-08ba-4cc6-9050-d77e7e82fdae",
+      "group": "Spells",
+      "divider": 47,
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Moonlilia's Acidic Agony",
       "uuid": "a5bf4a10-f8c9-4f17-985a-2453f402e468",
       "group": "Dice",
@@ -15885,6 +15897,18 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "OBSC_Secrua_Weapons",
+      "uuid": "6b814f57-ddc9-4c6e-9cec-2c2607429bd3",
+      "group": "Armor",
+      "divider": 36,
+      "evidence": {
+        "source": "section",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -20105,6 +20129,18 @@
         "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Aether's No Party Limits",
+      "uuid": "d594f105-ef17-4456-9799-a0a9cd5b81ae",
+      "group": "Gameplay",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 1,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -29311,6 +29347,18 @@
       }
     },
     {
+      "name": "EnemiesEnhanced",
+      "uuid": "7deea48e-8b9d-45e4-8685-5acfd0ce39ad",
+      "group": "Gameplay",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Enemy Health Boost 200%",
       "uuid": "85038d03-1c95-d6e2-0dfd-d5757b03b840",
       "group": "Gameplay",
@@ -31212,6 +31260,18 @@
       "divider": 42,
       "evidence": {
         "source": "section",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Frostmourne",
+      "uuid": "7be8baa9-50e8-4c23-aefd-e1633d619bc6",
+      "group": "Weapons",
+      "divider": 42,
+      "evidence": {
+        "source": "external-category",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -35278,6 +35338,18 @@
       }
     },
     {
+      "name": "LethalAI",
+      "uuid": "ec7fe8a5-22c4-49a5-8944-49463fa5d258",
+      "group": "Gameplay",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Letter From Yenna",
       "uuid": "7f35280a-87e9-fbc9-69ca-3a97d35f69a3",
       "group": "Companions",
@@ -36975,18 +37047,6 @@
       }
     },
     {
-      "name": "MoonlightSliverDeva",
-      "uuid": "83e11d95-08ba-4cc6-9050-d77e7e82fdae",
-      "group": "Spells",
-      "divider": 47,
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Moonlilia's Ace Adventurer",
       "uuid": "5065af46-f18d-4522-9255-25a64d2d299a",
       "group": "unsorted",
@@ -38655,18 +38715,6 @@
       "group": "unsorted",
       "evidence": {
         "source": "none",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "OBSC_Secrua_Weapons",
-      "uuid": "6b814f57-ddc9-4c6e-9cec-2c2607429bd3",
-      "group": "Armor",
-      "divider": 36,
-      "evidence": {
-        "source": "section",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -46925,6 +46973,30 @@
         "source": "none",
         "installs": 1,
         "workingInstalls": 0,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "WildMagicD100",
+      "uuid": "4e592af1-392e-48bb-bba5-b297e87e65d4",
+      "group": "Spells",
+      "divider": 47,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "WildMagicD100Fr",
+      "uuid": "f8354ad8-caf1-432f-870a-86359102193c",
+      "group": "Spells",
+      "divider": 47,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
