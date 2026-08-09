@@ -21,7 +21,7 @@ nothing reaches it unless you choose to submit an order from the Submit page.
 Mods from Nexus Mods and from mod.io, the platform behind the official in-game
 mod manager, are both supported.
 
-Measured on orders it has never seen, VOLO agrees with them **60.1 percent** of
+Measured on orders it has never seen, VOLO agrees with them **60.8 percent** of
 the time against **50.8 percent** for a random shuffle. That figure averages
 orders rather than mods, so a 41-mod order weighs as much as a 999-mod one,
 though weighting by mods barely moves it. It is a sorting aid with evidence
@@ -83,12 +83,12 @@ Full detail in [docs/architecture.md](docs/architecture.md).
 
 ## The masterlist
 
-`masterlist/bg3-masterlist.json` covers 5,131 mods. 2,082 were
+`masterlist/bg3-masterlist.json` covers 5,286 mods. 2,333 were
 categorised from section headers modders wrote in their own orders,
-1,471 from name patterns, 611 from a Nexus or mod.io listing,
-28 from where their author's other catalogued mods sit, 184 inferred
-from their neighbours, 21 from curated overrides, and 734 are not
-categorised at all. 4,388 of the 5,131 sit on a divider position.
+1,420 from name patterns, 580 from a Nexus or mod.io listing,
+27 from where their author's other catalogued mods sit, 174 inferred
+from their neighbours, 21 from curated overrides, and 731 are not
+categorised at all. 4,550 of the 5,286 sit on a divider position.
 
 These move as the corpus grows.
 [masterlist/coverage-report.md](masterlist/coverage-report.md) is regenerated on
@@ -98,7 +98,7 @@ covers the data licence.
 
 ## Known constraints
 
-21 working orders is a small corpus, and it is the binding constraint on
+22 working orders is a small corpus, and it is the binding constraint on
 quality rather than the algorithm. Several plausible improvements have measured
 *worse* than doing nothing, all recorded in
 [docs/decisions.md](docs/decisions.md). More submissions beat more cleverness.
@@ -109,7 +109,7 @@ nothing scores well; a mod left at the end because nothing is known about it is
 rewarded precisely because unplaced mods cluster there. Read it alongside the
 per-order and mod-weighted splits rather than on its own.
 
-734 mods have no category from any source. Almost all appeared in exactly one
+731 mods have no category from any source. Almost all appeared in exactly one
 submitted order, so there is nothing to infer from.
 
 The automated checks parse VOLO's own output with VOLO's own parser, which is
