@@ -102,9 +102,13 @@
             "examples": [45, 58.11, 105]
           },
           "usesScriptExtender": { "type": "boolean" },
+          "loadsAfterDependents": {
+            "type": "boolean",
+            "description": "This mod is loaded after the mods that require it, so its dependencies stop being ordering constraints. Set only where the working orders say so, and only with pooled evidence across several dependants. A patcher reads the mods it patches, so 'requires X' does not mean 'X loads first' for it."
+          },
           "dependencies": {
             "type": "array",
-            "description": "Declared in the mod's own metadata. Hard constraints: never violated by any group or divider decision.",
+            "description": "Declared in the mod's own metadata. Hard constraints on order, and never violated by a group or divider decision, unless the depended-on mod is marked loadsAfterDependents. The requirement itself always stands: a missing dependency is reported either way.",
             "items": {
               "type": "object",
               "required": ["uuid", "name"],
