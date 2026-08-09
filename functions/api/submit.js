@@ -11,10 +11,41 @@
  *                        and the site falls back to the GitHub form.
  *   TURNSTILE_SECRET     Cloudflare Turnstile secret key. Optional; token
  *                        verification runs only when set.
+ *   SUBMISSIONS          R2 bucket binding. Optional; without it a load order
+ *                        too large for an issue body is refused instead of
+ *                        being staged.
  */
 
 const REPO = 'Moonie8t7/VOLO';
 const MAX_BODY = 2 * 1024 * 1024;
+
+/**
+ * The largest issue body worth attempting.
+ *
+ * GitHub rejects a body over 65,536 characters outright, and the failure
+ * surfaces to the submitter as a bare API error. A 900 mod export is several
+ * times that, so the orders most worth having were the ones that could not be
+ * sent. The margin covers GitHub counting differently to us and a body whose
+ * characters are not all one byte.
+ */
+const MAX_ISSUE_BODY = 60_000;
+
+/**
+ * Kept in step with MAX_ENTRIES in scripts/process-submission.mjs, where the
+ * same bound stops one hostile attachment pinning a runner for six hours.
+ */
+const MAX_ENTRIES = 6000;
+
+/** Hex, because a key travels through an issue body and a URL path. */
+const stagingKey = () =>
+  [...crypto.getRandomValues(new Uint8Array(16))]
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+
+async function sha256Hex(text) {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
 const json = (status, data) =>
   new Response(JSON.stringify(data), {
@@ -64,11 +95,17 @@ export async function onRequestPost({ request, env }) {
   // modsettings.lsx, a recognisable list, plausible size. Full validation
   // happens in the intake workflow with the app's own parser.
   const trimmed = order.trim();
+  // Carried into the issue body when the order is staged, so intake can check
+  // what it fetched is the whole thing rather than a truncated response.
+  let entryCount = 0;
+  let formatLabel = 'BG3MM JSON';
   if (trimmed.startsWith('<?xml')) {
     const modules = (trimmed.match(/ModuleShortDesc/g) ?? []).length;
-    if (!trimmed.includes('ModuleSettings') || modules < 5 || modules > 10000) {
+    if (!trimmed.includes('ModuleSettings') || modules < 5 || modules > MAX_ENTRIES) {
       return json(400, { error: 'That does not look like a modsettings.lsx with mods in it.' });
     }
+    entryCount = modules;
+    formatLabel = 'modsettings.lsx';
   } else {
     let entries;
     try {
@@ -77,9 +114,13 @@ export async function onRequestPost({ request, env }) {
     } catch {
       return json(400, { error: 'The load order is not valid JSON. Export it from the site first.' });
     }
-    if (!Array.isArray(entries) || entries.length < 5 || entries.length > 5000) {
+    if (!Array.isArray(entries) || entries.length < 5) {
       return json(400, { error: 'The load order needs at least five mods.' });
     }
+    if (entries.length > MAX_ENTRIES) {
+      return json(400, { error: `That is ${entries.length.toLocaleString()} entries. The limit is ${MAX_ENTRIES.toLocaleString()}.` });
+    }
+    entryCount = entries.length;
   }
 
   if (env.TURNSTILE_SECRET) {
@@ -117,7 +158,7 @@ export async function onRequestPost({ request, env }) {
       ? 'I arranged it myself'
       : '_No response_';
 
-  const body = [
+  const head = [
     '### Does this load order work?',
     '',
     status,
@@ -132,16 +173,65 @@ export async function onRequestPost({ request, env }) {
     '',
     '### The load order',
     '',
-    '```json',
-    order.replace(/`/g, "'").trim(),
-    '```',
+  ];
+  const tail = [
     '',
     '### Notes',
     '',
     clean(notes, 4000) || '_No response_',
     '',
     '_Submitted through volobg3.com_',
-  ].join('\n');
+  ];
+
+  const inlineBody = [...head, '```json', trimmed.replace(/`/g, "'"), '```', ...tail].join('\n');
+
+  /*
+   * Small orders stay inline, which is most of them, and the issue then holds
+   * the whole thing where anyone can read it. Only what will not fit is staged
+   * in R2 and referenced, because the alternative was refusing the largest
+   * orders outright, and those are the ones the corpus learns most from.
+   *
+   * The excerpt below is deliberately not a fenced block. Intake tries every
+   * candidate until one parses, so a JSON-shaped excerpt would parse first and
+   * land a truncated order as though it were the whole list.
+   */
+  let body = inlineBody;
+  const tooBig = inlineBody.length > MAX_ISSUE_BODY
+    || new TextEncoder().encode(inlineBody).length > MAX_ISSUE_BODY;
+
+  if (tooBig) {
+    if (!env.SUBMISSIONS) {
+      return json(413, {
+        error: 'This order is too large to submit through the site. Attach the exported file to a GitHub issue instead.',
+      });
+    }
+    const key = stagingKey();
+    const digest = await sha256Hex(trimmed);
+    try {
+      await env.SUBMISSIONS.put(key, trimmed, {
+        httpMetadata: { contentType: 'text/plain; charset=utf-8' },
+      });
+    } catch {
+      return json(502, { error: 'Could not stage the order. Try again in a moment.' });
+    }
+    const url = new URL(request.url);
+    const excerpt = trimmed
+      .split('\n')
+      .map(l => (l.match(/"Name"\s*:\s*"([^"]{1,60})"/) ?? [])[1])
+      .filter(Boolean)
+      .slice(0, 8)
+      .join(', ');
+    body = [
+      ...head,
+      `Stored order: ${url.origin}/api/submission/${key}`,
+      `Entries: ${entryCount}`,
+      `Format: ${formatLabel}`,
+      `SHA-256: ${digest}`,
+      '',
+      excerpt ? `First entries: ${excerpt}` : 'Too large to inline.',
+      ...tail,
+    ].join('\n');
+  }
 
   const res = await fetch(`https://api.github.com/repos/${REPO}/issues`, {
     method: 'POST',
