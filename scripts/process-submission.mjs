@@ -120,6 +120,14 @@ const MIN_ENTRIES = 5;
  */
 const MAX_ENTRIES = 6000;
 
+/**
+ * Set when the order came from staging, carrying the entry count the site
+ * recorded at submission. A fetch that returns a truncated body still parses,
+ * and a short order looks like a legitimate small one, so the count is the
+ * only thing that catches it.
+ */
+let staged = null;
+
 async function fetchAttachment(url) {
   const res = await fetch(url, {
     signal: AbortSignal.timeout(30_000),
@@ -153,6 +161,38 @@ async function fetchAttachment(url) {
  */
 async function orderCandidates() {
   const candidates = [];
+
+  /*
+   * A staged order comes first and alone. The site writes orders too large for
+   * an issue body to storage and leaves this pointer, so when one is present
+   * it is the submission, and falling back to anything else in the body would
+   * mean landing an excerpt in place of the real list. The URL is matched
+   * against this site's own route rather than scanned out of free text: the
+   * body is public, and any URL a stranger writes would otherwise be fetched.
+   */
+  const pointer = body.match(
+    /^Stored order:\s*(https:\/\/(?:volobg3\.com|[a-z0-9-]+\.pages\.dev)\/api\/submission\/[0-9a-f]{32})\s*$/m,
+  );
+  if (pointer) {
+    const expectedEntries = Number((body.match(/^Entries:\s*(\d+)\s*$/m) ?? [])[1] ?? 0);
+    const expectedDigest = (body.match(/^SHA-256:\s*([0-9a-f]{64})\s*$/m) ?? [])[1] ?? '';
+    candidates.push(async () => {
+      const res = await fetch(pointer[1], { signal: AbortSignal.timeout(30_000) });
+      if (!res.ok) throw new Error(`staged order fetch failed: ${res.status}`);
+      const text = await res.text();
+      if (text.length > MAX_ATTACHMENT_BYTES) throw new Error('staged order is too large to be a load order');
+      if (expectedDigest) {
+        const actual = crypto.createHash('sha256').update(text).digest('hex');
+        if (actual !== expectedDigest) {
+          throw new Error('staged order does not match the checksum recorded when it was submitted');
+        }
+      }
+      staged = { expectedEntries };
+      return text;
+    });
+    return candidates;
+  }
+
   const fence = body.match(/```(?:json)?\s*\n([\s\S]*?)```/);
   if (fence && fence[1].trim().length > 2) candidates.push(async () => fence[1]);
 
@@ -226,6 +266,14 @@ for (const candidate of await orderCandidates()) {
     continue;
   }
   if (!result.errors.length && result.mods.length >= MIN_ENTRIES) {
+    // A staged order that arrives short was truncated in transit, and landing
+    // it would quietly replace someone's list with the part that survived.
+    if (staged?.expectedEntries && result.mods.length < staged.expectedEntries * 0.9) {
+      attempts.push(
+        `staged order looks truncated: ${result.mods.length} entries read, ${staged.expectedEntries} were submitted`,
+      );
+      continue;
+    }
     orderText = text;
     parsed = result;
     break;
