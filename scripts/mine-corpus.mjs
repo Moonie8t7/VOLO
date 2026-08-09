@@ -1273,6 +1273,98 @@ if (lateLoaders.length) {
   console.log('declared deps: no ordering claims contradicted by the corpus');
 }
 
+/*
+ * Curated requirement aliases, resolved to the mods they name.
+ *
+ * Checked here rather than where the file is read, because this is the first
+ * point that holds a masterlist to check against. An alias naming a mod that
+ * does not exist is inert: it reads as a handled case while the requirement
+ * goes on matching nothing, which is the failure this whole tier is written to
+ * be loud about. So it stops the build rather than shipping quietly.
+ */
+const requirementAliases = {};
+{
+  const byNameKey = new Map();
+  const byFolderKey = new Map();
+  for (const p of plugins) {
+    const n = externalKey(p.name);
+    if (n && !byNameKey.has(n)) byNameKey.set(n, p);
+    const f = externalKey(p.folder ?? '');
+    if (f && !byFolderKey.has(f)) byFolderKey.set(f, p);
+  }
+  const unresolved = [];
+  for (const rule of curated.requirementAliases) {
+    const target = byNameKey.get(externalKey(rule.mod)) ?? byFolderKey.get(externalKey(rule.mod));
+    if (!target) {
+      unresolved.push(`"${rule.requirement}" names "${rule.mod}", which is in no load order yet`);
+      continue;
+    }
+    requirementAliases[externalKey(rule.requirement)] = target.uuid;
+  }
+  if (unresolved.length) {
+    throw new Error(
+      `curated requirement aliases name mods the masterlist does not have:\n  ${unresolved.join('\n  ')}`,
+    );
+  }
+  console.log(`requirement aliases: ${Object.keys(requirementAliases).length} resolved`);
+}
+
+/*
+ * Requirements naming something nothing here can identify.
+ *
+ * Every "install X first" VOLO shows rests on knowing what X is. Where a name
+ * resolves to no mod, no folder and no alias, the warning is a dead end and
+ * nobody finds out, because the string is formatted into a message and
+ * dropped. Counting them here is what turns that into work: a name appearing
+ * repeatedly is either a mod worth cataloguing or an alias worth writing.
+ *
+ * Expected to be empty. It is reported either way, so it stays visible when it
+ * stops being.
+ */
+const unidentifiedRequirements = (() => {
+  const byNameKey = new Map();
+  const byFolderKey = new Map();
+  for (const p of plugins) {
+    const n = externalKey(p.name);
+    if (n && !byNameKey.has(n)) byNameKey.set(n, p);
+    const f = externalKey(p.folder ?? '');
+    if (f && !byFolderKey.has(f)) byFolderKey.set(f, p);
+  }
+  const byUuidKey = new Map(plugins.map(p => [p.uuid, p]));
+  const counts = new Map();
+  const consider = (name, uuid) => {
+    if (!name) return;
+    // The engine's own modules are requirements of almost everything and are
+    // filtered out of load orders on purpose, so they are not blind spots.
+    if (ENGINE_MASTERS.has(name)) return;
+    const key = externalKey(name);
+    if (!key) return;
+    if ((uuid && byUuidKey.has(uuid)) || byNameKey.has(key) || byFolderKey.has(key)) return;
+    if (Object.hasOwn(requirementAliases, key)) return;
+    counts.set(name, (counts.get(name) ?? 0) + 1);
+  };
+  for (const p of plugins) {
+    for (const d of p.dependencies ?? []) consider(d.name, d.uuid);
+  }
+  for (const order of orders) {
+    for (const e of order.entries) {
+      for (const d of e.Dependencies ?? []) consider(d.Name ?? d.name, d.UUID ?? d.uuid);
+    }
+  }
+  return [...counts]
+    .map(([name, times]) => ({ name, times }))
+    .sort((a, b) => b.times - a.times || a.name.localeCompare(b.name));
+})();
+
+console.log(
+  unidentifiedRequirements.length
+    ? `unidentified requirements: ${unidentifiedRequirements.length} names nothing here can resolve`
+    : 'unidentified requirements: none, every stated requirement names a mod we know',
+);
+for (const r of unidentifiedRequirements.slice(0, 15)) {
+  console.log(`  ${String(r.times).padStart(3)}x  ${r.name}`);
+}
+
 plugins.sort((a, b) =>
   b.evidence.installs - a.evidence.installs || a.name.localeCompare(b.name));
 
@@ -1298,6 +1390,13 @@ const masterlist = {
    * someone's work on that basis would be a false claim about a real person.
    */
   incompatible: curated.incompatible,
+  /*
+   * Names a requirement can use for a mod that none of the mod's own strings
+   * match, so the sorter can tell that a requirement is already satisfied by
+   * something in the list. Keyed by the same lowercased alphanumeric form every
+   * other name lookup uses.
+   */
+  requirementAliases,
   provenance: {
     ordersAnalysed: orders.length,
     working: orders.filter(o => o.label === 'working').length,

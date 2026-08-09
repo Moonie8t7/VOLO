@@ -85,9 +85,39 @@ export function loadCuratedRules() {
     return rule;
   });
 
+  /*
+   * A requirement can name a mod by something none of its own strings match.
+   * Mod pages, pak folders and published titles drift apart, and a mod author
+   * writing "requires Vlad's Grimoire" is naming the page, not the pak called
+   * VFX_Library_VladsGrimoire. Nothing measurable joins those, and guessing by
+   * resemblance would invent links between unrelated mods, so this tier is
+   * where a person states the equivalence and says how they know.
+   *
+   * Whether the named mod actually exists is checked in the miner, which is
+   * the only place that has the masterlist to check against. An alias to a mod
+   * nobody has heard of is inert, and inert rules are what this file exists to
+   * make loud.
+   */
+  const requirementAliases = (raw.requirementAliases ?? []).map((rule, i) => {
+    const label = `requirementAliases[${i}]`;
+    for (const field of ['requirement', 'mod', 'why']) {
+      if (typeof rule[field] !== 'string' || !rule[field].trim()) {
+        problems.push(`${label}: needs a ${field}`);
+      }
+    }
+    if (rule.requirement && rule.mod
+      && normaliseName(rule.requirement) === normaliseName(rule.mod)) {
+      problems.push(`${label}: "${rule.requirement}" already matches "${rule.mod}" without an alias`);
+    }
+    return rule;
+  });
+
   if (problems.length) {
     throw new Error(`curated rules failed validation:\n  ${problems.join('\n  ')}`);
   }
 
-  return { placements, messages, incompatible };
+  return { placements, messages, incompatible, requirementAliases };
 }
+
+/** The one normalisation every name lookup in the project agrees on. */
+export const normaliseName = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');

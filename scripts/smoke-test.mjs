@@ -428,6 +428,52 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// A requirement naming a mod by something none of the mod's own strings match.
+// Reported from a load order that held Vlad's Grimoire and was told it did
+// not: the pak is called VFX_Library_VladsGrimoire and the mod page is called
+// "Vlad's Grimoire - Spell VFX Library", so neither the name nor the folder
+// matches what a mod author writes. Only a curated alias joins them.
+{
+  console.log('');
+  console.log('curated requirement alias fixture');
+
+  const aliases = masterlist.requirementAliases ?? {};
+  const aliased = Object.entries(aliases)
+    .map(([key, uuid]) => ({ key, plugin: masterlist.plugins.find(p => p.uuid === uuid) }))
+    .filter(a => a.plugin);
+
+  if (aliased.length) {
+    console.log(`  ok    ${aliased.length} alias${aliased.length > 1 ? 'es' : ''} resolve to a mod in the masterlist`);
+  } else {
+    failures++;
+    console.log('  FAIL  no requirement alias resolves to anything');
+  }
+
+  // Each alias must actually satisfy a requirement written that way, which is
+  // the only thing any of this is for.
+  let broken = 0;
+  for (const { key, plugin } of aliased) {
+    const order = JSON.stringify({
+      Order: [
+        { Name: plugin.name, UUID: plugin.uuid, Folder: plugin.folder ?? plugin.name },
+        {
+          Name: 'Something That Needs It',
+          UUID: 'cccccccc-0000-0000-0000-000000000003',
+          Folder: 'SomethingThatNeedsIt',
+          Dependencies: [{ Name: key, UUID: '' }],
+        },
+      ],
+    });
+    const result = sortLoadOrder(parseLoadOrder(order, 'alias.json').mods, masterlist);
+    if (result.issues.some(i => i.kind === 'missing-dependency')) {
+      broken++;
+      console.log(`  FAIL  alias "${key}" did not satisfy a requirement naming it`);
+    }
+  }
+  if (broken) failures++;
+  else console.log('  ok    every alias satisfies a requirement written that way');
+}
+
 // numbered text fixture: BG3MM's text export writes "NN. Name (file.pak)".
 // Numbering and filenames must strip, commas in names must survive, and
 // engine modules must still be recognised and dropped.
