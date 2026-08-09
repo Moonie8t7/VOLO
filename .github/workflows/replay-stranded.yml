@@ -1,0 +1,71 @@
+name: Replay stranded submissions
+
+# A submission whose run was cancelled never reports anything.
+#
+# GitHub keeps one pending run per concurrency group, so a third arrival
+# cancels the one already waiting, and a cancelled job never reaches its
+# reporting step. The submitter is left with an open issue and total silence,
+# which reads exactly like the site being broken. Nothing in the pipeline
+# notices, because nothing ran.
+#
+# This looks for submission issues that are open and have no reply from the
+# pipeline, and replays them by toggling the label. Replaying is safe: intake
+# rejects duplicates against the corpus, so an order that did land cannot land
+# twice.
+
+on:
+  schedule:
+    - cron: "35 * * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+concurrency:
+  group: replay-stranded
+  cancel-in-progress: false
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find and replay
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          # Anything newer than this is probably still being processed.
+          CUTOFF=$(date -u -d '20 minutes ago' +%Y-%m-%dT%H:%M:%SZ)
+
+          numbers=$(gh issue list --repo "$REPO" \
+            --label load-order-submission --state open \
+            --json number,createdAt,updatedAt \
+            --jq ".[] | select(.createdAt < \"$CUTOFF\") | .number")
+
+          if [ -z "$numbers" ]; then
+            echo "no open submissions old enough to consider"
+            exit 0
+          fi
+
+          for n in $numbers; do
+            # A bot comment means the pipeline did reply, whatever it decided,
+            # so the submitter is not in the dark and nothing needs replaying.
+            replied=$(gh issue view "$n" --repo "$REPO" --json comments \
+              --jq '[.comments[] | select(.author.login == "github-actions")] | length')
+            if [ "$replied" != "0" ]; then
+              echo "#$n already has $replied pipeline comment(s), leaving it"
+              continue
+            fi
+
+            echo "#$n has no reply from the pipeline, replaying"
+            gh issue edit "$n" --repo "$REPO" --remove-label load-order-submission
+            sleep 5
+            gh issue edit "$n" --repo "$REPO" --add-label load-order-submission
+            echo "replayed=$n" >> "$GITHUB_STEP_SUMMARY"
+
+            # One per run. Each replay takes the masterlist group, and queueing
+            # several would recreate the cancellation this exists to undo.
+            break
+          done

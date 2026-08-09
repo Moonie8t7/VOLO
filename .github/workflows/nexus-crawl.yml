@@ -11,9 +11,17 @@ name: Catalogue crawl
 # shell appear in the log whether or not they fire, which is misleading.
 #
 # Both crawlers are resumable and quota-aware: they record their own progress,
-# so a run that stops early simply continues tomorrow. Shares the masterlist
-# concurrency group, because this job regenerates the same derived files a
-# submission does.
+# so a run that stops early simply continues tomorrow.
+#
+# This runs in its own concurrency group rather than the masterlist one it used
+# to share. GitHub keeps a single pending run per group, so a third arrival
+# cancels the one already waiting, and a cancelled job never reaches its
+# reporting step: the submitter hears nothing at all on an issue that stays
+# open. A crawl holds its group for many minutes while fetching two
+# catalogues, which made that collision likely rather than theoretical. It
+# still regenerates the same derived files, so its commit step rebases the
+# crawl output alone and rebuilds everything derived from the merged state,
+# which resolves the race without needing a lock at all.
 
 on:
   schedule:
@@ -24,7 +32,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: masterlist
+  group: crawl
   cancel-in-progress: false
 
 jobs:
@@ -84,36 +92,65 @@ jobs:
           node -e "require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')"
           node -e "require('fs').copyFileSync('masterlist/external-categories.json','public/external-categories.json')"
 
-      # New catalogue data moves the figures the prose quotes; the measurement
-      # JSON feeds the site and the sync rewrites the README and decisions.
-      - name: Re-measure and sync the quoted figures
-        run: |
-          node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
-          node scripts/sync-figures.mjs
-
-      # Pushes made with the workflow token do not trigger the checks
-      # workflow, so this commit would land unverified. Run the same gate here
-      # and fail before pushing anything that would not have passed it.
-      - name: Run the checks this push cannot trigger
-        run: |
-          npm run check
-          npm run build
-          npm test
-
+      # The crawled catalogues are the only thing that rebases.
+      #
+      # A submission landing mid-crawl regenerates the same derived files this
+      # run just built, and rebasing one set onto the other conflicts on every
+      # one of them. So commit the crawl output alone, rebase that, then derive
+      # the masterlist, measurement and figures from the merged state, which is
+      # the only state holding both the new catalogues and any order that
+      # arrived meanwhile.
       - name: Commit whatever changed
         id: commit
         run: |
+          set -euo pipefail
           git config user.name "volo-crawler"
           git config user.email "crawler@users.noreply.github.com"
-          git add nexus modio masterlist public client/src/lib/dividers.json client/src/lib/masterlist-summary.json client/src/lib/measured.json README.md docs/decisions.md
+
+          git add nexus modio
           if git diff --cached --quiet; then
             echo "changed=no" >> "$GITHUB_OUTPUT"
-          else
-            git commit -m "Update the catalogues"
-            git pull --rebase origin main
-            git push origin HEAD:main
-            echo "changed=yes" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+
+          for attempt in 1 2 3; do
+            git checkout -- masterlist public client/src/lib README.md docs/decisions.md 2>/dev/null || true
+            git add nexus modio
+            git diff --cached --quiet && { echo "changed=no" >> "$GITHUB_OUTPUT"; exit 0; }
+            git commit -m "Update the catalogues"
+
+            if ! git pull --rebase origin main; then
+              git rebase --abort || true
+              git reset --hard origin/main
+              continue
+            fi
+
+            node scripts/build-external-categories.mjs
+            node scripts/mine-corpus.mjs
+            node scripts/build-divider-map.mjs
+            node -e "require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')"
+            node -e "require('fs').copyFileSync('masterlist/external-categories.json','public/external-categories.json')"
+            node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
+            node scripts/sync-figures.mjs
+
+            # Pushes made with the workflow token do not trigger the checks
+            # workflow, so this would otherwise land unverified.
+            npm run check
+            npm run build
+            npm test
+
+            git add masterlist public client/src/lib README.md docs/decisions.md
+            git commit --amend --no-edit -m "Update the catalogues and regenerate"
+
+            if git push origin HEAD:main; then
+              echo "changed=yes" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git reset --hard origin/main
+          done
+
+          echo "could not land the crawl after three attempts"
+          exit 1
 
       # The whole point of the run, in one place, whatever happened above.
       - name: Summary

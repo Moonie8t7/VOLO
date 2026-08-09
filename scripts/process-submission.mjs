@@ -103,6 +103,23 @@ const ATTACHMENT_URL =
 /** A fetched attachment larger than this is not a load order. */
 const MAX_ATTACHMENT_BYTES = 8 * 1024 * 1024;
 
+/** Below this an order teaches nothing worth the round trip. */
+const MIN_ENTRIES = 5;
+
+/**
+ * Above this it is not a load order, whatever it claims to be.
+ *
+ * The endpoint caps entries too, but an issue opened by hand with a file
+ * attached never passes through it, and the agreement measure compares every
+ * pair: 6,000 entries is 18 million comparisons and finishes in under a
+ * second, while 300,000 is 45 billion and holds a runner until Actions kills
+ * it six hours later. Every other submission queues behind that on the shared
+ * concurrency group, so one request would buy a day of silence. The largest
+ * order ever submitted is 1,068 entries, so this leaves room for a list five
+ * times bigger than anyone has actually played.
+ */
+const MAX_ENTRIES = 6000;
+
 async function fetchAttachment(url) {
   const res = await fetch(url, {
     signal: AbortSignal.timeout(30_000),
@@ -204,7 +221,11 @@ for (const candidate of await orderCandidates()) {
   }
   if (!text) continue;
   const result = parseLoadOrder(text, 'submission.json');
-  if (!result.errors.length && result.mods.length >= 5) {
+  if (result.mods.length > MAX_ENTRIES) {
+    attempts.push(`${result.mods.length.toLocaleString()} entries, over the ${MAX_ENTRIES.toLocaleString()} limit`);
+    continue;
+  }
+  if (!result.errors.length && result.mods.length >= MIN_ENTRIES) {
     orderText = text;
     parsed = result;
     break;
