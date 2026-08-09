@@ -7,7 +7,7 @@
  * thirty-one of them would fill the viewport before a single mod appeared.
  */
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'wouter';
 import { Database, Search, GitPullRequest } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -20,11 +20,15 @@ import { useStore } from '@/lib/store';
 const PAGE_SIZE = 60;
 
 export default function MasterlistPage() {
-  const { masterlist, isLoadingMasterlist, masterlistError } = useStore();
+  const { masterlist, masterlistError, requestMasterlist } = useStore();
   const [query, setQuery] = useState('');
   const [group, setGroup] = useState<string>('all');
   const [limit, setLimit] = useState(PAGE_SIZE);
   const [filtersOpen, setFiltersOpen] = useState(false);
+
+  // This page is the list, so it asks for it directly. Everywhere else the
+  // download starts when an order arrives to be sorted.
+  useEffect(() => { requestMasterlist(); }, [requestMasterlist]);
 
   const filtered = useMemo(() => {
     if (!masterlist) return [];
@@ -140,11 +144,15 @@ export default function MasterlistPage() {
             </div>
           </CardHeader>
           <CardContent>
-            {isLoadingMasterlist && (
+            {/* Keyed on the list itself rather than on the loading flag. This
+                page is prerendered, where no effect has run and so nothing is
+                loading yet, and the flag alone had the build-time HTML telling
+                search engines that nothing matches the search. */}
+            {!masterlist && !masterlistError && (
               <p className="py-8 text-center text-muted-foreground font-body">Loading masterlist</p>
             )}
 
-            {!isLoadingMasterlist && !filtered.length && (
+            {masterlist && !filtered.length && (
               <p className="py-8 text-center text-muted-foreground font-body">
                 Nothing matches that search.
               </p>
