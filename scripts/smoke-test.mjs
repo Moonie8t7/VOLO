@@ -474,6 +474,91 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   else console.log('  ok    every alias satisfies a requirement written that way');
 }
 
+// Requirements that are not what a broken load order looks like. Reported by
+// a player shown three critical warnings, all of them wrong in a different
+// way: one mod they had under another name, one they had a substitute for, and
+// one that most working orders simply do without.
+{
+  console.log('');
+  console.log('requirement strength fixture');
+
+  const REQUIRING = {
+    Name: 'Needs Things',
+    UUID: 'ffffffff-0000-0000-0000-000000000006',
+    Folder: 'NeedsThings',
+  };
+  const sortWith = (extra, deps) => sortLoadOrder(
+    parseLoadOrder(JSON.stringify({
+      Order: [...extra, { ...REQUIRING, Dependencies: deps }],
+    }), 'strength.json').mods,
+    masterlist,
+  );
+
+  // A mod nobody installs, declared by mods that plainly work without it, is
+  // still worth mentioning and is not a broken order.
+  const soft = masterlist.plugins.find(p => p.oftenAbsent);
+  if (!soft) {
+    console.log('  note  no requirement currently measures as often absent, nothing to assert');
+  } else {
+    const issues = sortWith([], [{ Name: soft.name, UUID: soft.uuid }]).issues
+      .filter(i => i.kind === 'missing-dependency');
+    if (issues.length && issues.every(i => i.severity === 'warning')) {
+      console.log(`  ok    "${soft.name}" reads as a warning, not a broken load order`);
+    } else {
+      failures++;
+      console.log(`  FAIL  expected a warning for "${soft.name}", got ${JSON.stringify(issues.map(i => i.severity))}`);
+    }
+  }
+
+  // A library, by contrast, is exactly what a load order is broken without.
+  const hard = masterlist.plugins.find(p => !p.oftenAbsent && !p.uuid.startsWith('name:')
+    && masterlist.plugins.some(q => (q.dependencies ?? []).some(d => d.uuid === p.uuid)));
+  if (hard) {
+    const issues = sortWith([], [{ Name: hard.name, UUID: hard.uuid }]).issues
+      .filter(i => i.kind === 'missing-dependency');
+    if (issues.length && issues.every(i => i.severity === 'critical')) {
+      console.log(`  ok    "${hard.name}" is still critical when genuinely absent`);
+    } else {
+      failures++;
+      console.log(`  FAIL  a hard requirement stopped being critical: ${JSON.stringify(issues.map(i => i.severity))}`);
+    }
+  }
+
+  // A stand-in present in the list satisfies the requirement outright.
+  const pairs = Object.entries(masterlist.requirementSatisfiedBy ?? {});
+  if (!pairs.length) {
+    failures++;
+    console.log('  FAIL  no requirement stand-ins reached the masterlist');
+  } else {
+    let broken = 0;
+    for (const [reqUuid, altUuids] of pairs) {
+      const req = masterlist.plugins.find(p => p.uuid === reqUuid);
+      const alt = masterlist.plugins.find(p => p.uuid === altUuids[0]);
+      if (!req || !alt) continue;
+      // Named specifically: the stand-in is a real mod with requirements of
+      // its own, and those are nothing to do with this assertion.
+      const reportsThis = result => result.issues.some(
+        i => i.kind === 'missing-dependency' && i.message.includes(`"${req.name}"`),
+      );
+      const withAlt = sortWith(
+        [{ Name: alt.name, UUID: alt.uuid, Folder: alt.folder ?? alt.name }],
+        [{ Name: req.name, UUID: req.uuid }],
+      );
+      if (reportsThis(withAlt)) {
+        broken++;
+        console.log(`  FAIL  "${alt.name}" did not satisfy a requirement for "${req.name}"`);
+      }
+      // And with neither present, it must still be reported.
+      if (!reportsThis(sortWith([], [{ Name: req.name, UUID: req.uuid }]))) {
+        broken++;
+        console.log(`  FAIL  "${req.name}" went unreported with no stand-in present`);
+      }
+    }
+    if (broken) failures++;
+    else console.log(`  ok    ${pairs.length} stand-ins satisfy their requirement, and only when present`);
+  }
+}
+
 // numbered text fixture: BG3MM's text export writes "NN. Name (file.pak)".
 // Numbering and filenames must strip, commas in names must survive, and
 // engine modules must still be recognised and dropped.

@@ -227,6 +227,10 @@ export function sortLoadOrder(
   const rawAliases = masterlist.requirementAliases ?? {};
   const aliases: Record<string, string> = Object.create(null);
   for (const key of Object.keys(rawAliases)) aliases[key] = rawAliases[key];
+
+  const rawSatisfied = masterlist.requirementSatisfiedBy ?? {};
+  const satisfiedBy: Record<string, string[]> = Object.create(null);
+  for (const key of Object.keys(rawSatisfied)) satisfiedBy[key] = rawSatisfied[key];
   const issues: Issue[] = [];
 
   // Step 1: assign a group to every mod.
@@ -323,6 +327,8 @@ export function sortLoadOrder(
   }
 
   const missing = new Map<string, string[]>();
+  /** Requirement names the corpus shows most working orders do without. */
+  const softRequirements = new Set<string>();
 
   for (const mod of mods) {
     // Masterlist dependencies supplement whatever the export declared.
@@ -376,9 +382,30 @@ export function sortLoadOrder(
         ) : undefined);
 
       if (!target) {
+        /*
+         * Before reporting it missing, two things can still satisfy it.
+         *
+         * A stand-in is another mod doing the same job: mods asking for
+         * TutorialChestSummoning work with AV Item Shipment Framework, and a
+         * player running the second was told they were missing the first.
+         * Nothing in either mod's metadata connects them, so the pairing is
+         * hand-written.
+         */
+        const required = viaMasterlist ?? (dep.uuid ? byUuid.get(dep.uuid) : undefined);
+        const standIns = required ? satisfiedBy[required.uuid] : undefined;
+        if (standIns?.some(uuid => present.has(uuid))) continue;
+
         const list = missing.get(dep.name) ?? [];
         list.push(mod.uuid);
         missing.set(dep.name, list);
+        /*
+         * How firmly it can be called missing. A requirement absent from most
+         * of the working orders that declare it is not one a load order is
+         * broken without, and saying so in red was the false alarm people
+         * reported. Recorded per name, since one name is reported once however
+         * many mods asked for it.
+         */
+        if (required?.oftenAbsent) softRequirements.add(dep.name);
         continue;
       }
       if (target.uuid === mod.uuid || linked.has(target.uuid)) continue;
@@ -418,14 +445,24 @@ export function sortLoadOrder(
   }
 
   for (const [depName, wanters] of missing) {
+    const soft = softRequirements.has(depName);
+    const asks = `${wanters.length} mod${wanters.length > 1 ? 's require' : ' requires'}`;
     issues.push({
-      severity: 'critical',
+      /*
+       * Critical means the order is broken without it, which is true of a
+       * library and not of a requirement most working orders do without. The
+       * second kind was being reported in red alongside the first, and people
+       * reasonably read that as the tool being wrong.
+       */
+      severity: soft ? 'warning' : 'critical',
       kind: 'missing-dependency',
-      message:
-        `${wanters.length} mod${wanters.length > 1 ? 's require' : ' requires'} ` +
-        `"${depName}", which is not in your load order.`,
+      message: soft
+        ? `${asks} "${depName}", which is not in your load order. Most working orders that use these mods do not have it either.`
+        : `${asks} "${depName}", which is not in your load order.`,
       uuids: wanters,
-      resolution: `Install ${depName}, or remove the mods that depend on it.`,
+      resolution: soft
+        ? `Probably optional, or covered by another mod you already have. Install ${depName} if something these mods add is missing in game.`
+        : `Install ${depName}, or remove the mods that depend on it.`,
     });
   }
 

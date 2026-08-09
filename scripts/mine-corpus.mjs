@@ -1258,6 +1258,66 @@ for (const [uuid, acc] of pooled) {
 }
 lateLoaders.sort((a, b) => a.name.localeCompare(b.name));
 
+/*
+ * Requirements the working orders simply do not have.
+ *
+ * "Requires X" is a claim about installing X, and the corpus can check it the
+ * same way it checks the ordering claim: find the orders holding something
+ * that requires X, and see how many of them hold X. A library cannot be
+ * missing from an order that works, and measured here none of them are, with
+ * VolitionCabinet, CommunityLibrary, BG3MCM and the rest at nought absent
+ * across every order that needs them.
+ *
+ * Others are absent most of the time. Some are optional in practice; some are
+ * satisfied by a different mod doing the same job, which is invisible from
+ * here and stated in the curated tier instead. Either way, telling somebody
+ * their load order is critically missing a mod that most working orders do not
+ * have is a false alarm, and it was reported as one.
+ *
+ * This does not silence the warning. It lowers it to what the evidence
+ * supports, because a requirement nobody installs is still worth knowing about.
+ */
+const ABSENT_MIN_WITNESSES = 4;
+const ABSENT_MIN_SHARE = 0.6;
+
+const orderHolds = (pos, plugin) => pos.has(canonicalKey(plugin.uuid));
+
+const oftenAbsent = [];
+{
+  const byUuidAll = new Map(plugins.map(p => [p.uuid, p]));
+  const declaredBy = new Map();
+  for (const p of plugins) {
+    for (const d of p.dependencies ?? []) {
+      if (!declaredBy.has(d.uuid)) declaredBy.set(d.uuid, []);
+      declaredBy.get(d.uuid).push(p);
+    }
+  }
+  for (const [uuid, dependants] of declaredBy) {
+    const required = byUuidAll.get(uuid);
+    if (!required) continue;
+    let held = 0, absent = 0;
+    for (const pos of workingPositions) {
+      if (!dependants.some(d => orderHolds(pos, d))) continue;
+      if (orderHolds(pos, required)) held++; else absent++;
+    }
+    const witnesses = held + absent;
+    if (witnesses < ABSENT_MIN_WITNESSES) continue;
+    if (absent / witnesses < ABSENT_MIN_SHARE) continue;
+    required.oftenAbsent = true;
+    oftenAbsent.push({ name: required.name, held, absent, witnesses, dependants: dependants.length });
+  }
+  oftenAbsent.sort((a, b) => b.absent / b.witnesses - a.absent / a.witnesses || a.name.localeCompare(b.name));
+}
+
+console.log(
+  oftenAbsent.length
+    ? `soft requirements: ${oftenAbsent.length} required by mods that work without them`
+    : 'soft requirements: none, every declared requirement is present wherever it is needed',
+);
+for (const r of oftenAbsent) {
+  console.log(`  ${r.name}: absent from ${r.absent} of ${r.witnesses} working orders that require it`);
+}
+
 if (lateLoaders.length) {
   console.log(
     `declared deps: ${lateLoaders.length} ` +
@@ -1283,6 +1343,8 @@ if (lateLoaders.length) {
  * be loud about. So it stops the build rather than shipping quietly.
  */
 const requirementAliases = {};
+/** Required mod uuid -> uuids of mods that stand in for it. */
+const requirementSatisfiedBy = {};
 {
   const byNameKey = new Map();
   const byFolderKey = new Map();
@@ -1307,6 +1369,30 @@ const requirementAliases = {};
     );
   }
   console.log(`requirement aliases: ${Object.keys(requirementAliases).length} resolved`);
+
+  // Same check for the stand-ins, where both sides have to exist.
+  const missingSide = [];
+  for (const rule of curated.requirementSatisfiedBy) {
+    const required = byNameKey.get(externalKey(rule.requirement))
+      ?? byFolderKey.get(externalKey(rule.requirement));
+    const satisfier = byNameKey.get(externalKey(rule.satisfiedBy))
+      ?? byFolderKey.get(externalKey(rule.satisfiedBy));
+    if (!required) missingSide.push(`"${rule.requirement}" is in no load order yet`);
+    else if (!satisfier) missingSide.push(`"${rule.satisfiedBy}" is in no load order yet`);
+    else {
+      const list = requirementSatisfiedBy[required.uuid] ?? [];
+      if (!list.includes(satisfier.uuid)) list.push(satisfier.uuid);
+      requirementSatisfiedBy[required.uuid] = list;
+    }
+  }
+  if (missingSide.length) {
+    throw new Error(
+      `curated stand-ins name mods the masterlist does not have:\n  ${missingSide.join('\n  ')}`,
+    );
+  }
+  console.log(
+    `requirement stand-ins: ${Object.keys(requirementSatisfiedBy).length} requirements can be met another way`,
+  );
 }
 
 /*
@@ -1397,6 +1483,11 @@ const masterlist = {
    * other name lookup uses.
    */
   requirementAliases,
+  /*
+   * A requirement one of these mods satisfies instead. Different mods doing
+   * the same job, which no metadata records, so it is stated by hand.
+   */
+  requirementSatisfiedBy,
   provenance: {
     ordersAnalysed: orders.length,
     working: orders.filter(o => o.label === 'working').length,
@@ -1494,6 +1585,19 @@ ${lateLoaders.length
   ? ['| Mod | Loaded after its dependants | Mods declaring it |', '|---|---|---|',
      ...lateLoaders.map(l => `| \`${l.name}\` | ${l.after} of ${l.witnesses} placements | ${l.dependents.length} |`)].join('\n')
   : '_none: every declared requirement also holds as a load order_'}
+
+## Requirements the working orders do without
+
+A mod here is declared as a requirement by mods that demonstrably run without
+it. Its absence is reported as a warning rather than as a broken load order.
+A real library scores nothing in the last column: measured across this corpus,
+VolitionCabinet, CommunityLibrary, BG3MCM, BG3AF, BG3SX and Compatibility
+Framework are present in every working order that needs them.
+
+${oftenAbsent.length
+  ? ['| Requirement | Working orders needing it | Without it | Declaring mods |', '|---|---|---|---|',
+     ...oftenAbsent.map(r => `| \`${r.name}\` | ${r.witnesses} | ${r.absent} | ${r.dependants} |`)].join('\n')
+  : '_none: every declared requirement is installed wherever it is needed_'}
 
 ## Requirements naming something unknown
 

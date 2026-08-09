@@ -63,6 +63,11 @@ export interface MasterlistPlugin {
    * is still reported.
    */
   loadsAfterDependents?: boolean;
+  /**
+   * Most working orders that declare this as a requirement do not have it, so
+   * its absence is not what breaks a load order. Measured, never hand-set.
+   */
+  oftenAbsent?: boolean;
   /** Curated warnings attached to this mod, shown whenever it is present. */
   messages?: { text: string; severity: IssueSeverity }[];
   evidence?: {
@@ -93,6 +98,12 @@ export interface Masterlist {
    * links between unrelated mods.
    */
   requirementAliases?: Record<string, string>;
+  /**
+   * Requirements another mod can meet instead, keyed by the required mod's
+   * uuid. Two mods doing the same job share no name, author or metadata, so
+   * nothing can measure this and it is stated by hand.
+   */
+  requirementSatisfiedBy?: Record<string, string[]>;
   /**
    * Mods that must not be installed together.
    *

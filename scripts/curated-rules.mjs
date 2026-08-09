@@ -112,11 +112,35 @@ export function loadCuratedRules() {
     return rule;
   });
 
+  /*
+   * One mod standing in for another. Two mods can do the same job without
+   * sharing a name, an author or a line of metadata, so a mod requiring the
+   * first is satisfied by the second and nothing in the data says so. Kept
+   * apart from an alias, which says two names mean the same mod: these are
+   * different mods, and only one of them needs to be installed.
+   *
+   * Both sides are checked against the masterlist in the miner, for the same
+   * reason the aliases are.
+   */
+  const requirementSatisfiedBy = (raw.requirementSatisfiedBy ?? []).map((rule, i) => {
+    const label = `requirementSatisfiedBy[${i}]`;
+    for (const field of ['requirement', 'satisfiedBy', 'why']) {
+      if (typeof rule[field] !== 'string' || !rule[field].trim()) {
+        problems.push(`${label}: needs a ${field}`);
+      }
+    }
+    if (rule.requirement && rule.satisfiedBy
+      && normaliseName(rule.requirement) === normaliseName(rule.satisfiedBy)) {
+      problems.push(`${label}: a mod cannot stand in for itself`);
+    }
+    return rule;
+  });
+
   if (problems.length) {
     throw new Error(`curated rules failed validation:\n  ${problems.join('\n  ')}`);
   }
 
-  return { placements, messages, incompatible, requirementAliases };
+  return { placements, messages, incompatible, requirementAliases, requirementSatisfiedBy };
 }
 
 /** The one normalisation every name lookup in the project agrees on. */
