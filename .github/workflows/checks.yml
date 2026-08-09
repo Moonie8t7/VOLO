@@ -31,6 +31,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history, so build-sitemap can read each page's real last
+          # change date. A shallow clone reports HEAD for every file.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22

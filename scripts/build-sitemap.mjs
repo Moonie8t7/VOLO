@@ -76,8 +76,29 @@ const ROUTES = [
   },
 ];
 
+/**
+ * Whether git here has the history to answer the question at all.
+ *
+ * A shallow clone holds one commit, so `git log -1 -- <file>` reports that
+ * commit for every file and every route claims it changed today. The workflows
+ * check out shallow by default, which is how the deployed sitemap came to
+ * stamp the build date on pages untouched for days: exactly the invented
+ * freshness the file header says is worse than no date. Checkouts now ask for
+ * full history, and this refuses to guess if one ever does not.
+ */
+const shallow = (() => {
+  try {
+    return execFileSync('git', ['rev-parse', '--is-shallow-repository'], {
+      encoding: 'utf8',
+    }).trim() === 'true';
+  } catch {
+    return false;
+  }
+})();
+
 /** Commit date of the newest change to any of these files, as YYYY-MM-DD. */
 function lastModified(sources) {
+  if (shallow) return null;
   const dates = sources
     .filter(file => fs.existsSync(file))
     .map(file => {
@@ -131,4 +152,7 @@ const xml = [
 fs.writeFileSync('public/sitemap.xml', xml);
 
 console.log(`wrote public/sitemap.xml with ${entries.length} routes`);
+if (shallow) {
+  console.log('  shallow clone: dates omitted, check out with fetch-depth: 0 for them');
+}
 for (const e of entries) console.log(`  ${e.path.padEnd(12)} ${e.lastmod ?? 'no date'}`);
