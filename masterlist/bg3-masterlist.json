@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-09T01:41:37.990Z",
+  "generated": "2026-08-09T05:28:22.295Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -14,7 +14,7 @@
     "working": 13,
     "broken": 2,
     "unlabelled": 3,
-    "externalDependencyEdges": 220,
+    "externalDependencyEdges": 227,
     "ordersWithKnownBuild": 1
   },
   "groups": [
@@ -14231,7 +14231,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Medusae_Eyes",
@@ -16742,13 +16743,7 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Tasha's Cauldron of Hairstyles",
@@ -17022,7 +17017,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Unholy Smite - Empowering Oathbreakers",
@@ -17108,10 +17104,15 @@
         "workingInstalls": 2,
         "brokenInstalls": 0
       },
+      "usesScriptExtender": true,
       "dependencies": [
         {
           "uuid": "4b516620-9c56-aa18-96ae-a9ee4f57b515",
           "name": "Mystra's Spells"
+        },
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
         }
       ]
     },
@@ -18014,7 +18015,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "♡Eve! Preset♡",
@@ -25346,7 +25353,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "DeathsongSetTutorialChest",
@@ -28270,7 +28278,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "EveryoneInDialogue2_dialogOverride",
@@ -31727,7 +31736,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Illrigger",
@@ -34349,7 +34359,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Masc Gith Heads",
@@ -34422,7 +34438,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "MB0_MoonlightHC",
@@ -37349,7 +37366,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "Ornamental Leg Accessories",
@@ -37715,7 +37738,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "PastelDice",
@@ -40079,7 +40103,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "SC - 5e Fighter Subclasses Combined",
@@ -40091,7 +40116,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "SC - 5e Monk Subclasses Combined",
@@ -40103,7 +40129,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "SC - 5e Ranger Subclasses Combined",
@@ -40115,7 +40142,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "SC - Book of Druids",
@@ -40272,7 +40300,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "School of Necromancy: Greater Undead Thralls",
@@ -42605,7 +42634,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Tasha's Cauldron of Hairstyles",
@@ -42900,7 +42935,17 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        },
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "The Hallowleafs - Dynamic Appearances",
@@ -43707,7 +43752,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Ultimate Tactical AI Companions (UTAC)",
@@ -43731,7 +43782,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Umberlee_Skirt_All",
@@ -43954,7 +44006,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Useful_Rope",
@@ -44095,7 +44148,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Valuable Gemstones",
