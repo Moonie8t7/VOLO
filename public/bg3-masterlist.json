@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-09T21:45:00.966Z",
+  "generated": "2026-08-09T21:58:36.372Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -12,6 +12,14 @@
   "requirementAliases": {
     "vladsgrimoire": "0dd5b581-c210-4956-ab96-7682fb519de5",
     "mazzledocs": "ad95bd1c-1a80-45fb-b73b-9eea1f8e58d0"
+  },
+  "requirementSatisfiedBy": {
+    "3779a4fb-0c2c-404a-beee-879d97eb9e87": [
+      "7b8366bd-abc1-4f9f-ba9d-585549b4a750"
+    ],
+    "505c630c-79fa-49b6-9f21-29a5f2322c2d": [
+      "e6333436-9cf0-4464-aaf2-39246292575e"
+    ]
   },
   "provenance": {
     "ordersAnalysed": 43,
@@ -1399,7 +1407,8 @@
         "workingInstalls": 15,
         "brokenInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "oftenAbsent": true
     },
     {
       "name": "Vemperen's Other Heads",
@@ -2382,20 +2391,6 @@
       "folder": "AscendedWings_3e318204-5535-bb0a-2157-494b71fba26f",
       "author": "Nikjima",
       "version": "1.0.0.65",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 53,
       "evidence": {
@@ -2719,20 +2714,6 @@
       "folder": "Alt-Hairs_0f86b73c-928c-033f-6d2d-abf4f06f462f",
       "author": "jerinski",
       "version": "2.0.4.21",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 64,
       "evidence": {
@@ -5614,20 +5595,6 @@
       "folder": "NF_GalePrc_ca525ed8-fe32-6f11-2987-2695f4e49023",
       "author": "NoiraFayn",
       "version": "3.0.1.12",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 82,
       "evidence": {
@@ -5696,20 +5663,6 @@
       "folder": "jerinski_c2077-hairs",
       "author": "jerinski",
       "version": "1.0.2.20",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 64,
       "evidence": {
@@ -6823,20 +6776,6 @@
       "folder": "HedgeMage_046f01dc-2df2-0e55-8fd7-79f8a8a2a2e3",
       "author": "Havsglimt",
       "version": "1.1.0.0",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -8381,20 +8320,6 @@
       "folder": "CircleofBlood_037df947-34fd-cb36-9fd5-dded6beb695e",
       "author": "Havsglimt",
       "version": "1.2.0.1",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "featureFlags": [
         "Lua"
       ],
@@ -8435,20 +8360,6 @@
       "folder": "CircleofWinter_b8c4eb4c-4b51-46ec-ee98-56835a28f2cf",
       "author": "Havsglimt",
       "version": "1.0.0.7",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "featureFlags": [
         "Lua"
       ],
@@ -8868,20 +8779,6 @@
       "folder": "EldritchDomain_34030669-2a35-b0fd-ae62-b76b7a9662f0",
       "author": "Havsglimt",
       "version": "1.1.0.1",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -9141,20 +9038,6 @@
       "folder": "GrimSurgeon_6a0535cf-1e45-371c-d6cb-51abc5d61fb7",
       "author": "Havsglimt",
       "version": "1.0.0.9",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -9291,20 +9174,6 @@
       "folder": "jerinski_MHEB_edit",
       "author": "jerinski",
       "version": "2.1.3.18",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 63,
       "evidence": {
@@ -9497,20 +9366,6 @@
       "folder": "jerinski-heads_gith",
       "author": "jerinski",
       "version": "1.1.4.14",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 63,
       "evidence": {
@@ -9664,20 +9519,6 @@
       "folder": "NightDomain_0e809008-995f-6d2b-a4bc-3ef61618d398",
       "author": "Havsglimt",
       "version": "1.1.0.10",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -9922,20 +9763,6 @@
       "folder": "CorpseEater_926dee06-6270-b66d-7b8d-5bb3989cdffb",
       "author": "Havsglimt",
       "version": "1.1.0.0",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -12029,20 +11856,6 @@
       "folder": "DebonaireRogue_a1cc46d8-0e18-9cc3-ff49-39c1b2448ee6",
       "author": "Havsglimt",
       "version": "1.1.0.0",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -13851,20 +13664,6 @@
       "folder": "MisfortuneBringer_07b599ae-d3f4-ac9e-d245-f958625a5328",
       "author": "Havsglimt",
       "version": "1.3.0.1",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -14102,20 +13901,6 @@
       "folder": "OathofConquest_7066e995-e7fc-3932-10db-9d2c9c7de8c8",
       "author": "Havsglimt",
       "version": "3.4.0.3",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -15099,18 +14884,6 @@
       "author": "Fuyou1066",
       "version": "1.1.2.7",
       "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
@@ -17176,12 +16949,6 @@
       "group": "Classes",
       "folder": "Dragontamer_d5fe8e91-2f5b-3d7e-0257-38fff4c2dcde",
       "version": "4.2.0.14",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -18838,20 +18605,6 @@
       "folder": "M_HEL_Head_E_Other_Races",
       "author": "Padme4000",
       "version": "2.1.0.0",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 63,
       "evidence": {
@@ -19335,20 +19088,6 @@
       "folder": "SimpleNymph2_04c29312-0713-b84c-76a8-0598dbda7927",
       "author": "yBeast",
       "version": "2.3.11.517",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "featureFlags": [
         "Lua"
       ],
@@ -26096,20 +25835,6 @@
       "folder": "GraveDomain_0249c64e-d835-22d9-416d-1fb8c9ead490",
       "author": "Havsglimt",
       "version": "1.0.0.14",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -30456,18 +30181,6 @@
       "version": "1.0.0.51",
       "dependencies": [
         {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
-        {
           "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
           "name": "ImpUI (ImprovedUI)"
         }
@@ -30959,7 +30672,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "oftenAbsent": true
     },
     {
       "name": "UnlockLevelCurve_Patch_5eSpells",
@@ -33759,18 +33473,6 @@
       "folder": "Red_Mage_Homebrew_6aec3ad4-990d-7667-a8e9-399d1bb6fc4b",
       "version": "1.0.0.21",
       "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
         {
           "uuid": "a2c4b0fc-e745-41df-81b7-fa53950d86a0",
           "name": "Expansion"
@@ -42395,7 +42097,8 @@
           "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
           "name": "TutorialChestSummoning"
         }
-      ]
+      ],
+      "oftenAbsent": true
     },
     {
       "name": "Ornate Shoulders",
@@ -48654,18 +48357,6 @@
       "author": "yBeast",
       "version": "1.0.0.69",
       "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
         {
           "uuid": "04c29312-0713-b84c-76a8-0598dbda7927",
           "name": "Nymph Playable Race: Beyond Simple Nymph"
@@ -60100,18 +59791,6 @@
       "version": "1.0.0.9",
       "dependencies": [
         {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
-        {
           "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
           "name": "ImpUI (ImprovedUI)"
         },
@@ -65642,18 +65321,6 @@
       "author": "Novahawk7",
       "version": "1.1.1.34",
       "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
         {
           "uuid": "f3d4e722-e576-43ce-a585-cfffcfcbcf40",
           "name": "Ghastly Ghouls: Playable Undead Race"
@@ -71303,18 +70970,6 @@
       "author": "SuperVertigo",
       "version": "1.0.0.18",
       "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
         {
           "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
           "name": "ImpUI (ImprovedUI)"
@@ -78939,24 +78594,6 @@
       "folder": "Prismortalis_5a28cde7-cff0-e977-dc6d-17244faeaa8c",
       "author": "nvlliel",
       "version": "5.5.4.4",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
-        {
-          "uuid": "7131033f-821a-3993-dad4-5bc235cbeb3b",
-          "name": "AnimationUnlocker"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {
@@ -78964,7 +78601,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "7131033f-821a-3993-dad4-5bc235cbeb3b",
+          "name": "AnimationUnlocker"
+        }
+      ]
     },
     {
       "name": "ProgressionPreview_CHS",
@@ -79809,18 +79452,6 @@
       "author": "SuperVertigo",
       "version": "1.0.0.18",
       "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
         {
           "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
           "name": "ImpUI (ImprovedUI)"
@@ -83044,18 +82675,6 @@
       "version": "1.9.1.249",
       "dependencies": [
         {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
-        {
           "uuid": "04c29312-0713-b84c-76a8-0598dbda7927",
           "name": "Nymph Playable Race: Beyond Simple Nymph"
         }
@@ -84617,18 +84236,6 @@
       "version": "1.0.0.11",
       "dependencies": [
         {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        },
-        {
           "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
           "name": "ImpUI (ImprovedUI)"
         },
@@ -86032,20 +85639,6 @@
       "folder": "SorcubusClass_f862919f-c51b-56b2-c6cc-bd81b1669b8d",
       "author": "The_Cheeseman",
       "version": "3.2.2.0",
-      "dependencies": [
-        {
-          "uuid": "630daa32-70f8-3da5-41b9-154fe8410236",
-          "name": "MainUI"
-        },
-        {
-          "uuid": "55ef175c-59e3-b44b-3fb2-8f86acc5d550",
-          "name": "PhotoMode"
-        },
-        {
-          "uuid": "e1ce736b-52e6-e713-e9e7-e6abbb15a198",
-          "name": "CrossplayUI"
-        }
-      ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 60,
       "evidence": {

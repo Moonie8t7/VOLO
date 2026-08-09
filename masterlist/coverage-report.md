@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-09T21:45:00.966Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-09T21:58:36.372Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -14,7 +14,7 @@ Generated 2026-08-09T21:45:00.966Z by `scripts/mine-corpus.mjs`.
 | Separator headers parsed | 934 |
 | **Unique mods indexed** | **7072** |
 | Seen in more than one order | 3515 |
-| With declared dependencies | 314 |
+| With declared dependencies | 293 |
 | With Script Extender flags | 163 |
 | With author metadata | 879 |
 
@@ -101,15 +101,27 @@ mine, so a change to this list shows up in a diff where somebody sees it.
 |---|---|---|
 | `CompatibilityFramework` | 3 of 4 placements | 3 |
 
+## Requirements the working orders do without
+
+A mod here is declared as a requirement by mods that demonstrably run without
+it. Its absence is reported as a warning rather than as a broken load order.
+A real library scores nothing in the last column: measured across this corpus,
+VolitionCabinet, CommunityLibrary, BG3MCM, BG3AF, BG3SX and Compatibility
+Framework are present in every working order that needs them.
+
+| Requirement | Working orders needing it | Without it | Declaring mods |
+|---|---|---|---|
+| `UnlockLevelCurve - Level 13-20 | Patch 8` | 7 | 6 | 6 |
+| `TutorialChestSummoning` | 6 | 5 | 6 |
+| `Ornamental Body Jewellery` | 4 | 3 | 1 |
+
 ## Requirements naming something unknown
 
 Every "install X first" rests on knowing what X is. A name that matches no mod,
 no folder and no curated alias makes a warning nobody can act on, and the string
 would otherwise be formatted into a message and dropped without being counted.
 
-- `MainUI` (64 references)
-- `CrossplayUI` (62 references)
-- `PhotoMode` (62 references)
+_none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
