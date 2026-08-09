@@ -1,20 +1,20 @@
 # Masterlist coverage report
 
-Generated 2026-08-09T19:07:16.084Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-09T21:45:00.966Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 42 |
-| labelled working | 36 |
+| Load orders analysed | 43 |
+| labelled working | 37 |
 | labelled broken | 3 |
-| load-after edges promoted from catalogues | 335 |
+| load-after edges promoted from catalogues | 334 |
 | unlabelled | 3 |
 | Separator headers parsed | 934 |
-| **Unique mods indexed** | **7043** |
-| Seen in more than one order | 3506 |
-| With declared dependencies | 315 |
+| **Unique mods indexed** | **7072** |
+| Seen in more than one order | 3515 |
+| With declared dependencies | 314 |
 | With Script Extender flags | 163 |
 | With author metadata | 879 |
 
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 42 orders carry it, because the short
+this comes from. Only 2 of 43 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -40,12 +40,12 @@ the tool flag a mod as last verified on an older patch.
 |---|---|---|
 | Curated override | 23 | highest, hand-verified infrastructure |
 | Human-authored section header | 4153 | high, a modder put it there |
-| Name pattern fallback | 1340 | medium, needs review |
-| Nexus or mod.io listing category | 653 | medium, the author's own words about what the mod is |
+| Name pattern fallback | 1354 | medium, needs review |
+| Nexus or mod.io listing category | 657 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 16 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 118 | high, measured 97 percent accurate at this band |
 | Neighbour inference, 0.70 to 0.85 | 77 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 663 | none, needs community input |
+| Uncategorised | 674 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -56,34 +56,34 @@ inferred entry stores its agreement score as `evidence.confidence`.
 
 - `Top of Load Order`: 9
 - `User Interface`: 142
-- `Visuals`: 81
+- `Visuals`: 82
 - `Weapons`: 201
 - `Dyes`: 65
 - `Clothing`: 172
 - `Character Customization`: 435
 - `Resources`: 154
-- `Equipment`: 498
-- `Armor`: 697
+- `Equipment`: 500
+- `Armor`: 698
 - `Utilities`: 62
-- `Races`: 189
+- `Races`: 190
 - `Animations`: 85
-- `Spells`: 382
-- `Classes`: 772
+- `Spells`: 385
+- `Classes`: 773
 - `Bodies`: 176
 - `Miscellaneous`: 115
-- `Bug Fixes`: 316
+- `Bug Fixes`: 317
 - `Gameplay`: 325
-- `Accessories`: 75
+- `Accessories`: 76
 - `Quests`: 22
 - `Environment`: 34
 - `Audio`: 10
 - `Hair`: 244
 - `Heads`: 379
-- `Dice`: 254
-- `Companions`: 308
+- `Dice`: 260
+- `Companions`: 309
 - `NPC`: 174
 - `Bottom of Load Order`: 4
-- `unsorted`: 663
+- `unsorted`: 674
 
 ## Requirements the corpus overrules
 
@@ -113,11 +113,11 @@ would otherwise be formatted into a message and dropped without being counted.
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 36
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 37
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **663 mods are `unsorted`.** These need community categorisation.
+- **674 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 
