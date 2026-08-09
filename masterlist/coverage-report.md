@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-08-09T19:05:10.133Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-09T19:07:16.084Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 41 |
-| labelled working | 35 |
+| Load orders analysed | 42 |
+| labelled working | 36 |
 | labelled broken | 3 |
 | load-after edges promoted from catalogues | 335 |
 | unlabelled | 3 |
 | Separator headers parsed | 934 |
-| **Unique mods indexed** | **7042** |
-| Seen in more than one order | 3489 |
+| **Unique mods indexed** | **7043** |
+| Seen in more than one order | 3506 |
 | With declared dependencies | 315 |
 | With Script Extender flags | 163 |
 | With author metadata | 879 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 41 orders carry it, because the short
+this comes from. Only 2 of 42 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -41,11 +41,11 @@ the tool flag a mod as last verified on an older patch.
 | Curated override | 23 | highest, hand-verified infrastructure |
 | Human-authored section header | 4153 | high, a modder put it there |
 | Name pattern fallback | 1340 | medium, needs review |
-| Nexus or mod.io listing category | 652 | medium, the author's own words about what the mod is |
+| Nexus or mod.io listing category | 653 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 16 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 118 | high, measured 97 percent accurate at this band |
-| Neighbour inference, 0.70 to 0.85 | 78 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 662 | none, needs community input |
+| Neighbour inference, 0.70 to 0.85 | 77 | medium, roughly 75 percent accurate, carries a confidence score |
+| Uncategorised | 663 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -55,12 +55,12 @@ inferred entry stores its agreement score as `evidence.confidence`.
 ## Group distribution
 
 - `Top of Load Order`: 9
-- `User Interface`: 143
+- `User Interface`: 142
 - `Visuals`: 81
 - `Weapons`: 201
 - `Dyes`: 65
 - `Clothing`: 172
-- `Character Customization`: 434
+- `Character Customization`: 435
 - `Resources`: 154
 - `Equipment`: 498
 - `Armor`: 697
@@ -83,7 +83,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Companions`: 308
 - `NPC`: 174
 - `Bottom of Load Order`: 4
-- `unsorted`: 662
+- `unsorted`: 663
 
 ## Requirements the corpus overrules
 
@@ -113,11 +113,11 @@ would otherwise be formatted into a message and dropped without being counted.
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 35
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 36
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **662 mods are `unsorted`.** These need community categorisation.
+- **663 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 
