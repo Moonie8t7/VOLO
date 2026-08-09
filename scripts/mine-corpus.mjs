@@ -1478,6 +1478,33 @@ inferred entry stores its agreement score as \`evidence.confidence\`.
 
 ${GROUPS.map(g => `- \`${g.name}\`: ${byGroup.get(g.name) || 0}`).join('\n')}
 
+## Requirements the corpus overrules
+
+A mod here is loaded after the mods that require it, so requirements naming it
+stop being ordering constraints. Right for a patcher, which reads the mods it
+patches; wrong for a library, which has to be parsed first. Decided from the
+working orders alone, with the evidence pooled across everything that requires
+the same mod.
+
+Listed because the decision is otherwise invisible. Dropping a real ordering
+constraint would be silent, and this file is regenerated and committed on every
+mine, so a change to this list shows up in a diff where somebody sees it.
+
+${lateLoaders.length
+  ? ['| Mod | Loaded after its dependants | Mods declaring it |', '|---|---|---|',
+     ...lateLoaders.map(l => `| \`${l.name}\` | ${l.after} of ${l.witnesses} placements | ${l.dependents.length} |`)].join('\n')
+  : '_none: every declared requirement also holds as a load order_'}
+
+## Requirements naming something unknown
+
+Every "install X first" rests on knowing what X is. A name that matches no mod,
+no folder and no curated alias makes a warning nobody can act on, and the string
+would otherwise be formatted into a message and dropped without being counted.
+
+${unidentifiedRequirements.length
+  ? unidentifiedRequirements.map(r => `- \`${r.name}\` (${r.times} references)`).join('\n')
+  : '_none: every stated requirement names a mod this masterlist knows_'}
+
 ## Known limitations
 
 - **Ordering rules are not derived here.** Pairwise co-occurrence over ${masterlist.provenance.working}
