@@ -215,10 +215,11 @@ export async function onRequestPost({ request, env }) {
       return json(502, { error: 'Could not stage the order. Try again in a moment.' });
     }
     const url = new URL(request.url);
-    const excerpt = trimmed
-      .split('\n')
-      .map(l => (l.match(/"Name"\s*:\s*"([^"]{1,60})"/) ?? [])[1])
-      .filter(Boolean)
+    // Matched across the whole text rather than line by line: an export saved
+    // without indentation is a single line, and reading one name per line
+    // would show exactly one mod.
+    const excerpt = [...trimmed.matchAll(/"Name"\s*:\s*"([^"]{1,60})"/g)]
+      .map(m => m[1])
       .slice(0, 8)
       .join(', ');
     body = [
