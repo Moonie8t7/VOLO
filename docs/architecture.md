@@ -1,8 +1,9 @@
 # Architecture
 
-VOLO is a static site with no backend. Sorting happens in the browser; the only
-server-side code is one Cloudflare Pages Function that opens a GitHub issue on a
-submitter's behalf.
+VOLO is a static site with almost no backend. Sorting happens in the browser.
+The server-side code is two Cloudflare Pages Functions, both about submitting:
+one opens a GitHub issue on a submitter's behalf, and one serves back an order
+too large to fit in that issue. Nothing server-side takes part in sorting.
 
 ## The shape of it
 
@@ -109,6 +110,14 @@ something it requires.
 | `client/src/lib/store.tsx` | Session state. Persists only if the user opts in. |
 | `client/src/lib/submit.ts` | Posts a submission to `/api/submit`. |
 | `client/src/lib/head.ts` | Per-route title, description, canonical and robots tags. |
+| `client/src/lib/measured.json` | The held-out measurement, written by `verify-holdout.mjs`. |
+| `client/src/lib/words.ts` | Small counts as words, so generated figures read as prose. |
+
+Two Pages Functions sit behind the site, and neither takes part in sorting.
+`functions/api/submit.js` opens the submission issue. `functions/api/submission/[id].js`
+serves back an order too large to fit in an issue body, which the endpoint
+stages in an R2 bucket bound as `SUBMISSIONS`; the bucket is private, and that
+route is the only way out of it.
 
 Every route is rendered to its own HTML file at build time by
 `scripts/prerender.mjs`, so the served page contains its text before any
@@ -134,9 +143,20 @@ data-size problem.
 | Catalogue crawl | Daily 04:20 UTC | Crawls Nexus and mod.io, rebuilds derived data, commits |
 | Process submission | A labelled issue | Validates, gates, then lands it or opens a pull request |
 | Regenerate masterlist | Corpus change on main | Rebuilds the masterlist from the whole corpus |
+| Replay stranded submissions | Hourly | Replays any submission the pipeline never answered |
 
-All three share a `masterlist` concurrency group, so two runs can never
-regenerate over each other.
+Submission and regeneration share a `masterlist` concurrency group, so two runs
+can never regenerate over each other. The crawl holds its own group instead:
+GitHub keeps a single pending run per group and cancels any earlier one still
+waiting, and a cancelled job never reports, so a submission arriving during the
+crawl's long fetch used to vanish without the submitter hearing anything. The
+hourly replay exists for the cases that still slip through.
+
+None of these rebase generated files. Each commits only what it is the source
+of, the submitted order or the crawled catalogues, and rebuilds everything
+derived from the merged result afterwards. Rebasing two independent
+regenerations of a megabyte of JSON conflicts every time, and it did: five
+orders were reported as landed while the push had actually failed.
 
 ## Why there is no backend
 

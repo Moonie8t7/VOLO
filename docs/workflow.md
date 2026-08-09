@@ -84,6 +84,7 @@ production, and this is the only check that runs against the real host.
 | `build-divider-map.mjs` | Turns the divider paks into the client's taxonomy. |
 | `crawl-summary.mjs` | One readable summary of catalogue and masterlist state. |
 | `verify-deploy.mjs` | Verifies and repairs a deployment, and checks every route. |
+| `sync-figures.mjs` | Rewrites the figures quoted in README and decisions from the data. |
 
 The rest are run by hand rather than by any pipeline, and exist for when the
 question comes up again:
@@ -126,6 +127,26 @@ sequenceDiagram
 The gate is deliberately narrow: a working order that parses, is not a
 duplicate, and does not drop agreement by more than one point lands on its own.
 Everything else waits for a person.
+
+An order can arrive in the issue three ways, and intake tries each in turn
+until one parses, because only parsing tells a populated field from a useful
+one. It may be pasted into the body; it may be a file attached to the issue,
+which is what dragging an export in produces and what the template invites; or
+it may be staged, when the site found it too large for GitHub's 65,536
+character issue body and wrote it to R2 instead, leaving a pointer, an entry
+count and a checksum. A staged pointer is exclusive: the excerpt beside it is
+deliberately not JSON, because a candidate that parses first would otherwise
+land eight mods as somebody's load order.
+
+Two bounds keep one submission from costing everything else. Entries are
+capped after parsing, because the agreement measure compares every pair and a
+six figure entry count would hold a runner until Actions killed it. And a
+submission that validates but fails to land now says so on the issue rather
+than thanking its submitter, which is what it used to do.
+
+Re-adding the `load-order-submission` label replays an issue through current
+intake. That is how orders rejected by an older version get another run
+without asking anyone to file again.
 
 ## Where explanation lives
 

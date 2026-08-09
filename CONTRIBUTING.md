@@ -16,6 +16,12 @@ carries dependency and version data the short one does not, and dividers and
 section headers are evidence in their own right, so tidying up before
 submitting throws away half of what we learn.
 
+Size is not a problem and neither is the format. A TSV or CSV export has no
+UUID column, so the identifier is read off the pak filename instead; an order
+too large for a GitHub issue body is stored separately and referenced, which
+is invisible from your side. If you would rather use the issue form directly,
+attaching the exported file works as well as pasting it.
+
 Broken orders are wanted too. They teach the warnings, and the report you get
 back diagnoses where your order disagrees with orders known to work.
 

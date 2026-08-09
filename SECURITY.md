@@ -19,8 +19,13 @@ one.
 
 - **The site itself.** Anything that could expose or exfiltrate the load order a
   visitor opens, which is meant never to leave their browser.
-- **`functions/api/submit.js`.** The one endpoint that accepts input. Injection,
-  bypassing the anti-spam check, or getting it to write somewhere it should not.
+- **`functions/api/submit.js`.** The only endpoint that accepts input.
+  Injection, bypassing the anti-spam check, or getting it to write somewhere it
+  should not. An order too large for a GitHub issue body is staged in a private
+  R2 bucket, so using the endpoint as a general file host counts, as does
+  reaching an object without the key the endpoint generated.
+- **`functions/api/submission/[id].js`.** The only way back out of that bucket.
+  Serving anything the key does not name, or enumerating what is stored.
 - **The build and mining scripts.** Anything that lets a submitted load order
   influence the masterlist beyond the placement it argues for, or execute during
   a build.
