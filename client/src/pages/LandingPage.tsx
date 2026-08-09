@@ -47,7 +47,7 @@ export default function LandingPage() {
           <h1 className="mb-6">
             <span className="flex items-center justify-center gap-4 md:gap-5">
               <img
-                src="/assets/volo-logo-256.png"
+                src="/assets/volo-logo-256.webp"
                 alt=""
                 width={256}
                 height={256}

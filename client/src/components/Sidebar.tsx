@@ -10,6 +10,7 @@ import { Link, useLocation } from "wouter";
 import { Upload, ArrowUpDown, Download, Send, Database, Heart, Menu, X, LineChart, Info } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useStore } from "@/lib/store";
+import summary from "@/lib/masterlist-summary.json";
 
 const NAV = [
   { href: "/import", icon: Upload, label: "Import" },
@@ -77,7 +78,7 @@ function Brand({ compact = false }: { compact?: boolean }) {
         focus-visible:ring-2 focus-visible:ring-ring"
     >
       <img
-        src="/assets/volo-logo-256.png"
+        src="/assets/volo-logo-256.webp"
         alt=""
         width={compact ? 40 : 56}
         height={compact ? 40 : 56}
@@ -100,18 +101,23 @@ function Brand({ compact = false }: { compact?: boolean }) {
   );
 }
 
+/**
+ * The masterlist figures, from the build-time summary until the list itself is
+ * downloaded.
+ *
+ * The summary is regenerated from the masterlist whenever that changes, so the
+ * two always agree at deploy time and the live copy only ever revises the
+ * numbers upward. Most pages never download the list at all now, and the old
+ * "Loading masterlist" would have sat there permanently on each of them.
+ */
 function Footer() {
   const { masterlist } = useStore();
+  const mods = masterlist?.plugins.length ?? summary.mods;
+  const patch = masterlist?.gamePatch ?? summary.gamePatch;
   return (
     <div className="space-y-1 border-t border-border/20 bg-card/50 px-6 py-5 text-xs text-muted-foreground">
-      {masterlist ? (
-        <>
-          <p>Masterlist: {masterlist.plugins.length.toLocaleString()} mods</p>
-          {masterlist.gamePatch && <p>Calibrated for BG3 {masterlist.gamePatch}</p>}
-        </>
-      ) : (
-        <p>Loading masterlist</p>
-      )}
+      <p>Masterlist: {mods.toLocaleString()} mods</p>
+      {patch && <p>Calibrated for BG3 {patch}</p>}
     </div>
   );
 }

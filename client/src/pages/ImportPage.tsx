@@ -5,7 +5,7 @@
  * the result across visits is opt-in.
  */
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { useDropzone } from 'react-dropzone';
 import { Upload, FileJson, AlertCircle, CheckCircle2, ShieldCheck } from 'lucide-react';
@@ -19,9 +19,14 @@ import type { ParseResult } from '@/lib/types';
 
 export default function ImportPage() {
   const [, navigate] = useLocation();
-  const { importParsed, mods, remember, setRemember } = useStore();
+  const { importParsed, mods, remember, setRemember, requestMasterlist } = useStore();
   const [pasted, setPasted] = useState('');
   const [preview, setPreview] = useState<{ parsed: ParseResult; name: string } | null>(null);
+
+  // Start the download while the file is still being chosen. Waiting for the
+  // import itself would stall the sort behind a megabyte the user could have
+  // been fetching all along.
+  useEffect(() => { requestMasterlist(); }, [requestMasterlist]);
 
   const ingest = useCallback((content: string, name: string) => {
     const parsed = parseLoadOrder(content, name);

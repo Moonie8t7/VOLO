@@ -38,6 +38,15 @@ interface StoreValue {
   masterlistError: string | null;
   isLoadingMasterlist: boolean;
 
+  /**
+   * Start downloading the masterlist and catalogues.
+   *
+   * For pages that show the list itself rather than sort with it, and so have
+   * no imported order to trigger the download. Idempotent, and safe to call
+   * from an effect on every render.
+   */
+  requestMasterlist: () => void;
+
   /** Recomputed whenever mods or the masterlist change. */
   result: SortResult | null;
 
@@ -99,7 +108,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const [masterlist, setMasterlist] = useState<Masterlist | null>(null);
   const [masterlistError, setMasterlistError] = useState<string | null>(null);
-  const [isLoadingMasterlist, setLoading] = useState(true);
+  const [isLoadingMasterlist, setLoading] = useState(false);
 
   /*
    * The Nexus and mod.io catalogues, for mods nothing else places. Loaded
@@ -108,8 +117,33 @@ export function StoreProvider({ children }: { children: ReactNode }) {
    */
   const [listing, setListing] = useState<ExternalListing | null>(null);
 
+  /*
+   * Nothing downloads until something needs it.
+   *
+   * The masterlist and the catalogues come to roughly a megabyte between them,
+   * and each is fetched twice: the bundled copy, then the newer one on GitHub.
+   * Downloading that on mount billed every page for it, the landing page
+   * included, which reports a mod count it already has from the build-time
+   * summary and never touches the list itself. Measured on a phone, that was
+   * most of the gap between the mobile and desktop page scores. It also meant
+   * every visit reached raw.githubusercontent.com whether or not the visitor
+   * ever sorted anything.
+   *
+   * Only ever set, never cleared: a session that has needed the list once
+   * should not re-enter the loading state when an order is cleared.
+   */
+  const [wanted, setWanted] = useState(false);
+  const requestMasterlist = useCallback(() => setWanted(true), []);
+
+  // An imported order is its own request; it cannot be sorted without the list.
   useEffect(() => {
+    if (mods.length) setWanted(true);
+  }, [mods.length]);
+
+  useEffect(() => {
+    if (!wanted) return;
     let cancelled = false;
+    setLoading(true);
     loadListing().then(l => { if (!cancelled && l) setListing(l); });
     loadMasterlist()
       .then(ml => {
@@ -126,7 +160,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
-  }, []);
+  }, [wanted]);
 
   // Persist only when asked. Wrapped because localStorage throws in private
   // mode and when full. Turning remembering off clears whatever was stored,
@@ -241,7 +275,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const value: StoreValue = {
     mods, sourceName, format, importedAt,
-    masterlist, masterlistError, isLoadingMasterlist,
+    masterlist, masterlistError, isLoadingMasterlist, requestMasterlist,
     result,
     remember, setRemember,
     manualMoves, moveMod, clearManual,
