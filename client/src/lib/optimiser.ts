@@ -167,16 +167,28 @@ function rankGroups(masterlist: Masterlist): Map<GroupName, number> {
   return rank;
 }
 
-/** Index the masterlist for lookup by UUID first, then by normalised name. */
+/**
+ * Index the masterlist by UUID, then by normalised name, then by folder.
+ *
+ * The folder index exists because a pak's folder and the name it publishes
+ * under are frequently different things, and a declared dependency can name
+ * either. Mod Configuration Menu ships in a folder called BG3MCM, so a mod
+ * requiring "BG3MCM" matches nothing by name while the mod itself sits in the
+ * user's list. Folders are kept in their own map rather than folded into the
+ * name index so a folder can never shadow a real name.
+ */
 function indexMasterlist(masterlist: Masterlist) {
   const byUuid = new Map<string, MasterlistPlugin>();
   const byName = new Map<string, MasterlistPlugin>();
+  const byFolder = new Map<string, MasterlistPlugin>();
   for (const p of masterlist.plugins ?? []) {
     if (p.uuid) byUuid.set(p.uuid, p);
     const key = p.name.toLowerCase().replace(/[^a-z0-9]/g, '');
     if (key && !byName.has(key)) byName.set(key, p);
+    const folder = (p.folder ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (folder && !byFolder.has(folder)) byFolder.set(folder, p);
   }
-  return { byUuid, byName };
+  return { byUuid, byName, byFolder };
 }
 
 /**
@@ -206,7 +218,7 @@ export function sortLoadOrder(
   listing?: ExternalListing | null,
 ): SortResult {
   const rank = rankGroups(masterlist);
-  const { byUuid, byName } = indexMasterlist(masterlist);
+  const { byUuid, byName, byFolder } = indexMasterlist(masterlist);
   const issues: Issue[] = [];
 
   // Step 1: assign a group to every mod.
@@ -281,9 +293,15 @@ export function sortLoadOrder(
   // must be emitted first.
   const present = new Map<string, Mod>();
   const byNormName = new Map<string, Mod>();
+  // The user's own mods by pak folder, for dependencies that name the folder
+  // rather than the published title. First writer wins, matching the name
+  // index, so an earlier mod is not displaced by a later one sharing a folder.
+  const byNormFolder = new Map<string, Mod>();
   for (const m of mods) {
     present.set(m.uuid, m);
     byNormName.set(m.name.toLowerCase().replace(/[^a-z0-9]/g, ''), m);
+    const folder = (m.folder ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (folder && !byNormFolder.has(folder)) byNormFolder.set(folder, m);
   }
 
   const dependents = new Map<string, Set<string>>();
@@ -309,20 +327,31 @@ export function sortLoadOrder(
     for (const dep of declared) {
       const norm = dep.name.toLowerCase().replace(/[^a-z0-9]/g, '');
       /*
-       * A dependency may name no uuid at all: TSV and CSV exports list
-       * requirements as bare names. Matching those by name alone fails
-       * whenever a mod's pak is named differently from the mod it publishes
-       * as, and ImpUI is exactly that case, shipping as ImpUI_P8_Fork. The
-       * masterlist knows which uuid the published name belongs to, so a name
-       * that resolves there is looked up among the user's mods by uuid.
-       * Without this the sorter told people a mod was missing while it sat in
-       * the list in front of them, which is the worst thing a critical
-       * warning can do.
+       * Five ways to recognise the same mod, because a dependency can name it
+       * by any of them and a wrong answer here is the worst thing a critical
+       * warning can do: it tells someone a mod is missing while it sits in the
+       * list in front of them.
+       *
+       * The uuid is tried first and is the only exact answer. It fails more
+       * often than it should, because a declared uuid is copied by hand into a
+       * pak's metadata and goes stale when the dependency is republished.
+       *
+       * Names fail too. A pak's folder and its published title are separate
+       * strings and frequently differ: ImpUI ships as ImpUI_P8_Fork, and Mod
+       * Configuration Menu ships in a folder called BG3MCM, so a mod that
+       * requires "BG3MCM" matches nothing at all by name. So the folder is
+       * tried on both sides, and the masterlist is used as a translation table
+       * between the two, in both directions.
        */
+      const viaMasterlist = byName.get(norm) ?? byFolder.get(norm);
       const target =
         (dep.uuid ? present.get(dep.uuid) : undefined) ??
         byNormName.get(norm) ??
-        (byName.get(norm)?.uuid ? present.get(byName.get(norm)!.uuid) : undefined);
+        byNormFolder.get(norm) ??
+        (viaMasterlist?.uuid ? present.get(viaMasterlist.uuid) : undefined) ??
+        (viaMasterlist ? byNormName.get(
+          viaMasterlist.name.toLowerCase().replace(/[^a-z0-9]/g, ''),
+        ) : undefined);
 
       if (!target) {
         const list = missing.get(dep.name) ?? [];
@@ -332,6 +361,26 @@ export function sortLoadOrder(
       }
       if (target.uuid === mod.uuid || linked.has(target.uuid)) continue;
       linked.add(target.uuid);
+
+      /*
+       * "Requires it" and "loads after it" are different claims, and a pak can
+       * only make the first. They agree for a library, which has to be parsed
+       * before anything reads it, and disagree for a patcher, which reads the
+       * mods it patches and so goes last. Where the working orders say a mod
+       * is loaded after the things requiring it, the requirement is satisfied
+       * without becoming an ordering edge, and the mod keeps the late slot the
+       * corpus gives it. Compatibility Framework is the case that found this:
+       * pinned to the last divider, then dragged to the front by five mods
+       * declaring it.
+       */
+      if (byUuid.get(target.uuid)?.loadsAfterDependents) {
+        reasons.get(target.uuid)?.push({
+          kind: 'dependency',
+          text: `${mod.name} requires it, but working orders load it later, so it stays where it is.`,
+          relatedUuid: mod.uuid,
+        });
+        continue;
+      }
 
       if (!dependents.has(target.uuid)) dependents.set(target.uuid, new Set());
       dependents.get(target.uuid)!.add(mod.uuid);

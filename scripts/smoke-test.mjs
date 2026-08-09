@@ -287,6 +287,147 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// A dependency naming a pak folder rather than a published title, with a stale
+// uuid alongside it. Reported from the wild: four "missing dependency" notices
+// on mods that were all present, one of them Mod Configuration Menu, which
+// ships in a folder called BG3MCM and so matched nothing by name.
+{
+  const order = {
+    Order: [
+      {
+        Name: 'Mod Configuration Menu',
+        Folder: 'BG3MCM',
+        UUID: '755a8a72-407f-4f0d-9a33-274ac75b1f7b',
+      },
+      {
+        Name: 'Some Mod That Needs It',
+        Folder: 'SomeModThatNeedsIt',
+        UUID: '11111111-2222-3333-4444-555555555555',
+        Dependencies: [
+          // The name a modder writes, and a uuid gone stale since it was copied.
+          { Name: 'BG3MCM', UUID: '00000000-0000-0000-0000-000000000000' },
+        ],
+      },
+    ],
+  };
+  const parsed = parseLoadOrder(JSON.stringify(order), 'folder-dep.json');
+  console.log('');
+  console.log('folder-named dependency fixture');
+
+  const result = sortLoadOrder(parsed.mods, masterlist);
+  const missing = result.issues.filter(i => i.kind === 'missing-dependency');
+  if (!missing.length) {
+    console.log('  ok    a dependency named by pak folder resolves to the installed mod');
+  } else {
+    failures++;
+    console.log('  FAIL  false missing dependency: ' + JSON.stringify(missing.map(i => i.message)));
+  }
+
+  const names = result.mods.map(m => m.name);
+  if (names.indexOf('Mod Configuration Menu') < names.indexOf('Some Mod That Needs It')) {
+    console.log('  ok    and still orders the dependency first');
+  } else {
+    failures++;
+    console.log('  FAIL  folder-resolved dependency did not order first: ' + JSON.stringify(names));
+  }
+
+  // The other half of the guarantee: resolving by folder must not invent a
+  // link. A requirement nobody in the list satisfies still has to be reported.
+  const absent = {
+    Order: [
+      {
+        Name: 'Some Mod That Needs It',
+        Folder: 'SomeModThatNeedsIt',
+        UUID: '11111111-2222-3333-4444-555555555555',
+        Dependencies: [{ Name: 'NotInstalledAnywhere', UUID: '' }],
+      },
+    ],
+  };
+  const absentResult = sortLoadOrder(
+    parseLoadOrder(JSON.stringify(absent), 'absent-dep.json').mods,
+    masterlist,
+  );
+  if (absentResult.issues.some(i => i.kind === 'missing-dependency')) {
+    console.log('  ok    a genuinely absent dependency is still reported');
+  } else {
+    failures++;
+    console.log('  FAIL  a genuinely missing dependency went unreported');
+  }
+}
+
+// A required mod that the working orders load last anyway. Compatibility
+// Framework is the real case: pinned to the final divider, then dragged to the
+// front by the five mods declaring it as a requirement. Built here from
+// synthetic plugins so the test states the rule rather than depending on which
+// mods the corpus currently flags.
+{
+  const LATE = 'aaaaaaaa-0000-0000-0000-000000000001';
+  const EARLY = 'bbbbbbbb-0000-0000-0000-000000000002';
+  const withFlag = flagged => ({
+    ...masterlist,
+    plugins: [
+      ...masterlist.plugins,
+      {
+        name: 'Late Patcher',
+        uuid: LATE,
+        group: masterlist.plugins.find(p => p.divider === 105)?.group ?? 'Bottom of Load Order',
+        divider: 105,
+        ...(flagged ? { loadsAfterDependents: true } : {}),
+      },
+      {
+        name: 'Early Class Mod',
+        uuid: EARLY,
+        group: 'Classes',
+        divider: 57,
+        dependencies: [{ uuid: LATE, name: 'Late Patcher' }],
+      },
+    ],
+  });
+
+  const order = JSON.stringify({
+    Order: [
+      { Name: 'Late Patcher', UUID: LATE, Folder: 'LatePatcher' },
+      { Name: 'Early Class Mod', UUID: EARLY, Folder: 'EarlyClassMod' },
+    ],
+  });
+  const mods = parseLoadOrder(order, 'late-patcher.json').mods;
+
+  console.log('');
+  console.log('load-after-dependents fixture');
+
+  const flagged = sortLoadOrder(mods, withFlag(true)).mods.map(m => m.name);
+  if (flagged.indexOf('Late Patcher') > flagged.indexOf('Early Class Mod')) {
+    console.log('  ok    a flagged mod keeps its late slot despite being required');
+  } else {
+    failures++;
+    console.log('  FAIL  flagged mod still dragged forward: ' + JSON.stringify(flagged));
+  }
+
+  // The control. Without the flag the requirement is an ordering edge as
+  // usual, which is what makes the assertion above mean anything.
+  const plain = sortLoadOrder(mods, withFlag(false)).mods.map(m => m.name);
+  if (plain.indexOf('Late Patcher') < plain.indexOf('Early Class Mod')) {
+    console.log('  ok    and an ordinary requirement still orders first');
+  } else {
+    failures++;
+    console.log('  FAIL  unflagged requirement did not order first: ' + JSON.stringify(plain));
+  }
+
+  // Dropping the ordering claim must not drop the requirement.
+  const soloResult = sortLoadOrder(
+    parseLoadOrder(JSON.stringify({
+      Order: [{ Name: 'Early Class Mod', UUID: EARLY, Folder: 'EarlyClassMod' }],
+    }), 'late-patcher-absent.json').mods,
+    withFlag(true),
+  );
+  if (soloResult.issues.some(i => i.kind === 'missing-dependency')) {
+    console.log('  ok    the requirement still stands when the mod is absent');
+  } else {
+    failures++;
+    console.log('  FAIL  a flagged mod going missing was not reported');
+  }
+}
+
 // numbered text fixture: BG3MM's text export writes "NN. Name (file.pak)".
 // Numbering and filenames must strip, commas in names must survive, and
 // engine modules must still be recognised and dropped.

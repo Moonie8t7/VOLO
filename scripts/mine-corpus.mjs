@@ -1020,6 +1020,36 @@ for (const p of plugins) {
 }
 
 /**
+ * Where each mod sits in every order somebody has played on.
+ *
+ * The arbiter for both kinds of dependency edge below, so it is built once,
+ * from whatever orders this run is building from. A held-out evaluation
+ * therefore cannot leak the answer into its own training data.
+ */
+const workingPositions = orders.filter(o => o.label === 'working').map(o => {
+  const pos = new Map();
+  o.entries.forEach((e, i) => {
+    if (!e.Name || SEPARATOR_RE.test(e.Name) || DIVIDER_NAMES.has(e.Name)) return;
+    if (e.UUID && DIVIDERS.has(e.UUID)) return;
+    const k = canonicalKey(keyOf(e));
+    if (!pos.has(k)) pos.set(k, i);
+  });
+  return pos;
+});
+
+/** How the corpus actually orders one mod against another. */
+function orderWitness(dependent, dependency) {
+  let before = 0, after = 0;
+  for (const pos of workingPositions) {
+    const a = pos.get(canonicalKey(dependent));
+    const b = pos.get(canonicalKey(dependency));
+    if (a === undefined || b === undefined) continue;
+    if (b < a) before++; else after++;
+  }
+  return { before, after, witnesses: before + after };
+}
+
+/**
  * Promote crawled requirement data into load-after constraints.
  *
  * Dependencies are the only hard evidence the sorter has; everything else is
@@ -1110,27 +1140,11 @@ if (process.env.VOLO_NO_EXTERNAL_DEPS) {
    * but the load position is not. Where the corpus actively contradicts an
    * edge, the people who played the game win over the requirements table.
    *
-   * Computed from whatever orders this run is building from, so a held-out
-   * evaluation cannot leak the answer into its own training data.
+   * Uses the shared witness count built above.
    */
-  const workingPositions = orders.filter(o => o.label === 'working').map(o => {
-    const pos = new Map();
-    o.entries.forEach((e, i) => {
-      if (!e.Name || SEPARATOR_RE.test(e.Name) || DIVIDER_NAMES.has(e.Name)) return;
-      if (e.UUID && DIVIDERS.has(e.UUID)) return;
-      const k = canonicalKey(keyOf(e));
-      if (!pos.has(k)) pos.set(k, i);
-    });
-    return pos;
-  });
   const corpusContradicts = (dependent, dependency) => {
-    let ok = 0, bad = 0;
-    for (const pos of workingPositions) {
-      const a = pos.get(dependent), b = pos.get(dependency);
-      if (a === undefined || b === undefined) continue;
-      if (b < a) ok++; else bad++;
-    }
-    return ok + bad >= 2 && bad > ok;
+    const { before, after, witnesses } = orderWitness(dependent, dependency);
+    return witnesses >= 2 && after > before;
   };
 
   // Existing pak-declared edges seed the graph, so a promoted edge cannot
@@ -1181,6 +1195,82 @@ if (process.env.VOLO_NO_EXTERNAL_DEPS) {
     `${skippedOptional} optional skipped, ${contradicted} contradicted by the corpus, ` +
     `${cycles} cycle-forming dropped)`,
   );
+}
+
+/*
+ * Declared requirements that the corpus says are not load-order constraints.
+ *
+ * "Requires X" and "must load after X" are different claims, and a pak can
+ * only make the first one. They coincide for a library, which has to be parsed
+ * before whatever reads it. They come apart for a patcher, which reads the
+ * mods it patches and therefore has to load last: Compatibility Framework is
+ * declared as a requirement by several mods and placed after every one of them
+ * by the players who actually ran the game.
+ *
+ * Overruling a mod's own metadata takes more evidence than overruling a
+ * catalogue's requirements table, so this asks for more witnesses and a clear
+ * majority rather than a bare one. Only the ordering claim is dropped. The
+ * requirement stands, so a framework that is genuinely absent is still
+ * reported as missing.
+ */
+const DECLARED_MIN_WITNESSES = 3;
+const DECLARED_MIN_SHARE = 0.75;
+
+/*
+ * Evidence is pooled across everything that requires the same mod, because the
+ * question is about that mod rather than about any one pair. Individual pairs
+ * are too thin to answer it: Compatibility Framework is required by five mods
+ * and no single pairing appears in more than two working orders, while the
+ * five together appear in six and agree.
+ *
+ * A library scores near zero here, since it has to be parsed before anything
+ * that reads it and every order will show that. Only something loaded after
+ * the mods that require it can reach the threshold.
+ */
+const pooled = new Map();
+for (const p of plugins) {
+  for (const d of p.dependencies ?? []) {
+    const { before, after, witnesses } = orderWitness(p.uuid, d.uuid);
+    if (!witnesses) continue;
+    const acc = pooled.get(d.uuid) ?? { before: 0, after: 0, name: d.name, dependents: [] };
+    acc.before += before;
+    acc.after += after;
+    acc.dependents.push(p.name);
+    pooled.set(d.uuid, acc);
+  }
+}
+
+const lateLoaders = [];
+for (const [uuid, acc] of pooled) {
+  const witnesses = acc.before + acc.after;
+  if (witnesses < DECLARED_MIN_WITNESSES) continue;
+  if (acc.after / witnesses < DECLARED_MIN_SHARE) continue;
+  const plugin = plugins.find(p => p.uuid === uuid);
+  if (!plugin) continue;
+  /*
+   * The flag travels on the mod, not on each pairing, so a dependant nobody
+   * has posted an order for is covered too. That is the point: the reports
+   * that prompted this were from people whose exact combination the corpus
+   * had never seen.
+   */
+  plugin.loadsAfterDependents = true;
+  lateLoaders.push({ name: plugin.name, ...acc, witnesses });
+}
+lateLoaders.sort((a, b) => a.name.localeCompare(b.name));
+
+if (lateLoaders.length) {
+  console.log(
+    `declared deps: ${lateLoaders.length} ` +
+    `${lateLoaders.length === 1 ? 'mod loads' : 'mods load'} after what requires them`,
+  );
+  for (const l of lateLoaders) {
+    console.log(
+      `  ${l.name}: ${l.after}/${l.witnesses} placements are after its dependants ` +
+      `(${l.dependents.length} declaring mods)`,
+    );
+  }
+} else {
+  console.log('declared deps: no ordering claims contradicted by the corpus');
 }
 
 plugins.sort((a, b) =>

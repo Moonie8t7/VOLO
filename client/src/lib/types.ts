@@ -55,6 +55,14 @@ export interface MasterlistPlugin {
   divider?: number;
   /** Relies on the Script Extender, which is a dll and never appears in a load order. */
   usesScriptExtender?: boolean;
+  /**
+   * Loaded after the mods that require it, so requirements naming it stop
+   * being ordering constraints. True of a patcher, which reads the mods it
+   * patches and so has to come last. Set by the miner from the working orders,
+   * never by hand. The requirement itself still stands: the mod being absent
+   * is still reported.
+   */
+  loadsAfterDependents?: boolean;
   /** Curated warnings attached to this mod, shown whenever it is present. */
   messages?: { text: string; severity: IssueSeverity }[];
   evidence?: {
