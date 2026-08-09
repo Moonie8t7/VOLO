@@ -21,7 +21,7 @@ nothing reaches it unless you choose to submit an order from the Submit page.
 Mods from Nexus Mods and from mod.io, the platform behind the official in-game
 mod manager, are both supported.
 
-Measured on orders it has never seen, VOLO agrees with them **59.7 percent** of
+Measured on orders it has never seen, VOLO agrees with them **59.8 percent** of
 the time against **50.5 percent** for a random shuffle. That figure averages
 orders rather than mods, so a 41-mod order weighs as much as a 999-mod one,
 though weighting by mods barely moves it. It is a sorting aid with evidence
@@ -83,12 +83,12 @@ Full detail in [docs/architecture.md](docs/architecture.md).
 
 ## The masterlist
 
-`masterlist/bg3-masterlist.json` covers 4,557 mods. 2,039 were
+`masterlist/bg3-masterlist.json` covers 4,597 mods. 2,039 were
 categorised from section headers modders wrote in their own orders,
-1,197 from name patterns, 471 from a Nexus or mod.io listing,
+1,221 from name patterns, 482 from a Nexus or mod.io listing,
 28 from where their author's other catalogued mods sit, 166 inferred
-from their neighbours, 21 from curated overrides, and 635 are not
-categorised at all. 3,913 of the 4,557 sit on a divider position.
+from their neighbours, 21 from curated overrides, and 640 are not
+categorised at all. 3,948 of the 4,597 sit on a divider position.
 
 These move as the corpus grows.
 [masterlist/coverage-report.md](masterlist/coverage-report.md) is regenerated on
@@ -109,7 +109,7 @@ nothing scores well; a mod left at the end because nothing is known about it is
 rewarded precisely because unplaced mods cluster there. Read it alongside the
 per-order and mod-weighted splits rather than on its own.
 
-635 mods have no category from any source. Almost all appeared in exactly one
+640 mods have no category from any source. Almost all appeared in exactly one
 submitted order, so there is nothing to infer from.
 
 The automated checks parse VOLO's own output with VOLO's own parser, which is
