@@ -105,17 +105,28 @@ function toMod(raw: Record<string, unknown>, index: number): Mod | null {
       ? String((verObj as Record<string, unknown>).VersionInt)
       : undefined;
 
+  const fileName = str(raw.FileName ?? raw.fileName);
+
   return {
-    // Nameless-but-real mods can lack a UUID in hand-written lists; synthesise a
-    // stable key so they still sort rather than silently collapsing together.
-    uuid: uuid || `name:${name.toLowerCase()}`,
+    /*
+     * A pak filename carries the mod's real UUID, and BG3MM's TSV and CSV
+     * exports have no UUID column at all, so without reading it every mod in
+     * such a file gets a synthetic key. That key then goes out in the export,
+     * where BG3MM cannot match it to anything installed: the mods land in the
+     * inactive pane and every dependency declared by UUID reads as missing.
+     * Both were reported from a real load order before this looked here.
+     *
+     * Nameless-but-real mods in hand-written lists still fall back to a
+     * synthetic key, so they sort rather than silently collapsing together.
+     */
+    uuid: uuid || uuidFromFileName(fileName) || `name:${name.toLowerCase()}`,
     name,
     originalIndex: index,
     folder: str(raw.Folder ?? raw.folder),
     author: str(raw.Author ?? raw.author),
     version: versionOf(raw.Version ?? raw.version),
     description: str(raw.Description ?? raw.description),
-    fileName: str(raw.FileName ?? raw.fileName),
+    fileName,
     dependencies: toModRefs(raw.Dependencies ?? raw.dependencies),
     featureFlags: flags,
     version64: str(raw.Version64) ?? versionInt,
@@ -128,6 +139,21 @@ const str = (v: unknown): string | undefined => {
   const s = typeof v === 'string' ? v.trim() : '';
   return s || undefined;
 };
+
+/**
+ * The UUID a pak filename ends with, when it ends with a whole one.
+ *
+ * BG3MM names a pak `<folder>_<uuid>.pak`. Only a complete UUID counts:
+ * submitted files carry truncated and hand-edited tails as well, and half an
+ * identifier matches nothing while looking like it should.
+ */
+function uuidFromFileName(fileName: string | undefined): string | undefined {
+  if (!fileName) return undefined;
+  const m = fileName.match(
+    /([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?:\.pak)?$/i,
+  );
+  return m ? m[1].toLowerCase() : undefined;
+}
 
 /** Walk a list of raw entries, splitting mods from section headers. */
 function collect(entries: unknown[], format: string): ParseResult {
