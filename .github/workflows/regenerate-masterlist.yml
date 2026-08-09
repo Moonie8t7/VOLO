@@ -54,6 +54,15 @@ jobs:
           node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
           node scripts/sync-figures.mjs
 
+      # Pushes made with the workflow token do not trigger the checks
+      # workflow, so this commit would land unverified. Run the same gate here
+      # and fail before pushing anything that would not have passed it.
+      - name: Run the checks this push cannot trigger
+        run: |
+          npm run check
+          npm run build
+          npm test
+
       - name: Commit whatever changed
         run: |
           git config user.name "volo-submissions"
