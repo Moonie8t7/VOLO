@@ -61,40 +61,74 @@ jobs:
           echo "automerge=$automerge" >> "$GITHUB_OUTPUT"
           echo "accepted=$accepted automerge=$automerge"
 
-      # A landed order changes every figure the prose quotes, and nobody is
-      # awake to transcribe them: the last submission arrived at night and the
-      # checks failed on stale figures until morning. The measurement JSON
-      # feeds the site; the sync rewrites the README and decisions prose.
-      - name: Re-measure and sync the quoted figures
-        if: steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge == 'true'
-        run: |
-          node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
-          node scripts/sync-figures.mjs
-
-      # Pushes made with the workflow token do not trigger the checks
-      # workflow, so this commit would land unverified. Run the same gate here
-      # and fail before pushing anything that would not have passed it.
-      - name: Run the checks this push cannot trigger
-        if: steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge == 'true'
-        run: |
-          npm run check
-          npm run build
-          npm test
-
+      # The corpus file is the only thing that rebases.
+      #
+      # Two submissions landing close together each regenerate the masterlist,
+      # the measurement and the prose from their own view of the corpus, and
+      # rebasing the second onto the first collided on every one of those
+      # artifacts. The rebase aborted, the run failed after the accepted
+      # comment had already been posted, and five orders were reported as
+      # landed while never reaching main. So: commit the submitted order alone,
+      # rebase that, and only then derive everything from the merged corpus,
+      # which is the only state that includes both orders anyway.
       - name: Land it on main
+        id: land
         if: steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          set -euo pipefail
           git config user.name "volo-submissions"
           git config user.email "submissions@users.noreply.github.com"
-          # The masterlist in this commit was regenerated from the full corpus
-          # including this order, moments ago, so it is never stale.
-          git add "Load Orders - Public Submitted" masterlist public/bg3-masterlist.json client/src/lib/masterlist-summary.json client/src/lib/measured.json README.md docs/decisions.md
-          git commit -m "Add load order from issue #${{ github.event.issue.number }} and regenerate the masterlist"
-          # Another run may have landed between checkout and now.
-          git pull --rebase origin main
-          git push origin HEAD:main
+
+          for attempt in 1 2 3; do
+            # Derived files are rebuilt below; carrying this run's copies into
+            # the rebase is what caused the conflicts.
+            git checkout -- masterlist public client/src/lib README.md docs/decisions.md 2>/dev/null || true
+            git add "Load Orders - Public Submitted"
+            git diff --cached --quiet && { echo "nothing to land"; exit 1; }
+            git commit -m "Add load order from issue #${{ github.event.issue.number }}"
+
+            if ! git pull --rebase origin main; then
+              git rebase --abort || true
+              echo "rebase failed on attempt $attempt"
+              git reset --hard origin/main
+              continue
+            fi
+
+            node scripts/mine-corpus.mjs
+            node scripts/build-divider-map.mjs
+            node -e "require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')"
+            node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
+            node scripts/sync-figures.mjs
+
+            # Pushes made with the workflow token do not trigger the checks
+            # workflow, so this would otherwise land unverified.
+            npm run check
+            npm run build
+            npm test
+
+            git add masterlist public client/src/lib README.md docs/decisions.md
+            git commit --amend --no-edit -m "Add load order from issue #${{ github.event.issue.number }} and regenerate the masterlist"
+
+            if git push origin HEAD:main; then
+              echo "landed=yes" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "push rejected on attempt $attempt, retrying"
+            git reset --hard origin/main
+          done
+
+          echo "could not land after three attempts"
+          exit 1
+
+      # Only once the push is real. Closing on the strength of the validation
+      # alone is how five submitters were thanked for orders that never landed.
+      - name: Close the issue
+        if: steps.land.outputs.landed == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
           gh issue close "${{ github.event.issue.number }}" \
             --comment "Merged automatically: the order validated and left the verification metric intact. Thank you."
 
@@ -130,5 +164,14 @@ jobs:
         run: |
           if [ ! -s /tmp/report.md ]; then
             printf 'The intake job did not complete. A maintainer will look at this submission.\n' > /tmp/report.md
+          fi
+          # The report is written while validating, before the order is pushed,
+          # so on its own it promises an outcome that has not happened yet.
+          # Five submitters were told their order had landed when the push had
+          # actually failed; the truth is only known here.
+          if [ "${{ steps.process.outputs.accepted }}" = "yes" ] \
+             && [ "${{ steps.process.outputs.automerge }}" = "true" ] \
+             && [ "${{ steps.land.outputs.landed }}" != "yes" ]; then
+            printf '\n---\n\n**This order validated but did not land.** Something went wrong while committing it, so it is not in the corpus yet. Nothing is wrong with your submission and it does not need resending: a maintainer will replay it.\n' >> /tmp/report.md
           fi
           gh issue comment "${{ github.event.issue.number }}" --body-file /tmp/report.md
