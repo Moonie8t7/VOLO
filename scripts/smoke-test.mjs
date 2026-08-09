@@ -698,6 +698,99 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * Staged submissions: the pointer intake trusts, and the ones it must not.
+ *
+ * An order too large for a GitHub issue body is written to R2 and referenced
+ * from the issue, so intake fetches a URL it read out of public text that a
+ * stranger wrote. The pattern deciding which URL is the whole of that defence,
+ * and it is the kind of thing a later edit loosens without noticing, so the
+ * shapes that must never match are asserted here rather than trusted.
+ */
+{
+  console.log('');
+  console.log('staged submissions');
+
+  const processor = fs.readFileSync('scripts/process-submission.mjs', 'utf8');
+  const endpoint = fs.readFileSync('functions/api/submit.js', 'utf8');
+  const route = fs.readFileSync('functions/api/submission/[id].js', 'utf8');
+
+  // The live pattern, lifted from the source so a change there reaches here.
+  const pointerSrc = processor.match(/\/\^Stored order:[^\n]*?\/m,/);
+  if (!pointerSrc) {
+    failures++;
+    console.log('  FAIL  could not find the staged-order pointer pattern in the processor');
+  } else {
+    const POINTER = new RegExp(
+      pointerSrc[0].replace(/^\//, '').replace(/\/m,$/, ''),
+      'm',
+    );
+    const key = 'a'.repeat(32);
+    const good = `Stored order: https://volobg3.com/api/submission/${key}`;
+    const hostile = [
+      ['another host', `Stored order: https://evil.example.com/api/submission/${key}`],
+      ['a lookalike domain', `Stored order: https://volobg3.com.evil.example/api/submission/${key}`],
+      ['path traversal', 'Stored order: https://volobg3.com/api/submission/../../etc/passwd'],
+      ['a mention rather than a pointer', `See https://volobg3.com/api/submission/${key} for the order`],
+      ['plain http', `Stored order: http://volobg3.com/api/submission/${key}`],
+    ];
+
+    const accepted = POINTER.test(good);
+    const leaked = hostile.filter(([, line]) => POINTER.test(line));
+    if (accepted && !leaked.length) {
+      console.log(`  ok    the pointer accepts its own URL and rejects ${hostile.length} hostile shapes`);
+    } else {
+      failures++;
+      if (!accepted) console.log('  FAIL  the pointer pattern rejects a URL the endpoint itself writes');
+      for (const [what] of leaked) console.log(`  FAIL  the pointer pattern accepts ${what}`);
+    }
+  }
+
+  // A truncated fetch still parses, and a short order looks like a small one.
+  if (processor.includes('expectedEntries') && processor.includes('staged order looks truncated')) {
+    console.log('  ok    a staged order short of its recorded entry count is refused');
+  } else {
+    failures++;
+    console.log('  FAIL  nothing checks a staged order against its recorded entry count');
+  }
+
+  if (processor.includes('does not match the checksum')) {
+    console.log('  ok    a staged order is checked against the checksum recorded at submission');
+  } else {
+    failures++;
+    console.log('  FAIL  nothing checks the staged order checksum');
+  }
+
+  /*
+   * The excerpt in a staged issue body must not be parseable as an order.
+   * Intake tries every candidate until one parses, so a JSON-shaped excerpt
+   * would win and land a handful of mods as somebody's whole load order.
+   */
+  if (endpoint.includes('First entries:') && !endpoint.includes("'```json',\n      trimmed")) {
+    console.log('  ok    the staged excerpt is prose, so it cannot parse as the order');
+  } else {
+    failures++;
+    console.log('  FAIL  the staged issue body inlines the order as JSON as well as staging it');
+  }
+
+  // The read route is the only way out of the bucket, so it must be narrow.
+  if (/\^\[0-9a-f\]\{32\}\$/.test(route) && route.includes('env.SUBMISSIONS')) {
+    console.log('  ok    the read route serves one key shape and nothing else');
+  } else {
+    failures++;
+    console.log('  FAIL  the read route does not constrain the key it will look up');
+  }
+
+  // Staging happens after scrubbing, or the bucket holds what the issue never would.
+  const stagesScrubbed = endpoint.indexOf('SUBMISSIONS.put') > endpoint.indexOf('const order = typeof rawOrder');
+  if (stagesScrubbed) {
+    console.log('  ok    what reaches storage is the scrubbed order');
+  } else {
+    failures++;
+    console.log('  FAIL  the order is staged before it is scrubbed');
+  }
+}
+
+/**
  * Figures quoted in the README must match the masterlist they describe.
  *
  * README is the first thing anyone reads and the last thing anyone regenerates.
