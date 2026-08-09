@@ -47,11 +47,13 @@ body:
     attributes:
       label: The load order
       description: >
-        Paste the JSON here, or drag the exported file into this box and GitHub
-        will attach it.
+        Paste the contents of the export here. For a large order, leave this
+        box empty and drag the exported file into the Notes box below instead:
+        GitHub attaches it and the file is read from there. Either way works,
+        and there is no size limit on an attached file.
       render: json
     validations:
-      required: true
+      required: false
   - type: textarea
     id: notes
     attributes:

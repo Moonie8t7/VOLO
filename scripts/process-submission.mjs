@@ -92,22 +92,61 @@ if (!working && !broken) {
   finish(false, ['## Submission rejected', '', 'Could not read the working or not working answer from the issue.']);
 }
 
-/** Step 2: the order itself. Prefer a fenced block; fall back to an attachment. */
-async function extractOrderText() {
-  const fence = body.match(/```(?:json)?\s*\n([\s\S]*?)```/);
-  if (fence && fence[1].trim().length > 2) return fence[1];
+/**
+ * GitHub's own attachment hosts, the only places an order is ever fetched
+ * from. The issue body is public text anyone can write, so an unrestricted
+ * fetch would let a stranger point this workflow at any address it can reach.
+ */
+const ATTACHMENT_URL =
+  /https:\/\/(?:github\.com\/user-attachments\/(?:files|assets)|user-images\.githubusercontent\.com|objects\.githubusercontent\.com)\/[^\s)"'\]]+/g;
 
-  const attachment = body.match(
-    /https:\/\/(?:github\.com\/user-attachments\/files|user-images\.githubusercontent\.com)[^\s)"']+/,
-  );
-  if (attachment) {
-    const res = await fetch(attachment[0], { signal: AbortSignal.timeout(30_000) });
-    if (!res.ok) throw new Error(`attachment fetch failed: ${res.status}`);
-    return await res.text();
+/** A fetched attachment larger than this is not a load order. */
+const MAX_ATTACHMENT_BYTES = 8 * 1024 * 1024;
+
+async function fetchAttachment(url) {
+  const res = await fetch(url, {
+    signal: AbortSignal.timeout(30_000),
+    // An attachment link is a redirect to storage, and following it off
+    // GitHub's hosts would defeat the allowlist above.
+    redirect: 'follow',
+  });
+  if (!res.ok) throw new Error(`attachment fetch failed: ${res.status}`);
+  if (!ATTACHMENT_URL.test(new URL(res.url).origin + new URL(res.url).pathname)) {
+    ATTACHMENT_URL.lastIndex = 0;
+    throw new Error('attachment redirected off GitHub');
   }
+  ATTACHMENT_URL.lastIndex = 0;
+  const size = Number(res.headers.get('content-length') ?? 0);
+  if (size > MAX_ATTACHMENT_BYTES) throw new Error('attachment is too large to be a load order');
+  const text = await res.text();
+  if (text.length > MAX_ATTACHMENT_BYTES) throw new Error('attachment is too large to be a load order');
+  return text;
+}
+
+/**
+ * Step 2: the order itself, from wherever the submitter actually put it.
+ *
+ * Every candidate is tried in turn rather than trusting the first, because the
+ * two ways this failed in the wild both looked like a populated fence. The
+ * template invites dragging the export in, and GitHub turns that into a
+ * markdown link, so the fence held `[MainOrder.json](https://...)`; another
+ * submitter typed "See notes" in the box and attached the file below it. Both
+ * parsed as an order and both failed, while the real order sat one candidate
+ * further down the list.
+ */
+async function orderCandidates() {
+  const candidates = [];
+  const fence = body.match(/```(?:json)?\s*\n([\s\S]*?)```/);
+  if (fence && fence[1].trim().length > 2) candidates.push(async () => fence[1]);
+
+  for (const url of body.match(ATTACHMENT_URL) ?? []) {
+    candidates.push(() => fetchAttachment(url));
+  }
+
   // Last resort: the body may simply contain raw JSON.
   const braced = body.match(/\{[\s\S]*\}/);
-  return braced ? braced[0] : null;
+  if (braced) candidates.push(async () => braced[0]);
+  return candidates;
 }
 
 /**
@@ -131,16 +170,6 @@ function stripLocalPaths(text) {
     .replace(/(?<![A-Za-z0-9])\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g, '$1');
 }
 
-let orderText;
-try {
-  orderText = stripLocalPaths(await extractOrderText());
-} catch (err) {
-  finish(false, ['## Submission rejected', '', `Could not retrieve the order: ${err.message}`]);
-}
-if (!orderText) {
-  finish(false, ['## Submission rejected', '', 'No load order found in the issue. Paste the JSON or attach the exported file.']);
-}
-
 /** Step 3: validate with the app parser, so intake and app agree on formats. */
 const bundle = path.join(os.tmpdir(), `volo-intake-${process.pid}.mjs`);
 await build({
@@ -157,13 +186,42 @@ await build({
 const { parseLoadOrder, sortLoadOrder } = await import(`file://${bundle}`);
 fs.rmSync(bundle, { force: true });
 
-const parsed = parseLoadOrder(orderText, 'submission.json');
-if (parsed.errors.length || parsed.mods.length < 5) {
+/*
+ * The parser is the judge of which candidate held the order: a fence full of
+ * prose and a fence holding a link both look populated, and only parsing tells
+ * them apart from the real thing.
+ */
+let orderText = null;
+let parsed = null;
+const attempts = [];
+for (const candidate of await orderCandidates()) {
+  let text;
+  try {
+    text = stripLocalPaths(await candidate());
+  } catch (err) {
+    attempts.push(err.message);
+    continue;
+  }
+  if (!text) continue;
+  const result = parseLoadOrder(text, 'submission.json');
+  if (!result.errors.length && result.mods.length >= 5) {
+    orderText = text;
+    parsed = result;
+    break;
+  }
+  attempts.push(result.errors[0] ?? `only ${result.mods.length} mods could be read`);
+}
+
+if (!parsed) {
   finish(false, [
     '## Submission rejected',
     '',
-    parsed.errors.length ? `Parse errors:` : `Only ${parsed.mods.length} mods could be read; five is the minimum.`,
-    ...parsed.errors.map(e => `- ${e}`),
+    attempts.length
+      ? 'No load order could be read from this issue. What was tried:'
+      : 'No load order found in the issue. Paste the export, or attach the file and leave the box empty.',
+    ...attempts.map(a => `- ${a}`),
+    '',
+    'Attach the exported file to the issue, or paste its contents. Five mods is the minimum.',
   ]);
 }
 
