@@ -50,11 +50,15 @@ const EXCLUDE = argOf('exclude', null);
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
 /** Base-game data packages. They appear in Dependencies but are not mods. */
-const ENGINE_MASTERS = new Set([
-  'GustavDev', 'GustavX', 'Gustav', 'Shared', 'SharedDev',
-  'Honour', 'HonourX', 'Engine', 'ModBrowser', 'DiceSet_01',
-  'DiceSet_02', 'DiceSet_03', 'DiceSet_04', 'DiceSet_06',
-]);
+/*
+ * Read rather than repeated. This list existed here and in the parser, and the
+ * two drifted: the parser learned about MainUI, CrossplayUI and PhotoMode and
+ * this one did not, so 32 mods carried a requirement for a base game module
+ * and told people it was missing from their load order.
+ */
+const ENGINE_MASTERS = new Set(
+  JSON.parse(fs.readFileSync(path.join('client', 'src', 'lib', 'engine-modules.json'), 'utf8')).modules,
+);
 
 /**
  * Astra's Load Order Dividers, recognised by exact UUID. In submitted orders

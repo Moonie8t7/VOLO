@@ -11,6 +11,7 @@
 
 import type { Mod, ParseResult, ModRef } from './types';
 import dividers from './dividers.json';
+import engineModules from './engine-modules.json';
 
 /**
  * Astra's Load Order Dividers, recognised by exact UUID. They are real paks a
@@ -53,12 +54,7 @@ export function sectionLabel(name: string): string | null {
 }
 
 /** Base-game packages that show up as list entries or dependencies but aren't mods. */
-const ENGINE_MASTERS = new Set([
-  'GustavDev', 'GustavX', 'Gustav', 'Shared', 'SharedDev',
-  'Honour', 'HonourX', 'Engine', 'ModBrowser',
-  'MainUI', 'CrossplayUI', 'PhotoMode',
-  'DiceSet_01', 'DiceSet_02', 'DiceSet_03', 'DiceSet_04', 'DiceSet_05', 'DiceSet_06',
-]);
+const ENGINE_MASTERS = new Set(engineModules.modules);
 
 /**
  * Dependencies arrive as an array of objects in JSON exports, or as one
