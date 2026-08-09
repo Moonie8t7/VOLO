@@ -219,6 +219,14 @@ export function sortLoadOrder(
 ): SortResult {
   const rank = rankGroups(masterlist);
   const { byUuid, byName, byFolder } = indexMasterlist(masterlist);
+  /*
+   * Own properties only. A parsed JSON object still inherits Object.prototype,
+   * so a mod requiring "constructor" would otherwise read a function out of
+   * the table and be treated as resolved.
+   */
+  const rawAliases = masterlist.requirementAliases ?? {};
+  const aliases: Record<string, string> = Object.create(null);
+  for (const key of Object.keys(rawAliases)) aliases[key] = rawAliases[key];
   const issues: Issue[] = [];
 
   // Step 1: assign a group to every mod.
@@ -343,7 +351,18 @@ export function sortLoadOrder(
        * tried on both sides, and the masterlist is used as a translation table
        * between the two, in both directions.
        */
-      const viaMasterlist = byName.get(norm) ?? byFolder.get(norm);
+      /*
+       * A hand-written alias, for the names no string on the mod can match.
+       * Mod pages, pak folders and published titles drift apart, and nothing
+       * measurable joins "Vlad's Grimoire" to a pak called
+       * VFX_Library_VladsGrimoire. Resolved through the masterlist entry it
+       * names, so it finds the mod by uuid or by name, whichever the user's
+       * export gave us.
+       */
+      const aliasUuid = aliases[norm];
+      const aliased = aliasUuid ? byUuid.get(aliasUuid) : undefined;
+
+      const viaMasterlist = byName.get(norm) ?? byFolder.get(norm) ?? aliased;
       const target =
         (dep.uuid ? present.get(dep.uuid) : undefined) ??
         byNormName.get(norm) ??
@@ -351,6 +370,9 @@ export function sortLoadOrder(
         (viaMasterlist?.uuid ? present.get(viaMasterlist.uuid) : undefined) ??
         (viaMasterlist ? byNormName.get(
           viaMasterlist.name.toLowerCase().replace(/[^a-z0-9]/g, ''),
+        ) : undefined) ??
+        (viaMasterlist?.folder ? byNormFolder.get(
+          viaMasterlist.folder.toLowerCase().replace(/[^a-z0-9]/g, ''),
         ) : undefined);
 
       if (!target) {

@@ -52,11 +52,25 @@ not mean editing code. A rule names a divider slot directly, so a person can say
 "Compatibility Framework belongs at 105" and be obeyed exactly, overruling a
 corpus that files it as a library.
 
-That file also carries the two things a statistic cannot express: mods that must
-not be installed together, and warnings written about a specific mod. Neither is
-ever mined. Two mods appearing in an order that broke is not evidence they
-conflict, and publishing that claim about a real author's work on that basis
-would be false rather than cautious.
+That file also carries the things a statistic cannot express: mods that must not
+be installed together, warnings written about a specific mod, and the names a
+requirement can use for a mod that none of the mod's own strings match. None of
+them is ever mined. Two mods appearing in an order that broke is not evidence
+they conflict, and publishing that claim about a real author's work on that
+basis would be false rather than cautious.
+
+The aliases exist because mod pages, pak folders and published titles drift
+apart. An author writing "requires Vlad's Grimoire" is naming a mod page; the
+pak is called `VFX_Library_VladsGrimoire`. Nothing measurable joins those, and
+matching on resemblance would invent links between unrelated mods, so a person
+states the equivalence and records how they know. The mine fails if an alias
+names a mod the masterlist does not have, because an alias that matches nothing
+reads as a handled case while the requirement goes on failing.
+
+Requirements that resolve to no mod, no folder and no alias are counted and
+reported by every mine. That number is currently zero and is printed either
+way, so it stays visible when it stops being: a name appearing repeatedly is
+either a mod worth cataloguing or an alias worth writing.
 
 Every pattern carries examples it must match, and the smoke test fails the build
 otherwise. Three pattern tables in this project have silently stopped matching

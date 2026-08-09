@@ -85,6 +85,15 @@ export interface Masterlist {
   gameBuildsObserved?: string[];
   provenance?: Record<string, number>;
   /**
+   * Names a requirement may use for a mod that none of the mod's own strings
+   * match, mapped to that mod's uuid. Keyed by lowercased alphanumeric name.
+   *
+   * Hand-written, because nothing measurable joins "Vlad's Grimoire" to a pak
+   * called VFX_Library_VladsGrimoire, and matching on resemblance would invent
+   * links between unrelated mods.
+   */
+  requirementAliases?: Record<string, string>;
+  /**
    * Mods that must not be installed together.
    *
    * Hand-written only. Two mods appearing in an order that broke is not

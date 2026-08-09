@@ -80,6 +80,11 @@
         }
       }
     },
+    "requirementAliases": {
+      "type": "object",
+      "description": "Names a requirement may use for a mod that none of the mod's own strings match, mapped to that mod's uuid. Keyed by lowercased alphanumeric name. Hand-written in curated-rules.json: nothing measurable joins a mod page's title to a differently named pak, and matching on resemblance would invent links between unrelated mods.",
+      "additionalProperties": { "type": "string" }
+    },
     "plugins": {
       "type": "array",
       "items": {
