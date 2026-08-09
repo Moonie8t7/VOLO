@@ -940,6 +940,50 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     console.log('  FAIL  nothing checks a staged order against its recorded entry count');
   }
 
+  /*
+   * That count must be of rows, not of mods. The endpoint counts rows, and the
+   * parser drops separators and engine modules, so comparing one to the other
+   * refused a real 958 entry order whose checksum matched exactly, on the
+   * grounds that only 839 of its rows were mods.
+   */
+  if (processor.includes('staged.rawEntries < staged.expectedEntries')
+    && !/result\.mods\.length\s*<\s*staged\.expectedEntries/.test(processor)) {
+    console.log('  ok    the truncation check counts rows, the same quantity the endpoint sent');
+  } else {
+    failures++;
+    console.log('  FAIL  the truncation check compares parsed mods against submitted rows');
+  }
+
+  // And a checksum that matched has already answered the question.
+  if (processor.includes('!staged.digestVerified')) {
+    console.log('  ok    a verified checksum skips the weaker row count entirely');
+  } else {
+    failures++;
+    console.log('  FAIL  the row count can still overrule a checksum that matched');
+  }
+
+  /*
+   * The reason the two counts differ, stated as a fact about the parser rather
+   * than a comment: an order made mostly of hand-written section headers must
+   * parse to far fewer mods than it has rows.
+   */
+  {
+    const rows = [
+      { UUID: '', Name: '================|            Libraries            |================' },
+      { UUID: '', Name: 'CommunityLibrary' },
+      { UUID: '', Name: '================|            UI            |================' },
+      { UUID: '', Name: 'ImpUI (ImprovedUI)' },
+      { UUID: '', Name: 'Better Topbar' },
+    ];
+    const parsedRows = parseLoadOrder(JSON.stringify({ Order: rows }), 'headers.json');
+    if (parsedRows.mods.length < rows.length) {
+      console.log(`  ok    section headers are not mods (${rows.length} rows read as ${parsedRows.mods.length})`);
+    } else {
+      failures++;
+      console.log('  FAIL  section headers counted as mods, so the two counts cannot diverge');
+    }
+  }
+
   if (processor.includes('does not match the checksum')) {
     console.log('  ok    a staged order is checked against the checksum recorded at submission');
   } else {
