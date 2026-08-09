@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-09T19:05:10.133Z",
+  "generated": "2026-08-09T19:07:16.084Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -14,8 +14,8 @@
     "mazzledocs": "ad95bd1c-1a80-45fb-b73b-9eea1f8e58d0"
   },
   "provenance": {
-    "ordersAnalysed": 41,
-    "working": 35,
+    "ordersAnalysed": 42,
+    "working": 36,
     "broken": 3,
     "unlabelled": 3,
     "externalDependencyEdges": 335,
@@ -243,8 +243,8 @@
       "divider": 1,
       "evidence": {
         "source": "curated",
-        "installs": 40,
-        "workingInstalls": 34,
+        "installs": 41,
+        "workingInstalls": 35,
         "brokenInstalls": 3
       }
     },
@@ -259,8 +259,8 @@
       "divider": 3,
       "evidence": {
         "source": "section-majority",
-        "installs": 36,
-        "workingInstalls": 32,
+        "installs": 37,
+        "workingInstalls": 33,
         "brokenInstalls": 2
       },
       "dependencies": [
@@ -284,8 +284,8 @@
       "divider": 14,
       "evidence": {
         "source": "curated",
-        "installs": 36,
-        "workingInstalls": 31,
+        "installs": 37,
+        "workingInstalls": 32,
         "brokenInstalls": 2
       },
       "usesScriptExtender": true
@@ -329,10 +329,29 @@
       "divider": 2,
       "evidence": {
         "source": "section",
-        "installs": 29,
-        "workingInstalls": 26,
+        "installs": 30,
+        "workingInstalls": 27,
         "brokenInstalls": 2
       }
+    },
+    {
+      "name": "VolitionCabinet",
+      "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+      "group": "Resources",
+      "author": "Volitio",
+      "version": "1.16.0.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 7,
+      "evidence": {
+        "source": "curated",
+        "installs": 30,
+        "workingInstalls": 27,
+        "brokenInstalls": 2
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "CommunityLibrary",
@@ -349,25 +368,6 @@
         "source": "curated",
         "installs": 29,
         "workingInstalls": 24,
-        "brokenInstalls": 2
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "VolitionCabinet",
-      "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-      "group": "Resources",
-      "author": "Volitio",
-      "version": "1.16.0.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 7,
-      "evidence": {
-        "source": "curated",
-        "installs": 29,
-        "workingInstalls": 26,
         "brokenInstalls": 2
       },
       "usesScriptExtender": true
@@ -454,22 +454,6 @@
       }
     },
     {
-      "name": "Better Dyeing",
-      "uuid": "03b0b84a-2689-77c2-5ef6-ebcf88b88037",
-      "group": "User Interface",
-      "folder": "BetterDyeing_03b0b84a-2689-77c2-5ef6-ebcf88b88037",
-      "author": "Caites",
-      "version": "1.2.9.7",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 25,
-        "workingInstalls": 22,
-        "brokenInstalls": 2
-      }
-    },
-    {
       "name": "5eSpells",
       "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
       "group": "Spells",
@@ -482,8 +466,8 @@
       "divider": 47,
       "evidence": {
         "source": "section-majority",
-        "installs": 24,
-        "workingInstalls": 20,
+        "installs": 25,
+        "workingInstalls": 21,
         "brokenInstalls": 3
       },
       "usesScriptExtender": true
@@ -499,8 +483,8 @@
       "divider": 3,
       "evidence": {
         "source": "section",
-        "installs": 24,
-        "workingInstalls": 20,
+        "installs": 25,
+        "workingInstalls": 21,
         "brokenInstalls": 3
       }
     },
@@ -517,11 +501,27 @@
       "divider": 104,
       "evidence": {
         "source": "curated",
-        "installs": 24,
-        "workingInstalls": 22,
+        "installs": 25,
+        "workingInstalls": 23,
         "brokenInstalls": 2
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "Better Dyeing",
+      "uuid": "03b0b84a-2689-77c2-5ef6-ebcf88b88037",
+      "group": "User Interface",
+      "folder": "BetterDyeing_03b0b84a-2689-77c2-5ef6-ebcf88b88037",
+      "author": "Caites",
+      "version": "1.2.9.7",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 25,
+        "workingInstalls": 22,
+        "brokenInstalls": 2
+      }
     },
     {
       "name": "Better Various Widgets",
@@ -534,8 +534,8 @@
       "divider": 2,
       "evidence": {
         "source": "section",
-        "installs": 24,
-        "workingInstalls": 21,
+        "installs": 25,
+        "workingInstalls": 22,
         "brokenInstalls": 2
       }
     },
@@ -552,11 +552,40 @@
       "divider": 101,
       "evidence": {
         "source": "section-majority",
-        "installs": 24,
-        "workingInstalls": 20,
+        "installs": 25,
+        "workingInstalls": 21,
         "brokenInstalls": 3
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "FaerunColors",
+      "uuid": "a669cf0b-926c-4d50-988d-59bc089a0df2",
+      "group": "Equipment",
+      "folder": "FaerunColors_a669cf0b-926c-4d50-988d-59bc089a0df2",
+      "author": "TechRoot",
+      "divider": 38,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 24,
+        "workingInstalls": 21,
+        "brokenInstalls": 2
+      }
+    },
+    {
+      "name": "AppearanceEditOrigins",
+      "uuid": "60de8215-7e9f-4cb6-9763-05aa6aecf257",
+      "group": "Bug Fixes",
+      "author": "Eralyne",
+      "version": "2.0.1.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 104,
+      "evidence": {
+        "source": "curated",
+        "installs": 23,
+        "workingInstalls": 21,
+        "brokenInstalls": 2
+      }
     },
     {
       "name": "Better Containers",
@@ -591,35 +620,6 @@
       }
     },
     {
-      "name": "FaerunColors",
-      "uuid": "a669cf0b-926c-4d50-988d-59bc089a0df2",
-      "group": "Equipment",
-      "folder": "FaerunColors_a669cf0b-926c-4d50-988d-59bc089a0df2",
-      "author": "TechRoot",
-      "divider": 38,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 23,
-        "workingInstalls": 20,
-        "brokenInstalls": 2
-      }
-    },
-    {
-      "name": "AppearanceEditOrigins",
-      "uuid": "60de8215-7e9f-4cb6-9763-05aa6aecf257",
-      "group": "Bug Fixes",
-      "author": "Eralyne",
-      "version": "2.0.1.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 104,
-      "evidence": {
-        "source": "curated",
-        "installs": 22,
-        "workingInstalls": 20,
-        "brokenInstalls": 2
-      }
-    },
-    {
       "name": "CPCCE",
       "uuid": "a2f25ffd-0c2f-4673-ad5d-bbe783e95564",
       "group": "User Interface",
@@ -636,8 +636,8 @@
       "divider": 2,
       "evidence": {
         "source": "section",
-        "installs": 22,
-        "workingInstalls": 19,
+        "installs": 23,
+        "workingInstalls": 20,
         "brokenInstalls": 2
       }
     },
@@ -658,8 +658,8 @@
       "divider": 2,
       "evidence": {
         "source": "section",
-        "installs": 22,
-        "workingInstalls": 19,
+        "installs": 23,
+        "workingInstalls": 20,
         "brokenInstalls": 1
       }
     },
@@ -688,6 +688,26 @@
         "brokenInstalls": 1
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "Better Hotbar [Vova's Edition]",
+      "uuid": "191c52f3-07bb-f83e-e1db-bb06ea262000",
+      "group": "User Interface",
+      "folder": "BetterHotbar_191c52f3-07bb-f83e-e1db-bb06ea262000",
+      "author": "Vova2112",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 21,
+        "workingInstalls": 18,
+        "brokenInstalls": 2
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Better Split Item",
@@ -761,6 +781,22 @@
       "usesScriptExtender": true
     },
     {
+      "name": "HT_Lesser Restoration: Assorted Bug Fixes",
+      "uuid": "2653082c-88d7-62dd-da48-b32be67c033b",
+      "group": "Bug Fixes",
+      "folder": "HT_LesserRestoration_2653082c-88d7-62dd-da48-b32be67c033b",
+      "author": "HyperspaceTowel",
+      "version": "3.0.0.5",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 17,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 21,
+        "workingInstalls": 19,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "KAVT - KAZSTRA Virtual Tav x Tattoo, Makeup & Scar Extender",
       "uuid": "4cb0fd40-7212-4fe9-8733-9a8dbc6637ae",
       "group": "Character Customization",
@@ -797,34 +833,33 @@
       }
     },
     {
-      "name": "Better Hotbar [Vova's Edition]",
-      "uuid": "191c52f3-07bb-f83e-e1db-bb06ea262000",
-      "group": "User Interface",
-      "folder": "BetterHotbar_191c52f3-07bb-f83e-e1db-bb06ea262000",
-      "author": "Vova2112",
-      "divider": 2,
+      "name": "Expansion",
+      "uuid": "a2c4b0fc-e745-41df-81b7-fa53950d86a0",
+      "group": "Resources",
+      "author": "Celes/DiZ",
+      "version": "1.7.2.4",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 16,
       "evidence": {
         "source": "section",
         "installs": 20,
-        "workingInstalls": 17,
+        "workingInstalls": 18,
         "brokenInstalls": 2
       },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      "usesScriptExtender": true
     },
     {
-      "name": "HT_Lesser Restoration: Assorted Bug Fixes",
-      "uuid": "2653082c-88d7-62dd-da48-b32be67c033b",
-      "group": "Bug Fixes",
-      "folder": "HT_LesserRestoration_2653082c-88d7-62dd-da48-b32be67c033b",
+      "name": "HT_Camp Event Overhaul",
+      "uuid": "d756bfd1-e403-8ce1-9f81-c6c988a60837",
+      "group": "Companions",
+      "folder": "Camp-Scene-Overhaul_d756bfd1-e403-8ce1-9f81-c6c988a60837",
       "author": "HyperspaceTowel",
-      "version": "3.0.0.5",
+      "version": "1.0.1.1",
       "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 17,
+      "divider": 20,
       "evidence": {
         "source": "section-majority",
         "installs": 20,
@@ -850,41 +885,6 @@
         "brokenInstalls": 0
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "Expansion",
-      "uuid": "a2c4b0fc-e745-41df-81b7-fa53950d86a0",
-      "group": "Resources",
-      "author": "Celes/DiZ",
-      "version": "1.7.2.4",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 16,
-      "evidence": {
-        "source": "section",
-        "installs": 19,
-        "workingInstalls": 17,
-        "brokenInstalls": 2
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "HT_Camp Event Overhaul",
-      "uuid": "d756bfd1-e403-8ce1-9f81-c6c988a60837",
-      "group": "Companions",
-      "folder": "Camp-Scene-Overhaul_d756bfd1-e403-8ce1-9f81-c6c988a60837",
-      "author": "HyperspaceTowel",
-      "version": "1.0.1.1",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 20,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 19,
-        "workingInstalls": 17,
-        "brokenInstalls": 1
-      }
     },
     {
       "name": "KaiLime UI",
@@ -962,6 +962,66 @@
       }
     },
     {
+      "name": "VFX_Library_VladsGrimoire",
+      "uuid": "0dd5b581-c210-4956-ab96-7682fb519de5",
+      "group": "Resources",
+      "folder": "VladsGrimoire",
+      "author": "VladmirFFXI",
+      "version": "1.9.0.9",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 9.5,
+      "evidence": {
+        "source": "section",
+        "installs": 19,
+        "workingInstalls": 18,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Auto Send Food To Camp",
+      "uuid": "1c132ec4-4cd2-4c40-aeb9-ff6ee0467da8",
+      "group": "Gameplay",
+      "folder": "AutoSendFoodToCamp",
+      "author": "Volitio",
+      "version": "2.5.1.0",
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        },
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 16,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 18,
+        "workingInstalls": 17,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "PixellBytes' Adjustable Party Limit",
+      "uuid": "33c1de88-dfd0-351d-8904-a5ee730880c6",
+      "group": "Companions",
+      "folder": "ConfigurablePartyLimit_33c1de88-dfd0-351d-8904-a5ee730880c6",
+      "author": "PixellBytes",
+      "divider": 82,
+      "evidence": {
+        "source": "external-category",
+        "installs": 18,
+        "workingInstalls": 16,
+        "brokenInstalls": 2
+      }
+    },
+    {
       "name": "Vessnelle_Hair2",
       "uuid": "d357aca8-e222-4c09-8b49-54354405502e",
       "group": "Hair",
@@ -974,22 +1034,6 @@
         "installs": 18,
         "workingInstalls": 13,
         "brokenInstalls": 3
-      }
-    },
-    {
-      "name": "VFX_Library_VladsGrimoire",
-      "uuid": "0dd5b581-c210-4956-ab96-7682fb519de5",
-      "group": "Resources",
-      "folder": "VladsGrimoire",
-      "author": "VladmirFFXI",
-      "version": "1.9.0.9",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 9.5,
-      "evidence": {
-        "source": "section",
-        "installs": 18,
-        "workingInstalls": 17,
-        "brokenInstalls": 1
       }
     },
     {
@@ -1084,36 +1128,6 @@
       }
     },
     {
-      "name": "Auto Send Food To Camp",
-      "uuid": "1c132ec4-4cd2-4c40-aeb9-ff6ee0467da8",
-      "group": "Gameplay",
-      "folder": "AutoSendFoodToCamp",
-      "author": "Volitio",
-      "version": "2.5.1.0",
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        },
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "Mod Configuration Menu"
-        }
-      ],
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 16,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 17,
-        "workingInstalls": 16,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "Faces of Faerun",
       "uuid": "8c611d4b-75d9-40eb-ad61-15f898396e12",
       "group": "Heads",
@@ -1191,20 +1205,6 @@
         "installs": 17,
         "workingInstalls": 16,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "PixellBytes' Adjustable Party Limit",
-      "uuid": "33c1de88-dfd0-351d-8904-a5ee730880c6",
-      "group": "Companions",
-      "folder": "ConfigurablePartyLimit_33c1de88-dfd0-351d-8904-a5ee730880c6",
-      "author": "PixellBytes",
-      "divider": 82,
-      "evidence": {
-        "source": "external-category",
-        "installs": 17,
-        "workingInstalls": 15,
-        "brokenInstalls": 2
       }
     },
     {
@@ -1404,6 +1404,22 @@
         "brokenInstalls": 0
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "HT_Early Access Scenes Restored",
+      "uuid": "868bf4c5-e0ee-44de-875e-315462e6bf42",
+      "group": "Bug Fixes",
+      "folder": "HT_EA-Restored_868bf4c5-e0ee-44de-875e-315462e6bf42",
+      "author": "HyperspaceTowel",
+      "version": "1.4.1.1",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 17,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 16,
+        "workingInstalls": 14,
+        "brokenInstalls": 1
+      }
     },
     {
       "name": "Item and Spell Bug Fixes",
@@ -1792,22 +1808,6 @@
       }
     },
     {
-      "name": "HT_Early Access Scenes Restored",
-      "uuid": "868bf4c5-e0ee-44de-875e-315462e6bf42",
-      "group": "Bug Fixes",
-      "folder": "HT_EA-Restored_868bf4c5-e0ee-44de-875e-315462e6bf42",
-      "author": "HyperspaceTowel",
-      "version": "1.4.1.1",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 17,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 15,
-        "workingInstalls": 13,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "HT_Minthara's Poison Kiss",
       "uuid": "0d3c8e22-0376-d0a9-41ec-2d4a6f9bceec",
       "group": "Bug Fixes",
@@ -1876,6 +1876,20 @@
           "name": "ImpUI (ImprovedUI)"
         }
       ]
+    },
+    {
+      "name": "Underdark Dice",
+      "uuid": "d3c8e681-6abf-9476-25a1-909e9d403477",
+      "group": "Dice",
+      "folder": "UnderdarkDice_d3c8e681-6abf-9476-25a1-909e9d403477",
+      "author": "EllieGreenArt",
+      "divider": 90,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 15,
+        "workingInstalls": 13,
+        "brokenInstalls": 1
+      }
     },
     {
       "name": "Waypoints",
@@ -1954,6 +1968,34 @@
         "installs": 14,
         "workingInstalls": 11,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Carry Weight Increased 9000",
+      "uuid": "92af0ebd-a04c-4e9c-8306-b947aac4c127",
+      "group": "Gameplay",
+      "author": "Mharius",
+      "version": "1.0.0.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 18.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 14,
+        "workingInstalls": 12,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Extra encounters and Minibosses",
+      "uuid": "6324f71c-80f2-6c13-b2e8-1c3441fa6072",
+      "group": "Gameplay",
+      "folder": "Extra_encounters_plus_6324f71c-80f2-6c13-b2e8-1c3441fa6072",
+      "divider": 31,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 14,
+        "workingInstalls": 14,
+        "brokenInstalls": 0
       }
     },
     {
@@ -2118,20 +2160,6 @@
       }
     },
     {
-      "name": "Underdark Dice",
-      "uuid": "d3c8e681-6abf-9476-25a1-909e9d403477",
-      "group": "Dice",
-      "folder": "UnderdarkDice_d3c8e681-6abf-9476-25a1-909e9d403477",
-      "author": "EllieGreenArt",
-      "divider": 90,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 14,
-        "workingInstalls": 12,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "Warlock Spell List Fixer",
       "uuid": "da838ab2-4d4b-4ca2-9e11-0257a03b13fc",
       "group": "Classes",
@@ -2264,21 +2292,6 @@
       }
     },
     {
-      "name": "Carry Weight Increased 9000",
-      "uuid": "92af0ebd-a04c-4e9c-8306-b947aac4c127",
-      "group": "Gameplay",
-      "author": "Mharius",
-      "version": "1.0.0.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 18.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 13,
-        "workingInstalls": 11,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "EotB Main - EyesOfTheBeholder",
       "uuid": "00956b6f-8b55-4879-bd46-68d1ba7ef31b",
       "group": "Character Customization",
@@ -2295,16 +2308,16 @@
       }
     },
     {
-      "name": "Extra encounters and Minibosses",
-      "uuid": "6324f71c-80f2-6c13-b2e8-1c3441fa6072",
-      "group": "Gameplay",
-      "folder": "Extra_encounters_plus_6324f71c-80f2-6c13-b2e8-1c3441fa6072",
-      "divider": 31,
+      "name": "HT_Dark Urge Tweeaks",
+      "uuid": "d05e5edd-39f9-63d5-3121-811788b0682d",
+      "group": "Bug Fixes",
+      "folder": "HT_DarkUrgeTweeaks_d05e5edd-39f9-63d5-3121-811788b0682d",
+      "divider": 22,
       "evidence": {
-        "source": "name-pattern",
+        "source": "section-majority",
         "installs": 13,
-        "workingInstalls": 13,
-        "brokenInstalls": 0
+        "workingInstalls": 11,
+        "brokenInstalls": 1
       }
     },
     {
@@ -2503,6 +2516,20 @@
       }
     },
     {
+      "name": "Carry Weight Increased 9000 - Standalone Pickup More",
+      "uuid": "92af0ebd-a04c-4e9c-8306-b947aac4c128",
+      "group": "Miscellaneous",
+      "folder": "Carry Weight Increased 9000 - Pickup",
+      "author": "Mharius",
+      "divider": 89.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 12,
+        "workingInstalls": 11,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "Character Preset Framework",
       "uuid": "4fa17abe-993c-4e7e-ab2a-e7370b166ac9",
       "group": "Resources",
@@ -2586,19 +2613,6 @@
       "group": "Bug Fixes",
       "folder": "HT_AstarionConfessionEdit2_2c6afb73-a6b6-1193-56ac-7a04ce39c9b9",
       "divider": 24,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 12,
-        "workingInstalls": 10,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "HT_Dark Urge Tweeaks",
-      "uuid": "d05e5edd-39f9-63d5-3121-811788b0682d",
-      "group": "Bug Fixes",
-      "folder": "HT_DarkUrgeTweeaks_d05e5edd-39f9-63d5-3121-811788b0682d",
-      "divider": 22,
       "evidence": {
         "source": "section-majority",
         "installs": 12,
@@ -2876,6 +2890,22 @@
       }
     },
     {
+      "name": "5e Spells Compatibility AIO",
+      "uuid": "681340e0-3c0d-464a-998a-6fec834f3b7a",
+      "group": "Bug Fixes",
+      "folder": "5eAIO",
+      "author": "xarara",
+      "version": "8.0.0.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 102.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 11,
+        "workingInstalls": 10,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "Aether's Black Dye",
       "uuid": "53480625-d3e4-4cce-86c8-a8a793eb61d7",
       "group": "Equipment",
@@ -2988,20 +3018,6 @@
         "installs": 11,
         "workingInstalls": 11,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Carry Weight Increased 9000 - Standalone Pickup More",
-      "uuid": "92af0ebd-a04c-4e9c-8306-b947aac4c128",
-      "group": "Miscellaneous",
-      "folder": "Carry Weight Increased 9000 - Pickup",
-      "author": "Mharius",
-      "divider": 89.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 11,
-        "workingInstalls": 10,
-        "brokenInstalls": 1
       }
     },
     {
@@ -3299,6 +3315,22 @@
       "usesScriptExtender": true
     },
     {
+      "name": "VFX_Library_VladsCodex",
+      "uuid": "fd03819b-cec2-c351-1680-81f1f1e52c76",
+      "group": "Resources",
+      "folder": "VladsCodex_fd03819b-cec2-c351-1680-81f1f1e52c76",
+      "author": "VladmirFFXI",
+      "version": "1.0.0.3",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 9.5,
+      "evidence": {
+        "source": "section",
+        "installs": 11,
+        "workingInstalls": 11,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "[Aza] Better Starting Gear (Shadowheart)",
       "uuid": "edec7b9d-0063-1df6-7b30-d1d4b9a0adc3",
       "group": "Companions",
@@ -3324,16 +3356,15 @@
       }
     },
     {
-      "name": "5e Spells Compatibility AIO",
-      "uuid": "681340e0-3c0d-464a-998a-6fec834f3b7a",
-      "group": "Bug Fixes",
-      "folder": "5eAIO",
-      "author": "xarara",
-      "version": "8.0.0.0",
+      "name": "Artificer",
+      "uuid": "88fadf2c-152d-404e-b863-c12273559e1c",
+      "group": "Classes",
+      "author": "Lykon, multiple authors, see https://github.com/Kidel/BG3_Artificer/graphs/contributors",
+      "version": "2.22.0.0",
       "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 102.5,
+      "divider": 60,
       "evidence": {
-        "source": "section-majority",
+        "source": "section",
         "installs": 10,
         "workingInstalls": 9,
         "brokenInstalls": 1
@@ -3419,6 +3450,18 @@
       }
     },
     {
+      "name": "Cheaters Spell Scroll - Formerly Cheaters Ring",
+      "uuid": "2d1ca631-35dd-3afa-8ca9-34f0f3e084e4",
+      "group": "Spells",
+      "divider": 47,
+      "evidence": {
+        "source": "section",
+        "installs": 10,
+        "workingInstalls": 9,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "Clear Map",
       "uuid": "b8a896ff-621d-89d5-2fc5-f86f372b102d",
       "group": "User Interface",
@@ -3470,6 +3513,19 @@
           "name": "ImpUI (ImprovedUI)"
         }
       ]
+    },
+    {
+      "name": "Deity Tag Activator",
+      "uuid": "05827e11-37eb-4820-8916-1fa2060a84c7",
+      "group": "Classes",
+      "divider": 20,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 10,
+        "workingInstalls": 9,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Dror Aggrn't - No more hostile gobbo camp",
@@ -3903,22 +3959,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "VFX_Library_VladsCodex",
-      "uuid": "fd03819b-cec2-c351-1680-81f1f1e52c76",
-      "group": "Resources",
-      "folder": "VladsCodex_fd03819b-cec2-c351-1680-81f1f1e52c76",
-      "author": "VladmirFFXI",
-      "version": "1.0.0.3",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 9.5,
-      "evidence": {
-        "source": "section",
-        "installs": 10,
-        "workingInstalls": 10,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Wings Character Customisation - WCC",
       "uuid": "d07015de-33a8-6ee9-cda2-571c7bf39008",
       "group": "Accessories",
@@ -3988,21 +4028,6 @@
         "installs": 9,
         "workingInstalls": 6,
         "brokenInstalls": 2
-      }
-    },
-    {
-      "name": "Artificer",
-      "uuid": "88fadf2c-152d-404e-b863-c12273559e1c",
-      "group": "Classes",
-      "author": "Lykon, multiple authors, see https://github.com/Kidel/BG3_Artificer/graphs/contributors",
-      "version": "2.22.0.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 9,
-        "workingInstalls": 8,
-        "brokenInstalls": 1
       }
     },
     {
@@ -4090,18 +4115,6 @@
       }
     },
     {
-      "name": "Cheaters Spell Scroll - Formerly Cheaters Ring",
-      "uuid": "2d1ca631-35dd-3afa-8ca9-34f0f3e084e4",
-      "group": "Spells",
-      "divider": 47,
-      "evidence": {
-        "source": "section",
-        "installs": 9,
-        "workingInstalls": 8,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "CL_Rage Queen Barbarian Gear",
       "uuid": "44130117-79be-3617-9e97-4319190cc29b",
       "group": "Armor",
@@ -4142,19 +4155,6 @@
         "workingInstalls": 9,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "Deity Tag Activator",
-      "uuid": "05827e11-37eb-4820-8916-1fa2060a84c7",
-      "group": "Classes",
-      "divider": 20,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 9,
-        "workingInstalls": 8,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "EnhancedWorldTooltips",
@@ -5891,6 +5891,18 @@
       }
     },
     {
+      "name": "Ultimate Cut Content Restoration Mod",
+      "uuid": "296545d8-50a9-4e5f-83f2-d5e5ba52ee4b",
+      "group": "Equipment",
+      "divider": 34.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 8,
+        "workingInstalls": 8,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Undead Thralls Fix",
       "uuid": "65198f82-4248-48b4-aae6-992995b14074",
       "group": "Resources",
@@ -6101,6 +6113,28 @@
         "installs": 7,
         "workingInstalls": 6,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "BCPP_16x9_6chars",
+      "uuid": "6251de75-b041-e761-c329-b3fdc23a2da8",
+      "group": "User Interface",
+      "folder": "BCPP_16x9_6chars_6251de75-b041-e761-c329-b3fdc23a2da8",
+      "author": "Caites",
+      "version": "1.7.2.16",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 5,
+      "evidence": {
+        "source": "section",
+        "installs": 7,
+        "workingInstalls": 7,
+        "brokenInstalls": 0
       }
     },
     {
@@ -6359,6 +6393,24 @@
         "workingInstalls": 7,
         "brokenInstalls": 0
       }
+    },
+    {
+      "name": "Custom Dices In Passive Rolls",
+      "uuid": "cecb3423-daf3-19e7-e5ae-3c005c531214",
+      "group": "Dice",
+      "divider": 90,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 7,
+        "brokenInstalls": 0
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Custom Subclass Icons",
@@ -7544,10 +7596,11 @@
       }
     },
     {
-      "name": "UACunningStrike",
-      "uuid": "248dfe45-70cb-474f-825c-c58a72cff970",
-      "group": "Classes",
-      "divider": 60,
+      "name": "Trade With Anyone",
+      "uuid": "64e3f7e5-8157-e330-bf89-c97c52fd8894",
+      "group": "User Interface",
+      "folder": "TradeWithAnyone_64e3f7e5-8157-e330-bf89-c97c52fd8894",
+      "divider": 5,
       "evidence": {
         "source": "section",
         "installs": 7,
@@ -7556,12 +7609,12 @@
       }
     },
     {
-      "name": "Ultimate Cut Content Restoration Mod",
-      "uuid": "296545d8-50a9-4e5f-83f2-d5e5ba52ee4b",
-      "group": "Equipment",
-      "divider": 34.5,
+      "name": "UACunningStrike",
+      "uuid": "248dfe45-70cb-474f-825c-c58a72cff970",
+      "group": "Classes",
+      "divider": 60,
       "evidence": {
-        "source": "external-category",
+        "source": "section",
         "installs": 7,
         "workingInstalls": 7,
         "brokenInstalls": 0
@@ -7669,6 +7722,18 @@
         "installs": 7,
         "workingInstalls": 6,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Wyll - Theo Solomon Banter",
+      "uuid": "3f94216f-8cce-46f2-b358-46573518acfc",
+      "group": "Companions",
+      "divider": 17,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 7,
+        "workingInstalls": 7,
+        "brokenInstalls": 0
       }
     },
     {
@@ -7809,6 +7874,19 @@
       "usesScriptExtender": true
     },
     {
+      "name": "AlfiraJoinsTheParty",
+      "uuid": "3539eba9-6d77-c53d-1009-b3c77c9cd04c",
+      "group": "Gameplay",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 6,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Alt Lae'zel Hair 4 Tav",
       "uuid": "996ad858-0724-484c-9713-83d9244dd46a",
       "group": "Character Customization",
@@ -7869,6 +7947,18 @@
         "brokenInstalls": 1
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "Artificer-Spells-Addon",
+      "uuid": "a35b2cf8-5047-487a-83a4-537d36245b6b",
+      "group": "Classes",
+      "divider": 60,
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      }
     },
     {
       "name": "ASTRL Fluffy Ears",
@@ -7975,6 +8065,19 @@
       }
     },
     {
+      "name": "Bag of Holding Reforged",
+      "uuid": "2b83066d-a1f1-455e-a1df-b93ff706e28e",
+      "group": "Gameplay",
+      "divider": 18.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 6,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Baldurian Beauty - UniqueTav and EOTB",
       "uuid": "01d018a5-780c-49c3-a54f-ce70823390f7",
       "group": "Heads",
@@ -7991,24 +8094,14 @@
       }
     },
     {
-      "name": "BCPP_16x9_6chars",
-      "uuid": "6251de75-b041-e761-c329-b3fdc23a2da8",
-      "group": "User Interface",
-      "folder": "BCPP_16x9_6chars_6251de75-b041-e761-c329-b3fdc23a2da8",
-      "author": "Caites",
-      "version": "1.7.2.16",
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 5,
+      "name": "BaneDeity",
+      "uuid": "4893b99c-79d5-4da7-a94b-d13612dbb160",
+      "group": "Classes",
+      "divider": 50,
       "evidence": {
-        "source": "section",
+        "source": "section-majority",
         "installs": 6,
-        "workingInstalls": 6,
+        "workingInstalls": 5,
         "brokenInstalls": 0
       }
     },
@@ -8025,6 +8118,18 @@
         "installs": 6,
         "workingInstalls": 4,
         "brokenInstalls": 2
+      }
+    },
+    {
+      "name": "BhaalDeity",
+      "uuid": "94f1341b-6f1d-419b-a163-a97699a396a1",
+      "group": "Classes",
+      "divider": 60,
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
       }
     },
     {
@@ -8434,24 +8539,6 @@
         "workingInstalls": 6,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "Custom Dices In Passive Rolls",
-      "uuid": "cecb3423-daf3-19e7-e5ae-3c005c531214",
-      "group": "Dice",
-      "divider": 90,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
     },
     {
       "name": "D83's Female Hoods with Hair",
@@ -9446,6 +9533,18 @@
       }
     },
     {
+      "name": "MyrkulDeity",
+      "uuid": "e08ec529-d255-42ea-bce2-4bb9b4605090",
+      "group": "Classes",
+      "divider": 50,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 6,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Mysterious Artifact Dice",
       "uuid": "e29c2b9a-e96a-4656-ac25-aa3292761bb9",
       "group": "Dice",
@@ -10081,6 +10180,18 @@
       }
     },
     {
+      "name": "ScarletWarlock_Main_EldritchBlast",
+      "uuid": "e9329ed8-e7f7-44b1-b644-3daf04be9b48",
+      "group": "Classes",
+      "divider": 60,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 6,
+        "workingInstalls": 6,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "SCO-Addon",
       "uuid": "61d814b4-7b13-411d-a2de-3f58faadf16c",
       "group": "Clothing",
@@ -10432,19 +10543,6 @@
       }
     },
     {
-      "name": "Trade With Anyone",
-      "uuid": "64e3f7e5-8157-e330-bf89-c97c52fd8894",
-      "group": "User Interface",
-      "folder": "TradeWithAnyone_64e3f7e5-8157-e330-bf89-c97c52fd8894",
-      "divider": 5,
-      "evidence": {
-        "source": "section",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Trips_Shader",
       "uuid": "636d2850-f9fe-4c07-9ea7-d4a2ed871c0a",
       "group": "Resources",
@@ -10632,18 +10730,6 @@
       }
     },
     {
-      "name": "Wyll - Theo Solomon Banter",
-      "uuid": "3f94216f-8cce-46f2-b358-46573518acfc",
-      "group": "Companions",
-      "divider": 17,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Yenna's New Clothes",
       "uuid": "aea5c4f5-1867-7aa3-dd78-4e73c831eb2d",
       "group": "NPC",
@@ -10768,19 +10854,6 @@
       }
     },
     {
-      "name": "AlfiraJoinsTheParty",
-      "uuid": "3539eba9-6d77-c53d-1009-b3c77c9cd04c",
-      "group": "Gameplay",
-      "divider": 18.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 5,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "All Heads All Horns All Everything for All Races",
       "uuid": "1db3e478-fcfa-8eb4-de77-b612f1605b45",
       "group": "Character Customization",
@@ -10879,18 +10952,6 @@
         "installs": 5,
         "workingInstalls": 4,
         "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Artificer-Spells-Addon",
-      "uuid": "a35b2cf8-5047-487a-83a4-537d36245b6b",
-      "group": "Classes",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
       }
     },
     {
@@ -11071,31 +11132,6 @@
         "installs": 5,
         "workingInstalls": 4,
         "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Bag of Holding Reforged",
-      "uuid": "2b83066d-a1f1-455e-a1df-b93ff706e28e",
-      "group": "Gameplay",
-      "divider": 18.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 5,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "BaneDeity",
-      "uuid": "4893b99c-79d5-4da7-a94b-d13612dbb160",
-      "group": "Classes",
-      "divider": 50,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 5,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
       }
     },
     {
@@ -11291,18 +11327,6 @@
       "divider": 18.5,
       "evidence": {
         "source": "section-majority",
-        "installs": 5,
-        "workingInstalls": 5,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "BhaalDeity",
-      "uuid": "94f1341b-6f1d-419b-a163-a97699a396a1",
-      "group": "Classes",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0
@@ -13006,6 +13030,34 @@
       }
     },
     {
+      "name": "HT_Sussur Dialogue Bug Fixes",
+      "uuid": "93b85fb1-2e45-4926-91e2-f1a1a6da9b2f",
+      "group": "Gameplay",
+      "folder": "HT_SussurBugFix",
+      "author": "HyperspaceTowel",
+      "version": "1.0.0.3",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 17,
+      "evidence": {
+        "source": "section",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HT_Wyll Saves Karlach",
+      "uuid": "ed848132-4a75-4646-b74e-94756fbbb035",
+      "group": "Companions",
+      "divider": 17,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "HT_Wyll You Sit With Me?",
       "uuid": "dbd8d236-ca6e-00ce-0a87-9eaffb18d796",
       "group": "Environment",
@@ -13779,18 +13831,6 @@
       }
     },
     {
-      "name": "MyrkulDeity",
-      "uuid": "e08ec529-d255-42ea-bce2-4bb9b4605090",
-      "group": "Classes",
-      "divider": 50,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 5,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Mysterious Artifact Dice Set",
       "uuid": "b62aeaff-fb7b-a119-5f96-02cf6575910e",
       "group": "Dice",
@@ -13878,6 +13918,19 @@
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "NoInspCap",
+      "uuid": "dc79d211-7095-4759-b64a-6df30fc3cf0d",
+      "group": "Gameplay",
+      "author": "FrozenLayer",
+      "divider": 18.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 5,
+        "workingInstalls": 4,
+        "brokenInstalls": 1
       }
     },
     {
@@ -14478,18 +14531,6 @@
         "source": "external-category",
         "installs": 5,
         "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "ScarletWarlock_Main_EldritchBlast",
-      "uuid": "e9329ed8-e7f7-44b1-b644-3daf04be9b48",
-      "group": "Classes",
-      "divider": 60,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 5,
-        "workingInstalls": 5,
         "brokenInstalls": 0
       }
     },
@@ -15181,6 +15222,18 @@
       }
     },
     {
+      "name": "Waypoint Inside Emerald Grove",
+      "uuid": "e342ee75-f7c9-4aeb-b6de-403991578337",
+      "group": "Utilities",
+      "divider": 18,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Weapon Action Per Combat",
       "uuid": "19d93c7f-b7f6-6c13-3553-d65cc3a26d67",
       "group": "Miscellaneous",
@@ -15580,6 +15633,17 @@
       "divider": 34.5,
       "evidence": {
         "source": "section-majority",
+        "installs": 4,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "AlfiraJoinsTheDurgesParty",
+      "uuid": "45ee21a6-8e12-4444-bb8c-6060c11753c1",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
@@ -16076,6 +16140,18 @@
       "uuid": "c85a6935-a9a3-4203-83a6-c474a1d893a9",
       "group": "User Interface",
       "divider": 16,
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "BetterHints",
+      "uuid": "faec902c-8519-72f7-0a7e-7f6185eb5015",
+      "group": "User Interface",
+      "divider": 2,
       "evidence": {
         "source": "section",
         "installs": 4,
@@ -18053,6 +18129,22 @@
       }
     },
     {
+      "name": "HT_Gale's Betrayal - Restored From Early Access",
+      "uuid": "02ac8f25-7e89-f18b-bcf8-fc2cb5f7fb03",
+      "group": "Gameplay",
+      "folder": "HT_EA_GalesBetrayal_02ac8f25-7e89-f18b-bcf8-fc2cb5f7fb03",
+      "author": "HyperspaceTowel",
+      "version": "1.0.0.18",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 18.5,
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "HT_Lesser Restoration: Compatibility Patch - Hug Your Companions (IMM)",
       "uuid": "551debb7-0b35-48c3-9e3b-e54cdc5f9c5e",
       "group": "Gameplay",
@@ -18069,14 +18161,10 @@
       }
     },
     {
-      "name": "HT_Sussur Dialogue Bug Fixes",
-      "uuid": "93b85fb1-2e45-4926-91e2-f1a1a6da9b2f",
-      "group": "Gameplay",
-      "folder": "HT_SussurBugFix",
-      "author": "HyperspaceTowel",
-      "version": "1.0.0.3",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 17,
+      "name": "HT_Spawn Astarion - Epilogue Edits",
+      "uuid": "d378662a-9ed5-4c0d-827e-4c94f9d04ad0",
+      "group": "Companions",
+      "divider": 72,
       "evidence": {
         "source": "section",
         "installs": 4,
@@ -18085,12 +18173,16 @@
       }
     },
     {
-      "name": "HT_Wyll Saves Karlach",
-      "uuid": "ed848132-4a75-4646-b74e-94756fbbb035",
-      "group": "Companions",
-      "divider": 17,
+      "name": "Humanoid Tag Scratch Fix",
+      "uuid": "fc2895e0-1b92-4d18-a5b6-2206ab41fce4",
+      "group": "Miscellaneous",
+      "folder": "HumanoidTagFix",
+      "author": "labotor",
+      "version": "1.0.0.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 20,
       "evidence": {
-        "source": "name-pattern",
+        "source": "section-majority",
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
@@ -19076,19 +19168,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "NoInspCap",
-      "uuid": "dc79d211-7095-4759-b64a-6df30fc3cf0d",
-      "group": "Gameplay",
-      "author": "FrozenLayer",
-      "divider": 18.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 4,
-        "workingInstalls": 3,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "NoTutorialPopup",
       "uuid": "f571f706-2d9b-9b2d-7775-1e8399360d85",
       "group": "Utilities",
@@ -19256,6 +19335,19 @@
       "uuid": "891d5367-9224-447d-973c-2d6f76c366cc",
       "group": "Armor",
       "divider": 36,
+      "evidence": {
+        "source": "section",
+        "installs": 4,
+        "workingInstalls": 3,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Old English Dice",
+      "uuid": "874329a2-b1fc-4ff7-8e75-a940a317e025",
+      "group": "Bodies",
+      "author": "RubenLime",
+      "divider": 99,
       "evidence": {
         "source": "section",
         "installs": 4,
@@ -21153,18 +21245,6 @@
       }
     },
     {
-      "name": "Waypoint Inside Emerald Grove",
-      "uuid": "e342ee75-f7c9-4aeb-b6de-403991578337",
-      "group": "Utilities",
-      "divider": 18,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Wifi potions",
       "uuid": "3d336cc8-b1a1-4fd7-a4f0-06b92a8cc312",
       "group": "unsorted",
@@ -21836,17 +21916,6 @@
         "installs": 3,
         "workingInstalls": 1,
         "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "AlfiraJoinsTheDurgesParty",
-      "uuid": "45ee21a6-8e12-4444-bb8c-6060c11753c1",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
       }
     },
     {
@@ -22818,18 +22887,6 @@
       "divider": 34.5,
       "evidence": {
         "source": "section-majority",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "BetterHints",
-      "uuid": "faec902c-8519-72f7-0a7e-7f6185eb5015",
-      "group": "User Interface",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
@@ -24419,6 +24476,18 @@
       ]
     },
     {
+      "name": "Dark Urge Banter Dialogue Fixes",
+      "uuid": "b6f2e133-0c60-4bb0-be23-803d4e0d2363",
+      "group": "Bug Fixes",
+      "divider": 98,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "DarkerPaper",
       "uuid": "7cc76845-27b0-40d5-81c7-2fbb302a7c85",
       "group": "Visuals",
@@ -25888,6 +25957,17 @@
       }
     },
     {
+      "name": "Gortash survives",
+      "uuid": "548e5100-809f-2ac8-a7e9-94b309f93357",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Grappler Feat",
       "uuid": "5c810a96-7748-4ce5-9a18-f8168a80f407",
       "group": "Classes",
@@ -26283,6 +26363,18 @@
       }
     },
     {
+      "name": "HT_Astarion Docks Narration",
+      "uuid": "f884a90e-7529-4bf0-bd60-3ce0ee47f0a0",
+      "group": "Companions",
+      "divider": 17,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "HT_Astral Pain: Lae'zel Romance Debuff",
       "uuid": "7e5e7aa5-be19-4f9e-b7a6-20079022ef27",
       "group": "Bug Fixes",
@@ -26311,22 +26403,6 @@
       }
     },
     {
-      "name": "HT_Gale's Betrayal - Restored From Early Access",
-      "uuid": "02ac8f25-7e89-f18b-bcf8-fc2cb5f7fb03",
-      "group": "Gameplay",
-      "folder": "HT_EA_GalesBetrayal_02ac8f25-7e89-f18b-bcf8-fc2cb5f7fb03",
-      "author": "HyperspaceTowel",
-      "version": "1.0.0.18",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 18.5,
-      "evidence": {
-        "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "HT_Hermit Crab Quest Restored",
       "uuid": "cc417a0e-c26c-6827-4585-9d1c2d63abb0",
       "group": "Gameplay",
@@ -26343,6 +26419,28 @@
       }
     },
     {
+      "name": "HT_Kiss Me Again: Unlimited Last Kisses in Endgame",
+      "uuid": "28f3a542-38be-4bb5-93c1-41f163a4cbef",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HT_Leaking Blood-bag",
+      "uuid": "fc6e3845-936f-4ce1-9ff6-e2c4e52bca1a",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "HT_Lesser Restoration - Compatibility Patch - Aeries' Gale Dekarios",
       "uuid": "ab31a079-6f03-c196-f305-9c7a76e40d25",
       "group": "Companions",
@@ -26355,12 +26453,24 @@
       }
     },
     {
-      "name": "HT_Spawn Astarion - Epilogue Edits",
-      "uuid": "d378662a-9ed5-4c0d-827e-4c94f9d04ad0",
+      "name": "HT_Minthara's Alurlssrin",
+      "uuid": "1f00c671-be0b-40e6-b284-83fd99fa7ed2",
       "group": "Companions",
-      "divider": 72,
+      "divider": 78,
       "evidence": {
-        "source": "section",
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "HT_Stop accidentally dating Gale",
+      "uuid": "2f0e214f-c5e6-4a87-ad76-30fcbeb50cbb",
+      "group": "Companions",
+      "divider": 17,
+      "evidence": {
+        "source": "name-pattern",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
@@ -26371,22 +26481,6 @@
       "uuid": "89016693-2f63-4d3f-a505-4ce0fbee260e",
       "group": "Character Customization",
       "divider": 62.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Humanoid Tag Scratch Fix",
-      "uuid": "fc2895e0-1b92-4d18-a5b6-2206ab41fce4",
-      "group": "Miscellaneous",
-      "folder": "HumanoidTagFix",
-      "author": "labotor",
-      "version": "1.0.0.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 20,
       "evidence": {
         "source": "section-majority",
         "installs": 3,
@@ -26479,6 +26573,19 @@
       "divider": 36,
       "evidence": {
         "source": "section-majority",
+        "installs": 3,
+        "workingInstalls": 2,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Ice Dice",
+      "uuid": "0007c8ec-aec3-4cfc-9177-633ebc56f87c",
+      "group": "Dice",
+      "author": "Palmaman33",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
         "installs": 3,
         "workingInstalls": 2,
         "brokenInstalls": 1
@@ -27951,6 +28058,17 @@
       ]
     },
     {
+      "name": "NewLoadingScreens",
+      "uuid": "ebf9214b-475d-a11b-ab7f-11c76b080123",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "NF_1_GaleBeardFixPatch",
       "uuid": "d5cd6ca4-4a53-1244-df8d-3dbb4ed1ad67",
       "group": "Companions",
@@ -28316,19 +28434,6 @@
       "author": "Obscen1ty",
       "evidence": {
         "source": "none",
-        "installs": 3,
-        "workingInstalls": 2,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Old English Dice",
-      "uuid": "874329a2-b1fc-4ff7-8e75-a940a317e025",
-      "group": "Bodies",
-      "author": "RubenLime",
-      "divider": 99,
-      "evidence": {
-        "source": "section",
         "installs": 3,
         "workingInstalls": 2,
         "brokenInstalls": 1
@@ -29477,6 +29582,18 @@
         "installs": 3,
         "workingInstalls": 1,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Sandi's XP Redistribution",
+      "uuid": "b474d5da-4ce5-4063-88d3-626e60750d61",
+      "group": "Utilities",
+      "divider": 19,
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
       }
     },
     {
@@ -31060,6 +31177,18 @@
       }
     },
     {
+      "name": "Wyrmway Original Cutscene",
+      "uuid": "324e3822-04bc-4075-922a-e298a4716c34",
+      "group": "Miscellaneous",
+      "divider": 89.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Xena's Armour",
       "uuid": "4b6f0320-996f-410e-9c9b-1bd3f857c6be",
       "group": "Equipment",
@@ -32389,6 +32518,18 @@
       }
     },
     {
+      "name": "Astarion Bugbear and Ogre Dialogue Priority",
+      "uuid": "c42226aa-7f33-4ed0-9f84-022b9ff01970",
+      "group": "Companions",
+      "divider": 71,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Astarion Dice Collection - Sanguine Splendor",
       "uuid": "3b48374f-c201-4fd8-bbdc-de31e1ddd13a",
       "group": "Bodies",
@@ -32420,6 +32561,18 @@
       "divider": 64,
       "evidence": {
         "source": "section",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Astarion Romance Reactions Fix",
+      "uuid": "d63c5d09-13c4-4544-9a30-8aa8ef0a6d61",
+      "group": "Companions",
+      "divider": 71,
+      "evidence": {
+        "source": "name-pattern",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -32641,6 +32794,18 @@
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Aunite Ethel - Dark Urge Dialogue Bug Fix",
+      "uuid": "name:auniteetheldarkurgedialoguebugfix",
+      "group": "Bug Fixes",
+      "divider": 98,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
       }
     },
     {
@@ -35038,18 +35203,6 @@
       }
     },
     {
-      "name": "Dark Urge Banter Dialogue Fixes",
-      "uuid": "b6f2e133-0c60-4bb0-be23-803d4e0d2363",
-      "group": "Bug Fixes",
-      "divider": 98,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Dark Urges",
       "uuid": "0972967e-8763-4fef-8721-292f260e1bc7",
       "group": "Miscellaneous",
@@ -36041,6 +36194,18 @@
       "divider": 60,
       "evidence": {
         "source": "section",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Dream Guardian Shut Up",
+      "uuid": "f792aae9-12ea-4845-994d-528f3d0abf4b",
+      "group": "Audio",
+      "divider": 92,
+      "evidence": {
+        "source": "external-category",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -37757,6 +37922,18 @@
       }
     },
     {
+      "name": "Gender Nullification AKA No Genitals",
+      "uuid": "d2a5ac00-7a04-905d-c7b7-a3274d363e2a",
+      "group": "Character Customization",
+      "divider": 62.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Geometric Crackling Dice",
       "uuid": "36e273cf-8d8e-44e8-90b9-184f56be1d48",
       "group": "Dice",
@@ -37872,6 +38049,18 @@
       }
     },
     {
+      "name": "GithyankiTranslations",
+      "uuid": "25ae3d6e-a12f-4b4f-8019-5444f25b26ba",
+      "group": "Races",
+      "divider": 52,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "GlaiveProficiencyDragonborn",
       "uuid": "656687ed-2cab-9cc5-360b-652f20f1b8de",
       "group": "Races",
@@ -37929,6 +38118,28 @@
           "name": "Dragonborn Extra Tabs - Horns and Hair"
         }
       ]
+    },
+    {
+      "name": "Goblin Poop Eating For All",
+      "uuid": "495809b6-dab6-4d2f-9085-7f984a1ec80e",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "godsextra",
+      "uuid": "350c3ba5-9d59-4acd-b6b6-5d718be75029",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
     },
     {
       "name": "Gold_Chains",
@@ -38081,17 +38292,6 @@
       "divider": 18.5,
       "evidence": {
         "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Gortash survives",
-      "uuid": "548e5100-809f-2ac8-a7e9-94b309f93357",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -38622,18 +38822,6 @@
       }
     },
     {
-      "name": "HT_Astarion Docks Narration",
-      "uuid": "f884a90e-7529-4bf0-bd60-3ce0ee47f0a0",
-      "group": "Companions",
-      "divider": 17,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "HT_Cursed Loading Screens",
       "uuid": "f210b92e-436e-3234-ddee-b30d9bcadeb8",
       "group": "User Interface",
@@ -38656,52 +38844,6 @@
       "divider": 102.5,
       "evidence": {
         "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "HT_Kiss Me Again: Unlimited Last Kisses in Endgame",
-      "uuid": "28f3a542-38be-4bb5-93c1-41f163a4cbef",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "HT_Leaking Blood-bag",
-      "uuid": "fc6e3845-936f-4ce1-9ff6-e2c4e52bca1a",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "HT_Minthara's Alurlssrin",
-      "uuid": "1f00c671-be0b-40e6-b284-83fd99fa7ed2",
-      "group": "Companions",
-      "divider": 78,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "HT_Stop accidentally dating Gale",
-      "uuid": "2f0e214f-c5e6-4a87-ad76-30fcbeb50cbb",
-      "group": "Companions",
-      "divider": 17,
-      "evidence": {
-        "source": "name-pattern",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -38826,19 +38968,6 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Ice Dice",
-      "uuid": "name:icedice",
-      "group": "Dice",
-      "author": "Palmaman33",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 1,
-        "brokenInstalls": 1
       }
     },
     {
@@ -39630,6 +39759,17 @@
       "divider": 36,
       "evidence": {
         "source": "section",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Killable Children - Everyone is here!",
+      "uuid": "607dd5f2-d1f1-4317-8085-8ff1e20045b5",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -41195,6 +41335,30 @@
       }
     },
     {
+      "name": "MOXI_Epilogue_Lord_Astarion_Affection",
+      "uuid": "79efeb18-ca0b-4420-ab59-f362b2eb4f80",
+      "group": "Companions",
+      "divider": 71,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "MOXI_Nightingales_Lord_Astarion",
+      "uuid": "c6ab695d-bd79-4a2a-84c6-6cff164bc08e",
+      "group": "Companions",
+      "divider": 71,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Mushroom_Hat_For_All",
       "uuid": "name:mushroomhatforall",
       "group": "Equipment",
@@ -41273,6 +41437,19 @@
       }
     },
     {
+      "name": "n_Raph",
+      "uuid": "c06a35f1-b707-4c20-88aa-d92dcbd4b05c",
+      "group": "Companions",
+      "evidence": {
+        "source": "inferred",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0,
+        "confidence": 0.8
+      },
+      "divider": 82
+    },
+    {
       "name": "NachoPango's Half-Orc Edits",
       "uuid": "575ea88b-b044-7ed7-4edc-0d9852bc614c",
       "group": "Character Customization",
@@ -41347,19 +41524,6 @@
         "workingInstalls": 1,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "NewLoadingScreens",
-      "uuid": "ebf9214b-475d-a11b-ab7f-11c76b080123",
-      "group": "User Interface",
-      "evidence": {
-        "source": "inferred",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0,
-        "confidence": 0.7
-      },
-      "divider": 5
     },
     {
       "name": "NF_3_Physics_Piercing_Gale",
@@ -41505,6 +41669,18 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "No Spell Prep SE Compatibility Version",
+      "uuid": "0e8d791a-8338-4aeb-adf0-cd5e68151107",
+      "group": "Spells",
+      "divider": 47,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 2,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -42940,6 +43116,19 @@
       }
     },
     {
+      "name": "Quieter_Gortash_SFXv1.0",
+      "uuid": "name:quietergortashsfxv10",
+      "group": "Companions",
+      "evidence": {
+        "source": "inferred",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0,
+        "confidence": 0.86
+      },
+      "divider": 82
+    },
+    {
       "name": "Radiant Threads",
       "uuid": "1914b275-0a2d-448e-8c2f-34e08e7eef4e",
       "group": "Equipment",
@@ -43398,18 +43587,6 @@
       }
     },
     {
-      "name": "Sandi's XP Redistribution",
-      "uuid": "b474d5da-4ce5-4063-88d3-626e60750d61",
-      "group": "Utilities",
-      "divider": 19,
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Sanguine Silver",
       "uuid": "a40a51d6-8dfa-4161-b852-cc8951d568ba",
       "group": "Bodies",
@@ -43455,6 +43632,17 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "SAR_Trashy tent in every camp",
+      "uuid": "aa615c4f-d9b4-e459-47ab-853a9737c65e",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 2,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -43546,6 +43734,18 @@
         "source": "section",
         "installs": 2,
         "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Scratch, Shovel, Owlbear Redux. And Us!",
+      "uuid": "b4f40222-5ff5-47c9-9df4-ad2cedd1a62a",
+      "group": "Companions",
+      "divider": 81,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 2,
+        "workingInstalls": 2,
         "brokenInstalls": 0
       }
     },
@@ -46025,6 +46225,19 @@
       }
     },
     {
+      "name": "Volo No Scribbles",
+      "uuid": "1bca4d8a-9f5a-4b92-80cf-f236df7a07c1",
+      "group": "Companions",
+      "evidence": {
+        "source": "inferred",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0,
+        "confidence": 0.9
+      },
+      "divider": 82
+    },
+    {
       "name": "Voss' Silver Sword Glow Fix",
       "uuid": "c3a5de18-e3f4-4b9e-aaa2-3af8a6f505f1",
       "group": "Equipment",
@@ -46553,18 +46766,6 @@
       "divider": 82,
       "evidence": {
         "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Wyrmway Original Cutscene",
-      "uuid": "324e3822-04bc-4075-922a-e298a4716c34",
-      "group": "Miscellaneous",
-      "divider": 89.5,
-      "evidence": {
-        "source": "external-category",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
@@ -51749,18 +51950,6 @@
       }
     },
     {
-      "name": "Astarion Bugbear and Ogre Dialogue Priority",
-      "uuid": "name:astarionbugbearandogredialoguepriority",
-      "group": "Companions",
-      "divider": 71,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Astarion Dice",
       "uuid": "31c3b70c-b27c-4cb7-84fa-d7e8c67303bb",
       "group": "Bodies",
@@ -51777,18 +51966,6 @@
       "uuid": "4a009462-a9f3-8077-c1c2-0c02815f2d0c",
       "group": "Companions",
       "folder": "AstarionDice_4a009462-a9f3-8077-c1c2-0c02815f2d0c",
-      "divider": 71,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Astarion Romance Reactions Fix",
-      "uuid": "name:astarionromancereactionsfix",
-      "group": "Companions",
       "divider": 71,
       "evidence": {
         "source": "name-pattern",
@@ -52347,18 +52524,6 @@
         "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 0,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Aunite Ethel - Dark Urge Dialogue Bug Fix",
-      "uuid": "name:auniteetheldarkurgedialoguebugfix",
-      "group": "Bug Fixes",
-      "divider": 98,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
         "brokenInstalls": 0
       }
     },
@@ -60452,18 +60617,6 @@
       }
     },
     {
-      "name": "Dream Guardian Shut Up",
-      "uuid": "name:dreamguardianshutup",
-      "group": "Audio",
-      "divider": 92,
-      "evidence": {
-        "source": "external-category",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Drizzt Do Urden Armor By REN",
       "uuid": "f673170b-0a92-4440-b2b4-0f5eb8bdc35a",
       "group": "Armor",
@@ -65263,18 +65416,6 @@
       }
     },
     {
-      "name": "Gender Nullification AKA No Genitals",
-      "uuid": "name:gendernullificationakanogenitals",
-      "group": "Character Customization",
-      "divider": 62.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "General's Combat Difficulty: More AP for Enemies",
       "uuid": "8178c843-467b-e542-3eba-6811209d1750",
       "group": "Gameplay",
@@ -65659,18 +65800,6 @@
       }
     },
     {
-      "name": "GithyankiTranslations",
-      "uuid": "name:githyankitranslations",
-      "group": "Races",
-      "divider": 52,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "GithzeraiPlayableRace",
       "uuid": "1f9d78eb-4f0c-d2f9-e781-5332454694aa",
       "group": "Races",
@@ -65855,17 +65984,6 @@
       }
     },
     {
-      "name": "Goblin Poop Eating For All",
-      "uuid": "name:goblinpoopeatingforall",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "God Hero",
       "uuid": "491655ec-897d-86ce-92b3-fdcd17070d93",
       "group": "Gameplay",
@@ -65908,17 +66026,6 @@
       "divider": 47,
       "evidence": {
         "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "godsextra",
-      "uuid": "name:godsextra",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -66067,6 +66174,18 @@
       "divider": 37,
       "evidence": {
         "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Gortash Hireling",
+      "uuid": "d819d8c2-362b-4e5c-b0a9-7ae1cc9948e3",
+      "group": "Character Customization",
+      "divider": 62.5,
+      "evidence": {
+        "source": "external-category",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -69926,17 +70045,6 @@
       "divider": 75,
       "evidence": {
         "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Killable Children - Everyone is here!",
-      "uuid": "name:killablechildreneveryoneishere",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -74222,30 +74330,6 @@
       }
     },
     {
-      "name": "MOXI_Epilogue_Lord_Astarion_Affection",
-      "uuid": "name:moxiepiloguelordastarionaffection",
-      "group": "Companions",
-      "divider": 71,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "MOXI_Nightingales_Lord_Astarion",
-      "uuid": "name:moxinightingaleslordastarion",
-      "group": "Companions",
-      "divider": 71,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "MS_HS_Spells",
       "uuid": "e8b67f53-a0f8-47b9-816f-120858b1d3ae",
       "group": "Spells",
@@ -74433,19 +74517,6 @@
         "workingInstalls": 1,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "n_Raph",
-      "uuid": "name:nraph",
-      "group": "Companions",
-      "evidence": {
-        "source": "inferred",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.8
-      },
-      "divider": 82
     },
     {
       "name": "Nacre",
@@ -75121,18 +75192,6 @@
       "divider": 10,
       "evidence": {
         "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "No Spell Prep SE Compatibility Version",
-      "uuid": "name:nospellprepsecompatibilityversion",
-      "group": "Spells",
-      "divider": 47,
-      "evidence": {
-        "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -78972,19 +79031,6 @@
       }
     },
     {
-      "name": "Quieter_Gortash_SFXv1.0",
-      "uuid": "name:quietergortashsfxv10",
-      "group": "Companions",
-      "evidence": {
-        "source": "inferred",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.86
-      },
-      "divider": 82
-    },
-    {
       "name": "r_CrissCross",
       "uuid": "1ee9ae14-b868-ef7a-784f-fda524dae630",
       "group": "Resources",
@@ -80807,17 +80853,6 @@
       }
     },
     {
-      "name": "SAR_Trashy tent in every camp",
-      "uuid": "name:sartrashytentineverycamp",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Sarevok Set",
       "uuid": "f9385da8-b27a-ea60-fba2-6e856f273c2f",
       "group": "Equipment",
@@ -81228,18 +81263,6 @@
       "divider": 36,
       "evidence": {
         "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Scratch, Shovel, Owlbear Redux. And Us!",
-      "uuid": "name:scratchshovelowlbearreduxandus",
-      "group": "Companions",
-      "divider": 81,
-      "evidence": {
-        "source": "name-pattern",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
@@ -88154,19 +88177,6 @@
         "workingInstalls": 0,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "Volo No Scribbles",
-      "uuid": "name:volonoscribbles",
-      "group": "Companions",
-      "evidence": {
-        "source": "inferred",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "confidence": 0.9
-      },
-      "divider": 82
     },
     {
       "name": "Volo's Ersatz Eye Enhanced",
