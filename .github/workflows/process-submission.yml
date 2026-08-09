@@ -9,9 +9,12 @@ name: Process load order submission
 # would each build it without the other's order, and the later push would
 # silently drop the earlier one.
 
+# `labeled` is the reprocess lever: intake improves, and an order rejected by
+# an older version should get another run without asking its submitter to
+# refile. Removing and re-adding the label replays it.
 on:
   issues:
-    types: [opened, edited]
+    types: [opened, edited, labeled]
 
 permissions:
   contents: write
