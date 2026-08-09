@@ -83,6 +83,12 @@
       "why": "Published on Nexus as 'Vlad's Grimoire - Spell VFX Library' and shipped as a pak called VFX_Library_VladsGrimoire, so a mod requiring the short name matches neither. Same author on both, VladmirFFXI. Reported from a load order that had it installed and was told it was missing."
     },
     {
+      "requirement": "Starting Equipment & Passives Fix",
+      "mod": "Missing Starting Passives Fix",
+      "nexusId": 23623,
+      "why": "The name of the mod before it split in two, which Nexus still lists as an earlier title of the passives half. Mods asking for the combined name match neither half by name. The equipment half answers it too, through the stand-in rule."
+    },
+    {
       "requirement": "Mazzle_Docs",
       "mod": "Mazzle's EZ-Documentation",
       "nexusId": 18883,
@@ -94,6 +100,11 @@
       "requirement": "Origin Mirror Unlock",
       "satisfiedBy": "AppearanceEditEnhanced",
       "why": "Reported by a player told they were missing it while it was installed: the function was folded into Appearance Edit Enhanced and the requirement still names the old mod. The corpus cannot show this on its own, since Appearance Edit Enhanced is in most orders anyway, so co-occurrence proves nothing here."
+    },
+    {
+      "requirement": "Missing Starting Passives Fix",
+      "satisfiedBy": "Missing Starting Equipment Fix",
+      "why": "One mod that split in two. Nexus still records the surviving page's former name as 'Missing Starting Equipment And Passives Fix', and mods written against it ask for the combined name, so either half answers a requirement naming the old mod. Confirmed by the player who reported it, who had both installed and was told they were missing it."
     },
     {
       "requirement": "TutorialChestSummoning",

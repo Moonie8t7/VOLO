@@ -330,6 +330,23 @@ export function sortLoadOrder(
   /** Requirement names the corpus shows most working orders do without. */
   const softRequirements = new Set<string>();
 
+  /**
+   * Whether a mod that stands in for a requirement is in the list.
+   *
+   * By uuid, then by the name and folder the masterlist knows it under. A
+   * masterlist entry only ever seen in exports that carried no uuids has a
+   * synthetic key rather than a real one, so a uuid comparison alone would
+   * miss it for every user whose export does carry uuids.
+   */
+  const standInPresent = (uuid: string): boolean => {
+    if (present.has(uuid)) return true;
+    const entry = byUuid.get(uuid);
+    if (!entry) return false;
+    const key = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return byNormName.has(key(entry.name))
+      || (entry.folder ? byNormFolder.has(key(entry.folder)) : false);
+  };
+
   for (const mod of mods) {
     // Masterlist dependencies supplement whatever the export declared.
     const declared = [
@@ -393,7 +410,7 @@ export function sortLoadOrder(
          */
         const required = viaMasterlist ?? (dep.uuid ? byUuid.get(dep.uuid) : undefined);
         const standIns = required ? satisfiedBy[required.uuid] : undefined;
-        if (standIns?.some(uuid => present.has(uuid))) continue;
+        if (standIns?.some(standInPresent)) continue;
 
         const list = missing.get(dep.name) ?? [];
         list.push(mod.uuid);
