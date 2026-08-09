@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-08-09T11:56:26.039Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-09T12:11:00.606Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 29 |
+| Load orders analysed | 30 |
 | labelled working | 24 |
-| labelled broken | 2 |
+| labelled broken | 3 |
 | load-after edges promoted from catalogues | 328 |
 | unlabelled | 3 |
 | Separator headers parsed | 469 |
-| **Unique mods indexed** | **5286** |
-| Seen in more than one order | 2193 |
+| **Unique mods indexed** | **5344** |
+| Seen in more than one order | 2250 |
 | With declared dependencies | 241 |
 | With Script Extender flags | 43 |
 | With author metadata | 483 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 1 of 29 orders carry it, because the short
+this comes from. Only 1 of 30 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -40,12 +40,12 @@ the tool flag a mod as last verified on an older patch.
 |---|---|---|
 | Curated override | 21 | highest, hand-verified infrastructure |
 | Human-authored section header | 2333 | high, a modder put it there |
-| Name pattern fallback | 1420 | medium, needs review |
-| Nexus or mod.io listing category | 580 | medium, the author's own words about what the mod is |
+| Name pattern fallback | 1436 | medium, needs review |
+| Nexus or mod.io listing category | 591 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 27 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
-| Neighbour inference, 0.85 agreement or better | 79 | high, measured 97 percent accurate at this band |
-| Neighbour inference, 0.70 to 0.85 | 95 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 731 | none, needs community input |
+| Neighbour inference, 0.85 agreement or better | 80 | high, measured 97 percent accurate at this band |
+| Neighbour inference, 0.70 to 0.85 | 101 | medium, roughly 75 percent accurate, carries a confidence score |
+| Uncategorised | 755 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -56,34 +56,34 @@ inferred entry stores its agreement score as `evidence.confidence`.
 
 - `Top of Load Order`: 9
 - `User Interface`: 120
-- `Visuals`: 72
-- `Weapons`: 200
+- `Visuals`: 75
+- `Weapons`: 201
 - `Dyes`: 63
-- `Clothing`: 174
-- `Character Customization`: 244
-- `Resources`: 107
-- `Equipment`: 243
-- `Armor`: 425
+- `Clothing`: 178
+- `Character Customization`: 248
+- `Resources`: 108
+- `Equipment`: 245
+- `Armor`: 432
 - `Utilities`: 60
-- `Races`: 167
+- `Races`: 168
 - `Animations`: 60
-- `Spells`: 298
+- `Spells`: 299
 - `Classes`: 492
 - `Bodies`: 19
 - `Miscellaneous`: 96
-- `Bug Fixes`: 160
-- `Gameplay`: 232
+- `Bug Fixes`: 161
+- `Gameplay`: 233
 - `Accessories`: 84
 - `Quests`: 28
 - `Environment`: 25
 - `Audio`: 11
 - `Hair`: 223
-- `Heads`: 239
+- `Heads`: 241
 - `Dice`: 312
-- `Companions`: 276
-- `NPC`: 113
+- `Companions`: 280
+- `NPC`: 115
 - `Bottom of Load Order`: 3
-- `unsorted`: 731
+- `unsorted`: 755
 
 ## Known limitations
 
@@ -91,7 +91,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **731 mods are `unsorted`.** These need community categorisation.
+- **755 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 

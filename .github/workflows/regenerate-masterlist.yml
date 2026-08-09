@@ -36,42 +36,54 @@ jobs:
 
       - run: npm ci
 
-      - name: Rebuild from the whole corpus
+      # Everything here is derived from the corpus, so each attempt starts from
+      # whatever main holds now and rebuilds from that. Nothing is rebased:
+      # regenerating on top of the current tip produces the same answer as
+      # merging two regenerations would, without the conflicts that come with
+      # rebasing large generated files.
+      #
+      # The reset also keeps the tree clean between attempts. Building writes
+      # more files than the previous version staged, sitemap.xml and the
+      # catalogue copy among them, and the leftovers made `git pull --rebase`
+      # refuse to run at all.
+      - name: Rebuild, verify and commit
         run: |
-          node scripts/mine-corpus.mjs
-          node scripts/learn-category-order.mjs
-          node scripts/build-divider-map.mjs
-          node scripts/build-external-categories.mjs
-          node -e "require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')"
-          node scripts/verify-order.mjs | tail -6 >> "$GITHUB_STEP_SUMMARY"
-
-      # A new corpus means new figures, and every place that quotes them is
-      # generated or synced: the measurement JSON feeds the site, and the sync
-      # rewrites the README and decisions prose. Without this step the checks
-      # workflow fails on stale figures the moment this commit lands.
-      - name: Re-measure and sync the quoted figures
-        run: |
-          node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
-          node scripts/sync-figures.mjs
-
-      # Pushes made with the workflow token do not trigger the checks
-      # workflow, so this commit would land unverified. Run the same gate here
-      # and fail before pushing anything that would not have passed it.
-      - name: Run the checks this push cannot trigger
-        run: |
-          npm run check
-          npm run build
-          npm test
-
-      - name: Commit whatever changed
-        run: |
+          set -euo pipefail
           git config user.name "volo-submissions"
           git config user.email "submissions@users.noreply.github.com"
-          git add masterlist public/bg3-masterlist.json client/src/lib/dividers.json client/src/lib/masterlist-summary.json client/src/lib/measured.json README.md docs/decisions.md
-          if git diff --cached --quiet; then
-            echo "masterlist already matches the corpus"
-          else
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            node scripts/mine-corpus.mjs
+            node scripts/learn-category-order.mjs
+            node scripts/build-divider-map.mjs
+            node scripts/build-external-categories.mjs
+            node -e "require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')"
+            node -e "require('fs').copyFileSync('masterlist/external-categories.json','public/external-categories.json')"
+            node scripts/verify-order.mjs | tail -6 >> "$GITHUB_STEP_SUMMARY"
+            node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
+            node scripts/sync-figures.mjs
+
+            # Pushes made with the workflow token do not trigger the checks
+            # workflow, so this would otherwise land unverified.
+            npm run check
+            npm run build
+            npm test
+
+            git add masterlist public client/src/lib README.md docs/decisions.md
+            if git diff --cached --quiet; then
+              echo "masterlist already matches the corpus"
+              exit 0
+            fi
             git commit -m "Regenerate the masterlist from the corpus"
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
+
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "push rejected on attempt $attempt, rebuilding on the new tip"
+          done
+
+          echo "could not land the regeneration after three attempts"
+          exit 1
