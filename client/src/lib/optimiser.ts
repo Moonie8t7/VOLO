@@ -307,9 +307,22 @@ export function sortLoadOrder(
 
     const linked = new Set<string>();
     for (const dep of declared) {
+      const norm = dep.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+      /*
+       * A dependency may name no uuid at all: TSV and CSV exports list
+       * requirements as bare names. Matching those by name alone fails
+       * whenever a mod's pak is named differently from the mod it publishes
+       * as, and ImpUI is exactly that case, shipping as ImpUI_P8_Fork. The
+       * masterlist knows which uuid the published name belongs to, so a name
+       * that resolves there is looked up among the user's mods by uuid.
+       * Without this the sorter told people a mod was missing while it sat in
+       * the list in front of them, which is the worst thing a critical
+       * warning can do.
+       */
       const target =
-        present.get(dep.uuid) ??
-        byNormName.get(dep.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
+        (dep.uuid ? present.get(dep.uuid) : undefined) ??
+        byNormName.get(norm) ??
+        (byName.get(norm)?.uuid ? present.get(byName.get(norm)!.uuid) : undefined);
 
       if (!target) {
         const list = missing.get(dep.name) ?? [];
