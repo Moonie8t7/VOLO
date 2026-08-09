@@ -15,7 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useStore } from '@/lib/store';
 import dividers from '@/lib/dividers.json';
-import type { Issue, IssueSeverity, Placement, SortResult } from '@/lib/types';
+import type { Issue, IssueSeverity, Mod, Placement, SortResult } from '@/lib/types';
 
 /**
  * How a category was decided, and how loudly to say so.
@@ -233,7 +233,7 @@ export default function OptimisePage() {
           </Alert>
         )}
 
-        {issues.map((issue, i) => <IssueCard key={i} issue={issue} />)}
+        {issues.map((issue, i) => <IssueCard key={i} issue={issue} mods={result.mods} />)}
 
         <Card className="border-ornate shadow-bg3">
           <CardHeader className="flex-row items-center justify-between space-y-0 gap-4">
@@ -363,7 +363,47 @@ function Metric({ label, value, hint, muted }: {
 const WRONG_PLACEMENT_URL =
   'https://github.com/Moonie8t7/VOLO/issues/new?template=wrong-placement.yml';
 
-function IssueCard({ issue }: { issue: Issue }) {
+/**
+ * The mods an issue is actually about.
+ *
+ * Every issue already carries the uuids it concerns and none of them were
+ * shown, so a reader was told that five mods had never been verified, or that
+ * ninety-one were unsorted, with no way to find out which. Two people asked
+ * for this within a day of each other, and both were right: a warning naming
+ * nothing cannot be acted on.
+ */
+function IssueMods({ issue, mods }: { issue: Issue; mods: Mod[] }) {
+  const [open, setOpen] = useState(false);
+  const named = (issue.uuids ?? [])
+    .map(u => mods.find(m => m.uuid === u)?.name)
+    .filter((n): n is string => !!n);
+
+  if (!named.length) return null;
+
+  // A handful reads as a sentence; ninety-one needs to be asked for.
+  const inline = named.length <= 6;
+  const shown = inline || open ? named : named.slice(0, 6);
+
+  return (
+    <span className="block mt-2 text-sm opacity-90">
+      {shown.join(', ')}
+      {!inline && !open && (
+        <>
+          {'. '}
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="underline hover:opacity-100"
+          >
+            Show all {named.length}
+          </button>
+        </>
+      )}
+    </span>
+  );
+}
+
+function IssueCard({ issue, mods }: { issue: Issue; mods: Mod[] }) {
   const Icon = SEVERITY_ICON[issue.severity];
   return (
     <Alert variant={issue.severity === 'critical' ? 'destructive' : 'default'}>
@@ -371,6 +411,7 @@ function IssueCard({ issue }: { issue: Issue }) {
       <AlertTitle className="font-subheader capitalize">{issue.kind.replace('-', ' ')}</AlertTitle>
       <AlertDescription className="font-body">
         {issue.message}
+        <IssueMods issue={issue} mods={mods} />
         {issue.resolution && (
           <span className="block mt-1 text-sm opacity-80">
             {issue.resolution}
