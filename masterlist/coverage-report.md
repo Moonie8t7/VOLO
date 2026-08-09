@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-09T16:08:37.188Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-09T16:25:29.359Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -84,6 +84,30 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `NPC`: 167
 - `Bottom of Load Order`: 4
 - `unsorted`: 666
+
+## Requirements the corpus overrules
+
+A mod here is loaded after the mods that require it, so requirements naming it
+stop being ordering constraints. Right for a patcher, which reads the mods it
+patches; wrong for a library, which has to be parsed first. Decided from the
+working orders alone, with the evidence pooled across everything that requires
+the same mod.
+
+Listed because the decision is otherwise invisible. Dropping a real ordering
+constraint would be silent, and this file is regenerated and committed on every
+mine, so a change to this list shows up in a diff where somebody sees it.
+
+| Mod | Loaded after its dependants | Mods declaring it |
+|---|---|---|
+| `CompatibilityFramework` | 4 of 5 placements | 4 |
+
+## Requirements naming something unknown
+
+Every "install X first" rests on knowing what X is. A name that matches no mod,
+no folder and no curated alias makes a warning nobody can act on, and the string
+would otherwise be formatted into a message and dropped without being counted.
+
+_none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
