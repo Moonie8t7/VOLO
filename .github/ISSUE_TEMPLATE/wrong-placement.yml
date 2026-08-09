@@ -58,8 +58,33 @@ body:
       description: >
         Optional, but this is the thing that actually fixes placements. Paste
         your BG3 Mod Manager export here or drag the file in, and the mod's
-        placement is corrected by evidence rather than by hand.
+        placement is corrected by evidence rather than by hand. Answer the two
+        questions below and it joins the corpus, so it fixes every other mod
+        in it too.
       render: json
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: If you attached an order, does it work?
+      description: >
+        An order can only teach placement if someone has actually played on
+        it. Leave this alone if you did not attach one.
+      options:
+        - Working, I have played on it
+        - Not working, it has problems
+
+  - type: dropdown
+    id: arrangement
+    attributes:
+      label: If you attached an order, how was it arranged?
+      description: >
+        An order VOLO sorted still shows which mods work together, but its
+        sequence came from VOLO, so it cannot count as agreeing with VOLO.
+        Saying so keeps the published numbers honest.
+      options:
+        - I arranged it myself
+        - I sorted it with VOLO
   - type: textarea
     id: notes
     attributes:

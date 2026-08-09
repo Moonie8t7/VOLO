@@ -27,7 +27,15 @@ concurrency:
 
 jobs:
   process:
-    if: contains(github.event.issue.labels.*.name, 'load-order-submission')
+    # A wrong placement report carries the reporter's own load order, and that
+    # order is the thing that actually fixes placements: it teaches where every
+    # mod in it belongs, not just the one being reported. It only enters the
+    # corpus when the reporter has said they played on it, because provenance
+    # is what the whole anti-feedback rule rests on.
+    if: >
+      contains(github.event.issue.labels.*.name, 'load-order-submission') ||
+      (contains(github.event.issue.labels.*.name, 'wrong-placement') &&
+       contains(github.event.issue.body, 'Working, I have played on it'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

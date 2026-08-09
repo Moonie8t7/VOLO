@@ -326,6 +326,35 @@ export default function LandingPage() {
             </AccordionContent>
           </AccordionItem>
 
+          <AccordionItem value="console" className="border-ornate/20">
+            <AccordionTrigger className="text-left font-semibold">
+              Can I use VOLO on Xbox or PlayStation?
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-3">
+              <p>
+                Not really, and I would rather say so than pretend otherwise.
+                Consoles give you no access to the files VOLO reads or writes,
+                so there is nothing to export and nothing to import back. You
+                would have to type every mod name in by hand and then reorder
+                the whole list again with a controller, which is not a workflow
+                anybody wants for two hundred mods.
+              </p>
+              <p>
+                What already works in your favour is that the masterlist is
+                built from Nexus Mods and mod.io alike, and mod.io is the
+                platform behind the in-game mod manager. So console mods are in
+                the data and sorted like any other, even though getting an
+                order in and out is the part that is missing.
+              </p>
+              <p>
+                Proper console support is on the list. It needs considerably
+                more testing than I have done before I would claim it works, so
+                it is honest to call it unsupported today rather than have you
+                find out the hard way.
+              </p>
+            </AccordionContent>
+          </AccordionItem>
+
           <AccordionItem value="loot" className="border-ornate/20">
             <AccordionTrigger className="text-left font-semibold">
               Is this like LOOT?
