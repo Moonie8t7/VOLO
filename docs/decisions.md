@@ -22,14 +22,14 @@ Two scripts report it, and the difference matters.
 The in-sample figure runs about four points high because the masterlist has
 already read the answer. **Quote the held-out number.**
 
-Current: **61.1 percent held out**, against a 50.7 percent random baseline,
-over 27 distinct working orders.
+Current: **61.0 percent held out**, against a 50.7 percent random baseline,
+over 28 distinct working orders.
 
 Two caveats on the held-out figure itself. The group sequence is fixed across
 folds rather than re-learned per fold, so it is very slightly optimistic. And
 the summary is a mean over orders, not over mods, so a 41-mod order counts as
 much as a 999-mod one; on the same data, weighting by mods barely moves the
-figure, and the twenty orders above 200 mods average 61.1 on their own. Read
+figure, and the 21 orders above 200 mods average 60.9 on their own. Read
 the per-order table before treating a change in the summary as real.
 
 ## Adopted
