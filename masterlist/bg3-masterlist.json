@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-09T14:59:02.569Z",
+  "generated": "2026-08-09T15:26:56.493Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -9,6 +9,10 @@
     "4.8.700.7143220"
   ],
   "incompatible": [],
+  "requirementAliases": {
+    "vladsgrimoire": "0dd5b581-c210-4956-ab96-7682fb519de5",
+    "mazzledocs": "ad95bd1c-1a80-45fb-b73b-9eea1f8e58d0"
+  },
   "provenance": {
     "ordersAnalysed": 34,
     "working": 28,
@@ -389,7 +393,8 @@
         "workingInstalls": 18,
         "brokenInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "loadsAfterDependents": true
     },
     {
       "name": "Tav's Hair Salon",
