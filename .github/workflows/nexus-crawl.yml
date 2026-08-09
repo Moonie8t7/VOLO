@@ -113,17 +113,20 @@ jobs:
             exit 0
           fi
 
-          for attempt in 1 2 3; do
-            git checkout -- masterlist public client/src/lib README.md docs/decisions.md 2>/dev/null || true
-            git add nexus modio
-            git diff --cached --quiet && { echo "changed=no" >> "$GITHUB_OUTPUT"; exit 0; }
-            git commit -m "Update the catalogues"
+          # Captured once: each attempt resets to whatever main now holds,
+          # which would otherwise throw away the crawl this run just spent
+          # minutes fetching.
+          git diff --cached > /tmp/catalogues.patch
 
-            if ! git pull --rebase origin main; then
-              git rebase --abort || true
-              git reset --hard origin/main
-              continue
-            fi
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            git apply --whitespace=nowarn /tmp/catalogues.patch || {
+              echo "the crawled catalogues no longer apply to main"
+              exit 1
+            }
+            git add nexus modio
+            git commit -m "Update the catalogues"
 
             node scripts/build-external-categories.mjs
             node scripts/mine-corpus.mjs
@@ -146,7 +149,7 @@ jobs:
               echo "changed=yes" >> "$GITHUB_OUTPUT"
               exit 0
             fi
-            git reset --hard origin/main
+            echo "push rejected on attempt $attempt, rebuilding on the new tip"
           done
 
           echo "could not land the crawl after three attempts"

@@ -89,20 +89,23 @@ jobs:
           git config user.name "volo-submissions"
           git config user.email "submissions@users.noreply.github.com"
 
-          for attempt in 1 2 3; do
-            # Derived files are rebuilt below; carrying this run's copies into
-            # the rebase is what caused the conflicts.
-            git checkout -- masterlist public client/src/lib README.md docs/decisions.md 2>/dev/null || true
-            git add "Load Orders - Public Submitted"
-            git diff --cached --quiet && { echo "nothing to land"; exit 1; }
-            git commit -m "Add load order from issue #${{ github.event.issue.number }}"
+          # Captured once, because each attempt resets the tree to whatever
+          # main now holds and that throws away the very file being landed.
+          # Without this a rejected push left nothing to retry with, and the
+          # loop reported "nothing to land" on a real submission.
+          git add "Load Orders - Public Submitted"
+          git diff --cached --quiet && { echo "nothing to land"; exit 1; }
+          git diff --cached > /tmp/submission.patch
 
-            if ! git pull --rebase origin main; then
-              git rebase --abort || true
-              echo "rebase failed on attempt $attempt"
-              git reset --hard origin/main
-              continue
-            fi
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            git apply --whitespace=nowarn /tmp/submission.patch || {
+              echo "the submitted order no longer applies to main"
+              exit 1
+            }
+            git add "Load Orders - Public Submitted"
+            git commit -m "Add load order from issue #${{ github.event.issue.number }}"
 
             node scripts/mine-corpus.mjs
             node scripts/build-divider-map.mjs
@@ -123,8 +126,9 @@ jobs:
               echo "landed=yes" >> "$GITHUB_OUTPUT"
               exit 0
             fi
-            echo "push rejected on attempt $attempt, retrying"
-            git reset --hard origin/main
+            # Something landed while this run was building. The next attempt
+            # starts again from that new tip, patch and all.
+            echo "push rejected on attempt $attempt, rebuilding on the new tip"
           done
 
           echo "could not land after three attempts"
