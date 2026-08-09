@@ -559,6 +559,41 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// The game's own modules are not mods, and cannot be missing from a load
+// order. This list lived in two places and they drifted: the parser knew about
+// MainUI, CrossplayUI and PhotoMode, the miner did not, and 32 mods ended up
+// carrying a requirement for a base game module that nobody can install.
+{
+  console.log('');
+  console.log('engine modules');
+
+  const engine = JSON.parse(fs.readFileSync('client/src/lib/engine-modules.json', 'utf8')).modules;
+  const parserSrc = fs.readFileSync('client/src/lib/parser.ts', 'utf8');
+  const minerSrc = fs.readFileSync('scripts/mine-corpus.mjs', 'utf8');
+
+  if (parserSrc.includes('engine-modules.json') && minerSrc.includes('engine-modules.json')
+    && !/ENGINE_MASTERS = new Set\(\[/.test(parserSrc + minerSrc)) {
+    console.log('  ok    one list, read by both the parser and the miner');
+  } else {
+    failures++;
+    console.log('  FAIL  an engine module list is written out again instead of read');
+  }
+
+  const leaked = [];
+  for (const p of masterlist.plugins) {
+    if (engine.includes(p.name)) leaked.push(`${p.name} is in the masterlist as a mod`);
+    for (const d of p.dependencies ?? []) {
+      if (engine.includes(d.name)) leaked.push(`${p.name} requires ${d.name}`);
+    }
+  }
+  if (!leaked.length) {
+    console.log('  ok    no mod in the masterlist requires one, and none is listed as a mod');
+  } else {
+    failures++;
+    console.log(`  FAIL  ${leaked.length} engine module references survived: ${leaked.slice(0, 3).join('; ')}`);
+  }
+}
+
 // numbered text fixture: BG3MM's text export writes "NN. Name (file.pak)".
 // Numbering and filenames must strip, commas in names must survive, and
 // engine modules must still be recognised and dropped.
