@@ -36,38 +36,51 @@ export default function LandingPage() {
             products, so the words people actually search on belong here rather
             than in a paragraph underneath.
           */}
+          {/*
+            Mark, name and expansion are one lockup, the same way the sidebar
+            sets them. The expansion used to sit below the descriptive line as
+            its own paragraph, which put an explanation of the name in the
+            middle of the pitch; it belongs against the wordmark it explains.
+            The mark carries no frame: it is already a circle with a heavy
+            outline, and a box around it reads as an avatar chip.
+          */}
           <h1 className="mb-6">
-            <span className="flex items-center justify-center gap-4">
+            <span className="flex items-center justify-center gap-4 md:gap-5">
               <img
                 src="/assets/volo-logo-256.png"
                 alt=""
                 width={256}
                 height={256}
-                className="w-16 h-16 md:w-20 md:h-20 border border-border shadow-bg3"
+                className="w-16 h-16 md:w-20 md:h-20"
               />
-              <span className="font-display text-5xl md:text-6xl font-bold text-gradient-bg3 leading-tight">
-                VOLO
+              <span className="block text-left">
+                <span className="block font-display text-5xl md:text-6xl font-bold text-gradient-bg3 leading-none">
+                  VOLO
+                </span>
+                <span
+                  className="block font-subheader text-[0.7rem] md:text-xs mt-1.5"
+                  style={{ color: "hsl(var(--bg3-main) / 0.75)" }}
+                >
+                  Verified Order and Load Optimisation
+                </span>
               </span>
             </span>
             {/* The two spans are separate blocks visually, but they run
                 together in the heading's text unless a space is written in. */}
             {' '}
             <span
-              className="mt-5 block font-display text-xl md:text-2xl"
+              className="mt-6 block font-display text-xl md:text-2xl"
               style={{ color: "hsl(var(--bg3-small))" }}
             >
               Load order sorting for Baldur's Gate 3
             </span>
           </h1>
-          <p className="text-sm mb-6" style={{ color: "hsl(var(--bg3-main) / 0.75)" }}>
-            Verified Order and Load Optimisation
-          </p>
-          <p className="text-lg mb-3 max-w-2xl mx-auto leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
-            Sorts your Baldur's Gate 3 mod list the way load orders that actually
-            work are sorted. It runs in your browser and costs nothing.
-          </p>
-          <p className="text-sm mb-8 italic" style={{ color: "hsl(var(--bg3-main) / 0.7)" }}>
-            Named after the Realms' most confident chronicler. Unlike Volo... we verify.
+          {/* The heading above already names the game and the job, so this
+              says what is true of the result rather than repeating either. */}
+          <p className="text-lg mb-8 max-w-2xl mx-auto leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
+            Sorted the way orders that actually work are sorted, with the
+            reasoning shown for every mod. Runs in your browser, needs no
+            account, and costs nothing.
           </p>
 
           <Link href="/import">
@@ -82,6 +95,11 @@ export default function LandingPage() {
               Submit it and teach the sorter
             </Link>
             .
+          </p>
+          {/* Charm, not information, so it sits after the action rather than
+              in front of it. */}
+          <p className="mt-8 text-sm italic" style={{ color: "hsl(var(--bg3-main) / 0.6)" }}>
+            Named after the Realms' most confident chronicler. Unlike Volo... we verify.
           </p>
         </div>
       </div>
