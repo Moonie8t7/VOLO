@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-10T02:32:20.370Z",
+  "generated": "2026-08-10T05:56:09.229Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -30,7 +30,7 @@
     "working": 41,
     "broken": 3,
     "unlabelled": 3,
-    "externalDependencyEdges": 338,
+    "externalDependencyEdges": 425,
     "ordersWithKnownBuild": 2
   },
   "groups": [
@@ -430,7 +430,8 @@
         "workingInstalls": 28,
         "brokenInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "loadsAfterDependents": true
     },
     {
       "name": "Tav's Hair Salon - Tav's Hairpack",
@@ -4324,7 +4325,22 @@
         "installs": 10,
         "workingInstalls": 10,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "171cfb95-2e00-dc2a-03f6-f672b4650d95",
+          "name": "HybridUI"
+        },
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "2cba831e-bc5e-4ed5-b831-b5c4580b02b0",
+          "name": "TagFramework"
+        }
+      ]
     },
     {
       "name": "Deity Tag Activator",
@@ -5485,7 +5501,8 @@
         "installs": 9,
         "workingInstalls": 9,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Graviturgy Magic",
@@ -6480,7 +6497,13 @@
         "installs": 8,
         "workingInstalls": 8,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "DFindFamiliar",
@@ -7592,7 +7615,8 @@
         "installs": 8,
         "workingInstalls": 8,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Valkrana's Spellbook Limited Lists",
@@ -8388,7 +8412,13 @@
         "installs": 7,
         "workingInstalls": 6,
         "brokenInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "1850c081-9a44-44be-9ed3-0fdfb24f0124",
+          "name": "Bleeding Overhaul"
+        }
+      ]
     },
     {
       "name": "Dynamic Extra Encounters",
@@ -8575,7 +8605,17 @@
         "workingInstalls": 7,
         "brokenInstalls": 0
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "2cba831e-bc5e-4ed5-b831-b5c4580b02b0",
+          "name": "TagFramework"
+        },
+        {
+          "uuid": "fc2895e0-1b92-4d18-a5b6-2206ab41fce4",
+          "name": "Humanoid Tag Scratch Fix"
+        }
+      ]
     },
     {
       "name": "Frozen Sorcery",
@@ -8984,7 +9024,8 @@
         "installs": 7,
         "workingInstalls": 7,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "MetamagicExtendedQuickened2SP",
@@ -9282,13 +9323,7 @@
         "installs": 7,
         "workingInstalls": 6,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Precious Head Preset Pack I",
@@ -9772,7 +9807,8 @@
         "installs": 7,
         "workingInstalls": 7,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Weightless Consumables",
@@ -10303,7 +10339,8 @@
         "installs": 6,
         "workingInstalls": 6,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "BW Dancer Set",
@@ -11166,7 +11203,8 @@
         "installs": 6,
         "workingInstalls": 6,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Goon's Gear and Throwing Overhaul",
@@ -11178,7 +11216,8 @@
         "installs": 6,
         "workingInstalls": 6,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Green Reaper",
@@ -11367,7 +11406,8 @@
         "installs": 6,
         "workingInstalls": 6,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "JWL Drop All The Loot",
@@ -12492,6 +12532,10 @@
         {
           "uuid": "1ce193c7-343b-4278-9f11-161a1e92854e",
           "name": "Ornamental Body Jewellery"
+        },
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
         }
       ]
     },
@@ -13130,7 +13174,8 @@
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Awakened Blood of Lathander",
@@ -14787,7 +14832,13 @@
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "239127c3-1efe-493d-85d3-8518c8d8819b",
+          "name": "Dr. Kekyll's Grappling Framework"
+        }
+      ]
     },
     {
       "name": "Grave Domain",
@@ -15242,7 +15293,8 @@
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Kai Lime Eyes Daughter of Darkness-Normal Sclera",
@@ -15381,13 +15433,7 @@
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "KorillaAndHopeEdits",
@@ -15638,7 +15684,14 @@
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "746b7d2a-2d26-4a27-8f98-aedb24080bf1",
+          "name": "AOE Status Fixer"
+        }
+      ]
     },
     {
       "name": "Mayrina No More Tears",
@@ -15803,7 +15856,13 @@
         "installs": 5,
         "workingInstalls": 3,
         "brokenInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Myky's Hairstyles - More Slots",
@@ -17589,7 +17648,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "5eSpells and Expansion Level Patch",
@@ -17705,7 +17765,13 @@
         "installs": 4,
         "workingInstalls": 3,
         "brokenInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "0f3597c5-9ac1-47f0-b23c-70ea12785f94",
+          "name": "Adytum Nzx"
+        }
+      ]
     },
     {
       "name": "Act3itemsinEarlyacts",
@@ -17741,7 +17807,8 @@
         "installs": 4,
         "workingInstalls": 3,
         "brokenInstalls": 1
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Aesir's Champion Set",
@@ -18270,7 +18337,13 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Better Healing Potions",
@@ -18318,7 +18391,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Blade Flourishes Consolidated",
@@ -18962,7 +19036,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Companion Combat Death Reactivity",
@@ -19048,7 +19123,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Customized -ElfSong Camp - Original Song 1.2",
@@ -19239,7 +19315,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "DMH Assets Pearl- Dark Urge Dragonborn CC",
@@ -20096,7 +20173,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Gale's Beard Fix NPC Patch",
@@ -20408,7 +20486,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Hair of Warcraft - WoW Inspired Hairstyles ",
@@ -20433,13 +20512,7 @@
         "installs": 4,
         "workingInstalls": 3,
         "brokenInstalls": 1
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Halfling Unleashed - Age of the Halfling",
@@ -20700,7 +20773,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "oftenAbsent": true
     },
     {
       "name": "Hunted - Dynamic Ambushes & Revenge System",
@@ -21196,7 +21270,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "LongHairs",
@@ -21668,7 +21743,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "More Spell Choices",
@@ -22082,7 +22158,13 @@
         "installs": 4,
         "workingInstalls": 3,
         "brokenInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "OneDnD Monk - Deflect Attacks",
@@ -22513,7 +22595,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Precious Little Vampy Heads",
@@ -22556,7 +22639,8 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Queen Marika Set BY REN",
@@ -23042,6 +23126,10 @@
           "name": "Crazy Color pack"
         },
         {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
+        {
           "uuid": "56bee93d-ecd1-4680-cca1-44ee52514b9c",
           "name": "Rathgor - Reforged head - Dark Urge Dragonborn CC"
         },
@@ -23471,13 +23559,7 @@
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Stargazer Ranger",
@@ -23674,7 +23756,13 @@
         "installs": 4,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "ccf0be9f-61e4-e7f4-8755-24fecb2f1f9b",
+          "name": "Snapshots"
+        }
+      ]
     },
     {
       "name": "The Lasses Head Presets by cedastarions",
@@ -25107,6 +25195,10 @@
         {
           "uuid": "3779a4fb-0c2c-404a-beee-879d97eb9e87",
           "name": "Origin Mirror Unlock"
+        },
+        {
+          "uuid": "7b8366bd-abc1-4f9f-ba9d-585549b4a750",
+          "name": "AppearanceEditEnhanced"
         }
       ]
     },
@@ -26627,6 +26719,10 @@
       },
       "dependencies": [
         {
+          "uuid": "01d87964-fc46-7140-b29e-3956de333929",
+          "name": "Crazy Color pack"
+        },
+        {
           "uuid": "0571ff38-d7c9-f409-4591-33bb086c5f52",
           "name": "Vexa - Dark Urge Slayer Dragonborn CC"
         },
@@ -26649,6 +26745,10 @@
         {
           "uuid": "7a8d7a63-07c7-819b-9a00-49a887367d81",
           "name": "Crystal Crown - Gem Dragonborn CC"
+        },
+        {
+          "uuid": "a095fce4-a8c9-0e6c-1b17-5ee0dd04b21c",
+          "name": "Dragonborn Extra Tabs - Horns and Hair"
         },
         {
           "uuid": "ccfff6aa-9e2d-dd90-b49a-53b30e6255c7",
@@ -26872,7 +26972,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "ColorPresetsAsDyes",
@@ -26896,7 +26997,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Companions - Old Shaders",
@@ -27134,6 +27236,10 @@
         "brokenInstalls": 0
       },
       "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
         {
           "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
           "name": "Durge's mangled head - Dark Urge Dragonborn CC"
@@ -27824,6 +27930,10 @@
         {
           "uuid": "01d87964-fc46-7140-b29e-3956de333929",
           "name": "Crazy Color pack"
+        },
+        {
+          "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
+          "name": "Durge's mangled head - Dark Urge Dragonborn CC"
         },
         {
           "uuid": "a095fce4-a8c9-0e6c-1b17-5ee0dd04b21c",
@@ -28784,13 +28894,7 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Githgirl Head",
@@ -29232,7 +29336,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "HollyphantSummon",
@@ -29678,7 +29783,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Isobel Restyled - Camp Clothes at Night",
@@ -29843,7 +29949,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "KaghaRedux",
@@ -33038,7 +33145,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "ShadowheartElfsongStool",
@@ -33568,7 +33676,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "TavsHairpinBox",
@@ -33876,7 +33985,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "True Third-Person Camera",
@@ -33961,13 +34071,7 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Umbral Archer - Level 20",
@@ -34007,7 +34111,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Unlock Summon Skills",
@@ -34070,7 +34175,8 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Use highest modifier",
@@ -34339,7 +34445,8 @@
         "installs": 3,
         "workingInstalls": 2,
         "brokenInstalls": 1
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Weapons From The Forge - Intro Pack - Tutorial Chest",
@@ -34772,13 +34879,7 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "♡ Mantis' Tiefling Duo Presets",
@@ -35181,7 +35282,13 @@
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "0f3597c5-9ac1-47f0-b23c-70ea12785f94",
+          "name": "Adytum Nzx"
+        }
+      ]
     },
     {
       "name": "ABSolutely Lae'zel",
@@ -35273,7 +35380,13 @@
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Advanced Camp Casting",
@@ -35717,7 +35830,8 @@
         "workingInstalls": 2,
         "brokenInstalls": 0
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "oftenAbsent": true
     },
     {
       "name": "AP8KRIFA_CrimsonDynasty",
@@ -36558,7 +36672,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "BC_Necklaces",
@@ -36985,7 +37100,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Blood Aetheryte Dice",
@@ -38004,7 +38120,13 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Choose Your Animation",
@@ -38266,7 +38388,13 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "0c692104-c83f-48b8-9fcd-ca7e33be5098",
+          "name": "Combat Extender"
+        }
+      ]
     },
     {
       "name": "Commoner Class - Based on LaserLlama's Commoner",
@@ -39264,7 +39392,29 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "6481d93e-f260-490a-92fa-a5555aa3ee60",
+          "name": "Celestial Threads"
+        },
+        {
+          "uuid": "8cfb22b4-8435-458c-b33c-767fafc05c6a",
+          "name": "Camp Robes"
+        },
+        {
+          "uuid": "b993354c-4a77-2cdb-0301-c62d8a23d126",
+          "name": "Barrel Tweaks"
+        },
+        {
+          "uuid": "e4ee55aa-1b75-43e4-a640-7096a1cc5e44",
+          "name": "AgileArmor"
+        },
+        {
+          "uuid": "fdc7b6ec-abd0-4db0-88c6-d0657ad6f334",
+          "name": "Calimshan Pirate Outfit"
+        }
+      ]
     },
     {
       "name": "DIQ Patches - Treasure Tables and More - No Cosmetics Patch",
@@ -39341,7 +39491,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "DisguiseHalfIllithid",
@@ -41824,13 +41975,7 @@
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Grym Rewards",
@@ -42096,7 +42241,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Hellish",
@@ -42206,7 +42352,13 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "788ef8b5-7ac4-4290-8e19-df7f13825950",
+          "name": "Highmost Scripts"
+        }
+      ]
     },
     {
       "name": "Highmost Scripts",
@@ -42392,7 +42544,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "oftenAbsent": true
     },
     {
       "name": "Hypnotic Gaze Breaks Concentration",
@@ -42452,7 +42605,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Illithid Powers Overhaul - Half Potency",
@@ -43023,7 +43177,13 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "5593c5cd-b273-4048-ae87-635c1d487a5e",
+          "name": "JWL Crafting Framework"
+        }
+      ]
     },
     {
       "name": "K_Backgrounds_OriginsRestored",
@@ -43363,7 +43523,13 @@
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "LegacyOfDeath",
@@ -43838,7 +44004,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Magma Dice",
@@ -44254,7 +44421,14 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "c10a353d-d536-414e-a3ca-eebe90a57a54",
+          "name": "ExtraAttackFixSE"
+        }
+      ]
     },
     {
       "name": "Missing Starting Equipment Fix",
@@ -44314,7 +44488,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "MonkKiSaves",
@@ -44805,7 +44980,13 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Netherese Dress By REN",
@@ -44987,7 +45168,14 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "526aefe2-e85f-4795-b78c-26cac79c852f",
+          "name": "My Assistant KEN"
+        }
+      ]
     },
     {
       "name": "No Sense Of Personal Space",
@@ -45560,7 +45748,13 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "OriginHeadwear",
@@ -45597,7 +45791,13 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "OumyAndNdeye",
@@ -45719,7 +45919,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "PastelDice",
@@ -46697,7 +46898,13 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "08aaab4b-03b9-5dc1-bbc7-cdd80ff2084e",
+          "name": "Aardi's Chest of Presents"
+        }
+      ]
     },
     {
       "name": "Revealing Dryad",
@@ -46882,7 +47089,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Sanguine Silver",
@@ -47160,7 +47368,14 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "Scribe",
@@ -47721,7 +47936,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Skirbie's Progressive Wands Pack",
@@ -48614,7 +48830,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "TavernBrawlerFinesse",
@@ -48710,7 +48927,13 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "The Gilded Blade Pt II: Infernal Boogaloo",
@@ -48774,7 +48997,12 @@
         "workingInstalls": 2,
         "brokenInstalls": 0
       },
+      "usesScriptExtender": true,
       "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
         {
           "uuid": "7131033f-821a-3993-dad4-5bc235cbeb3b",
           "name": "AnimationUnlocker"
@@ -48984,7 +49212,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "True Range",
@@ -49092,7 +49321,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Ultimate NPC Stat Overhaul - Core - Extras",
@@ -49444,7 +49674,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Vérité",
@@ -49872,7 +50103,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Way of the Forge - A Monk Subclass",
@@ -52192,7 +52424,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "[M30] Flicker Hair Pack",
@@ -53250,7 +53483,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "5e Eloquence Bard Subclass",
@@ -53861,7 +54095,17 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "7131033f-821a-3993-dad4-5bc235cbeb3b",
+          "name": "AnimationUnlocker"
+        }
+      ]
     },
     {
       "name": "Adept DART Extension, Displacer",
@@ -53975,7 +54219,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Aether's Obliterate",
@@ -54231,13 +54476,7 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
-          "name": "TutorialChestSummoning"
-        }
-      ]
+      }
     },
     {
       "name": "Allure - Stylish and diverse dyes",
@@ -54262,7 +54501,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "AllWeaponsSkills_PerCombat",
@@ -54309,7 +54554,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "AmaraHair",
@@ -55308,7 +55559,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "Astarion's Messy Curls",
@@ -55842,7 +56099,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Autocast",
@@ -57619,7 +57877,14 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "Better Slings",
@@ -58217,7 +58482,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "oftenAbsent": true
     },
     {
       "name": "Blood Archer",
@@ -58312,7 +58578,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "8aceac84-a2a9-4e63-ba20-f49e42b33912",
+          "name": "Character Creation Overhaul"
+        }
+      ]
     },
     {
       "name": "BloodKing",
@@ -58504,7 +58776,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "BMBH",
@@ -59284,7 +59562,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Carry_Weight_Extra",
@@ -59763,7 +60042,25 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "16b5fbb6-72fe-4a08-814a-87a9fc0b14bc",
+          "name": "Configurable Party Limit"
+        },
+        {
+          "uuid": "1d6c4030-67b9-4b0a-b3ab-caf6dd73d1af",
+          "name": "Party Limit Begone"
+        },
+        {
+          "uuid": "33c1de88-dfd0-351d-8904-a5ee730880c6",
+          "name": "PixellBytes' Adjustable Party Limit"
+        },
+        {
+          "uuid": "d594f105-ef17-4456-9799-a0a9cd5b81ae",
+          "name": "Aether's No Party Limits"
+        }
+      ]
     },
     {
       "name": "character_tag_ringCHS",
@@ -59910,7 +60207,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Chosen's Attire - Bhaal",
@@ -60036,7 +60334,14 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Circle of the Spores 2024",
@@ -60204,7 +60509,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "a095fce4-a8c9-0e6c-1b17-5ee0dd04b21c",
+          "name": "Dragonborn Extra Tabs - Horns and Hair"
+        }
+      ]
     },
     {
       "name": "Clean & Furnished - Act I - Arcane Tower",
@@ -60267,7 +60578,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Clear Map No Grid No Shroud",
@@ -61761,7 +62073,17 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "death stalker mantle fix",
@@ -62549,7 +62871,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Digital Dice",
@@ -63076,7 +63399,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Doomwatcher",
@@ -64133,7 +64457,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Dynamic Camera Rotation Sensitivity",
@@ -64145,7 +64470,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Dynamic Sidebar Vanilla with 2 Rows Status Holder",
@@ -65895,7 +66221,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Extra Shields (Tutorial Chest)",
@@ -67055,7 +67387,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "Fighter Unleashed - Standalone - Level 2",
@@ -68444,7 +68782,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Giant's Frying Pan",
@@ -69318,7 +69662,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Guardian",
@@ -69522,7 +69872,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Hakama",
@@ -69822,7 +70178,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "Harness Outfit",
@@ -70522,7 +70884,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "HonourFix",
@@ -71000,7 +71363,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Illithid Glitter Dice",
@@ -71059,7 +71423,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Illrigger",
@@ -72021,7 +72386,17 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "2cba831e-bc5e-4ed5-b831-b5c4580b02b0",
+          "name": "TagFramework"
+        }
+      ]
     },
     {
       "name": "jerinski_gothling-gear",
@@ -72921,7 +73296,13 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Kunoichi",
@@ -72979,7 +73360,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "La'dela dice",
@@ -74723,7 +75110,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Mantle of Blood",
@@ -74925,7 +75318,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "7131033f-821a-3993-dad4-5bc235cbeb3b",
+          "name": "AnimationUnlocker"
+        }
+      ]
     },
     {
       "name": "MaternityDress",
@@ -75538,7 +75937,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:theunderdarkssongbirdarmor",
+          "name": "The Underdark's Songbird armor"
+        }
+      ]
     },
     {
       "name": "Minthara_No_Auto_Tadpole",
@@ -76557,7 +76962,17 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
+          "name": "Durge's mangled head - Dark Urge Dragonborn CC"
+        },
+        {
+          "uuid": "56bee93d-ecd1-4680-cca1-44ee52514b9c",
+          "name": "Rathgor - Reforged head - Dark Urge Dragonborn CC"
+        }
+      ]
     },
     {
       "name": "More Furniture (Beds, Chairs, Wardrobes)",
@@ -76781,7 +77196,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Move your Necromancy of Thay",
@@ -77011,7 +77427,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "33b78b63-8fbf-4a26-bed4-1463ab0d3653",
+          "name": "Strap-Ons"
+        }
+      ]
     },
     {
       "name": "Nacre",
@@ -77269,7 +77691,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Neon's Assorted Eyes (Glow Pack)",
@@ -77293,7 +77721,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Neon's Clicker Collection",
@@ -77488,7 +77922,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "49f60f92-cde9-4621-aeae-7a5c9d412c03",
+          "name": "Ghouls Custom Piercings"
+        }
+      ]
     },
     {
       "name": "Nightsong's Metal",
@@ -79066,7 +79506,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Ocean",
@@ -79174,7 +79615,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "OneDnD Wizard",
@@ -80327,7 +80774,17 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "05827e11-37eb-4820-8916-1fa2060a84c7",
+          "name": "Deity Tag Activator"
+        },
+        {
+          "uuid": "2cba831e-bc5e-4ed5-b831-b5c4580b02b0",
+          "name": "TagFramework"
+        }
+      ]
     },
     {
       "name": "Persephones OVR dress by REN",
@@ -81874,7 +82331,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "RealMenNipples",
@@ -81921,7 +82379,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Reaper Override",
@@ -83239,7 +83703,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "SB_ForgeCleric",
@@ -83701,7 +84166,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Sentinel Class",
@@ -83862,7 +84328,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Shader_Optimization",
@@ -84238,7 +84705,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "SharDevoteeClass",
@@ -85106,7 +85579,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "SofterBody2_Armor",
@@ -85425,7 +85904,14 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "Sorcerer Unleashed - Draconic - L3",
@@ -86015,7 +86501,13 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "STANDALONE - Lynia's Dither Shader Fix",
@@ -86229,7 +86721,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Stealth Set - Rare",
@@ -86330,6 +86823,7 @@
         "workingInstalls": 1,
         "brokenInstalls": 0
       },
+      "usesScriptExtender": true,
       "dependencies": [
         {
           "uuid": "4b516620-9c56-aa18-96ae-a9ee4f57b515",
@@ -86892,7 +87386,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "T1 Heads - ASTRL Patch",
@@ -87453,7 +87953,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "That Unsightly Mole - A Very Subtle Astarion Edit",
@@ -87597,7 +88098,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "975b5ffd-86b1-cb89-b6b1-8cfb964d1d14",
+          "name": "Axi Map Assets"
+        }
+      ]
     },
     {
       "name": "The Duergars' New Look",
@@ -87656,7 +88163,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "The Frozen Shadow - Warlock Subclass",
@@ -87827,6 +88340,10 @@
         {
           "uuid": "4b516620-9c56-aa18-96ae-a9ee4f57b515",
           "name": "Mystra's Spells"
+        },
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
         }
       ]
     },
@@ -87864,7 +88381,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "The Sorcubus Class",
@@ -88831,7 +89354,17 @@
         "workingInstalls": 1,
         "brokenInstalls": 0
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "84958e84-fd62-474f-bd1f-cbabc132c4b3",
+          "name": "Homebrew Spells"
+        },
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "Truant's Bastion - Progressive Shield",
@@ -88976,7 +89509,22 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "Twitch Items Enabled",
@@ -89133,7 +89681,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Ultimate Great Weapon Master",

@@ -6,56 +6,62 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 3609 |
-| Matched exactly by name | 874 |
-| Matched fuzzily (>= 0.9) | 264 |
-| Unmatched | 2471 |
+| Masterlist mods | 7257 |
+| Matched exactly by name | 1766 |
+| Matched fuzzily (>= 0.9) | 445 |
+| Unmatched | 5046 |
 
 ## What the match would add
 
-- 14 currently unsorted mods would receive a category from their
+- 31 currently unsorted mods would receive a category from their
   Nexus listing.
-- 334 mods have a Nexus category that disagrees with the
+- 689 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 692 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 296 of them resolved to a uuid on both
+- 1322 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 620 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
 
-- Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
-- EW_Proficiency_Potion: Utilities (fuzzy match)
-- HT_Early Access Scenes Restored: Gameplay (fuzzy match)
 - [ROX] Distinctive Arrows of Slaying: User Interface (fuzzy match)
-- AstralElves: Races (fuzzy match)
-- Blackguard: Classes (fuzzy match)
+- Block/Miss Differentiation: Gameplay (fuzzy match)
+- Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
 - EveryoneInDialogue2: Audio (fuzzy match)
-- HT_Early Access Dream Visitor Restored: Gameplay (fuzzy match)
-- HT_Sassier Dream Guardian: Gameplay (fuzzy match)
-- IllithidPowersOverhaul: Gameplay (fuzzy match)
-- RaritiesOfTheRealms: Gameplay (fuzzy match)
-- StrongerBosses: Gameplay (fuzzy match)
+- Grit and Glory - Injuries, Exhaustion and Madness: Gameplay (fuzzy match)
+- Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
+- EW_Proficiency_Potion: Utilities (fuzzy match)
+- Guilt-Free Slayer Form: Quests (fuzzy match)
+- HT_Kiss Me Again: Unlimited Last Kisses in Endgame: Gameplay (fuzzy match)
+- Revised Elixirs: Gameplay (fuzzy match)
+- Use highest modifier: Gameplay (fuzzy match)
+- Automatic_Inventory_Manager: Gameplay (fuzzy match)
+- DuplicationSE: User Interface (fuzzy match)
 - TF_Pentos_Gown: Clothing (fuzzy match)
-- Treasure Goblins: User Interface (fuzzy match)
+- [ROX] Distinctive Consumables: User Interface (fuzzy match)
+- ♡ The Veilbound Collection - UTAV ♡: Character Customization (fuzzy match)
+- AbjurationWizardShield: Gameplay (fuzzy match)
+- AstralElves: Races (fuzzy match)
+- Best of Hands - Quick Lockpick & Disarm: Gameplay (fuzzy match)
+- BetterDualWieldingAlt: Gameplay (fuzzy match)
 
 ### Sample disagreements
 
-- TransmogEnhanced: ours Character Customization (section-majority), Nexus says Gameplay
+- Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
+- Transmog Enhanced Revamped: ours Character Customization (section-majority), Nexus says Gameplay
 - Fix Stragglers: ours Bug Fixes (section-majority), Nexus says Utilities
-- Silver's Hair Pack: ours Hair (section-majority), Nexus says Character Customization
-- Actually Infernal Rapier: ours Equipment (section-majority), Nexus says Weapons
-- Silver's Hair Pack 2: ours Hair (section-majority), Nexus says Character Customization
-- Faces of Faerun: ours Heads (section), Nexus says Character Customization
-- [BS] Dye Support for Shields: ours Equipment (section), Nexus says Character Customization
+- Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
+- HT_Camp Event Overhaul: ours Companions (section-majority), Nexus says Gameplay
+- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
+- HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
-- Auto Send Read Books To Camp: ours Bug Fixes (section), Nexus says Gameplay
-- featsextra: ours Classes (section-majority), Nexus says Gameplay
+- Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
+- Silver's Hair Pack: ours Hair (section-majority), Nexus says Character Customization
+- Silver's Hair Pack 2: ours Hair (section-majority), Nexus says Character Customization
+- [BS] Dye Support for Shields: ours Equipment (section-majority), Nexus says Character Customization
+- HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
+- Actually Infernal Rapier: ours Equipment (section-majority), Nexus says Weapons
 - HT_Minthara's Poison Kiss: ours Bug Fixes (section-majority), Nexus says Gameplay
-- Preemptively Label Containers: ours Bug Fixes (section), Nexus says Gameplay
-- Really Shadowheart: ours Bug Fixes (section-majority), Nexus says Gameplay
-- Automated Summons SE: ours Miscellaneous (section-majority), Nexus says Gameplay
-- Better Hex Icons: ours Bug Fixes (section-majority), Nexus says User Interface
 
 ## Unmapped Nexus categories
 
