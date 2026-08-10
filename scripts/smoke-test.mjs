@@ -665,6 +665,31 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// A mod name has to be selectable, so it can be copied and looked up. Asked
+// for by a user, and not possible before: each row of the sorted order is a
+// button, and browsers do not let a drag select text inside one.
+{
+  console.log('');
+  console.log('sorted order is copyable');
+
+  const page = fs.readFileSync('client/src/pages/OptimisePage.tsx', 'utf8');
+
+  if (/select-text/.test(page)) {
+    console.log('  ok    the mod name opts back in to being selectable');
+  } else {
+    failures++;
+    console.log('  FAIL  nothing makes the mod name selectable inside the row button');
+  }
+
+  // Selecting text ends in a click on the row, which must not open it.
+  if (/getSelection\(\)/.test(page) && /isCollapsed/.test(page)) {
+    console.log('  ok    and selecting a name does not toggle the row open');
+  } else {
+    failures++;
+    console.log('  FAIL  a drag to select will still expand the row it crossed');
+  }
+}
+
 // numbered text fixture: BG3MM's text export writes "NN. Name (file.pak)".
 // Numbering and filenames must strip, commas in names must survive, and
 // engine modules must still be recognised and dropped.
