@@ -1,20 +1,20 @@
 # Masterlist coverage report
 
-Generated 2026-08-10T00:34:55.945Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-10T02:32:20.370Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 46 |
-| labelled working | 40 |
+| Load orders analysed | 47 |
+| labelled working | 41 |
 | labelled broken | 3 |
-| load-after edges promoted from catalogues | 336 |
+| load-after edges promoted from catalogues | 338 |
 | unlabelled | 3 |
 | Separator headers parsed | 1027 |
 | **Unique mods indexed** | **7257** |
-| Seen in more than one order | 3765 |
-| With declared dependencies | 296 |
+| Seen in more than one order | 3808 |
+| With declared dependencies | 299 |
 | With Script Extender flags | 163 |
 | With author metadata | 879 |
 
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 46 orders carry it, because the short
+this comes from. Only 2 of 47 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -97,9 +97,7 @@ Listed because the decision is otherwise invisible. Dropping a real ordering
 constraint would be silent, and this file is regenerated and committed on every
 mine, so a change to this list shows up in a diff where somebody sees it.
 
-| Mod | Loaded after its dependants | Mods declaring it |
-|---|---|---|
-| `CompatibilityFramework` | 3 of 4 placements | 3 |
+_none: every declared requirement also holds as a load order_
 
 ## Requirements the working orders do without
 
@@ -112,8 +110,8 @@ Framework are present in every working order that needs them.
 | Requirement | Working orders needing it | Without it | Declaring mods |
 |---|---|---|---|
 | `ZipsHeads` | 5 | 5 | 1 |
+| `TutorialChestSummoning` | 7 | 6 | 6 |
 | `Ornamental Body Jewellery` | 6 | 5 | 1 |
-| `TutorialChestSummoning` | 6 | 5 | 6 |
 | `UnlockLevelCurve - Level 13-20 | Patch 8` | 6 | 5 | 5 |
 
 ## Requirements naming something unknown
@@ -126,7 +124,7 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 40
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 41
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
