@@ -13,7 +13,9 @@ import {
   createContext, useContext, useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import type { ReactNode } from 'react';
-import type { ExternalListing, Masterlist, Mod, ParseResult, SortResult } from './types';
+import type {
+  ExternalListing, ImportedSection, Masterlist, Mod, ParseResult, SortResult,
+} from './types';
 import { loadMasterlist } from './masterlist';
 import { loadListing } from './listing';
 import { sortLoadOrder } from './optimiser';
@@ -26,6 +28,8 @@ interface Session {
   sourceName: string;
   format: string;
   importedAt: string | null;
+  /* The user's own section headers, kept so an export can give them back. */
+  sections?: ImportedSection[];
 }
 
 interface StoreValue {
@@ -33,6 +37,12 @@ interface StoreValue {
   sourceName: string;
   format: string;
   importedAt: string | null;
+  /**
+   * Section headers the imported file carried. Held because they are the
+   * user's own divider paks, and an export that drops them hands back a load
+   * order stripped of the structure they built.
+   */
+  sections: ImportedSection[];
 
   masterlist: Masterlist | null;
   masterlistError: string | null;
@@ -105,6 +115,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [sourceName, setSourceName] = useState(restored?.sourceName ?? '');
   const [format, setFormat] = useState(restored?.format ?? '');
   const [importedAt, setImportedAt] = useState<string | null>(restored?.importedAt ?? null);
+  const [sections, setSections] = useState<ImportedSection[]>(restored?.sections ?? []);
 
   const [masterlist, setMasterlist] = useState<Masterlist | null>(null);
   const [masterlistError, setMasterlistError] = useState<string | null>(null);
@@ -170,12 +181,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       if (!remember || !mods.length) localStorage.removeItem(STORAGE_KEY);
       else localStorage.setItem(
         STORAGE_KEY,
-        JSON.stringify({ mods, sourceName, format, importedAt } satisfies Session),
+        JSON.stringify({ mods, sourceName, format, importedAt, sections } satisfies Session),
       );
     } catch {
       // Not worth interrupting the user over. The saved session is a convenience.
     }
-  }, [remember, mods, sourceName, format, importedAt]);
+  }, [remember, mods, sourceName, format, importedAt, sections]);
 
   const setRemember = useCallback((next: boolean) => {
     setRememberState(next);
@@ -246,6 +257,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setMods(parsed.mods);
     setSourceName(name);
     setFormat(parsed.format);
+    setSections(parsed.sections);
     setImportedAt(new Date().toISOString());
   }, []);
 
@@ -270,11 +282,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setMods([]);
     setSourceName('');
     setFormat('');
+    setSections([]);
     setImportedAt(null);
   }, []);
 
   const value: StoreValue = {
-    mods, sourceName, format, importedAt,
+    mods, sourceName, format, importedAt, sections,
     masterlist, masterlistError, isLoadingMasterlist, requestMasterlist,
     result,
     remember, setRemember,

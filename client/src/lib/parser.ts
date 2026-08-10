@@ -9,7 +9,7 @@
  *   plain text                     one mod per line
  */
 
-import type { Mod, ParseResult, ModRef } from './types';
+import type { ImportedSection, Mod, ParseResult, ModRef } from './types';
 import dividers from './dividers.json';
 import engineModules from './engine-modules.json';
 
@@ -154,7 +154,7 @@ function uuidFromFileName(fileName: string | undefined): string | undefined {
 /** Walk a list of raw entries, splitting mods from section headers. */
 function collect(entries: unknown[], format: string): ParseResult {
   const mods: Mod[] = [];
-  const sections: { label: string; afterIndex: number }[] = [];
+  const sections: ImportedSection[] = [];
   const warnings: string[] = [];
   const seen = new Map<string, number>();
 
@@ -175,13 +175,24 @@ function collect(entries: unknown[], format: string): ParseResult {
       // pak name and only then fall back to whatever the file says.
       const canonical = (dividers.names as Record<string, string | undefined>)[rawUuid];
       const label = (canonical ? dividerLabel(canonical) : null) ?? dividerLabel(name);
-      if (label) sections.push({ label, afterIndex: mods.length });
+      // The uuid and the name exactly as written, so the export can hand the
+      // user back the dividers they arrived with rather than a different
+      // author's set they may not own.
+      if (label) sections.push({ label, afterIndex: mods.length, uuid: rawUuid, name });
       continue;
     }
 
     if (isSeparator(name)) {
       const label = sectionLabel(name);
-      if (label) sections.push({ label, afterIndex: mods.length });
+      // A divider pak from any set, not only the one this project catalogues,
+      // is recognised here by its name and still carries a uuid worth keeping.
+      if (label) {
+        sections.push({
+          label,
+          afterIndex: mods.length,
+          ...(rawUuid ? { uuid: rawUuid, name } : {}),
+        });
+      }
       continue;
     }
 

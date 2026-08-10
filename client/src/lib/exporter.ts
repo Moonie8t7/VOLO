@@ -6,16 +6,85 @@
  * shape BG3MM's own "export order" writes.
  */
 
-import type { Mod, SortResult } from './types';
+import type { ImportedSection, Mod, Placement, SortResult } from './types';
 import dividers from './dividers.json';
 
 export interface ExportOptions {
   /**
-   * Insert Astra's Load Order Dividers above each category in the BG3MM
-   * export. One divider per group, and only for groups present in the order.
-   * The divider paks must be installed for BG3MM to resolve the entries.
+   * Put section dividers above each category in the BG3MM export, one per
+   * group, and only for groups present in the order.
+   *
+   * The user's own dividers are used when the imported file had any, because
+   * those are paks they demonstrably have installed. Astra's set is the
+   * fallback for an order that arrived without dividers, and its paks have to
+   * be installed for BG3MM to resolve the entries.
    */
   insertDividers?: boolean;
+  /** Section headers the imported file carried, in the order they appeared. */
+  sections?: ImportedSection[];
+}
+
+/** A divider pak, as it will be written back into an export. */
+interface DividerEntry {
+  uuid: string;
+  name: string;
+}
+
+/**
+ * Which of the user's own dividers heads which group.
+ *
+ * A divider's position in the file it arrived in says nothing about where it
+ * belongs afterwards, because sorting moves mods between sections. What does
+ * carry over is which mods it was heading: those mods land in groups, and the
+ * group most of them land in is the one the divider was labelling. So each
+ * divider is assigned to that group and written above it.
+ *
+ * Deciding by where the mods ended up rather than by reading the label means
+ * this works for any divider set and for headers somebody typed themselves,
+ * neither of which this project can catalogue.
+ *
+ * A divider whose mods scatter with no majority is dropped. One in the wrong
+ * place is worse than one missing, because it mislabels everything under it.
+ */
+function ownDividersByGroup(
+  sections: ImportedSection[],
+  mods: Mod[],
+  placements: Map<string, Placement>,
+): Map<string, DividerEntry> {
+  const assigned = new Map<string, DividerEntry>();
+  const withPaks = sections.filter((s): s is ImportedSection & DividerEntry => !!s.uuid && !!s.name);
+  if (!withPaks.length) return assigned;
+
+  // afterIndex counts the mods parsed before the header, which is exactly each
+  // mod's originalIndex, so the file's own order is recoverable from the sort.
+  const original = [...mods].sort((a, b) => a.originalIndex - b.originalIndex);
+  const takenDivider = new Set<string>();
+
+  for (const section of withPaks) {
+    const next = sections.find(s => s.afterIndex > section.afterIndex);
+    const covered = original.slice(section.afterIndex, next ? next.afterIndex : original.length);
+
+    const tally = new Map<string, number>();
+    for (const m of covered) {
+      const group = placements.get(m.uuid)?.group;
+      if (group) tally.set(group, (tally.get(group) ?? 0) + 1);
+    }
+    if (!tally.size) continue;
+
+    let best = '';
+    let bestCount = 0;
+    for (const [group, count] of tally) {
+      if (count > bestCount) { best = group; bestCount = count; }
+    }
+    // A plain majority, so a divider only heads a group its mods actually went
+    // to rather than one they merely outnumbered three ways.
+    if (bestCount * 2 <= covered.length) continue;
+    if (assigned.has(best) || takenDivider.has(section.uuid)) continue;
+
+    assigned.set(best, { uuid: section.uuid, name: section.name });
+    takenDivider.add(section.uuid);
+  }
+  return assigned;
 }
 
 export type ExportFormat = 'bg3mm' | 'modsettings' | 'json' | 'csv' | 'txt' | 'markdown';
@@ -45,6 +114,26 @@ const escapeXml = (s: string) =>
 
 const escapeCsv = (v: string) => (/[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
 
+/**
+ * What inserting dividers will actually produce, so the page can say so
+ * rather than promising the user their whole set back.
+ *
+ * Not every header returns. Personal ones like "The Bone Zone" head mods that
+ * scatter across several groups once sorted, and a divider that cannot be
+ * placed honestly is left out.
+ */
+export function dividerPlan(result: SortResult, sections: ImportedSection[] = []) {
+  const carried = sections.filter(s => s.uuid && s.name).length;
+  const placeable = ownDividersByGroup(sections, result.mods, result.placements).size;
+  return {
+    /** Dividers the imported file carried as real paks. */
+    carried,
+    /** How many of those can be put back where they belong. */
+    placeable,
+    source: carried ? ('yours' as const) : ('astra' as const),
+  };
+}
+
 export function exportOrder(result: SortResult, format: ExportFormat, options: ExportOptions = {}): string {
   const { mods, placements } = result;
 
@@ -60,17 +149,23 @@ export function exportOrder(result: SortResult, format: ExportFormat, options: E
       const entries: { UUID: string; Name: string }[] = [];
       const usedDividers = new Set<string>();
       const numbered = dividers.all as { num: number; uuid: string; name: string }[];
+      // Their dividers win over ours. They installed those paks, so BG3MM can
+      // resolve them; ours it can only resolve if they happen to have them.
+      const own = ownDividersByGroup(options.sections ?? [], mods, placements);
+
       for (const m of mods) {
         if (options.insertDividers) {
           const placement = placements.get(m.uuid);
+          const mine = placement?.group ? own.get(placement.group) : undefined;
           // The specific divider when we have one, so a Warlock subclass lands
           // under Subclasses / Warlock rather than a bare Classes heading.
           const exact = placement?.divider !== undefined
             ? numbered.find(d => d.num === placement.divider)
             : undefined;
-          const divider = exact ?? (placement?.group
+          const fallback = own.size ? undefined : (exact ?? (placement?.group
             ? (dividers.byGroup as Record<string, { uuid: string; name: string } | undefined>)[placement.group]
-            : undefined);
+            : undefined));
+          const divider = mine ?? fallback;
           if (divider && !usedDividers.has(divider.uuid)) {
             usedDividers.add(divider.uuid);
             entries.push({ UUID: divider.uuid, Name: divider.name });
