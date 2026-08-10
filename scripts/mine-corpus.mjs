@@ -29,6 +29,7 @@ import path from 'path';
 import crypto from 'crypto';
 import { readProvenance, isVoloSorted } from './corpus-provenance.mjs';
 import { loadCuratedRules } from './curated-rules.mjs';
+import { measureBreakage } from './learn-breakage.mjs';
 
 const provenance = readProvenance();
 const curated = loadCuratedRules();
@@ -1455,6 +1456,23 @@ for (const r of unidentifiedRequirements.slice(0, 15)) {
   console.log(`  ${String(r.times).padStart(3)}x  ${r.name}`);
 }
 
+/*
+ * How the broken orders differ from the working ones, measured on the
+ * masterlist this run just built rather than the one on disk.
+ *
+ * Reported whatever it finds. The first signal currently separates the wrong
+ * way, which is worth recording precisely because nobody would think to look
+ * for it, and a script nobody runs is where that finding was living.
+ */
+const breakage = measureBreakage(plugins);
+console.log(
+  `breakage: convention violations broken ${(100 * breakage.separation.violationRate.broken).toFixed(1)}% ` +
+  `vs working ${(100 * breakage.separation.violationRate.working).toFixed(1)}%, ` +
+  `unvetted mods ${(100 * breakage.separation.unvettedShare.broken).toFixed(0)}% ` +
+  `vs ${(100 * breakage.separation.unvettedShare.working).toFixed(0)}% ` +
+  `(${breakage.separation.counts.broken} broken orders)`,
+);
+
 plugins.sort((a, b) =>
   b.evidence.installs - a.evidence.installs || a.name.localeCompare(b.name));
 
@@ -1572,6 +1590,30 @@ inferred entry stores its agreement score as \`evidence.confidence\`.
 ## Group distribution
 
 ${GROUPS.map(g => `- \`${g.name}\`: ${byGroup.get(g.name) || 0}`).join('\n')}
+
+## What the broken orders do differently
+
+Three candidate signals, each measured against the working orders as a control,
+because a signal firing equally on both explains nothing. The point of putting
+it here is that a negative result is worth as much as a positive one and is far
+easier to lose.
+
+| Signal | Broken orders | Working orders | Separates? |
+|---|---|---|---|
+| Category pairs against the working consensus | ${(100 * breakage.separation.violationRate.broken).toFixed(1)}% | ${(100 * breakage.separation.violationRate.working).toFixed(1)}% | ${breakage.separation.violationRate.broken > breakage.separation.violationRate.working ? 'yes' : 'no, and it points the other way'} |
+| Mods in no working order anywhere | ${(100 * breakage.separation.unvettedShare.broken).toFixed(0)}% | ${(100 * breakage.separation.unvettedShare.working).toFixed(0)}% | ${breakage.separation.unvettedShare.broken > breakage.separation.unvettedShare.working ? 'yes' : 'no'} |
+| Declared dependencies not installed | ${breakage.separation.missingDeps.broken.toFixed(1)} | ${breakage.separation.missingDeps.working.toFixed(1)} | ${breakage.separation.missingDeps.broken > breakage.separation.missingDeps.working ? 'yes' : 'no'} |
+
+Measured over ${breakage.separation.counts.broken} broken and ${breakage.separation.counts.working} working orders, against ${breakage.conventions} category conventions, each held by at least 75 percent of at least 500 observed pairs.
+
+Read the broken column with that first count in mind. A handful of orders
+cannot say what breaks a game, and the ordering signal currently runs
+backwards, which is the strongest argument there is against guessing at a cause
+from sequence alone.
+
+Only the middle row feeds anything today. A mod seen in a broken order and in
+no working one is reported to the user as a place to start looking, worded as
+exactly that rather than as a fault.
 
 ## Requirements the corpus overrules
 

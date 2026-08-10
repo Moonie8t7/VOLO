@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-10T09:48:14.366Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-10T10:21:28.161Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -84,6 +84,30 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `NPC`: 177
 - `Bottom of Load Order`: 4
 - `unsorted`: 694
+
+## What the broken orders do differently
+
+Three candidate signals, each measured against the working orders as a control,
+because a signal firing equally on both explains nothing. The point of putting
+it here is that a negative result is worth as much as a positive one and is far
+easier to lose.
+
+| Signal | Broken orders | Working orders | Separates? |
+|---|---|---|---|
+| Category pairs against the working consensus | 15.6% | 23.3% | no, and it points the other way |
+| Mods in no working order anywhere | 6% | 1% | yes |
+| Declared dependencies not installed | 0.0 | 0.0 | no |
+
+Measured over 3 broken and 39 working orders, against 150 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+
+Read the broken column with that first count in mind. A handful of orders
+cannot say what breaks a game, and the ordering signal currently runs
+backwards, which is the strongest argument there is against guessing at a cause
+from sequence alone.
+
+Only the middle row feeds anything today. A mod seen in a broken order and in
+no working one is reported to the user as a place to start looking, worded as
+exactly that rather than as a fault.
 
 ## Requirements the corpus overrules
 
