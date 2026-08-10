@@ -711,8 +711,16 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     const declared = (t.text.match(/^labels:\s*\[(.*)\]/m) ?? [])[1];
     if (!declared) continue;
     const labels = declared.split(',').map(s => s.trim().replace(/^["']|["']$/g, '')).filter(Boolean);
+    /*
+     * Only the labels intake actually branches on, read out of the expression
+     * that tests them. Matching the bare word anywhere in the file caught the
+     * word "bug" inside a comment and failed a template nothing keys on.
+     */
+    const keyedOn = new Set(
+      [...workflow.matchAll(/labels\.\*\.name,\s*'([^']+)'/g)].map(m => m[1]),
+    );
     for (const label of labels) {
-      if (!workflow.includes(label)) continue;
+      if (!keyedOn.has(label)) continue;
       // Intake keys on this label, so it needs a second way in: a heading the
       // template writes into every body it creates.
       const headings = [...t.text.matchAll(/^\s*label:\s*(.+)$/gm)].map(m => m[1].trim());

@@ -112,11 +112,30 @@ jobs:
           git add "Load Orders - Public Submitted"
           git diff --cached --quiet && { echo "nothing to land"; exit 1; }
           git diff --cached > /tmp/submission.patch
+          order=$(git diff --cached --name-only | head -1)
+
+          # One submission starts two runs. An issue created with its label
+          # already on emits `opened` and `labeled` together, and both match,
+          # so a second run processes the same order while the first is
+          # landing it. The loser then fails here, because the file it is
+          # adding is already on main, and its report told the submitter the
+          # order had not landed while it sat in the corpus. That is the
+          # earlier "accepted but never landed" bug wearing the other face,
+          # and it reached three of the last four submissions.
+          landed_already() {
+            git fetch origin main --quiet
+            git cat-file -e "origin/main:$order" 2>/dev/null
+          }
 
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
             git apply --whitespace=nowarn /tmp/submission.patch || {
+              if landed_already; then
+                echo "already on main: the run started by the other event landed it"
+                echo "landed=yes" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
               echo "the submitted order no longer applies to main"
               exit 1
             }
@@ -197,10 +216,22 @@ jobs:
           # so on its own it promises an outcome that has not happened yet.
           # Five submitters were told their order had landed when the push had
           # actually failed; the truth is only known here.
+          #
+          # And checked against main rather than taken from this job's own
+          # steps. Both times this sentence has been wrong it was because a
+          # step output described one run's view of a submission two runs were
+          # working on. Whether the corpus holds the order is not a matter of
+          # opinion, so it is looked up.
           if [ "${{ steps.process.outputs.accepted }}" = "yes" ] \
              && [ "${{ steps.process.outputs.automerge }}" = "true" ] \
              && [ "${{ steps.land.outputs.landed }}" != "yes" ]; then
-            printf '\n---\n\n**This order validated but did not land.** Something went wrong while committing it, so it is not in the corpus yet. Nothing is wrong with your submission and it does not need resending: a maintainer will replay it.\n' >> /tmp/report.md
+            git fetch origin main --quiet || true
+            if git ls-tree --name-only origin/main "Load Orders - Public Submitted/" \
+               | grep -q "issue-${{ github.event.issue.number }}_"; then
+              echo "not reporting a failure: the order is on main, landed by the run the other event started"
+            else
+              printf '\n---\n\n**This order validated but did not land.** Something went wrong while committing it, so it is not in the corpus yet. Nothing is wrong with your submission and it does not need resending: a maintainer will replay it.\n' >> /tmp/report.md
+            fi
           fi
           gh issue comment "${{ github.event.issue.number }}" --body-file /tmp/report.md
 
