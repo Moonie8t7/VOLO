@@ -266,13 +266,31 @@ export default function OptimisePage() {
                     <MoveControls name={mod.name} onMove={d => moveMod(mod.uuid, d)} />
                     <button
                       className="flex-1 min-w-0 flex items-center gap-4 py-3 text-left px-2"
-                      onClick={() => setExpanded(isOpen ? null : mod.uuid)}
+                      /*
+                       * Selecting a mod name ends in a click on the row, which
+                       * would open the details the reader was dragging across.
+                       * A plain click has no selection by then, because
+                       * pressing the mouse down clears whatever was selected,
+                       * so anything left is a selection the user just made.
+                       */
+                      onClick={() => {
+                        const selection = window.getSelection();
+                        if (selection && !selection.isCollapsed) return;
+                        setExpanded(isOpen ? null : mod.uuid);
+                      }}
                       aria-expanded={isOpen}
                     >
                       <span className="w-8 text-right text-xs text-muted-foreground font-mono">
                         {(p?.position ?? 0) + 1}
                       </span>
-                      <span className="flex-1 min-w-0">
+                      {/*
+                        Text inside a button cannot be selected by dragging,
+                        which is a sensible default for a control and wrong
+                        here: people copy a mod name to go and look it up.
+                        Asked for, and the masterlist page already behaves this
+                        way because its rows are not buttons.
+                      */}
+                      <span className="flex-1 min-w-0 select-text">
                         <span className="block truncate font-medium font-body">{mod.name}</span>
                         {mod.author && (
                           <span className="block truncate text-xs text-muted-foreground">{mod.author}</span>
