@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-10T02:32:20.370Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-10T05:56:09.229Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-08-10T02:32:20.370Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 47 |
 | labelled working | 41 |
 | labelled broken | 3 |
-| load-after edges promoted from catalogues | 338 |
+| load-after edges promoted from catalogues | 425 |
 | unlabelled | 3 |
 | Separator headers parsed | 1027 |
 | **Unique mods indexed** | **7257** |
 | Seen in more than one order | 3808 |
-| With declared dependencies | 299 |
+| With declared dependencies | 359 |
 | With Script Extender flags | 163 |
 | With author metadata | 879 |
 
@@ -97,7 +97,9 @@ Listed because the decision is otherwise invisible. Dropping a real ordering
 constraint would be silent, and this file is regenerated and committed on every
 mine, so a change to this list shows up in a diff where somebody sees it.
 
-_none: every declared requirement also holds as a load order_
+| Mod | Loaded after its dependants | Mods declaring it |
+|---|---|---|
+| `CompatibilityFramework` | 11 of 11 placements | 11 |
 
 ## Requirements the working orders do without
 
@@ -110,9 +112,13 @@ Framework are present in every working order that needs them.
 | Requirement | Working orders needing it | Without it | Declaring mods |
 |---|---|---|---|
 | `ZipsHeads` | 5 | 5 | 1 |
-| `TutorialChestSummoning` | 7 | 6 | 6 |
+| `Humanoid Tag Scratch Fix` | 7 | 6 | 1 |
+| `Bleeding Overhaul` | 6 | 5 | 1 |
 | `Ornamental Body Jewellery` | 6 | 5 | 1 |
 | `UnlockLevelCurve - Level 13-20 | Patch 8` | 6 | 5 | 5 |
+| `AOE Status Fixer` | 5 | 4 | 1 |
+| `HybridUI` | 10 | 8 | 1 |
+| `TutorialChestSummoning` | 15 | 10 | 12 |
 
 ## Requirements naming something unknown
 
