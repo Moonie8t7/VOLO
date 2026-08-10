@@ -690,6 +690,45 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// Intake must not depend on a label alone. GitHub drops a label an issue
+// template asks for when the repository does not have it, with no error
+// anywhere, and that is exactly what happened: `wrong-placement` was never
+// created, so every report of a wrong placement arrived unlabelled and the
+// branch handling them had never run on a single one.
+{
+  console.log('');
+  console.log('issue intake does not hang on a label');
+
+  const workflow = fs.readFileSync('.github/workflows/process-submission.yml', 'utf8');
+  const templates = fs.readdirSync('.github/ISSUE_TEMPLATE')
+    .filter(f => f.endsWith('.yml') && f !== 'config.yml')
+    .map(f => ({ file: f, text: fs.readFileSync(path.join('.github/ISSUE_TEMPLATE', f), 'utf8') }));
+
+  // Every label a template asks for, and whether intake can still recognise
+  // that template's issues without it.
+  const gaps = [];
+  for (const t of templates) {
+    const declared = (t.text.match(/^labels:\s*\[(.*)\]/m) ?? [])[1];
+    if (!declared) continue;
+    const labels = declared.split(',').map(s => s.trim().replace(/^["']|["']$/g, '')).filter(Boolean);
+    for (const label of labels) {
+      if (!workflow.includes(label)) continue;
+      // Intake keys on this label, so it needs a second way in: a heading the
+      // template writes into every body it creates.
+      const headings = [...t.text.matchAll(/^\s*label:\s*(.+)$/gm)].map(m => m[1].trim());
+      const covered = headings.some(h => workflow.includes(h));
+      if (!covered) gaps.push(`${t.file}: intake only recognises "${label}" by label`);
+    }
+  }
+
+  if (!gaps.length) {
+    console.log('  ok    every labelled template is also recognised by what it writes');
+  } else {
+    failures++;
+    for (const g of gaps) console.log(`  FAIL  ${g}`);
+  }
+}
+
 // numbered text fixture: BG3MM's text export writes "NN. Name (file.pak)".
 // Numbering and filenames must strip, commas in names must survive, and
 // engine modules must still be recognised and dropped.

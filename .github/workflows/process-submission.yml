@@ -32,9 +32,19 @@ jobs:
     # mod in it belongs, not just the one being reported. It only enters the
     # corpus when the reporter has said they played on it, because provenance
     # is what the whole anti-feedback rule rests on.
+    #
+    # Recognised by the shape of the template's own answers as well as by the
+    # label, because the label was the only test and it never arrived. GitHub
+    # drops a label an issue template asks for when the repository does not
+    # have it, silently and with no error anywhere, and `wrong-placement` had
+    # never been created. So this branch had never once run, on any report,
+    # while reading as though it were handled. A heading the template writes
+    # into every body cannot go missing the same way.
     if: >
       contains(github.event.issue.labels.*.name, 'load-order-submission') ||
-      (contains(github.event.issue.labels.*.name, 'wrong-placement') &&
+      contains(github.event.issue.body, '### Does this load order work?') ||
+      ((contains(github.event.issue.labels.*.name, 'wrong-placement') ||
+        contains(github.event.issue.body, '### Where VOLO put it')) &&
        contains(github.event.issue.body, 'Working, I have played on it'))
     runs-on: ubuntu-latest
     steps:
