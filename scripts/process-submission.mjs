@@ -343,7 +343,18 @@ for (const f of fs.readdirSync(CORPUS)) {
     if (p.mods.length) existing = fingerprint(p.mods);
   } catch { continue; }
   if (existing === submitted) {
-    finish(false, ['## Submission rejected', '', `This exact order is already in the corpus as \`${f}\`.`]);
+    /*
+     * Final, unlike the other two rejections. Editing an issue re-runs intake,
+     * so an order that could not be read is worth leaving open for the
+     * submitter to fix. Nothing anybody edits will make this order stop
+     * already being in the corpus, so the issue is closed rather than left
+     * sitting in the open list with nothing to decide.
+     */
+    finish(
+      false,
+      ['## Submission rejected', '', `This exact order is already in the corpus as \`${f}\`.`],
+      { final: true },
+    );
   }
 }
 
