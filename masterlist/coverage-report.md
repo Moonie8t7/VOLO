@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-08-10T00:22:04.657Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-10T00:34:55.945Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 45 |
-| labelled working | 39 |
+| Load orders analysed | 46 |
+| labelled working | 40 |
 | labelled broken | 3 |
 | load-after edges promoted from catalogues | 336 |
 | unlabelled | 3 |
-| Separator headers parsed | 968 |
+| Separator headers parsed | 1027 |
 | **Unique mods indexed** | **7257** |
-| Seen in more than one order | 3666 |
+| Seen in more than one order | 3765 |
 | With declared dependencies | 296 |
 | With Script Extender flags | 163 |
 | With author metadata | 879 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 45 orders carry it, because the short
+this comes from. Only 2 of 46 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -111,10 +111,10 @@ Framework are present in every working order that needs them.
 
 | Requirement | Working orders needing it | Without it | Declaring mods |
 |---|---|---|---|
-| `ZipsHeads` | 4 | 4 | 1 |
+| `ZipsHeads` | 5 | 5 | 1 |
+| `Ornamental Body Jewellery` | 6 | 5 | 1 |
 | `TutorialChestSummoning` | 6 | 5 | 6 |
 | `UnlockLevelCurve - Level 13-20 | Patch 8` | 6 | 5 | 5 |
-| `Ornamental Body Jewellery` | 5 | 4 | 1 |
 
 ## Requirements naming something unknown
 
@@ -126,7 +126,7 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 39
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 40
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
