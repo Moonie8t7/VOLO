@@ -1,20 +1,20 @@
 # Masterlist coverage report
 
-Generated 2026-08-09T23:08:31.643Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-10T00:04:19.635Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 43 |
-| labelled working | 37 |
+| Load orders analysed | 44 |
+| labelled working | 38 |
 | labelled broken | 3 |
-| load-after edges promoted from catalogues | 334 |
+| load-after edges promoted from catalogues | 336 |
 | unlabelled | 3 |
-| Separator headers parsed | 934 |
-| **Unique mods indexed** | **7072** |
-| Seen in more than one order | 3515 |
-| With declared dependencies | 293 |
+| Separator headers parsed | 968 |
+| **Unique mods indexed** | **7171** |
+| Seen in more than one order | 3615 |
+| With declared dependencies | 295 |
 | With Script Extender flags | 163 |
 | With author metadata | 879 |
 
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 43 orders carry it, because the short
+this comes from. Only 2 of 44 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -39,13 +39,13 @@ the tool flag a mod as last verified on an older patch.
 | Source | Count | Trust |
 |---|---|---|
 | Curated override | 23 | highest, hand-verified infrastructure |
-| Human-authored section header | 4153 | high, a modder put it there |
-| Name pattern fallback | 1354 | medium, needs review |
-| Nexus or mod.io listing category | 657 | medium, the author's own words about what the mod is |
+| Human-authored section header | 4373 | high, a modder put it there |
+| Name pattern fallback | 1295 | medium, needs review |
+| Nexus or mod.io listing category | 641 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 16 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
-| Neighbour inference, 0.85 agreement or better | 118 | high, measured 97 percent accurate at this band |
-| Neighbour inference, 0.70 to 0.85 | 77 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 674 | none, needs community input |
+| Neighbour inference, 0.85 agreement or better | 96 | high, measured 97 percent accurate at this band |
+| Neighbour inference, 0.70 to 0.85 | 76 | medium, roughly 75 percent accurate, carries a confidence score |
+| Uncategorised | 651 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -57,33 +57,33 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Top of Load Order`: 9
 - `User Interface`: 142
 - `Visuals`: 82
-- `Weapons`: 201
-- `Dyes`: 65
-- `Clothing`: 172
-- `Character Customization`: 435
-- `Resources`: 154
-- `Equipment`: 500
-- `Armor`: 698
+- `Weapons`: 199
+- `Dyes`: 62
+- `Clothing`: 168
+- `Character Customization`: 422
+- `Resources`: 162
+- `Equipment`: 593
+- `Armor`: 661
 - `Utilities`: 62
-- `Races`: 190
-- `Animations`: 85
-- `Spells`: 385
-- `Classes`: 773
+- `Races`: 189
+- `Animations`: 87
+- `Spells`: 395
+- `Classes`: 781
 - `Bodies`: 176
-- `Miscellaneous`: 115
-- `Bug Fixes`: 317
-- `Gameplay`: 325
-- `Accessories`: 76
+- `Miscellaneous`: 114
+- `Bug Fixes`: 338
+- `Gameplay`: 333
+- `Accessories`: 75
 - `Quests`: 22
 - `Environment`: 34
 - `Audio`: 10
-- `Hair`: 244
-- `Heads`: 379
+- `Hair`: 252
+- `Heads`: 407
 - `Dice`: 260
-- `Companions`: 309
-- `NPC`: 174
+- `Companions`: 304
+- `NPC`: 177
 - `Bottom of Load Order`: 4
-- `unsorted`: 674
+- `unsorted`: 651
 
 ## Requirements the corpus overrules
 
@@ -111,9 +111,10 @@ Framework are present in every working order that needs them.
 
 | Requirement | Working orders needing it | Without it | Declaring mods |
 |---|---|---|---|
-| `UnlockLevelCurve - Level 13-20 | Patch 8` | 7 | 6 | 6 |
+| `ZipsHeads` | 4 | 4 | 1 |
 | `TutorialChestSummoning` | 6 | 5 | 6 |
-| `Ornamental Body Jewellery` | 4 | 3 | 1 |
+| `UnlockLevelCurve - Level 13-20 | Patch 8` | 6 | 5 | 5 |
+| `Ornamental Body Jewellery` | 5 | 4 | 1 |
 
 ## Requirements naming something unknown
 
@@ -125,11 +126,11 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 37
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 38
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **674 mods are `unsorted`.** These need community categorisation.
+- **651 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 
