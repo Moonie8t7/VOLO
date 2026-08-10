@@ -69,9 +69,11 @@ jobs:
           set -e
           if [ $code -eq 0 ]; then accepted=yes; else accepted=no; fi
           automerge=$(node -e "try{process.stdout.write(String(require('/tmp/gate.json').autoMerge===true))}catch{process.stdout.write('false')}")
+          final=$(node -e "try{process.stdout.write(String(require('/tmp/gate.json').final===true))}catch{process.stdout.write('false')}")
           echo "accepted=$accepted" >> "$GITHUB_OUTPUT"
           echo "automerge=$automerge" >> "$GITHUB_OUTPUT"
-          echo "accepted=$accepted automerge=$automerge"
+          echo "final=$final" >> "$GITHUB_OUTPUT"
+          echo "accepted=$accepted automerge=$automerge final=$final"
 
       # The corpus file is the only thing that rebases.
       #
@@ -191,3 +193,14 @@ jobs:
             printf '\n---\n\n**This order validated but did not land.** Something went wrong while committing it, so it is not in the corpus yet. Nothing is wrong with your submission and it does not need resending: a maintainer will replay it.\n' >> /tmp/report.md
           fi
           gh issue comment "${{ github.event.issue.number }}" --body-file /tmp/report.md
+
+      # A rejection nothing can change. Editing an issue re-runs intake, so a
+      # submission that could not be read stays open for the submitter to fix;
+      # an order already in the corpus never stops being so, and leaving it
+      # open puts a decision in the list that nobody has to make. Last, so the
+      # explanation above is posted before the issue closes under it.
+      - name: Close a rejection nothing can change
+        if: always() && steps.process.outputs.accepted == 'no' && steps.process.outputs.final == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue close "${{ github.event.issue.number }}"
