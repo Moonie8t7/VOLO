@@ -12,7 +12,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useStore } from '@/lib/store';
-import { EXPORT_FORMATS, exportOrder, download, type ExportFormat } from '@/lib/exporter';
+import {
+  EXPORT_FORMATS, exportOrder, dividerPlan, download, type ExportFormat,
+} from '@/lib/exporter';
+import { countWordCap } from '@/lib/words';
 import dividers from '@/lib/dividers.json';
 
 /**
@@ -50,7 +53,7 @@ function ageOf(iso: string | null): string | null {
 const STALE_AFTER_MS = 60 * 60_000;
 
 export default function ExportPage() {
-  const { result, sourceName, importedAt } = useStore();
+  const { result, sourceName, importedAt, sections } = useStore();
   const importedAge = ageOf(importedAt);
   const staleImport = importedAt
     ? Date.now() - new Date(importedAt).getTime() > STALE_AFTER_MS
@@ -79,7 +82,11 @@ export default function ExportPage() {
   }
 
   const spec = EXPORT_FORMATS.find(f => f.id === format)!;
-  const content = exportOrder(result, format, { insertDividers: insertDividers && format === 'bg3mm' });
+  const plan = dividerPlan(result, sections);
+  const content = exportOrder(result, format, {
+    insertDividers: insertDividers && format === 'bg3mm',
+    sections,
+  });
 
   // Imports without a UUID column (TSV, plain text) leave gaps BG3MM cannot
   // match. The masterlist recovers many; count what is still missing.
@@ -226,19 +233,36 @@ export default function ExportPage() {
                     className="mt-1 h-4 w-4 accent-[#D7A869]"
                   />
                   <span className="text-sm font-body">
-                    Insert load order dividers at each category boundary, so the
-                    order arrives in BG3MM already sectioned.
+                    {plan.carried
+                      ? 'Keep my section dividers, putting each one back above the category it was heading.'
+                      : 'Insert load order dividers at each category boundary, so the order arrives in BG3MM already sectioned.'}
                   </span>
                 </label>
-                {insertDividers && (
+                {insertDividers && plan.carried > 0 && (
                   <p className="text-xs text-muted-foreground pl-7">
-                    The divider paks must be installed or BG3MM will list them as
-                    missing.{' '}
+                    Your own dividers, the ones that came in with this order, so
+                    BG3MM already has them.{' '}
+                    {plan.placeable < plan.carried ? (
+                      <>
+                        {countWordCap(plan.placeable)} of your {countWordCap(plan.carried)} go
+                        back. The rest headed mods that ended up spread across
+                        several categories, and a divider in the wrong place
+                        mislabels everything under it, so those are left out.
+                      </>
+                    ) : (
+                      <>All {countWordCap(plan.carried)} go back.</>
+                    )}
+                  </p>
+                )}
+                {insertDividers && plan.carried === 0 && (
+                  <p className="text-xs text-muted-foreground pl-7">
+                    This order arrived without dividers, so these are Astra's
+                    Load Order Dividers. The paks must be installed or BG3MM
+                    will list them as missing.{' '}
                     <a href="/downloads/astras-dividers.zip" className="underline hover:text-foreground">
                       Download the divider paks
                     </a>
-                    ; they are Astra's Load Order Dividers, so if you already
-                    have that set installed the exported order works as-is.{' '}
+                    .{' '}
                     {dividers.credit}{' '}
                     <a href={dividers.creditUrl} target="_blank" rel="noreferrer" className="underline hover:text-foreground">
                       Astralities on Nexus

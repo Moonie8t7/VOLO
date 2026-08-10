@@ -594,6 +594,77 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// Dividers from a set this project does not catalogue. Reported by somebody
+// using LN P8 Load Order Dividers: VOLO stripped theirs, which is right, and
+// then could only offer Astra's back, which they do not have installed. The
+// export has to return the paks the order arrived with.
+{
+  console.log('');
+  console.log('foreign divider set fixture');
+
+  const ui = masterlist.plugins.find(p => p.group === 'User Interface' && !p.uuid.startsWith('name:'));
+  const other = masterlist.plugins.find(
+    p => p.group && p.group !== ui?.group && !p.uuid.startsWith('name:'),
+  );
+  const MINE_A = { UUID: '9a9a9a9a-1111-2222-3333-444444444401', Name: '===== My UI Section =====' };
+  const MINE_B = { UUID: '9a9a9a9a-1111-2222-3333-444444444402', Name: '===== My Other Section =====' };
+
+  const parsed = parseLoadOrder(JSON.stringify({
+    Order: [MINE_A, { Name: ui.name, UUID: ui.uuid }, MINE_B, { Name: other.name, UUID: other.uuid }],
+  }), 'mine.json');
+
+  if (parsed.sections.length === 2 && parsed.sections.every(s => s.uuid && s.name)) {
+    console.log('  ok    a divider set we do not catalogue is kept, uuid and all');
+  } else {
+    failures++;
+    console.log(`  FAIL  imported dividers lost: ${JSON.stringify(parsed.sections)}`);
+  }
+
+  const sorted = sortLoadOrder(parsed.mods, masterlist);
+  const withMine = JSON.parse(exportOrder(sorted, 'bg3mm', {
+    insertDividers: true, sections: parsed.sections,
+  }));
+  const emitted = withMine.Order.map(e => e.UUID);
+
+  if (emitted.includes(MINE_A.UUID) || emitted.includes(MINE_B.UUID)) {
+    console.log("  ok    the user's own dividers come back in the export");
+  } else {
+    failures++;
+    console.log('  FAIL  the export dropped the dividers the order arrived with');
+  }
+
+  const astraUuids = new Set(dividers.uuids);
+  if (!emitted.some(u => astraUuids.has(u))) {
+    console.log("  ok    and Astra's set is not substituted for one they have");
+  } else {
+    failures++;
+    console.log("  FAIL  Astra's dividers were inserted over the user's own");
+  }
+
+  // An order that arrived with none still gets the catalogued set offered.
+  const bare = parseLoadOrder(JSON.stringify({
+    Order: [{ Name: ui.name, UUID: ui.uuid }, { Name: other.name, UUID: other.uuid }],
+  }), 'bare.json');
+  const withAstra = JSON.parse(exportOrder(sortLoadOrder(bare.mods, masterlist), 'bg3mm', {
+    insertDividers: true, sections: bare.sections,
+  }));
+  if (withAstra.Order.some(e => astraUuids.has(e.UUID))) {
+    console.log("  ok    an order that had none still gets Astra's as the fallback");
+  } else {
+    failures++;
+    console.log('  FAIL  no dividers inserted for an order that carried none');
+  }
+
+  // Nothing is inserted unless asked, whichever set would be used.
+  const off = JSON.parse(exportOrder(sorted, 'bg3mm', { sections: parsed.sections }));
+  if (off.Order.length === parsed.mods.length) {
+    console.log('  ok    and none at all when the option is off');
+  } else {
+    failures++;
+    console.log('  FAIL  dividers inserted without being asked for');
+  }
+}
+
 // numbered text fixture: BG3MM's text export writes "NN. Name (file.pak)".
 // Numbering and filenames must strip, commas in names must survive, and
 // engine modules must still be recognised and dropped.

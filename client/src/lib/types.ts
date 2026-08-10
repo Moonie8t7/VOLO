@@ -193,11 +193,30 @@ export interface SortResult {
   };
 }
 
+/**
+ * A section header out of the user's own file.
+ *
+ * Two kinds arrive here. Most are divider paks, which carry a uuid and can be
+ * written back into an export exactly as they came, because the user has the
+ * pak installed. The rest are typed into a mod's name by hand and have nothing
+ * to write back. Both label the mods that follow them, which is where the
+ * strongest placement evidence in the project comes from.
+ */
+export interface ImportedSection {
+  label: string;
+  /** Index into the parsed mod list that this header sat above. */
+  afterIndex: number;
+  /** The divider pak's uuid, absent when the header was typed by hand. */
+  uuid?: string;
+  /** Exactly as written in the file, so it can go back unchanged. */
+  name?: string;
+}
+
 /** What a parser produces from a user's file. */
 export interface ParseResult {
   mods: Mod[];
   /** Section headers found, in order. These are the submitter's own categorisation. */
-  sections: { label: string; afterIndex: number }[];
+  sections: ImportedSection[];
   format: string;
   warnings: string[];
   errors: string[];
