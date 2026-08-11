@@ -102,7 +102,8 @@ export default function PrivacyPage() {
           <p>
             <strong>Cloudflare</strong> hosts the site, so every request reaches
             them and their logs record it in the ordinary way any web host does,
-            IP address included. The submit page also loads Cloudflare Turnstile,
+            IP address included. They also serve the analytics script described
+            below. The submit page loads Cloudflare Turnstile on top of that,
             which is the check that you are not a bot, and your IP is passed to
             it as part of that check.
           </p>
@@ -126,12 +127,25 @@ export default function PrivacyPage() {
         <section className="space-y-4 font-body leading-relaxed">
           <h2 className="font-display text-2xl font-bold">Measurement</h2>
           <p>
-            There is no Google Analytics here, no advertising pixel, no
-            cross-site tracker and no fingerprinting. The only figures I see are
-            Cloudflare's, as the host: aggregate counts of pages requested, with
-            no cookie set and no profile of you built. Search Console shows me
-            which searches the site appears in, which is about queries rather
-            than people.
+            VOLO uses Cloudflare Web Analytics. It is a small script that
+            Cloudflare adds at the edge, which is why you will not find it in
+            the source of this site, and it reports each page view together with
+            how quickly the page painted and responded on your device. It also
+            records the site that referred you, your browser, your operating
+            system and your country.
+          </p>
+          <p>
+            It sets no cookie, stores nothing on your machine, and cannot follow
+            you to any other site, so there is no consent banner on this page
+            because there is nothing stored to consent to. There is no Google
+            Analytics, no advertising pixel, no cross-site tracker and no
+            fingerprinting.
+          </p>
+          <p>
+            Two smaller things, for completeness. Cloudflare keeps request logs
+            the way any host does, which is the paragraph above about them being
+            the host. And Search Console tells me which searches this site turns
+            up in, which is a fact about queries rather than about people.
           </p>
         </section>
 
