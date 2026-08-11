@@ -1,20 +1,20 @@
 # Masterlist coverage report
 
-Generated 2026-08-11T13:12:40.772Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-11T17:15:35.187Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 57 |
-| labelled working | 47 |
+| Load orders analysed | 58 |
+| labelled working | 48 |
 | labelled broken | 7 |
-| load-after edges promoted from catalogues | 472 |
+| load-after edges promoted from catalogues | 470 |
 | unlabelled | 3 |
 | Separator headers parsed | 1232 |
-| **Unique mods indexed** | **7768** |
-| Seen in more than one order | 4145 |
-| With declared dependencies | 398 |
+| **Unique mods indexed** | **7770** |
+| Seen in more than one order | 4221 |
+| With declared dependencies | 396 |
 | With Script Extender flags | 163 |
 | With author metadata | 879 |
 
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 57 orders carry it, because the short
+this comes from. Only 2 of 58 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -40,11 +40,11 @@ the tool flag a mod as last verified on an older patch.
 |---|---|---|
 | Curated override | 27 | highest, hand-verified infrastructure |
 | Human-authored section header | 4570 | high, a modder put it there |
-| Name pattern fallback | 1479 | medium, needs review |
+| Name pattern fallback | 1480 | medium, needs review |
 | Nexus or mod.io listing category | 727 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 16 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 104 | high, measured 97 percent accurate at this band |
-| Neighbour inference, 0.70 to 0.85 | 79 | medium, roughly 75 percent accurate, carries a confidence score |
+| Neighbour inference, 0.70 to 0.85 | 80 | medium, roughly 75 percent accurate, carries a confidence score |
 | Uncategorised | 766 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
@@ -68,7 +68,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Races`: 206
 - `Animations`: 87
 - `Spells`: 460
-- `Classes`: 899
+- `Classes`: 901
 - `Bodies`: 180
 - `Miscellaneous`: 118
 - `Bug Fixes`: 354
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 12.4% | 23.3% | no, and it points the other way |
+| Category pairs against the working consensus | 11.8% | 22.8% | no, and it points the other way |
 | Mods in no working order anywhere | 8% | 1% | yes |
 | Declared dependencies not installed | 0.0 | 0.0 | no |
 
-Measured over 7 broken and 45 working orders, against 156 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 7 broken and 46 working orders, against 157 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal currently runs
@@ -123,7 +123,7 @@ mine, so a change to this list shows up in a diff where somebody sees it.
 
 | Mod | Loaded after its dependants | Mods declaring it |
 |---|---|---|
-| `CompatibilityFramework` | 12 of 12 placements | 12 |
+| `CompatibilityFramework` | 12 of 13 placements | 12 |
 
 ## Requirements the working orders do without
 
@@ -136,13 +136,13 @@ Framework are present in every working order that needs them.
 | Requirement | Working orders needing it | Without it | Declaring mods |
 |---|---|---|---|
 | `ZipsHeads` | 5 | 5 | 1 |
-| `Humanoid Tag Scratch Fix` | 7 | 6 | 1 |
-| `AOE Status Fixer` | 6 | 5 | 1 |
+| `Humanoid Tag Scratch Fix` | 8 | 7 | 1 |
+| `HybridUI` | 12 | 10 | 1 |
 | `Ornamental Body Jewellery` | 6 | 5 | 1 |
 | `UnlockLevelCurve - Level 13-20 | Patch 8` | 6 | 5 | 5 |
-| `HybridUI` | 11 | 9 | 1 |
-| `Bleeding Overhaul` | 8 | 6 | 1 |
-| `TutorialChestSummoning` | 15 | 10 | 12 |
+| `AOE Status Fixer` | 7 | 5 | 1 |
+| `TutorialChestSummoning` | 16 | 11 | 12 |
+| `Bleeding Overhaul` | 9 | 6 | 1 |
 
 ## Requirements naming something unknown
 
@@ -154,7 +154,7 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 47
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 48
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
