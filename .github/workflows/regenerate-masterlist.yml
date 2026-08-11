@@ -18,6 +18,9 @@ on:
 
 permissions:
   contents: write
+  # To start the checks workflow on what this run pushes. See the dispatch
+  # below for why that is not left to the push itself.
+  actions: write
 
 concurrency:
   group: masterlist
@@ -51,6 +54,8 @@ jobs:
       # catalogue copy among them, and the leftovers made `git pull --rebase`
       # refuse to run at all.
       - name: Rebuild, verify and commit
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git config user.name "volo-submissions"
@@ -84,6 +89,16 @@ jobs:
             git commit -m "Regenerate the masterlist from the corpus"
 
             if git push origin HEAD:main; then
+              # A push made with the workflow token starts no workflow of its
+              # own, so this commit would carry no checks and the branch would
+              # keep showing the result of the merge that triggered this run.
+              # That merge is red by construction: it adds an order to the
+              # corpus while the masterlist and README still describe the
+              # corpus without it, which is the inconsistency this run exists
+              # to repair. Starting the checks explicitly puts the verdict on
+              # the repaired tree instead of the broken one it replaced.
+              gh workflow run checks.yml --ref main \
+                || echo "could not start checks on the new tip"
               exit 0
             fi
             echo "push rejected on attempt $attempt, rebuilding on the new tip"
