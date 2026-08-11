@@ -1,18 +1,18 @@
 # Masterlist coverage report
 
-Generated 2026-08-11T05:35:21.505Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-11T07:42:22.774Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 54 |
-| labelled working | 46 |
+| Load orders analysed | 55 |
+| labelled working | 47 |
 | labelled broken | 5 |
 | load-after edges promoted from catalogues | 470 |
 | unlabelled | 3 |
 | Separator headers parsed | 1232 |
-| **Unique mods indexed** | **7671** |
+| **Unique mods indexed** | **7673** |
 | Seen in more than one order | 4054 |
 | With declared dependencies | 396 |
 | With Script Extender flags | 163 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 54 orders carry it, because the short
+this comes from. Only 2 of 55 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -45,7 +45,7 @@ the tool flag a mod as last verified on an older patch.
 | Author's other catalogued mods | 16 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 104 | high, measured 97 percent accurate at this band |
 | Neighbour inference, 0.70 to 0.85 | 84 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 737 | none, needs community input |
+| Uncategorised | 739 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -83,7 +83,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Companions`: 323
 - `NPC`: 180
 - `Bottom of Load Order`: 4
-- `unsorted`: 737
+- `unsorted`: 739
 
 ## What the broken orders do differently
 
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 12.5% | 23.5% | no, and it points the other way |
+| Category pairs against the working consensus | 12.5% | 23.3% | no, and it points the other way |
 | Mods in no working order anywhere | 7% | 1% | yes |
 | Declared dependencies not installed | 0.0 | 0.0 | no |
 
-Measured over 5 broken and 44 working orders, against 156 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 5 broken and 45 working orders, against 156 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal currently runs
@@ -154,11 +154,11 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 46
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 47
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **737 mods are `unsorted`.** These need community categorisation.
+- **739 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 
