@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-10T23:56:45.072Z",
+  "generated": "2026-08-11T05:35:21.505Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -30,7 +30,7 @@
     "working": 46,
     "broken": 5,
     "unlabelled": 3,
-    "externalDependencyEdges": 433,
+    "externalDependencyEdges": 470,
     "ordersWithKnownBuild": 2
   },
   "groups": [
@@ -8143,7 +8143,13 @@
         "installs": 8,
         "workingInstalls": 8,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "ONYX - Acheron",
@@ -8953,7 +8959,13 @@
         "installs": 7,
         "workingInstalls": 5,
         "brokenInstalls": 2
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Better Context Menu 130%",
@@ -31076,13 +31088,7 @@
         "installs": 3,
         "workingInstalls": 2,
         "brokenInstalls": 1
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Half-Elf Half-Orc Subrace",
@@ -31841,7 +31847,13 @@
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "JWL Sceleritas Fel's Coffers of Forlorn Treasures",
@@ -44488,7 +44500,13 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "HalfDragon",
@@ -44835,7 +44853,8 @@
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Homebrew Spells - Adjustments",
@@ -45088,7 +45107,8 @@
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Illithid Powers Overhaul - Half Potency",
@@ -56616,7 +56636,17 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "1e8845ef-c2bd-46ee-8652-9579edcb2481",
+          "name": "Riposte Enhanced"
+        },
+        {
+          "uuid": "790f114c-d136-4e6d-b608-8dd95a80783c",
+          "name": "Swap Places Common Action"
+        }
+      ]
     },
     {
       "name": "5.5e Spells",
@@ -56682,7 +56712,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "49b32147-5aed-c262-1fa6-ec51939978c0",
+          "name": "5e Ranger Subclasses Combined"
+        }
+      ]
     },
     {
       "name": "5e Spells: WIP",
@@ -56768,7 +56804,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "5eSpellsExpansionLevelPatch_CHS",
@@ -58195,7 +58237,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Arabella Bone Man",
@@ -58585,6 +58628,10 @@
         {
           "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
           "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "486d1526-3505-4b09-9790-0f6a60f5ac0f",
+          "name": "HomeBrew - Comprehensive Reworks"
         }
       ]
     },
@@ -60459,7 +60506,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "3b8967db-864f-8995-3a2d-23ea140a18a3",
+          "name": "5e Barbarian Subclasses Combined"
+        }
+      ]
     },
     {
       "name": "Bard Fixes and Tweaks",
@@ -61626,7 +61679,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "bc1081b4-e2a9-ce49-8b60-6f64b7eecce4",
+          "name": "BetterTooltips"
+        }
+      ]
     },
     {
       "name": "Betty",
@@ -64000,6 +64059,14 @@
         {
           "uuid": "4b516620-9c56-aa18-96ae-a9ee4f57b515",
           "name": "Mystra's Spells"
+        },
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
         }
       ]
     },
@@ -67779,7 +67846,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "274cf3f1-f043-4e1f-8acf-b2e79c3630b8",
+          "name": "Druid Wild Shape Overhaul"
+        }
+      ]
     },
     {
       "name": "Drunken Master Feat",
@@ -67861,7 +67934,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Dual Wielding Tweaks (Bonus Stats)",
@@ -69434,7 +69508,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "ca3df55b-c576-41a1-87c4-3cf5f01922e4",
+          "name": "Essential_Feats"
+        }
+      ]
     },
     {
       "name": "Eternal Cinder II: Fire Monk Subclass",
@@ -70789,7 +70869,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "c2f1a230-8c0c-481b-9ab2-987e27d7db05",
+          "name": "FeatsOverhaul"
+        }
+      ]
     },
     {
       "name": "FeatsOverhaul_ListoPatch",
@@ -70813,7 +70899,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "73707e2a-b358-aa93-fe6e-de6764489833",
+          "name": "Features from DnD 5E Planescape"
+        }
+      ]
     },
     {
       "name": "Features from DnD 5E Spelljammer CHS",
@@ -70825,7 +70917,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "4511f6b4-7422-efd2-8db1-31f6352c8a9a",
+          "name": "Features from DnD 5E Spelljammer"
+        }
+      ]
     },
     {
       "name": "Felicity Head 6",
@@ -71177,7 +71275,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "88e1d176-4259-f98f-6b9a-486caaaf2c70",
+          "name": "5e Fighter Subclasses Combined"
+        }
+      ]
     },
     {
       "name": "FighterWizard",
@@ -72956,7 +73060,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "30d3cc83-87a9-4efc-8b32-885c10f82132",
+          "name": "Goon's Gear and Throwing Overhaul"
+        }
+      ]
     },
     {
       "name": "Goon's Immersive Loading Screen Hints - Immersive Loading Screens Version",
@@ -72979,7 +73089,17 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "2e6ec423-5d59-45ba-9ec0-b0d1e3c363e1",
+          "name": "Barbarian Quality of Life"
+        },
+        {
+          "uuid": "55ff4fda-2514-4ae9-943e-ca60e51395f5",
+          "name": "Goon's Barbarian Overhaul"
+        }
+      ]
     },
     {
       "name": "Gortash",
@@ -74198,7 +74318,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Helms 2",
@@ -74657,7 +74778,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "84958e84-fd62-474f-bd1f-cbabc132c4b3",
+          "name": "Homebrew Spells"
+        }
+      ]
     },
     {
       "name": "Homebrew Wild Magic (For Sorcerer & Barbarian)",
@@ -75879,7 +76006,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
+          "name": "Tav's Hair Salon"
+        }
+      ]
     },
     {
       "name": "InstamommyNady_Races",
@@ -79200,7 +79333,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "1b215646-6200-451a-9c4a-b21406f69edd",
+          "name": "Many More Monsters"
+        }
+      ]
     },
     {
       "name": "ManyEarrings",
@@ -79308,7 +79447,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Mary",
@@ -79757,7 +79902,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "da5d2ea8-51c2-42ba-8d0f-34b5b198a19e",
+          "name": "MetamagicExtended"
+        }
+      ]
     },
     {
       "name": "Metamagic Merged - Duplicate Patch (Essential)",
@@ -79781,7 +79932,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "da5d2ea8-51c2-42ba-8d0f-34b5b198a19e",
+          "name": "MetamagicExtended"
+        }
+      ]
     },
     {
       "name": "MF Radio",
@@ -80464,7 +80621,25 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "0c8bb2e9-aa96-4de7-b793-a733d68ee6f0",
+          "name": "Smart Autosaving"
+        },
+        {
+          "uuid": "163484d1-8511-4a95-8061-1ede8838b28b",
+          "name": "Mod Uninstaller"
+        },
+        {
+          "uuid": "c05d3d9a-ae0d-4893-140b-65efcb9c4302",
+          "name": "Waypoint Inside Emerald Grove"
+        },
+        {
+          "uuid": "e49ba956-192e-451f-8dde-9c1299ec8881",
+          "name": "Auto Send Read Books To Camp"
+        }
+      ]
     },
     {
       "name": "Modern House",
@@ -83316,7 +83491,13 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Nymphea Silvestra - Feathery Ensemble",
@@ -84683,7 +84864,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "9b9367cc-77ff-7773-7327-75dd42089bea",
+          "name": "Paladin and Oaths DnD 5R PHB2024"
+        }
+      ]
     },
     {
       "name": "Pale Wood Gunmetal Edged Dice (Extruded)",
@@ -84826,7 +85013,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "fe04695e-d206-4a88-b3f9-b2a65855ac4c",
+          "name": "Path of Undeath"
+        }
+      ]
     },
     {
       "name": "Paz Poses V1",
@@ -86821,7 +87014,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "a74a712b-094d-4941-8cc7-bb3a75bc39eb",
+          "name": "Rebalance_ClassSpells"
+        }
+      ]
     },
     {
       "name": "Rebalance Common Effects CHS",
@@ -86846,7 +87045,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "f324020f-de52-34ac-bb86-5974ade9d203",
+          "name": "Rebalance Gear"
+        }
+      ]
     },
     {
       "name": "Rebalance_Lvl1_Spells_CHS",
@@ -90652,7 +90857,8 @@
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 1
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "spells",
@@ -94959,7 +95165,8 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "UnlimitedPhotoMode",
@@ -95787,7 +95994,13 @@
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "c425cc39-44bf-049a-3479-edc38013ae9c",
+          "name": "Visual Auras for Paladins"
+        }
+      ]
     },
     {
       "name": "VisibleShieldFixes",
