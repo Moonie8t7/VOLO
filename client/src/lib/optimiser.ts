@@ -168,6 +168,24 @@ function rankGroups(masterlist: Masterlist): Map<GroupName, number> {
 }
 
 /**
+ * The group a divider slot belongs to, for a slot somebody picked by hand.
+ *
+ * Only the badge and the group tiebreak need it: the slot itself decides where
+ * the mod sits. Built by reversing the group-to-slot map, so it answers for
+ * every slot a group is mapped to, and falls through for the rest.
+ */
+const SLOT_GROUPS: Map<number, GroupName> = (() => {
+  const byGroup = dividers.byGroup as Record<string, { num: number } | undefined>;
+  const out = new Map<number, GroupName>();
+  for (const [name, slot] of Object.entries(byGroup)) {
+    if (slot && !out.has(slot.num)) out.set(slot.num, name);
+  }
+  return out;
+})();
+
+const groupForSlot = (num: number): GroupName | undefined => SLOT_GROUPS.get(num);
+
+/**
  * Index the masterlist by UUID, then by normalised name, then by folder.
  *
  * The folder index exists because a pak's folder and the name it publishes
@@ -216,6 +234,14 @@ export function sortLoadOrder(
   mods: Mod[],
   masterlist: Masterlist,
   listing?: ExternalListing | null,
+  /**
+   * Divider slots the user picked for their own mods, by uuid.
+   *
+   * Outranks everything, including a maintainer's rule, because it is their
+   * load order and they are looking at the mod. Kept in the browser and never
+   * sent anywhere: a slot chosen here changes this sort and nothing else.
+   */
+  assigned?: Record<string, number>,
 ): SortResult {
   const rank = rankGroups(masterlist);
   const { byUuid, byName, byFolder } = indexMasterlist(masterlist);
@@ -254,6 +280,15 @@ export function sortLoadOrder(
     // written into an export as if they were pak UUIDs.
     if (entry?.uuid && !entry.uuid.startsWith('name:') && mod.uuid.startsWith('name:')) {
       resolvedUuid.set(mod.uuid, entry.uuid);
+    }
+
+    const mine = assigned?.[mod.uuid];
+    if (mine !== undefined) {
+      group.set(mod.uuid, groupForSlot(mine) ?? 'Miscellaneous');
+      groupSource.set(mod.uuid, 'you');
+      guessedDivider.set(mod.uuid, mine);
+      known++;
+      continue;
     }
 
     if (entry && entry.group !== DEFAULT_GROUP) {
@@ -507,6 +542,8 @@ export function sortLoadOrder(
   const LAST_DIVIDER = 1000;
 
   const dividerOf = (m: Mod): number => {
+    const mine = assigned?.[m.uuid];
+    if (mine !== undefined) return mine;
     const entry = byUuid.get(m.uuid)
       ?? byName.get(m.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
     if (entry?.divider !== undefined) return entry.divider;
