@@ -130,7 +130,7 @@ const GROUP_DIVIDER = (() => {
 const EXTERNAL = (() => {
   try {
     const d = JSON.parse(fs.readFileSync(path.join('masterlist', 'external-categories.json'), 'utf8'));
-    return { groups: d.groups, nexus: d.nexus, modio: d.modio };
+    return { groups: d.groups, nexus: d.nexus, modio: d.modio, catalogue: d.catalogue };
   } catch {
     return null;
   }
@@ -1702,8 +1702,15 @@ if (!foldRun) {
     `${JSON.stringify({
       mods: plugins.length,
       placed: plugins.filter(p => p.divider !== undefined).length,
+      uncategorised: plugins.filter(p => (p.evidence?.source ?? 'none') === 'none').length,
       gamePatch: masterlist.gamePatch ?? null,
       workingOrders: masterlist.provenance.working,
+      orders: masterlist.provenance.ordersAnalysed,
+      /*
+       * Null until the catalogues are next rebuilt, which is why the pages
+       * treat it as optional rather than assuming a number is there.
+       */
+      catalogue: EXTERNAL?.catalogue ?? null,
     }, null, 2)}\n`,
   );
 }

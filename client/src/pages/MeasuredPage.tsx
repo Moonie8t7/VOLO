@@ -9,31 +9,74 @@
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import measured from '@/lib/measured.json';
+import summary from '@/lib/masterlist-summary.json';
+import {
+  BELOW_CHANCE,
+  ERROR,
+  EVALUATED,
+  HELD_OUT,
+  LARGEST,
+  ORDERS,
+  RANDOM,
+  SELF_SORTED,
+  SMALLEST,
+  TARGET,
+  WEIGHTED,
+  byLift,
+  byRecency,
+  type MeasuredOrder,
+} from '@/lib/measured-stats';
 import { countWord, countWordCap } from '@/lib/words';
 
 /**
- * Held-out agreement per submitted order, written by verify-holdout.mjs.
- * Rendered from the file rather than transcribed: the hand-typed copy of
- * this table went stale the day a stranger's submission landed on its own,
- * and a page about honest measurement cannot open with a number nobody
- * measured lately.
+ * Orders in the corpus that never reach the score, beyond the ones VOLO sorted
+ * itself: the same export submitted twice under two names weighs double in a
+ * mean, so the evaluation keeps one copy. Derived by subtraction so the three
+ * counts on this page cannot disagree with each other.
  */
-const ORDERS = [...measured.orders].sort((a, b) => b.mods - a.mods);
+const DUPLICATES = summary.workingOrders - SELF_SORTED - EVALUATED;
+
+const RECENT = byRecency.slice(0, 10);
+const BEST = byLift.slice(0, 5);
 
 /**
- * Every figure derived from ORDERS is computed, never typed. A hand-copied
- * "nearer 59 percent" sat on this page contradicting the table above it by
- * one and a half points, and nothing could catch it because prose is not
- * checked against data. Interpolation cannot disagree with its own table.
+ * One table shape for all three views of the same measurement, so the reader
+ * learns the columns once. Gain is the column that matters: agreement alone
+ * flatters an order whose random baseline is already 55.
  */
-const pct = (v: number) => (Math.round(v * 10) / 10).toFixed(1);
-const mean = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / xs.length;
-const HELD_OUT = pct(mean(ORDERS.map(o => o.held)));
-const RANDOM = pct(mean(ORDERS.map(o => o.random)));
-const WEIGHTED = pct(
-  ORDERS.reduce((a, o) => a + o.held * o.mods, 0) / ORDERS.reduce((a, o) => a + o.mods, 0),
-);
+function OrderTable({ rows, caption }: { rows: MeasuredOrder[]; caption: string }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full text-sm">
+        <caption className="sr-only">{caption}</caption>
+        <thead>
+          <tr className="border-b border-border/60 text-left text-muted-foreground">
+            <th scope="col" className="py-2 pr-4 font-medium">Order</th>
+            <th scope="col" className="py-2 pr-4 text-right font-medium">Mods</th>
+            <th scope="col" className="py-2 pr-4 text-right font-medium">VOLO</th>
+            <th scope="col" className="py-2 pr-4 text-right font-medium">Random</th>
+            <th scope="col" className="py-2 text-right font-medium">Gain</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(o => (
+            <tr key={o.name} className="border-b border-border/30">
+              <td className="py-2 pr-4">{o.name}</td>
+              <td className="py-2 pr-4 text-right tabular-nums">{o.mods}</td>
+              <td className="py-2 pr-4 text-right tabular-nums">{o.held.toFixed(1)}</td>
+              <td className="py-2 pr-4 text-right tabular-nums text-muted-foreground">
+                {o.random.toFixed(1)}
+              </td>
+              <td className="py-2 text-right tabular-nums">
+                {(o.held - o.random).toFixed(1)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 export default function MeasuredPage() {
   return (
@@ -67,44 +110,63 @@ export default function MeasuredPage() {
         <section className="space-y-4 font-body leading-relaxed">
           <h2 className="font-display text-2xl font-bold">The result</h2>
           <p>
-            Across {countWord(ORDERS.length)} working orders, VOLO agrees with the player{' '}
+            Across {countWord(EVALUATED)} working orders, VOLO agrees with the player{' '}
             <strong>{HELD_OUT} percent</strong> of the time, against{' '}
             <strong>{RANDOM} percent</strong> for a random shuffle. So it is doing
             real work, and it is nowhere near a solved problem.
           </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <caption className="sr-only">
-                Held-out agreement per submitted load order
-              </caption>
-              <thead>
-                <tr className="border-b border-border/60 text-left text-muted-foreground">
-                  <th scope="col" className="py-2 pr-4 font-medium">Order</th>
-                  <th scope="col" className="py-2 pr-4 text-right font-medium">Mods</th>
-                  <th scope="col" className="py-2 pr-4 text-right font-medium">VOLO</th>
-                  <th scope="col" className="py-2 text-right font-medium">Random</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ORDERS.map(o => (
-                  <tr key={o.name} className="border-b border-border/30">
-                    <td className="py-2 pr-4">{o.name}</td>
-                    <td className="py-2 pr-4 text-right tabular-nums">{o.mods}</td>
-                    <td className="py-2 pr-4 text-right tabular-nums">{o.held.toFixed(1)}</td>
-                    <td className="py-2 text-right tabular-nums text-muted-foreground">
-                      {o.random.toFixed(1)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
           <p>
-            The average treats every order equally, so a 41-mod list counts as
-            much as a 999-mod one. Weighted by the number of mods, which is
-            closer to what someone with a real load order experiences, it comes
-            out at {WEIGHTED} percent.
+            The corpus holds {summary.workingOrders} working orders and{' '}
+            {countWord(EVALUATED)} are scored here. {countWordCap(SELF_SORTED)} of
+            them VOLO sorted itself, and marking its own homework measures
+            nothing except that the sort is deterministic
+            {DUPLICATES > 0
+              ? DUPLICATES === 1
+                ? ', and one more is a byte-identical copy of another file'
+                : `, and ${countWord(DUPLICATES)} more are byte-identical copies of other files`
+              : ''}
+            .
           </p>
+          <p>
+            The average treats every order equally, so a {SMALLEST}-mod list
+            counts as much as a {LARGEST.toLocaleString('en-GB')}-mod one.
+            Weighted by the number of
+            mods, which is closer to what someone with a real load order
+            experiences, it comes out at {WEIGHTED} percent.
+          </p>
+        </section>
+
+        <section className="space-y-4 font-body leading-relaxed">
+          <h2 className="font-display text-2xl font-bold">Where it helped most</h2>
+          <p>
+            The five orders VOLO reconstructed best, by how far it beat a random
+            shuffle of the same list. This is the good end of the range and
+            nothing more: the average above also carries{' '}
+            {countWord(BELOW_CHANCE)} orders where the sort did no better than
+            chance at all.
+          </p>
+          <OrderTable rows={BEST} caption="The five orders with the largest gain over a random shuffle" />
+        </section>
+
+        <section className="space-y-4 font-body leading-relaxed">
+          <h2 className="font-display text-2xl font-bold">The ten most recent</h2>
+          <p>
+            Newest submissions first, which is the part of the corpus that has
+            had the least chance to influence the rules it is being scored
+            against.
+          </p>
+          <OrderTable rows={RECENT} caption="Held-out agreement for the ten most recently submitted orders" />
+          <details className="pt-2">
+            <summary className="cursor-pointer text-muted-foreground hover:text-foreground">
+              All {EVALUATED} scored orders
+            </summary>
+            <div className="pt-4">
+              <OrderTable
+                rows={[...ORDERS].sort((a, b) => b.mods - a.mods)}
+                caption="Held-out agreement per submitted load order, largest first"
+              />
+            </div>
+          </details>
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
@@ -185,10 +247,18 @@ export default function MeasuredPage() {
         <section className="space-y-4 font-body leading-relaxed">
           <h2 className="font-display text-2xl font-bold">The honest limits</h2>
           <p>
-            {countWordCap(ORDERS.length)} working orders is a small corpus,
-            and it is the thing holding the tool back rather than the sorting
-            itself. Only a handful of independent submitters sit behind them.
-            Every measurement on this page should be read with that in mind.
+            {countWordCap(EVALUATED)} scored orders is a small corpus, and it is
+            the thing holding the tool back rather than the sorting itself. The
+            headline carries about {ERROR} points of uncertainty on that
+            sample, and it would take something like {TARGET} scored orders to
+            bring that under half a point.
+          </p>
+          <p>
+            Orders also arrive anonymously, which is deliberate but costs
+            something here: there is no way to know how many different people
+            are behind them, so what reads as {EVALUATED} independent opinions
+            may be fewer. Every measurement on this page should be read with
+            that in mind.
           </p>
           <p>
             The automated tests parse VOLO's own output with VOLO's own parser,

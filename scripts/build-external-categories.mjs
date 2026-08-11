@@ -210,9 +210,35 @@ for (const [alias, listing] of LISTING_ALIASES) {
   }
 }
 
+/**
+ * How much of what is published VOLO has actually seen.
+ *
+ * The masterlist only holds mods that appear in an order somebody submitted,
+ * so the gap between it and the two catalogues is the honest size of what the
+ * corpus has never met. Counted here because this is the only script that
+ * reads both catalogues; the sceptical section of the about page renders it.
+ *
+ * A mod on both platforms is one mod, matched on name, so the two totals are
+ * not added. Nexus counts every published listing, categorised or not: the
+ * question is how many mods exist, not how many could be filed.
+ */
+const publishedNames = (catalog) => new Set(
+  Object.values(catalog?.mods ?? {})
+    .filter((m) => m.name && m.status === 'published')
+    .map((m) => norm(m.name))
+    .filter(Boolean),
+);
+const nexusPublished = publishedNames(nexusCatalog);
+const modioPublished = publishedNames(modioCatalog);
+
 const out = {
   generated: new Date().toISOString(),
   groups,
+  catalogue: {
+    nexus: nexusPublished.size,
+    modio: modioPublished.size,
+    distinct: new Set([...nexusPublished, ...modioPublished]).size,
+  },
   nexus: nexusNames,
   modio: modioNames,
 };
@@ -223,4 +249,8 @@ console.log(
   `wrote ${OUT}: ${Object.keys(nexusNames).length} nexus names, ` +
   `${Object.keys(modioNames).length} modio-only names, ${groups.length} groups, ` +
   `${Math.round(size / 1024)}kb`,
+);
+console.log(
+  `published listings: ${out.catalogue.nexus} on Nexus, ${out.catalogue.modio} on mod.io, ` +
+  `${out.catalogue.distinct} distinct`,
 );
