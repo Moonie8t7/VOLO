@@ -110,25 +110,10 @@ export default function LandingPage() {
         </h2>
         <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
           <p>
-            Export your order from BG3 Mod Manager and drop it in, or use the
-            game's own modsettings.lsx. VOLO reads the full export, the short
-            one, CSV, or a plain list of names. Where the mods came from does
-            not matter: Nexus Mods, the official in-game mod manager, or
-            anywhere else.
-          </p>
-          <p>
-            It sorts your mods into the sections a working load order already
-            uses, keeps declared dependencies ahead of the mods that need them,
-            and otherwise moves as little as possible. Every mod shows why it
-            sits where it does, and how much that reason is worth. A placement
-            taken from an order somebody played on counts for more than
-            anything read off a Nexus listing or guessed from the mod's title,
-            and each row says which of those you are looking at.
-            Mods it can find nothing about wait at the end, and you can move
-            anything by hand.
-          </p>
-          <p>
-            Export the result and import it straight back into BG3 Mod Manager.
+            Export your order from BG3 Mod Manager, or use the game's own
+            modsettings.lsx, and drop it in. VOLO reads the full export, the
+            short one, CSV, or a plain list of names. Export the result and
+            import it straight back.
           </p>
 
           <figure className="mt-8">
@@ -173,40 +158,62 @@ export default function LandingPage() {
         <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
           <p>
             A working BG3 load order is already divided into sections, and the
-            community has settled on a set of divider mods that name them, a
+            community has settled on a set of divider mods that name them: a
             hundred-odd labelled positions running from interface mods at the
-            top to compatibility patches at the bottom. VOLO treats those
-            positions as the frame of the order. You do not need the divider
-            mods installed for this; they are a shared map of where things go,
-            and VOLO uses the map whether or not you use the signposts.
+            top to compatibility patches at the bottom. VOLO treats those as the
+            frame of the order, whether or not you install the dividers
+            themselves.
           </p>
           <p>
-            That leaves two questions. Which position does a mod belong at, and
-            in what order do the mods sharing a position go? For
-            the first, VOLO takes the best evidence it has: where players
-            actually filed the mod in orders they submitted, failing that what
-            its name plainly says, because a name like Tasha's Feats points at
-            an exact slot, failing that the category on its Nexus or mod.io
-            page. A mod nothing is known about waits at the end rather than
-            being filed somewhere flattering. For the second, VOLO counts
-            every pair of mods across every submitted order to work out which
-            categories tend to load before which, and follows that. Some of the
-            result contradicts the usual advice, and the played orders win.
+            Which position a mod belongs at comes from the best evidence there
+            is, in that order: where players filed it in orders they submitted,
+            then what its name plainly says, then the category on its Nexus or
+            mod.io page. Every row tells you which of the three you are looking
+            at, so a guess never passes for evidence.
+          </p>
+        </div>
+
+        <h2 className="font-display text-2xl font-bold mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
+          What it will not do
+        </h2>
+        <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
+          <p>
+            Dependencies are absolute: a mod that declares it needs another is
+            never placed before it, whatever the sections say. Where VOLO has
+            nothing to go on it leaves your order alone, so what you see moved
+            is what it had a reason to move. Mods it knows nothing about wait at
+            the end instead of being filed somewhere flattering, and you can
+            move anything by hand.
+          </p>
+        </div>
+
+        <h2 className="font-display text-2xl font-bold mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
+          How much to trust it
+        </h2>
+        <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
+          <p>
+            The masterlist knows {modCount.toLocaleString()} mods
+            {patch ? `, calibrated against BG3 ${patch}` : ""}, and you can{" "}
+            <Link href="/masterlist" className="underline hover:text-foreground">
+              browse every one of them
+            </Link>
+            . How well it sorts is{" "}
+            <Link href="/measured" className="underline hover:text-foreground">
+              measured against orders it has never seen
+            </Link>
+            , and the failures are published alongside the wins.{" "}
+            <Link href="/about" className="underline hover:text-foreground">
+              Who makes VOLO, and where it is weak
+            </Link>
+            , is written down as well.
           </p>
           <p>
-            Two rules override all of it. Dependencies are absolute: a mod that
-            declares it needs another is never placed before it, whatever the
-            sections say. And where VOLO has nothing to go on, it leaves your
-            order alone, so what you see moved is what it had a reason to move.
-          </p>
-          <p>
-            The masterlist currently knows {modCount.toLocaleString()} mods
-            {patch ? `, calibrated against BG3 ${patch}` : ""}. Alongside it sit
-            catalogues of published BG3 mods on Nexus Mods and on mod.io, the
-            platform behind the official in-game mod manager. Those supply two
-            things: the requirements one mod declares on another, and a category
-            for a mod no submitted order has placed yet.
-            All of it is on{" "}
+            Played on an order, working or not?{" "}
+            <Link href="/submit" className="underline hover:text-foreground">
+              Submitting it
+            </Link>{" "}
+            makes the sorter better for everyone. All of it, code and data, is
+            on{" "}
             <a
               href="https://github.com/Moonie8t7/VOLO"
               target="_blank"
@@ -215,24 +222,7 @@ export default function LandingPage() {
             >
               GitHub
             </a>
-            , and you can{" "}
-            <Link href="/masterlist" className="underline hover:text-foreground">
-              browse it here
-            </Link>
-            . How well it does that is{" "}
-            <Link href="/measured" className="underline hover:text-foreground">
-              measured against orders it has never seen
-            </Link>
-            , and the failures are published alongside the wins. There is also a
-            page on{" "}
-            <Link href="/about" className="underline hover:text-foreground">
-              who makes VOLO and where it is weak
-            </Link>
-            . When you have played on an order, working or not,{" "}
-            <Link href="/submit" className="underline hover:text-foreground">
-              submitting it
-            </Link>{" "}
-            makes the sorter better for everyone.
+            .
           </p>
         </div>
 
