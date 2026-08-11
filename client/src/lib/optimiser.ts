@@ -230,6 +230,23 @@ function listedGroup(name: string, listing?: ExternalListing | null): GroupName 
   return group ?? null;
 }
 
+/**
+ * Sorts a load order, and says why every mod ended up where it did.
+ *
+ * Nothing here reaches the network or the disk. The masterlist and the
+ * catalogues arrive as arguments so the same call can be made from a browser,
+ * from the smoke test, and from intake, and all three get identical answers
+ * from identical inputs.
+ *
+ * Four sources decide a mod's place, and they are consulted in this order: a
+ * slot the user picked for their own list, the masterlist, a name pattern, and
+ * finally the mod's own Nexus or mod.io listing. Whatever answers first wins,
+ * and the `groupSource` on each placement records which one did, so a keyword
+ * guess is never displayed as though it were evidence.
+ *
+ * Declared dependencies are hard edges over the top of all of it, except where
+ * the corpus has shown that requiring a mod does not mean loading after it.
+ */
 export function sortLoadOrder(
   mods: Mod[],
   masterlist: Masterlist,
@@ -787,7 +804,7 @@ export function sortLoadOrder(
         'not in the masterlist yet. They keep their order relative to each other, ' +
         'but sit after the mods VOLO could place.',
       uuids: unsortedMods.map(m => m.uuid),
-      resolution: 'Know where these belong? Contribute a category to help everyone.',
+      resolution: 'Know where any of these belong? Tick them below and file them yourself.',
     });
   }
 
