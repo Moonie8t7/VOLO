@@ -16,6 +16,7 @@
 import fs from 'fs';
 import path from 'path';
 import http from 'http';
+import zlib from 'zlib';
 
 const DIST = 'dist';
 const port = Number(process.argv[2] ?? 4180);
@@ -58,13 +59,39 @@ function resolve(urlPath) {
   return null;
 }
 
+/**
+ * Text is compressed, as the host compresses it.
+ *
+ * Without this the server was useless for judging anything about size. A
+ * stylesheet that costs 10kb over the wire in production arrived as 52kb here,
+ * so every trade between "one more request" and "a larger document" measured
+ * five times too expensive and pointed the wrong way. Images and fonts are
+ * already compressed formats and are left alone.
+ */
+const COMPRESSIBLE = /^(text\/|application\/(json|xml|javascript))/;
+
 http.createServer((req, res) => {
   const file = resolve(req.url ?? '/');
   const notFound = path.join(DIST, '404.html');
 
   if (file) {
-    res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] ?? 'application/octet-stream' });
-    res.end(fs.readFileSync(file));
+    const type = TYPES[path.extname(file)] ?? 'application/octet-stream';
+    const body = fs.readFileSync(file);
+    const wantsGzip = /\bgzip\b/.test(req.headers['accept-encoding'] ?? '');
+
+    if (wantsGzip && COMPRESSIBLE.test(type)) {
+      const packed = zlib.gzipSync(body);
+      res.writeHead(200, {
+        'Content-Type': type,
+        'Content-Encoding': 'gzip',
+        'Content-Length': packed.length,
+      });
+      res.end(packed);
+      return;
+    }
+
+    res.writeHead(200, { 'Content-Type': type, 'Content-Length': body.length });
+    res.end(body);
     return;
   }
 
