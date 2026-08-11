@@ -219,6 +219,15 @@ export default function LandingPage() {
             <Link href="/masterlist" className="underline hover:text-foreground">
               browse it here
             </Link>
+            . How well it does that is{" "}
+            <Link href="/measured" className="underline hover:text-foreground">
+              measured against orders it has never seen
+            </Link>
+            , and the failures are published alongside the wins. There is also a
+            page on{" "}
+            <Link href="/about" className="underline hover:text-foreground">
+              who makes VOLO and where it is weak
+            </Link>
             . When you have played on an order, working or not,{" "}
             <Link href="/submit" className="underline hover:text-foreground">
               submitting it

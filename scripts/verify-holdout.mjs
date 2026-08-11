@@ -157,16 +157,29 @@ const display = f => f
   .replace(/\.(json|tsv|csv|txt)$/i, '')
   .replace(/^working_/, '')
   .replace(/^not[-_ ]?working_/i, '');
+
+/**
+ * The day the order arrived, from the name the intake gave it. The corpus that
+ * predates the submission form carries no date, and gets none rather than a
+ * guess: the measured page sorts by this to show the newest arrivals, and an
+ * invented date would put the oldest files at the top of that list.
+ */
+const arrived = f => f.match(/_(\d{4}-\d{2}-\d{2})\b/)?.[1] ?? null;
 fs.writeFileSync(
   path.join('client', 'src', 'lib', 'measured.json'),
   `${JSON.stringify({
     generated: new Date().toISOString(),
     ordersEvaluated: rows.length,
+    // Working orders left out of the score because VOLO produced them. The
+    // measured page says so, because the count differs from the corpus size
+    // quoted everywhere else and an unexplained gap reads as a mistake.
+    selfSorted: selfScored,
     heldOut: round1(mean('heldOut')),
     random: round1(mean('random')),
     inSample: round1(mean('inSample')),
     orders: rows.map(r => ({
       name: display(r.file),
+      date: arrived(r.file),
       mods: r.mods,
       held: round1(r.heldOut),
       random: round1(r.random),
