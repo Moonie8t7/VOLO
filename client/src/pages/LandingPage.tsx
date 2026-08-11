@@ -260,11 +260,11 @@ export default function LandingPage() {
                 is built inside the page and goes from there to your disk.
               </p>
               <p>
-                Check it in the browser's network panel. You will see VOLO's own
-                code, styles and images, a typeface from Google Fonts, and the
-                masterlist it sorts against, which is one file of public data
-                served the same way to everybody. Your mod list is in none of
-                them. The Submit page adds Cloudflare's anti-spam widget, and
+                Check it in the browser's network panel. Everything you see
+                comes from this site: VOLO's own code, styles, images and
+                typeface, and the masterlist it sorts against, which is one file
+                of public data served the same way to everybody. Your mod list
+                is in none of them. The Submit page adds Cloudflare's anti-spam widget, and
                 sends your order only once you press the button. That button is
                 the only thing on the site that sends your list anywhere.
               </p>

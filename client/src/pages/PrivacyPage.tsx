@@ -107,11 +107,11 @@ export default function PrivacyPage() {
             it as part of that check.
           </p>
           <p>
-            <strong>Google Fonts</strong> serves the typeface the site is set
-            in, from fonts.googleapis.com. That means Google receives a request
-            from your browser when you load a page here. It is the one third
-            party on the site I am not happy about, and self-hosting the font
-            would remove it.
+            <strong>Nobody else.</strong> The typeface used to come from Google
+            Fonts, which meant Google received a request from your browser on
+            every page you opened here. It is served from this site now, so it
+            does not. There is no content delivery network in front of the code,
+            no embedded video, no comment widget and no advertising.
           </p>
           <p>
             <strong>GitHub</strong> is contacted only as a fallback, if the

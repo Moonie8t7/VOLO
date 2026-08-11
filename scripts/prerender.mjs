@@ -111,7 +111,85 @@ function withEmptyRoot(html) {
   return html.slice(0, contentStart) + html.slice(contentEnd);
 }
 
-const shell = withEmptyRoot(fs.readFileSync(path.join(DIST, 'index.html'), 'utf8'));
+/**
+ * Moves the stylesheet to the front of the head.
+ *
+ * Vite appends its tags, which left the one render-blocking request in the
+ * build sitting at byte 5,098 of a 5,164 byte head, behind the structured data
+ * block and the font links, and behind the module script. Two costs came out of
+ * that. The browser could not ask for the stylesheet until nearly the whole
+ * document had arrived, and when it did ask, the request queued behind 143kb of
+ * JavaScript the page does not need in order to show text.
+ *
+ * Measured on the deployed site at 390px on a throttled connection: the
+ * document finished at 632ms, the stylesheet was requested at 626ms and landed
+ * at 1387ms, and the first paint followed it at 1428ms. The largest element is
+ * a paragraph of prose that had been sitting in the markup since 632ms, so
+ * 98.7 percent of the LCP was render delay rather than anything downloading.
+ *
+ * Moved to the top of the head, the preload scanner finds it in the first
+ * packet. Nothing else about the page changes.
+ */
+function stylesheetFirst(html) {
+  const link = html.match(/<link rel="stylesheet"[^>]*>/);
+  if (!link) return html;
+  const headAt = html.indexOf('<head>');
+  if (headAt === -1) return html;
+  const insertAt = headAt + '<head>'.length;
+  return html.slice(0, insertAt)
+    + `\n    ${link[0]}`
+    + html.slice(insertAt).replace(link[0], '');
+}
+
+/**
+ * Tells the browser the application bundle is not urgent.
+ *
+ * Every route here is prerendered, so the text, the links and the headings are
+ * in the markup and work before a line of JavaScript runs. The bundle only
+ * needs to arrive in time to make the page interactive, yet it is requested at
+ * the same moment as the stylesheet and, being an order of magnitude larger,
+ * takes most of the bandwidth on a slow connection while the one resource
+ * holding up the first paint waits behind it.
+ *
+ * Marking it low priority reorders that race. Clicking a link before the
+ * bundle lands still works, because the anchor is a real anchor and the page
+ * it points at is a real file.
+ */
+function bundleLast(html) {
+  return html.replace(
+    /<script type="module" crossorigin src="([^"]+)"><\/script>/,
+    '<script type="module" crossorigin fetchpriority="low" src="$1"></script>',
+  );
+}
+
+/**
+ * Puts the stylesheet in the document instead of fetching it.
+ *
+ * The stylesheet is the only thing standing between the markup and the first
+ * paint, and it cannot be asked for until the document that mentions it has
+ * arrived. That serialises two round trips to show text that was already in
+ * the first one.
+ *
+ * It is worth doing here only because of the numbers involved: about 10kb
+ * compressed against a document of about 9kb, on pages that are already
+ * generated one file at a time. It costs a larger document on every route and
+ * gives up caching the stylesheet across routes, which barely applies, since
+ * navigation inside the app is client side and never re-fetches the HTML.
+ */
+function inlineStylesheet(html) {
+  const link = html.match(/<link rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/);
+  if (!link) return html;
+  const file = path.join(DIST, link[1].replace(/^\//, ''));
+  if (!fs.existsSync(file)) return html;
+  const css = fs.readFileSync(file, 'utf8');
+  return html.replace(link[0], `<style>${css}</style>`);
+}
+
+const shell = bundleLast(
+  inlineStylesheet(
+    stylesheetFirst(withEmptyRoot(fs.readFileSync(path.join(DIST, 'index.html'), 'utf8'))),
+  ),
+);
 
 /** Replaces a tag's attribute value, leaving the rest of the head alone. */
 function replaceTag(html, pattern, replacement) {
