@@ -30,6 +30,9 @@ on:
 
 permissions:
   contents: write
+  # To start the checks workflow on what this run pushes, since a push made
+  # with the workflow token starts nothing by itself.
+  actions: write
 
 concurrency:
   group: crawl
@@ -106,6 +109,8 @@ jobs:
       # arrived meanwhile.
       - name: Commit whatever changed
         id: commit
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git config user.name "volo-crawler"
@@ -151,6 +156,8 @@ jobs:
 
             if git push origin HEAD:main; then
               echo "changed=yes" >> "$GITHUB_OUTPUT"
+              gh workflow run checks.yml --ref main \
+                || echo "could not start checks on the new tip"
               exit 0
             fi
             echo "push rejected on attempt $attempt, rebuilding on the new tip"
