@@ -153,7 +153,7 @@ export interface Placement {
   /** Astra divider this mod sits under, when one applies. */
   divider?: number;
   /** How we decided the group. */
-  groupSource: 'masterlist' | 'curated' | 'inferred' | 'listing' | 'author' | 'name-pattern' | 'default';
+  groupSource: 'masterlist' | 'curated' | 'inferred' | 'listing' | 'author' | 'name-pattern' | 'default' | 'you';
   /** Neighbour agreement behind an inferred group, when that is the source. */
   groupConfidence?: number;
   /** Mods that had to load before this one, and why. */

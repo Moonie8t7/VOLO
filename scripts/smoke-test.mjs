@@ -737,6 +737,60 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// A slot the user picked for their own mod. Asked for by somebody with a lot
+// of unsorted cosmetics who knows what they are and does not want to file a
+// GitHub issue per mod.
+{
+  console.log('');
+  console.log('user-assigned divider slots');
+
+  const UNKNOWN = 'dddddddd-0000-0000-0000-00000000000a';
+  const order = JSON.stringify({
+    Order: [
+      { Name: 'Totally Unknown Cosmetic Thing', UUID: UNKNOWN, Folder: 'UnknownCosmetic' },
+      ...masterlist.plugins
+        .filter(p => typeof p.divider === 'number' && !p.uuid.startsWith('name:'))
+        .slice(0, 6)
+        .map(p => ({ Name: p.name, UUID: p.uuid })),
+    ],
+  });
+  const mods = parseLoadOrder(order, 'assigned.json').mods;
+
+  const before = sortLoadOrder(mods, masterlist);
+  const wasUnsorted = before.placements.get(UNKNOWN)?.groupSource === 'default';
+  if (wasUnsorted) {
+    console.log('  ok    a mod nothing knows about starts unsorted');
+  } else {
+    failures++;
+    console.log('  FAIL  the fixture mod was placed by something, so this proves nothing');
+  }
+
+  // 37 is Clothing, an exact slot. 61 is the Customization category heading,
+  // which is the partial answer somebody gives when they know the kind but not
+  // the position.
+  for (const slot of [37, 61]) {
+    const after = sortLoadOrder(mods, masterlist, null, { [UNKNOWN]: slot });
+    const p = after.placements.get(UNKNOWN);
+    if (p?.groupSource === 'you' && p.divider !== undefined) {
+      console.log(`  ok    slot ${slot} is honoured and labelled as the user's own`);
+    } else {
+      failures++;
+      console.log(`  FAIL  slot ${slot} ignored: ${JSON.stringify({ source: p?.groupSource, divider: p?.divider })}`);
+    }
+  }
+
+  // And it has to actually move: an assigned mod sorts among its new section
+  // rather than staying at the end with the unplaced ones.
+  const assignedFirst = sortLoadOrder(mods, masterlist, null, { [UNKNOWN]: 0 });
+  const positions = assignedFirst.mods.map(m => m.uuid);
+  if (positions[0] === UNKNOWN) {
+    console.log('  ok    and the mod moves to where the slot puts it');
+  } else {
+    failures++;
+    console.log('  FAIL  an assigned mod did not move: ' + positions.indexOf(UNKNOWN));
+  }
+}
+
 // numbered text fixture: BG3MM's text export writes "NN. Name (file.pak)".
 // Numbering and filenames must strip, commas in names must survive, and
 // engine modules must still be recognised and dropped.

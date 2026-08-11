@@ -30,6 +30,8 @@ interface Session {
   importedAt: string | null;
   /* The user's own section headers, kept so an export can give them back. */
   sections?: ImportedSection[];
+  /* Divider slots the user picked for their own unsorted mods. */
+  assigned?: Record<string, number>;
 }
 
 interface StoreValue {
@@ -43,6 +45,18 @@ interface StoreValue {
    * order stripped of the structure they built.
    */
   sections: ImportedSection[];
+
+  /**
+   * Divider slots the user has picked for their own mods, by uuid.
+   *
+   * Their answer to "VOLO does not know what this is, but I do". It outranks
+   * everything the masterlist says, because it is their load order, and it
+   * goes no further than this browser.
+   */
+  assigned: Record<string, number>;
+  /** Puts one or many mods on a slot. A null slot takes the choice back. */
+  assignSlot: (uuids: string[], divider: number | null) => void;
+  clearAssignments: () => void;
 
   masterlist: Masterlist | null;
   masterlistError: string | null;
@@ -116,6 +130,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [format, setFormat] = useState(restored?.format ?? '');
   const [importedAt, setImportedAt] = useState<string | null>(restored?.importedAt ?? null);
   const [sections, setSections] = useState<ImportedSection[]>(restored?.sections ?? []);
+  const [assigned, setAssigned] = useState<Record<string, number>>(restored?.assigned ?? {});
 
   const [masterlist, setMasterlist] = useState<Masterlist | null>(null);
   const [masterlistError, setMasterlistError] = useState<string | null>(null);
@@ -181,12 +196,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       if (!remember || !mods.length) localStorage.removeItem(STORAGE_KEY);
       else localStorage.setItem(
         STORAGE_KEY,
-        JSON.stringify({ mods, sourceName, format, importedAt, sections } satisfies Session),
+        JSON.stringify({ mods, sourceName, format, importedAt, sections, assigned } satisfies Session),
       );
     } catch {
       // Not worth interrupting the user over. The saved session is a convenience.
     }
-  }, [remember, mods, sourceName, format, importedAt, sections]);
+  }, [remember, mods, sourceName, format, importedAt, sections, assigned]);
 
   const setRemember = useCallback((next: boolean) => {
     setRememberState(next);
@@ -201,9 +216,22 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  const assignSlot = useCallback((uuids: string[], divider: number | null) => {
+    setAssigned(prev => {
+      const next = { ...prev };
+      for (const uuid of uuids) {
+        if (divider === null) delete next[uuid];
+        else next[uuid] = divider;
+      }
+      return next;
+    });
+  }, []);
+
+  const clearAssignments = useCallback(() => setAssigned({}), []);
+
   const sorted = useMemo(
-    () => (mods.length && masterlist ? sortLoadOrder(mods, masterlist, listing) : null),
-    [mods, masterlist, listing],
+    () => (mods.length && masterlist ? sortLoadOrder(mods, masterlist, listing, assigned) : null),
+    [mods, masterlist, listing, assigned],
   );
 
   /**
@@ -258,6 +286,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setSourceName(name);
     setFormat(parsed.format);
     setSections(parsed.sections);
+    setAssigned({});
     setImportedAt(new Date().toISOString());
   }, []);
 
@@ -283,11 +312,13 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setSourceName('');
     setFormat('');
     setSections([]);
+    setAssigned({});
     setImportedAt(null);
   }, []);
 
   const value: StoreValue = {
     mods, sourceName, format, importedAt, sections,
+    assigned, assignSlot, clearAssignments,
     masterlist, masterlistError, isLoadingMasterlist, requestMasterlist,
     result,
     remember, setRemember,
