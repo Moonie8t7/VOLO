@@ -268,6 +268,14 @@ export default function LandingPage() {
                 sends your order only once you press the button. That button is
                 the only thing on the site that sends your list anywhere.
               </p>
+              <p>
+                The{' '}
+                <Link href="/privacy" className="underline hover:text-foreground">
+                  privacy page
+                </Link>{' '}
+                names every third party involved, including the ones this
+                answer glosses over.
+              </p>
             </AccordionContent>
           </AccordionItem>
 

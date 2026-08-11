@@ -69,6 +69,21 @@ const ROUTES = [
     priority: '0.7',
     sources: ['client/src/pages/SubmitPage.tsx'],
   },
+  /*
+   * Listed against the files it describes as well as itself: the page is a
+   * statement about what the storage and submission code does, so it is stale
+   * the moment either changes without it.
+   */
+  {
+    path: '/privacy',
+    priority: '0.4',
+    sources: [
+      'client/src/pages/PrivacyPage.tsx',
+      'client/src/lib/store.tsx',
+      'client/src/lib/scrub.ts',
+      'functions/api/submit.js',
+    ],
+  },
   {
     path: '/donations',
     priority: '0.3',

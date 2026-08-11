@@ -45,7 +45,8 @@ fs.mkdirSync(path.dirname(bundle), { recursive: true });
  */
 const ROUTES = [
   '/', '/import', '/optimise', '/optimizer', '/export',
-  '/submit', '/masterlist', '/measured', '/about', '/donations', '/support',
+  '/submit', '/masterlist', '/measured', '/about', '/privacy',
+  '/donations', '/support',
 ];
 
 await build({

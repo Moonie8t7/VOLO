@@ -20,6 +20,7 @@ import MasterlistPage from "@/pages/MasterlistPage";
 import DonationsPage from "@/pages/DonationsPage";
 import AboutPage from "@/pages/AboutPage";
 import MeasuredPage from "@/pages/MeasuredPage";
+import PrivacyPage from "@/pages/PrivacyPage";
 import NotFound from "@/pages/not-found";
 import { usePageMeta } from "@/lib/head";
 
@@ -45,6 +46,7 @@ function Router() {
         <Route path="/masterlist" component={MasterlistPage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/measured" component={MeasuredPage} />
+        <Route path="/privacy" component={PrivacyPage} />
         <Route path="/donations" component={DonationsPage} />
         <Route path="/support" component={DonationsPage} />
         <Route component={NotFound} />

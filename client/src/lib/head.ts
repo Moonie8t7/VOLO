@@ -69,6 +69,12 @@ export const PAGES: Record<string, PageMeta> = {
       + `has never seen, against ${measured.random} percent for a random shuffle, plus the ideas `
       + 'that measured worse and were thrown out.',
   },
+  '/privacy': {
+    title: 'Privacy | VOLO',
+    description:
+      'Your load order is read in your browser and never uploaded. What is stored '
+      + 'on your device, what happens if you submit an order, and every third party involved.',
+  },
   '/donations': {
     title: 'Support VOLO',
     description: 'VOLO is free and has no ads. If it saved you an evening, you can chip in.',
