@@ -139,10 +139,10 @@ const SLOT_TREE: { num: number; label: string; slots: { num: number; label: stri
  * knows "it is a clothing mod" would send them away with nothing.
  */
 function SlotPicker({
-  count, sameAuthor, onApply, onCancel,
+  count, alsoByAuthor, onApply, onCancel,
 }: {
   count: number;
-  sameAuthor: number;
+  alsoByAuthor: Mod[];
   onApply: (divider: number, alsoAuthor: boolean) => void;
   onCancel: () => void;
 }) {
@@ -187,15 +187,22 @@ function SlotPicker({
         </>
       )}
 
-      {sameAuthor > 0 && (
-        <label className="flex items-center gap-2 text-sm font-body cursor-pointer">
+      {alsoByAuthor.length > 0 && (
+        /* Named, not counted. Agreeing to a number is agreeing to whatever it
+           turns out to be, and this is a guess the user is opting into. */
+        <label
+          className="flex items-center gap-2 text-sm font-body cursor-pointer"
+          title={alsoByAuthor.map(m => m.name).join(', ')}
+        >
           <input
             type="checkbox"
             checked={alsoAuthor}
             onChange={e => setAlsoAuthor(e.target.checked)}
             className="h-4 w-4 accent-[#D7A869]"
           />
-          Also the {sameAuthor} other unsorted by the same {sameAuthor === 1 ? 'author' : 'authors'}
+          Also {alsoByAuthor.length === 1
+            ? alsoByAuthor[0].name
+            : `${alsoByAuthor.length} more by ${alsoByAuthor[0].author}`}
         </label>
       )}
 
@@ -244,6 +251,17 @@ export default function OptimisePage() {
       m.name.toLowerCase().includes(q) || m.author?.toLowerCase().includes(q));
   }, [result, query, unsortedOnly]);
 
+  /* Shown rows that can be filed, which is what "select all" acts on. */
+  const selectableShown = useMemo(
+    () => (result
+      ? visible.filter(m => {
+        const src = result.placements.get(m.uuid)?.groupSource;
+        return src === 'default' || src === 'you';
+      })
+      : []),
+    [result, visible],
+  );
+
   /* The rows as displayed, so a shift range covers what the user can see. */
   const visibleUuids = useMemo(() => visible.map(m => m.uuid), [visible]);
 
@@ -277,22 +295,32 @@ export default function OptimisePage() {
     lastClicked.current = uuid;
   }, []);
 
-  /** Other unsorted mods sharing an author with the selection. */
+  /**
+   * Other unsorted mods by the same author, when the selection is all one
+   * author's work.
+   *
+   * Deliberately refuses to pool. Selecting mods by two authors and offering
+   * everything either of them made would file an author's weapon mod as
+   * clothing because one of their dresses was in the selection, and the user
+   * would see only a count. An author's mods are not all one kind, which is
+   * why the mined version of this guess demands three catalogued mods and
+   * eighty percent agreement before it will say anything.
+   */
   const alsoByAuthor = useMemo(() => {
     if (!result || !selected.size) return [];
     const authors = new Set(
-      result.mods.filter(m => selected.has(m.uuid) && m.author).map(m => m.author as string),
+      result.mods.filter(m => selected.has(m.uuid)).map(m => m.author ?? ''),
     );
-    if (!authors.size) return [];
-    return result.mods
-      .filter(m => !selected.has(m.uuid)
-        && m.author && authors.has(m.author)
-        && result.placements.get(m.uuid)?.groupSource === 'default')
-      .map(m => m.uuid);
+    if (authors.size !== 1) return [];
+    const [author] = [...authors];
+    if (!author) return [];
+    return result.mods.filter(m => !selected.has(m.uuid)
+      && m.author === author
+      && result.placements.get(m.uuid)?.groupSource === 'default');
   }, [result, selected]);
 
   const applySlot = useCallback((divider: number, alsoAuthor: boolean) => {
-    const ids = [...selected, ...(alsoAuthor ? alsoByAuthor : [])];
+    const ids = [...selected, ...(alsoAuthor ? alsoByAuthor.map(m => m.uuid) : [])];
     assignSlot(ids, divider);
     setSelected(new Set());
     lastClicked.current = null;
@@ -452,6 +480,24 @@ export default function OptimisePage() {
                   Unsorted only ({unsortedCount})
                 </label>
               )}
+              {selectableShown.length > 0 && (
+                /* Fifty clothing mods from fifty authors have nothing in
+                   common a machine can see. Filtering to them and taking the
+                   lot is the shortest honest route. */
+                <button
+                  onClick={() => {
+                    const all = selectableShown.map(m => m.uuid);
+                    const already = all.every(u => selected.has(u));
+                    setSelected(already ? new Set() : new Set(all));
+                    lastClicked.current = null;
+                  }}
+                  className="text-sm underline hover:text-foreground whitespace-nowrap"
+                >
+                  {selectableShown.every(m => selected.has(m.uuid))
+                    ? 'Clear selection'
+                    : `Select all ${selectableShown.length}`}
+                </button>
+              )}
             <div className="relative w-64">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <Input
@@ -471,7 +517,7 @@ export default function OptimisePage() {
           {selected.size > 0 && (
             <SlotPicker
               count={selected.size}
-              sameAuthor={alsoByAuthor.length}
+              alsoByAuthor={alsoByAuthor}
               onApply={applySlot}
               onCancel={() => { setSelected(new Set()); lastClicked.current = null; }}
             />
@@ -494,29 +540,35 @@ export default function OptimisePage() {
                     <div className="group flex items-center rounded transition-colors hover:bg-primary/5">
                     {/* Offered on mods with no category, and on the ones you
                         have already filed, so a wrong pick can be taken back. */}
-                    {(p?.groupSource === 'default' || p?.groupSource === 'you') && (
-                      /*
-                       * The click is handled on the wrapper, not on the box.
-                       * A checkbox reports its own change without the modifier
-                       * keys reliably attached, and shift is the whole point
-                       * here: it is what turns forty cosmetics into two
-                       * clicks. The box stays a real checkbox so it reads and
-                       * behaves correctly, and space from the keyboard still
-                       * produces a click that lands here.
-                       */
-                      <span
-                        className="flex w-7 shrink-0 items-center justify-center"
-                        onClick={e => toggleSelected(mod.uuid, e.shiftKey, visibleUuids)}
-                      >
-                        <input
-                          type="checkbox"
-                          aria-label={`Select ${mod.name}`}
-                          checked={selected.has(mod.uuid)}
-                          readOnly
-                          className="h-4 w-4 accent-[#D7A869]"
-                        />
-                      </span>
-                    )}
+                    {/*
+                      The column is always here, holding its width even when
+                      the row has nothing to tick. Rendering it only on the
+                      rows that can be filed indented those rows past the
+                      others and put the position numbers on two different
+                      margins.
+                    */}
+                    <span className="flex w-7 shrink-0 items-center justify-center">
+                      {(p?.groupSource === 'default' || p?.groupSource === 'you') && (
+                        /*
+                         * The click is handled on the wrapper, not on the box.
+                         * A checkbox reports its own change without the
+                         * modifier keys reliably attached, and shift is the
+                         * whole point here: it is what turns forty cosmetics
+                         * into two clicks. The box stays a real checkbox so it
+                         * reads and behaves correctly, and space from the
+                         * keyboard still produces a click that lands here.
+                         */
+                        <span onClick={e => toggleSelected(mod.uuid, e.shiftKey, visibleUuids)}>
+                          <input
+                            type="checkbox"
+                            aria-label={`Select ${mod.name}`}
+                            checked={selected.has(mod.uuid)}
+                            readOnly
+                            className="h-4 w-4 accent-[#D7A869] align-middle"
+                          />
+                        </span>
+                      )}
+                    </span>
                     <MoveControls name={mod.name} onMove={d => moveMod(mod.uuid, d)} />
                     <button
                       className="flex-1 min-w-0 flex items-center gap-4 py-3 text-left px-2"
@@ -687,8 +739,13 @@ function IssueCard({ issue, mods }: { issue: Issue; mods: Mod[] }) {
         {issue.resolution && (
           <span className="block mt-1 text-sm opacity-80">
             {issue.resolution}
-            {/* An ask with no path is a dead end: the unsorted card invites a
-                category, so it links to the form built for exactly that. */}
+            {/*
+              The card used to send this to the tracker, which was the only
+              route when it was written. Filing them here is the shorter one
+              and needs no account, so the tracker is offered second, for
+              anybody who would rather the answer helped everyone than just
+              their own list.
+            */}
             {issue.kind === 'unsorted' && (
               <>
                 {' '}
@@ -698,7 +755,7 @@ function IssueCard({ issue, mods }: { issue: Issue; mods: Mod[] }) {
                   rel="noreferrer"
                   className="underline hover:opacity-100"
                 >
-                  Tell us where they go
+                  Or tell us, so everyone gets it
                 </a>
                 .
               </>
