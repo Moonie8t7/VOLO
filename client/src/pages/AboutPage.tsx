@@ -198,6 +198,23 @@ export default function AboutPage() {
             </a>
             .
           </p>
+          <p>
+            What happens next, so you know whether to wait. A submitted order is
+            handled by a script: it is checked, added to the corpus and the
+            masterlist rebuilt, usually within a few minutes of you pressing the
+            button, and the issue closes itself to tell you it landed. Wrong
+            placements and bug reports are read by me, which means one person in
+            one timezone, normally the same day and sometimes not. Nothing is
+            triaged silently: if a report cannot be acted on, the reply says why
+            rather than leaving it open forever.
+          </p>
+          <p>
+            Your{' '}
+            <Link href="/privacy" className="underline hover:text-foreground">
+              privacy
+            </Link>{' '}
+            is covered separately, in the detail it deserves.
+          </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Link href="/submit">
               <Button>

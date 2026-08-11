@@ -118,6 +118,14 @@ function Footer() {
     <div className="space-y-1 border-t border-border/20 bg-card/50 px-6 py-5 text-xs text-muted-foreground">
       <p>Masterlist: {mods.toLocaleString()} mods</p>
       {patch && <p>Calibrated for BG3 {patch}</p>}
+      {/* The one page that belongs in a footer rather than the nav: nobody
+          goes looking for it until they want it, and then it has to be
+          somewhere predictable. */}
+      <p className="pt-1">
+        <Link href="/privacy" className="underline hover:text-foreground">
+          Privacy
+        </Link>
+      </p>
     </div>
   );
 }
