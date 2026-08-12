@@ -854,6 +854,44 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * A specific section key must be declared before any key it contains.
+ *
+ * groupForSection falls back to the first key appearing anywhere in the label,
+ * so declaration order is behaviour. 'skins' sat above 'dice' and sent 173 dice
+ * sets to Bodies; 'loaders' sat above 'late loaders' and split one submitter's
+ * two headers across two groups. Nothing announced either.
+ */
+{
+  console.log('section table order');
+
+  const source = fs.readFileSync('scripts/mine-corpus.mjs', 'utf8');
+  const block = source.slice(source.indexOf('const SECTION_TO_GROUP'));
+  const table = block.slice(0, block.indexOf('};'));
+  const pairs = [...table.matchAll(/'([^']+)':\s*'([^']+)'/g)].map(m => [m[1], m[2]]);
+
+  const shadowed = [];
+  for (let i = 0; i < pairs.length; i++) {
+    for (let j = i + 1; j < pairs.length; j++) {
+      const [outerKey, outerGroup] = pairs[i];
+      const [innerKey, innerGroup] = pairs[j];
+      // A key declared later that CONTAINS an earlier one can never be reached
+      // by the fallback, so it must not promise a different group.
+      if (innerKey.includes(outerKey) && innerKey !== outerKey && innerGroup !== outerGroup) {
+        shadowed.push(`'${innerKey}' -> ${innerGroup} is unreachable behind '${outerKey}' -> ${outerGroup}`);
+      }
+    }
+  }
+
+  if (pairs.length && !shadowed.length) {
+    console.log(`  ok    ${pairs.length} section keys, none shadowed by a shorter one above it`);
+  } else {
+    failures++;
+    if (!pairs.length) console.log('  FAIL  the section table could not be read');
+    for (const s of shadowed) console.log(`  FAIL  ${s}`);
+  }
+}
+
+/**
  * One rule for whether a Nexus listing belongs to a mod.
  *
  * The crawler keeps fuzzy matches as well as exact ones, which is right for
