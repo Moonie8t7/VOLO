@@ -66,11 +66,42 @@ export function isVoloSorted(filename, provenance = readProvenance()) {
  * agreement rises as the masterlist improves. The measurement only decides the
  * cases where nobody said.
  */
-export function judge({ declared, agreementWithVolo }) {
+export function judge({ declared, agreementWithVolo, nearest }) {
   if (declared === 'volo') return true;
+  if (echoesNeighbour(agreementWithVolo, nearest)) return true;
   if (declared === 'self') return false;
   return typeof agreementWithVolo === 'number'
     && agreementWithVolo >= VOLO_MATCH_THRESHOLD;
+}
+
+/** How much of its mods an order must share to be the same order again. */
+export const NEIGHBOUR_SIMILARITY = 0.85;
+
+/** How far agreement must climb between two of them to be VOLO's doing. */
+export const NEIGHBOUR_JUMP = 0.15;
+
+/**
+ * Whether this order is a near-copy of one already here that agrees with VOLO
+ * far more than the original did.
+ *
+ * The declared answer cannot catch this, and is not meant to. Someone sorts
+ * with VOLO, plays it, exports from BG3 Mod Manager and submits, and answers
+ * that they arranged it themselves. They are not lying: they did arrange it,
+ * and taking the tool's advice is the point of the tool. But the sequence is
+ * VOLO's, and counting it as a second opinion is how a sorter starts marking
+ * its own homework.
+ *
+ * The corpus separates the two cases cleanly. Somebody refining their own order
+ * over several days resubmits with agreement moving by at most 0.08. The known
+ * echo moved 0.642 to 0.928 on 94.7 percent the same mods, submitted the same
+ * day. The test is deliberately directional: the copy that agrees more is the
+ * one that went through VOLO, so the original is never flagged by its own echo.
+ */
+export function echoesNeighbour(agreementWithVolo, nearest) {
+  return typeof agreementWithVolo === 'number'
+    && typeof nearest?.agreementWithVolo === 'number'
+    && nearest.similarity >= NEIGHBOUR_SIMILARITY
+    && agreementWithVolo - nearest.agreementWithVolo > NEIGHBOUR_JUMP;
 }
 
 /** Adds or replaces one order's provenance, keeping the file sorted. */

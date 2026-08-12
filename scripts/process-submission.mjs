@@ -24,7 +24,7 @@
 import { execSync } from 'child_process';
 import { build } from 'esbuild';
 import crypto from 'crypto';
-import { writeProvenance, judge } from './corpus-provenance.mjs';
+import { writeProvenance, judge, readProvenance } from './corpus-provenance.mjs';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -363,12 +363,41 @@ const fingerprint = list =>
   crypto.createHash('md5').update(list.map(m => m.uuid || m.name).join('|')).digest('hex');
 
 const submitted = fingerprint(parsed.mods);
+
+/**
+ * The order already here that this one most resembles.
+ *
+ * Compared by name rather than by the uuid the parser assigns, because that
+ * identity is resolved per file: a thin export and a full export of the same
+ * list agree on almost nothing. The two orders that first exposed this share
+ * 94.7 percent of their mods by name and 44.1 percent by uuid.
+ */
+const submittedNames = new Set(
+  parsed.mods.map(m => String(m.name).toLowerCase().replace(/[^a-z0-9]/g, '')).filter(Boolean),
+);
+let nearest = null;
+
 for (const f of fs.readdirSync(CORPUS)) {
   let existing;
   try {
     const raw = fs.readFileSync(path.join(CORPUS, f), 'utf8');
     const p = parseLoadOrder(raw, f);
     if (p.mods.length) existing = fingerprint(p.mods);
+    if (p.mods.length) {
+      const theirs = new Set(
+        p.mods.map(m => String(m.name).toLowerCase().replace(/[^a-z0-9]/g, '')).filter(Boolean),
+      );
+      let shared = 0;
+      for (const name of submittedNames) if (theirs.has(name)) shared++;
+      const similarity = shared / (submittedNames.size + theirs.size - shared);
+      if (!nearest || similarity > nearest.similarity) {
+        nearest = {
+          file: f,
+          similarity,
+          agreementWithVolo: readProvenance()[f]?.agreementWithVolo,
+        };
+      }
+    }
   } catch { continue; }
   if (existing === submitted) {
     /*
@@ -470,7 +499,7 @@ fs.writeFileSync(path.join(CORPUS, filename), orderText.trim() + '\n');
 writeProvenance(filename, {
   declared,
   agreementWithVolo: matchesVolo === null ? null : Math.round(matchesVolo * 1000) / 1000,
-  sortedByVolo: judge({ declared, agreementWithVolo: matchesVolo }),
+  sortedByVolo: judge({ declared, agreementWithVolo: matchesVolo, nearest }),
 });
 
 // Step 6: regenerate everything and capture the verification numbers.
