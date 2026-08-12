@@ -1633,7 +1633,28 @@ for (const r of unidentifiedRequirements.slice(0, 15)) {
  * way, which is worth recording precisely because nobody would think to look
  * for it, and a script nobody runs is where that finding was living.
  */
-const breakage = measureBreakage(plugins);
+/*
+ * The orders as this run already understands them, so the breakage measurement
+ * cannot disagree with the mine about what a mod is. It used to read the corpus
+ * itself and answered differently on all four counts: it could not parse
+ * modsettings.lsx, it identified mods by the UUID field alone, it counted
+ * divider paks as mods, and it iterated string dependencies character by
+ * character. Three of the six figures it published were wrong.
+ */
+const breakageOrders = orders.map(order => ({
+  file: order.file,
+  label: order.label,
+  mods: order.entries
+    .filter(e => e?.Name && !SEPARATOR_RE.test(e.Name) && dividerNameOf(e) === null)
+    .map(e => ({
+      uuid: canonicalKey(keyOf(e)),
+      name: e.Name,
+      deps: depsOf(e)
+        .filter(d => d?.Name && !ENGINE_MASTERS.has(d.Name))
+        .map(d => ({ uuid: d.UUID ? canonicalKey(d.UUID) : '', name: d.Name })),
+    })),
+}));
+const breakage = measureBreakage(plugins, breakageOrders);
 console.log(
   `breakage: convention violations broken ${(100 * breakage.separation.violationRate.broken).toFixed(1)}% ` +
   `vs working ${(100 * breakage.separation.violationRate.working).toFixed(1)}%, ` +
@@ -1776,9 +1797,16 @@ easier to lose.
 Measured over ${breakage.separation.counts.broken} broken and ${breakage.separation.counts.working} working orders, against ${breakage.conventions} category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
-cannot say what breaks a game, and the ordering signal currently runs
-backwards, which is the strongest argument there is against guessing at a cause
-from sequence alone.
+cannot say what breaks a game, and the ordering signal still runs backwards,
+which is the strongest argument there is against guessing at a cause from
+sequence alone. It runs backwards by less than it used to appear to: this
+measurement could not read modsettings.lsx, identified mods by the UUID field
+alone and counted dividers as mods, which made the gap look three times wider
+than it is.
+
+The third row separates on a difference of a tenth of a requirement per order,
+which is not a finding. It reads at all only because the requirements stated in
+a TSV are no longer discarded, and it is recorded rather than believed.
 
 Only the middle row feeds anything today. A mod seen in a broken order and in
 no working one is reported to the user as a place to start looking, worded as
