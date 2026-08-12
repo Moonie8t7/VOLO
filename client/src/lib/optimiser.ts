@@ -379,7 +379,18 @@ export function sortLoadOrder(
   const byNormFolder = new Map<string, Mod>();
   for (const m of mods) {
     present.set(m.uuid, m);
-    byNormName.set(m.name.toLowerCase().replace(/[^a-z0-9]/g, ''), m);
+    /*
+     * Guarded like the three indexes beside it, and for a reason this one hits
+     * hardest. Normalising strips everything outside a-z0-9, so a title written
+     * in Chinese, Japanese, Korean or Cyrillic reduces to the empty string. One
+     * submitted order holds 23 such mods: unguarded, all 23 shared a single
+     * bucket and the last one written answered for every one of them, so a
+     * dependency naming any of them resolved to whichever happened to be last.
+     * Unreachable by name is the honest answer when there is no name left to
+     * match on, and the uuid path is unaffected.
+     */
+    const norm = m.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (norm && !byNormName.has(norm)) byNormName.set(norm, m);
     const folder = (m.folder ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
     if (folder && !byNormFolder.has(folder)) byNormFolder.set(folder, m);
   }
