@@ -854,6 +854,57 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * A thin export must still be able to credit its mods.
+ *
+ * Most submitted orders carry no author column, so the page could name an
+ * author for one row in twenty. The masterlist already holds one for most of
+ * them and every visitor downloads it, so the sorter carries it through to the
+ * placement. The file's own answer still wins, because that is the pak the
+ * person actually installed.
+ */
+{
+  console.log('author recovery');
+
+  const list = {
+    version: '0', generated: '', groups: [],
+    plugins: [
+      { uuid: '11111111-1111-1111-1111-111111111111', name: 'Alpha', group: 'unsorted', author: 'Someone' },
+      { uuid: '22222222-2222-2222-2222-222222222222', name: 'Bravo', group: 'unsorted', author: 'Masterlist Author' },
+    ],
+  };
+  const thin = JSON.stringify({
+    Order: [
+      { UUID: '11111111-1111-1111-1111-111111111111', Name: 'Alpha' },
+      { UUID: '22222222-2222-2222-2222-222222222222', Name: 'Bravo' },
+    ],
+  });
+  const parsedThin = parseLoadOrder(thin, 'thin.json');
+  const sortedThin = sortLoadOrder(parsedThin.mods, list);
+  const recovered = sortedThin.placements.get('11111111-1111-1111-1111-111111111111')?.author;
+
+  if (recovered === 'Someone') {
+    console.log('  ok    an export with no author column still credits its mods');
+  } else {
+    failures++;
+    console.log(`  FAIL  author not recovered for a thin export (got ${JSON.stringify(recovered)})`);
+  }
+
+  const rich = JSON.stringify({
+    Order: [{ UUID: '11111111-1111-1111-1111-111111111111', Name: 'Alpha', Author: 'The Pak Says This' }],
+  });
+  const sortedRich = sortLoadOrder(parseLoadOrder(rich, 'rich.json').mods, list);
+  const own = parseLoadOrder(rich, 'rich.json').mods[0].author;
+  const placed = sortedRich.placements.get('11111111-1111-1111-1111-111111111111')?.author;
+
+  if (own === 'The Pak Says This' && placed === 'The Pak Says This') {
+    console.log("  ok    the file's own author is not overwritten by the masterlist");
+  } else {
+    failures++;
+    console.log(`  FAIL  the file's author was displaced (own ${JSON.stringify(own)}, placed ${JSON.stringify(placed)})`);
+  }
+}
+
+/**
  * A specific section key must be declared before any key it contains.
  *
  * groupForSection falls back to the first key appearing anywhere in the label,

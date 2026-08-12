@@ -919,7 +919,7 @@ function record(uuid) {
       dividers: new Map(),
       dependencies: new Map(),
       featureFlags: new Set(),
-      author: null, version: null, folder: null, description: null,
+      author: null, version: null, folder: null, description: null, metaFrom: null,
       seenIn: new Set(), seenInWorking: 0, seenInBroken: 0, lastGameBuild: null,
     });
   }
@@ -981,11 +981,37 @@ for (const order of orders) {
       if (currentDivider !== null) r.dividers.set(currentDivider, (r.dividers.get(currentDivider) || 0) + 1);
     }
 
-    if (entry.Author && !r.author) r.author = entry.Author;
+    /*
+     * Author and version come from the best observation, not the first one.
+     *
+     * These were first-writer-wins over a directory listing, and readdir puts
+     * "Not-Working_..." ahead of "working_...", so a broken order's copy of a
+     * mod described it for everyone. One row credited two authors who had not
+     * touched it since it was adopted, on forty of the corpus's orders.
+     *
+     * A working order outranks a broken or unlabelled one, then the higher
+     * version wins, then file order decides so a rebuild is deterministic.
+     * Both fields come from the same winning observation, because an author
+     * and a version that describe different releases are worse than either
+     * alone.
+     *
+     * Folder and description are deliberately left first-writer-wins. Folder
+     * is identity-bearing: the optimiser matches on it, so choosing a
+     * different one here would move dependency resolution, which is not what
+     * this is for.
+     */
+    if (entry.Author || entry.Version) {
+      const rank = order.label === 'working' ? 2 : order.label === 'broken' ? 0 : 1;
+      const version = entry.Version?.Version
+        ?? (typeof entry.Version === 'string' ? entry.Version : null);
+      const better = !r.metaFrom
+        || rank > r.metaFrom.rank
+        || (rank === r.metaFrom.rank && compareBuilds(version ?? '0', r.metaFrom.version ?? '0') > 0);
+      if (better) r.metaFrom = { rank, version, author: entry.Author ?? null };
+    }
     if (entry.Folder && !r.folder) r.folder = entry.Folder;
     if (entry.Description && !r.description) r.description = entry.Description;
-    const v = entry.Version?.Version ?? (typeof entry.Version === 'string' ? entry.Version : null);
-    if (v && !r.version) r.version = v;
+
     for (const f of entry.ScriptExtenderData?.FeatureFlags ?? []) r.featureFlags.add(f);
 
     for (const dep of depsOf(entry)) {
@@ -998,6 +1024,16 @@ for (const order of orders) {
       r.dependencies.set(dep.UUID || `name:${externalKey(dep.Name)}`, dep.Name);
     }
   }
+}
+
+/*
+ * Settle author and version from whichever observation won above, so every
+ * consumer past this point sees one answer rather than a running best.
+ */
+for (const r of mods.values()) {
+  if (!r.metaFrom) continue;
+  if (r.metaFrom.author) r.author = r.metaFrom.author;
+  if (r.metaFrom.version) r.version = r.metaFrom.version;
 }
 
 /*
