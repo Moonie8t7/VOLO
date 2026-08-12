@@ -20,7 +20,7 @@ const out = path.join(os.tmpdir(), `volo-smoke-${process.pid}.mjs`);
 await build({
   stdin: {
     contents: `
-      export { parseLoadOrder } from './client/src/lib/parser';
+      export { parseLoadOrder, isSeparator } from './client/src/lib/parser';
       export { sortLoadOrder } from './client/src/lib/optimiser';
       export { exportOrder } from './client/src/lib/exporter';
       export { default as dividers } from './client/src/lib/dividers.json';
@@ -35,7 +35,7 @@ await build({
   logLevel: 'error',
 });
 
-const { parseLoadOrder, sortLoadOrder, exportOrder, dividers } = await import(`file://${out}`);
+const { parseLoadOrder, isSeparator, sortLoadOrder, exportOrder, dividers } = await import(`file://${out}`);
 const masterlist = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 
 let failures = 0;
@@ -850,6 +850,46 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   } else {
     failures++;
     console.log('  FAIL  re-import got ' + JSON.stringify(names));
+  }
+}
+
+/**
+ * A run of dashes inside a mod's name must not delete the mod.
+ *
+ * The separator rule matched a run anywhere, so "Angel Wings And Halos ____ By
+ * Ren", a published mod with 264,623 downloads, was read as a section header in
+ * every order that held it: never sorted, never shown, never written back out.
+ * Both copies of the rule are checked against the same probes, because the
+ * miner dropping a row and the browser keeping it is its own kind of wrong.
+ */
+{
+  console.log('separator rule');
+
+  const probes = [
+    ['================|            UI            |================', true],
+    ['---------------------------| Backgrounds |---------------------------', true],
+    ['] Armor [', true],
+    ['>             Jewelry', true],
+    ['____________', true],
+    ['Mods ==========', true],
+    ['Angel Wings And Halos ____ By Ren', false],
+    ['into The Void----Chinese or Blend into the Void BUFF time changed to 10 turns', false],
+    ['Better_Hotbar_2_16_9', false],
+    ['BW_TaL_Ruler_of_the_North', false],
+  ];
+
+  const source = fs.readFileSync('scripts/mine-corpus.mjs', 'utf8');
+  const declared = source.match(/const SEPARATOR_RE = (\/.*\/);/);
+  const minerRule = declared ? eval(declared[1]) : null;
+
+  const wrong = probes.filter(([name, expected]) =>
+    isSeparator(name) !== expected || (minerRule && minerRule.test(name) !== expected));
+  if (minerRule && !wrong.length) {
+    console.log(`  ok    both rules agree on ${probes.length} probes, mid-name runs kept`);
+  } else {
+    failures++;
+    if (!minerRule) console.log("  FAIL  the miner's separator rule could not be read");
+    for (const [name] of wrong) console.log(`  FAIL  separator rule wrong for ${JSON.stringify(name).slice(0, 60)}`);
   }
 }
 
