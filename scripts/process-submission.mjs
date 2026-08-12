@@ -392,7 +392,32 @@ for (const f of fs.readdirSync(CORPUS)) {
  */
 const stamp = new Date().toISOString().slice(0, 10);
 const prefix = working ? 'working' : 'not_working';
-const ext = orderText.trimStart().startsWith('<?xml') ? 'lsx' : 'json';
+
+/**
+ * The extension has to be the truth about the file, not a habit.
+ *
+ * It used to be lsx for anything starting with an XML header and json for
+ * everything else, which was harmless only while json was the sole format that
+ * could get this far. The moment intake stopped forcing every paste through
+ * the JSON branch, a TSV export landed as `.json` and the repository audit
+ * refused it for not being JSON, which was the audit doing its job.
+ *
+ * It matters past the audit. Every script that reads the corpus hands the
+ * parser the file's own name, so an order wearing the wrong one is parsed as
+ * the wrong format and contributes nothing to the masterlist it was submitted
+ * to improve. The format the parser reported is the only thing that knows what
+ * this actually is, so the name comes from that.
+ */
+const EXTENSIONS = {
+  TSV: 'tsv',
+  CSV: 'csv',
+  'Plain text': 'txt',
+  // Belt and braces with the XML sniff above, which a byte order mark defeats.
+  'BG3 modsettings.lsx': 'lsx',
+};
+const ext = orderText.trimStart().startsWith('<?xml')
+  ? 'lsx'
+  : EXTENSIONS[parsed.format] ?? 'json';
 const filename = `${prefix}_issue-${issueNumber}_${stamp}.${ext}`;
 
 const before = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
