@@ -1235,6 +1235,40 @@ for (const p of plugins) {
 }
 
 /**
+ * Which mods this project is willing to say a Nexus listing belongs to.
+ *
+ * The crawler keeps fuzzy matches as well as exact ones, and it is right to: a
+ * near-miss is a reasonable guess at what a mod is. It is not a statement about
+ * which mod this is, and the two consumers of the file disagreed about that.
+ * The requirement promotion below already took only exact matches, with a
+ * comment saying a fuzzy match is fine for a category and not for a constraint.
+ * The Script Extender block took every match, so 25 mods were told a listing
+ * was theirs on a name similarity of 0.9 or better and nothing else. Two of
+ * those were provably the wrong mod, "5.5e Spells" reading the requirements of
+ * "5e Spells" by a different author, and nine more matched a sibling or an
+ * older version. One rule now, and this is it.
+ *
+ * Keys that no longer name a plugin are dropped here too. The file is keyed by
+ * masterlist uuid and reconciling identities retired some of those, so a stale
+ * key would otherwise carry a listing's requirements to nobody.
+ */
+const nexusMatches = (() => {
+  const live = [];
+  try {
+    const raw = JSON.parse(fs.readFileSync(path.join('nexus', 'enrichment.json'), 'utf8'));
+    const known = new Set(plugins.map(p => p.uuid));
+    for (const [uuid, e] of Object.entries(raw)) {
+      if (e.matchKind !== 'exact') continue;
+      if (!known.has(uuid)) continue;
+      live.push([uuid, e]);
+    }
+  } catch {
+    return [];
+  }
+  return live;
+})();
+
+/**
  * Script Extender awareness. BG3SE is a dll, not a pak, so it can never appear
  * in a load order; the only way to warn "this order needs the Script Extender
  * installed" is to know which mods rely on it. Two signals, both already on
@@ -1243,13 +1277,11 @@ for (const p of plugins) {
  */
 {
   const SE_RE = /script.?extender|bg3se/i;
-  const enrichPath = path.join('nexus', 'enrichment.json');
   const catalogPath = path.join('nexus', 'catalog.json');
   let externalSe = new Set();
-  if (fs.existsSync(enrichPath) && fs.existsSync(catalogPath)) {
-    const enrichment = JSON.parse(fs.readFileSync(enrichPath, 'utf8'));
+  if (fs.existsSync(catalogPath)) {
     const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
-    for (const [uuid, e] of Object.entries(enrichment)) {
+    for (const [uuid, e] of nexusMatches) {
       const req = catalog.mods?.[e.nexusId]?.req ?? [];
       if (req.some(r => r.external && SE_RE.test(r.name ?? ''))) externalSe.add(uuid);
     }
@@ -1351,22 +1383,38 @@ if (process.env.VOLO_NO_EXTERNAL_DEPS) {
   };
 
   const readJson = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return null; } };
-  const enrichment = readJson(path.join('nexus', 'enrichment.json'));
   const nexusCatalog = readJson(path.join('nexus', 'catalog.json'));
   let fromNexus = 0, skippedOptional = 0;
-  if (enrichment && nexusCatalog) {
-    const nexusIdToUuid = new Map();
-    for (const [uuid, e] of Object.entries(enrichment)) {
-      if (e.matchKind === 'exact') nexusIdToUuid.set(e.nexusId, uuid);
+  if (nexusMatches.length && nexusCatalog) {
+    /*
+     * One listing can belong to several mods, so the edge goes to all of them.
+     *
+     * This kept a single uuid per listing and the last one written won, which
+     * silently threw away the others: a requirement on VolitionCabinet attached
+     * to the copy seen in one order while the copy seen in nineteen went
+     * without. Nothing sorted differently because of it, since every affected
+     * edge already agreed with the group order, but the constraint was landing
+     * on the wrong side of a duplicated mod. Fanning it out costs nothing and
+     * stops the outcome depending on iteration order.
+     */
+    const uuidsByNexusId = new Map();
+    for (const [uuid, e] of nexusMatches) {
+      if (!uuidsByNexusId.has(e.nexusId)) uuidsByNexusId.set(e.nexusId, []);
+      uuidsByNexusId.get(e.nexusId).push(uuid);
     }
     for (const [id, mod] of Object.entries(nexusCatalog.mods)) {
-      const dependent = nexusIdToUuid.get(Number(id));
-      if (!dependent) continue;
+      const dependents = uuidsByNexusId.get(Number(id));
+      if (!dependents) continue;
       for (const req of mod.req ?? []) {
         if (req.external) continue;
         if (OPTIONAL.test(req.notes ?? '')) { skippedOptional++; continue; }
-        const dependency = nexusIdToUuid.get(req.id);
-        if (dependency) { add(dependent, dependency); fromNexus++; }
+        for (const dependency of uuidsByNexusId.get(req.id) ?? []) {
+          for (const dependent of dependents) {
+            if (dependent === dependency) continue;
+            add(dependent, dependency);
+            fromNexus++;
+          }
+        }
       }
     }
   }

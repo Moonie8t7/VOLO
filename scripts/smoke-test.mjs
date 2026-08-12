@@ -854,6 +854,44 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * One rule for whether a Nexus listing belongs to a mod.
+ *
+ * The crawler keeps fuzzy matches as well as exact ones, which is right for
+ * guessing what a mod is and wrong for asserting which mod it is. The two
+ * consumers of nexus/enrichment.json disagreed: the requirement promotion took
+ * exact matches only, saying so in a comment, while the Script Extender block
+ * took every match and told 25 mods a listing was theirs on a name similarity
+ * alone. Both read one filtered view now, and this fails if a third consumer
+ * starts reading the file raw.
+ */
+{
+  console.log('nexus enrichment policy');
+
+  const miner = fs.readFileSync('scripts/mine-corpus.mjs', 'utf8');
+  const rawReads = [...miner.matchAll(/Object\.entries\(\s*enrichment\s*\)/g)].length;
+  const filtered = miner.includes('nexusMatches');
+
+  if (filtered && rawReads === 0) {
+    console.log('  ok    every consumer reads the same exact-match view');
+  } else {
+    failures++;
+    if (!filtered) console.log('  FAIL  the filtered enrichment view is gone');
+    if (rawReads) console.log(`  FAIL  ${rawReads} consumer(s) still read enrichment.json unfiltered`);
+  }
+
+  const list = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
+  const known = new Set(list.plugins.map(p => p.uuid));
+  const dangling = list.plugins.flatMap(p => (p.dependencies ?? []))
+    .filter(d => d.uuid && !String(d.uuid).startsWith('name:') && !known.has(d.uuid)).length;
+  if (!dangling) {
+    console.log('  ok    every promoted requirement lands on a mod that exists');
+  } else {
+    failures++;
+    console.log(`  FAIL  ${dangling} dependency edge(s) point at nothing`);
+  }
+}
+
+/**
  * A name with no latin letters must not answer for every other one.
  *
  * Name lookups normalise by stripping everything outside a-z0-9, so a title
