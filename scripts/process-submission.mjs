@@ -212,22 +212,34 @@ async function orderCandidates() {
         digestVerified: Boolean(expectedDigest),
         rawEntries: countRawEntries(text),
       };
-      return text;
+      return { text, name: '' };
     });
     return candidates;
   }
 
   const fence = body.match(/```(?:json)?\s*\n([\s\S]*?)```/);
-  if (fence && fence[1].trim().length > 2) candidates.push(async () => fence[1]);
+  if (fence && fence[1].trim().length > 2) candidates.push(async () => ({ text: fence[1], name: '' }));
 
   for (const url of body.match(ATTACHMENT_URL) ?? []) {
-    candidates.push(() => fetchAttachment(url));
+    candidates.push(async () => ({ text: await fetchAttachment(url), name: attachmentName(url) }));
   }
 
   // Last resort: the body may simply contain raw JSON.
   const braced = body.match(/\{[\s\S]*\}/);
-  if (braced) candidates.push(async () => braced[0]);
+  if (braced) candidates.push(async () => ({ text: braced[0], name: '' }));
   return candidates;
+}
+
+/**
+ * The file name inside an attachment URL, when there is one worth having.
+ *
+ * Only an extension the parser dispatches on is kept, so a storage URL ending
+ * in a hash cannot masquerade as a format. Everything else falls back to an
+ * empty name, which reads the format out of the content instead.
+ */
+function attachmentName(url) {
+  const last = decodeURIComponent(new URL(url).pathname.split('/').pop() ?? '');
+  return /\.(json|lsx|tsv|csv|txt)$/i.test(last) ? last : '';
 }
 
 /**
@@ -277,14 +289,30 @@ let parsed = null;
 const attempts = [];
 for (const candidate of await orderCandidates()) {
   let text;
+  let name;
   try {
-    text = stripLocalPaths(await candidate());
+    const found = await candidate();
+    text = stripLocalPaths(found.text);
+    name = found.name;
   } catch (err) {
     attempts.push(err.message);
     continue;
   }
   if (!text) continue;
-  const result = parseLoadOrder(text, 'submission.json');
+  /*
+   * The name is passed through as whatever it really was, which for a pasted
+   * order is nothing at all.
+   *
+   * This used to say 'submission.json' for every candidate. The parser reads
+   * the extension before it reads the content, so claiming JSON forced the
+   * JSON branch and left the TSV, CSV and plain-name branches unreachable for
+   * anything arriving through an issue. A submitter pasted a 539 mod BG3MM
+   * TSV export and was told "Not valid JSON", while the same text parses
+   * cleanly the moment nothing lies about what it is. The site advertises all
+   * five formats and the browser handles all five, because dragging a file in
+   * passes its real name.
+   */
+  const result = parseLoadOrder(text, name);
   if (result.mods.length > MAX_ENTRIES) {
     attempts.push(`${result.mods.length.toLocaleString()} entries, over the ${MAX_ENTRIES.toLocaleString()} limit`);
     continue;
