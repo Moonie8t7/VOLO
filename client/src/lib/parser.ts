@@ -204,7 +204,12 @@ function collect(entries: unknown[], format: string): ParseResult {
         sections.push({
           label,
           afterIndex: mods.length,
-          ...(rawUuid ? { uuid: rawUuid, name } : {}),
+          // The text is kept whether or not the row carried a uuid. Only the
+          // export needs the pair, and it still tests for both, but a
+          // submission has to be able to put a hand-typed header back exactly
+          // as it was written, and those are the headers with no uuid at all.
+          name,
+          ...(rawUuid ? { uuid: rawUuid } : {}),
         });
       }
       continue;

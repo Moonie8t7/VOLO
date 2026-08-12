@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-12T13:55:38.354Z",
+  "generated": "2026-08-12T14:46:20.381Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -30,7 +30,7 @@
     "working": 58,
     "broken": 7,
     "unlabelled": 3,
-    "externalDependencyEdges": 470,
+    "externalDependencyEdges": 456,
     "ordersWithKnownBuild": 2
   },
   "groups": [
@@ -395,6 +395,12 @@
       "group": "Spells",
       "author": "Celes/DiZ",
       "version": "2.4.2.3",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "featureFlags": [
         "Lua"
       ],
@@ -696,19 +702,19 @@
       "group": "User Interface",
       "folder": "BetterHotbar_191c52f3-07bb-f83e-e1db-bb06ea262000",
       "author": "Vova2112",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
       "divider": 2,
       "evidence": {
         "source": "section",
         "installs": 34,
         "workingInstalls": 28,
         "brokenInstalls": 5
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Fix Stragglers",
@@ -1096,6 +1102,12 @@
       "group": "Resources",
       "author": "Celes/DiZ",
       "version": "1.7.2.4",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "featureFlags": [
         "Lua"
       ],
@@ -1876,6 +1888,12 @@
       "group": "User Interface",
       "folder": "BetterMap_02ffe10e-ac53-8877-a3d5-3098fdbb8f5b",
       "author": "Caites",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
       "divider": 2,
       "evidence": {
         "source": "section",
@@ -1928,6 +1946,10 @@
       "author": "perseidipity",
       "version": "2.0.0.0",
       "dependencies": [
+        {
+          "uuid": "name:tavshairpack",
+          "name": "Tav's Hairpack"
+        },
         {
           "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
           "name": "Tav's Hairpack"
@@ -3017,6 +3039,12 @@
       "uuid": "96bc14a7-733e-4bea-859d-3695d745efc1",
       "group": "Resources",
       "author": "Mazzle",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "BG3MCM"
+        }
+      ],
       "divider": 12,
       "evidence": {
         "source": "section",
@@ -3102,6 +3130,16 @@
       "group": "Utilities",
       "folder": "WaypointInsideEmeraldGrove",
       "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        },
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 18,
       "evidence": {
         "source": "name-pattern",
@@ -4343,19 +4381,19 @@
       "group": "Equipment",
       "folder": "EmberLute_CelestialLyre_4374c4e1-be02-d9c9-b47a-429f0504f76b",
       "author": "Ariefel",
+      "dependencies": [
+        {
+          "uuid": "17ed9aa5-40e7-4c49-ac10-a0feb1ffeaa9",
+          "name": "Ember's Lute (A Music Performance Mod)"
+        }
+      ],
       "divider": 34,
       "evidence": {
         "source": "section",
         "installs": 15,
         "workingInstalls": 14,
         "brokenInstalls": 1
-      },
-      "dependencies": [
-        {
-          "uuid": "17ed9aa5-40e7-4c49-ac10-a0feb1ffeaa9",
-          "name": "Ember's Lute (A Music Performance Mod)"
-        }
-      ]
+      }
     },
     {
       "name": "featsextra",
@@ -4884,25 +4922,31 @@
       "group": "Equipment",
       "folder": "EmberLute_UndeadViolin_eedc65fd-6c9c-f0ba-8f89-31e0bd7b0566",
       "author": "Ariefel",
+      "dependencies": [
+        {
+          "uuid": "17ed9aa5-40e7-4c49-ac10-a0feb1ffeaa9",
+          "name": "Ember's Lute (A Music Performance Mod)"
+        }
+      ],
       "divider": 34,
       "evidence": {
         "source": "section",
         "installs": 14,
         "workingInstalls": 13,
         "brokenInstalls": 1
-      },
-      "dependencies": [
-        {
-          "uuid": "17ed9aa5-40e7-4c49-ac10-a0feb1ffeaa9",
-          "name": "Ember's Lute (A Music Performance Mod)"
-        }
-      ]
+      }
     },
     {
       "name": "FeatsOverhaul",
       "uuid": "c2f1a230-8c0c-481b-9ab2-987e27d7db05",
       "group": "Classes",
       "author": "Cahoot and Ajax",
+      "dependencies": [
+        {
+          "uuid": "07fbc2f1-f359-4b9d-b243-fe28bd783e4c",
+          "name": "Goon's Library"
+        }
+      ],
       "divider": 60,
       "evidence": {
         "source": "section",
@@ -5017,13 +5061,6 @@
       "group": "Hair",
       "folder": "KayHairExtensions-Custom_4e8c7dde-639e-bc40-771a-267603c8f1f1",
       "author": "perseidipity",
-      "divider": 64,
-      "evidence": {
-        "source": "section",
-        "installs": 14,
-        "workingInstalls": 11,
-        "brokenInstalls": 1
-      },
       "dependencies": [
         {
           "uuid": "470714b1-7b5b-1866-4730-056ba9d258e8",
@@ -5033,7 +5070,14 @@
           "uuid": "896aa172-c026-9e72-7c91-9d67e17595e6",
           "name": "Kay's Material Library"
         }
-      ]
+      ],
+      "divider": 64,
+      "evidence": {
+        "source": "section",
+        "installs": 14,
+        "workingInstalls": 11,
+        "brokenInstalls": 1
+      }
     },
     {
       "name": "KAZSTRA CC Body Tattoo Selector",
@@ -5606,6 +5650,12 @@
       "group": "Bug Fixes",
       "folder": "UniversalEotBPatcher",
       "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "name:eyesofthebeholdereotbmain",
+          "name": "Eyes of the Beholder (EotB) - MAIN"
+        }
+      ],
       "divider": 102.5,
       "evidence": {
         "source": "section-majority",
@@ -5788,13 +5838,6 @@
       "uuid": "f7ac2ac1-02a9-b3fe-a25d-13ebc689bab3",
       "group": "Hair",
       "author": "perseidipity",
-      "divider": 64,
-      "evidence": {
-        "source": "section",
-        "installs": 13,
-        "workingInstalls": 9,
-        "brokenInstalls": 2
-      },
       "dependencies": [
         {
           "uuid": "470714b1-7b5b-1866-4730-056ba9d258e8",
@@ -5804,7 +5847,14 @@
           "uuid": "896aa172-c026-9e72-7c91-9d67e17595e6",
           "name": "Kay's Material Library"
         }
-      ]
+      ],
+      "divider": 64,
+      "evidence": {
+        "source": "section",
+        "installs": 13,
+        "workingInstalls": 9,
+        "brokenInstalls": 2
+      }
     },
     {
       "name": "Koralina's Aesthetics - Even More Heads",
@@ -5835,6 +5885,12 @@
       "uuid": "858e5621-d625-6b87-5b0b-954c0f95f969",
       "group": "Heads",
       "author": "Loulette",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
       "divider": 63,
       "evidence": {
         "source": "section-majority",
@@ -6770,6 +6826,12 @@
       "uuid": "f9e0b029-06e0-4ddd-9243-471785486532",
       "group": "Equipment",
       "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 16,
       "evidence": {
         "source": "name-pattern",
@@ -6810,6 +6872,12 @@
       "uuid": "1c1568b8-8a77-e4fe-5402-fb1dc1360b20",
       "group": "Dyes",
       "author": "randomkilla",
+      "dependencies": [
+        {
+          "uuid": "4b516620-9c56-aa18-96ae-a9ee4f57b515",
+          "name": "Mystra's Spells"
+        }
+      ],
       "divider": 38,
       "evidence": {
         "source": "section-majority",
@@ -6823,6 +6891,16 @@
       "uuid": "ba4c9edf-f997-3939-0292-85cfffe39c1e",
       "group": "Dyes",
       "author": "randomkilla",
+      "dependencies": [
+        {
+          "uuid": "4b516620-9c56-aa18-96ae-a9ee4f57b515",
+          "name": "Mystra's Spells"
+        },
+        {
+          "uuid": "1c1568b8-8a77-e4fe-5402-fb1dc1360b20",
+          "name": "Mystra's Scrolls"
+        }
+      ],
       "divider": 38,
       "evidence": {
         "source": "section-majority",
@@ -6919,6 +6997,12 @@
       "uuid": "1a46087f-d926-4a4e-ac55-49058ced5618",
       "group": "Gameplay",
       "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 18.5,
       "evidence": {
         "source": "external-category",
@@ -7000,6 +7084,12 @@
       "uuid": "e9329ed8-e7f7-44b1-b644-3daf04be9b48",
       "group": "Classes",
       "author": "VladmirFFXI",
+      "dependencies": [
+        {
+          "uuid": "0dd5b581-c210-4956-ab96-7682fb519de5",
+          "name": "Vlad's Grimoire"
+        }
+      ],
       "divider": 60,
       "evidence": {
         "source": "section-majority",
@@ -7605,6 +7695,12 @@
       "uuid": "740d328b-90e1-4cac-8899-1cca15b7dc55",
       "group": "Classes",
       "author": "Goonsack",
+      "dependencies": [
+        {
+          "uuid": "07fbc2f1-f359-4b9d-b243-fe28bd783e4c",
+          "name": "Goon's Library"
+        }
+      ],
       "divider": 59,
       "evidence": {
         "source": "section",
@@ -7630,6 +7726,12 @@
       "uuid": "e3249bd2-06ca-4af4-b3e6-2e4a83839161",
       "group": "Classes",
       "author": "Goonsack",
+      "dependencies": [
+        {
+          "uuid": "07fbc2f1-f359-4b9d-b243-fe28bd783e4c",
+          "name": "Goon's Library"
+        }
+      ],
       "divider": 60,
       "evidence": {
         "source": "section-majority",
@@ -8114,6 +8216,12 @@
       "uuid": "1ea9eba9-5cc8-4c1f-9032-f9087f9b414c",
       "group": "Resources",
       "author": "OsirisOfInternet",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 9.5,
       "evidence": {
         "source": "section",
@@ -8409,19 +8517,19 @@
       "group": "User Interface",
       "folder": "BetterCombatLog85scale_63dc902e-90eb-7bb8-1e88-831caad5144a",
       "author": "Caites",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
       "divider": 5,
       "evidence": {
         "source": "section",
         "installs": 10,
         "workingInstalls": 9,
         "brokenInstalls": 1
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Better Trade Menu",
@@ -9619,6 +9727,16 @@
       "group": "Companions",
       "folder": "QuickSmallAnimationThingy_0af8a272-88aa-c345-e4f6-8b60194c76e5",
       "author": "rakor",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "e641c689-4da2-42d0-a286-aeb962618556",
+          "name": "BG3AF"
+        }
+      ],
       "divider": 16,
       "evidence": {
         "source": "section",
@@ -9837,6 +9955,12 @@
       "group": "Utilities",
       "folder": "Slots_5d109bfd-c3f4-53c1-c1de-9e318e6d4c36",
       "author": "rakor",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 19,
       "evidence": {
         "source": "section-majority",
@@ -12331,6 +12455,12 @@
       "uuid": "2d391618-52f5-4f9c-b6dd-6f045952843e",
       "group": "Races",
       "author": "Astralities",
+      "dependencies": [
+        {
+          "uuid": "167b846f-0a0b-4e0c-a9d0-df448be1320a",
+          "name": "ASTRL Tiefling Subraces"
+        }
+      ],
       "divider": 53,
       "evidence": {
         "source": "section-majority",
@@ -12567,6 +12697,12 @@
       "group": "Equipment",
       "folder": "BW_Astral_Nomad_baed982a-4f34-ede9-f2d6-6781a326e947",
       "author": "badwitch69",
+      "dependencies": [
+        {
+          "uuid": "ecc3b91c-21df-2886-d4f4-11154c821d4e",
+          "name": "BW_Shaders"
+        }
+      ],
       "divider": 36,
       "evidence": {
         "source": "section-majority",
@@ -13108,6 +13244,12 @@
       "uuid": "d9403cba-2f48-4f26-9710-f4be44e076b7",
       "group": "Spells",
       "author": "Goonsack",
+      "dependencies": [
+        {
+          "uuid": "07fbc2f1-f359-4b9d-b243-fe28bd783e4c",
+          "name": "Goon's Library"
+        }
+      ],
       "divider": 47,
       "evidence": {
         "source": "section",
@@ -14622,6 +14764,12 @@
       "uuid": "8361f688-d6cd-4fe6-8756-5b646af33413",
       "group": "Bug Fixes",
       "author": "Astralities",
+      "dependencies": [
+        {
+          "uuid": "167b846f-0a0b-4e0c-a9d0-df448be1320a",
+          "name": "ASTRL Tiefling Subraces"
+        }
+      ],
       "divider": 53,
       "evidence": {
         "source": "section-majority",
@@ -15397,6 +15545,12 @@
       "uuid": "5474a353-875a-b0a4-3ce1-28eac17fb412",
       "group": "User Interface",
       "folder": "DynamicSidebar169AH_5474a353-875a-b0a4-3ce1-28eac17fb412",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
       "divider": 5,
       "evidence": {
         "source": "section",
@@ -15598,6 +15752,12 @@
       "uuid": "7361ddd1-3e4c-9262-6d7f-51844ee51b1c",
       "group": "Armor",
       "author": "KaNut",
+      "dependencies": [
+        {
+          "uuid": "0d173813-b487-5863-364f-fc0c59c58570",
+          "name": "Faerun_Hunter_Shared_MT"
+        }
+      ],
       "divider": 36,
       "evidence": {
         "source": "section",
@@ -18647,6 +18807,16 @@
       "uuid": "ef97b68c-d884-4239-bafe-74293e24aea4",
       "group": "Visuals",
       "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "4fa17abe-993c-4e7e-ab2a-e7370b166ac9",
+          "name": "Character Preset Framework"
+        }
+      ],
       "divider": 10,
       "evidence": {
         "source": "external-category",
@@ -18734,19 +18904,19 @@
       "uuid": "93dc5505-2038-baaa-f845-551ec08a0636",
       "group": "Races",
       "author": "Buko",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
       "divider": 55,
       "evidence": {
         "source": "section",
         "installs": 6,
         "workingInstalls": 6,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Doom Armor - Addon Tutorial Chest",
@@ -18971,6 +19141,12 @@
       "uuid": "244a2236-237c-7a8a-d62e-0c9c6510b114",
       "group": "Armor",
       "author": "KaNut",
+      "dependencies": [
+        {
+          "uuid": "0d173813-b487-5863-364f-fc0c59c58570",
+          "name": "Faerun_Hunter_Shared_MT"
+        }
+      ],
       "divider": 36,
       "evidence": {
         "source": "section",
@@ -19208,6 +19384,16 @@
       "uuid": "682e9bdc-9887-4de7-a6f8-a21ef2b8290c",
       "group": "Classes",
       "author": "Goonsack",
+      "dependencies": [
+        {
+          "uuid": "07fbc2f1-f359-4b9d-b243-fe28bd783e4c",
+          "name": "Goon's Library"
+        },
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 60,
       "evidence": {
         "source": "section",
@@ -20115,19 +20301,19 @@
       "uuid": "ec2f4a8b-8f92-4909-8541-816b89a88498",
       "group": "Classes",
       "author": "darkcharl",
+      "dependencies": [
+        {
+          "uuid": "da5d2ea8-51c2-42ba-8d0f-34b5b198a19e",
+          "name": "MetamagicExtended"
+        }
+      ],
       "divider": 60,
       "evidence": {
         "source": "section",
         "installs": 6,
         "workingInstalls": 6,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "da5d2ea8-51c2-42ba-8d0f-34b5b198a19e",
-          "name": "MetamagicExtended"
-        }
-      ]
+      }
     },
     {
       "name": "MetamagicExtendedTwinningUnlimited",
@@ -21728,6 +21914,12 @@
       "group": "Bug Fixes",
       "folder": "Aza_NPCre_Mystra_SRDivinity_af1a3912-fc69-97d9-3b61-2faff84fcb48",
       "author": "AzazeL",
+      "dependencies": [
+        {
+          "uuid": "43cbe694-2882-4e4b-a6b0-df3aa15f226d",
+          "name": "SR Divinity"
+        }
+      ],
       "divider": 102.5,
       "evidence": {
         "source": "section",
@@ -22358,6 +22550,12 @@
       "uuid": "d871f434-8f7e-893e-3de9-3eb99fa95e61",
       "group": "User Interface",
       "author": "Caites",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
       "divider": 5,
       "evidence": {
         "source": "section",
@@ -24003,6 +24201,12 @@
       "uuid": "5b127407-1697-4c6b-986f-15fed6415375",
       "group": "unsorted",
       "author": "RingoIp and Mazzle",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "evidence": {
         "source": "none",
         "installs": 5,
@@ -27030,19 +27234,19 @@
       "uuid": "7ea9ff7a-844a-8892-32de-675bfa75bea8",
       "group": "Miscellaneous",
       "author": "CrimsonEdge7",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
       "divider": 89.5,
       "evidence": {
         "source": "section",
         "installs": 4,
         "workingInstalls": 1,
         "brokenInstalls": 3
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Additional Homebrew Fighting Styles",
@@ -27724,6 +27928,12 @@
       "group": "User Interface",
       "folder": "BetterHotbar2OneSixNineFive_3c49168c-cd84-1d30-689d-1abb9b060fb7",
       "author": "Caites",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
       "divider": 2,
       "evidence": {
         "source": "section",
@@ -28559,6 +28769,12 @@
       "uuid": "49f75771-19c4-42a6-8a85-a74cea7ae3de",
       "group": "Equipment",
       "author": "darkcharl",
+      "dependencies": [
+        {
+          "uuid": "b77a6f3e-3c7a-405f-a6bf-6ccf8e549a8c",
+          "name": "ContainersExtended"
+        }
+      ],
       "divider": 34.5,
       "evidence": {
         "source": "section",
@@ -29137,6 +29353,12 @@
       "uuid": "55405288-7f36-4086-81a0-e70cefec52d7",
       "group": "Utilities",
       "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 19,
       "evidence": {
         "source": "section",
@@ -34989,6 +35211,16 @@
       "uuid": "e300c8d2-3f72-4e79-a4da-95b59d76ca07",
       "group": "Character Customization",
       "author": "Astralities",
+      "dependencies": [
+        {
+          "uuid": "66b20233-cf0a-44bb-9bcf-32c0e0b09c19",
+          "name": "ASTRL Elven Anthology"
+        },
+        {
+          "uuid": "00956b6f-8b55-4879-bd46-68d1ba7ef31b",
+          "name": "EotB Main - EyesOfTheBeholder"
+        }
+      ],
       "divider": 62.5,
       "evidence": {
         "source": "section-majority",
@@ -36577,6 +36809,12 @@
       "uuid": "3afcbb5f-5bea-4a57-bc9a-ae28c710cbb1",
       "group": "Equipment",
       "author": "darkcharl",
+      "dependencies": [
+        {
+          "uuid": "b77a6f3e-3c7a-405f-a6bf-6ccf8e549a8c",
+          "name": "ContainersExtended"
+        }
+      ],
       "divider": 34.5,
       "evidence": {
         "source": "section",
@@ -40928,6 +41166,12 @@
       "uuid": "6f32203b-d69d-13fc-2c7b-b8b12bca7f00",
       "group": "Utilities",
       "author": "Eola",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 19,
       "evidence": {
         "source": "external-category",
@@ -40941,6 +41185,12 @@
       "uuid": "1cf5e206-9224-13be-6a81-b700cf471a37",
       "group": "Character Customization",
       "author": "NoiraFayn",
+      "dependencies": [
+        {
+          "uuid": "ca525ed8-fe32-6f11-2987-2695f4e49023",
+          "name": "NF_2_GalePiercings"
+        }
+      ],
       "divider": 67,
       "evidence": {
         "source": "name-pattern",
@@ -42196,6 +42446,12 @@
       "uuid": "8f23afc7-2354-42e0-844f-80445bf72f36",
       "group": "Equipment",
       "author": "Eumeta",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 34.5,
       "evidence": {
         "source": "section-majority",
@@ -43443,6 +43699,12 @@
       "uuid": "6a465714-dc81-41c0-9a95-e81165789ad2",
       "group": "Spells",
       "author": "白颜月",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 49,
       "evidence": {
         "source": "name-pattern",
@@ -44113,6 +44375,12 @@
       "uuid": "83743a2a-a284-4fd1-9b8e-848a8054f220",
       "group": "Gameplay",
       "author": "Tiberie",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 18.5,
       "evidence": {
         "source": "external-category",
@@ -44665,6 +44933,12 @@
       "uuid": "ccf5ac23-0cc9-4d38-805b-fe04c6a8c19a",
       "group": "Resources",
       "author": "Padme4000",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 9.5,
       "evidence": {
         "source": "section",
@@ -45566,6 +45840,12 @@
       "uuid": "cc316008-4b1d-4078-bab1-bd6663627966",
       "group": "Spells",
       "author": "KowboyBebop",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 47,
       "evidence": {
         "source": "name-pattern",
@@ -46381,6 +46661,12 @@
       "uuid": "a097d2f8-ac96-4460-9571-380b04e6a3f1",
       "group": "Gameplay",
       "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 16,
       "evidence": {
         "source": "external-category",
@@ -48784,6 +49070,12 @@
       "uuid": "5315f50e-de81-88c3-aa39-c0a3245286e6",
       "group": "Character Customization",
       "author": "lumadaire",
+      "dependencies": [
+        {
+          "uuid": "3a5544db-d0cb-8668-32ee-07f5db4fac13",
+          "name": "Crystallized_Horns"
+        }
+      ],
       "divider": 65,
       "evidence": {
         "source": "section",
@@ -49844,13 +50136,6 @@
       "uuid": "0597afed-6cc5-4125-56ea-68a51d329100",
       "group": "Races",
       "author": "Padme4000",
-      "divider": 52,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      },
       "dependencies": [
         {
           "uuid": "01d87964-fc46-7140-b29e-3956de333929",
@@ -49860,7 +50145,14 @@
           "uuid": "51418e5f-0f91-a4a4-d8f7-761bd9c4edaf",
           "name": "P4 DGB Scale Colours Enhanced"
         }
-      ]
+      ],
+      "divider": 52,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
     },
     {
       "name": "DragonFlame Regalia",
@@ -50481,19 +50773,19 @@
       "uuid": "d9cc464b-cca9-8840-4588-c17bd05b81ec",
       "group": "Equipment",
       "author": "Ariefel",
+      "dependencies": [
+        {
+          "uuid": "bed06308-b5e8-c9ea-2eae-a5d0dea7b6bd",
+          "name": "Ember's Enchanted Instruments - Drums"
+        }
+      ],
       "divider": 39,
       "evidence": {
         "source": "name-pattern",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "bed06308-b5e8-c9ea-2eae-a5d0dea7b6bd",
-          "name": "Ember's Enchanted Instruments - Drums"
-        }
-      ]
+      }
     },
     {
       "name": "EmberlordGear",
@@ -55513,6 +55805,16 @@
       "uuid": "39ca54f6-e136-7ae7-2bc5-e716657951f1",
       "group": "Spells",
       "author": "EvilSnail0fDestruktion",
+      "dependencies": [
+        {
+          "uuid": "9ee8ac7e-aa81-e7b3-0e12-6049808ac0bc",
+          "name": "Selectable Pact of the Tome Spells"
+        },
+        {
+          "uuid": "4b516620-9c56-aa18-96ae-a9ee4f57b515",
+          "name": "Mystra's Spells"
+        }
+      ],
       "divider": 47,
       "evidence": {
         "source": "name-pattern",
@@ -60494,6 +60796,12 @@
       "uuid": "27b34069-dadb-4e4f-8dc1-71e0421c98de",
       "group": "Gameplay",
       "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 18.5,
       "evidence": {
         "source": "external-category",
@@ -70712,6 +71020,12 @@
       "uuid": "70f7cb0c-9a5a-4217-b3d3-9488e948a5e6",
       "group": "Spells",
       "author": "KowboyBebop",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 46,
       "evidence": {
         "source": "name-pattern",
@@ -71520,6 +71834,12 @@
       "uuid": "9f68259a-2bb7-4830-9250-c1a8a8579a04",
       "group": "Equipment",
       "author": "darkcharl",
+      "dependencies": [
+        {
+          "uuid": "b77a6f3e-3c7a-405f-a6bf-6ccf8e549a8c",
+          "name": "ContainersExtended"
+        }
+      ],
       "divider": 43,
       "evidence": {
         "source": "name-pattern",
@@ -71545,6 +71865,12 @@
       "uuid": "f21bb47f-6e30-4fdb-82eb-ff57b4eb19af",
       "group": "Equipment",
       "author": "darkcharl",
+      "dependencies": [
+        {
+          "uuid": "b77a6f3e-3c7a-405f-a6bf-6ccf8e549a8c",
+          "name": "ContainersExtended"
+        }
+      ],
       "divider": 43,
       "evidence": {
         "source": "name-pattern",
@@ -75367,6 +75693,12 @@
       "uuid": "5ab666e5-d2c1-d68e-04a4-189143d1d1f3",
       "group": "Equipment",
       "author": "Ariefel",
+      "dependencies": [
+        {
+          "uuid": "3e2f33ec-e774-46df-a98c-6d550ac62957",
+          "name": "Ember's Wardrobe - Thirteen Hour Court"
+        }
+      ],
       "evidence": {
         "source": "inferred",
         "installs": 1,
@@ -76642,6 +76974,20 @@
       "uuid": "fa4c8f0e-443e-337f-c4fa-d7e692eff411",
       "group": "Races",
       "author": "EvilSnail0fDestruction",
+      "dependencies": [
+        {
+          "uuid": "4b516620-9c56-aa18-96ae-a9ee4f57b515",
+          "name": "Mystra's Spells"
+        },
+        {
+          "uuid": "555b318b-fdc8-a277-5e91-22b22df624a3",
+          "name": "Faerie Race"
+        },
+        {
+          "uuid": "e4aaf48d-06ef-f536-144a-2da821695182",
+          "name": "HairUnlocked"
+        }
+      ],
       "divider": 52,
       "evidence": {
         "source": "name-pattern",
@@ -78061,6 +78407,16 @@
       "uuid": "f0a0f197-8b85-438c-9a71-a9d76d0e9d70",
       "group": "unsorted",
       "author": "Mazzle",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "BG3MCM"
+        },
+        {
+          "uuid": "96bc14a7-733e-4bea-859d-3695d745efc1",
+          "name": "Mazzle_Lib"
+        }
+      ],
       "evidence": {
         "source": "none",
         "installs": 1,
@@ -79053,6 +79409,12 @@
       "uuid": "a11cdd18-803d-41d5-9a19-bff4610f5bac",
       "group": "Accessories",
       "author": "Atamg",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 40,
       "evidence": {
         "source": "name-pattern",
@@ -90863,6 +91225,12 @@
       "uuid": "3e03a419-6568-4c12-ba0f-5baf7c307cd7",
       "group": "Gameplay",
       "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 18.5,
       "evidence": {
         "source": "external-category",
@@ -95651,6 +96019,12 @@
       "uuid": "144494af-25fc-416a-a7c8-d3a85a549885",
       "group": "Equipment",
       "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
       "divider": 43,
       "evidence": {
         "source": "name-pattern",
@@ -99293,6 +99667,20 @@
       "uuid": "237c3b40-47b7-5b29-bf12-a098e35c6aac",
       "group": "Spells",
       "author": "Stark",
+      "dependencies": [
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        },
+        {
+          "uuid": "fa49db03-caa7-49c8-7c76-e6c38b60267a",
+          "name": "AdvancedTTSpells"
+        },
+        {
+          "uuid": "aa11bb22-cc33-4d44-8e55-ff6677889900",
+          "name": "StarkMeiProbe"
+        }
+      ],
       "divider": 47,
       "evidence": {
         "source": "name-pattern",

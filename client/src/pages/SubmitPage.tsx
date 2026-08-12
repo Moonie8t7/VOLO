@@ -12,6 +12,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useStore } from '@/lib/store';
+import type { ImportedSection, Mod } from '@/lib/types';
 import { parseLoadOrder } from '@/lib/parser';
 import { scrubPersonalPaths } from '@/lib/scrub';
 import { submitOrder, mountTurnstile, TURNSTILE_SITE_KEY } from '@/lib/submit';
@@ -29,10 +30,39 @@ interface PreparedOrder {
 }
 
 /**
+ * The BG3MM shape, with the section headers put back where they were.
+ *
+ * A converted list used to be the mods alone. Section headers are the single
+ * strongest placement evidence the corpus has, and the parser separates them
+ * from the mods, so converting a TSV threw every one of them away before the
+ * order was ever sent. VOLO was degrading the evidence it exists to collect,
+ * and only for the people whose manager exports a format it has to convert.
+ *
+ * Each header goes back above the mod it sat above, written exactly as it
+ * arrived, so intake reads the same boundaries the submitter saw.
+ */
+function toBg3mmOrder(mods: Mod[], sections: ImportedSection[]) {
+  const above = new Map<number, ImportedSection[]>();
+  for (const section of sections) {
+    if (!section.name) continue;
+    if (!above.has(section.afterIndex)) above.set(section.afterIndex, []);
+    above.get(section.afterIndex)!.push(section);
+  }
+  const rows: { UUID: string; Name: string }[] = [];
+  const header = (s: ImportedSection) => ({ UUID: s.uuid ?? '', Name: s.name! });
+  mods.forEach((mod, i) => {
+    for (const s of above.get(i) ?? []) rows.push(header(s));
+    rows.push({ UUID: mod.uuid.startsWith('name:') ? '' : mod.uuid, Name: mod.name });
+  });
+  for (const s of above.get(mods.length) ?? []) rows.push(header(s));
+  return rows;
+}
+
+/**
  * Raw JSON and modsettings.lsx are submitted untouched, because the raw file
- * carries things a converted list loses: divider entries, section headers,
- * dependency and version metadata. Other formats are converted to the BG3MM
- * shape the pipeline validates.
+ * carries things a converted list loses: dependency and version metadata that
+ * no conversion here reproduces. Other formats are converted to the BG3MM
+ * shape the pipeline validates, headers included.
  */
 function prepare(rawInput: string, filename: string): PreparedOrder | { error: string } {
   // Scrubbed here, before anything is parsed or sent, so a submitter's account
@@ -47,17 +77,12 @@ function prepare(rawInput: string, filename: string): PreparedOrder | { error: s
   const keepRaw = trimmed.startsWith('{') || trimmed.startsWith('[') || trimmed.startsWith('<?xml');
   const text = keepRaw
     ? raw
-    : JSON.stringify({
-        Order: parsed.mods.map(m => ({
-          UUID: m.uuid.startsWith('name:') ? '' : m.uuid,
-          Name: m.name,
-        })),
-      }, null, 2);
+    : JSON.stringify({ Order: toBg3mmOrder(parsed.mods, parsed.sections) }, null, 2);
   return { text, count: parsed.mods.length, format: parsed.format, label: filename };
 }
 
 export default function SubmitPage() {
-  const { mods, sourceName } = useStore();
+  const { mods, sections, sourceName } = useStore();
 
   const [order, setOrder] = useState<PreparedOrder | null>(null);
   const [orderError, setOrderError] = useState<string | null>(null);
@@ -81,12 +106,9 @@ export default function SubmitPage() {
   const useSession = () => {
     const ordered = [...mods].sort((a, b) => a.originalIndex - b.originalIndex);
     setOrder({
-      text: JSON.stringify({
-        Order: ordered.map(m => ({
-          UUID: m.uuid.startsWith('name:') ? '' : m.uuid,
-          Name: m.name,
-        })),
-      }, null, 2),
+      // Sorted back to the order it was imported in, so the section headers
+      // still sit above the mods they were heading.
+      text: JSON.stringify({ Order: toBg3mmOrder(ordered, sections) }, null, 2),
       count: ordered.length,
       format: 'imported order',
       label: sourceName || 'the order you imported',
