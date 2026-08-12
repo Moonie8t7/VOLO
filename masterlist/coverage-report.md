@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-12T05:45:14.877Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-12T05:55:34.045Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-08-12T05:45:14.877Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 65 |
 | labelled working | 55 |
 | labelled broken | 7 |
-| load-after edges promoted from catalogues | 472 |
+| load-after edges promoted from catalogues | 476 |
 | unlabelled | 3 |
 | Separator headers parsed | 1394 |
 | **Unique mods indexed** | **7915** |
 | Seen in more than one order | 4584 |
-| With declared dependencies | 397 |
+| With declared dependencies | 401 |
 | With Script Extender flags | 163 |
 | With author metadata | 879 |
 
@@ -140,7 +140,7 @@ Framework are present in every working order that needs them.
 | `UnlockLevelCurve - Level 13-20 | Patch 8` | 7 | 6 | 5 |
 | `Ornamental Body Jewellery` | 6 | 5 | 1 |
 | `ZipsHeads` | 6 | 5 | 1 |
-| `TutorialChestSummoning` | 20 | 15 | 12 |
+| `TutorialChestSummoning` | 17 | 12 | 14 |
 | `AOE Status Fixer` | 8 | 5 | 1 |
 | `Bleeding Overhaul` | 10 | 6 | 1 |
 
