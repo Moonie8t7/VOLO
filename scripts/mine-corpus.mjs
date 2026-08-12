@@ -718,6 +718,68 @@ for (const file of fs.readdirSync(CORPUS_DIR).sort()) {
 }
 
 /**
+ * One vote per person on sequence, however many times they export it.
+ *
+ * Seven groups of near-identical orders sit in the corpus, seventeen files
+ * between them: somebody refines their list and submits again a day later, or
+ * submits both a thin and a full export of the same evening. Every copy is real
+ * and every copy is honest, and counting each one as another opinion about
+ * ordering weights one person four times. Fifty-nine working orders are
+ * forty-nine independent ones.
+ *
+ * Only the sequence is de-duplicated. Presence still counts from every copy,
+ * because each one is a person genuinely running those mods together, and the
+ * never-verified caution reads presence.
+ *
+ * Compared by name, since a thin export and a full export of the same order
+ * agree on names and barely on identifiers until the vote below has run. The
+ * copy with the most mods keeps the vote, ties broken on the filename so a
+ * rebuild always chooses the same one, and an order VOLO sorted is never the
+ * keeper when an independent copy exists.
+ */
+const NEAR_DUPLICATE = 0.85;
+{
+  const names = orders.map(o => new Set(
+    o.entries.map(e => externalKey(e?.Name ?? '')).filter(Boolean),
+  ));
+  const parent = orders.map((_, i) => i);
+  const find = i => (parent[i] === i ? i : (parent[i] = find(parent[i])));
+  for (let i = 0; i < orders.length; i++) {
+    for (let j = i + 1; j < orders.length; j++) {
+      if (orders[i].label !== orders[j].label) continue;
+      let shared = 0;
+      for (const n of names[i]) if (names[j].has(n)) shared++;
+      const union = names[i].size + names[j].size - shared;
+      if (union && shared / union >= NEAR_DUPLICATE) parent[find(i)] = find(j);
+    }
+  }
+  const groups = new Map();
+  orders.forEach((_, i) => {
+    const root = find(i);
+    if (!groups.has(root)) groups.set(root, []);
+    groups.get(root).push(i);
+  });
+  let muted = 0;
+  for (const members of groups.values()) {
+    if (members.length < 2) continue;
+    const keeper = members
+      .slice()
+      .sort((a, b) => Number(orders[b].positional) - Number(orders[a].positional)
+        || orders[b].entries.length - orders[a].entries.length
+        || orders[a].file.localeCompare(orders[b].file))[0];
+    for (const i of members) {
+      if (i === keeper || !orders[i].positional) continue;
+      orders[i].positional = false;
+      orders[i].nearDuplicateOf = orders[keeper].file;
+      muted++;
+    }
+  }
+  if (muted) {
+    console.log(`near-duplicates: ${muted} order(s) keep their mods but not their sequence`);
+  }
+}
+
+/**
  * Name to the UUID the corpus most often gives that name.
  *
  * Built from every order before any of them is indexed, because the order the
@@ -1201,7 +1263,9 @@ for (const p of plugins) {
  * from whatever orders this run is building from. A held-out evaluation
  * therefore cannot leak the answer into its own training data.
  */
-const workingPositions = orders.filter(o => o.label === 'working').map(o => {
+const workingOrders = orders.filter(o => o.label === 'working');
+
+const workingPositions = workingOrders.map(o => {
   const pos = new Map();
   o.entries.forEach((e, i) => {
     if (!e.Name || SEPARATOR_RE.test(e.Name) || dividerNameOf(e) !== null) return;
@@ -1211,10 +1275,20 @@ const workingPositions = orders.filter(o => o.label === 'working').map(o => {
   return pos;
 });
 
+/**
+ * Positions from the orders allowed to speak about sequence.
+ *
+ * workingPositions holds every working order, which is right for asking what
+ * somebody had installed and wrong for asking what order they put it in. This
+ * asked the second question of the first set, so an order VOLO sorted, or the
+ * fourth copy of one person's, voted on which of two mods loads first.
+ */
+const positionalPositions = workingPositions.filter((_, i) => workingOrders[i].positional);
+
 /** How the corpus actually orders one mod against another. */
 function orderWitness(dependent, dependency) {
   let before = 0, after = 0;
-  for (const pos of workingPositions) {
+  for (const pos of positionalPositions) {
     const a = pos.get(canonicalKey(dependent));
     const b = pos.get(canonicalKey(dependency));
     if (a === undefined || b === undefined) continue;
