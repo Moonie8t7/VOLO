@@ -11,6 +11,7 @@ const WORDS = [
   'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty',
 ];
 
+/** The count as a word up to twenty, and as a numeral past it. */
 export function countWord(n: number): string {
   return WORDS[n] ?? String(n);
 }
