@@ -26,13 +26,19 @@ const spread = (() => {
   return Math.sqrt(held.reduce((a, b) => a + (b - m) ** 2, 0) / (held.length - 1));
 })();
 
+/** Every scored order, exactly as verify-holdout wrote it. */
 export const ORDERS = measured.orders;
+
+/** How many were scored, which is fewer than the corpus holds. */
 export const EVALUATED = measured.orders.length;
 
 /** Orders left out of the score because VOLO produced them. */
 export const SELF_SORTED = 'selfSorted' in measured ? (measured.selfSorted as number) : 0;
 
+/** The headline: agreement with players on orders the masterlist never read. */
 export const HELD_OUT = pct(mean(held));
+
+/** The same orders shuffled, which is what "better than nothing" has to beat. */
 export const RANDOM = pct(mean(ORDERS.map(o => o.random)));
 
 /**
