@@ -238,7 +238,29 @@ jobs:
               printf '\n---\n\n**This order validated but did not land.** Something went wrong while committing it, so it is not in the corpus yet. Nothing is wrong with your submission and it does not need resending: a maintainer will replay it.\n' >> /tmp/report.md
             fi
           fi
-          gh issue comment "${{ github.event.issue.number }}" --body-file /tmp/report.md
+          # One submission starts two runs, because an issue created with its
+          # label already on emits `opened` and `labeled` together. The landing
+          # path has guarded against that for a while; the reporting path never
+          # did, so every submitter has been reading their verdict twice. The
+          # runs are serialised by the concurrency group above, so by the time
+          # the second one reaches here the first one's comment is already on
+          # the issue and can be compared against.
+          # Matched on a digest of the whole report rather than on its first
+          # line. Every rejection opens with the same words, and editing the
+          # issue to fix one is the documented way to retry, so comparing the
+          # opening would swallow the second, different reason and leave the
+          # submitter staring at the first. The marker is an HTML comment, so
+          # it is invisible in the rendered issue.
+          marker="<!-- volo-report:$(sha256sum /tmp/report.md | cut -c1-16) -->"
+          if gh issue view "${{ github.event.issue.number }}" \
+               --json comments \
+               --jq '.comments[] | select(.author.login == "github-actions") | .body' \
+             | grep -Fq "$marker"; then
+            echo "not commenting: the run the other event started has already said exactly this"
+          else
+            printf '\n%s\n' "$marker" >> /tmp/report.md
+            gh issue comment "${{ github.event.issue.number }}" --body-file /tmp/report.md
+          fi
 
       # A rejection nothing can change. Editing an issue re-runs intake, so a
       # submission that could not be read stays open for the submitter to fix;
