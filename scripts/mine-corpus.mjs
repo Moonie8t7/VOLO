@@ -80,6 +80,32 @@ const DIVIDERS = (() => {
  * not by uuid is still read as a skeleton marker rather than as a mod. */
 const DIVIDER_NAMES = new Set(DIVIDERS.values());
 
+/** Divider lookup that does not care how an export cased its UUIDs. */
+const DIVIDERS_BY_LOWER = new Map([...DIVIDERS].map(([u, n]) => [String(u).toLowerCase(), n]));
+
+/**
+ * The canonical divider name for an entry, or null if it is a real mod.
+ *
+ * The identity is resolved first and the skeleton tested second, which is the
+ * opposite of how this once read. Testing `entry.UUID` alone meant a thin
+ * export, which writes `"UUID": ""` and lets submitters restyle the names,
+ * matched neither the UUID table nor the canonical-name table: one order's 103
+ * dividers were mined as mods, and that order's 418 real mods recorded no
+ * section and no slot, because the loop never saw a divider to sit them under.
+ *
+ * Resolving first also closes the hole the other way round. Once a name can
+ * resolve to a UUID some other order supplied, a restyled divider name resolves
+ * to a real divider UUID, and testing before that happened put 103 divider paks
+ * into the masterlist under their true identities. The browser then matched
+ * them by name and wrote those UUIDs into the exported order, which is the one
+ * outcome that could make BG3 Mod Manager move somebody's actual dividers.
+ */
+const dividerNameOf = entry => {
+  const key = String(keyOf(entry)).toLowerCase();
+  if (DIVIDERS_BY_LOWER.has(key)) return DIVIDERS_BY_LOWER.get(key);
+  return DIVIDER_NAMES.has(entry.Name) ? entry.Name : null;
+};
+
 /**
  * The key a load order entry is recorded under.
  *
@@ -92,8 +118,45 @@ const DIVIDER_NAMES = new Set(DIVIDERS.values());
  * in CJK or Cyrillic do, falls back to the lowercased name itself: keying them
  * all as a bare `name:` would pool every such mod into one record.
  */
-const keyOf = entry =>
-  entry.UUID || `name:${externalKey(entry.Name) || String(entry.Name).toLowerCase()}`;
+/**
+ * The UUID a pak filename ends with, when it ends with a whole one.
+ *
+ * Mirrors uuidFromFileName in client/src/lib/parser.ts, deliberately including
+ * the rule that only a complete identifier counts: submitted files carry
+ * truncated and hand-edited tails, and half a UUID matches nothing while
+ * looking like it should.
+ */
+const uuidFromFileName = fileName => {
+  if (!fileName) return undefined;
+  const m = String(fileName).match(
+    /([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?:\.pak)?$/i,
+  );
+  return m ? m[1].toLowerCase() : undefined;
+};
+
+/**
+ * The identity a mod is counted under, from the strongest signal it carries.
+ *
+ * Three exports of the same load order can describe the same mod three ways.
+ * The game's own modsettings.lsx always gives a UUID. BG3MM's full export
+ * gives one too. Its load order export writes `"UUID": ""` for anything it has
+ * not resolved, and its TSV gives no UUID column at all while naming a pak
+ * that ends in one. Reading only the UUID field made the last two into
+ * name-keyed rows, so the same mod became two entries depending on which
+ * button the submitter pressed: one with twelve working installs, and one seen
+ * once in a broken order and reported to users as never verified.
+ *
+ * A name resolves only to a UUID that some order supplied for that same name,
+ * so this can add evidence to an identity the corpus already holds and can
+ * never invent one.
+ */
+const keyOf = entry => {
+  if (entry.UUID) return entry.UUID;
+  const fromFile = uuidFromFileName(entry.FileName ?? entry.fileName);
+  if (fromFile) return fromFile;
+  const named = externalKey(entry.Name) || String(entry.Name).toLowerCase();
+  return uuidByName.get(named) ?? `name:${named}`;
+};
 
 function dividerSectionLabel(name) {
   const parts = String(name).split(String.fromCharCode(183)).map(p => p.trim());
@@ -654,6 +717,52 @@ for (const file of fs.readdirSync(CORPUS_DIR).sort()) {
   });
 }
 
+/**
+ * Name to the UUID the corpus most often gives that name.
+ *
+ * Built from every order before any of them is indexed, because the order the
+ * files happen to be read in must not decide which identity wins. Where a name
+ * has been seen under more than one UUID the one more entries agree on takes
+ * it, and ties break on the UUID itself so a rebuild is deterministic.
+ *
+ * Only names that some export has actually supplied a UUID for appear here. A
+ * mod nobody has ever exported with one stays keyed by its name, which is the
+ * honest answer rather than a guess.
+ */
+const uuidByName = (() => {
+  const votes = new Map();
+  for (const order of orders) {
+    for (const entry of order.entries) {
+      const uuid = entry.UUID || uuidFromFileName(entry.FileName ?? entry.fileName);
+      if (!uuid || !entry.Name) continue;
+      const named = externalKey(entry.Name) || String(entry.Name).toLowerCase();
+      if (!named) continue;
+      if (!votes.has(named)) votes.set(named, new Map());
+      const tally = votes.get(named);
+      tally.set(uuid, (tally.get(uuid) ?? 0) + 1);
+    }
+  }
+  const resolved = new Map();
+  for (const [named, tally] of votes) {
+    /*
+     * A real mod outranks a divider for a contested name.
+     *
+     * Divider votes have to stay in: a restyled divider name is only
+     * recognisable as a divider because some other order supplied its UUID,
+     * and dropping those votes would put the 103 dividers back among the mods.
+     * But if a name is carried by a divider AND by a real mod, resolving it to
+     * the divider would make the skeleton test delete a real mod, which is the
+     * worse of the two mistakes. No name is contested that way today; this
+     * decides it before one is.
+     */
+    const entries = [...tally];
+    const real = entries.filter(([u]) => !DIVIDERS_BY_LOWER.has(String(u).toLowerCase()));
+    const pool = real.length && real.length < entries.length ? real : entries;
+    resolved.set(named, pool.sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0][0]);
+  }
+  return resolved;
+})();
+
 /** uuid -> record */
 const mods = new Map();
 function record(uuid) {
@@ -687,9 +796,7 @@ for (const order of orders) {
     const name = entry.Name;
     if (!name) continue;
 
-    const dividerName = entry.UUID && DIVIDERS.has(entry.UUID)
-      ? DIVIDERS.get(entry.UUID)
-      : DIVIDER_NAMES.has(name) ? name : null;
+    const dividerName = dividerNameOf(entry);
     if (dividerName !== null) {
       separatorCount++;
       // Submitters sometimes restyle divider names in their manager, so the
@@ -946,8 +1053,7 @@ const uuidSequences = orders
   .filter(o => o.positional)
   .map(o =>
     o.entries
-      .filter(e => e?.Name && !SEPARATOR_RE.test(e.Name)
-        && !(e.UUID && DIVIDERS.has(e.UUID)) && !DIVIDER_NAMES.has(e.Name))
+      .filter(e => e?.Name && !SEPARATOR_RE.test(e.Name) && dividerNameOf(e) === null)
       .map(e => canonicalKey(keyOf(e))),
   );
 // The voter pool the doc comment above promises: human signals and name
@@ -1034,8 +1140,7 @@ for (const p of plugins) {
 const workingPositions = orders.filter(o => o.label === 'working').map(o => {
   const pos = new Map();
   o.entries.forEach((e, i) => {
-    if (!e.Name || SEPARATOR_RE.test(e.Name) || DIVIDER_NAMES.has(e.Name)) return;
-    if (e.UUID && DIVIDERS.has(e.UUID)) return;
+    if (!e.Name || SEPARATOR_RE.test(e.Name) || dividerNameOf(e) !== null) return;
     const k = canonicalKey(keyOf(e));
     if (!pos.has(k)) pos.set(k, i);
   });

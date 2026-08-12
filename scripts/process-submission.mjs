@@ -531,12 +531,37 @@ const cautionMods = afterList.plugins.filter(
   p => p.evidence.brokenInstalls > 0 && p.evidence.workingInstalls === 0,
 );
 
+/**
+ * How much of this order arrived with a stable identity on it.
+ *
+ * A mod is counted under its UUID. The game's own modsettings.lsx always
+ * carries one and BG3 Mod Manager's full export does too, but its load order
+ * export writes `"UUID": ""` for anything it has not resolved, and four orders
+ * in the corpus arrived with every single entry blank. Those mods fall back to
+ * being counted by name, which is weaker: a rename splits them, and until the
+ * miner learned to reconcile the two, the same mod could sit in the masterlist
+ * twice with its evidence divided.
+ *
+ * Worth saying out loud on the issue rather than fixing silently. The
+ * submitter is the only person who can produce a better export, it costs them
+ * a minute, and an order that names its mods properly is worth more to
+ * everybody for as long as it stays in the corpus.
+ */
+const withoutUuid = parsed.mods.filter(m => String(m.uuid).startsWith('name:')).length;
+const identityNote = withoutUuid === 0
+  ? '- Every mod carried a UUID.'
+  : `- ${withoutUuid} of ${parsed.mods.length} mods arrived without a UUID, so they are `
+    + 'counted by name. Exporting again with full metadata, or sending the game\'s own '
+    + 'modsettings.lsx, would give them a stable identity. Nothing needs resending: the '
+    + 'order is in either way.';
+
 finish(true, [
   `## Submission accepted: ${filename}`,
   '',
   `- Status: ${working ? 'working' : 'not working'}`,
   `- Mods in the order: ${parsed.mods.length} (format: ${parsed.format})`,
   `- Section headers found: ${parsed.sections.length}`,
+  identityNote,
   '',
   '### Masterlist changes',
   '',

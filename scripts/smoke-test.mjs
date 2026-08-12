@@ -854,6 +854,41 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * The miner and the app must agree on what identifies a mod.
+ *
+ * A mod is counted under its UUID. modsettings.lsx always supplies one and
+ * BG3MM's full export does too, but its load order export writes `"UUID": ""`
+ * for anything unresolved, and its TSV has no UUID column at all while naming
+ * a pak that ends in one. The app's parser recovered that; the miner did not,
+ * so 865 entries across two submitted orders were counted by name in the
+ * masterlist and by UUID in the browser. The same mod exported two ways became
+ * two rows with its evidence divided between them, and one of those rows was
+ * reported to users as never verified while the other had twelve working
+ * installs behind it.
+ */
+{
+  console.log('identity across export methods');
+
+  const miner = fs.readFileSync('scripts/mine-corpus.mjs', 'utf8');
+  const parser = fs.readFileSync('client/src/lib/parser.ts', 'utf8');
+  const rule = /\[0-9a-f\]\{8\}-\[0-9a-f\]\{4\}-\[0-9a-f\]\{4\}-\[0-9a-f\]\{4\}-\[0-9a-f\]\{12\}/;
+
+  if (rule.test(miner) && rule.test(parser)) {
+    console.log('  ok    both recover a UUID from a pak filename');
+  } else {
+    failures++;
+    console.log(`  FAIL  ${rule.test(parser) ? 'the miner' : 'the parser'} cannot read a UUID out of a filename`);
+  }
+
+  if (miner.includes('uuidByName')) {
+    console.log('  ok    a name is reconciled to a UUID the corpus supplied for it');
+  } else {
+    failures++;
+    console.log('  FAIL  nothing reconciles a name-keyed mod with its own UUID');
+  }
+}
+
+/**
  * The two name-pattern tables must classify a mod identically.
  *
  * mine-corpus.mjs classifies the corpus at build time; the copy in optimiser.ts
