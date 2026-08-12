@@ -283,6 +283,22 @@ export function sortLoadOrder(
   const guessedDivider = new Map<string, number>();
   const confidence = new Map<string, number>();
   const resolvedUuid = new Map<string, string>();
+  /**
+   * The masterlist row for one of the user's mods, by any identity it has.
+   *
+   * Everywhere else in this file a mod is looked up by UUID and then by name,
+   * because a thin export carries no UUID and the mod is still the same mod.
+   * The two places that read a mod's declared dependencies looked it up by
+   * UUID alone, which is the one lookup a thin export always fails. Dependencies
+   * are the only hard constraint the sorter has, so those users silently got
+   * none of them: one 736 mod export loses 117 edges, 60 of its mods dropping
+   * every requirement the masterlist holds for them.
+   */
+  const masterlistEntry = (mod: Mod) =>
+    byUuid.get(mod.uuid)
+    ?? byName.get(mod.name.toLowerCase().replace(/[^a-z0-9]/g, ''))
+    ?? (mod.folder ? byFolder.get(mod.folder.toLowerCase().replace(/[^a-z0-9]/g, '')) : undefined);
+
   let known = 0;
 
   for (const mod of mods) {
@@ -403,7 +419,7 @@ export function sortLoadOrder(
     // Masterlist dependencies supplement whatever the export declared.
     const declared = [
       ...(mod.dependencies ?? []),
-      ...(byUuid.get(mod.uuid)?.dependencies ?? []),
+      ...(masterlistEntry(mod)?.dependencies ?? []),
     ];
 
     const linked = new Set<string>();
@@ -698,7 +714,7 @@ export function sortLoadOrder(
   for (const mod of mods) {
     const declared = [
       ...(mod.dependencies ?? []),
-      ...(byUuid.get(mod.uuid)?.dependencies ?? []),
+      ...(masterlistEntry(mod)?.dependencies ?? []),
     ];
     for (const dep of declared) {
       const target = present.get(dep.uuid)

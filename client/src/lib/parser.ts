@@ -169,7 +169,21 @@ function collect(entries: unknown[], format: string): ParseResult {
     // wrong; drop them the way the modsettings parser already does.
     if (ENGINE_MASTERS.has(name)) continue;
 
-    const rawUuid = String(rec.UUID ?? rec.uuid ?? '').trim();
+    /*
+     * The identity is settled before the entry is judged, not after.
+     *
+     * This read only the UUID field, which a thin export leaves empty, so a
+     * divider from such a file was taken for a mod and sorted into a group.
+     * The pak filename carries the same identifier and toMod already knew how
+     * to read it, so the two halves of this file disagreed about what a
+     * divider was. Case is folded because an export is free to write a UUID in
+     * either, and only this side was ever comparing them verbatim.
+     */
+    const rawUuid = (
+      String(rec.UUID ?? rec.uuid ?? '').trim()
+      || uuidFromFileName(str(rec.FileName ?? rec.fileName))
+      || ''
+    ).toLowerCase();
     if (rawUuid && DIVIDER_UUIDS.has(rawUuid)) {
       // Users can rename dividers in their manager, so prefer the canonical
       // pak name and only then fall back to whatever the file says.
