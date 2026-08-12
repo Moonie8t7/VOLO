@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-12T14:46:20.381Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-12T14:58:21.333Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -94,16 +94,23 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 12.5% | 21.9% | no, and it points the other way |
-| Mods in no working order anywhere | 7% | 1% | yes |
-| Declared dependencies not installed | 0.0 | 0.0 | no |
+| Category pairs against the working consensus | 22.0% | 24.7% | no, and it points the other way |
+| Mods in no working order anywhere | 10% | 0% | yes |
+| Declared dependencies not installed | 0.1 | 0.0 | yes |
 
-Measured over 7 broken and 55 working orders, against 167 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 7 broken and 58 working orders, against 165 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
-cannot say what breaks a game, and the ordering signal currently runs
-backwards, which is the strongest argument there is against guessing at a cause
-from sequence alone.
+cannot say what breaks a game, and the ordering signal still runs backwards,
+which is the strongest argument there is against guessing at a cause from
+sequence alone. It runs backwards by less than it used to appear to: this
+measurement could not read modsettings.lsx, identified mods by the UUID field
+alone and counted dividers as mods, which made the gap look three times wider
+than it is.
+
+The third row separates on a difference of a tenth of a requirement per order,
+which is not a finding. It reads at all only because the requirements stated in
+a TSV are no longer discarded, and it is recorded rather than believed.
 
 Only the middle row feeds anything today. A mod seen in a broken order and in
 no working one is reported to the user as a place to start looking, worded as

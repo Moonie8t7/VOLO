@@ -13,65 +13,54 @@
  *      order anywhere in the corpus.
  *   3. Missing declared dependencies, where metadata is present to check.
  *
- *   node scripts/learn-breakage.mjs
- *
  * The measurement is exported as well as printed, because the answer belongs
  * in the coverage report where somebody sees it. Left only here it was run
  * once, and the finding that the first of those three signals points the
  * wrong way went unrecorded.
+ *
+ * This file no longer reads the corpus. It used to keep a private copy of the
+ * reader, the separator rule and the identity rule, and all three drifted from
+ * the miner's. It could not parse modsettings.lsx at all, so four submitted
+ * orders were silently invisible to every number below; it identified mods by
+ * the UUID field alone, so a thin export or a TSV contributed nothing; it
+ * counted divider paks as mods; and it read declared dependencies with the same
+ * character-by-character loop that cost the miner a third of its requirements.
+ * Three of the six figures it published were wrong as a result.
+ *
+ * The miner has already read, identified and cleaned every order by the time it
+ * asks for this measurement, so it passes that in. There is one reader in this
+ * project now, and one rule for what counts as a mod.
  */
 
 import fs from 'fs';
 import path from 'path';
 import { pathToFileURL } from 'url';
 
-const CORPUS = 'Load Orders - Public Submitted';
-const SEPARATOR_RE = /[-=_~]{4,}|^\s*[\]>]\s*\S|^\s*\|.*\|\s*$/;
-
-let groupOf = new Map();
-let workingInstalls = new Map();
-
-function readOrder(f) {
-  const raw = fs.readFileSync(path.join(CORPUS, f), 'utf8');
-  if (f.endsWith('.tsv')) {
-    const lines = raw.split(/\r?\n/).filter(Boolean);
-    const hdr = lines[0].split('\t').map(h => h.trim());
-    return lines.slice(1).map(l => { const c = l.split('\t'); return Object.fromEntries(hdr.map((h, i) => [h, c[i]])); });
-  }
-  let j; try { j = JSON.parse(raw); } catch { return null; }
-  return Array.isArray(j.Order) ? j.Order : Array.isArray(j.Mods) ? j.Mods : Array.isArray(j) ? j : null;
-}
-
-const isWorking = f => /^working_/i.test(f) || /^current_/i.test(f);
-const isBroken = f => /not[-_]working/i.test(f);
-
 const MIN_N = 500, MIN_RATE = 0.75;
-const ENGINE = JSON.parse(
-  fs.readFileSync(path.join('client', 'src', 'lib', 'engine-modules.json'), 'utf8'),
-).modules;
 
 /**
- * Measure all three signals against the given masterlist entries.
+ * Measure all three signals.
  *
- * Takes the plugins rather than reading the masterlist from disk, so a mine
- * can measure the masterlist it has just built instead of the previous one.
+ * @param plugins the masterlist entries, so a mine can measure the masterlist
+ *   it has just built rather than the previous one.
+ * @param orders  one entry per corpus order: `{ file, label, mods }`, where each
+ *   mod is `{ uuid, name, deps: [{ uuid, name }] }`. Dividers, separators and
+ *   engine modules are expected to be gone already, and every uuid is expected
+ *   to be the identity the masterlist uses.
  */
-export function measureBreakage(plugins) {
-  groupOf = new Map(plugins.map(p => [p.uuid, p.group]));
-  workingInstalls = new Map(plugins.map(p => [p.uuid, p.evidence?.workingInstalls ?? 0]));
+export function measureBreakage(plugins, orders) {
+  const groupOf = new Map(plugins.map(p => [p.uuid, p.group]));
+  const workingInstalls = new Map(plugins.map(p => [p.uuid, p.evidence?.workingInstalls ?? 0]));
 
-  const files = fs.readdirSync(CORPUS).sort();
   const wins = new Map();
   const key = (a, b) => `${a}|${b}`;
+  const placed = mods => mods
+    .map(m => groupOf.get(m.uuid))
+    .filter(g => g && g !== 'unsorted' && g !== 'Miscellaneous');
 
-  for (const f of files) {
-    if (!isWorking(f)) continue;
-    const entries = readOrder(f);
-    if (!entries) continue;
-    const cats = entries
-      .filter(e => e?.UUID && e?.Name && !SEPARATOR_RE.test(e.Name))
-      .map(e => groupOf.get(e.UUID))
-      .filter(g => g && g !== 'unsorted' && g !== 'Miscellaneous');
+  for (const order of orders) {
+    if (order.label !== 'working') continue;
+    const cats = placed(order.mods);
     for (let i = 0; i < cats.length; i++) {
       for (let j = i + 1; j < cats.length; j++) {
         if (cats[i] === cats[j]) continue;
@@ -89,13 +78,11 @@ export function measureBreakage(plugins) {
   }
 
   /** Score one order against the three signals. */
-  const assess = f => {
-    const entries = readOrder(f);
-    if (!entries) return null;
-    const mods = entries.filter(e => e?.UUID && e?.Name && !SEPARATOR_RE.test(e.Name));
+  const assess = order => {
+    const mods = order.mods;
 
     // 1. convention violations, counted per offending mod pair category
-    const seq = mods.map(e => ({ uuid: e.UUID, g: groupOf.get(e.UUID) }))
+    const seq = mods.map(m => ({ uuid: m.uuid, g: groupOf.get(m.uuid) }))
       .filter(m => m.g && m.g !== 'unsorted' && m.g !== 'Miscellaneous');
     const violations = new Map();
     let checked = 0, violated = 0;
@@ -113,21 +100,27 @@ export function measureBreakage(plugins) {
     }
 
     // 2. mods never seen in any working order
-    const unvetted = mods.filter(e => (workingInstalls.get(e.UUID) ?? 0) === 0);
+    const unvetted = mods.filter(m => (workingInstalls.get(m.uuid) ?? 0) === 0);
 
     // 3. missing declared dependencies
-    const present = new Set(mods.map(e => e.UUID));
+    const present = new Set(mods.map(m => m.uuid));
+    const byName = new Map(mods.map(m => [String(m.name).toLowerCase().replace(/[^a-z0-9]/g, ''), m]));
     const missing = [];
-    for (const e of mods) {
-      for (const d of e.Dependencies ?? []) {
-        if (!d?.UUID || !d?.Name) continue;
-        if (ENGINE.includes(d.Name)) continue;
-        if (!present.has(d.UUID)) missing.push(`${e.Name} needs ${d.Name}`);
+    for (const m of mods) {
+      for (const d of m.deps ?? []) {
+        if (!d?.name) continue;
+        // A requirement stated by name only is still checkable against the
+        // order in front of us, and the TSV exports state most of theirs that
+        // way. Requiring a uuid here is what made this signal read zero.
+        const held = d.uuid
+          ? present.has(d.uuid)
+          : byName.has(String(d.name).toLowerCase().replace(/[^a-z0-9]/g, ''));
+        if (!held) missing.push(`${m.name} needs ${d.name}`);
       }
     }
 
     return {
-      file: f, mods: mods.length,
+      file: order.file, mods: mods.length,
       violationRate: checked ? violated / checked : 0,
       topViolations: [...violations.entries()].sort((x, y) => y[1] - x[1]).slice(0, 4),
       unvettedShare: mods.length ? unvetted.length / mods.length : 0,
@@ -136,12 +129,10 @@ export function measureBreakage(plugins) {
     };
   };
 
-  const rows = [];
-  for (const f of files) {
-    const r = assess(f);
-    if (!r) continue;
-    rows.push({ label: isBroken(f) ? 'BROKEN ' : isWorking(f) ? 'working' : 'other  ', ...r });
-  }
+  const rows = orders.map(order => ({
+    label: order.label === 'broken' ? 'BROKEN ' : order.label === 'working' ? 'working' : 'other  ',
+    ...assess(order),
+  }));
 
   const mean = (set, k) => (set.length ? set.reduce((a, b) => a + b[k], 0) / set.length : 0);
   const broken = rows.filter(r => r.label === 'BROKEN ');
@@ -164,27 +155,20 @@ export function measureBreakage(plugins) {
   };
 }
 
-// Printed only when run directly, so importing it measures without shouting.
+/*
+ * Run directly, this can only say where the answer lives. Measuring needs the
+ * corpus read and identified, and doing that here is what put four wrong
+ * numbers into a published file. The miner runs this on every build.
+ */
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  const ml = JSON.parse(fs.readFileSync(path.join('masterlist', 'bg3-masterlist.json'), 'utf8'));
-  const out = measureBreakage(ml.plugins);
-  console.log(`strong working conventions (>=${MIN_RATE * 100}% over >=${MIN_N} pairs): ${out.conventions}`);
-  console.log('\nfile                                            mods  conv.viol  unvetted  missing deps');
-  for (const r of out.rows) {
-    console.log(
-      `${r.label} ${r.file.slice(0, 42).padEnd(44)}${String(r.mods).padStart(5)}   ${(100 * r.violationRate).toFixed(1).padStart(6)}%   ${(100 * r.unvettedShare).toFixed(0).padStart(5)}%   ${r.missingDeps.length}`,
-    );
-  }
-  const s = out.separation;
-  console.log('\n=== SEPARATION ===');
-  console.log(`convention violations   broken ${(100 * s.violationRate.broken).toFixed(1)}%   working ${(100 * s.violationRate.working).toFixed(1)}%`);
-  console.log(`unvetted mods           broken ${(100 * s.unvettedShare.broken).toFixed(0)}%   working ${(100 * s.unvettedShare.working).toFixed(0)}%`);
-
-  console.log('\n=== WHAT THE BROKEN ORDERS SPECIFICALLY DO ===');
-  for (const r of out.broken) {
-    console.log(`\n${r.file}`);
-    for (const [v, n] of r.topViolations) console.log(`  ${n} pairs: ${v}`);
-    for (const m of r.missingDeps.slice(0, 5)) console.log(`  missing dependency: ${m}`);
-    console.log(`  ${r.unvettedCount} mods never seen in any working order`);
+  const report = path.join('masterlist', 'coverage-report.md');
+  console.log('This measurement runs inside scripts/mine-corpus.mjs, which supplies the');
+  console.log('orders it has already read and identified. Run:\n');
+  console.log('  node scripts/mine-corpus.mjs\n');
+  console.log(`and read "What the broken orders do differently" in ${report}.`);
+  if (fs.existsSync(report)) {
+    const text = fs.readFileSync(report, 'utf8');
+    const at = text.indexOf('## What the broken orders do differently');
+    if (at !== -1) console.log(`\n${text.slice(at, text.indexOf('\n## ', at + 5))}`);
   }
 }
