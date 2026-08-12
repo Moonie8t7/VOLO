@@ -1153,6 +1153,21 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     ['an unanswered order matching almost exactly is flagged', { declared: 'unknown', agreementWithVolo: 0.99 }, true],
     ['an unanswered order merely agreeing is not', { declared: 'unknown', agreementWithVolo: 0.8 }, false],
     ['an unmeasurable unanswered order is not', { declared: 'unknown', agreementWithVolo: null }, false],
+    /*
+     * The neighbour rule, which has to beat the declared answer or it catches
+     * nothing: the case it exists for is somebody who sorted with VOLO, played
+     * it, and honestly answered that they arranged it themselves.
+     */
+    ['a near-copy that suddenly agrees far more is flagged whatever was declared',
+      { declared: 'self', agreementWithVolo: 0.93, nearest: { similarity: 0.95, agreementWithVolo: 0.64 } }, true],
+    ['the original is never flagged by its own echo',
+      { declared: 'self', agreementWithVolo: 0.64, nearest: { similarity: 0.95, agreementWithVolo: 0.93 } }, false],
+    ['refining your own order is not an echo',
+      { declared: 'self', agreementWithVolo: 0.72, nearest: { similarity: 0.99, agreementWithVolo: 0.64 } }, false],
+    ['a big jump against an unrelated order means nothing',
+      { declared: 'self', agreementWithVolo: 0.93, nearest: { similarity: 0.40, agreementWithVolo: 0.64 } }, false],
+    ['an order with nothing to compare against is untouched',
+      { declared: 'self', agreementWithVolo: 0.93, nearest: null }, false],
   ];
 
   const wrong = cases.filter(([, input, expected]) => judge(input) !== expected);
