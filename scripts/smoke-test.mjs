@@ -1309,6 +1309,42 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 
   /*
+   * Intake must not decide the format on the submitter's behalf.
+   *
+   * It passed 'submission.json' for every candidate, and the parser reads the
+   * extension before the content, so every paste went down the JSON branch and
+   * the TSV, CSV and plain-name branches could never be reached from an issue.
+   * A real 539 mod TSV export was rejected as "Not valid JSON" while the same
+   * bytes parse cleanly under an honest name. The formats are checked here
+   * against the parser rather than against the intake, because the bug was
+   * that the two had quietly stopped agreeing.
+   */
+  {
+    const shapes = [
+      ['TSV', 'Index\tName\tAuthor\tFileName\n0\tAlpha\tsomeone\tAlpha 11111111-1111-1111-1111-111111111111.pak\n'
+        + '1\tBravo\tsomeone\tBravo 22222222-2222-2222-2222-222222222222.pak\n'
+        + '2\tCharlie\tsomeone\tCharlie 33333333-3333-3333-3333-333333333333.pak\n'
+        + '3\tDelta\tsomeone\tDelta 44444444-4444-4444-4444-444444444444.pak\n'
+        + '4\tEcho\tsomeone\tEcho 55555555-5555-5555-5555-555555555555.pak\n'],
+      ['JSON', JSON.stringify({ Order: ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo'].map(n => ({ UUID: '', Name: n })) })],
+    ];
+    const unread = shapes.filter(([, text]) => parseLoadOrder(text, '').mods.length < 5);
+    if (!unread.length) {
+      console.log(`  ok    intake reads ${shapes.length} formats without being told which`);
+    } else {
+      failures++;
+      for (const [label] of unread) console.log(`  FAIL  a pasted ${label} order cannot be read`);
+    }
+
+    if (!/parseLoadOrder\(\s*text\s*,\s*'[^']*\.[a-z]+'/.test(processor)) {
+      console.log('  ok    intake does not invent a file extension for what it was given');
+    } else {
+      failures++;
+      console.log('  FAIL  intake names every candidate for one format, which hides the others');
+    }
+  }
+
+  /*
    * The excerpt in a staged issue body must not be parseable as an order.
    * Intake tries every candidate until one parses, so a JSON-shaped excerpt
    * would win and land a handful of mods as somebody's whole load order.
