@@ -1342,6 +1342,21 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
       failures++;
       console.log('  FAIL  intake names every candidate for one format, which hides the others');
     }
+
+    /*
+     * And what it files has to wear the right extension. A TSV saved as .json
+     * was refused by the repository audit for not being JSON, and would have
+     * been unreadable to every script that reads the corpus back, since they
+     * all hand the parser the file's own name.
+     */
+    const formats = ['TSV', 'CSV', 'Plain text', 'BG3 modsettings.lsx'];
+    const unnamed = formats.filter(f => !processor.includes(`'${f}'`) && !processor.includes(`${f}:`));
+    if (!unnamed.length) {
+      console.log(`  ok    every non-JSON format has a corpus extension of its own`);
+    } else {
+      failures++;
+      console.log(`  FAIL  no corpus extension for: ${unnamed.join(', ')}`);
+    }
   }
 
   /*
