@@ -376,6 +376,7 @@ const GROUPS = [
  */
 const SECTION_TO_GROUP = {
   'top of load order': 'Top of Load Order', 'bottom of load order': 'Bottom of Load Order',
+  'late loaders': 'Bug Fixes',
   'loaders': 'Utilities', 'utilities': 'Utilities', 'utility': 'Utilities',
   'libraries': 'Resources', 'library': 'Resources', 'resources': 'Resources',
   'frameworks': 'Resources', 'framework': 'Resources',
@@ -399,11 +400,12 @@ const SECTION_TO_GROUP = {
   'tattoos': 'Character Customization', 'presets': 'Character Customization',
   'cosmetics': 'Character Customization', 'makeup': 'Character Customization',
   'cosmetic colors': 'Character Customization',
+  'dices': 'Dice', 'dice': 'Dice',
   'bodies': 'Bodies', 'body': 'Bodies', 'skins': 'Bodies',
   'heads': 'Heads', 'head': 'Heads', 'eyes': 'Heads', 'faces': 'Heads',
   'hair': 'Hair', 'hairstyles': 'Hair', 'beards': 'Hair',
   'clothing': 'Clothing', 'clothes': 'Clothing', 'outfits': 'Clothing',
-  'camp clothes': 'Clothing', 'camp': 'Clothing',
+  'camp clothes': 'Clothing',
   'dyes': 'Dyes', 'dye': 'Dyes',
   'companions': 'Companions', 'companion edits': 'Companions', 'origins': 'Companions',
   'npcs': 'NPC', 'npc': 'NPC', 'characters': 'NPC',
@@ -413,7 +415,6 @@ const SECTION_TO_GROUP = {
   'user interface': 'User Interface', 'ui': 'User Interface', 'interface': 'User Interface',
   'hud': 'User Interface',
   'textures': 'Visuals', 'visuals': 'Visuals', 'vfx': 'Visuals',
-  'dices': 'Dice', 'dice': 'Dice',
   'audio': 'Audio', 'sound': 'Audio', 'music': 'Audio',
   'other': 'Miscellaneous', 'miscellaneous': 'Miscellaneous', 'misc': 'Miscellaneous',
   'patches': 'Bug Fixes', 'patch': 'Bug Fixes', 'compatibility': 'Bug Fixes',
@@ -423,7 +424,7 @@ const SECTION_TO_GROUP = {
   'scriptbased mods': 'Gameplay', 'story content': 'Quests',
   'world content': 'Environment', 'skillset': 'Spells',
   'customization': 'Character Customization', 'posing': 'Animations',
-  'late loaders': 'Bug Fixes', 'unique': 'Character Customization',
+  'unique': 'Character Customization',
   'body mods': 'Bodies', 'bug fixes': 'Bug Fixes',
 };
 
@@ -661,6 +662,21 @@ function sectionLabel(name) {
   return stripped.length >= 2 ? stripped : null;
 }
 
+/**
+ * The group a hand-written section header names.
+ *
+ * An exact key wins. Failing that the table is scanned in declaration order and
+ * the first key appearing anywhere in the label wins, which makes the order of
+ * the table part of its meaning: a specific key must be declared before any key
+ * it contains. "Dice Skins" reached 'skins' before 'dice' and sent 173 dice
+ * sets to Bodies on divider 99 instead of Dice on divider 90; "Late Loaders"
+ * reached 'loaders' and became Utilities in one order and Bug Fixes in another
+ * from the same submitter.
+ *
+ * A key that never matches exactly is a liability rather than a convenience.
+ * 'camp' was one: no header in the corpus is called that, and as a substring it
+ * caught "Camp Environment" and "Camp Companions" and called them Clothing.
+ */
 function groupForSection(label) {
   if (!label) return null;
   const key = label.toLowerCase().replace(/[^a-z ]/g, '').trim();
