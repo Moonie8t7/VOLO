@@ -239,6 +239,19 @@ export default function OptimisePage() {
   // Anchor for shift-click, so a run of forty cosmetics is two clicks.
   const lastClicked = useRef<string | null>(null);
 
+  /**
+   * The author to show for a mod.
+   *
+   * The file's own answer wins, because that is the pak this person installed.
+   * Most exports carry no author column at all, so without the masterlist's
+   * copy the page could credit only a third of the mods it lists.
+   */
+  const authorOf = useCallback(
+    (m: { uuid: string; author?: string }) =>
+      m.author ?? result?.placements.get(m.uuid)?.author,
+    [result],
+  );
+
   const visible = useMemo(() => {
     if (!result) return [];
     const q = query.trim().toLowerCase();
@@ -248,8 +261,9 @@ export default function OptimisePage() {
     }
     if (!q) return list;
     return list.filter(m =>
-      m.name.toLowerCase().includes(q) || m.author?.toLowerCase().includes(q));
-  }, [result, query, unsortedOnly]);
+      m.name.toLowerCase().includes(q)
+      || authorOf(m)?.toLowerCase().includes(q));
+  }, [result, query, unsortedOnly, authorOf]);
 
   /* Shown rows that can be filed, which is what "select all" acts on. */
   const selectableShown = useMemo(
@@ -308,16 +322,19 @@ export default function OptimisePage() {
    */
   const alsoByAuthor = useMemo(() => {
     if (!result || !selected.size) return [];
+    // Compared folded, rendered verbatim. Two spellings of one person are one
+    // person; nobody's name is rewritten to make that true.
+    const fold = (a?: string) => (a ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
     const authors = new Set(
-      result.mods.filter(m => selected.has(m.uuid)).map(m => m.author ?? ''),
+      result.mods.filter(m => selected.has(m.uuid)).map(m => fold(authorOf(m))),
     );
     if (authors.size !== 1) return [];
     const [author] = [...authors];
     if (!author) return [];
     return result.mods.filter(m => !selected.has(m.uuid)
-      && m.author === author
+      && fold(authorOf(m)) === author
       && result.placements.get(m.uuid)?.groupSource === 'default');
-  }, [result, selected]);
+  }, [result, selected, authorOf]);
 
   const applySlot = useCallback((divider: number, alsoAuthor: boolean) => {
     const ids = [...selected, ...(alsoAuthor ? alsoByAuthor.map(m => m.uuid) : [])];
@@ -598,8 +615,8 @@ export default function OptimisePage() {
                       */}
                       <span className="flex-1 min-w-0 select-text">
                         <span className="block truncate font-medium font-body">{mod.name}</span>
-                        {mod.author && (
-                          <span className="block truncate text-xs text-muted-foreground">{mod.author}</span>
+                        {authorOf(mod) && (
+                          <span className="block truncate text-xs text-muted-foreground">{authorOf(mod)}</span>
                         )}
                       </span>
                       {p && p.movedBy !== 0 && (

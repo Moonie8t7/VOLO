@@ -685,6 +685,8 @@ export function sortLoadOrder(
     placements.set(mod.uuid, {
       uuid: mod.uuid,
       resolvedUuid: resolvedUuid.get(mod.uuid),
+      // The file's own answer first: it is the pak this person installed.
+      author: mod.author ?? masterlistEntry(mod)?.author,
       position,
       group: g,
       // Only a real divider, never the sentinels used to pin the ends.

@@ -246,7 +246,7 @@ export function exportOrder(result: SortResult, format: ExportFormat, options: E
             index: i,
             uuid: realUuid(m),
             name: m.name,
-            author: m.author,
+            author: m.author ?? placements.get(m.uuid)?.author,
             version: m.version,
             group: placements.get(m.uuid)?.group,
           })),
@@ -258,7 +258,8 @@ export function exportOrder(result: SortResult, format: ExportFormat, options: E
       const rows = [['Index', 'Name', 'UUID', 'Group', 'Author', 'Version']];
       mods.forEach((m, i) => rows.push([
         String(i), m.name, realUuid(m),
-        placements.get(m.uuid)?.group ?? '', m.author ?? '', m.version ?? '',
+        placements.get(m.uuid)?.group ?? '',
+        m.author ?? placements.get(m.uuid)?.author ?? '', m.version ?? '',
       ]));
       return rows.map(r => r.map(escapeCsv).join(',')).join('\n');
     }
@@ -277,7 +278,8 @@ export function exportOrder(result: SortResult, format: ExportFormat, options: E
       mods.forEach(m => {
         const g = placements.get(m.uuid)?.group ?? 'unsorted';
         if (g !== group) { group = g; lines.push('', `### ${g}`, ''); }
-        lines.push(`- ${m.name}${m.author ? `, ${m.author}` : ''}`);
+        const who = m.author ?? placements.get(m.uuid)?.author;
+        lines.push(`- ${m.name}${who ? `, ${who}` : ''}`);
       });
       return lines.join('\n');
     }

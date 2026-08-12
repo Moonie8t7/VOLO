@@ -148,6 +148,13 @@ export interface Placement {
    * round-trip into BG3MM, which matches entries by UUID.
    */
   resolvedUuid?: string;
+  /**
+   * The mod's author, from the export when it carried one and from the
+   * masterlist when it did not. Recovered here for the same reason as
+   * resolvedUuid: the thin exports most people submit carry no author column,
+   * so the file alone can credit only a third of the mods it lists.
+   */
+  author?: string;
   position: number;
   group: GroupName;
   /** Astra divider this mod sits under, when one applies. */
