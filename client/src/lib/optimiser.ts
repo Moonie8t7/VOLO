@@ -518,7 +518,15 @@ export function sortLoadOrder(
        * pinned to the last divider, then dragged to the front by five mods
        * declaring it.
        */
-      if (byUuid.get(target.uuid)?.loadsAfterDependents) {
+      /*
+       * Looked up by any identity the mod has, not by uuid alone. A thin
+       * export gives Compatibility Framework a name key, and this is the one
+       * mod the exception exists for: four of its sixty-seven appearances in
+       * the corpus arrive without a uuid, and each of those was dragged to the
+       * front by the mods declaring it, which is precisely the behaviour the
+       * flag is meant to prevent.
+       */
+      if (masterlistEntry(target)?.loadsAfterDependents) {
         reasons.get(target.uuid)?.push({
           kind: 'dependency',
           text: `${mod.name} requires it, but working orders load it later, so it stays where it is.`,
