@@ -763,6 +763,65 @@ const uuidByName = (() => {
   return resolved;
 })();
 
+/**
+ * Pak folder to UUID, on the same voting rules as uuidByName.
+ *
+ * A requirement is sometimes stated as the folder a pak installs into rather
+ * than as the mod's display name: BG3MCM for Mod Configuration Menu,
+ * VladsGrimoire for VFX_Library_VladsGrimoire. Five declared requirements in
+ * the corpus name only the folder, and without this they resolve to nothing.
+ */
+const uuidByFolder = (() => {
+  const votes = new Map();
+  for (const order of orders) {
+    for (const entry of order.entries) {
+      const uuid = entry.UUID || uuidFromFileName(entry.FileName ?? entry.fileName);
+      if (!uuid || !entry.Folder) continue;
+      const key = externalKey(entry.Folder);
+      if (!key) continue;
+      if (!votes.has(key)) votes.set(key, new Map());
+      const tally = votes.get(key);
+      tally.set(uuid, (tally.get(uuid) ?? 0) + 1);
+    }
+  }
+  const resolved = new Map();
+  for (const [key, tally] of votes) {
+    resolved.set(key, [...tally].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0][0]);
+  }
+  return resolved;
+})();
+
+/**
+ * A mod's declared requirements, whichever shape its export wrote them in.
+ *
+ * A full JSON export gives an array of objects. BG3 Mod Manager's TSV gives one
+ * comma-separated string of names, and `for (const dep of "GustavDev, ImpUI")`
+ * iterates characters: `dep.Name` is undefined for every one, so the guard below
+ * skipped them all and the requirement never reached the graph. It cost 118 of
+ * the 222 requirements the corpus states, silently, in the only path the sorter
+ * treats as a hard constraint.
+ *
+ * The client has read both shapes since it was written; toModRefs in
+ * client/src/lib/parser.ts splits on the comma, and the smoke test has carried a
+ * TSV fixture asserting it the whole time. This is the miner catching up.
+ *
+ * Comma is the only delimiter present across all 56 distinct values in the
+ * corpus, and no mod name containing a comma appears whole in any of them.
+ */
+const depsOf = entry => {
+  const raw = entry.Dependencies ?? entry.dependencies;
+  if (Array.isArray(raw)) return raw;
+  if (typeof raw !== 'string') return [];
+  return raw
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean)
+    .map(name => {
+      const key = externalKey(name);
+      return { Name: name, UUID: uuidByName.get(key) ?? uuidByFolder.get(key) ?? '' };
+    });
+};
+
 /** uuid -> record */
 const mods = new Map();
 function record(uuid) {
@@ -843,9 +902,14 @@ for (const order of orders) {
     if (v && !r.version) r.version = v;
     for (const f of entry.ScriptExtenderData?.FeatureFlags ?? []) r.featureFlags.add(f);
 
-    for (const dep of entry.Dependencies ?? []) {
+    for (const dep of depsOf(entry)) {
       if (!dep?.Name || ENGINE_MASTERS.has(dep.Name) || dep.UUID === entry.UUID) continue;
-      r.dependencies.set(dep.UUID, dep.Name);
+      // Keyed by name when the requirement names a mod the corpus has never
+      // supplied a UUID for. Keying those on the empty string collapsed every
+      // one of them onto a single entry, which could not happen while the
+      // array form was the only shape that got this far: every array-form
+      // dependency in the corpus carries a UUID.
+      r.dependencies.set(dep.UUID || `name:${externalKey(dep.Name)}`, dep.Name);
     }
   }
 }

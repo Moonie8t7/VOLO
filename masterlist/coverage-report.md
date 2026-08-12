@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-12T13:55:38.354Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-12T14:46:20.381Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-08-12T13:55:38.354Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 68 |
 | labelled working | 58 |
 | labelled broken | 7 |
-| load-after edges promoted from catalogues | 470 |
+| load-after edges promoted from catalogues | 456 |
 | unlabelled | 3 |
 | Separator headers parsed | 1565 |
 | **Unique mods indexed** | **8017** |
 | Seen in more than one order | 4716 |
-| With declared dependencies | 395 |
+| With declared dependencies | 451 |
 | With Script Extender flags | 163 |
 | With author metadata | 1285 |
 
@@ -148,7 +148,8 @@ Every "install X first" rests on knowing what X is. A name that matches no mod,
 no folder and no curated alias makes a warning nobody can act on, and the string
 would otherwise be formatted into a message and dropped without being counted.
 
-_none: every stated requirement names a mod this masterlist knows_
+- `Eyes of the Beholder (EotB) - MAIN` (1 references)
+- `Tav's Hairpack` (1 references)
 
 ## Known limitations
 
