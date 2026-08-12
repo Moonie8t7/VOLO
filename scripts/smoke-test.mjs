@@ -854,6 +854,41 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * A name with no latin letters must not answer for every other one.
+ *
+ * Name lookups normalise by stripping everything outside a-z0-9, so a title
+ * written in Chinese, Japanese, Korean or Cyrillic reduces to the empty string.
+ * One submitted order carries 23 of them. Without a guard they shared a single
+ * bucket and the last one written answered for all 23, so a dependency naming
+ * any of them resolved to whichever happened to be last.
+ */
+{
+  console.log('non-latin names');
+
+  const order = JSON.stringify({
+    Order: [
+      { UUID: '11111111-1111-1111-1111-111111111111', Name: '显示状态免疫' },
+      { UUID: '22222222-2222-2222-2222-222222222222', Name: '鲜血恩惠' },
+      { UUID: '33333333-3333-3333-3333-333333333333', Name: 'CommunityLibrary' },
+      { UUID: '44444444-4444-4444-4444-444444444444', Name: 'ImpUI (ImprovedUI)' },
+      { UUID: '55555555-5555-5555-5555-555555555555', Name: 'Better Target Info' },
+    ],
+  });
+  const parsedOrder = parseLoadOrder(order, 'nonlatin.json');
+  const sortedOrder = sortLoadOrder(parsedOrder.mods, { version: '0', generated: '', groups: [], plugins: [] });
+  const kept = new Set(sortedOrder.mods.map(m => m.uuid));
+  const bothKept = kept.has('11111111-1111-1111-1111-111111111111')
+    && kept.has('22222222-2222-2222-2222-222222222222');
+
+  if (parsedOrder.mods.length === 5 && sortedOrder.mods.length === 5 && bothKept) {
+    console.log('  ok    two names with no latin characters stay two mods');
+  } else {
+    failures++;
+    console.log(`  FAIL  non-latin names collapsed: parsed ${parsedOrder.mods.length}, sorted ${sortedOrder.mods.length}`);
+  }
+}
+
+/**
  * A run of dashes inside a mod's name must not delete the mod.
  *
  * The separator rule matched a run anywhere, so "Angel Wings And Halos ____ By
