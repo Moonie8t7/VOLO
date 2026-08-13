@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-13T12:42:36.417Z",
+  "generated": "2026-08-13T13:17:09.208Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -40,135 +40,128 @@
       "description": "Explicit head marker"
     },
     {
-      "name": "User Interface",
-      "after": [
-        "Top of Load Order"
-      ],
-      "description": "Interface frameworks, hotbar, tooltips and menus"
-    },
-    {
-      "name": "Visuals",
-      "after": [
-        "User Interface"
-      ],
-      "description": "Textures and visual effects"
-    },
-    {
-      "name": "Weapons",
-      "after": [
-        "Visuals"
-      ],
-      "description": "Weapons"
-    },
-    {
-      "name": "Dyes",
-      "after": [
-        "Weapons"
-      ],
-      "description": "Dyes and colour options"
-    },
-    {
-      "name": "Clothing",
-      "after": [
-        "Dyes"
-      ],
-      "description": "Outfits and camp clothing"
-    },
-    {
-      "name": "Character Customization",
-      "after": [
-        "Clothing"
-      ],
-      "description": "Creation options, presets, makeup and tattoos"
-    },
-    {
       "name": "Resources",
       "after": [
-        "Character Customization"
+        "Top of Load Order"
       ],
       "description": "Shared libraries and frameworks other mods depend on"
     },
     {
-      "name": "Equipment",
-      "after": [
-        "Resources"
-      ],
-      "description": "General gear, consumables and containers"
-    },
-    {
-      "name": "Armor",
-      "after": [
-        "Equipment"
-      ],
-      "description": "Armour sets and pieces"
-    },
-    {
       "name": "Utilities",
       "after": [
-        "Armor"
+        "Resources"
       ],
       "description": "Loaders, mod fixers and script extender support"
     },
     {
-      "name": "Races",
+      "name": "Visuals",
       "after": [
         "Utilities"
       ],
-      "description": "Races, subraces and lineages"
+      "description": "Textures and visual effects"
     },
     {
       "name": "Animations",
       "after": [
-        "Races"
+        "Visuals"
       ],
       "description": "Animation replacements and additions"
     },
     {
-      "name": "Spells",
+      "name": "User Interface",
       "after": [
         "Animations"
       ],
-      "description": "Spell additions and overhauls"
+      "description": "Interface frameworks, hotbar, tooltips and menus"
     },
     {
-      "name": "Classes",
+      "name": "Clothing",
       "after": [
-        "Spells"
+        "User Interface"
       ],
-      "description": "Classes, subclasses and feats"
+      "description": "Outfits and camp clothing"
     },
     {
-      "name": "Bodies",
+      "name": "Equipment",
       "after": [
-        "Classes"
+        "Clothing"
       ],
-      "description": "Body models and skins"
+      "description": "General gear, consumables and containers"
     },
     {
       "name": "Miscellaneous",
       "after": [
-        "Bodies"
+        "Equipment"
       ],
       "description": "Everything without a better home"
     },
     {
-      "name": "Bug Fixes",
+      "name": "Spells",
       "after": [
         "Miscellaneous"
       ],
-      "description": "Fixes and compatibility patches"
+      "description": "Spell additions and overhauls"
+    },
+    {
+      "name": "Dyes",
+      "after": [
+        "Spells"
+      ],
+      "description": "Dyes and colour options"
+    },
+    {
+      "name": "Armor",
+      "after": [
+        "Dyes"
+      ],
+      "description": "Armour sets and pieces"
+    },
+    {
+      "name": "Weapons",
+      "after": [
+        "Armor"
+      ],
+      "description": "Weapons"
     },
     {
       "name": "Gameplay",
       "after": [
-        "Bug Fixes"
+        "Weapons"
       ],
       "description": "Rules, mechanics, combat and progression"
     },
     {
-      "name": "Accessories",
+      "name": "Races",
       "after": [
         "Gameplay"
+      ],
+      "description": "Races, subraces and lineages"
+    },
+    {
+      "name": "Classes",
+      "after": [
+        "Races"
+      ],
+      "description": "Classes, subclasses and feats"
+    },
+    {
+      "name": "Character Customization",
+      "after": [
+        "Classes"
+      ],
+      "description": "Creation options, presets, makeup and tattoos"
+    },
+    {
+      "name": "Bug Fixes",
+      "after": [
+        "Character Customization"
+      ],
+      "description": "Fixes and compatibility patches"
+    },
+    {
+      "name": "Accessories",
+      "after": [
+        "Bug Fixes"
       ],
       "description": "Jewellery, cloaks and trinkets"
     },
@@ -194,30 +187,23 @@
       "description": "Sound and music"
     },
     {
-      "name": "Hair",
-      "after": [
-        "Audio"
-      ],
-      "description": "Hairstyles and beards"
-    },
-    {
       "name": "Heads",
       "after": [
-        "Hair"
+        "Audio"
       ],
       "description": "Heads, faces and eyes"
     },
     {
-      "name": "Dice",
+      "name": "Hair",
       "after": [
         "Heads"
       ],
-      "description": "Dice skins"
+      "description": "Hairstyles and beards"
     },
     {
       "name": "Companions",
       "after": [
-        "Dice"
+        "Hair"
       ],
       "description": "Companion edits and new party members"
     },
@@ -229,16 +215,30 @@
       "description": "Non-companion character changes"
     },
     {
-      "name": "Bottom of Load Order",
+      "name": "Bodies",
       "after": [
         "NPC"
+      ],
+      "description": "Body models and skins"
+    },
+    {
+      "name": "Dice",
+      "after": [
+        "Bodies"
+      ],
+      "description": "Dice skins"
+    },
+    {
+      "name": "Bottom of Load Order",
+      "after": [
+        "Dice"
       ],
       "description": "Explicit tail marker"
     },
     {
       "name": "unsorted",
       "after": [
-        "NPC"
+        "Dice"
       ],
       "description": "Not yet categorised by the community"
     }

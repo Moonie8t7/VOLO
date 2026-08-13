@@ -144,34 +144,109 @@ function rate(a, b) {
   return { ab, ba, total, rate: total ? ab / total : 0.5, files: (pairFiles.get(k) || new Set()).size };
 }
 
-/**
- * Rank by Copeland score: how many head to head comparisons each category wins,
- * weighted by how much evidence sits behind each one.
- *
- * Averaging win rates was wrong. Each category is compared against a different
- * subset of opponents, so the averages are not on the same scale, and the result
- * contradicted its own strongest pairs. Copeland asks only "who beats whom",
- * which is the question an ordering actually answers.
- */
 const MIN_SUPPORT = 50;
-const scored = categories.map(c => {
-  let score = 0, comparisons = 0;
-  for (const other of categories) {
-    if (other === c) continue;
-    const r = rate(c, other);
-    if (r.total < MIN_SUPPORT) continue;
-    comparisons++;
-    // Margin above a coin flip, weighted by evidence. A 90 percent win on 10,000
-    // observations should outrank a 60 percent win on 60.
-    score += (r.rate - 0.5) * Math.log10(r.total);
-  }
-  return { category: c, score, comparisons };
-}).sort((a, b) => b.score - a.score);
 
-console.log('\n=== LEARNED ORDER (higher score means it tends to load earlier) ===');
-console.log('rank  category                        score  compared against');
+/**
+ * The two markers are definitions, not findings, so they are never scored.
+ *
+ * A submitter writing "Top of Load Order" is saying where their order begins.
+ * Ranked alongside real categories they placed fourth and sixteenth, on sixteen
+ * and five comparisons. Worse, leaving them in as opponents skewed everyone
+ * else: sixteen categories could clear the support threshold against the head
+ * marker and take a loss from it, while only five ever met the tail marker to
+ * win one back.
+ */
+const SENTINELS = ['Top of Load Order', 'Bottom of Load Order'];
+const ranked = categories.filter(c => !SENTINELS.includes(c)).sort();
+
+/**
+ * How much evidence an order contradicts, which is the thing being minimised.
+ *
+ * Every pair with enough support votes on which category comes first, and the
+ * strength of that vote is how lopsided it is times how many observations sit
+ * behind it. An order that puts the pair the other way round pays that weight.
+ */
+const disagreement = order => {
+  const at = new Map(order.map((c, i) => [c, i]));
+  let total = 0;
+  for (let i = 0; i < ranked.length; i++) {
+    for (let j = i + 1; j < ranked.length; j++) {
+      const a = ranked[i], b = ranked[j];
+      const r = rate(a, b);
+      if (r.total < MIN_SUPPORT) continue;
+      if ((at.get(a) < at.get(b)) !== (r.rate > 0.5)) {
+        total += Math.abs(r.rate - 0.5) * r.total;
+      }
+    }
+  }
+  return total;
+};
+
+/**
+ * Order the categories by minimising that weight directly.
+ *
+ * Two ranking rules were tried before this and both lost pairs they should have
+ * won, for the same underlying reason: they scored each category in isolation
+ * and hoped a good ordering fell out. Averaging win rates compared each category
+ * against a different set of opponents, so the averages were not on one scale.
+ * Copeland fixed that by counting only who beats whom, and thereby made a pair
+ * resting on 118,127 observations weigh exactly as much as one resting on 52; it
+ * shipped Character Customization ahead of Classes against a corpus that says
+ * the opposite 87.7 percent of the time, and that single pair was 62 percent of
+ * all the disagreement left in the result.
+ *
+ * Scoring an order rather than a category removes the indirection. Start from
+ * the best of the two cheap heuristics, then move one category at a time to
+ * wherever it costs least, until nothing improves. Ties break on the category
+ * name so a rebuild always produces the same file: an earlier version fell
+ * through to the order category names happened to appear in while reading the
+ * corpus, which let the first file read decide a pair worth 5,405 observations.
+ */
+const seedBy = score => [...ranked].sort((a, b) => score(b) - score(a) || a.localeCompare(b));
+const copeland = c => ranked.reduce((s, o) => {
+  if (o === c) return s;
+  const r = rate(c, o);
+  return r.total < MIN_SUPPORT ? s : s + (r.rate > 0.5 ? 1 : r.rate < 0.5 ? -1 : 0);
+}, 0);
+const margin = c => ranked.reduce((s, o) => {
+  if (o === c) return s;
+  const r = rate(c, o);
+  return r.total < MIN_SUPPORT ? s : s + (r.rate - 0.5) * r.total;
+}, 0);
+
+let best = [seedBy(copeland), seedBy(margin)]
+  .reduce((x, y) => (disagreement(y) < disagreement(x) ? y : x));
+let bestCost = disagreement(best);
+
+for (let pass = 0; pass < 100; pass++) {
+  let improved = false;
+  for (const c of [...ranked].sort()) {
+    const without = best.filter(x => x !== c);
+    let localBest = best, localCost = bestCost;
+    for (let i = 0; i <= without.length; i++) {
+      const candidate = [...without.slice(0, i), c, ...without.slice(i)];
+      const cost = disagreement(candidate);
+      if (cost < localCost - 1e-9) { localBest = candidate; localCost = cost; }
+    }
+    if (localCost < bestCost - 1e-9) { best = localBest; bestCost = localCost; improved = true; }
+  }
+  if (!improved) break;
+}
+
+const order = ['Top of Load Order', ...best, 'Bottom of Load Order'];
+const scored = order.map(category => ({
+  category,
+  copeland: SENTINELS.includes(category) ? null : copeland(category),
+  comparisons: SENTINELS.includes(category)
+    ? null
+    : ranked.filter(o => o !== category && rate(category, o).total >= MIN_SUPPORT).length,
+}));
+
+console.log('\n=== LEARNED ORDER (earliest first) ===');
+console.log('rank  category                      copeland  compared against');
 scored.forEach((s, i) => {
-  console.log(`${String(i + 1).padStart(4)}  ${s.category.padEnd(29)} ${s.score >= 0 ? ' ' : ''}${s.score.toFixed(2)}  ${s.comparisons}`);
+  const c = s.copeland === null ? 'pinned' : String(s.copeland).padStart(6);
+  console.log(`${String(i + 1).padStart(4)}  ${s.category.padEnd(29)} ${c}  ${s.comparisons ?? ''}`);
 });
 
 console.log('\n=== EVIDENCE FOR EACH ADJACENT PAIR ===');
@@ -189,8 +264,55 @@ for (let i = 0; i < scored.length - 1; i++) {
 }
 console.log(`\nadjacent pairs: ${agreed} supported, ${contested} contested, ${thin} thin`);
 
+/**
+ * How well the order VOLO actually ships fits the corpus it claims to learn from.
+ *
+ * The sequence in scripts/mine-corpus.mjs is a constant on purpose: adopting a
+ * new one changes every sort, so it should be a decision somebody makes and
+ * measures rather than something that moves under them overnight. The failure
+ * mode of a constant is that it quietly stops matching the evidence, which is
+ * exactly what happened: it sat unchanged while the corpus grew from nine orders
+ * to fifty-nine and ended up contradicting 54 of its own 281 pairwise
+ * comparisons. Recording the fit turns that into something a test can see.
+ */
+const shippedOrder = (() => {
+  try {
+    const src = fs.readFileSync(path.join('scripts', 'mine-corpus.mjs'), 'utf8');
+    const block = src.match(/const GROUPS = \[([\s\S]*?)\n\];/)[1];
+    return [...block.matchAll(/name: '([^']+)'/g)].map(m => m[1]);
+  } catch {
+    return [];
+  }
+})();
+
+const fitOf = order => {
+  const at = new Map(order.map((g, i) => [g, i]));
+  let against = 0, weighted = 0, compared = 0;
+  for (let i = 0; i < categories.length; i++) {
+    for (let j = i + 1; j < categories.length; j++) {
+      const a = categories[i], b = categories[j];
+      if (!at.has(a) || !at.has(b)) continue;
+      const r = rate(a, b);
+      if (r.total < MIN_SUPPORT) continue;
+      compared++;
+      if ((at.get(a) < at.get(b)) !== (r.rate > 0.5)) {
+        against++;
+        weighted += Math.abs(r.rate - 0.5) * r.total;
+      }
+    }
+  }
+  return { compared, against, weighted: Math.round(weighted) };
+};
+
+const learnedOrder = scored.map(s => s.category);
+const shippedFit = fitOf(shippedOrder);
+const learnedFit = fitOf(learnedOrder);
+console.log('\n=== FIT AGAINST THE CORPUS (lower is better) ===');
+console.log(`  shipped GROUPS  ${shippedFit.against} of ${shippedFit.compared} pairs against the evidence, weighted ${shippedFit.weighted.toLocaleString()}`);
+console.log(`  learned here    ${learnedFit.against} of ${learnedFit.compared} pairs against the evidence, weighted ${learnedFit.weighted.toLocaleString()}`);
+
 fs.writeFileSync(
   path.join('masterlist', 'learned-order.json'),
-  JSON.stringify({ order: scored.map(s => s.category), detail: scored }, null, 2) + '\n',
+  JSON.stringify({ order: learnedOrder, shippedFit, learnedFit, detail: scored }, null, 2) + '\n',
 );
 console.log('wrote masterlist/learned-order.json');

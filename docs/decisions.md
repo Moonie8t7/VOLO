@@ -34,6 +34,34 @@ the per-order table before treating a change in the summary as real.
 
 ## Adopted
 
+**The category sequence, generated rather than transcribed.** The order categories
+load in is derived by counting every pair of mods in every working order and
+searching for the sequence that contradicts the least evidence, weighting each
+contradicted pair by how lopsided it is and how many observations sit behind it.
+The result is written into scripts/mine-corpus.mjs by the learner, not copied in
+by hand.
+
+It had been copied by hand, under a comment asking somebody to remember to
+refresh it, and while the corpus grew from nine orders to fifty-nine it drifted
+until it contradicted 54 of its own 281 pairwise comparisons. Two ranking rules
+were tried and rejected on the way. Averaging win rates compared each category
+against a different set of opponents, so the averages were not on one scale.
+Copeland counted only who beats whom, which made a pair resting on 118,127
+observations weigh the same as one resting on 52, and shipped Character
+Customization ahead of Classes against a corpus that disagrees 87.7 percent of
+the time. Scoring the order instead of the category removed the indirection:
+54 contradicted pairs became 16, and the weighted total fell from 275,026 to
+18,272.
+
+Held-out agreement did not move, which is expected. Those categories were in the
+wrong sequence consistently, and a pairwise agreement metric scores consistency.
+What changed is that the exported order now matches what working orders do.
+
+The learner still does not write the sequence automatically on every rebuild.
+Adopting a new order changes every sort, so it stays a decision somebody makes
+and measures. What it does now is record how well the shipped order fits, so
+drift is visible rather than silent.
+
 **Astra's dividers as the ordering skeleton.** Their sequence decides which
 section a mod lands in; the learned order decides within a section. Costs about
 three points against ordering purely by the learned sequence, and returns a

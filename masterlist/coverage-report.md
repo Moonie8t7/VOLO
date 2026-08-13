@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-13T12:42:36.417Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-13T13:17:09.208Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -55,33 +55,33 @@ inferred entry stores its agreement score as `evidence.confidence`.
 ## Group distribution
 
 - `Top of Load Order`: 9
-- `User Interface`: 151
-- `Visuals`: 86
-- `Weapons`: 289
-- `Dyes`: 56
-- `Clothing`: 135
-- `Character Customization`: 422
 - `Resources`: 196
-- `Equipment`: 1034
-- `Armor`: 549
 - `Utilities`: 64
-- `Races`: 224
+- `Visuals`: 86
 - `Animations`: 92
-- `Spells`: 550
-- `Classes`: 1010
-- `Bodies`: 24
+- `User Interface`: 151
+- `Clothing`: 135
+- `Equipment`: 1034
 - `Miscellaneous`: 131
-- `Bug Fixes`: 370
+- `Spells`: 550
+- `Dyes`: 56
+- `Armor`: 549
+- `Weapons`: 289
 - `Gameplay`: 425
+- `Races`: 224
+- `Classes`: 1010
+- `Character Customization`: 422
+- `Bug Fixes`: 370
 - `Accessories`: 121
 - `Quests`: 22
 - `Environment`: 58
 - `Audio`: 15
-- `Hair`: 273
 - `Heads`: 463
-- `Dice`: 427
+- `Hair`: 273
 - `Companions`: 376
 - `NPC`: 189
+- `Bodies`: 24
+- `Dice`: 427
 - `Bottom of Load Order`: 5
 - `unsorted`: 767
 
