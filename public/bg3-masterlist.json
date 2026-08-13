@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-13T19:56:08.864Z",
+  "generated": "2026-08-13T21:59:52.899Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -26,8 +26,8 @@
     ]
   },
   "provenance": {
-    "ordersAnalysed": 78,
-    "working": 65,
+    "ordersAnalysed": 79,
+    "working": 66,
     "broken": 10,
     "unlabelled": 3,
     "externalDependencyEdges": 524,
@@ -274,8 +274,8 @@
       "divider": 14,
       "evidence": {
         "source": "curated",
-        "installs": 72,
-        "workingInstalls": 60,
+        "installs": 73,
+        "workingInstalls": 61,
         "brokenInstalls": 9
       },
       "usesScriptExtender": true
@@ -315,8 +315,8 @@
       "divider": 7,
       "evidence": {
         "source": "curated",
-        "installs": 61,
-        "workingInstalls": 52,
+        "installs": 62,
+        "workingInstalls": 53,
         "brokenInstalls": 8
       },
       "usesScriptExtender": true
@@ -386,8 +386,8 @@
       "divider": 47,
       "evidence": {
         "source": "section-majority",
-        "installs": 55,
-        "workingInstalls": 47,
+        "installs": 56,
+        "workingInstalls": 48,
         "brokenInstalls": 7
       },
       "usesScriptExtender": true
@@ -716,6 +716,36 @@
       }
     },
     {
+      "name": "Fix Stragglers",
+      "uuid": "310ba0c7-374e-4e56-8c42-b7c7ad3a38b0",
+      "group": "Utilities",
+      "folder": "FixStragglers",
+      "author": "Volitio",
+      "version": "1.6.1.0",
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "Volition Cabinet"
+        },
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 16,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 38,
+        "workingInstalls": 34,
+        "brokenInstalls": 3
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "HT_Lesser Restoration: Assorted Bug Fixes",
       "uuid": "2653082c-88d7-62dd-da48-b32be67c033b",
       "group": "Bug Fixes",
@@ -802,36 +832,6 @@
         "workingInstalls": 32,
         "brokenInstalls": 4
       }
-    },
-    {
-      "name": "Fix Stragglers",
-      "uuid": "310ba0c7-374e-4e56-8c42-b7c7ad3a38b0",
-      "group": "Utilities",
-      "folder": "FixStragglers",
-      "author": "Volitio",
-      "version": "1.6.1.0",
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "Volition Cabinet"
-        },
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "Mod Configuration Menu"
-        }
-      ],
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 16,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 37,
-        "workingInstalls": 33,
-        "brokenInstalls": 3
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Myky's Heads",
@@ -959,6 +959,36 @@
       "usesScriptExtender": true
     },
     {
+      "name": "Auto Send Food To Camp",
+      "uuid": "1c132ec4-4cd2-4c40-aeb9-ff6ee0467da8",
+      "group": "Gameplay",
+      "folder": "AutoSendFoodToCamp",
+      "author": "Volitio",
+      "version": "2.5.1.0",
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        },
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 16,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 34,
+        "workingInstalls": 32,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "EasyCheat",
       "uuid": "5b5ad5b6-ce37-4a63-8dea-a1fee4cee156",
       "group": "Utilities",
@@ -1076,36 +1106,6 @@
         "installs": 33,
         "workingInstalls": 29,
         "brokenInstalls": 4
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "Auto Send Food To Camp",
-      "uuid": "1c132ec4-4cd2-4c40-aeb9-ff6ee0467da8",
-      "group": "Gameplay",
-      "folder": "AutoSendFoodToCamp",
-      "author": "Volitio",
-      "version": "2.5.1.0",
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        },
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "Mod Configuration Menu"
-        }
-      ],
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 16,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 33,
-        "workingInstalls": 31,
-        "brokenInstalls": 1
       },
       "usesScriptExtender": true
     },
@@ -1496,6 +1496,20 @@
       }
     },
     {
+      "name": "Item and Spell Bug Fixes",
+      "uuid": "010e73d5-9342-e528-eb01-8289c03ea7cb",
+      "group": "Clothing",
+      "folder": "ItemBugFix_010e73d5-9342-e528-eb01-8289c03ea7cb",
+      "author": "Rydiak",
+      "divider": 37,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 30,
+        "workingInstalls": 27,
+        "brokenInstalls": 3
+      }
+    },
+    {
       "name": "Kay's Hair Extensions - Vanilla",
       "uuid": "85d64b7f-9a87-aeb1-bfdb-96fb031ae2cf",
       "group": "Hair",
@@ -1567,20 +1581,6 @@
         "brokenInstalls": 3
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "Item and Spell Bug Fixes",
-      "uuid": "010e73d5-9342-e528-eb01-8289c03ea7cb",
-      "group": "Clothing",
-      "folder": "ItemBugFix_010e73d5-9342-e528-eb01-8289c03ea7cb",
-      "author": "Rydiak",
-      "divider": 37,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 29,
-        "workingInstalls": 26,
-        "brokenInstalls": 3
-      }
     },
     {
       "name": "MoreReactiveCompanions_Configurable",
@@ -2218,6 +2218,38 @@
       ]
     },
     {
+      "name": "SpellListSorter",
+      "uuid": "71f4c896-045d-4bb9-b7ad-55f1332b61d2",
+      "group": "Bug Fixes",
+      "author": "wesslen",
+      "version": "1.2.1.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 25,
+        "workingInstalls": 24,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "UAWarCaster",
+      "uuid": "61a154cf-07a9-42bf-b209-1d562770a520",
+      "group": "Classes",
+      "author": "wesslen",
+      "divider": 19,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 25,
+        "workingInstalls": 24,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "[Aza] Better Starting Gear (Gale) + Tutorial Chest",
       "uuid": "32378f72-9a6a-9601-7481-c2117ba648d2",
       "group": "Companions",
@@ -2327,35 +2359,19 @@
       }
     },
     {
-      "name": "SpellListSorter",
-      "uuid": "71f4c896-045d-4bb9-b7ad-55f1332b61d2",
-      "group": "Bug Fixes",
-      "author": "wesslen",
-      "version": "1.2.1.0",
-      "featureFlags": [
-        "Lua"
-      ],
+      "name": "Noah Combat Behavior Fix",
+      "uuid": "a7a6f5cd-f443-3ac5-409b-ba15debda15d",
+      "group": "Gameplay",
+      "folder": "Noah_Combat_Behavior_Fix_a7a6f5cd-f443-3ac5-409b-ba15debda15d",
+      "author": "iNoah",
+      "version": "1.0.0.6",
       "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 5,
+      "divider": 31,
       "evidence": {
         "source": "section-majority",
         "installs": 24,
-        "workingInstalls": 23,
-        "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "UAWarCaster",
-      "uuid": "61a154cf-07a9-42bf-b209-1d562770a520",
-      "group": "Classes",
-      "author": "wesslen",
-      "divider": 19,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 24,
-        "workingInstalls": 23,
-        "brokenInstalls": 1
+        "workingInstalls": 22,
+        "brokenInstalls": 2
       }
     },
     {
@@ -2472,22 +2488,6 @@
         "installs": 23,
         "workingInstalls": 17,
         "brokenInstalls": 4
-      }
-    },
-    {
-      "name": "Noah Combat Behavior Fix",
-      "uuid": "a7a6f5cd-f443-3ac5-409b-ba15debda15d",
-      "group": "Gameplay",
-      "folder": "Noah_Combat_Behavior_Fix_a7a6f5cd-f443-3ac5-409b-ba15debda15d",
-      "author": "iNoah",
-      "version": "1.0.0.6",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 31,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 23,
-        "workingInstalls": 21,
-        "brokenInstalls": 2
       }
     },
     {
@@ -2721,6 +2721,31 @@
         "workingInstalls": 17,
         "brokenInstalls": 5
       }
+    },
+    {
+      "name": "Waypoint Inside Emerald Grove",
+      "uuid": "e342ee75-f7c9-4aeb-b6de-403991578337",
+      "group": "Gameplay",
+      "folder": "WaypointInsideEmeraldGrove",
+      "author": "Volitio",
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        },
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
+      "divider": 18.5,
+      "evidence": {
+        "source": "section",
+        "installs": 22,
+        "workingInstalls": 17,
+        "brokenInstalls": 5
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "[Aza] NPC Redesign (Church of Shar - Full)",
@@ -2969,6 +2994,36 @@
       }
     },
     {
+      "name": "Preemptively Label Containers",
+      "uuid": "15230bba-a3ab-4352-92f6-1c4c86d2a1e3",
+      "group": "Bug Fixes",
+      "folder": "PreemptivelyLabelContainers",
+      "author": "Volitio",
+      "version": "3.2.0.0",
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        },
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 16,
+      "evidence": {
+        "source": "section",
+        "installs": 21,
+        "workingInstalls": 19,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Smart Autosaving",
       "uuid": "0c8bb2e9-aa96-4de7-b793-a733d68ee6f0",
       "group": "Utilities",
@@ -3021,31 +3076,6 @@
         "workingInstalls": 16,
         "brokenInstalls": 4
       }
-    },
-    {
-      "name": "Waypoint Inside Emerald Grove",
-      "uuid": "e342ee75-f7c9-4aeb-b6de-403991578337",
-      "group": "Gameplay",
-      "folder": "WaypointInsideEmeraldGrove",
-      "author": "Volitio",
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        },
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "Mod Configuration Menu"
-        }
-      ],
-      "divider": 18.5,
-      "evidence": {
-        "source": "section",
-        "installs": 21,
-        "workingInstalls": 16,
-        "brokenInstalls": 5
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "xx Head HEL",
@@ -3140,6 +3170,21 @@
         "source": "section",
         "installs": 20,
         "workingInstalls": 16,
+        "brokenInstalls": 2
+      }
+    },
+    {
+      "name": "Carry Weight Increased 9000",
+      "uuid": "92af0ebd-a04c-4e9c-8306-b947aac4c127",
+      "group": "Gameplay",
+      "author": "Mharius",
+      "version": "1.0.0.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 19,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 20,
+        "workingInstalls": 17,
         "brokenInstalls": 2
       }
     },
@@ -3308,36 +3353,6 @@
       }
     },
     {
-      "name": "Preemptively Label Containers",
-      "uuid": "15230bba-a3ab-4352-92f6-1c4c86d2a1e3",
-      "group": "Bug Fixes",
-      "folder": "PreemptivelyLabelContainers",
-      "author": "Volitio",
-      "version": "3.2.0.0",
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        },
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "Mod Configuration Menu"
-        }
-      ],
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 16,
-      "evidence": {
-        "source": "section",
-        "installs": 20,
-        "workingInstalls": 18,
-        "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "Raphael, Restored - Last Light Fixes",
       "uuid": "c72a3d25-aed2-b011-3cd9-5ee0618e99a2",
       "group": "Bug Fixes",
@@ -3449,6 +3464,36 @@
       }
     },
     {
+      "name": "Auto Lockpicking",
+      "uuid": "46d64b8d-41cb-424a-9960-1c19309271a0",
+      "group": "Miscellaneous",
+      "folder": "AutoLockpicking",
+      "author": "Volitio",
+      "version": "2.0.1.0",
+      "dependencies": [
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        },
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "BG3MCM"
+        }
+      ],
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 89.5,
+      "evidence": {
+        "source": "section",
+        "installs": 19,
+        "workingInstalls": 17,
+        "brokenInstalls": 2
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Better Containers 8x9",
       "uuid": "621674a3-2366-a411-a746-0ff51b931d90",
       "group": "User Interface",
@@ -3476,21 +3521,6 @@
         "installs": 19,
         "workingInstalls": 16,
         "brokenInstalls": 3
-      }
-    },
-    {
-      "name": "Carry Weight Increased 9000",
-      "uuid": "92af0ebd-a04c-4e9c-8306-b947aac4c127",
-      "group": "Gameplay",
-      "author": "Mharius",
-      "version": "1.0.0.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 19,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 19,
-        "workingInstalls": 16,
-        "brokenInstalls": 2
       }
     },
     {
@@ -3758,36 +3788,6 @@
       }
     },
     {
-      "name": "Auto Lockpicking",
-      "uuid": "46d64b8d-41cb-424a-9960-1c19309271a0",
-      "group": "Miscellaneous",
-      "folder": "AutoLockpicking",
-      "author": "Volitio",
-      "version": "2.0.1.0",
-      "dependencies": [
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        },
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "BG3MCM"
-        }
-      ],
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 89.5,
-      "evidence": {
-        "source": "section",
-        "installs": 18,
-        "workingInstalls": 16,
-        "brokenInstalls": 2
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "BCPP_16x9_6chars",
       "uuid": "6251de75-b041-e761-c329-b3fdc23a2da8",
       "group": "User Interface",
@@ -3973,6 +3973,21 @@
       "divider": 82,
       "evidence": {
         "source": "section",
+        "installs": 18,
+        "workingInstalls": 17,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "SecretScrolls5eSpells",
+      "uuid": "b093bc44-ccf9-4eec-b5ec-e96a6f2940f9",
+      "group": "Spells",
+      "author": "darkcharl",
+      "version": "2.1.0.1",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 47,
+      "evidence": {
+        "source": "name-pattern",
         "installs": 18,
         "workingInstalls": 17,
         "brokenInstalls": 1
@@ -4312,6 +4327,31 @@
       }
     },
     {
+      "name": "Loot Autoseller",
+      "uuid": "0662253d-1cbf-479f-80c2-5878c6eb5a80",
+      "group": "Miscellaneous",
+      "folder": "Auto_Sell_Loot",
+      "author": "FallenStar",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "BG3MCM"
+        }
+      ],
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 89.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 17,
+        "workingInstalls": 14,
+        "brokenInstalls": 3
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "MizoraHumanFormWyrmCrossingOnly",
       "uuid": "64b921d6-7080-49fb-8b18-eed6afd9d62b",
       "group": "NPC",
@@ -4341,21 +4381,6 @@
         "installs": 17,
         "workingInstalls": 15,
         "brokenInstalls": 2
-      }
-    },
-    {
-      "name": "SecretScrolls5eSpells",
-      "uuid": "b093bc44-ccf9-4eec-b5ec-e96a6f2940f9",
-      "group": "Spells",
-      "author": "darkcharl",
-      "version": "2.1.0.1",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 47,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 17,
-        "workingInstalls": 16,
-        "brokenInstalls": 1
       }
     },
     {
@@ -4606,6 +4631,26 @@
       }
     },
     {
+      "name": "featsextra",
+      "uuid": "0c036a05-f3e4-4422-87bd-eadadf96c161",
+      "group": "Classes",
+      "author": "LostSoulMan",
+      "divider": 45,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 16,
+        "workingInstalls": 14,
+        "brokenInstalls": 2
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
+    },
+    {
       "name": "FeatsUni",
       "uuid": "4d5d0f12-090c-468c-b3f7-3a6be799fd43",
       "group": "Classes",
@@ -4680,31 +4725,6 @@
         "workingInstalls": 15,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "Loot Autoseller",
-      "uuid": "0662253d-1cbf-479f-80c2-5878c6eb5a80",
-      "group": "Miscellaneous",
-      "folder": "Auto_Sell_Loot",
-      "author": "FallenStar",
-      "dependencies": [
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "BG3MCM"
-        }
-      ],
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 89.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 16,
-        "workingInstalls": 13,
-        "brokenInstalls": 3
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Loulette New Heads",
@@ -4956,6 +4976,25 @@
       }
     },
     {
+      "name": "AbsoluteWrath",
+      "uuid": "9010c099-c1e7-4ea8-8990-a883d6814975",
+      "group": "Gameplay",
+      "author": "Grimpreacher",
+      "version": "3.0.0.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 18.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 15,
+        "workingInstalls": 14,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "All Camp Clothes and Dyes",
       "uuid": "045e745f-af5a-a04a-fe57-ebd61f264454",
       "group": "Armor",
@@ -5162,26 +5201,6 @@
         "workingInstalls": 11,
         "brokenInstalls": 4
       }
-    },
-    {
-      "name": "featsextra",
-      "uuid": "0c036a05-f3e4-4422-87bd-eadadf96c161",
-      "group": "Classes",
-      "author": "LostSoulMan",
-      "divider": 45,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 15,
-        "workingInstalls": 13,
-        "brokenInstalls": 2
-      },
-      "usesScriptExtender": true,
-      "dependencies": [
-        {
-          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
-          "name": "5eSpells"
-        }
-      ]
     },
     {
       "name": "FeatsOverhaul",
@@ -5438,6 +5457,21 @@
       }
     },
     {
+      "name": "SecretScrolls",
+      "uuid": "4023c256-4242-4cd0-9afa-9026aaedf2d4",
+      "group": "Spells",
+      "author": "darkcharl",
+      "version": "6.0.0.4",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 47,
+      "evidence": {
+        "source": "external-category",
+        "installs": 15,
+        "workingInstalls": 15,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Show Camp Night Notification",
       "uuid": "635705d9-44a8-cc42-8db9-420e419a23cb",
       "group": "Gameplay",
@@ -5592,25 +5626,6 @@
         "workingInstalls": 12,
         "brokenInstalls": 2
       }
-    },
-    {
-      "name": "AbsoluteWrath",
-      "uuid": "9010c099-c1e7-4ea8-8990-a883d6814975",
-      "group": "Gameplay",
-      "author": "Grimpreacher",
-      "version": "3.0.0.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 18.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 14,
-        "workingInstalls": 13,
-        "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Aether's Black Dye",
@@ -6202,21 +6217,6 @@
         "installs": 14,
         "workingInstalls": 13,
         "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "SecretScrolls",
-      "uuid": "4023c256-4242-4cd0-9afa-9026aaedf2d4",
-      "group": "Spells",
-      "author": "darkcharl",
-      "version": "6.0.0.4",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 47,
-      "evidence": {
-        "source": "external-category",
-        "installs": 14,
-        "workingInstalls": 14,
-        "brokenInstalls": 0
       }
     },
     {
@@ -7287,6 +7287,19 @@
         "installs": 13,
         "workingInstalls": 10,
         "brokenInstalls": 3
+      }
+    },
+    {
+      "name": "UAWarCaster5eSpells",
+      "uuid": "52fbf3db-552a-4315-a3b5-fb68b440e49a",
+      "group": "Classes",
+      "author": "wesslen",
+      "divider": 60,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 13,
+        "workingInstalls": 13,
+        "brokenInstalls": 0
       }
     },
     {
@@ -8446,19 +8459,6 @@
       }
     },
     {
-      "name": "UAWarCaster5eSpells",
-      "uuid": "52fbf3db-552a-4315-a3b5-fb68b440e49a",
-      "group": "Classes",
-      "author": "wesslen",
-      "divider": 60,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 12,
-        "workingInstalls": 12,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Valkrana's Skeleton Crew XP Enabled",
       "uuid": "b4568e73-abfb-4824-8730-7650eb91e5cb",
       "group": "Classes",
@@ -8625,6 +8625,18 @@
         "installs": 11,
         "workingInstalls": 9,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Ancient Mega Pack",
+      "uuid": "c6c0d2bd-6198-de9e-30ad-e8cda1793025",
+      "group": "Equipment",
+      "divider": 34.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 11,
+        "workingInstalls": 7,
+        "brokenInstalls": 4
       }
     },
     {
@@ -10093,6 +10105,19 @@
       }
     },
     {
+      "name": "UAWarCasterUpcasting",
+      "uuid": "e797c3b0-f63c-45b7-8e97-cef77e6b1af4",
+      "group": "Classes",
+      "author": "wesslen",
+      "divider": 60,
+      "evidence": {
+        "source": "section",
+        "installs": 11,
+        "workingInstalls": 11,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Unarmed and Upgraded: Monk Equipment",
       "uuid": "00581072-8d71-fc79-b793-d4492cf7aa41",
       "group": "Equipment",
@@ -10343,18 +10368,6 @@
         "brokenInstalls": 0
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "Ancient Mega Pack",
-      "uuid": "c6c0d2bd-6198-de9e-30ad-e8cda1793025",
-      "group": "Equipment",
-      "divider": 34.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 10,
-        "workingInstalls": 6,
-        "brokenInstalls": 4
-      }
     },
     {
       "name": "Arcane Aegis",
@@ -10625,6 +10638,19 @@
       "uuid": "442d5b05-28f5-ea9f-8540-e22fa9e4f4d6",
       "group": "Classes",
       "divider": 58,
+      "evidence": {
+        "source": "section",
+        "installs": 10,
+        "workingInstalls": 9,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "ContainersExtended",
+      "uuid": "b77a6f3e-3c7a-405f-a6bf-6ccf8e549a8c",
+      "group": "Equipment",
+      "author": "darkcharl",
+      "divider": 34.5,
       "evidence": {
         "source": "section",
         "installs": 10,
@@ -11678,19 +11704,6 @@
       }
     },
     {
-      "name": "UAWarCasterUpcasting",
-      "uuid": "e797c3b0-f63c-45b7-8e97-cef77e6b1af4",
-      "group": "Classes",
-      "author": "wesslen",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 10,
-        "workingInstalls": 10,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Unholy Smite - Empowering Oathbreakers",
       "uuid": "1bb5c8e1-03af-ba09-8704-352d761e9ef9",
       "group": "Spells",
@@ -12027,6 +12040,17 @@
       }
     },
     {
+      "name": "AutolootAura",
+      "uuid": "0c090ccf-c9bb-422e-bbfd-6242174992a2",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 9,
+        "workingInstalls": 8,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "AutoVeils",
       "uuid": "5c68f369-07f6-40f2-9b6a-da694fcdc36d",
       "group": "Equipment",
@@ -12335,19 +12359,6 @@
       "uuid": "110bf613-b996-6a0f-66da-f9647517d401",
       "group": "Classes",
       "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 9,
-        "workingInstalls": 8,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "ContainersExtended",
-      "uuid": "b77a6f3e-3c7a-405f-a6bf-6ccf8e549a8c",
-      "group": "Equipment",
-      "author": "darkcharl",
-      "divider": 34.5,
       "evidence": {
         "source": "section",
         "installs": 9,
@@ -14061,17 +14072,6 @@
       "divider": 47,
       "evidence": {
         "source": "section-majority",
-        "installs": 8,
-        "workingInstalls": 7,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "AutolootAura",
-      "uuid": "0c090ccf-c9bb-422e-bbfd-6242174992a2",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
         "installs": 8,
         "workingInstalls": 7,
         "brokenInstalls": 1
@@ -16356,6 +16356,19 @@
       "divider": 18.5,
       "evidence": {
         "source": "external-category",
+        "installs": 8,
+        "workingInstalls": 8,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "UAWarCasterLenient",
+      "uuid": "ca739d43-fa9c-478c-b09f-6a1deddeb1f0",
+      "group": "Classes",
+      "author": "wesslen",
+      "divider": 60,
+      "evidence": {
+        "source": "section",
         "installs": 8,
         "workingInstalls": 8,
         "brokenInstalls": 0
@@ -19859,19 +19872,6 @@
       }
     },
     {
-      "name": "UAWarCasterLenient",
-      "uuid": "ca739d43-fa9c-478c-b09f-6a1deddeb1f0",
-      "group": "Classes",
-      "author": "wesslen",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 7,
-        "workingInstalls": 7,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Umbral Archer - Level 20",
       "uuid": "228ac74e-8a1f-41d9-a0dc-e5d044678930",
       "group": "Classes",
@@ -21124,6 +21124,18 @@
         "brokenInstalls": 0
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "ContainersExtendedTutorial",
+      "uuid": "004dc11d-5fe5-427a-a0b5-3d6c6aa27aad",
+      "group": "Equipment",
+      "divider": 34.5,
+      "evidence": {
+        "source": "section",
+        "installs": 6,
+        "workingInstalls": 5,
+        "brokenInstalls": 1
+      }
     },
     {
       "name": "D83's Female Hoods with Hair",
@@ -24391,6 +24403,24 @@
       }
     },
     {
+      "name": "Ancient Mega Pack Plus",
+      "uuid": "fcf1d25f-1309-a9f7-ff14-974e39880e42",
+      "group": "Gameplay",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 5,
+        "workingInstalls": 4,
+        "brokenInstalls": 1
+      },
+      "dependencies": [
+        {
+          "uuid": "c6c0d2bd-6198-de9e-30ad-e8cda1793025",
+          "name": "Ancient Mega Pack"
+        }
+      ]
+    },
+    {
       "name": "Angel Themed Race and Class",
       "uuid": "37d61634-4807-9624-132b-0c5d46cdef1f",
       "group": "Races",
@@ -25499,18 +25529,6 @@
           "name": "ContainersExtended"
         }
       ],
-      "divider": 34.5,
-      "evidence": {
-        "source": "section",
-        "installs": 5,
-        "workingInstalls": 4,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "ContainersExtendedTutorial",
-      "uuid": "004dc11d-5fe5-427a-a0b5-3d6c6aa27aad",
-      "group": "Equipment",
       "divider": 34.5,
       "evidence": {
         "source": "section",
@@ -29244,6 +29262,20 @@
       }
     },
     {
+      "name": "Use Best Sleight of Hand",
+      "uuid": "ba3932c0-35d1-405f-8f2b-709ac018f486",
+      "group": "Gameplay",
+      "folder": "BestLockpicking",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Vanilla Missing Icons",
       "uuid": "db8e3e9e-e4f7-4bee-a808-70c2be8151ba",
       "group": "User Interface",
@@ -30047,24 +30079,6 @@
       }
     },
     {
-      "name": "Ancient Mega Pack Plus",
-      "uuid": "fcf1d25f-1309-a9f7-ff14-974e39880e42",
-      "group": "Gameplay",
-      "divider": 18.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 4,
-        "workingInstalls": 3,
-        "brokenInstalls": 1
-      },
-      "dependencies": [
-        {
-          "uuid": "c6c0d2bd-6198-de9e-30ad-e8cda1793025",
-          "name": "Ancient Mega Pack"
-        }
-      ]
-    },
-    {
       "name": "Andmetta - Bulky Dwarf Head - Drak",
       "uuid": "867d4bf4-bba0-49b6-ab65-96d0e7b0585f",
       "group": "Heads",
@@ -30385,6 +30399,18 @@
       "divider": 102.5,
       "evidence": {
         "source": "section",
+        "installs": 4,
+        "workingInstalls": 4,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Automatic_Inventory_Manager",
+      "uuid": "23bdda0c-a671-498f-89f5-a69e8d3a4b52",
+      "group": "unsorted",
+      "author": "OsirisOfInternet",
+      "evidence": {
+        "source": "none",
         "installs": 4,
         "workingInstalls": 4,
         "brokenInstalls": 0
@@ -36956,20 +36982,6 @@
       }
     },
     {
-      "name": "Use Best Sleight of Hand",
-      "uuid": "ba3932c0-35d1-405f-8f2b-709ac018f486",
-      "group": "Gameplay",
-      "folder": "BestLockpicking",
-      "divider": 18.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "Valdacil's Spell Adjustments (5E Spells)",
       "uuid": "1e06e466-8a66-4d6e-9864-d9deaccd0fcf",
       "group": "Spells",
@@ -38700,18 +38712,6 @@
       "divider": 89.5,
       "evidence": {
         "source": "section",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Automatic_Inventory_Manager",
-      "uuid": "23bdda0c-a671-498f-89f5-a69e8d3a4b52",
-      "group": "unsorted",
-      "author": "OsirisOfInternet",
-      "evidence": {
-        "source": "none",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0
@@ -41787,6 +41787,20 @@
         "workingInstalls": 2,
         "brokenInstalls": 1
       }
+    },
+    {
+      "name": "featsextra_Limit",
+      "uuid": "5c1a2f89-fc53-4b20-b154-ffce743788f2",
+      "group": "Classes",
+      "author": "LostSoulMan",
+      "evidence": {
+        "source": "inferred",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0,
+        "confidence": 0.73
+      },
+      "divider": 60
     },
     {
       "name": "featsextra_ORDERFEATS",
@@ -56318,20 +56332,6 @@
       }
     },
     {
-      "name": "featsextra_Limit",
-      "uuid": "5c1a2f89-fc53-4b20-b154-ffce743788f2",
-      "group": "Classes",
-      "author": "LostSoulMan",
-      "evidence": {
-        "source": "inferred",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0,
-        "confidence": 0.74
-      },
-      "divider": 60
-    },
-    {
       "name": "FeatsOverhaul_ListoPatch",
       "uuid": "ac9b0904-9eb2-4048-9a2a-4ef9932e1e98",
       "group": "Classes",
@@ -63842,6 +63842,17 @@
           "name": "Aardi's Chest of Presents"
         }
       ]
+    },
+    {
+      "name": "Restore Rage on Short Rest",
+      "uuid": "dea39103-bb6a-7fe8-63d7-c29fd6de31e2",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
     },
     {
       "name": "ResurrectNPCs_New",
@@ -78503,6 +78514,18 @@
     {
       "name": "ContainersExtendedFixed",
       "uuid": "af74a078-1993-007a-1be1-fcab86f8c698",
+      "group": "Equipment",
+      "divider": 43,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "ContainersExtendedWithers",
+      "uuid": "83fdfca3-d749-4149-9bcd-555853c4099c",
       "group": "Equipment",
       "divider": 43,
       "evidence": {
@@ -102041,17 +102064,6 @@
       "divider": 47,
       "evidence": {
         "source": "name-pattern",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Restore Rage on Short Rest",
-      "uuid": "dea39103-bb6a-7fe8-63d7-c29fd6de31e2",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0
