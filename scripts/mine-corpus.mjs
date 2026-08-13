@@ -310,9 +310,14 @@ function patchLabel(build) {
  * The ORDER is learned from the submitted working load orders, not invented.
  * scripts/learn-category-order.mjs aggregates every mod pair in every working
  * order to category level (tens of thousands of observations per pair) and
- * ranks categories by weighted head to head wins. This sequence is that
- * ranking, with exactly two definitional overrides: Top of Load Order is
- * pinned first and Bottom of Load Order is pinned last.
+ * searches for the sequence that contradicts the least evidence, counting a
+ * contradicted pair by how lopsided it is and how many observations sit behind
+ * it. This sequence is that result, with exactly two definitional overrides:
+ * Top of Load Order is pinned first and Bottom of Load Order is pinned last.
+ *
+ * It is generated, not typed. Transcribing it by hand is how it came to
+ * contradict 54 of its own 281 pairwise comparisons while a comment above it
+ * asked somebody to remember to update it.
  *
  * Some of it contradicts tidy doctrine, for example Spells precede Classes at
  * 80 percent across 11,833 observed pairs. The data wins: these orders are the
@@ -325,36 +330,36 @@ function patchLabel(build) {
  * chain.
  */
 const GROUPS = [
-  { name: 'Top of Load Order',       after: [],                            description: 'Explicit head marker' },
-  { name: 'User Interface',          after: ['Top of Load Order'],         description: 'Interface frameworks, hotbar, tooltips and menus' },
-  { name: 'Visuals',                 after: ['User Interface'],            description: 'Textures and visual effects' },
-  { name: 'Weapons',                 after: ['Visuals'],                   description: 'Weapons' },
-  { name: 'Dyes',                    after: ['Weapons'],                   description: 'Dyes and colour options' },
-  { name: 'Clothing',                after: ['Dyes'],                      description: 'Outfits and camp clothing' },
-  { name: 'Character Customization', after: ['Clothing'],                  description: 'Creation options, presets, makeup and tattoos' },
-  { name: 'Resources',               after: ['Character Customization'],   description: 'Shared libraries and frameworks other mods depend on' },
-  { name: 'Equipment',               after: ['Resources'],                 description: 'General gear, consumables and containers' },
-  { name: 'Armor',                   after: ['Equipment'],                 description: 'Armour sets and pieces' },
-  { name: 'Utilities',               after: ['Armor'],                     description: 'Loaders, mod fixers and script extender support' },
-  { name: 'Races',                   after: ['Utilities'],                 description: 'Races, subraces and lineages' },
-  { name: 'Animations',              after: ['Races'],                     description: 'Animation replacements and additions' },
-  { name: 'Spells',                  after: ['Animations'],                description: 'Spell additions and overhauls' },
-  { name: 'Classes',                 after: ['Spells'],                    description: 'Classes, subclasses and feats' },
-  { name: 'Bodies',                  after: ['Classes'],                   description: 'Body models and skins' },
-  { name: 'Miscellaneous',           after: ['Bodies'],                    description: 'Everything without a better home' },
-  { name: 'Bug Fixes',               after: ['Miscellaneous'],             description: 'Fixes and compatibility patches' },
-  { name: 'Gameplay',                after: ['Bug Fixes'],                 description: 'Rules, mechanics, combat and progression' },
-  { name: 'Accessories',             after: ['Gameplay'],                  description: 'Jewellery, cloaks and trinkets' },
-  { name: 'Quests',                  after: ['Accessories'],               description: 'New and altered quests' },
-  { name: 'Environment',             after: ['Quests'],                    description: 'World, lighting and level changes' },
-  { name: 'Audio',                   after: ['Environment'],               description: 'Sound and music' },
-  { name: 'Hair',                    after: ['Audio'],                     description: 'Hairstyles and beards' },
-  { name: 'Heads',                   after: ['Hair'],                      description: 'Heads, faces and eyes' },
-  { name: 'Dice',                    after: ['Heads'],                     description: 'Dice skins' },
-  { name: 'Companions',              after: ['Dice'],                      description: 'Companion edits and new party members' },
-  { name: 'NPC',                     after: ['Companions'],                description: 'Non-companion character changes' },
-  { name: 'Bottom of Load Order',    after: ['NPC'],                       description: 'Explicit tail marker' },
-  { name: 'unsorted',                after: ['NPC'],                       description: 'Not yet categorised by the community' },
+  { name: 'Top of Load Order',        after: [],                                description: 'Explicit head marker' },
+  { name: 'Resources',                after: ['Top of Load Order'],             description: 'Shared libraries and frameworks other mods depend on' },
+  { name: 'Utilities',                after: ['Resources'],                     description: 'Loaders, mod fixers and script extender support' },
+  { name: 'Visuals',                  after: ['Utilities'],                     description: 'Textures and visual effects' },
+  { name: 'Animations',               after: ['Visuals'],                       description: 'Animation replacements and additions' },
+  { name: 'User Interface',           after: ['Animations'],                    description: 'Interface frameworks, hotbar, tooltips and menus' },
+  { name: 'Clothing',                 after: ['User Interface'],                description: 'Outfits and camp clothing' },
+  { name: 'Equipment',                after: ['Clothing'],                      description: 'General gear, consumables and containers' },
+  { name: 'Miscellaneous',            after: ['Equipment'],                     description: 'Everything without a better home' },
+  { name: 'Spells',                   after: ['Miscellaneous'],                 description: 'Spell additions and overhauls' },
+  { name: 'Dyes',                     after: ['Spells'],                        description: 'Dyes and colour options' },
+  { name: 'Armor',                    after: ['Dyes'],                          description: 'Armour sets and pieces' },
+  { name: 'Weapons',                  after: ['Armor'],                         description: 'Weapons' },
+  { name: 'Gameplay',                 after: ['Weapons'],                       description: 'Rules, mechanics, combat and progression' },
+  { name: 'Races',                    after: ['Gameplay'],                      description: 'Races, subraces and lineages' },
+  { name: 'Classes',                  after: ['Races'],                         description: 'Classes, subclasses and feats' },
+  { name: 'Character Customization',  after: ['Classes'],                       description: 'Creation options, presets, makeup and tattoos' },
+  { name: 'Bug Fixes',                after: ['Character Customization'],       description: 'Fixes and compatibility patches' },
+  { name: 'Accessories',              after: ['Bug Fixes'],                     description: 'Jewellery, cloaks and trinkets' },
+  { name: 'Quests',                   after: ['Accessories'],                   description: 'New and altered quests' },
+  { name: 'Environment',              after: ['Quests'],                        description: 'World, lighting and level changes' },
+  { name: 'Audio',                    after: ['Environment'],                   description: 'Sound and music' },
+  { name: 'Heads',                    after: ['Audio'],                         description: 'Heads, faces and eyes' },
+  { name: 'Hair',                     after: ['Heads'],                         description: 'Hairstyles and beards' },
+  { name: 'Companions',               after: ['Hair'],                          description: 'Companion edits and new party members' },
+  { name: 'NPC',                      after: ['Companions'],                    description: 'Non-companion character changes' },
+  { name: 'Bodies',                   after: ['NPC'],                           description: 'Body models and skins' },
+  { name: 'Dice',                     after: ['Bodies'],                        description: 'Dice skins' },
+  { name: 'Bottom of Load Order',     after: ['Dice'],                          description: 'Explicit tail marker' },
+  { name: 'unsorted',                 after: ['Dice'],                          description: 'Not yet categorised by the community' },
 ];
 
 /**
