@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-08-13T13:17:09.208Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-13T13:22:57.286Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 73 |
-| labelled working | 63 |
+| Load orders analysed | 74 |
+| labelled working | 64 |
 | labelled broken | 7 |
 | load-after edges promoted from catalogues | 516 |
 | unlabelled | 3 |
 | Separator headers parsed | 1619 |
 | **Unique mods indexed** | **8533** |
-| Seen in more than one order | 4923 |
+| Seen in more than one order | 4925 |
 | With declared dependencies | 503 |
 | With Script Extender flags | 163 |
 | With author metadata | 1285 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 73 orders carry it, because the short
+this comes from. Only 2 of 74 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 22.3% | 23.2% | no, and it points the other way |
+| Category pairs against the working consensus | 22.3% | 23.3% | no, and it points the other way |
 | Mods in no working order anywhere | 9% | 0% | yes |
 | Declared dependencies not installed | 0.1 | 0.0 | yes |
 
-Measured over 7 broken and 63 working orders, against 168 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 7 broken and 64 working orders, against 168 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -161,7 +161,7 @@ would otherwise be formatted into a message and dropped without being counted.
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 63
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 64
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
