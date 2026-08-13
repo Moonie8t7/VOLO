@@ -5,6 +5,14 @@ name: Process load order submission
 # regenerated from the whole corpus in the same commit. Anything else becomes a
 # pull request carrying only the corpus file, for a person to look at.
 #
+# A held order is accepted by labelling the issue `approved`, not by merging that
+# pull request. Both routes then land by the same path, so an order a person
+# waved through arrives exactly as a clean one does: one commit holding the order
+# and everything derived from it. Merging the branch instead produced a commit
+# whose README described a corpus without the order in it, which failed its own
+# checks permanently and made every submission look red while it was being
+# reviewed. The branch is closed once its order is on main.
+#
 # Runs are serialised: two submissions regenerating the masterlist at once
 # would each build it without the other's order, and the later push would
 # silently drop the earlier one.
@@ -71,11 +79,18 @@ jobs:
 
       - name: Process the submission
         id: process
+        env:
+          # Read from the event rather than interpolated into the script, so a
+          # label containing a quote cannot end the command and run the rest.
+          # As JSON, because a label may contain a comma and splitting a joined
+          # string back apart would be a guess that decides whether an order lands.
+          LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
         run: |
           set +e
           node scripts/process-submission.mjs \
             --body /tmp/issue-body.txt \
             --number "${{ github.event.issue.number }}" \
+            --labels "$LABELS" \
             --report /tmp/report.md \
             --gate /tmp/gate.json
           code=$?
@@ -180,9 +195,33 @@ jobs:
         if: steps.land.outputs.landed == 'yes'
         env:
           GH_TOKEN: ${{ github.token }}
+          APPROVED: ${{ contains(github.event.issue.labels.*.name, 'approved') }}
         run: |
-          gh issue close "${{ github.event.issue.number }}" \
-            --comment "Merged automatically: the order validated and left the verification metric intact. Thank you."
+          if [ "$APPROVED" = "true" ]; then
+            note="Approved and landed. The masterlist was regenerated from the whole corpus in the same commit. Thank you."
+          else
+            note="Merged automatically: the order validated and left the verification metric intact. Thank you."
+          fi
+          gh issue close "${{ github.event.issue.number }}" --comment "$note"
+
+      # An order held for review already has a pull request carrying its corpus
+      # file. Approving lands that order on main by the direct path, so the
+      # branch has nothing left to contribute and merging it now would add the
+      # very commit this exists to avoid: an order the README does not yet
+      # describe, failing its own checks for good.
+      - name: Retire the superseded pull request
+        if: steps.land.outputs.landed == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="submission/issue-${{ github.event.issue.number }}"
+          if gh pr view "$BRANCH" --json number >/dev/null 2>&1; then
+            gh pr close "$BRANCH" --delete-branch \
+              --comment "Landed directly on main, with the masterlist regenerated in the same commit. Nothing here is lost: this branch carried only the corpus file." \
+              || echo "could not close the pull request for $BRANCH"
+          else
+            echo "no open pull request for $BRANCH"
+          fi
 
       - name: Open a pull request for review
         if: steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge != 'true'

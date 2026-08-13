@@ -43,6 +43,39 @@ const reportFile = opt('report', 'submission-report.md');
 const gateFile = opt('gate', 'submission-gate.json');
 
 /**
+ * The label a maintainer adds once they have read an order that was held.
+ *
+ * Landing a reviewed order by merging its pull request produces a commit that
+ * holds an order the README does not describe, because the pull request carries
+ * only the corpus file. The checks correctly fail on it, the regeneration that
+ * follows repairs main, and the failing mark stays on the commit for good. It
+ * also fires on the pull request itself, so red meant nothing at the moment
+ * somebody was deciding whether to merge.
+ *
+ * Approving on the issue instead replays the submission through the same path a
+ * clean working order takes, which commits the order and everything derived from
+ * it together. There is no intermediate state to be inconsistent, and no branch
+ * to merge, so two orders approved at once cannot collide on provenance.json.
+ */
+const REVIEW_LABEL = 'approved';
+
+/**
+ * Label names arrive as a JSON array. A label may contain a comma, so a joined
+ * string cannot be split back apart without guessing, and the guess would decide
+ * whether an order lands. The comma fallback is for running this by hand.
+ */
+const labelNames = raw => {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) return parsed.map(String);
+  } catch { /* not JSON, fall through */ }
+  return raw.split(',');
+};
+const labels = new Set(labelNames(opt('labels')).map(s => s.trim()).filter(Boolean));
+const reviewApproved = labels.has(REVIEW_LABEL);
+
+/**
  * How far agreement with working orders may fall before a submission needs a
  * human. Small movements are noise, since adding an order also changes the
  * set being measured; a real regression is much larger than this.
@@ -520,13 +553,20 @@ const delta = baseline.agreement !== null && after.agreement !== null
  * act on, and the caution flags they raise are shown to users as warnings.
  */
 const metricHeld = delta !== null && delta >= -MAX_AGREEMENT_DROP;
-const autoMerge = working && metricHeld;
+
+/**
+ * Approval overrides the hold, never the validation. An order a person has read
+ * and wants kept still has to parse, still has to be new, and still has to
+ * survive every check above; all this decides is that it no longer waits.
+ */
+const autoMerge = (working && metricHeld) || reviewApproved;
 const gate = {
   working,
   agreementBefore: baseline.agreement,
   agreementAfter: after.agreement,
   delta,
   autoMerge,
+  approvedByReview: reviewApproved,
   heldBecause: autoMerge
     ? null
     : !working
@@ -604,9 +644,11 @@ finish(true, [
     ? '- Agreement could not be measured.'
     : `- Agreement with working orders: ${baseline.agreement}% to ${after.agreement}% ` +
       `(${delta >= 0 ? '+' : ''}${delta})`,
-  `- ${autoMerge
-    ? 'Within tolerance, so this lands automatically.'
-    : `Held for review: ${gate.heldBecause}.`}`,
+  `- ${reviewApproved
+    ? 'Approved by a maintainer, so this lands with the masterlist regenerated in the same commit.'
+    : autoMerge
+      ? 'Within tolerance, so this lands automatically.'
+      : `Held for review: ${gate.heldBecause}.`}`,
   '',
   '### Verification after this submission',
   '',

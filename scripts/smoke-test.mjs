@@ -1642,6 +1642,55 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * A reviewed order lands by the same path a clean one does.
+ *
+ * Merging a submission branch instead produces a commit carrying an order the
+ * README does not describe, because the branch carries only the corpus file.
+ * That commit fails its own checks permanently, and the same failure fires on
+ * the pull request, so red meant nothing while somebody was deciding whether to
+ * merge it. Approving on the issue replays the order through the direct path,
+ * which commits the order and everything derived from it together.
+ *
+ * Asserted against the source because the alternative is noticing the next time
+ * three merges go red.
+ */
+{
+  console.log('');
+  console.log('Reviewed submissions');
+
+  const processor = fs.readFileSync('scripts/process-submission.mjs', 'utf8');
+  const workflow = fs.readFileSync('.github/workflows/process-submission.yml', 'utf8');
+
+  const checks = [
+    [
+      'the issue labels reach the gate',
+      workflow.includes('--labels') && /LABELS:\s*\$\{\{\s*toJSON/.test(workflow),
+    ],
+    [
+      'approval overrides the hold',
+      /const autoMerge = \(working && metricHeld\) \|\| reviewApproved;/.test(processor),
+    ],
+    [
+      'approval does not override validation',
+      workflow.includes("steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge == 'true'"),
+    ],
+    [
+      'the superseded pull request is retired',
+      workflow.includes('gh pr close'),
+    ],
+  ];
+
+  for (const [what, held] of checks) {
+    if (held) {
+      console.log(`  ok    ${what}`);
+    } else {
+      failures++;
+      console.log(`  FAIL  ${what}`);
+    }
+  }
+}
+
+/**
  * Figures quoted in the README must match the masterlist they describe.
  *
  * README is the first thing anyone reads and the last thing anyone regenerates.

@@ -121,12 +121,29 @@ sequenceDiagram
     else Broken, or the metric drops
         A->>M: Corpus-only pull request
         A->>U: Comment with the diagnosis
+        Note over A,M: A maintainer labels the issue `approved`
+        A->>M: Replay, then commit directly
+        A->>A: Close the superseded pull request
     end
 ```
 
 The gate is deliberately narrow: a working order that parses, is not a
 duplicate, and does not drop agreement by more than one point lands on its own.
 Everything else waits for a person.
+
+A held order is accepted by labelling its issue `approved`, not by merging the
+pull request it opened. Both routes then land the same way: one commit holding
+the order, the masterlist rebuilt from the whole corpus, and the figures the
+README quotes. Approval moves only the hold. The order still has to parse, still
+has to be new, and still has to pass every check, so a label cannot land
+something intake would refuse.
+
+Merging the branch instead committed an order the README did not describe, since
+the branch carries only the corpus file. Its checks failed on it permanently,
+the regeneration that followed repaired main in a second commit, and the same
+failure fired on the pull request, so red carried no information at the moment
+somebody was deciding whether to merge. Nothing is lost by closing the branch:
+the corpus file is what it carried, and that is what lands.
 
 An order can arrive in the issue three ways, and intake tries each in turn
 until one parses, because only parsing tells a populated field from a useful
@@ -146,7 +163,13 @@ than thanking its submitter, which is what it used to do.
 
 Re-adding the `load-order-submission` label replays an issue through current
 intake. That is how orders rejected by an older version get another run
-without asking anyone to file again.
+without asking anyone to file again, and it is the same lever `approved` pulls:
+labelling replays the submission, and the label is what tells the gate the hold
+has been answered.
+
+Both labels have to exist in the repository. GitHub drops a label an issue asks
+for when the repository does not have one by that name, silently and with no
+error anywhere, which is how `wrong-placement` sat unread for its whole life.
 
 ## Where explanation lives
 
