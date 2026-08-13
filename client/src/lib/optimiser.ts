@@ -199,14 +199,26 @@ function indexMasterlist(masterlist: Masterlist) {
   const byUuid = new Map<string, MasterlistPlugin>();
   const byName = new Map<string, MasterlistPlugin>();
   const byFolder = new Map<string, MasterlistPlugin>();
+  const verifiedNames = new Set<string>();
   for (const p of masterlist.plugins ?? []) {
     if (p.uuid) byUuid.set(p.uuid, p);
     const key = p.name.toLowerCase().replace(/[^a-z0-9]/g, '');
     if (key && !byName.has(key)) byName.set(key, p);
     const folder = (p.folder ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
     if (folder && !byFolder.has(folder)) byFolder.set(folder, p);
+    /*
+     * One name is carried by two real UUIDs often enough to matter, and byName
+     * keeps only the first row it meets, so the second is invisible here. That
+     * is tolerable for placement, where either row answers the question, and
+     * wrong for the never-verified caution, which would warn about a mod while
+     * the community demonstrably runs something of that name successfully.
+     * Deciding the two rows are one mod is a much stronger claim than this, and
+     * is deliberately still open; all this records is that the name works for
+     * somebody.
+     */
+    if (key && (p.evidence?.workingInstalls ?? 0) > 0) verifiedNames.add(key);
   }
-  return { byUuid, byName, byFolder };
+  return { byUuid, byName, byFolder, verifiedNames };
 }
 
 /**
@@ -261,7 +273,7 @@ export function sortLoadOrder(
   assigned?: Record<string, number>,
 ): SortResult {
   const rank = rankGroups(masterlist);
-  const { byUuid, byName, byFolder } = indexMasterlist(masterlist);
+  const { byUuid, byName, byFolder, verifiedNames } = indexMasterlist(masterlist);
   /*
    * Own properties only. A parsed JSON object still inherits Object.prototype,
    * so a mod requiring "constructor" would otherwise read a function out of
@@ -810,13 +822,23 @@ export function sortLoadOrder(
    * Mods the community has only ever run in orders reported as broken. Not
    * proof of fault, and deliberately worded that way, but it is the first
    * place to look when an order misbehaves for no obvious reason.
+   *
+   * Two separate orders, not one. On a single sighting this fired on 496 mods,
+   * of which only 35 had ever been seen this way twice. The rest were mods that
+   * happened to sit in one unlucky order, and a warning that points at 496
+   * things points at nothing. The corpus also grows a little more broken with
+   * every held submission, so a one-sighting bar gets noisier over time while a
+   * two-sighting one gets more selective.
    */
+  const CAUTION_MIN_BROKEN_ORDERS = 2;
   const neverVerified = sorted.filter(m => {
-    const entry = byUuid.get(m.uuid)
-      ?? byName.get(m.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
+    const key = m.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const entry = byUuid.get(m.uuid) ?? byName.get(key);
     return entry?.evidence
-      && (entry.evidence.brokenInstalls ?? 0) > 0
-      && entry.evidence.workingInstalls === 0;
+      && (entry.evidence.brokenInstalls ?? 0) >= CAUTION_MIN_BROKEN_ORDERS
+      && entry.evidence.workingInstalls === 0
+      // A row of the same name with working installs answers the caution.
+      && !verifiedNames.has(key);
   });
   if (neverVerified.length) {
     issues.push({
@@ -824,10 +846,12 @@ export function sortLoadOrder(
       kind: 'never-verified',
       message:
         `${neverVerified.length} mod${neverVerified.length > 1 ? 's have' : ' has'} only ` +
-        'appeared in load orders someone reported as broken, never in one confirmed working.',
+        'appeared in load orders people reported as broken, never in one confirmed working.',
       uuids: neverVerified.map(m => m.uuid),
       resolution:
-        'That is not proof of fault, but if this order misbehaves, start here.',
+        'That is not proof of fault, but if this order misbehaves, start here. '
+        + `Only mods seen this way in ${CAUTION_MIN_BROKEN_ORDERS} or more separate orders are `
+        + 'listed, so one unlucky report does not raise it.',
     });
   }
 

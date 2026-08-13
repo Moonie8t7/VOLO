@@ -925,7 +925,12 @@ function record(uuid) {
       dependencies: new Map(),
       featureFlags: new Set(),
       author: null, version: null, folder: null, description: null, metaFrom: null,
-      seenIn: new Set(), seenInWorking: 0, seenInBroken: 0, lastGameBuild: null,
+      // Sets of filenames, not counters. An order may list the same mod twice,
+      // and counting entries made one order look like two: a mod verified once
+      // was reported as verified twice, and a caution that asks to have been
+      // seen in two separate orders would have been satisfied by one order
+      // listing it twice. What matters is how many orders agree, so count them.
+      seenIn: new Set(), seenInWorking: new Set(), seenInBroken: new Set(), lastGameBuild: null,
     });
   }
   return mods.get(uuid);
@@ -973,8 +978,8 @@ for (const order of orders) {
     const r = record(keyOf(entry));
     r.names.set(name, (r.names.get(name) || 0) + 1);
     r.seenIn.add(order.file);
-    if (order.label === 'working') r.seenInWorking++;
-    if (order.label === 'broken') r.seenInBroken++;
+    if (order.label === 'working') r.seenInWorking.add(order.file);
+    if (order.label === 'broken') r.seenInBroken.add(order.file);
     if (order.gameBuild && compareBuilds(order.gameBuild, r.lastGameBuild ?? '0') > 0) {
       r.lastGameBuild = order.gameBuild;
     }
@@ -1073,8 +1078,8 @@ const canonicalKey = k => mergedInto.get(k) ?? k;
     for (const [u, n] of r.dependencies) if (!target.dependencies.has(u)) target.dependencies.set(u, n);
     for (const f of r.featureFlags) target.featureFlags.add(f);
     for (const f of r.seenIn) target.seenIn.add(f);
-    target.seenInWorking += r.seenInWorking;
-    target.seenInBroken += r.seenInBroken;
+    for (const f of r.seenInWorking) target.seenInWorking.add(f);
+    for (const f of r.seenInBroken) target.seenInBroken.add(f);
     target.author ??= r.author; target.version ??= r.version;
     target.folder ??= r.folder; target.description ??= r.description;
     if (r.lastGameBuild && compareBuilds(r.lastGameBuild, target.lastGameBuild ?? '0') > 0) {
@@ -1206,11 +1211,13 @@ for (const r of mods.values()) {
   plugin.evidence = {
     source: confidence,
     installs: r.seenIn.size,
-    workingInstalls: r.seenInWorking,
-    // Seen in an order the submitter reported as broken. Together with
-    // workingInstalls of zero this is the "never verified anywhere" caution
-    // signal, the one thing the broken orders measurably taught us.
-    brokenInstalls: r.seenInBroken,
+    workingInstalls: r.seenInWorking.size,
+    // Orders the submitter reported as broken that contain this mod. Together
+    // with workingInstalls of zero this is the "never verified anywhere"
+    // caution signal, the one thing the broken orders measurably taught us.
+    // Counted per order rather than per entry, because the caution asks how
+    // many people saw it go wrong, not how many lines it occupied.
+    brokenInstalls: r.seenInBroken.size,
   };
   plugins.push(plugin);
 }
