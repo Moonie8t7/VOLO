@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-13T23:26:08.747Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-13T23:42:33.939Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -172,5 +172,4 @@ would otherwise be formatted into a message and dropped without being counted.
 ## Files skipped
 
 - `Current_22.11.2025_10-32-17.json`: duplicate of another file
-- `VOLO Cleanup.json`: not a load order
 - `provenance.json`: not a load order
