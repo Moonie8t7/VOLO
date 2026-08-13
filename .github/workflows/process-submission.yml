@@ -224,7 +224,11 @@ jobs:
       # very commit this exists to avoid: an order the README does not yet
       # describe, failing its own checks for good.
       - name: Retire the superseded pull request
-        if: steps.land.outputs.landed == 'yes'
+        # `always()` because a bare `if:` means `success() && ...`, which tied
+        # this to the cosmetic step above it. If closing the issue failed, the
+        # branch stayed open and mergeable, and merging it is the one thing this
+        # exists to prevent.
+        if: always() && steps.land.outputs.landed == 'yes'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -236,6 +240,21 @@ jobs:
           else
             echo "no open pull request for $BRANCH"
           fi
+
+      # Approval is spent once it has landed something.
+      #
+      # The label is a grant attached to an issue, and an issue can be edited
+      # after it is given. Intake replays on `edited`, so an approval left in
+      # place would wave through whatever the body said next, without anyone
+      # reading it. What a person approved was the order in front of them, not
+      # the issue for the rest of its life.
+      - name: Spend the approval
+        if: always() && steps.land.outputs.landed == 'yes' && contains(github.event.issue.labels.*.name, 'approved')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue edit "${{ github.event.issue.number }}" --remove-label approved \
+            || echo "could not remove the approved label"
 
       - name: Open a pull request for review
         if: steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge != 'true'

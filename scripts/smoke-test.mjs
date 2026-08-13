@@ -1687,6 +1687,24 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
      * reported as landed and the submitter was thanked for nothing. Issue #67
      * is the one that was lost.
      */
+    /*
+     * Approval is spent when it lands something. The label sits on an issue, an
+     * issue can be edited afterwards, and intake replays on `edited`, so an
+     * approval left in place approves whatever the body says next.
+     */
+    [
+      'approval is removed once it has landed an order',
+      workflow.includes('--remove-label approved'),
+    ],
+    /*
+     * And retiring the branch cannot hang off the step that closes the issue. A
+     * bare `if:` means `success() && ...`, so a failed comment left the branch
+     * open and mergeable, which is the one outcome this is here to prevent.
+     */
+    [
+      'the branch is retired even if closing the issue fails',
+      /if: always\(\) && steps\.land\.outputs\.landed == 'yes'/.test(workflow),
+    ],
     [
       'the already-landed guard tests the order file',
       workflow.includes("grep -v '/provenance\\.json$'")
