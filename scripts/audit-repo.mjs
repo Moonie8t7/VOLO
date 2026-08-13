@@ -90,6 +90,9 @@ const VERBATIM = /^(Load Orders - Public Submitted|nexus\/|modio\/|masterlist\/(
 /** Test fixtures deliberately contain the shapes the scrubbers must catch. */
 const FIXTURES = /^scripts\/(smoke-test|audit-repo)\.mjs$/;
 
+/** Where submitted orders live, and the one place a JSON file must be an order. */
+const CORPUS = 'Load Orders - Public Submitted';
+
 const stats = { tracked: files.length, binary: 0, text: 0, json: 0, markdown: 0, links: 0 };
 const problems = [];
 const note = (file, kind, detail = '') => problems.push({ file, kind, detail });
@@ -121,7 +124,22 @@ for (const file of files) {
   if (path.extname(file) === '.json') {
     stats.json++;
     try {
-      JSON.parse(text);
+      const parsed = JSON.parse(text);
+      /*
+       * A file in the corpus has to be a load order, not merely valid JSON.
+       * A Google Apps Script project export sat there for two weeks because
+       * every check that looked at it asked only whether it parsed. It did.
+       * The script it exported filtered a Drive folder by extension, that
+       * folder was where the orders were kept, and the whole folder was
+       * imported at re-platform, so its own rule let it through twice.
+       */
+      if (file.startsWith(CORPUS) && path.basename(file) !== 'provenance.json') {
+        const entries = parsed.Order ?? parsed.Mods ?? parsed.mods
+          ?? (Array.isArray(parsed) ? parsed : null);
+        if (!Array.isArray(entries) || !entries.length) {
+          note(file, 'not a load order', `keys: ${Object.keys(parsed).slice(0, 4).join(',')}`);
+        }
+      }
     } catch (err) {
       note(file, 'invalid JSON', err.message.slice(0, 60));
     }
