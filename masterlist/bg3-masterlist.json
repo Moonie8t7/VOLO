@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-13T13:17:09.208Z",
+  "generated": "2026-08-13T13:22:57.286Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -26,8 +26,8 @@
     ]
   },
   "provenance": {
-    "ordersAnalysed": 73,
-    "working": 63,
+    "ordersAnalysed": 74,
+    "working": 64,
     "broken": 7,
     "unlabelled": 3,
     "externalDependencyEdges": 516,
@@ -255,8 +255,8 @@
       "divider": 1,
       "evidence": {
         "source": "curated",
-        "installs": 71,
-        "workingInstalls": 61,
+        "installs": 72,
+        "workingInstalls": 62,
         "brokenInstalls": 7
       }
     },
@@ -274,8 +274,8 @@
       "divider": 14,
       "evidence": {
         "source": "curated",
-        "installs": 67,
-        "workingInstalls": 58,
+        "installs": 68,
+        "workingInstalls": 59,
         "brokenInstalls": 6
       },
       "usesScriptExtender": true
@@ -291,8 +291,8 @@
       "divider": 3,
       "evidence": {
         "source": "section-majority",
-        "installs": 61,
-        "workingInstalls": 53,
+        "installs": 62,
+        "workingInstalls": 54,
         "brokenInstalls": 6
       },
       "dependencies": [
@@ -334,8 +334,8 @@
       "divider": 8,
       "evidence": {
         "source": "curated",
-        "installs": 54,
-        "workingInstalls": 45,
+        "installs": 55,
+        "workingInstalls": 46,
         "brokenInstalls": 6
       },
       "usesScriptExtender": true
@@ -360,8 +360,8 @@
       "divider": 105,
       "evidence": {
         "source": "curated",
-        "installs": 53,
-        "workingInstalls": 45,
+        "installs": 54,
+        "workingInstalls": 46,
         "brokenInstalls": 5
       },
       "usesScriptExtender": true,
@@ -386,8 +386,8 @@
       "divider": 47,
       "evidence": {
         "source": "section-majority",
-        "installs": 52,
-        "workingInstalls": 45,
+        "installs": 53,
+        "workingInstalls": 46,
         "brokenInstalls": 6
       },
       "usesScriptExtender": true
@@ -765,8 +765,8 @@
       "divider": 0,
       "evidence": {
         "source": "section-majority",
-        "installs": 35,
-        "workingInstalls": 31,
+        "installs": 36,
+        "workingInstalls": 32,
         "brokenInstalls": 3
       },
       "usesScriptExtender": true
@@ -801,6 +801,22 @@
         "installs": 34,
         "workingInstalls": 31,
         "brokenInstalls": 2
+      }
+    },
+    {
+      "name": "HT_Lesser Restoration: Assorted Bug Fixes",
+      "uuid": "2653082c-88d7-62dd-da48-b32be67c033b",
+      "group": "Bug Fixes",
+      "folder": "HT_LesserRestoration_2653082c-88d7-62dd-da48-b32be67c033b",
+      "author": "HyperspaceTowel",
+      "version": "3.0.0.5",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 17,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 34,
+        "workingInstalls": 30,
+        "brokenInstalls": 3
       }
     },
     {
@@ -916,22 +932,6 @@
       }
     },
     {
-      "name": "HT_Lesser Restoration: Assorted Bug Fixes",
-      "uuid": "2653082c-88d7-62dd-da48-b32be67c033b",
-      "group": "Bug Fixes",
-      "folder": "HT_LesserRestoration_2653082c-88d7-62dd-da48-b32be67c033b",
-      "author": "HyperspaceTowel",
-      "version": "3.0.0.5",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 17,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 33,
-        "workingInstalls": 29,
-        "brokenInstalls": 3
-      }
-    },
-    {
       "name": "AV Item Shipment Framework",
       "uuid": "e6333436-9cf0-4464-aaf2-39246292575e",
       "group": "Resources",
@@ -976,6 +976,31 @@
       "divider": 16,
       "evidence": {
         "source": "section-majority",
+        "installs": 32,
+        "workingInstalls": 30,
+        "brokenInstalls": 2
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "Expansion",
+      "uuid": "a2c4b0fc-e745-41df-81b7-fa53950d86a0",
+      "group": "Resources",
+      "author": "Celes/DiZ",
+      "version": "1.7.3.10",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 16,
+      "evidence": {
+        "source": "section",
         "installs": 32,
         "workingInstalls": 30,
         "brokenInstalls": 2
@@ -1067,31 +1092,6 @@
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 58,
-      "evidence": {
-        "source": "section",
-        "installs": 31,
-        "workingInstalls": 29,
-        "brokenInstalls": 2
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "Expansion",
-      "uuid": "a2c4b0fc-e745-41df-81b7-fa53950d86a0",
-      "group": "Resources",
-      "author": "Celes/DiZ",
-      "version": "1.7.3.10",
-      "dependencies": [
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "Mod Configuration Menu"
-        }
-      ],
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 16,
       "evidence": {
         "source": "section",
         "installs": 31,
@@ -1458,6 +1458,22 @@
       }
     },
     {
+      "name": "HT_Epilogue Bug Fixes",
+      "uuid": "6f8c201d-27b1-417c-34d8-e2c155b6b39c",
+      "group": "Gameplay",
+      "folder": "HT_EpilogueFixes",
+      "author": "HyperspaceTowel",
+      "version": "1.0.2.1",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 20,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 28,
+        "workingInstalls": 25,
+        "brokenInstalls": 3
+      }
+    },
+    {
       "name": "Warlock Spell List Fixer",
       "uuid": "da838ab2-4d4b-4ca2-9e11-0257a03b13fc",
       "group": "Classes",
@@ -1591,19 +1607,17 @@
       "usesScriptExtender": true
     },
     {
-      "name": "HT_Epilogue Bug Fixes",
-      "uuid": "6f8c201d-27b1-417c-34d8-e2c155b6b39c",
-      "group": "Gameplay",
-      "folder": "HT_EpilogueFixes",
-      "author": "HyperspaceTowel",
-      "version": "1.0.2.1",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 20,
+      "name": "Item and Spell Bug Fixes",
+      "uuid": "010e73d5-9342-e528-eb01-8289c03ea7cb",
+      "group": "Clothing",
+      "folder": "ItemBugFix_010e73d5-9342-e528-eb01-8289c03ea7cb",
+      "author": "Rydiak",
+      "divider": 37,
       "evidence": {
         "source": "section-majority",
         "installs": 27,
-        "workingInstalls": 24,
-        "brokenInstalls": 3
+        "workingInstalls": 26,
+        "brokenInstalls": 1
       }
     },
     {
@@ -1775,20 +1789,6 @@
       "divider": 2,
       "evidence": {
         "source": "section",
-        "installs": 26,
-        "workingInstalls": 25,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Item and Spell Bug Fixes",
-      "uuid": "010e73d5-9342-e528-eb01-8289c03ea7cb",
-      "group": "Clothing",
-      "folder": "ItemBugFix_010e73d5-9342-e528-eb01-8289c03ea7cb",
-      "author": "Rydiak",
-      "divider": 37,
-      "evidence": {
-        "source": "section-majority",
         "installs": 26,
         "workingInstalls": 25,
         "brokenInstalls": 1
@@ -3505,6 +3505,19 @@
       }
     },
     {
+      "name": "Raphael, Restored - Last Light Fixes",
+      "uuid": "c72a3d25-aed2-b011-3cd9-5ee0618e99a2",
+      "group": "Bug Fixes",
+      "folder": "RaphaelRestored_c72a3d25-aed2-b011-3cd9-5ee0618e99a2",
+      "divider": 17,
+      "evidence": {
+        "source": "section",
+        "installs": 18,
+        "workingInstalls": 16,
+        "brokenInstalls": 1
+      }
+    },
+    {
       "name": "Saer's Horns",
       "uuid": "695a5fb0-4348-4ae6-83ef-d1f8f533484a",
       "group": "Character Customization",
@@ -3571,6 +3584,18 @@
         "installs": 18,
         "workingInstalls": 17,
         "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Various Dialogue Fixes by Kelo",
+      "uuid": "0f3fcf8c-2e4f-411e-84c3-b89a64905293",
+      "group": "Bug Fixes",
+      "divider": 22,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 18,
+        "workingInstalls": 15,
+        "brokenInstalls": 2
       }
     },
     {
@@ -4021,31 +4046,6 @@
         "installs": 17,
         "workingInstalls": 17,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Raphael, Restored - Last Light Fixes",
-      "uuid": "c72a3d25-aed2-b011-3cd9-5ee0618e99a2",
-      "group": "Bug Fixes",
-      "folder": "RaphaelRestored_c72a3d25-aed2-b011-3cd9-5ee0618e99a2",
-      "divider": 17,
-      "evidence": {
-        "source": "section",
-        "installs": 17,
-        "workingInstalls": 15,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "Various Dialogue Fixes by Kelo",
-      "uuid": "0f3fcf8c-2e4f-411e-84c3-b89a64905293",
-      "group": "Bug Fixes",
-      "divider": 22,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 17,
-        "workingInstalls": 14,
-        "brokenInstalls": 2
       }
     },
     {
@@ -6479,6 +6479,24 @@
       }
     },
     {
+      "name": "Ultimate Cut Content Restoration Mod",
+      "uuid": "296545d8-50a9-4e5f-83f2-d5e5ba52ee4b",
+      "group": "Equipment",
+      "divider": 34.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 13,
+        "workingInstalls": 13,
+        "brokenInstalls": 0
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
+    },
+    {
       "name": "UtutsCoreLibrary",
       "uuid": "2da3bc36-b4b2-4652-a611-3fe16527417e",
       "group": "Resources",
@@ -6577,6 +6595,22 @@
         "source": "section",
         "installs": 12,
         "workingInstalls": 9,
+        "brokenInstalls": 2
+      }
+    },
+    {
+      "name": "A Beautiful Webbing - Minthara's Romance Unlocked",
+      "uuid": "344c8115-2630-4934-31a1-33adf8f4d58e",
+      "group": "Bug Fixes",
+      "folder": "NightWithDrow_344c8115-2630-4934-31a1-33adf8f4d58e",
+      "author": "whatsontheflip",
+      "version": "4.0.0.1",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 102.5,
+      "evidence": {
+        "source": "section",
+        "installs": 12,
+        "workingInstalls": 10,
         "brokenInstalls": 2
       }
     },
@@ -7142,6 +7176,22 @@
       }
     },
     {
+      "name": "HT_Sussur Dialogue Bug Fixes",
+      "uuid": "93b85fb1-2e45-4926-91e2-f1a1a6da9b2f",
+      "group": "Gameplay",
+      "folder": "HT_SussurBugFix",
+      "author": "HyperspaceTowel",
+      "version": "1.0.0.3",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 17,
+      "evidence": {
+        "source": "section",
+        "installs": 12,
+        "workingInstalls": 10,
+        "brokenInstalls": 2
+      }
+    },
+    {
       "name": "Icon_Library_SHV",
       "uuid": "e3df13c4-2180-46e6-af53-77c64354f30f",
       "group": "Resources",
@@ -7544,6 +7594,26 @@
       }
     },
     {
+      "name": "Speak With Dead Always Highlights Corpses",
+      "uuid": "972dab31-891d-4ca6-ab84-bcdbf21b3634",
+      "group": "Bug Fixes",
+      "folder": "SpeakWithDeadAlwaysHighlightsCorpses",
+      "author": "Volitio",
+      "version": "1.0.0.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 19,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 12,
+        "workingInstalls": 12,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Spells Extra - Library",
       "uuid": "7a3e31e4-502b-43d7-915c-53c58860fa30",
       "group": "Resources",
@@ -7606,24 +7676,6 @@
         "workingInstalls": 12,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "Ultimate Cut Content Restoration Mod",
-      "uuid": "296545d8-50a9-4e5f-83f2-d5e5ba52ee4b",
-      "group": "Equipment",
-      "divider": 34.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 12,
-        "workingInstalls": 12,
-        "brokenInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
     },
     {
       "name": "Veils of Faerun - Beard Slot",
@@ -7689,22 +7741,6 @@
         "installs": 11,
         "workingInstalls": 11,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "A Beautiful Webbing - Minthara's Romance Unlocked",
-      "uuid": "344c8115-2630-4934-31a1-33adf8f4d58e",
-      "group": "Bug Fixes",
-      "folder": "NightWithDrow_344c8115-2630-4934-31a1-33adf8f4d58e",
-      "author": "whatsontheflip",
-      "version": "4.0.0.1",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 102.5,
-      "evidence": {
-        "source": "section",
-        "installs": 11,
-        "workingInstalls": 9,
-        "brokenInstalls": 2
       }
     },
     {
@@ -8234,22 +8270,6 @@
         "installs": 11,
         "workingInstalls": 11,
         "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "HT_Sussur Dialogue Bug Fixes",
-      "uuid": "93b85fb1-2e45-4926-91e2-f1a1a6da9b2f",
-      "group": "Gameplay",
-      "folder": "HT_SussurBugFix",
-      "author": "HyperspaceTowel",
-      "version": "1.0.0.3",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 17,
-      "evidence": {
-        "source": "section",
-        "installs": 11,
-        "workingInstalls": 9,
-        "brokenInstalls": 2
       }
     },
     {
@@ -8803,26 +8823,6 @@
         "installs": 11,
         "workingInstalls": 10,
         "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "Speak With Dead Always Highlights Corpses",
-      "uuid": "972dab31-891d-4ca6-ab84-bcdbf21b3634",
-      "group": "Bug Fixes",
-      "folder": "SpeakWithDeadAlwaysHighlightsCorpses",
-      "author": "Volitio",
-      "version": "1.0.0.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 19,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 11,
-        "workingInstalls": 11,
-        "brokenInstalls": 0
       },
       "usesScriptExtender": true
     },
@@ -9385,6 +9385,18 @@
       "uuid": "442d5b05-28f5-ea9f-8540-e22fa9e4f4d6",
       "group": "Classes",
       "divider": 58,
+      "evidence": {
+        "source": "section",
+        "installs": 10,
+        "workingInstalls": 9,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "Companion Combat Death Reactivity",
+      "uuid": "2e5c269b-aa2a-4b68-b6b1-9ddb31067ff7",
+      "group": "Quests",
+      "divider": 22,
       "evidence": {
         "source": "section",
         "installs": 10,
@@ -11317,18 +11329,6 @@
       }
     },
     {
-      "name": "Companion Combat Death Reactivity",
-      "uuid": "2e5c269b-aa2a-4b68-b6b1-9ddb31067ff7",
-      "group": "Quests",
-      "divider": 22,
-      "evidence": {
-        "source": "section",
-        "installs": 9,
-        "workingInstalls": 8,
-        "brokenInstalls": 1
-      }
-    },
-    {
       "name": "Darker Cazador's Palace",
       "uuid": "6205a89c-5ec8-281f-2d41-5247c6d853bb",
       "group": "Environment",
@@ -12612,6 +12612,30 @@
       }
     },
     {
+      "name": "True Initiative",
+      "uuid": "de1b71ed-acc7-4364-82df-4a91e4cf86be",
+      "group": "Classes",
+      "divider": 60,
+      "evidence": {
+        "source": "section",
+        "installs": 9,
+        "workingInstalls": 8,
+        "brokenInstalls": 1
+      }
+    },
+    {
+      "name": "True Third-Person Camera",
+      "uuid": "6e84559a-1b7a-4441-bfc6-c2bae5538491",
+      "group": "User Interface",
+      "divider": 5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 9,
+        "workingInstalls": 7,
+        "brokenInstalls": 2
+      }
+    },
+    {
       "name": "Ultimate NPC Stat Overhaul - Lab",
       "uuid": "61e8471b-4eda-4493-829d-e3c29ecc36c3",
       "group": "Gameplay",
@@ -13607,6 +13631,32 @@
       }
     },
     {
+      "name": "Dynamic Camp Supply Cost",
+      "uuid": "6b8a9298-e0bc-402c-b8e9-5c1a5fa556a1",
+      "group": "Gameplay",
+      "folder": "DynamicCampSupplyCost",
+      "author": "Volitio",
+      "version": "1.0.0.0",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 8,
+        "workingInstalls": 8,
+        "brokenInstalls": 0
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "EasyPickpocketAndSteal",
       "uuid": "6cfffc9a-0efc-df8c-b856-99ba63721096",
       "group": "Gameplay",
@@ -13974,6 +14024,18 @@
         "installs": 8,
         "workingInstalls": 5,
         "brokenInstalls": 2
+      }
+    },
+    {
+      "name": "Just Bugs Me: QoL, item, tooltip & pedantic fixes!",
+      "uuid": "d85305a3-0ba8-45f3-fba7-28ed9b71bee4",
+      "group": "Bug Fixes",
+      "divider": 102.5,
+      "evidence": {
+        "source": "section",
+        "installs": 8,
+        "workingInstalls": 8,
+        "brokenInstalls": 0
       }
     },
     {
@@ -15024,30 +15086,6 @@
         "installs": 8,
         "workingInstalls": 7,
         "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "True Initiative",
-      "uuid": "de1b71ed-acc7-4364-82df-4a91e4cf86be",
-      "group": "Classes",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 8,
-        "workingInstalls": 7,
-        "brokenInstalls": 1
-      }
-    },
-    {
-      "name": "True Third-Person Camera",
-      "uuid": "6e84559a-1b7a-4441-bfc6-c2bae5538491",
-      "group": "User Interface",
-      "divider": 5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 8,
-        "workingInstalls": 6,
-        "brokenInstalls": 2
       }
     },
     {
@@ -16279,32 +16317,6 @@
       }
     },
     {
-      "name": "Dynamic Camp Supply Cost",
-      "uuid": "6b8a9298-e0bc-402c-b8e9-5c1a5fa556a1",
-      "group": "Gameplay",
-      "folder": "DynamicCampSupplyCost",
-      "author": "Volitio",
-      "version": "1.0.0.0",
-      "dependencies": [
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "Mod Configuration Menu"
-        }
-      ],
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 18.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 7,
-        "workingInstalls": 7,
-        "brokenInstalls": 0
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "Dynamic Wildheart",
       "uuid": "dbf0b4ee-5614-4b05-b77c-b71ec8cf9eae",
       "group": "Classes",
@@ -16907,6 +16919,26 @@
       }
     },
     {
+      "name": "Improved Scroll Tooltips",
+      "uuid": "b9eafa22-3081-46b8-b908-520afc5b8af3",
+      "group": "Equipment",
+      "folder": "ImprovedScrollTooltips",
+      "author": "sowww",
+      "version": "1.0.0.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 19,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 6,
+        "brokenInstalls": 1
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Initiative Variants - MCM - A",
       "uuid": "163a16e7-7e92-475d-a979-24de44fdd9d1",
       "group": "Resources",
@@ -16994,18 +17026,6 @@
       "uuid": "fc5ecba8-bcb0-423f-a0b4-f8537322c7bd",
       "group": "Utilities",
       "divider": 16,
-      "evidence": {
-        "source": "section",
-        "installs": 7,
-        "workingInstalls": 7,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Just Bugs Me: QoL, item, tooltip & pedantic fixes!",
-      "uuid": "d85305a3-0ba8-45f3-fba7-28ed9b71bee4",
-      "group": "Bug Fixes",
-      "divider": 102.5,
       "evidence": {
         "source": "section",
         "installs": 7,
@@ -20676,26 +20696,6 @@
         "workingInstalls": 6,
         "brokenInstalls": 0
       }
-    },
-    {
-      "name": "Improved Scroll Tooltips",
-      "uuid": "b9eafa22-3081-46b8-b908-520afc5b8af3",
-      "group": "Equipment",
-      "folder": "ImprovedScrollTooltips",
-      "author": "sowww",
-      "version": "1.0.0.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 19,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 6,
-        "workingInstalls": 5,
-        "brokenInstalls": 1
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "InterestingOrigins",
@@ -45900,6 +45900,30 @@
       }
     },
     {
+      "name": "Valdacil's Spell Adjustments (5E Spells)",
+      "uuid": "1e06e466-8a66-4d6e-9864-d9deaccd0fcf",
+      "group": "Spells",
+      "divider": 47,
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
+      "name": "Valdacil's Spell Adjustments (Vanilla)",
+      "uuid": "5ca0800a-26e1-4da7-a09d-35632e994b34",
+      "group": "Spells",
+      "divider": 47,
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "Valko",
       "uuid": "664946f3-66fa-428d-9cb2-7566d4f0c758",
       "group": "Heads",
@@ -58623,6 +58647,22 @@
       }
     },
     {
+      "name": "NPC Portrait Fixes",
+      "uuid": "998f9c22-0004-f07a-f794-5a153e978e65",
+      "group": "Gameplay",
+      "folder": "NPC_Portrait_Fixes_998f9c22-0004-f07a-f794-5a153e978e65",
+      "author": "whatsontheflip",
+      "version": "1.0.0.10",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 18.5,
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "NPC Visual Overhaul (All NPC)",
       "uuid": "61c57557-6378-4999-b7fc-b5205dd8ca7e",
       "group": "Companions",
@@ -63506,6 +63546,19 @@
       }
     },
     {
+      "name": "Traps Force Turn Based",
+      "uuid": "97b4e4e7-c5dc-40f0-b1d0-7da98b2a1073",
+      "group": "Gameplay",
+      "author": "Nzx",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0
+      }
+    },
+    {
       "name": "TreeElfArmor",
       "uuid": "bb52e3dd-f92d-a334-0784-883f0ee91f83",
       "group": "Armor",
@@ -63989,32 +64042,8 @@
       }
     },
     {
-      "name": "Valdacil's Spell Adjustments (5E Spells)",
-      "uuid": "1e06e466-8a66-4d6e-9864-d9deaccd0fcf",
-      "group": "Spells",
-      "divider": 47,
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "Valdacil's Spell Adjustments (5E Spells) Up To date Add-on",
       "uuid": "0f4c2eb3-74f4-4d16-a097-048ec2c706de",
-      "group": "Spells",
-      "divider": 47,
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Valdacil's Spell Adjustments (Vanilla)",
-      "uuid": "5ca0800a-26e1-4da7-a09d-35632e994b34",
       "group": "Spells",
       "divider": 47,
       "evidence": {
@@ -94005,22 +94034,6 @@
       }
     },
     {
-      "name": "NPC Portrait Fixes",
-      "uuid": "998f9c22-0004-f07a-f794-5a153e978e65",
-      "group": "Gameplay",
-      "folder": "NPC_Portrait_Fixes_998f9c22-0004-f07a-f794-5a153e978e65",
-      "author": "whatsontheflip",
-      "version": "1.0.0.10",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 18.5,
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
       "name": "NPC Vanilla Visual Restoration",
       "uuid": "043ac516-5c4e-44f0-af77-56f1aa0371ed",
       "group": "NPC",
@@ -105723,19 +105736,6 @@
       "divider": 47,
       "evidence": {
         "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0
-      }
-    },
-    {
-      "name": "Traps Force Turn Based",
-      "uuid": "97b4e4e7-c5dc-40f0-b1d0-7da98b2a1073",
-      "group": "Gameplay",
-      "author": "Nzx",
-      "divider": 18.5,
-      "evidence": {
-        "source": "external-category",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0

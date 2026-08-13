@@ -98,7 +98,7 @@ covers the data licence.
 
 ## Known constraints
 
-54 working orders is a small corpus, and it is the binding constraint on
+55 working orders is a small corpus, and it is the binding constraint on
 quality rather than the algorithm. Several plausible improvements have measured
 *worse* than doing nothing, all recorded in
 [docs/decisions.md](docs/decisions.md). More submissions beat more cleverness.
