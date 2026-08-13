@@ -130,7 +130,21 @@ jobs:
           git add "Load Orders - Public Submitted"
           git diff --cached --quiet && { echo "nothing to land"; exit 1; }
           git diff --cached > /tmp/submission.patch
-          order=$(git diff --cached --name-only | head -1)
+
+          # The order file, not merely the first staged path. Intake also writes
+          # provenance.json, git lists staged paths byte-sorted, and a
+          # `working_` order sorts after `provenance.json` while a
+          # `not_working_` one sorts before it. So on exactly the orders that
+          # land automatically, this picked provenance.json, and the guard below
+          # then asked whether provenance.json was on main. It always is. Any
+          # failed apply was therefore reported as already landed, the issue was
+          # closed with "Merged automatically", and the order was never
+          # committed. Issue #67 was lost that way and nothing noticed.
+          order=$(git diff --cached --name-only | grep -v '/provenance\.json$' | head -1)
+          if [ -z "$order" ]; then
+            echo "no order file staged, only derived state"
+            exit 1
+          fi
 
           # One submission starts two runs. An issue created with its label
           # already on emits `opened` and `labeled` together, and both match,

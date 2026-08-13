@@ -1678,6 +1678,20 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
       'the superseded pull request is retired',
       workflow.includes('gh pr close'),
     ],
+    /*
+     * The already-landed guard has to look at the order, not at whatever git
+     * happens to list first. Intake stages provenance.json alongside the order,
+     * and byte-sorted paths put `working_` after it and `not_working_` before
+     * it, so on exactly the orders that land automatically the guard asked
+     * whether provenance.json was on main. It always is, so a failed apply was
+     * reported as landed and the submitter was thanked for nothing. Issue #67
+     * is the one that was lost.
+     */
+    [
+      'the already-landed guard tests the order file',
+      workflow.includes("grep -v '/provenance\\.json$'")
+        && !workflow.includes('order=$(git diff --cached --name-only | head -1)'),
+    ],
   ];
 
   for (const [what, held] of checks) {
