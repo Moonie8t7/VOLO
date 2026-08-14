@@ -607,8 +607,31 @@ if (!working) {
 const afterList = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 const newMods = afterList.plugins.filter(p => !knownBefore.has(p.uuid));
 const newUnsorted = newMods.filter(p => p.group === 'unsorted');
+/**
+ * The mods a user is actually warned about, under the rule the browser applies.
+ *
+ * This counted every mod seen once in a broken order and never in a working
+ * one, which the caution stopped meaning when it started asking for two
+ * separate broken orders and letting a same-name row with working installs
+ * answer it. The report went on quoting the old population, so a submitter was
+ * told 466 while the site warned about 28. One number, two rules, and the
+ * larger one in the message people read.
+ *
+ * Kept deliberately in step with CAUTION_MIN_BROKEN_ORDERS in
+ * client/src/lib/optimiser.ts. If that bar moves again, this moves with it.
+ */
+const CAUTION_MIN_BROKEN_ORDERS = 2;
+const nameKey = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+const verifiedNames = new Set(
+  afterList.plugins
+    .filter(p => (p.evidence?.workingInstalls ?? 0) > 0)
+    .map(p => nameKey(p.name))
+    .filter(Boolean),
+);
 const cautionMods = afterList.plugins.filter(
-  p => p.evidence.brokenInstalls > 0 && p.evidence.workingInstalls === 0,
+  p => (p.evidence?.brokenInstalls ?? 0) >= CAUTION_MIN_BROKEN_ORDERS
+    && p.evidence?.workingInstalls === 0
+    && !verifiedNames.has(nameKey(p.name)),
 );
 
 /**
@@ -647,7 +670,8 @@ finish(true, [
   '',
   `- Mods known: ${before.plugins.length} to ${afterList.plugins.length} (${newMods.length} new)`,
   `- New mods still uncategorised: ${newUnsorted.length}`,
-  `- Mods now seen only in broken orders: ${cautionMods.length}`,
+  `- Mods now cautioned as never verified: ${cautionMods.length} `
+  + `(seen in ${CAUTION_MIN_BROKEN_ORDERS} or more broken orders and no working one)`,
   '',
   '### Effect on the metric',
   '',

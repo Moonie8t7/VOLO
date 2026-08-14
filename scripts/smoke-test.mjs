@@ -1897,6 +1897,46 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * The caution means the same thing wherever it is counted.
+ *
+ * The browser warns about mods seen in two or more broken orders and never in a
+ * working one, answered by a same-name row that does have working installs. The
+ * submission report quoted a different rule: any mod seen once in a broken order
+ * and never in a working one. So a submitter was told 466 while the site warned
+ * about 28, and the larger figure was the one in the message people read.
+ *
+ * Asserted against the source, because the report is produced inside a workflow
+ * run against a masterlist that does not exist yet at test time.
+ */
+{
+  console.log('');
+  console.log('Caution definition');
+
+  const processor = fs.readFileSync('scripts/process-submission.mjs', 'utf8');
+  const browser = fs.readFileSync('client/src/lib/optimiser.ts', 'utf8');
+
+  const barOf = src => (src.match(/CAUTION_MIN_BROKEN_ORDERS\s*=\s*(\d+)/) ?? [])[1];
+  const inBrowser = barOf(browser);
+  const inReport = barOf(processor);
+
+  if (inBrowser && inReport && inBrowser === inReport) {
+    console.log(`  ok    both count a caution at ${inBrowser} or more broken orders`);
+  } else {
+    failures++;
+    console.log(`  FAIL  the browser uses ${inBrowser ?? 'no'} and the report uses ${inReport ?? 'no'} threshold`);
+  }
+
+  /* Both must also let a working same-name row answer the caution. */
+  const answered = src => /verifiedNames/.test(src);
+  if (answered(browser) && answered(processor)) {
+    console.log('  ok    a working same-name row answers it on both sides');
+  } else {
+    failures++;
+    console.log('  FAIL  only one side lets a same-name row answer the caution');
+  }
+}
+
+/**
  * A load order an author published for their own mods is honoured exactly.
  *
  * This is the only ordering evidence in the project that somebody stated rather
