@@ -126,6 +126,19 @@ const dividerNameOf = entry => {
  * truncated and hand-edited tails, and half a UUID matches nothing while
  * looking like it should.
  */
+/**
+ * A UUID as an identity: trimmed and lower-cased.
+ *
+ * Mirrors normaliseUuid in client/src/lib/parser.ts. A UUID is hexadecimal and
+ * case means nothing, but every comparison here is an exact string match, so
+ * case decides whether two records are the same mod. The filename reader always
+ * lower-cased what it found and the UUID field was taken verbatim, so a single
+ * exporter writing them upper-case would have agreed with nothing already here.
+ * Measured on a real 1,488-mod order: upper-casing its UUIDs produced 1,488
+ * identities with none in common with the original.
+ */
+const normaliseUuid = raw => String(raw ?? '').trim().toLowerCase();
+
 const uuidFromFileName = fileName => {
   if (!fileName) return undefined;
   const m = String(fileName).match(
@@ -151,7 +164,8 @@ const uuidFromFileName = fileName => {
  * never invent one.
  */
 const keyOf = entry => {
-  if (entry.UUID) return entry.UUID;
+  const declared = normaliseUuid(entry.UUID);
+  if (declared) return declared;
   const fromFile = uuidFromFileName(entry.FileName ?? entry.fileName);
   if (fromFile) return fromFile;
   const named = externalKey(entry.Name) || String(entry.Name).toLowerCase();
@@ -1030,13 +1044,23 @@ for (const order of orders) {
     for (const f of entry.ScriptExtenderData?.FeatureFlags ?? []) r.featureFlags.add(f);
 
     for (const dep of depsOf(entry)) {
-      if (!dep?.Name || ENGINE_MASTERS.has(dep.Name) || dep.UUID === entry.UUID) continue;
+      // Both sides normalised, or a mod declaring a requirement on itself in the
+      // other case would not be recognised as itself and would become an edge
+      // from a mod to itself, which is a cycle the sorter then has to break.
+      //
+      // Only when there is a UUID to compare. Normalising turns a missing one
+      // into the empty string, so a requirement stated by name alone, on a mod
+      // whose own UUID the corpus never supplied, compared equal to itself and
+      // was dropped. That silently cost two real edges.
+      const depUuid = normaliseUuid(dep?.UUID);
+      const selfReference = depUuid !== '' && depUuid === normaliseUuid(entry.UUID);
+      if (!dep?.Name || ENGINE_MASTERS.has(dep.Name) || selfReference) continue;
       // Keyed by name when the requirement names a mod the corpus has never
       // supplied a UUID for. Keying those on the empty string collapsed every
       // one of them onto a single entry, which could not happen while the
       // array form was the only shape that got this far: every array-form
       // dependency in the corpus carries a UUID.
-      r.dependencies.set(dep.UUID || `name:${externalKey(dep.Name)}`, dep.Name);
+      r.dependencies.set(depUuid || `name:${externalKey(dep.Name)}`, dep.Name);
     }
   }
 }

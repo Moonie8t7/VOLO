@@ -1642,6 +1642,52 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * An export is free to write a UUID in either case, and it must not matter.
+ *
+ * A UUID is hexadecimal and case carries no meaning, but identity here is an
+ * exact string match. The filename reader lower-cased what it extracted while
+ * the UUID field was taken as written, so the two halves of the identity path
+ * disagreed whenever an exporter chose upper-case. Nothing in the corpus does,
+ * which is exactly why it went unnoticed: the failure needs one new exporter and
+ * takes the whole file with it when it arrives.
+ *
+ * Asserted on a real order rather than a fixture, because the fixture would have
+ * been written by someone who already knew the answer.
+ */
+{
+  console.log('');
+  console.log('UUID case');
+
+  const corpus = 'Load Orders - Public Submitted';
+  const sample = fs.readdirSync(corpus)
+    .filter(f => f.endsWith('.json') && f !== 'provenance.json')
+    .sort((a, b) => fs.statSync(path.join(corpus, b)).size - fs.statSync(path.join(corpus, a)).size)[0];
+
+  const raw = fs.readFileSync(path.join(corpus, sample), 'utf8');
+  const asWritten = parseLoadOrder(raw, sample);
+  const upperCased = parseLoadOrder(
+    raw.replace(
+      /"UUID"(\s*):(\s*)"([0-9a-fA-F-]{36})"/g,
+      (_m, s1, s2, uuid) => `"UUID"${s1}:${s2}"${uuid.toUpperCase()}"`,
+    ),
+    sample,
+  );
+
+  const original = new Set(asWritten.mods.map(m => m.uuid));
+  const shared = upperCased.mods.filter(m => original.has(m.uuid)).length;
+
+  if (asWritten.mods.length && shared === asWritten.mods.length) {
+    console.log(`  ok    an upper-cased export resolves to the same ${shared} identities`);
+  } else {
+    failures++;
+    console.log(
+      `  FAIL  upper-casing the UUIDs in ${sample} splits `
+      + `${asWritten.mods.length - shared} of ${asWritten.mods.length} identities`,
+    );
+  }
+}
+
+/**
  * A reviewed order lands by the same path a clean one does.
  *
  * Merging a submission branch instead produces a commit carrying an order the

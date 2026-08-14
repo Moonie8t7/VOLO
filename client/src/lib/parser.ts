@@ -99,7 +99,7 @@ function toMod(raw: Record<string, unknown>, index: number): Mod | null {
   const name = String(raw.Name ?? raw.name ?? '').trim();
   if (!name) return null;
 
-  const uuid = String(raw.UUID ?? raw.uuid ?? raw.Uuid ?? '').trim();
+  const uuid = normaliseUuid(raw.UUID ?? raw.uuid ?? raw.Uuid);
   const se = raw.ScriptExtenderData as Record<string, unknown> | undefined;
   const flags = Array.isArray(se?.FeatureFlags) ? (se!.FeatureFlags as string[]) : undefined;
 
@@ -151,6 +151,23 @@ const str = (v: unknown): string | undefined => {
  * submitted files carry truncated and hand-edited tails as well, and half an
  * identifier matches nothing while looking like it should.
  */
+/**
+ * A UUID as an identity: trimmed and lower-cased.
+ *
+ * A UUID is hexadecimal and case carries no meaning, but every comparison in
+ * this project is an exact string match, so case decides whether two records are
+ * the same mod. The filename reader has always lower-cased what it extracts; the
+ * UUID field was only trimmed, so one export writing them upper-case agreed with
+ * nothing. Re-parsing a real 1,488-mod order with its UUIDs upper-cased produced
+ * 1,488 identities and none of them matched the original.
+ *
+ * Nothing in the corpus does this today. It is one exporter away from being the
+ * whole corpus, and a passing build would not mention it.
+ */
+function normaliseUuid(raw: unknown): string {
+  return String(raw ?? '').trim().toLowerCase();
+}
+
 function uuidFromFileName(fileName: string | undefined): string | undefined {
   if (!fileName) return undefined;
   const m = fileName.match(
@@ -187,11 +204,9 @@ function collect(entries: unknown[], format: string): ParseResult {
      * divider was. Case is folded because an export is free to write a UUID in
      * either, and only this side was ever comparing them verbatim.
      */
-    const rawUuid = (
-      String(rec.UUID ?? rec.uuid ?? '').trim()
+    const rawUuid = normaliseUuid(rec.UUID ?? rec.uuid)
       || uuidFromFileName(str(rec.FileName ?? rec.fileName))
-      || ''
-    ).toLowerCase();
+      || '';
     if (rawUuid && DIVIDER_UUIDS.has(rawUuid)) {
       // Users can rename dividers in their manager, so prefer the canonical
       // pak name and only then fall back to whatever the file says.
