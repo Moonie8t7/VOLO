@@ -1927,6 +1927,48 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
       console.log(`  FAIL  README does not quote the current ${label} (${withCommas(value)})`);
     }
   }
+
+  /*
+   * docs/decisions.md quotes the headline result, and until now nothing checked
+   * it. sync-figures rewrites it and fails loudly if its pattern stops matching,
+   * which catches the prose being reworded but not the file being edited by hand
+   * to a number nobody measured. The README half of this test exists because
+   * exactly that happened there.
+   *
+   * Read from measured.json rather than recomputed, because that file is what
+   * sync-figures itself writes from: the question is whether the prose agrees
+   * with the measurement, not whether the measurement is right.
+   */
+  const decisions = fs.readFileSync('docs/decisions.md', 'utf8');
+  const measured = JSON.parse(fs.readFileSync('client/src/lib/measured.json', 'utf8'));
+
+  /*
+   * Matched in the sentence rather than looked for anywhere in the file. A bare
+   * substring search passes on any page that happens to contain the digits
+   * somewhere, which is not a check, it is a coincidence detector.
+   */
+  const headline = decisions.match(
+    /Current: \*\*([\d.]+) percent held out\*\*, against a ([\d.]+) percent random baseline/,
+  );
+
+  if (!headline) {
+    failures++;
+    console.log('  FAIL  docs/decisions.md no longer states its headline result in the expected form');
+  } else {
+    const wrong = [
+      ['held-out agreement', headline[1], measured.heldOut.toFixed(1)],
+      ['random baseline', headline[2], measured.random.toFixed(1)],
+    ].filter(([, quoted, actual]) => quoted !== actual);
+
+    if (!wrong.length) {
+      console.log('  ok    docs/decisions.md quotes the measured headline figures');
+    } else {
+      failures++;
+      for (const [label, q, a] of wrong) {
+        console.log(`  FAIL  docs/decisions.md says ${label} is ${q}, measured ${a}`);
+      }
+    }
+  }
 }
 
 fs.rmSync(out, { force: true });
