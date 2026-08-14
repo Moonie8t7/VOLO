@@ -189,6 +189,29 @@ for (const file of files) {
   }
 }
 
+/*
+ * Every order has to say where it came from.
+ *
+ * Provenance decides whether an order may teach VOLO about sequence, and a
+ * missing record is read as independent. That default was right for all fifteen
+ * orders that had no record, but nothing separated "measured and found
+ * independent" from "never looked at", so the corpus could not say which orders
+ * had been checked. Silence is not a verdict, and this makes it impossible for a
+ * new order to acquire one by default.
+ */
+{
+  const provenanceFile = path.join(CORPUS, 'provenance.json');
+  if (fs.existsSync(provenanceFile)) {
+    const recorded = JSON.parse(fs.readFileSync(provenanceFile, 'utf8')).orders ?? {};
+    for (const entry of fs.readdirSync(CORPUS)) {
+      if (entry === 'provenance.json') continue;
+      if (!recorded[entry]) {
+        note(path.join(CORPUS, entry), 'no provenance record', 'run scripts/backfill-provenance.mjs');
+      }
+    }
+  }
+}
+
 console.log('repository audit');
 console.log(`  tracked files    ${stats.tracked}`);
 console.log(`  binary skipped   ${stats.binary}`);
