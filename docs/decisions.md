@@ -115,6 +115,29 @@ so compare a result with its own baseline rather than with the current
 headline. The 63.6 appearing here is the in-sample number from before held-out
 evaluation existed; it is not comparable to the current figure at the top of this file.
 
+**Deferring to mod.io where the Nexus category is vague.** Nexus outranks mod.io
+on every name both catalogues publish, which was never a measured choice: it is
+simply the larger source. They disagree on 923 names, and 121 of those decide a
+mod's group today. The disagreements lean one way, Nexus broad and mod.io narrow:
+81 mods filed under Gameplay that mod.io calls Spells, 67 under Character
+Customization it calls Heads, 37 it calls Hair. Those narrower names are divider
+slots, which is what this map exists to supply, so preferring them from those
+three vague categories looked obviously right.
+
+It is not. The rule moved 339 keys and 41 masterlist rows, 40 of them into a
+different divider slot, and held-out agreement did not move at all: 65.0424
+percent with and without, 11 orders improving and 9 getting worse. Reading all 41
+by hand agrees. Most look better, and some are plainly wrong; Lone Wolf Mode is
+not a spell.
+
+Rejected, and worth stating why rather than only that. This is the standing
+principle arriving again by a new route: a listing says what a mod **is**, and
+where it loads is a different question. A more specific answer to the first is
+not a better answer to the second. The measurement that settled it stayed: the
+builder now reports how often the catalogues disagree and how many of those
+disagreements reach a mod, and `--conflicts` lists them, so the question does not
+have to be reopened from scratch.
+
 **Keeping uncategorised mods in place.** Rather than sorting them to the end,
 give them the position of the last categorised mod above them. Measured 61.8
 against 63.6. Unplaced mods genuinely do cluster at the end of real orders.

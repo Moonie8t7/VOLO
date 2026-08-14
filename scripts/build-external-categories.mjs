@@ -151,10 +151,29 @@ const indexOf = (group) => {
  * level.
  */
 const best = new Map();
+/**
+ * What each catalogue said, kept even when it loses.
+ *
+ * Nexus claims a primary name at tier 3 and mod.io at tier 2, so Nexus wins
+ * every name both publish. That is a rule nobody measured: it was chosen because
+ * Nexus is the larger catalogue, not because its category is the better answer.
+ * `best` records only the winner, so nothing could tell how often the two
+ * disagreed, let alone which was right. This keeps both so the question is
+ * answerable.
+ */
+const claimsByKey = new Map();
+
 const claim = (name, group, source, tier, score) => {
   if (!vocabulary.has(group)) return;
   const key = norm(name);
   if (!key) return;
+
+  if (tier >= 2) {
+    const seen = claimsByKey.get(key) ?? {};
+    seen[source] = group;
+    claimsByKey.set(key, seen);
+  }
+
   const rival = best.get(key);
   if (!rival || tier > rival.tier || (tier === rival.tier && score > rival.score)) {
     best.set(key, { group, source, tier, score });
@@ -190,6 +209,21 @@ for (const m of Object.values(modioCatalog?.mods ?? {})) {
   if (hit) claimVariants(m, hit[1], 'modio', 2, 0, m.subscribers ?? m.downloads ?? 0, m.nameId);
 }
 
+/*
+ * Nexus keeps winning, and now for a measured reason rather than by accident.
+ *
+ * Deferring to mod.io wherever Nexus said only Gameplay, Miscellaneous or
+ * Character Customization was tried on 2026-08-14 and rejected. It moved 339
+ * keys and 41 masterlist rows, 40 of them into a different divider slot, and
+ * held-out agreement did not move: 65.0424 percent either way, with 11 orders
+ * improving and 9 getting worse. Reading the 41 by hand says the same thing from
+ * the other side. Most look better, Heads and Hair and Armor in place of a
+ * bucket, and some are plainly wrong: Lone Wolf Mode is not a spell.
+ *
+ * Which is the standing principle arriving again by a new route. A listing says
+ * what a mod is; where it loads is a different question, and a narrower answer
+ * to the first question is not a better answer to the second.
+ */
 const nexusNames = {};
 const modioNames = {};
 for (const [key, { group, source }] of best) {
@@ -254,3 +288,45 @@ console.log(
   `published listings: ${out.catalogue.nexus} on Nexus, ${out.catalogue.modio} on mod.io, ` +
   `${out.catalogue.distinct} distinct`,
 );
+
+/*
+ * Where the two catalogues disagree, and whether it reaches anybody.
+ *
+ * Nexus outranking mod.io decides a group for every name both publish, and the
+ * rule was never measured. What matters is not how often they differ but how
+ * often the difference reaches a mod: this map is the last tier before unsorted,
+ * so a key only counts if some masterlist row is actually placed by it.
+ */
+const disagreements = [...claimsByKey.entries()]
+  .filter(([, s]) => s.nexus && s.modio && s.nexus !== s.modio);
+
+let reaching = 0;
+try {
+  const list = JSON.parse(fs.readFileSync(path.join('masterlist', 'bg3-masterlist.json'), 'utf8'));
+  const placedByListing = new Set(
+    list.plugins
+      .filter(p => p.evidence?.source === 'external-category')
+      .map(p => norm(p.name)),
+  );
+  reaching = disagreements.filter(([key]) => placedByListing.has(key)).length;
+} catch {
+  reaching = -1;
+}
+
+console.log(
+  `catalogues disagree on ${disagreements.length} name(s); `
+  + `${reaching < 0 ? 'unknown' : reaching} of those decide a mod's group today`,
+);
+
+/* The disagreements themselves, for anyone deciding which source to believe. */
+if (process.argv.includes('--conflicts')) {
+  const pairs = new Map();
+  for (const [, s] of disagreements) {
+    const k = `${s.nexus} -> ${s.modio}`;
+    pairs.set(k, (pairs.get(k) ?? 0) + 1);
+  }
+  console.log('\nnexus group -> mod.io group, most common first:');
+  for (const [pair, n] of [...pairs.entries()].sort((a, b) => b[1] - a[1]).slice(0, 15)) {
+    console.log(`  ${String(n).padStart(4)}  ${pair}`);
+  }
+}
