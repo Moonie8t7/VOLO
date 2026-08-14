@@ -115,35 +115,42 @@ sequenceDiagram
     S->>F: POST, with Turnstile token
     F->>A: Opens a labelled issue
     A->>A: Validate, dedupe, regenerate
-    alt Working order, metric holds
+    alt Metric holds
         A->>M: Commit directly
         A->>U: Comment and close the issue
-    else Broken, or the metric drops
-        A->>M: Corpus-only pull request
+    else Agreement drops past tolerance
         A->>U: Comment with the diagnosis
-        Note over A,M: A maintainer labels the issue `approved`
+        A->>A: Label the issue `held-for-review`
+        Note over A,M: A maintainer reads it and adds `approved`
         A->>M: Replay, then commit directly
-        A->>A: Close the superseded pull request
     end
 ```
 
-The gate is deliberately narrow: a working order that parses, is not a
-duplicate, and does not drop agreement by more than one point lands on its own.
-Everything else waits for a person.
+The gate is one question, asked of every order: does it leave agreement intact.
+An order that parses, is not a duplicate, and does not drop agreement by more
+than one point lands on its own, whether its submitter said it worked or not.
 
-A held order is accepted by labelling its issue `approved`, not by merging the
-pull request it opened. Both routes then land the same way: one commit holding
-the order, the masterlist rebuilt from the whole corpus, and the figures the
-README quotes. Approval moves only the hold. The order still has to parse, still
-has to be new, and still has to pass every check, so a label cannot land
-something intake would refuse.
+Broken orders used to wait for a person on principle, because their value is the
+written diagnosis. The diagnosis is posted to the issue either way, and holding
+the order never made anybody read it; it only meant the corpus waited on somebody
+being at a keyboard. What a broken order contributes settles whether that is
+safe: it adds presence and the section headers its submitter wrote, and it never
+contributes sequence, because `workingPositions` in the miner is built from
+working orders alone. No ordering is learned from an order that did not run.
 
-Merging the branch instead committed an order the README did not describe, since
-the branch carries only the corpus file. Its checks failed on it permanently,
-the regeneration that followed repaired main in a second commit, and the same
-failure fired on the pull request, so red carried no information at the moment
-somebody was deciding whether to merge. Nothing is lost by closing the branch:
-the corpus file is what it carried, and that is what lands.
+A held order waits on its own issue and is accepted by adding `approved`. There
+is no branch and no pull request. Approval moves only the hold: the order still
+has to parse, still has to be new, and still has to pass every check, so a label
+cannot land something intake would refuse, and the label is removed once it has
+landed something so a later edit cannot ride an old approval.
+
+It used to open a corpus-only branch instead. That branch carried an order the
+README did not describe, so its own checks failed on it, and the red mark showed
+every time somebody looked, at exactly the moment they were deciding whether to
+accept. Two open at once collided on `provenance.json`, because each added a
+record to the same sorted map. None of it was load-bearing: approval replays from
+the issue body, so the branch never reached main and was only ever a copy waiting
+to be thrown away.
 
 An order can arrive in the issue three ways, and intake tries each in turn
 until one parses, because only parsing tells a populated field from a useful

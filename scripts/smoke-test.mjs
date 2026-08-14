@@ -1839,9 +1839,17 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
       'approval does not override validation',
       workflow.includes("steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge == 'true'"),
     ],
+    /*
+     * A held order waits on its issue, not on a branch. The corpus-only pull
+     * request it used to get carried an order the README did not describe, so
+     * its checks failed on it and the red mark meant nothing at the moment
+     * somebody was deciding whether to accept. Approval replays from the issue
+     * body, so the branch never reached main and was only ever a copy waiting to
+     * be discarded.
+     */
     [
-      'the superseded pull request is retired',
-      workflow.includes('gh pr close'),
+      'a held order does not open a pull request',
+      !workflow.includes('gh pr create') && workflow.includes('--add-label held-for-review'),
     ],
     /*
      * The already-landed guard has to look at the order, not at whatever git
@@ -1858,16 +1866,17 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
      * approval left in place approves whatever the body says next.
      */
     [
-      'approval is removed once it has landed an order',
-      workflow.includes('--remove-label approved'),
+      'the labels an order carried are cleared once it lands',
+      workflow.includes('for label in approved held-for-review'),
     ],
     /*
-     * And retiring the branch cannot hang off the step that closes the issue. A
-     * bare `if:` means `success() && ...`, so a failed comment left the branch
-     * open and mergeable, which is the one outcome this is here to prevent.
+     * And clearing them cannot hang off the step that closes the issue. A bare
+     * `if:` means `success() && ...`, so a failed comment would leave `approved`
+     * in place, and intake replays on `edited`: the next edit would then land
+     * unread on an approval given for something else.
      */
     [
-      'the branch is retired even if closing the issue fails',
+      'the labels are cleared even if closing the issue fails',
       /if: always\(\) && steps\.land\.outputs\.landed == 'yes'/.test(workflow),
     ],
     [

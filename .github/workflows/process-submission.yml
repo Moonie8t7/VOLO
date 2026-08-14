@@ -15,13 +15,17 @@ name: Process load order submission
 # `workingPositions` in the miner is built from working orders alone. So no
 # ordering is ever learned from an order that did not run.
 #
-# A held order is accepted by labelling the issue `approved`, not by merging that
-# pull request. Both routes then land by the same path, so an order a person
-# waved through arrives exactly as a clean one does: one commit holding the order
-# and everything derived from it. Merging the branch instead produced a commit
-# whose README described a corpus without the order in it, which failed its own
-# checks permanently and made every submission look red while it was being
-# reviewed. The branch is closed once its order is on main.
+# A held order waits on its own issue, labelled `held-for-review`, and is
+# accepted by adding `approved`. There is no branch and no pull request. Both
+# routes land by the same path, so an order a person waved through arrives
+# exactly as a clean one does: one commit holding the order and everything
+# derived from it.
+#
+# The corpus-only branch this used to open carried an order the README did not
+# describe, so its own checks failed on it and that red mark showed every time
+# somebody looked, at exactly the moment they were deciding whether to accept.
+# Two open at once also collided on provenance.json. None of it was load-bearing:
+# approval replays from the issue body, so the branch never reached main.
 #
 # Runs are serialised: two submissions regenerating the masterlist at once
 # would each build it without the other's order, and the later push would
@@ -233,60 +237,47 @@ jobs:
       # branch has nothing left to contribute and merging it now would add the
       # very commit this exists to avoid: an order the README does not yet
       # describe, failing its own checks for good.
-      - name: Retire the superseded pull request
-        # `always()` because a bare `if:` means `success() && ...`, which tied
-        # this to the cosmetic step above it. If closing the issue failed, the
-        # branch stayed open and mergeable, and merging it is the one thing this
-        # exists to prevent.
-        if: always() && steps.land.outputs.landed == 'yes'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          BRANCH="submission/issue-${{ github.event.issue.number }}"
-          if gh pr view "$BRANCH" --json number >/dev/null 2>&1; then
-            gh pr close "$BRANCH" --delete-branch \
-              --comment "Landed directly on main, with the masterlist regenerated in the same commit. Nothing here is lost: this branch carried only the corpus file." \
-              || echo "could not close the pull request for $BRANCH"
-          else
-            echo "no open pull request for $BRANCH"
-          fi
-
-      # Approval is spent once it has landed something.
+      # Approval is spent once it has landed something, and the hold is over.
       #
       # The label is a grant attached to an issue, and an issue can be edited
       # after it is given. Intake replays on `edited`, so an approval left in
       # place would wave through whatever the body said next, without anyone
       # reading it. What a person approved was the order in front of them, not
       # the issue for the rest of its life.
-      - name: Spend the approval
-        if: always() && steps.land.outputs.landed == 'yes' && contains(github.event.issue.labels.*.name, 'approved')
+      #
+      # `always()` rather than a bare `if:`, which GitHub reads as
+      # `success() && ...`. That tied this to the step above it, so a failed
+      # comment left the label on and the next edit could land unread.
+      - name: Clear the labels this order was carrying
+        if: always() && steps.land.outputs.landed == 'yes'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh issue edit "${{ github.event.issue.number }}" --remove-label approved \
-            || echo "could not remove the approved label"
+          for label in approved held-for-review; do
+            gh issue edit "${{ github.event.issue.number }}" --remove-label "$label" \
+              || echo "no $label label to remove"
+          done
 
-      - name: Open a pull request for review
+      # A held order waits on its issue, not on a branch.
+      #
+      # It used to get a corpus-only pull request. That branch carried an order
+      # the README did not describe, so its own checks failed on it, and the same
+      # failure fired every time somebody looked at it: a red mark that meant
+      # nothing at exactly the moment a person was deciding whether to accept.
+      # Two branches open at once also collided on provenance.json, because each
+      # added a record to the same sorted map.
+      #
+      # None of it was load-bearing. Approval replays the submission from the
+      # issue body and lands it directly, so the branch was never the thing that
+      # reached main; it was a copy waiting to be thrown away. The issue already
+      # holds the full report, and the issue is what carries the label.
+      - name: Say that it is waiting for a person
         if: steps.process.outputs.accepted == 'yes' && steps.process.outputs.automerge != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          BRANCH="submission/issue-${{ github.event.issue.number }}"
-          git config user.name "volo-submissions"
-          git config user.email "submissions@users.noreply.github.com"
-          # Only the corpus file. The masterlist is derived, and regenerating it
-          # on main after the merge is what keeps it consistent with every
-          # order rather than with whichever branch merged last.
-          git checkout -- masterlist public/bg3-masterlist.json
-          git checkout -B "$BRANCH"
-          git add "Load Orders - Public Submitted"
-          git commit -m "Add load order from issue #${{ github.event.issue.number }}"
-          git push -f origin "$BRANCH"
-          printf '\nCloses #%s\n' "${{ github.event.issue.number }}" >> /tmp/report.md
-          gh pr create \
-            --title "Load order submission #${{ github.event.issue.number }}" \
-            --body-file /tmp/report.md \
-            --head "$BRANCH" || gh pr edit "$BRANCH" --body-file /tmp/report.md
+          gh issue edit "${{ github.event.issue.number }}" --add-label held-for-review \
+            || echo "could not label the issue"
 
       # Always runs. A submitter who hears nothing assumes the tool is broken,
       # and the report is the only feedback they get, so a failure earlier must
