@@ -304,7 +304,8 @@
             "description": "Other names this mod has been published under, most frequent first. A rename leaves everyone who has not updated listing the old name, so both are in the corpus; these resolve a name nothing else answers to, and never displace a canonical name."
           }
         }
-      }
+      },
+      "description": "One row per mod. uuid is unique across this array and is the key every consumer should join on. JSON Schema cannot express uniqueness by property, so the guarantee is stated here and enforced by scripts/smoke-test.mjs rather than by validation. Consumers that break ties themselves have been seen to break them in opposite directions, which is why the constraint is written down."
     }
   }
 }

@@ -1897,6 +1897,41 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * uuid is the key everything joins on, so it has to be unique.
+ *
+ * JSON Schema cannot express uniqueness by property, only whole-item equality,
+ * so the published schema can state the guarantee and nothing can validate it.
+ * Consumers have been observed breaking ties in opposite directions, which is
+ * the failure this prevents: two rows sharing a key means one of them answers
+ * for the other, and which one depends on whose loop wrote last.
+ */
+{
+  console.log('');
+  console.log('Masterlist keys');
+
+  const counts = new Map();
+  for (const p of masterlist.plugins) counts.set(p.uuid, (counts.get(p.uuid) ?? 0) + 1);
+  const shared = [...counts.entries()].filter(([, n]) => n > 1);
+
+  if (!shared.length) {
+    console.log(`  ok    all ${masterlist.plugins.length} rows carry a distinct uuid`);
+  } else {
+    failures++;
+    console.log(`  FAIL  ${shared.length} uuid(s) are carried by more than one row`);
+    for (const [uuid, n] of shared.slice(0, 5)) console.log(`        ${uuid} on ${n} rows`);
+  }
+
+  /* And every row has one, since a blank key collides with every other blank. */
+  const keyless = masterlist.plugins.filter(p => !p.uuid);
+  if (!keyless.length) {
+    console.log('  ok    no row is published without a key');
+  } else {
+    failures++;
+    console.log(`  FAIL  ${keyless.length} row(s) have no uuid`);
+  }
+}
+
+/**
  * Figures quoted in the README must match the masterlist they describe.
  *
  * README is the first thing anyone reads and the last thing anyone regenerates.
