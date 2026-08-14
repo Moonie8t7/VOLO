@@ -546,20 +546,33 @@ const delta = baseline.agreement !== null && after.agreement !== null
   ? Number((after.agreement - baseline.agreement).toFixed(2))
   : null;
 
-/**
- * Auto-merge only what a reviewer would wave through anyway: a working order
- * that leaves agreement intact. Broken orders always wait for a person. Their
- * value is the written explanation of what went wrong, which only a human can
- * act on, and the caution flags they raise are shown to users as warnings.
- */
+/** How far agreement may fall before an order waits for a person. */
 const metricHeld = delta !== null && delta >= -MAX_AGREEMENT_DROP;
 
 /**
+ * One gate for every order: does it leave the verification metric intact.
+ *
+ * Broken orders used to wait for a person on the reasoning that their value is
+ * the written diagnosis, which only a human can act on. The diagnosis is posted
+ * to the issue either way, and holding the order did not make anybody read it;
+ * it just meant the corpus waited on somebody being at a keyboard.
+ *
+ * What a broken order actually contributes decides whether that is safe. It adds
+ * presence, and it adds the section headers and divider slots its submitter
+ * wrote, which is real placement evidence. It never contributes sequence:
+ * `workingPositions` in the miner is built from working orders alone, so no
+ * ordering is learned from an order that did not run. The corpus has always
+ * counted broken orders that way, so this changes who presses the button rather
+ * than what the evidence means.
+ *
+ * The metric is the thing that would notice harm, and it applies unchanged. An
+ * order of either kind that drops agreement past the tolerance still waits.
+ *
  * Approval overrides the hold, never the validation. An order a person has read
  * and wants kept still has to parse, still has to be new, and still has to
- * survive every check above; all this decides is that it no longer waits.
+ * survive every check above.
  */
-const autoMerge = (working && metricHeld) || reviewApproved;
+const autoMerge = metricHeld || reviewApproved;
 const gate = {
   working,
   agreementBefore: baseline.agreement,
@@ -569,11 +582,9 @@ const gate = {
   approvedByReview: reviewApproved,
   heldBecause: autoMerge
     ? null
-    : !working
-      ? 'a broken order needs a human read'
-      : delta === null
-        ? 'the verification numbers could not be read'
-        : `agreement fell ${Math.abs(delta)} points`,
+    : delta === null
+      ? 'the verification numbers could not be read'
+      : `agreement fell ${Math.abs(delta)} points`,
 };
 
 /**

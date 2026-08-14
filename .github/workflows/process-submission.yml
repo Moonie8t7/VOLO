@@ -1,9 +1,19 @@
 name: Process load order submission
 
-# A submission issue arrives and is validated. A working order that leaves the
-# verification metric intact lands on main directly, with the masterlist
-# regenerated from the whole corpus in the same commit. Anything else becomes a
-# pull request carrying only the corpus file, for a person to look at.
+# A submission issue arrives and is validated. Any order that leaves the
+# verification metric intact lands on main directly, whether its submitter said
+# it worked or not, with the masterlist regenerated from the whole corpus in the
+# same commit. Only an order that drops agreement past the tolerance becomes a
+# pull request carrying the corpus file, for a person to look at.
+#
+# Broken orders used to wait for a person on principle. Their value is the
+# written diagnosis, and holding them did not make anybody read it: the
+# diagnosis is posted to the issue either way, so all the hold achieved was a
+# corpus that waited on somebody being at a keyboard. What a broken order
+# contributes settles whether that is safe. It adds presence and the section
+# headers its submitter wrote, and it never contributes sequence, because
+# `workingPositions` in the miner is built from working orders alone. So no
+# ordering is ever learned from an order that did not run.
 #
 # A held order is accepted by labelling the issue `approved`, not by merging that
 # pull request. Both routes then land by the same path, so an order a person

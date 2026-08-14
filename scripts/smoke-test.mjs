@@ -1820,7 +1820,20 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     ],
     [
       'approval overrides the hold',
-      /const autoMerge = \(working && metricHeld\) \|\| reviewApproved;/.test(processor),
+      /const autoMerge = metricHeld \|\| reviewApproved;/.test(processor),
+    ],
+    /*
+     * One gate for both kinds of order. A broken order adds presence and the
+     * section headers its submitter wrote, and never adds sequence, because
+     * workingPositions is built from working orders alone. Holding it for a
+     * person did not make anybody read the diagnosis, which is posted to the
+     * issue regardless; it only meant the corpus waited on somebody being
+     * available.
+     */
+    [
+      'a broken order is not held merely for being broken',
+      !processor.includes('a broken order needs a human read')
+        && !/const autoMerge = .*\bworking &&/.test(processor),
     ],
     [
       'approval does not override validation',
