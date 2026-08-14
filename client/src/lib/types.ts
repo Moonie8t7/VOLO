@@ -68,6 +68,14 @@ export interface MasterlistPlugin {
    * its absence is not what breaks a load order. Measured, never hand-set.
    */
   oftenAbsent?: boolean;
+  /**
+   * Other names this mod has been published under, most frequent first.
+   *
+   * A rename leaves everyone who has not updated listing the old name, so both
+   * live in the corpus. Used to resolve a name nothing else answers to; a
+   * canonical name always wins its own key.
+   */
+  alternateNames?: string[];
   /** Curated warnings attached to this mod, shown whenever it is present. */
   messages?: { text: string; severity: IssueSeverity }[];
   evidence?: {

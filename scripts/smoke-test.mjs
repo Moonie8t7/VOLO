@@ -1642,6 +1642,65 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * A mod renamed since somebody's last update still has to be recognised.
+ *
+ * The corpus holds both names, because everyone who has not updated goes on
+ * listing the old one, but only the most frequent reached the masterlist. UUID
+ * covers most of that, which is why it never showed; a thin export carries no
+ * UUID, and that is exactly when the name is all there is.
+ *
+ * The alias must never displace a real name. 64 of the corpus's alternates are
+ * also some mod's canonical name, so the rule is that canonical always wins its
+ * own key and aliases only fill gaps.
+ */
+{
+  console.log('');
+  console.log('Alternate names');
+
+  const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+  const canonical = new Set(masterlist.plugins.map(p => norm(p.name)).filter(Boolean));
+  const withAlias = masterlist.plugins.filter(p => p.alternateNames?.length);
+
+  const gapFilling = withAlias.flatMap(p =>
+    p.alternateNames.filter(a => norm(a) && !canonical.has(norm(a))).map(a => ({ p, a })));
+
+  if (gapFilling.length) {
+    console.log(`  ok    ${gapFilling.length} alternate name(s) reach a mod no canonical name reaches`);
+  } else {
+    failures++;
+    console.log('  FAIL  no alternate names are published');
+  }
+
+  /* An order listing a mod by its old name, with no uuid, as a thin export gives. */
+  const { p, a } = gapFilling[0];
+  const sorted = sortLoadOrder([{ uuid: '', name: a, originalIndex: 0 }], masterlist);
+  const placed = sorted.placements.values().next().value;
+  if (placed && placed.group === p.group) {
+    console.log(`  ok    "${a}" resolves to ${p.group}, the group of "${p.name}"`);
+  } else {
+    failures++;
+    console.log(`  FAIL  "${a}" did not resolve to "${p.name}" (${placed?.group ?? 'nothing'})`);
+  }
+
+  /* And a name a mod really publishes under still answers for that mod. */
+  const shadowed = withAlias.flatMap(p2 =>
+    (p2.alternateNames ?? []).filter(a2 => canonical.has(norm(a2))));
+  const victim = masterlist.plugins.find(p2 => shadowed.some(a2 => norm(a2) === norm(p2.name)));
+  if (!victim) {
+    console.log('  ok    no alternate name collides with a canonical one');
+  } else {
+    const out = sortLoadOrder([{ uuid: '', name: victim.name, originalIndex: 0 }], masterlist);
+    const got = out.placements.values().next().value;
+    if (got && got.group === victim.group) {
+      console.log(`  ok    "${victim.name}" still answers for itself, not for an alias`);
+    } else {
+      failures++;
+      console.log(`  FAIL  an alias displaced the real "${victim.name}"`);
+    }
+  }
+}
+
+/**
  * The two XML readers must decode the same escapes.
  *
  * modsettings.lsx is read twice in this project: by the parser for the browser,

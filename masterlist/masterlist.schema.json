@@ -294,6 +294,13 @@
                 "description": "Of installs, the orders VOLO sorted. Their presence counts, since the mods were really installed and played; their sequence never does, because it is VOLO own answer returning."
               }
             }
+          },
+          "alternateNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Other names this mod has been published under, most frequent first. A rename leaves everyone who has not updated listing the old name, so both are in the corpus; these resolve a name nothing else answers to, and never displace a canonical name."
           }
         }
       }

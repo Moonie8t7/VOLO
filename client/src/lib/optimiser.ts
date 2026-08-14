@@ -218,6 +218,28 @@ function indexMasterlist(masterlist: Masterlist) {
      */
     if (key && (p.evidence?.workingInstalls ?? 0) > 0) verifiedNames.add(key);
   }
+
+  /*
+   * Names a mod has also been published under, added only where nothing already
+   * answers to them.
+   *
+   * A renamed mod goes on being listed under its old name by everyone who has
+   * not updated, so a stale pak matched nothing and fell through to whatever the
+   * next rule guessed. UUID covers most of that, which is why it never showed;
+   * a thin export has no UUID, and that is precisely when the name is all there
+   * is. 260 of the corpus's 332 alternate names reach a mod nothing else reaches.
+   *
+   * A second pass rather than one, so a canonical name always wins its own key:
+   * the other 64 alternates collide with a name some mod genuinely publishes
+   * under, and an alias must never displace the real thing.
+   */
+  for (const p of masterlist.plugins ?? []) {
+    for (const alias of p.alternateNames ?? []) {
+      const key = alias.toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (key && !byName.has(key)) byName.set(key, p);
+    }
+  }
+
   return { byUuid, byName, byFolder, verifiedNames };
 }
 

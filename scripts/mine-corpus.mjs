@@ -1142,7 +1142,20 @@ const plugins = [];
 const stats = { fromDivider: 0, curated: 0, fromSection: 0, fromName: 0, inferredHigh: 0, inferredLow: 0, unsorted: 0 };
 
 for (const r of mods.values()) {
-  const name = [...r.names.entries()].sort((a, b) => b[1] - a[1])[0][0];
+  const observed = [...r.names.entries()].sort((a, b) => b[1] - a[1]);
+  const name = observed[0][0];
+
+  /*
+   * The names this mod has also been seen under.
+   *
+   * A mod that is renamed keeps being listed under its old name by everyone who
+   * has not updated, and the corpus holds both. Only the most frequent survived
+   * into the masterlist, so a stale pak matched nothing by name and fell through
+   * to whatever the next rule guessed. UUID covers most of these, which is why
+   * it was survivable; a thin export has no UUID to fall back on, and that is
+   * exactly the case where the name is all there is.
+   */
+  const alternateNames = observed.slice(1).map(([n]) => n);
 
   let group = null, confidence = null;
   let dividerFromCurated = null;
@@ -1219,6 +1232,7 @@ for (const r of mods.values()) {
   if (!group) { group = 'unsorted'; confidence = 'none'; stats.unsorted++; }
 
   const plugin = { name, uuid: r.uuid, group };
+  if (alternateNames.length) plugin.alternateNames = alternateNames;
   if (r.folder && r.folder !== name) plugin.folder = r.folder;
   if (r.author) plugin.author = r.author;
   if (r.version) plugin.version = r.version;
