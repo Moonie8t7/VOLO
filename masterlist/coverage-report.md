@@ -1,16 +1,16 @@
 # Masterlist coverage report
 
-Generated 2026-08-14T01:47:06.048Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-14T02:15:45.009Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
 | Load orders analysed | 80 |
-| labelled working | 67 |
+| labelled working | 68 |
 | labelled broken | 10 |
 | load-after edges promoted from catalogues | 522 |
-| unlabelled | 3 |
+| unlabelled | 2 |
 | Separator headers parsed | 1679 |
 | **Unique mods indexed** | **9227** |
 | Seen in more than one order | 5441 |
@@ -60,14 +60,14 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Visuals`: 93
 - `Animations`: 160
 - `User Interface`: 157
-- `Clothing`: 201
-- `Equipment`: 1195
-- `Miscellaneous`: 146
-- `Spells`: 585
+- `Clothing`: 202
+- `Equipment`: 1193
+- `Miscellaneous`: 145
+- `Spells`: 584
 - `Dyes`: 65
-- `Armor`: 544
+- `Armor`: 545
 - `Weapons`: 279
-- `Gameplay`: 453
+- `Gameplay`: 454
 - `Races`: 233
 - `Classes`: 1046
 - `Character Customization`: 414
@@ -77,7 +77,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Environment`: 57
 - `Audio`: 18
 - `Heads`: 519
-- `Hair`: 286
+- `Hair`: 287
 - `Companions`: 386
 - `NPC`: 213
 - `Bodies`: 28
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 20.9% | 22.8% | no, and it points the other way |
+| Category pairs against the working consensus | 20.9% | 22.5% | no, and it points the other way |
 | Mods in no working order anywhere | 10% | 0% | yes |
 | Declared dependencies not installed | 0.1 | 0.0 | yes |
 
-Measured over 10 broken and 67 working orders, against 165 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 10 broken and 68 working orders, against 165 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -144,8 +144,8 @@ Framework are present in every working order that needs them.
 |---|---|---|---|
 | `HybridUI` | 15 | 13 | 1 |
 | `Ornamental Body Jewellery` | 7 | 6 | 1 |
+| `ZipsHeads` | 7 | 6 | 1 |
 | `Humanoid Tag Scratch Fix` | 12 | 10 | 1 |
-| `ZipsHeads` | 6 | 5 | 1 |
 | `Origin Mirror Unlock` | 4 | 3 | 1 |
 | `TutorialChestSummoning` | 28 | 19 | 18 |
 | `UnlockLevelCurve - Level 13-20 | Patch 8` | 5 | 3 | 6 |
@@ -161,7 +161,7 @@ would otherwise be formatted into a message and dropped without being counted.
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 67
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 68
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
