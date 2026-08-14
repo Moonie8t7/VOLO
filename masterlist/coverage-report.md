@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-14T02:23:32.541Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-14T05:59:37.768Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-08-14T02:23:32.541Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 80 |
 | labelled working | 68 |
 | labelled broken | 10 |
-| load-after edges promoted from catalogues | 522 |
+| load-after edges promoted from catalogues | 537 |
 | unlabelled | 2 |
 | Separator headers parsed | 1679 |
 | **Unique mods indexed** | **9227** |
 | Seen in more than one order | 5441 |
-| With declared dependencies | 512 |
+| With declared dependencies | 525 |
 | With Script Extender flags | 163 |
 | With author metadata | 1285 |
 
@@ -147,7 +147,7 @@ Framework are present in every working order that needs them.
 | `ZipsHeads` | 7 | 6 | 1 |
 | `Humanoid Tag Scratch Fix` | 12 | 10 | 1 |
 | `Origin Mirror Unlock` | 4 | 3 | 1 |
-| `TutorialChestSummoning` | 28 | 19 | 18 |
+| `TutorialChestSummoning` | 28 | 19 | 24 |
 | `UnlockLevelCurve - Level 13-20 | Patch 8` | 5 | 3 | 6 |
 
 ## Requirements naming something unknown
