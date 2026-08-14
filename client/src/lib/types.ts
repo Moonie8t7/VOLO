@@ -72,9 +72,17 @@ export interface MasterlistPlugin {
   messages?: { text: string; severity: IssueSeverity }[];
   evidence?: {
     source: 'curated' | 'section' | 'section-majority' | 'name-pattern' | 'external-category' | 'author-catalogue' | 'divider-vocabulary' | 'inferred' | 'none';
+    /** Distinct orders holding this mod, whatever their status. */
     installs: number;
+    /** Of those, the ones whose submitter said the order worked. */
     workingInstalls: number;
     brokenInstalls?: number;
+    /**
+     * Of those, the ones VOLO sorted. Their presence counts, since the mods were
+     * really installed and played; their sequence never does, because it is
+     * VOLO's own answer returning.
+     */
+    voloSortedInstalls?: number;
     /** For inferred entries: neighbour agreement, 0.7 to 1. Higher tracks measured accuracy. */
     confidence?: number;
   };

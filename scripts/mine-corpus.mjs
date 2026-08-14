@@ -930,7 +930,8 @@ function record(uuid) {
       // was reported as verified twice, and a caution that asks to have been
       // seen in two separate orders would have been satisfied by one order
       // listing it twice. What matters is how many orders agree, so count them.
-      seenIn: new Set(), seenInWorking: new Set(), seenInBroken: new Set(), lastGameBuild: null,
+      seenIn: new Set(), seenInWorking: new Set(), seenInBroken: new Set(),
+      seenInVoloSorted: new Set(), lastGameBuild: null,
     });
   }
   return mods.get(uuid);
@@ -980,6 +981,10 @@ for (const order of orders) {
     r.seenIn.add(order.file);
     if (order.label === 'working') r.seenInWorking.add(order.file);
     if (order.label === 'broken') r.seenInBroken.add(order.file);
+    // An order VOLO sorted still proves the mod exists and that somebody ran it,
+    // which is why it counts towards presence at all. Recorded separately so a
+    // page can say how much of a mod's support is VOLO's own answer returning.
+    if (!order.positional) r.seenInVoloSorted.add(order.file);
     if (order.gameBuild && compareBuilds(order.gameBuild, r.lastGameBuild ?? '0') > 0) {
       r.lastGameBuild = order.gameBuild;
     }
@@ -1080,6 +1085,7 @@ const canonicalKey = k => mergedInto.get(k) ?? k;
     for (const f of r.seenIn) target.seenIn.add(f);
     for (const f of r.seenInWorking) target.seenInWorking.add(f);
     for (const f of r.seenInBroken) target.seenInBroken.add(f);
+    for (const f of r.seenInVoloSorted) target.seenInVoloSorted.add(f);
     target.author ??= r.author; target.version ??= r.version;
     target.folder ??= r.folder; target.description ??= r.description;
     if (r.lastGameBuild && compareBuilds(r.lastGameBuild, target.lastGameBuild ?? '0') > 0) {
@@ -1218,6 +1224,10 @@ for (const r of mods.values()) {
     // Counted per order rather than per entry, because the caution asks how
     // many people saw it go wrong, not how many lines it occupied.
     brokenInstalls: r.seenInBroken.size,
+    // How much of the above is VOLO's own output coming back. Presence still
+    // counts, since the mods were really installed and really played, but a
+    // reader deserves to know when the support is partly a reflection.
+    voloSortedInstalls: r.seenInVoloSorted.size,
   };
   plugins.push(plugin);
 }

@@ -196,9 +196,31 @@ export default function MasterlistPage() {
                       listing
                     </span>
                   )}
+                  {/*
+                    * Orders confirmed working, not orders seen. The raw count
+                    * included orders nobody ever said worked and orders VOLO
+                    * itself sorted, so a mod could show "seen in 3" beside a
+                    * caution saying it had never been in a working order. Both
+                    * statements were true and together they read as a
+                    * contradiction. The rest of the count is still here, in the
+                    * one place where a reader is asking about this mod.
+                    */}
                   {p.evidence && p.evidence.installs > 1 && (
-                    <span className="text-xs text-muted-foreground shrink-0">
-                      seen in {p.evidence.installs}
+                    <span
+                      className="text-xs text-muted-foreground shrink-0"
+                      title={[
+                        `Seen in ${p.evidence.installs} submitted orders.`,
+                        `${p.evidence.workingInstalls ?? 0} confirmed working`,
+                        `, ${p.evidence.brokenInstalls ?? 0} reported broken`,
+                        p.evidence.voloSortedInstalls
+                          ? `, ${p.evidence.voloSortedInstalls} sorted by VOLO, whose sequence is not counted as evidence`
+                          : '',
+                        '.',
+                      ].join('')}
+                    >
+                      {(p.evidence.workingInstalls ?? 0) > 0
+                        ? `verified in ${p.evidence.workingInstalls}`
+                        : `seen in ${p.evidence.installs}, none confirmed working`}
                     </span>
                   )}
                   <Badge

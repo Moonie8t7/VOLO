@@ -4,47 +4,82 @@
   "title": "VOLO BG3 masterlist",
   "description": "Load order data for Baldur's Gate 3, mined from load orders players submitted. Published under CC0-1.0: take it, fork it, build on it. The file declared this schema from the start and the schema did not exist, which is a poor welcome for anyone trying to consume the data.",
   "type": "object",
-  "required": ["version", "generated", "groups", "plugins"],
+  "required": [
+    "version",
+    "generated",
+    "groups",
+    "plugins"
+  ],
   "properties": {
-    "$schema": { "type": "string" },
+    "$schema": {
+      "type": "string"
+    },
     "version": {
       "type": "string",
       "description": "Schema version of this artefact, not the game or the tool."
     },
-    "generated": { "type": "string", "format": "date-time" },
+    "generated": {
+      "type": "string",
+      "format": "date-time"
+    },
     "generator": {
       "type": "string",
       "description": "The script that wrote it. Nothing here is hand-edited."
     },
     "gameBuild": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Newest base-game build seen in the corpus, e.g. 4.8.700.7143220.",
-      "examples": ["4.8.700.7143220"]
+      "examples": [
+        "4.8.700.7143220"
+      ]
     },
     "gamePatch": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Human form of gameBuild.",
-      "examples": ["Patch 8"]
+      "examples": [
+        "Patch 8"
+      ]
     },
     "gameBuildsObserved": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "incompatible": {
       "type": "array",
       "description": "Mods that must not be installed together. Hand-written only: two mods appearing in an order that broke is not evidence they conflict.",
       "items": {
         "type": "object",
-        "required": ["mods", "why"],
+        "required": [
+          "mods",
+          "why"
+        ],
         "properties": {
           "mods": {
             "type": "array",
             "minItems": 2,
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "Names or UUIDs. Two or more present together triggers the warning."
           },
-          "why": { "type": "string" },
-          "severity": { "enum": ["critical", "warning", "info"] }
+          "why": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "critical",
+              "warning",
+              "info"
+            ]
+          }
         }
       }
     },
@@ -52,15 +87,25 @@
       "type": "object",
       "description": "How much evidence stands behind this build of the masterlist.",
       "properties": {
-        "ordersAnalysed": { "type": "integer" },
+        "ordersAnalysed": {
+          "type": "integer"
+        },
         "working": {
           "type": "integer",
           "description": "Orders someone reported playing without load order problems. Only these teach sequence."
         },
-        "broken": { "type": "integer" },
-        "unlabelled": { "type": "integer" },
-        "externalDependencyEdges": { "type": "integer" },
-        "ordersWithKnownBuild": { "type": "integer" }
+        "broken": {
+          "type": "integer"
+        },
+        "unlabelled": {
+          "type": "integer"
+        },
+        "externalDependencyEdges": {
+          "type": "integer"
+        },
+        "ordersWithKnownBuild": {
+          "type": "integer"
+        }
       }
     },
     "groups": {
@@ -68,13 +113,22 @@
       "description": "Categories and the order relation between them, the way LOOT models groups.",
       "items": {
         "type": "object",
-        "required": ["name", "after"],
+        "required": [
+          "name",
+          "after"
+        ],
         "properties": {
-          "name": { "type": "string" },
-          "description": { "type": "string" },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
           "after": {
             "type": "array",
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "Groups this one loads after."
           }
         }
@@ -83,35 +137,64 @@
     "requirementSatisfiedBy": {
       "type": "object",
       "description": "Requirements another mod can meet instead, keyed by the required mod's uuid, valued by the uuids of mods that stand in for it. Hand-written in curated-rules.json: two mods doing the same job share no name, author or metadata, so nothing in the data can find this.",
-      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
     },
     "requirementAliases": {
       "type": "object",
       "description": "Names a requirement may use for a mod that none of the mod's own strings match, mapped to that mod's uuid. Keyed by lowercased alphanumeric name. Hand-written in curated-rules.json: nothing measurable joins a mod page's title to a differently named pak, and matching on resemblance would invent links between unrelated mods.",
-      "additionalProperties": { "type": "string" }
+      "additionalProperties": {
+        "type": "string"
+      }
     },
     "plugins": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "uuid", "group"],
+        "required": [
+          "name",
+          "uuid",
+          "group"
+        ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Exactly as the author wrote it. Never normalised: the name is matched against what a user has installed, so tidying it breaks the match."
           },
-          "uuid": { "type": "string" },
-          "group": { "type": "string" },
-          "folder": { "type": "string" },
-          "author": { "type": "string" },
-          "version": { "type": "string" },
-          "lastSeenGameBuild": { "type": "string" },
+          "uuid": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "folder": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "lastSeenGameBuild": {
+            "type": "string"
+          },
           "divider": {
             "type": "number",
             "description": "Position on Astra's Load Order Dividers, 0 to 105, with fractions for sub-dividers such as 58.11 for a Warlock subclass. The skeleton applies whether or not the divider paks are installed.",
-            "examples": [45, 58.11, 105]
+            "examples": [
+              45,
+              58.11,
+              105
+            ]
           },
-          "usesScriptExtender": { "type": "boolean" },
+          "usesScriptExtender": {
+            "type": "boolean"
+          },
           "oftenAbsent": {
             "type": "boolean",
             "description": "Most working orders declaring this as a requirement do not have it installed, so its absence is reported as a warning rather than as something the load order is broken without. Measured from the corpus, never hand-set. A real library scores zero here."
@@ -125,33 +208,55 @@
             "description": "Declared in the mod's own metadata. Hard constraints on order, and never violated by a group or divider decision, unless the depended-on mod is marked loadsAfterDependents. The requirement itself always stands: a missing dependency is reported either way.",
             "items": {
               "type": "object",
-              "required": ["uuid", "name"],
+              "required": [
+                "uuid",
+                "name"
+              ],
               "properties": {
-                "uuid": { "type": "string" },
-                "name": { "type": "string" }
+                "uuid": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
               }
             }
           },
           "featureFlags": {
             "type": "array",
-            "items": { "type": "string" }
+            "items": {
+              "type": "string"
+            }
           },
           "messages": {
             "type": "array",
             "description": "Curated warnings, shown whenever the mod is present.",
             "items": {
               "type": "object",
-              "required": ["text", "severity"],
+              "required": [
+                "text",
+                "severity"
+              ],
               "properties": {
-                "text": { "type": "string" },
-                "severity": { "enum": ["critical", "warning", "info"] }
+                "text": {
+                  "type": "string"
+                },
+                "severity": {
+                  "enum": [
+                    "critical",
+                    "warning",
+                    "info"
+                  ]
+                }
               }
             }
           },
           "evidence": {
             "type": "object",
             "description": "How the category was decided and how much weight it carries. Kept separate so consumers can trust the tiers differently rather than treating a guess as a fact.",
-            "required": ["source"],
+            "required": [
+              "source"
+            ],
             "properties": {
               "source": {
                 "enum": [
@@ -171,13 +276,22 @@
                 "type": "integer",
                 "description": "Submitted orders containing this mod."
               },
-              "workingInstalls": { "type": "integer" },
-              "brokenInstalls": { "type": "integer" },
+              "workingInstalls": {
+                "type": "integer"
+              },
+              "brokenInstalls": {
+                "type": "integer"
+              },
               "confidence": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
                 "description": "For inferred entries, neighbour agreement from 0.7 to 1."
+              },
+              "voloSortedInstalls": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Of installs, the orders VOLO sorted. Their presence counts, since the mods were really installed and played; their sequence never does, because it is VOLO own answer returning."
               }
             }
           }
