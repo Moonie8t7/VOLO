@@ -1288,6 +1288,44 @@ for (const r of mods.values()) {
   plugins.push(plugin);
 }
 
+/*
+ * One author, one spelling.
+ *
+ * Exports disagree about capitalisation and spacing, so the same person arrives
+ * as HyperspaceTowel and Hyperspace Towel, kylin3 and Kylin3. Every row keeps
+ * whichever spelling its best observation happened to carry, so one author
+ * appears twice wherever authors are listed or counted, and the author-catalogue
+ * tier sees two smaller catalogues instead of one.
+ *
+ * The most frequent spelling wins, which is the same rule the mod name itself
+ * uses. Folding for comparison only: what gets published is a spelling some
+ * submitter actually wrote, never a lower-cased invention, because this is a
+ * real person's name and the project does not restyle those.
+ */
+{
+  const foldAuthor = a => String(a).toLowerCase().replace(/\s+/g, '');
+  const spellings = new Map();
+  for (const p of plugins) {
+    if (!p.author) continue;
+    const key = foldAuthor(p.author);
+    if (!spellings.has(key)) spellings.set(key, new Map());
+    const seen = spellings.get(key);
+    seen.set(p.author, (seen.get(p.author) ?? 0) + 1);
+  }
+  let unified = 0;
+  const canonical = new Map();
+  for (const [key, seen] of spellings) {
+    if (seen.size < 2) continue;
+    canonical.set(key, [...seen.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0][0]);
+  }
+  for (const p of plugins) {
+    if (!p.author) continue;
+    const pick = canonical.get(foldAuthor(p.author));
+    if (pick && pick !== p.author) { p.author = pick; unified++; }
+  }
+  if (unified) console.log(`author spellings: ${unified} row(s) moved onto ${canonical.size} canonical name(s)`);
+}
+
 /**
  * Neighbour inference for mods nothing else reached.
  *

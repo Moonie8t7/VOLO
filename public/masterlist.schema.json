@@ -166,7 +166,8 @@
             "description": "Exactly as the author wrote it. Never normalised: the name is matched against what a user has installed, so tidying it breaks the match."
           },
           "uuid": {
-            "type": "string"
+            "type": "string",
+            "description": "BG3's own identifier for the mod, lower-cased. Not always a UUID: where no submitted order ever supplied one, this is a synthetic key of the form 'name:<lowercased alphanumeric name>'. That is a second identity namespace, which is why the field is typed as a plain string rather than as a UUID. A consumer joining on this field should expect both shapes and must not parse it as a UUID."
           },
           "group": {
             "type": "string"
