@@ -1387,10 +1387,23 @@ const nexusMatches = (() => {
   try {
     const raw = JSON.parse(fs.readFileSync(path.join('nexus', 'enrichment.json'), 'utf8'));
     const known = new Set(plugins.map(p => p.uuid));
+    let retired = 0;
     for (const [uuid, e] of Object.entries(raw)) {
       if (e.matchKind !== 'exact') continue;
-      if (!known.has(uuid)) continue;
+      if (!known.has(uuid)) { retired++; continue; }
       live.push([uuid, e]);
+    }
+    /*
+     * The enrichment file is keyed by uuid and written by a nightly crawl, so a
+     * mod whose identity this mine retires keeps its old key until the crawl
+     * next runs. Dropping those is right: the alternative is attaching one mod's
+     * Nexus listing to another. But it fails quietly, and a mod losing its
+     * listing looks exactly like a mod that never had one, so the count is
+     * reported. Zero is the expected reading, and a number that stays high
+     * across several runs means the crawl has stopped keeping up.
+     */
+    if (retired) {
+      console.log(`nexus enrichment: ${retired} key(s) name identities this mine retired, dropped`);
     }
   } catch {
     return [];
