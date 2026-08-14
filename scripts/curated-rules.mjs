@@ -140,7 +140,50 @@ export function loadCuratedRules() {
     throw new Error(`curated rules failed validation:\n  ${problems.join('\n  ')}`);
   }
 
-  return { placements, messages, incompatible, requirementAliases, requirementSatisfiedBy };
+  /*
+   * A load order somebody published for their own mods.
+   *
+   * Every other ordering signal here is inferred from what players did. This is
+   * an author saying what the sequence is, which is a different kind of claim
+   * and a better one, and until now the file had nowhere to put it: a placement
+   * says which shelf a mod belongs on, and says nothing about which of two mods
+   * on the same shelf comes first.
+   *
+   * Recorded as an ordering, deliberately not as a requirement. A published
+   * sequence says these load in this order; it does not say the later ones need
+   * the earlier ones, and telling somebody a mod is missing on that basis would
+   * be inventing a dependency the author never claimed. The person who relayed
+   * this one said as much: they did not know whether the mods must be grouped or
+   * merely kept in sequence.
+   *
+   * The source is required. This tier makes public claims about other people's
+   * work, and a claim with no link is one nobody can check or correct.
+   */
+  const sequences = (raw.sequences ?? []).map((rule, i) => {
+    const label = `sequences[${i}]`;
+    if (!Array.isArray(rule.order) || rule.order.length < 2) {
+      problems.push(`${label}: an ordering needs at least two mods`);
+    }
+    if ((rule.order ?? []).some(n => typeof n !== 'string' || !n.trim())) {
+      problems.push(`${label}: every entry must be a mod name`);
+    }
+    const seen = new Set();
+    for (const n of rule.order ?? []) {
+      const k = normaliseName(n);
+      if (seen.has(k)) problems.push(`${label}: "${n}" appears twice, so its position is undecidable`);
+      seen.add(k);
+    }
+    for (const field of ['why', 'source']) {
+      if (typeof rule[field] !== 'string' || !rule[field].trim()) {
+        problems.push(`${label}: needs a ${field}`);
+      }
+    }
+    return rule;
+  });
+
+  return {
+    placements, messages, incompatible, requirementAliases, requirementSatisfiedBy, sequences,
+  };
 }
 
 /** The one normalisation every name lookup in the project agrees on. */

@@ -582,6 +582,35 @@ export function sortLoadOrder(
     }
   }
 
+  /*
+   * Orderings an author published for their own mods.
+   *
+   * Hard edges, like a declared dependency, and explained as something else
+   * entirely. A published sequence says these load in this order; it does not
+   * say the later ones need the earlier ones, so nothing here can report a mod
+   * as missing. If the mod named ahead of this one is not in the user's list,
+   * the constraint simply has nothing to apply to and is dropped.
+   */
+  for (const mod of mods) {
+    for (const ahead of masterlistEntry(mod)?.loadAfter ?? []) {
+      const target = present.get(ahead.uuid)
+        ?? byNormName.get(ahead.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
+      if (!target || target.uuid === mod.uuid) continue;
+
+      if (!dependents.has(target.uuid)) dependents.set(target.uuid, new Set());
+      if (dependents.get(target.uuid)!.has(mod.uuid)) continue;
+      dependents.get(target.uuid)!.add(mod.uuid);
+      indegree.set(mod.uuid, (indegree.get(mod.uuid) ?? 0) + 1);
+      hardEdges++;
+
+      reasons.get(mod.uuid)!.push({
+        kind: 'sequence',
+        text: `The author publishes a load order putting this after ${target.name}.`,
+        relatedUuid: target.uuid,
+      });
+    }
+  }
+
   for (const [depName, wanters] of missing) {
     const soft = softRequirements.has(depName);
     const asks = `${wanters.length} mod${wanters.length > 1 ? 's require' : ' requires'}`;

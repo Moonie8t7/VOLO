@@ -302,6 +302,28 @@
               "type": "string"
             },
             "description": "Other names this mod has been published under, most frequent first. A rename leaves everyone who has not updated listing the old name, so both are in the corpus; these resolve a name nothing else answers to, and never displace a canonical name."
+          },
+          "loadAfter": {
+            "type": "array",
+            "description": "Mods this one loads after because an author published a sequence saying so. An ordering, not a requirement: a published load order says these load in this order and does not say the later ones need the earlier ones, so nothing derived from this may report a mod as missing.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "uuid": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "why": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "uuid",
+                "name"
+              ]
+            }
           }
         }
       },

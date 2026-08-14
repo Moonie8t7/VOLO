@@ -1897,6 +1897,68 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * A load order an author published for their own mods is honoured exactly.
+ *
+ * This is the only ordering evidence in the project that somebody stated rather
+ * than something inferred from what players happened to do, and it is the one
+ * kind a group-based sort will quietly override: the Valkrana set spans
+ * Resources, Classes, Equipment and Miscellaneous, so the divider skeleton
+ * interleaves it with everything else on those shelves and lands the author's
+ * twelfth entry ahead of their fifth.
+ *
+ * Fed in reversed, so passing cannot be an accident of the input already being
+ * right.
+ */
+{
+  console.log('');
+  console.log('Published load orders');
+
+  const rules = JSON.parse(fs.readFileSync('masterlist/curated-rules.json', 'utf8'));
+  const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+  const byAnyName = new Map();
+  for (const p of masterlist.plugins) {
+    const k = norm(p.name);
+    if (k && !byAnyName.has(k)) byAnyName.set(k, p);
+  }
+  for (const p of masterlist.plugins) {
+    for (const a of p.alternateNames ?? []) {
+      const k = norm(a);
+      if (k && !byAnyName.has(k)) byAnyName.set(k, p);
+    }
+  }
+
+  let checked = 0, violations = 0, cycles = 0;
+  for (const seq of rules.sequences ?? []) {
+    const rows = seq.order.map(n => byAnyName.get(norm(n))).filter(Boolean);
+    if (rows.length < 2) continue;
+    checked++;
+
+    const input = [...rows].reverse().map((p, i) => ({ uuid: p.uuid, name: p.name, originalIndex: i }));
+    const out = sortLoadOrder(input, masterlist);
+    const at = new Map(out.mods.map((m, i) => [m.uuid, i]));
+    cycles += out.issues.filter(i => i.kind === 'cycle').length;
+
+    for (let i = 0; i < rows.length - 1; i++) {
+      const a = at.get(rows[i].uuid); const b = at.get(rows[i + 1].uuid);
+      if (a === undefined || b === undefined) continue;
+      if (a > b) {
+        violations++;
+        console.log(`  FAIL  ${rows[i].name} should load before ${rows[i + 1].name}`);
+      }
+    }
+  }
+
+  if (!checked) {
+    console.log('  ok    no published orderings to check');
+  } else if (!violations && !cycles) {
+    console.log(`  ok    ${checked} published ordering(s) honoured exactly, no cycles`);
+  } else {
+    failures++;
+    if (cycles) console.log(`  FAIL  ${cycles} cycle(s) introduced by a published ordering`);
+  }
+}
+
+/**
  * uuid is the key everything joins on, so it has to be unique.
  *
  * JSON Schema cannot express uniqueness by property, only whole-item equality,

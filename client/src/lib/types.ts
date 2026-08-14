@@ -69,6 +69,15 @@ export interface MasterlistPlugin {
    */
   oftenAbsent?: boolean;
   /**
+   * Mods this one loads after because an author published a sequence saying so.
+   *
+   * An ordering, deliberately not a requirement. A published load order says
+   * these load in this order; it does not say the later ones need the earlier
+   * ones, and reporting a missing dependency on that basis would invent a claim
+   * the author never made.
+   */
+  loadAfter?: (ModRef & { why?: string })[];
+  /**
    * Other names this mod has been published under, most frequent first.
    *
    * A rename leaves everyone who has not updated listing the old name, so both
@@ -186,7 +195,7 @@ export interface Placement {
 }
 
 export interface Reason {
-  kind: 'dependency' | 'group';
+  kind: 'dependency' | 'group' | 'sequence';
   text: string;
   relatedUuid?: string;
 }

@@ -1289,6 +1289,52 @@ for (const r of mods.values()) {
 }
 
 /*
+ * Orderings an author published for their own mods.
+ *
+ * Turned into edges between consecutive members the masterlist knows. Only
+ * consecutive: the sort is a topological one, so A before B and B before C
+ * already gives A before C, and stating every pair would multiply the edges and
+ * the ways they can contradict something without adding a constraint.
+ *
+ * An unknown name is skipped rather than dropped silently at the end. Four of
+ * the fifteen mods in the first sequence are not in the corpus at all, and a
+ * sequence quietly enforcing two thirds of itself is worse than one that says
+ * which parts it could not reach.
+ */
+{
+  const byNormName = new Map();
+  for (const p of plugins) {
+    const k = externalKey(p.name);
+    if (k && !byNormName.has(k)) byNormName.set(k, p);
+    for (const alt of p.alternateNames ?? []) {
+      const a = externalKey(alt);
+      if (a && !byNormName.has(a)) byNormName.set(a, p);
+    }
+  }
+
+  let edges = 0;
+  const unreachable = [];
+  for (const seq of curated.sequences ?? []) {
+    let previous = null;
+    for (const name of seq.order) {
+      const row = byNormName.get(externalKey(name));
+      if (!row) { unreachable.push(name); continue; }
+      if (previous) {
+        (row.loadAfter ??= []).push({ uuid: previous.uuid, name: previous.name, why: seq.why });
+        edges++;
+      }
+      previous = row;
+    }
+  }
+  if (edges || unreachable.length) {
+    console.log(
+      `curated sequences: ${edges} ordering edge(s)`
+      + (unreachable.length ? `, ${unreachable.length} named mod(s) the corpus has never seen: ${unreachable.join(', ')}` : ''),
+    );
+  }
+}
+
+/*
  * One author, one spelling.
  *
  * Exports disagree about capitalisation and spacing, so the same person arrives
