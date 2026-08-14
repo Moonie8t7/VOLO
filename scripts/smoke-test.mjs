@@ -1642,6 +1642,53 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * The two XML readers must decode the same escapes.
+ *
+ * modsettings.lsx is read twice in this project: by the parser for the browser,
+ * and by the miner for the corpus. The parser decoded the five named entities
+ * and both numeric forms; the miner decoded only the named ones. A mod called
+ * `Tav&#39;s Hair` therefore reached the miner with the escape intact and the
+ * browser without, and the two disagreed about the mod's name, which is what
+ * every name lookup and the `name:` fallback identity are built on.
+ *
+ * Compared by running the real thing through the parser and asserting the
+ * miner's source carries the same rules, because the miner is a script rather
+ * than a module and importing it would run a full mine.
+ */
+{
+  console.log('');
+  console.log('XML entity decoding');
+
+  const lsx = (name) => `<?xml version="1.0" encoding="UTF-8"?>
+<save><region id="ModuleSettings"><node id="Mods"><children>
+<node id="ModuleShortDesc">
+  <attribute id="Name" type="LSString" value="${name}"/>
+  <attribute id="UUID" type="FixedString" value="11111111-2222-3333-4444-555555555555"/>
+  <attribute id="Folder" type="LSString" value="EntityTest"/>
+</node>
+</children></node></region></save>`;
+
+  const parsed = parseLoadOrder(lsx('Tav&#39;s &#x48;air &amp; Halos'), 'entities.lsx');
+  const got = parsed.mods[0]?.name;
+  if (got === "Tav's Hair & Halos") {
+    console.log('  ok    the parser decodes named, decimal and hex escapes');
+  } else {
+    failures++;
+    console.log(`  FAIL  the parser read the name as ${JSON.stringify(got)}`);
+  }
+
+  const miner = fs.readFileSync('scripts/mine-corpus.mjs', 'utf8');
+  const hasNumeric = miner.includes('&#x([0-9a-fA-F]+);') && miner.includes('&#(\\d+);')
+    && miner.includes('fromCodePoint');
+  if (hasNumeric) {
+    console.log('  ok    the miner decodes the same escapes as the parser');
+  } else {
+    failures++;
+    console.log('  FAIL  the miner does not decode numeric character references');
+  }
+}
+
+/**
  * An export is free to write a UUID in either case, and it must not matter.
  *
  * A UUID is hexadecimal and case carries no meaning, but identity here is an

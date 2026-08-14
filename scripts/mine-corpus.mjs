@@ -139,6 +139,26 @@ const dividerNameOf = entry => {
  */
 const normaliseUuid = raw => String(raw ?? '').trim().toLowerCase();
 
+/**
+ * Entity decoding for attribute values; &amp; must come last.
+ *
+ * Mirrors decodeXml in client/src/lib/parser.ts, including the numeric forms.
+ * This side decoded the five named entities only, so a name written as
+ * `Tav&#39;s Hair` reached the miner with the escape still in it and reached the
+ * browser without. The two then disagreed about the mod's name, which is the key
+ * every name-based lookup and the `name:` fallback identity are built on.
+ *
+ * fromCodePoint rather than fromCharCode, because fromCharCode truncates
+ * anything above the basic plane and a mod name carrying an emoji would survive
+ * as a lone surrogate that matches nothing.
+ */
+const decodeXml = s =>
+  String(s).replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&amp;/g, '&');
+
 const uuidFromFileName = fileName => {
   if (!fileName) return undefined;
   const m = String(fileName).match(
@@ -630,9 +650,7 @@ function readOrder(file) {
       const scope = block.split('</node>')[0];
       const rec = {};
       for (const m of scope.matchAll(/<attribute\s+id="([^"]+)"[^>]*\bvalue="([^"]*)"/g)) {
-        rec[m[1]] = m[2]
-          .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
-          .replace(/&apos;/g, "'").replace(/&amp;/g, '&');
+        rec[m[1]] = decodeXml(m[2]);
       }
       if (ENGINE_MASTERS.has(rec.Folder) || ENGINE_MASTERS.has(rec.Name)) continue;
       entries.push(rec);
