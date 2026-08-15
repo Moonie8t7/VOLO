@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-08-15T14:17:37.704Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-15T17:43:18.680Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 86 |
-| labelled working | 72 |
+| Load orders analysed | 87 |
+| labelled working | 73 |
 | labelled broken | 12 |
 | load-after edges promoted from catalogues | 547 |
 | unlabelled | 2 |
 | Separator headers parsed | 1705 |
-| **Unique mods indexed** | **9328** |
-| Seen in more than one order | 5513 |
+| **Unique mods indexed** | **9329** |
+| Seen in more than one order | 5934 |
 | With declared dependencies | 556 |
 | With Script Extender flags | 163 |
 | With author metadata | 1506 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 86 orders carry it, because the short
+this comes from. Only 2 of 87 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -40,7 +40,7 @@ the tool flag a mod as last verified on an older patch.
 |---|---|---|
 | Curated override | 31 | highest, hand-verified infrastructure |
 | Human-authored section header | 5193 | high, a modder put it there |
-| Name pattern fallback | 1854 | medium, needs review |
+| Name pattern fallback | 1855 | medium, needs review |
 | Nexus or mod.io listing category | 1086 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 18 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 109 | high, measured 97 percent accurate at this band |
@@ -77,7 +77,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Environment`: 57
 - `Audio`: 20
 - `Heads`: 519
-- `Hair`: 289
+- `Hair`: 290
 - `Companions`: 411
 - `NPC`: 194
 - `Bodies`: 31
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 21.1% | 22.8% | no, and it points the other way |
+| Category pairs against the working consensus | 21.3% | 23.1% | no, and it points the other way |
 | Mods in no working order anywhere | 10% | 0% | yes |
 | Declared dependencies not installed | 0.1 | 0.0 | yes |
 
-Measured over 12 broken and 72 working orders, against 163 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 12 broken and 73 working orders, against 172 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -146,10 +146,10 @@ Framework are present in every working order that needs them.
 | `Ornamental Body Jewellery` | 7 | 6 | 1 |
 | `ZipsHeads` | 7 | 6 | 1 |
 | `Humanoid Tag Scratch Fix` | 12 | 10 | 1 |
-| `Origin Mirror Unlock` | 4 | 3 | 1 |
 | `BDS Moonlit Circlet` | 7 | 5 | 1 |
-| `TutorialChestSummoning` | 28 | 19 | 24 |
-| `UnlockLevelCurve - Level 13-20 | Patch 8` | 5 | 3 | 6 |
+| `UnlockLevelCurve - Level 13-20 | Patch 8` | 6 | 4 | 6 |
+| `TutorialChestSummoning` | 29 | 19 | 24 |
+| `Origin Mirror Unlock` | 5 | 3 | 1 |
 
 ## Requirements naming something unknown
 
@@ -162,7 +162,7 @@ would otherwise be formatted into a message and dropped without being counted.
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 72
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 73
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
