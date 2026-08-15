@@ -21,7 +21,7 @@ nothing reaches it unless you choose to submit an order from the Submit page.
 Mods from Nexus Mods and from mod.io, the platform behind the official in-game
 mod manager, are both supported.
 
-Measured on orders it has never seen, VOLO agrees with them **65.0 percent** of
+Measured on orders it has never seen, VOLO agrees with them **64.9 percent** of
 the time against **50.8 percent** for a random shuffle. That figure averages
 orders rather than mods, so a 41-mod order weighs as much as a 999-mod one,
 though weighting by mods barely moves it. It is a sorting aid with evidence
@@ -83,12 +83,12 @@ Full detail in [docs/architecture.md](docs/architecture.md).
 
 ## The masterlist
 
-`masterlist/bg3-masterlist.json` covers 9,329 mods. 5,193 were
+`masterlist/bg3-masterlist.json` covers 9,416 mods. 5,193 were
 categorised from section headers modders wrote in their own orders,
-1,855 from name patterns, 1,086 from a Nexus or mod.io listing,
-18 from where their author's other catalogued mods sit, 220 inferred
-from their neighbours, 31 from curated overrides, and 926 are not
-categorised at all. 8,393 of the 9,329 sit on a divider position.
+1,906 from name patterns, 1,116 from a Nexus or mod.io listing,
+18 from where their author's other catalogued mods sit, 219 inferred
+from their neighbours, 31 from curated overrides, and 933 are not
+categorised at all. 8,473 of the 9,416 sit on a divider position.
 
 These move as the corpus grows.
 [masterlist/coverage-report.md](masterlist/coverage-report.md) is regenerated on
@@ -109,7 +109,7 @@ nothing scores well; a mod left at the end because nothing is known about it is
 rewarded precisely because unplaced mods cluster there. Read it alongside the
 per-order and mod-weighted splits rather than on its own.
 
-926 mods have no category from any source. Almost all appeared in exactly one
+933 mods have no category from any source. Almost all appeared in exactly one
 submitted order, so there is nothing to infer from.
 
 The automated checks parse VOLO's own output with VOLO's own parser, which is

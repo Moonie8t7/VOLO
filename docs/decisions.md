@@ -29,7 +29,7 @@ Two scripts report it, and the difference matters.
 The in-sample figure runs about four points high because the masterlist has
 already read the answer. **Quote the held-out number.**
 
-Current: **65.0 percent held out**, against a 50.8 percent random baseline,
+Current: **64.9 percent held out**, against a 50.8 percent random baseline,
 over 61 distinct working orders.
 
 Two caveats on the held-out figure itself. The group sequence is fixed across
