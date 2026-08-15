@@ -4,6 +4,13 @@ What was measured, what was kept, and what was thrown away. Several plausible
 ideas here made the sorter worse, and they are recorded so nobody rebuilds them
 on intuition.
 
+Every entry carries a slug heading, so a commit message, an issue reply or a
+code comment can point at one decision rather than at the whole file:
+`docs/decisions.md#alias-joins-for-constraints`. The slugs are stable. If an
+entry is reworded, keep its slug; if it is genuinely superseded, leave it where
+it is and add the new decision, because a link that quietly changes meaning is
+worse than one that breaks.
+
 ## How quality is measured
 
 Agreement with submitted working orders, pair by pair. Every pair of mods
@@ -34,6 +41,8 @@ the per-order table before treating a change in the summary as real.
 
 ## Adopted
 
+### generated-category-sequence
+
 **The category sequence, generated rather than transcribed.** The order categories
 load in is derived by counting every pair of mods in every working order and
 searching for the sequence that contradicts the least evidence, weighting each
@@ -62,11 +71,15 @@ Adopting a new order changes every sort, so it stays a decision somebody makes
 and measures. What it does now is record how well the shipped order fits, so
 drift is visible rather than silent.
 
+### astra-dividers-as-skeleton
+
 **Astra's dividers as the ordering skeleton.** Their sequence decides which
 section a mod lands in; the learned order decides within a section. Costs about
 three points against ordering purely by the learned sequence, and returns a
 structure players already recognise and exports whose headings read in order.
 A deliberate trade, taken knowingly.
+
+### catalogue-requirements
 
 **Requirements promoted from the catalogues.** 206 load-after edges from Nexus
 and mod.io requirement tables, where both ends resolve to a mod we know; the
@@ -77,14 +90,20 @@ Measured effect on agreement is nil, because working orders already respect
 these edges 92 percent of the time. Kept because it is the strongest evidence
 type available and it powers the user-facing explanations.
 
+### corpus-arbitration
+
 **Corpus arbitration.** Where a catalogue claims A requires B but working orders
 consistently load them the other way, the players win. Dropped nine bad edges
 and lifted compliance among the rest from 84.9 to 92.3 percent.
+
+### patchers-load-last
 
 **Patchers load last.** Compatibility Framework sat in Resources, rank 7 of 30,
 because our groups could not distinguish a library from a patcher. Astra places
 it at 105 and the corpus puts it at the very end of the order holding it. Both
 agreed against us.
+
+### listing-name-aliases
 
 **Every name a listing has been seen under.** Authors rename listings, and
 installed paks keep the name they shipped under, so a rename silently breaks
@@ -97,6 +116,8 @@ names was considered and rejected as a false-positive machine. Found 38 mods
 on the first build, including a Races bundle that had outgrown its original
 five-race title. Held-out moved 57.3 to 57.4.
 
+### author-catalogue-tier
+
 **The author's other catalogued mods, as the tier below the listing.** Some
 names defeat every tier: a dice set called "ElectricBlue" says nothing, its
 listing does not exist, and its neighbours in submitted orders are
@@ -107,6 +128,8 @@ rest of their work, labelled `author` so it never reads as evidence. Placed 29
 mods at a cost of 0.1 held-out points, the same shape of trade as the listing
 tier above: the metric rewards leaving unknown mods parked at the end, and a
 mod placed in the right section beats a mod at the end of the file.
+
+### one-gate-for-every-order
 
 **One gate for every order, not one for orders that worked.** Broken orders used
 to wait for a person on the reasoning that their value is the written diagnosis
@@ -127,6 +150,8 @@ does not, which is the gate that would notice harm and is unchanged. The
 `approved` label still overrides a hold, because an order that drops agreement
 can still be one a person wants kept. Issue #94 landed itself the same evening,
 104 mods, agreement flat, no button pressed.
+
+### caution-needs-two-orders
 
 **The never-verified caution asks for two orders.** It fired on any mod seen once
 in an order somebody reported as broken and never in one reported working, which
@@ -149,6 +174,8 @@ Each experiment below quotes the figure it was measured against at the time,
 so compare a result with its own baseline rather than with the current
 headline. The 63.6 appearing here is the in-sample number from before held-out
 evaluation existed; it is not comparable to the current figure at the top of this file.
+
+### alias-joins-for-constraints
 
 **Matching catalogue listings on a mod's previously seen names.** Both joins
 between the masterlist and the catalogues match on a mod's current name only, so
@@ -184,6 +211,8 @@ The renaming problem it set out to solve is already handled properly: the
 crawlers record a listing's previous titles as aliases when a title actually
 changes, which is authoritative in a way that submitter-typed names are not.
 
+### modio-over-vague-nexus
+
 **Deferring to mod.io where the Nexus category is vague.** Nexus outranks mod.io
 on every name both catalogues publish, which was never a measured choice: it is
 simply the larger source. They disagree on 923 names, and 121 of those decide a
@@ -207,9 +236,13 @@ builder now reports how often the catalogues disagree and how many of those
 disagreements reach a mod, and `--conflicts` lists them, so the question does not
 have to be reopened from scratch.
 
+### uncategorised-mods-in-place
+
 **Keeping uncategorised mods in place.** Rather than sorting them to the end,
 give them the position of the last categorised mod above them. Measured 61.8
 against 63.6. Unplaced mods genuinely do cluster at the end of real orders.
+
+### divider-vocabulary-classifier
 
 **The divider vocabulary as a classifier.** Using the sub-divider labels
 (Warlock, Tiefling, Waypoints, Summons) to place mods nothing else could reach.
@@ -222,6 +255,8 @@ re-measured, the conclusion held. `scripts/smoke-test.mjs` now asserts the
 tables are reachable and internally consistent, which is the check that would
 have caught it.
 
+### astra-category-order-wholesale
+
 **Astra's category order wholesale.** Replacing the learned sequence entirely
 measured 60.4 percent against 63.6. Preserved on branch
 `experiment/astra-order`.
@@ -230,6 +265,8 @@ The pattern across these: with so few working orders, the corpus is the binding
 constraint, not the algorithm. More submissions beat more cleverness.
 
 ## Reversed
+
+### listing-categories-fallback
 
 **Listing categories as a placement fallback.** Nexus and mod.io categories were
 rejected on a 0.6 point loss, then adopted, because the measurement was
@@ -250,6 +287,8 @@ The cost, stated plainly: held-out agreement 60.3 to 57.5 percent. That figure
 averages orders rather than mods, so a 41-mod order counts as much as a 999-mod
 one; weighted by mods the gap is roughly a point. It is a knowing trade of a
 metric fitted to nine orders for a structure a player can read.
+
+### volo-sorted-not-evidence
 
 **Orders VOLO sorted are not evidence of order.** Someone sorts with VOLO,
 plays on the result, and submits it. That order looks like a second person
@@ -275,14 +314,20 @@ what matters is the shape of the change, not the exact numbers.
 
 ## Constraints that shaped the design
 
+### no-per-request-network-calls
+
 **No per-request network calls.** The first version scraped mod pages per mod
 per request, sequentially. A thousand-mod list meant roughly eighteen minutes of
 network and rate limiting, which was misdiagnosed as a large-dataset problem and
 effectively killed it. External data is now crawled ahead of time into committed
 JSON.
 
+### never-alter-mod-names
+
 **Mod names are never altered.** They are matched against what players have
 installed, so normalising or tidying a name silently drops the mod from sorting.
+
+### console-load-orders
 
 **Console load orders cannot be read or written, and this was asked properly.**
 Larian Support was contacted on 10 August 2026 and the question was escalated to
@@ -309,10 +354,14 @@ both sides; the open question is whether reordering 150 mods on a controller is
 tolerable, which is a UI question for someone with an Xbox rather than a
 technical one.
 
+### move-as-little-as-possible
+
 **Move as little as possible.** A sorter that reshuffles a working load order
 without cause is worse than useless.
 
 ## Incidents
+
+### cache-poisoning-2026-08-04
 
 **Cache poisoning, 4 August 2026.** Twice in one day the site served HTML in
 place of a JavaScript or CSS asset. Cause: during deployment propagation a
@@ -321,6 +370,8 @@ our own `/assets/*` rule then told the edge to cache that answer for a year.
 Fixed by capping asset cache at an hour and adding `verify-deploy.mjs`, which
 detects and repairs it. A stronger fix, routing rules that return a real 404,
 is still open.
+
+### stale-session-export-2026-08-05
 
 **Stale session export, 5 August 2026.** A user exported a 102-mod order after
 importing a 59-mod file, because picking a file on the Submit page does not
