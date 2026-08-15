@@ -1,11 +1,25 @@
-# Vite fingerprints everything under /assets, so in principle these URLs never
-# change and could be cached forever. In practice "forever" is dangerous: if a
-# request lands in the moment between a new index.html going live and its
-# assets propagating, the SPA fallback answers with HTML at 200, and a forever
-# rule pins that broken answer in the edge and browser caches. That took the
-# site down on 2026-08-04. An hour keeps the speed and caps the damage.
+# Vite fingerprints everything under /assets, so these URLs never change and can
+# be cached for a year.
+#
+# They were capped at an hour for a reason worth keeping written down. If a
+# request landed in the moment between a new index.html going live and its
+# assets propagating, the SPA fallback answered with HTML at 200, and a long
+# rule pinned that broken answer into the edge and browser caches. That took the
+# site down on 2026-08-04, and an hour capped the damage.
+#
+# The fallback no longer does that: a missing file under /assets now returns 404
+# rather than 200, so there is no wrong answer left to pin. Checked before
+# changing this, against the live site:
+#
+#   curl -o /dev/null -w '%{http_code}' https://volobg3.com/assets/does-not-exist.js
+#   404
+#
+# If that ever answers 200 again, put the hour back before anything else.
+#
+# The cost of the cap was real: Cloudflare reported 28.6 percent of requests
+# served from cache, on a site that is entirely static.
 /assets/*
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=31536000, immutable
 
 # The masterlist keeps a stable URL and changes when submissions merge. An hour
 # of caching keeps it fast without holding users on stale data for long.

@@ -1,0 +1,13 @@
+# One hostname, chosen rather than left to Google.
+#
+# Both volobg3.com and www.volobg3.com served the whole site at 200, so Search
+# Console indexed both and split the clicks between them: 16 to the apex and 12
+# to www over the first eight days. Every link, impression and ranking signal
+# was being divided across two properties that are the same site.
+#
+# The canonical tag has always pointed at the apex and did not settle it. A
+# canonical is a hint; a 301 is not, so the redirect is what actually decides.
+#
+# :splat carries the rest of the path, so a link to a deep page keeps working
+# rather than dumping somebody on the home page.
+https://www.volobg3.com/*  https://volobg3.com/:splat  301!
