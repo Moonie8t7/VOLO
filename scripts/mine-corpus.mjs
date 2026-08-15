@@ -1288,6 +1288,9 @@ for (const r of mods.values()) {
   plugins.push(plugin);
 }
 
+/** Sequence edges, held until the corpus witness data exists to arbitrate them. */
+const sequenceEdges = [];
+
 /*
  * Orderings an author published for their own mods.
  *
@@ -1312,24 +1315,20 @@ for (const r of mods.values()) {
     }
   }
 
-  let edges = 0;
   const unreachable = [];
   for (const seq of curated.sequences ?? []) {
     let previous = null;
     for (const name of seq.order) {
       const row = byNormName.get(externalKey(name));
       if (!row) { unreachable.push(name); continue; }
-      if (previous) {
-        (row.loadAfter ??= []).push({ uuid: previous.uuid, name: previous.name, why: seq.why });
-        edges++;
-      }
+      if (previous) sequenceEdges.push({ row, before: previous, why: seq.why });
       previous = row;
     }
   }
-  if (edges || unreachable.length) {
+  if (unreachable.length) {
     console.log(
-      `curated sequences: ${edges} ordering edge(s)`
-      + (unreachable.length ? `, ${unreachable.length} named mod(s) the corpus has never seen: ${unreachable.join(', ')}` : ''),
+      `curated sequences: ${unreachable.length} named mod(s) the corpus has never seen: `
+      + unreachable.join(', '),
     );
   }
 }
@@ -1565,6 +1564,50 @@ function orderWitness(dependent, dependency) {
 }
 
 /**
+ * Whether the corpus actively contradicts an ordering claim.
+ *
+ * Two witnesses is a low bar and deliberately so: this only ever removes a
+ * constraint, never adds one, so being wrong costs a claim rather than imposing
+ * a false one. Used for catalogue requirements and for curated sequences alike,
+ * because a document is a document whoever wrote it.
+ */
+const corpusOverrules = (dependent, dependency) => {
+  const { before, after, witnesses } = orderWitness(dependent, dependency);
+  return witnesses >= 2 && after > before;
+};
+
+/*
+ * A published sequence still answers to the people who played the game.
+ *
+ * Catalogue requirements have always been arbitrated this way: where working
+ * orders consistently load two mods the other way round, the players win over
+ * the requirements table. Curated sequences shipped without that guard, which
+ * was an oversight rather than a decision, and the BG3 community wiki found it.
+ *
+ * Its general load order names six user interface mods in order. The corpus
+ * disagrees on four of the ten pairs, including the best evidenced one: players
+ * put Better Tooltips ahead of Dynamic Sidebar twenty times against nine. A
+ * documented convention is still a document, and this one is from October 2024.
+ *
+ * The same guard leaves an author's own sequence almost untouched, which is the
+ * result that makes it safe to apply: nine of the ten Valkrana edges are either
+ * corroborated or have too few witnesses to judge, and the one it drops rests on
+ * two orders against three.
+ */
+{
+  let applied = 0, overruled = 0;
+  for (const { row, before, why } of sequenceEdges) {
+    if (corpusOverrules(row.uuid, before.uuid)) { overruled++; continue; }
+    (row.loadAfter ??= []).push({ uuid: before.uuid, name: before.name, why });
+    applied++;
+  }
+  console.log(
+    `curated sequences: ${applied} ordering edge(s)`
+    + (overruled ? `, ${overruled} overruled by the corpus` : ''),
+  );
+}
+
+/**
  * Promote crawled requirement data into load-after constraints.
  *
  * Dependencies are the only hard evidence the sorter has; everything else is
@@ -1673,10 +1716,7 @@ if (process.env.VOLO_NO_EXTERNAL_DEPS) {
    *
    * Uses the shared witness count built above.
    */
-  const corpusContradicts = (dependent, dependency) => {
-    const { before, after, witnesses } = orderWitness(dependent, dependency);
-    return witnesses >= 2 && after > before;
-  };
+  const corpusContradicts = corpusOverrules;
 
   // Existing pak-declared edges seed the graph, so a promoted edge cannot
   // contradict what a mod states about itself.
