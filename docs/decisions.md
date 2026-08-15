@@ -252,9 +252,21 @@ guides mean by incompatible, it is not what a warning on this page would say, an
 publishing it would put a false caution on two real authors' work on the strength
 of a document that the people playing the game contradict nine to one.
 
-The Jawstarion and Lemon mods that the KAVT manual calls outright incompatible
-were not available to check and stay unrecorded. An incompatibility needs both
-UUIDs and a corpus that does not object.
+The mods the KAVT manual calls outright incompatible were checked afterwards
+against both authors' catalogues and the corpus, and none of them is publishable
+either. KAVT itself is well used: 37 orders hold it, 31 of them reported working.
+Against that, Character Creation Overhaul has 4 installs and appears alongside
+KAVT in two orders, one of them working. Extra Scars for Everyone has 2 installs
+and never appears with it. More Makeup and Tattoos and Lemons Makeup and Tattoo
+Non-Replacers are not in the masterlist at all.
+
+One working order holding a supposedly incompatible pair is the same objection
+that sank the Glow Eyes claim, only smaller. And never co-occurring is not
+evidence of a conflict, for the reason already written down under the name twins:
+absence is not a signal when the population is two installs. The manual may well
+be right about all of them. The corpus cannot corroborate it, and this project
+does not publish claims about other people's work on the strength of a document
+alone.
 
 ### modio-over-vague-nexus
 
