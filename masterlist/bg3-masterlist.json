@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-14T22:54:39.041Z",
+  "generated": "2026-08-15T05:00:17.169Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -30,7 +30,7 @@
     "working": 71,
     "broken": 12,
     "unlabelled": 2,
-    "externalDependencyEdges": 543,
+    "externalDependencyEdges": 547,
     "ordersWithKnownBuild": 2
   },
   "groups": [
@@ -86209,7 +86209,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "6e49e906-f0de-9abb-d7e1-b361e22be6a2",
+          "name": "Best in Party Skills"
+        }
+      ]
     },
     {
       "name": "Better Aloe",
@@ -90639,7 +90645,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "b77a6f3e-3c7a-405f-a6bf-6ccf8e549a8c",
+          "name": "ContainersExtended"
+        },
+        {
+          "uuid": "c52c2d4d-2aa1-e9ea-db5c-3b61d111ec16",
+          "name": "ContainersExtended"
+        }
+      ]
     },
     {
       "name": "ContainersExtendedCampChest",
@@ -93216,6 +93232,10 @@
         "voloSortedInstalls": 1
       },
       "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
         {
           "uuid": "897914ef-5c96-053c-44af-0be823f895fe",
           "name": "DnD 5.5e All-in-One BEYOND"
@@ -125653,7 +125673,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "True Haste Advanced",
