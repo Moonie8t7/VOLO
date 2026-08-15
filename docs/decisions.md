@@ -215,6 +215,31 @@ JSON.
 **Mod names are never altered.** They are matched against what players have
 installed, so normalising or tidying a name silently drops the mod from sorting.
 
+**Console load orders cannot be read or written, and this was asked properly.**
+Larian Support was contacted on 10 August 2026 and the question was escalated to
+a Community Manager through the Discord. The answers, over 12 to 15 August: there
+is a `modsettings.lsx` on consoles, but no way to extract it or resubmit it once
+modified; external software is not compatible with mods on consoles; and unless
+everything is submitted through mod.io they cannot guarantee it would work. A
+request for an order-import feature in the in-game Mod Manager was left open
+rather than accepted, with an offer to reach out if it changes.
+
+The limitation is architectural rather than a policy anyone could waive. Load
+order is an input read at startup, so a mod cannot reorder the mods it was loaded
+alongside; a `.pak` is data in the game's virtual file system with no filesystem
+access; and Script Extender, the only thing on PC that has such access, is a
+native DLL that cannot exist on a console. A utility mod that reads the order on
+one run, sorts it and asks for a restart fails at every step, not just the write.
+
+What remains viable needs nothing from Larian. Console mods come only from
+mod.io, whose API exposes a user's subscriptions under their own authorisation,
+so VOLO can read a player's mods and show them a recommended order to apply by
+hand in the in-game Mod Manager. That is a load order guide that happens to be
+generated. mod.io has no ordering concept either, so the write half is closed on
+both sides; the open question is whether reordering 150 mods on a controller is
+tolerable, which is a UI question for someone with an Xbox rather than a
+technical one.
+
 **Move as little as possible.** A sorter that reshuffles a working load order
 without cause is worse than useless.
 
