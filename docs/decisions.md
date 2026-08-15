@@ -108,12 +108,81 @@ mods at a cost of 0.1 held-out points, the same shape of trade as the listing
 tier above: the metric rewards leaving unknown mods parked at the end, and a
 mod placed in the right section beats a mod at the end of the file.
 
+**One gate for every order, not one for orders that worked.** Broken orders used
+to wait for a person on the reasoning that their value is the written diagnosis
+and only a human can act on it. That is true and does not follow: the diagnosis
+is posted to the issue either way, and holding the order never made anybody read
+it. All the hold achieved was a corpus that waited on somebody being at a
+keyboard.
+
+What a broken order contributes decides whether that is safe. It adds presence,
+and it adds the section headers and divider slots its submitter wrote, which is
+real placement evidence. It never contributes sequence: `workingPositions` in the
+miner is built from working orders alone, so no ordering is learned from an order
+that did not run. The corpus had always treated them that way, so this changed
+who presses the button rather than what the evidence means.
+
+An order of either kind now lands if it leaves agreement intact and waits if it
+does not, which is the gate that would notice harm and is unchanged. The
+`approved` label still overrides a hold, because an order that drops agreement
+can still be one a person wants kept. Issue #94 landed itself the same evening,
+104 mods, agreement flat, no button pressed.
+
+**The never-verified caution asks for two orders.** It fired on any mod seen once
+in an order somebody reported as broken and never in one reported working, which
+was 496 mods. A warning pointing at 496 things points at nothing, and only 35 of
+them had ever been seen that way twice. It also got worse as the project got
+better: every held submission adds broken orders, so the one-sighting bar grew
+noisier exactly as the corpus grew more useful.
+
+It now asks for two separate broken orders, and a row of the same name carrying
+working installs answers it, since warning about a mod while the community
+demonstrably runs something of that name is the least useful thing the page could
+say. That is a much weaker claim than deciding two same-name UUIDs are one mod,
+which stays open and undecided; all it records is that the name works for
+somebody. Together: 496 mods to 34, with placement measured as untouched rather
+than assumed, because the caution is advice and never an input to the sort.
+
 ## Rejected
 
 Each experiment below quotes the figure it was measured against at the time,
 so compare a result with its own baseline rather than with the current
 headline. The 63.6 appearing here is the in-sample number from before held-out
 evaluation existed; it is not comparable to the current figure at the top of this file.
+
+**Matching catalogue listings on a mod's previously seen names.** Both joins
+between the masterlist and the catalogues match on a mod's current name only, so
+a renamed mod loses its listing and every requirement that listing states.
+Widening them to `alternateNames`, the other names the corpus has seen a mod
+under, recovered 36 listings and twelve load-after edges.
+
+It was reverted the same day, and the reason is worth more than the change was.
+`alternateNames` are not previously published names. They are whatever any
+submitter typed for that identity, including shorthand and generic words. One
+submitter listed Sailor Cat's `Wish Spell` as plain `Wish`, which minted `wish`
+as an alias; mod.io has an unrelated mod titled `Wish` by TarroBlackfeather that
+declares a dependency on `Make a Wish` by a third author. So the join published
+the claim that Wish Spell requires Make a Wish, as a hard edge, between two
+strangers' mods. Both sit on divider 34.5, so that edge alone decided their order
+and reversed it against the only submitted order holding both. The
+corpus-contradiction guard could not catch it: it needs two witnesses and there
+was one.
+
+An ambiguity guard would not have saved it either. `wish` is unambiguous within
+the masterlist; it is simply wrong. Generic words typed by submitters will keep
+colliding with real catalogue titles, so the data is unsuitable for this by
+construction rather than by accident.
+
+The distinction to keep: the same field is safe for **placement** and unsafe for
+**constraints**. Resolving an unknown name to a group is a soft guess where being
+wrong costs a category, and `alternateNames` is used for exactly that in the
+browser, where it recovers 260 names nothing else reaches. Turning it into a hard
+ordering edge is a claim about two real authors' work that silently reorders
+somebody's game. Same data, entirely different blast radius.
+
+The renaming problem it set out to solve is already handled properly: the
+crawlers record a listing's previous titles as aliases when a title actually
+changes, which is authoritative in a way that submitter-typed names are not.
 
 **Deferring to mod.io where the Nexus category is vague.** Nexus outranks mod.io
 on every name both catalogues publish, which was never a measured choice: it is
