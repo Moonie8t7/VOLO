@@ -357,25 +357,46 @@ export default function LandingPage() {
             </AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-3">
               <p>
-                Not really, and I would rather say so than pretend otherwise.
-                Consoles give you no access to the files VOLO reads or writes,
-                so there is nothing to export and nothing to import back. You
-                would have to type every mod name in by hand and then reorder
-                the whole list again with a controller, which is not a workflow
-                anybody wants for two hundred mods.
+                Not today, and this is now a confirmed answer rather than a
+                guess.
+              </p>
+              <p>
+                I asked Larian directly in August 2026, and a Community Manager
+                checked with the team. There is a modsettings.lsx on consoles,
+                the same file VOLO reads on PC, but there is no way to get it
+                off the console or put a modified one back, and external
+                software is not compatible with mods on consoles at all.
+              </p>
+              <p>
+                It can't be done via a mod either, which is the next thing I was
+                looking into. Load order is decided before any mod runs, so a
+                mod cannot reorder the mods it was loaded alongside. Mod files
+                are data rather than programs and have no access to the file
+                system, and Script Extender, the only thing on PC that does, is
+                a Windows library that cannot exist on a console.
               </p>
               <p>
                 What already works in your favour is that the masterlist is
-                built from Nexus Mods and mod.io alike, and mod.io is the
-                platform behind the in-game mod manager. So console mods are in
-                the data and sorted like any other, even though getting an
-                order in and out is the part that is missing.
+                built from mod.io as well as Nexus Mods, and mod.io is the
+                platform behind the in-game mod manager. Your mods are in the
+                data and sorted like anyone else's.
               </p>
               <p>
-                Proper console support is on the list. It needs considerably
-                more testing than I have done before I would claim it works, so
-                it is honest to call it unsupported today rather than have you
-                find out the hard way.
+                So there is one workflow left, and it ends with you doing the
+                last part by hand. VOLO shows you the order on a phone or a PC,
+                and you drag your mods into that order in the in-game manager
+                yourself. I could make that much less tedious by letting you
+                connect your mod.io account, so VOLO reads what you are
+                subscribed to and builds the list without you typing two hundred
+                names in. However, it would still be incredibly manual (and
+                tedious) to reorder them on a console.
+              </p>
+              <p>
+                I have not built it, because it is only worth building if people
+                would actually use it, and dragging a long list around with a
+                controller may cost more than it saves. If you would use it, say
+                so on the Nexus page or open an issue on GitHub. If enough
+                people want it, I will build it.
               </p>
             </AccordionContent>
           </AccordionItem>
