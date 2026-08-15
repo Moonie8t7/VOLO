@@ -211,6 +211,51 @@ The renaming problem it set out to solve is already handled properly: the
 crawlers record a listing's previous titles as aliases when a title actually
 changes, which is authoritative in a way that submitter-typed names are not.
 
+### community-wiki-orderings
+
+**Adopting orderings from the BG3 community wiki.** Its general load order guide
+is an independent convention, written by `somecookie` and last edited in October
+2024, with no reference to Astra's dividers. Where it agrees with VOLO that is
+genuine outside corroboration, and it agrees on almost everything: ImpUI first,
+libraries early, fixes before items, races and classes as expanded content, heads
+and hair among the visuals, dice last of them, Compatibility Framework last of
+all. Compared by divider slot rather than by the `groups` array, which is only
+the within-section tiebreak and reads as a contradiction if mistaken for the load
+order.
+
+Two specific claims were tested against the corpus and both lost.
+
+Its section 3.5 names six user interface mods in order. Players disagree on four
+of the ten pairs, most clearly on Better Tooltips ahead of Dynamic Sidebar, 20
+orders against 9. Two of the four edges survive arbitration and the one resting
+on merit has 4 orders against 3, which is too thin to spend a hard constraint on.
+Not added. Finding that gap is what produced the sequence arbitration guard.
+
+Its section 2 puts new spells alongside items and fixes, well ahead of where VOLO
+places them. Measured across 64 working orders holding enough spell mods to
+judge: Equipment loads before Spells in 40 orders against 21, Armor in 26 against
+17, with Clothing and Weapons at coin flips. VOLO's Spells at divider 47, behind
+Equipment at 34.5, is what players actually do. The guide is not wrong so much as
+coarser: its one section covers items, spells and fixes together, and players draw
+a distinction it does not.
+
+### glow-eyes-eotb-incompatibility
+
+**Publishing the incompatibility the Unique Tav guide states.** That guide says
+Astralities' Glow Eyes and Eyes of the Beholder are incompatible and that you must
+choose one, and the KAVT manual says both need patches. `incompatible` in the
+curated rules is empty, so this looked like its first real entry, and both UUIDs
+were read directly from the paks rather than matched by name.
+
+Ten corpus orders hold both mods. Nine of them are reported working. Whatever the
+guides mean by incompatible, it is not what a warning on this page would say, and
+publishing it would put a false caution on two real authors' work on the strength
+of a document that the people playing the game contradict nine to one.
+
+The Jawstarion and Lemon mods that the KAVT manual calls outright incompatible
+were not available to check and stay unrecorded. An incompatibility needs both
+UUIDs and a corpus that does not object.
+
 ### modio-over-vague-nexus
 
 **Deferring to mod.io where the Nexus category is vague.** Nexus outranks mod.io
@@ -321,6 +366,24 @@ per request, sequentially. A thousand-mod list meant roughly eighteen minutes of
 network and rate limiting, which was misdiagnosed as a large-dataset problem and
 effectively killed it. External data is now crawled ahead of time into committed
 JSON.
+
+### a-pak-filename-is-not-a-second-mod
+
+**One mod can ship under several names and one filename can outlive its title.**
+KAVT, KAVT NVP and Unique Tav all ship a pak called `unique_tav.pak`, all declare
+the folder `unique_tav`, and all carry the UUID
+`4cb0fd40-7212-4fe9-8733-9a8dbc6637ae`. They are one identity: KAVT is Unique Tav
+renamed, and NVP is its variant. Extracting the three archives into one directory
+overwrites the same file three times, which is the same fact in a different form.
+
+Worth recording because it was misread the other way round. The corpus contains
+orders listing that mod as `unique_tav`, and VOLO resolving the name Unique Tav to
+the KAVT row was taken for a bad alias of the kind that produced the `Wish`
+mistake. It is not. The identity ladder had it right, and the paks confirm it.
+
+The general rule: a shared name is only evidence of a shared mod when the UUID
+agrees, and the UUID is in `meta.lsx` inside the pak. `scripts/pak-uuid.mjs` reads
+it, so this is a lookup rather than an argument.
 
 ### never-alter-mod-names
 
