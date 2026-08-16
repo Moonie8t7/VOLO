@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-15T20:50:06.597Z",
+  "generated": "2026-08-16T05:03:19.070Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -30,7 +30,7 @@
     "working": 73,
     "broken": 13,
     "unlabelled": 2,
-    "externalDependencyEdges": 568,
+    "externalDependencyEdges": 571,
     "ordersWithKnownBuild": 2
   },
   "groups": [
@@ -107391,7 +107391,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Ioun Stones",
@@ -125197,7 +125203,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "1ce193c7-343b-4278-9f11-161a1e92854e",
+          "name": "Ornamental Body Jewellery"
+        },
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "Tailless_Tieflings - Half Demon (Cambion) patch",

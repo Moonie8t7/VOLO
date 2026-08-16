@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-15T20:50:06.597Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-16T05:03:19.070Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-08-15T20:50:06.597Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 88 |
 | labelled working | 73 |
 | labelled broken | 13 |
-| load-after edges promoted from catalogues | 568 |
+| load-after edges promoted from catalogues | 571 |
 | unlabelled | 2 |
 | Separator headers parsed | 1705 |
 | **Unique mods indexed** | **9416** |
 | Seen in more than one order | 5982 |
-| With declared dependencies | 577 |
+| With declared dependencies | 579 |
 | With Script Extender flags | 163 |
 | With author metadata | 1506 |
 
@@ -143,12 +143,12 @@ Framework are present in every working order that needs them.
 | Requirement | Working orders needing it | Without it | Declaring mods |
 |---|---|---|---|
 | `HybridUI` | 15 | 13 | 1 |
-| `Ornamental Body Jewellery` | 7 | 6 | 1 |
+| `Ornamental Body Jewellery` | 7 | 6 | 2 |
 | `ZipsHeads` | 7 | 6 | 1 |
 | `Humanoid Tag Scratch Fix` | 12 | 10 | 1 |
 | `BDS Moonlit Circlet` | 7 | 5 | 1 |
 | `UnlockLevelCurve - Level 13-20 | Patch 8` | 6 | 4 | 7 |
-| `TutorialChestSummoning` | 29 | 19 | 24 |
+| `TutorialChestSummoning` | 29 | 19 | 25 |
 | `Origin Mirror Unlock` | 5 | 3 | 1 |
 
 ## Requirements naming something unknown
