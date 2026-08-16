@@ -425,9 +425,16 @@ mod.io, whose API exposes a user's subscriptions under their own authorisation,
 so VOLO can read a player's mods and show them a recommended order to apply by
 hand in the in-game Mod Manager. That is a load order guide that happens to be
 generated. mod.io has no ordering concept either, so the write half is closed on
-both sides; the open question is whether reordering 150 mods on a controller is
-tolerable, which is a UI question for someone with an Xbox rather than a
-technical one.
+both sides.
+
+That guide was considered and deliberately not built. Its best case is still a
+player dragging a hundred and fifty entries by hand with a controller, and
+reaching even that means adding mod.io accounts to a tool that today holds no
+accounts, sets no cookies and asks nothing of anyone. That is a poor trade for a
+feature whose ceiling is tolerable. The decision is not permanent, and it does
+not need a controller test to revisit: the FAQ asks console players to say so on
+Nexus or GitHub, and a queue of people asking is a better reason to build than
+any measurement taken in advance.
 
 ### move-as-little-as-possible
 
