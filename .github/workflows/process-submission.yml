@@ -143,7 +143,6 @@ jobs:
           # loop reported "nothing to land" on a real submission.
           git add "Load Orders - Public Submitted"
           git diff --cached --quiet && { echo "nothing to land"; exit 1; }
-          git diff --cached > /tmp/submission.patch
 
           # The order file, not merely the first staged path. Intake also writes
           # provenance.json, git lists staged paths byte-sorted, and a
@@ -159,6 +158,22 @@ jobs:
             echo "no order file staged, only derived state"
             exit 1
           fi
+
+          # Only the order file is replayed as a patch, and provenance.json is
+          # carried as data instead.
+          #
+          # Each attempt rebases onto whatever main now holds, and every
+          # submission adds a record to the same sorted map, so two orders
+          # landing minutes apart conflict there on lines neither of them means
+          # to disagree about. The order file is new and always applies.
+          #
+          # This is the same collision that made corpus pull requests
+          # unworkable, noted further down. It was solved for branches by
+          # removing them, and left standing on the path everything actually
+          # takes. Issue #105 was accepted, reported and then lost to it when
+          # #104 landed first.
+          git diff --cached -- "$order" > /tmp/submission.patch
+          node scripts/graft-provenance.mjs read "$(basename "$order")" > /tmp/provenance-entry.json
 
           # One submission starts two runs. An issue created with its label
           # already on emits `opened` and `labeled` together, and both match,
@@ -185,6 +200,7 @@ jobs:
               echo "the submitted order no longer applies to main"
               exit 1
             }
+            node scripts/graft-provenance.mjs write "$(basename "$order")" /tmp/provenance-entry.json
             git add "Load Orders - Public Submitted"
             git commit -m "Add load order from issue #${{ github.event.issue.number }}"
 

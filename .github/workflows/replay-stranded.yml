@@ -20,6 +20,7 @@ on:
 
 permissions:
   issues: write
+  contents: read
 
 concurrency:
   group: replay-stranded
@@ -67,6 +68,74 @@ jobs:
 
             # One per run. Each replay takes the masterlist group, and queueing
             # several would recreate the cancellation this exists to undo.
+            break
+          done
+
+      # Accepted, reported, and still not on main.
+      #
+      # The pass above keys on silence, so it cannot see this one. The order was
+      # validated and the submitter was told so in as many words; what failed
+      # came after the comment was written. Issue #105 sat open exactly like
+      # this, with a full acceptance report on it and nothing in the corpus,
+      # because #104 landed first and the landing step could not rebase onto it.
+      #
+      # Both passes here treated that comment as proof the pipeline had dealt
+      # with the order. A comment only proves the pipeline spoke.
+      #
+      # The acceptance comment names the corpus file, and main either holds that
+      # file or it does not, so the test is exact rather than inferred. Orders
+      # held for review are accepted and deliberately absent from main, so they
+      # are excluded by their label. Rejected orders never get an acceptance
+      # comment at all, so they cannot be replayed in a loop by this.
+      - name: Replay orders accepted but never landed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          CUTOFF=$(date -u -d '20 minutes ago' +%Y-%m-%dT%H:%M:%SZ)
+
+          candidates=$(gh issue list --repo "$REPO" \
+            --label load-order-submission --state open \
+            --json number,createdAt,labels \
+            --jq ".[]
+                  | select(.createdAt < \"$CUTOFF\")
+                  | select([.labels[].name] | index(\"held-for-review\") | not)
+                  | .number")
+
+          if [ -z "$candidates" ]; then
+            echo "no open submissions old enough to check"
+            exit 0
+          fi
+
+          # One listing, then membership, because the corpus path contains
+          # spaces and encoding it per file invites a quiet 404 that would read
+          # as "not landed" for every order.
+          landed=$(gh api "repos/$REPO/contents/Load%20Orders%20-%20Public%20Submitted" \
+            --jq '.[].name')
+
+          for n in $candidates; do
+            file=$(gh issue view "$n" --repo "$REPO" --json comments \
+              --jq '[.comments[]
+                     | select(.author.login == "github-actions")
+                     | .body
+                     | capture("Submission accepted: (?<f>[^\r\n]+)").f] | last // empty')
+
+            if [ -z "$file" ]; then
+              echo "#$n has no acceptance comment, leaving it to the pass above"
+              continue
+            fi
+
+            if printf '%s\n' "$landed" | grep -qxF "$file"; then
+              echo "#$n landed as $file"
+              continue
+            fi
+
+            echo "#$n was accepted as $file and main does not have it, replaying"
+            gh issue edit "$n" --repo "$REPO" --remove-label load-order-submission
+            sleep 5
+            gh issue edit "$n" --repo "$REPO" --add-label load-order-submission
+            echo "replayed unlanded acceptance=$n ($file)" >> "$GITHUB_STEP_SUMMARY"
             break
           done
 
