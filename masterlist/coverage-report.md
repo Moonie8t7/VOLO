@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-08-17T21:06:54.024Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-17T23:19:13.856Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 98 |
-| labelled working | 82 |
+| Load orders analysed | 99 |
+| labelled working | 83 |
 | labelled broken | 14 |
 | load-after edges promoted from catalogues | 579 |
 | unlabelled | 2 |
 | Separator headers parsed | 1914 |
 | **Unique mods indexed** | **9533** |
-| Seen in more than one order | 6239 |
+| Seen in more than one order | 6244 |
 | With declared dependencies | 585 |
 | With Script Extender flags | 163 |
 | With author metadata | 1506 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 98 orders carry it, because the short
+this comes from. Only 2 of 99 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 21.6% | 22.2% | no, and it points the other way |
-| Mods in no working order anywhere | 10% | 0% | yes |
+| Category pairs against the working consensus | 21.6% | 22.4% | no, and it points the other way |
+| Mods in no working order anywhere | 9% | 0% | yes |
 | Declared dependencies not installed | 0.1 | 0.0 | yes |
 
-Measured over 14 broken and 82 working orders, against 171 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 14 broken and 83 working orders, against 171 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -149,7 +149,6 @@ Framework are present in every working order that needs them.
 | `UnlockLevelCurve - Level 13-20 | Patch 8` | 7 | 5 | 8 |
 | `BDS Moonlit Circlet` | 8 | 5 | 1 |
 | `TutorialChestSummoning` | 31 | 19 | 26 |
-| `Origin Mirror Unlock` | 5 | 3 | 1 |
 | `Snapshots` | 5 | 3 | 2 |
 
 ## Requirements naming something unknown
@@ -163,7 +162,7 @@ would otherwise be formatted into a message and dropped without being counted.
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 82
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 83
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
