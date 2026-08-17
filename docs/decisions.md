@@ -453,6 +453,35 @@ Fixed by capping asset cache at an hour and adding `verify-deploy.mjs`, which
 detects and repairs it. A stronger fix, routing rules that return a real 404,
 is still open.
 
+### stranded-submission-2026-08-16
+
+**A submission accepted and then lost, 16 August 2026.** Issue #105 was
+validated, its submitter was told in writing that it had been merged, and the
+order never reached the corpus. It sat that way for a day.
+
+Landing rebases a submission onto whatever main holds once the rebuild
+finishes. The order file is new, so it always applies. Every submission also
+adds a record to `provenance.json`, a single sorted map they all share, so
+issue #104 landing five minutes earlier moved the lines #105's patch expected
+and the apply was refused. The run failed after the acceptance comment had
+already been posted.
+
+The collision was known. It is written up under the corpus pull requests as the
+reason those branches were abandoned, where it was fixed by removing the
+branches and left standing on the path every order actually takes.
+
+The record is data rather than text, so it is now lifted by key before the
+rebase and written onto whichever `provenance.json` is on main, which two
+submissions cannot contend over. The judgement intake made is carried across
+rather than recomputed, and #105 shows why that matters: it was a VOLO-sorted
+order at 0.989 agreement, so recomputing it against a moved masterlist could
+have changed whether it counts as independent evidence.
+
+Both replay nets missed it, each for the same reason. They treated a comment
+from the pipeline as proof the pipeline had handled the order, when it only
+proves the pipeline spoke. A third pass now takes the filename out of the
+acceptance comment and asks whether main holds that file.
+
 ### stale-session-export-2026-08-05
 
 **Stale session export, 5 August 2026.** A user exported a 102-mod order after
