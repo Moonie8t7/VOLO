@@ -1257,6 +1257,90 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * What the built pages tell search engines about themselves.
+ *
+ * /optimise and /export render whatever load order someone imported. They are
+ * prerendered so a refresh returns a real page, and marked noindex because that
+ * page has nothing to index and belongs to whoever is looking at it. Nothing
+ * checked that the tag survived the build, so the guarantee rested on the
+ * prerenderer alone.
+ *
+ * Both directions are checked, and the second matters more. A page wrongly
+ * marked noindex is a page removed from search, and a mistake in the shared
+ * default would take the whole site out at once, quietly, with the build green.
+ *
+ * `head.ts` is the source of truth rather than a list repeated here, so a new
+ * noindex page is covered the day it is added. If the parse ever stops finding
+ * routes this fails instead of passing on an empty set, because a test that
+ * silently checks nothing is worse than no test.
+ */
+{
+  console.log('');
+  console.log('indexing directives');
+
+  const head = fs.readFileSync('client/src/lib/head.ts', 'utf8');
+  const pagesBlock = head.slice(
+    head.indexOf('export const PAGES'),
+    head.indexOf('export const ALIASES'),
+  );
+
+  const declared = new Map();
+  for (const [, route, body] of pagesBlock.matchAll(/'(\/[a-z]*)':\s*\{([\s\S]*?)\n {2}\},/g)) {
+    declared.set(route, /noindex:\s*true/.test(body));
+  }
+  /* An alias serves the canonical page's tags, so it inherits its answer. */
+  for (const [, alias, target] of head.matchAll(/'(\/[a-z]+)':\s*'(\/[a-z]+)',/g)) {
+    if (declared.has(target)) declared.set(alias, declared.get(target));
+  }
+
+  const file = route => (route === '/' ? 'dist/index.html' : `dist${route}.html`);
+
+  if (declared.size < 2) {
+    failures++;
+    console.log('  FAIL  could not read the routes out of head.ts, so nothing was checked');
+  } else if (!fs.existsSync('dist/index.html')) {
+    console.log('  skip  no dist/ yet, run the build to check the indexing directives');
+  } else {
+    const wrong = [];
+    let checked = 0;
+    for (const [route, noindex] of declared) {
+      if (!fs.existsSync(file(route))) continue;
+      checked++;
+      const tag = fs.readFileSync(file(route), 'utf8')
+        .match(/name="robots" content="([^"]*)"/)?.[1] ?? '(no robots tag)';
+      const says = tag.includes('noindex');
+      if (says !== noindex) {
+        wrong.push(`${route} declares ${noindex ? 'noindex' : 'index'} and ships "${tag}"`);
+      }
+    }
+
+    if (wrong.length) {
+      failures++;
+      for (const line of wrong) console.log(`  FAIL  ${line}`);
+    } else {
+      const hidden = [...declared].filter(([, n]) => n).map(([r]) => r);
+      console.log(`  ok    ${checked} built pages match head.ts, ${hidden.length} noindex (${hidden.join(', ')})`);
+    }
+
+    /* Asking for a page to be indexed and telling it not to be are contradictory
+     * instructions, and Google reports the pair rather than resolving it. */
+    if (fs.existsSync('public/sitemap.xml')) {
+      const sitemap = fs.readFileSync('public/sitemap.xml', 'utf8');
+      const origin = head.match(/export const SITE = '([^']+)'/)?.[1] ?? '';
+      const listed = [...declared]
+        .filter(([route, noindex]) => noindex && sitemap.includes(`${origin}${route}<`))
+        .map(([route]) => route);
+      if (listed.length) {
+        failures++;
+        console.log(`  FAIL  noindex routes are in the sitemap: ${listed.join(', ')}`);
+      } else {
+        console.log('  ok    no noindex route is advertised in the sitemap');
+      }
+    }
+  }
+}
+
+/**
  * The corpus is published under CC0, so it must not carry anyone's account name.
  *
  * BG3MM writes the full path of a pak into the FileName column for some entries.
