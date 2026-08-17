@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-16T23:55:02.815Z",
+  "generated": "2026-08-17T05:12:42.775Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -30,7 +30,7 @@
     "working": 77,
     "broken": 14,
     "unlabelled": 2,
-    "externalDependencyEdges": 574,
+    "externalDependencyEdges": 575,
     "ordersWithKnownBuild": 2
   },
   "groups": [
@@ -42183,7 +42183,8 @@
         "workingInstalls": 4,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Immersive World Textures - Part 4 (Items)",
@@ -106574,7 +106575,8 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Goblin Hunter Set",
@@ -121443,7 +121445,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "ReUnBalanced All-In-One Class",

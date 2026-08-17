@@ -6,31 +6,31 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 9416 |
-| Matched exactly by name | 2169 |
-| Matched fuzzily (>= 0.9) | 553 |
-| Unmatched | 6694 |
+| Masterlist mods | 9492 |
+| Matched exactly by name | 2185 |
+| Matched fuzzily (>= 0.9) | 557 |
+| Unmatched | 6750 |
 
 ## What the match would add
 
-- 36 currently unsorted mods would receive a category from their
+- 38 currently unsorted mods would receive a category from their
   Nexus listing.
-- 832 mods have a Nexus category that disagrees with the
+- 839 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1606 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 736 of them resolved to a uuid on both
+- 1608 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 737 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
 
 - Block/Miss Differentiation: Gameplay (fuzzy match)
+- EveryoneInDialogue2: Audio (fuzzy match)
 - Grit and Glory - Injuries, Exhaustion and Madness: Gameplay (fuzzy match)
 - Hunted - Dynamic Ambushes & Revenge System: Gameplay (fuzzy match)
-- EveryoneInDialogue2: Audio (fuzzy match)
 - Automatic_Inventory_Manager: Gameplay (fuzzy match)
-- Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
 - EW_Proficiency_Potion: Utilities (fuzzy match)
+- Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
 - Guilt-Free Slayer Form: Quests (fuzzy match)
 - HT_Kiss Me Again: Unlimited Last Kisses in Endgame: Gameplay (fuzzy match)
 - Use highest modifier: Gameplay (fuzzy match)
@@ -38,12 +38,12 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Revised Elixirs: Gameplay (fuzzy match)
 - TF_Pentos_Gown: Clothing (fuzzy match)
 - AskewShaders: Utilities (fuzzy match)
+- BetterDualWieldingAlt: Gameplay (fuzzy match)
 - Dark Urge Rebirth ST: Gameplay (fuzzy match)
 - DuplicationSE: User Interface (fuzzy match)
+- IllithidPowersOverhaul: Gameplay (fuzzy match)
 - Initiative Variants - D20: Gameplay (fuzzy match)
-- Oathbreaker Reborn: Classes (fuzzy match)
-- AbjurationWizardShield: Gameplay (fuzzy match)
-- AstralElves: Races (fuzzy match)
+- Lay on Hands Enhanced - DND 5R: Classes (fuzzy match)
 
 ### Sample disagreements
 
@@ -54,14 +54,14 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
+- PixellBytes' Adjustable Party Limit: ours Resources (section), Nexus says Companions
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
+- Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
-- Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
 - Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - Silver's Hair Pack: ours Hair (section-majority), Nexus says Character Customization
-- Essential_Feats: ours Classes (section), Nexus says Gameplay
 
 ## Unmapped Nexus categories
 
