@@ -1,15 +1,15 @@
 # Masterlist coverage report
 
-Generated 2026-08-17T23:19:13.856Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-17T23:29:45.342Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 99 |
-| labelled working | 83 |
+| Load orders analysed | 100 |
+| labelled working | 84 |
 | labelled broken | 14 |
-| load-after edges promoted from catalogues | 579 |
+| load-after edges promoted from catalogues | 578 |
 | unlabelled | 2 |
 | Separator headers parsed | 1914 |
 | **Unique mods indexed** | **9533** |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 2 of 99 orders carry it, because the short
+this comes from. Only 2 of 100 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 21.6% | 22.4% | no, and it points the other way |
+| Category pairs against the working consensus | 21.6% | 22.6% | no, and it points the other way |
 | Mods in no working order anywhere | 9% | 0% | yes |
 | Declared dependencies not installed | 0.1 | 0.0 | yes |
 
-Measured over 14 broken and 83 working orders, against 171 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 14 broken and 84 working orders, against 171 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -162,7 +162,7 @@ would otherwise be formatted into a message and dropped without being counted.
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 83
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 84
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
