@@ -402,6 +402,27 @@ it, so this is a lookup rather than an argument.
 **Mod names are never altered.** They are matched against what players have
 installed, so normalising or tidying a name silently drops the mod from sorting.
 
+That holds even when a name is provably wrong. One mod of 9502 carries
+`Disguise`, then U+00E2 U+2030 U+00A0, then `Polymorphed (Interrupt in
+Disguise)`. Those three characters are the CP1252 reading of the bytes E2 89 A0,
+which is UTF-8 for U+2260, the not-equal sign. Reversing the misreading produces
+the title mod.io listing 4691460 uses. So the repair is demonstrable rather than
+a guess, and it is still not made.
+
+The names in this entry are written as codepoints because the repository audit
+rejects non-ASCII in committed files.
+
+Nothing here originates with us. The order uploaded to R2 already carried the
+corruption, and its SHA-256 matches the hash recorded on issue #99, so what is
+published is what the submitter's export produced. Three separate orders carry
+the same bytes. Repairing the masterlist would also not hold, because the miner
+rebuilds it from those files, so the change would have to live in the miner and
+would then be editing submitted evidence on every run.
+
+The name is stored as submitted. Matching is unaffected either way, because
+`norm()` strips everything that is not a letter or digit before comparing. Anyone
+who finds this and reaches for a fix is looking at the decision, not an oversight.
+
 ### console-load-orders
 
 **Console load orders cannot be read or written, and this was asked properly.**
