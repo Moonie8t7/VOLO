@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 9492 |
-| Matched exactly by name | 2185 |
-| Matched fuzzily (>= 0.9) | 557 |
-| Unmatched | 6750 |
+| Masterlist mods | 9533 |
+| Matched exactly by name | 2191 |
+| Matched fuzzily (>= 0.9) | 558 |
+| Unmatched | 6784 |
 
 ## What the match would add
 
-- 38 currently unsorted mods would receive a category from their
+- 39 currently unsorted mods would receive a category from their
   Nexus listing.
-- 839 mods have a Nexus category that disagrees with the
+- 840 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1608 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 737 of them resolved to a uuid on both
+- 1606 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 736 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -51,17 +51,17 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Utilities (section-majority), Nexus says Gameplay
 - HT_Camp Event Overhaul: ours Miscellaneous (section-majority), Nexus says Gameplay
+- Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
-- Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - PixellBytes' Adjustable Party Limit: ours Resources (section), Nexus says Companions
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
-- Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
-- Silver's Hair Pack: ours Hair (section-majority), Nexus says Character Customization
+- Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
+- HT_Minthara's Poison Kiss: ours Bug Fixes (section-majority), Nexus says Gameplay
 
 ## Unmapped Nexus categories
 
