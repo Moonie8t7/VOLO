@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-18T12:46:56.401Z",
+  "generated": "2026-08-18T22:26:39.059Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -26,8 +26,8 @@
     ]
   },
   "provenance": {
-    "ordersAnalysed": 102,
-    "working": 86,
+    "ordersAnalysed": 103,
+    "working": 87,
     "broken": 14,
     "unlabelled": 2,
     "externalDependencyEdges": 578,
@@ -259,8 +259,8 @@
       "divider": 1,
       "evidence": {
         "source": "curated",
-        "installs": 99,
-        "workingInstalls": 83,
+        "installs": 100,
+        "workingInstalls": 84,
         "brokenInstalls": 14,
         "voloSortedInstalls": 30
       }
@@ -386,8 +386,8 @@
       "divider": 38,
       "evidence": {
         "source": "section-majority",
-        "installs": 69,
-        "workingInstalls": 58,
+        "installs": 70,
+        "workingInstalls": 59,
         "brokenInstalls": 10,
         "voloSortedInstalls": 24
       }
@@ -442,6 +442,26 @@
       }
     },
     {
+      "name": "AppearanceEditEnhanced",
+      "uuid": "7b8366bd-abc1-4f9f-ba9d-585549b4a750",
+      "group": "Bug Fixes",
+      "author": "Eralyne",
+      "version": "3.1.3.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 104,
+      "evidence": {
+        "source": "curated",
+        "installs": 65,
+        "workingInstalls": 56,
+        "brokenInstalls": 9,
+        "voloSortedInstalls": 18
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Better Target Info",
       "uuid": "1186f940-7338-fe24-6649-aff698541b7f",
       "group": "User Interface",
@@ -463,26 +483,6 @@
         "brokenInstalls": 11,
         "voloSortedInstalls": 18
       }
-    },
-    {
-      "name": "AppearanceEditEnhanced",
-      "uuid": "7b8366bd-abc1-4f9f-ba9d-585549b4a750",
-      "group": "Bug Fixes",
-      "author": "Eralyne",
-      "version": "3.1.3.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 104,
-      "evidence": {
-        "source": "curated",
-        "installs": 64,
-        "workingInstalls": 55,
-        "brokenInstalls": 9,
-        "voloSortedInstalls": 18
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Myky's Hairstyles",
@@ -594,8 +594,8 @@
       "divider": 2,
       "evidence": {
         "source": "section",
-        "installs": 55,
-        "workingInstalls": 47,
+        "installs": 56,
+        "workingInstalls": 48,
         "brokenInstalls": 8,
         "voloSortedInstalls": 14
       }
@@ -709,6 +709,23 @@
       }
     },
     {
+      "name": "HT_Lesser Restoration: Assorted Bug Fixes",
+      "uuid": "2653082c-88d7-62dd-da48-b32be67c033b",
+      "group": "Bug Fixes",
+      "folder": "HT_LesserRestoration_2653082c-88d7-62dd-da48-b32be67c033b",
+      "author": "HyperspaceTowel",
+      "version": "3.0.0.5",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 17,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 48,
+        "workingInstalls": 42,
+        "brokenInstalls": 6,
+        "voloSortedInstalls": 9
+      }
+    },
+    {
       "name": "Mark Book As Read",
       "uuid": "c72d9f6a-a6e4-48b1-98c0-0ecdc7c31cf7",
       "group": "Gameplay",
@@ -785,23 +802,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "HT_Lesser Restoration: Assorted Bug Fixes",
-      "uuid": "2653082c-88d7-62dd-da48-b32be67c033b",
-      "group": "Bug Fixes",
-      "folder": "HT_LesserRestoration_2653082c-88d7-62dd-da48-b32be67c033b",
-      "author": "HyperspaceTowel",
-      "version": "3.0.0.5",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 17,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 47,
-        "workingInstalls": 41,
-        "brokenInstalls": 6,
-        "voloSortedInstalls": 9
-      }
-    },
-    {
       "name": "Faces of Faerun",
       "uuid": "8c611d4b-75d9-40eb-ad61-15f898396e12",
       "group": "Heads",
@@ -872,6 +872,21 @@
       }
     },
     {
+      "name": "Fade's Equipment Distribution AIO",
+      "uuid": "af330e86-7335-b20c-ce70-6df8539d4597",
+      "group": "Equipment",
+      "folder": "xFED_AIO_af330e86-7335-b20c-ce70-6df8539d4597",
+      "author": "GraphicFade",
+      "divider": 15,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 44,
+        "workingInstalls": 37,
+        "brokenInstalls": 7,
+        "voloSortedInstalls": 16
+      }
+    },
+    {
       "name": "ASTRL Hair Color Supplement",
       "uuid": "525600ac-ca07-4745-a5bc-0a620975e2f3",
       "group": "Character Customization",
@@ -934,21 +949,6 @@
         "voloSortedInstalls": 14
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "Fade's Equipment Distribution AIO",
-      "uuid": "af330e86-7335-b20c-ce70-6df8539d4597",
-      "group": "Equipment",
-      "folder": "xFED_AIO_af330e86-7335-b20c-ce70-6df8539d4597",
-      "author": "GraphicFade",
-      "divider": 15,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 43,
-        "workingInstalls": 36,
-        "brokenInstalls": 7,
-        "voloSortedInstalls": 16
-      }
     },
     {
       "name": "KaiLime UI",
@@ -1164,6 +1164,23 @@
       "usesScriptExtender": true
     },
     {
+      "name": "HT_Epilogue Bug Fixes",
+      "uuid": "6f8c201d-27b1-417c-34d8-e2c155b6b39c",
+      "group": "Gameplay",
+      "folder": "HT_EpilogueFixes",
+      "author": "HyperspaceTowel",
+      "version": "1.0.2.1",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 20,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 39,
+        "workingInstalls": 35,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 9
+      }
+    },
+    {
       "name": "KAVT - KAZSTRA Virtual Tav x Tattoo, Makeup & Scar Extender",
       "uuid": "4cb0fd40-7212-4fe9-8733-9a8dbc6637ae",
       "group": "Character Customization",
@@ -1309,23 +1326,6 @@
         "workingInstalls": 32,
         "brokenInstalls": 6,
         "voloSortedInstalls": 12
-      }
-    },
-    {
-      "name": "HT_Epilogue Bug Fixes",
-      "uuid": "6f8c201d-27b1-417c-34d8-e2c155b6b39c",
-      "group": "Gameplay",
-      "folder": "HT_EpilogueFixes",
-      "author": "HyperspaceTowel",
-      "version": "1.0.2.1",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 20,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 38,
-        "workingInstalls": 34,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 9
       }
     },
     {
@@ -2003,6 +2003,39 @@
       }
     },
     {
+      "name": "MintharaMoved",
+      "uuid": "dfb9bb62-8a60-4ed7-abf4-55d9ef6fba0e",
+      "group": "Environment",
+      "author": "kit",
+      "version": "1.3.0.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 26,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 32,
+        "workingInstalls": 28,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 10
+      }
+    },
+    {
+      "name": "Tepkunset Hair Collection",
+      "uuid": "57b22f40-4886-91a0-7f70-8fec6275e773",
+      "group": "Hair",
+      "alternateNames": [
+        "HairCollection"
+      ],
+      "author": "tepkunset",
+      "divider": 64,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 32,
+        "workingInstalls": 28,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 10
+      }
+    },
+    {
       "name": "Us Evolved",
       "uuid": "9216e4a7-0ef1-d5c1-67ca-2857703d06ee",
       "group": "Companions",
@@ -2077,22 +2110,6 @@
       }
     },
     {
-      "name": "MintharaMoved",
-      "uuid": "dfb9bb62-8a60-4ed7-abf4-55d9ef6fba0e",
-      "group": "Environment",
-      "author": "kit",
-      "version": "1.3.0.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 26,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 31,
-        "workingInstalls": 27,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 10
-      }
-    },
-    {
       "name": "MyshkaComesToCamp",
       "uuid": "ec242417-f146-78b8-05f9-fd065380ad91",
       "group": "Gameplay",
@@ -2151,23 +2168,6 @@
         "installs": 31,
         "workingInstalls": 26,
         "brokenInstalls": 5,
-        "voloSortedInstalls": 10
-      }
-    },
-    {
-      "name": "Tepkunset Hair Collection",
-      "uuid": "57b22f40-4886-91a0-7f70-8fec6275e773",
-      "group": "Hair",
-      "alternateNames": [
-        "HairCollection"
-      ],
-      "author": "tepkunset",
-      "divider": 64,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 31,
-        "workingInstalls": 27,
-        "brokenInstalls": 3,
         "voloSortedInstalls": 10
       }
     },
@@ -2490,6 +2490,21 @@
       }
     },
     {
+      "name": "Inspirations Uncapped",
+      "uuid": "742764d7-721f-a83d-d540-9b8eec8f45a0",
+      "group": "Gameplay",
+      "folder": "InspirationsUncapped_742764d7-721f-a83d-d540-9b8eec8f45a0",
+      "author": "RealityThreek",
+      "divider": 13,
+      "evidence": {
+        "source": "section",
+        "installs": 28,
+        "workingInstalls": 23,
+        "brokenInstalls": 5,
+        "voloSortedInstalls": 8
+      }
+    },
+    {
       "name": "Myky's Accessories",
       "uuid": "2be84b2b-8661-6596-b3af-c236589a7dce",
       "group": "Equipment",
@@ -2673,21 +2688,6 @@
         "workingInstalls": 25,
         "brokenInstalls": 2,
         "voloSortedInstalls": 11
-      }
-    },
-    {
-      "name": "Inspirations Uncapped",
-      "uuid": "742764d7-721f-a83d-d540-9b8eec8f45a0",
-      "group": "Gameplay",
-      "folder": "InspirationsUncapped_742764d7-721f-a83d-d540-9b8eec8f45a0",
-      "author": "RealityThreek",
-      "divider": 13,
-      "evidence": {
-        "source": "section",
-        "installs": 27,
-        "workingInstalls": 22,
-        "brokenInstalls": 5,
-        "voloSortedInstalls": 8
       }
     },
     {
@@ -3269,6 +3269,23 @@
       }
     },
     {
+      "name": "[BS] Dye Support For Shields",
+      "uuid": "37e450bf-009b-4a82-8845-23940b0c3430",
+      "group": "Equipment",
+      "alternateNames": [
+        "[BS] Dye Support for Shields"
+      ],
+      "author": "Bluesatin",
+      "divider": 43,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 24,
+        "workingInstalls": 21,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 7
+      }
+    },
+    {
       "name": "Aardi's Chest of Presents",
       "uuid": "08aaab4b-03b9-5dc1-bbc7-cdd80ff2084e",
       "group": "Equipment",
@@ -3520,23 +3537,6 @@
         "workingInstalls": 16,
         "brokenInstalls": 7,
         "voloSortedInstalls": 5
-      }
-    },
-    {
-      "name": "[BS] Dye Support for Shields",
-      "uuid": "37e450bf-009b-4a82-8845-23940b0c3430",
-      "group": "Equipment",
-      "alternateNames": [
-        "[BS] Dye Support For Shields"
-      ],
-      "author": "Bluesatin",
-      "divider": 43,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 23,
-        "workingInstalls": 20,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 7
       }
     },
     {
@@ -12812,6 +12812,20 @@
       }
     },
     {
+      "name": "Dark Urge Banter Dialogue Fixes",
+      "uuid": "b6f2e133-0c60-4bb0-be23-803d4e0d2363",
+      "group": "Bug Fixes",
+      "author": "Dajolie",
+      "divider": 102.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 11,
+        "workingInstalls": 9,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 3
+      }
+    },
+    {
       "name": "DeathsongSet",
       "uuid": "73696165-6c32-4e31-914f-fc839aaef51d",
       "group": "Equipment",
@@ -15002,20 +15016,6 @@
         "workingInstalls": 10,
         "brokenInstalls": 0,
         "voloSortedInstalls": 4
-      }
-    },
-    {
-      "name": "Dark Urge Banter Dialogue Fixes",
-      "uuid": "b6f2e133-0c60-4bb0-be23-803d4e0d2363",
-      "group": "Bug Fixes",
-      "author": "Dajolie",
-      "divider": 102.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 10,
-        "workingInstalls": 8,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
       }
     },
     {
@@ -22121,6 +22121,22 @@
       "usesScriptExtender": true
     },
     {
+      "name": "Shovel Fix",
+      "uuid": "b350f68c-96b9-4263-b964-1ed5f91213ab",
+      "group": "Miscellaneous",
+      "author": "Sailor Cat",
+      "version": "1.0.0.0",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 20,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 8,
+        "workingInstalls": 8,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 3
+      }
+    },
+    {
       "name": "Shy Halsin - A Platonic Halsin Variant",
       "uuid": "b7e90c20-74a5-4038-b431-8d0e0d1e03f1",
       "group": "Companions",
@@ -25920,22 +25936,6 @@
       }
     },
     {
-      "name": "Shovel Fix",
-      "uuid": "b350f68c-96b9-4263-b964-1ed5f91213ab",
-      "group": "Miscellaneous",
-      "author": "Sailor Cat",
-      "version": "1.0.0.0",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 20,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 7,
-        "workingInstalls": 7,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 3
-      }
-    },
-    {
       "name": "SiaelBirthsigns",
       "uuid": "2843a8e3-a461-47f9-9529-9e15e47f8e29",
       "group": "unsorted",
@@ -28400,6 +28400,19 @@
         "workingInstalls": 4,
         "brokenInstalls": 2,
         "voloSortedInstalls": 3
+      }
+    },
+    {
+      "name": "Dream Guardian Shut Up",
+      "uuid": "f792aae9-12ea-4845-994d-528f3d0abf4b",
+      "group": "Audio",
+      "divider": 92,
+      "evidence": {
+        "source": "external-category",
+        "installs": 6,
+        "workingInstalls": 6,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 1
       }
     },
     {
@@ -33728,19 +33741,6 @@
       }
     },
     {
-      "name": "Dream Guardian Shut Up",
-      "uuid": "f792aae9-12ea-4845-994d-528f3d0abf4b",
-      "group": "Audio",
-      "divider": 92,
-      "evidence": {
-        "source": "external-category",
-        "installs": 5,
-        "workingInstalls": 5,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 1
-      }
-    },
-    {
       "name": "Drow Unleashed - Ultimate",
       "uuid": "5e7d96a2-b2c2-4289-8648-881d6033e9ce",
       "group": "Races",
@@ -35784,6 +35784,19 @@
         "workingInstalls": 5,
         "brokenInstalls": 0,
         "voloSortedInstalls": 3
+      }
+    },
+    {
+      "name": "Less Crowd Characters - Half",
+      "uuid": "684c5816-2757-4fb3-92ba-fe8e01c65659",
+      "group": "Spells",
+      "divider": 47,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 0
       }
     },
     {
@@ -38266,6 +38279,19 @@
         "workingInstalls": 5,
         "brokenInstalls": 0,
         "voloSortedInstalls": 4
+      }
+    },
+    {
+      "name": "Twilight Cleric",
+      "uuid": "16d34a54-6bad-049e-bb40-743e2cbac7b0",
+      "group": "Classes",
+      "divider": 60,
+      "evidence": {
+        "source": "external-category",
+        "installs": 5,
+        "workingInstalls": 5,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 3
       }
     },
     {
@@ -44238,19 +44264,6 @@
       }
     },
     {
-      "name": "Less Crowd Characters - Half",
-      "uuid": "684c5816-2757-4fb3-92ba-fe8e01c65659",
-      "group": "Spells",
-      "divider": 47,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 0
-      }
-    },
-    {
       "name": "Levelcap 260",
       "uuid": "09b1f223-7c0d-661c-a295-8f2c6bb1efec",
       "group": "Classes",
@@ -48025,19 +48038,6 @@
         "workingInstalls": 4,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
-    },
-    {
-      "name": "Twilight Cleric",
-      "uuid": "16d34a54-6bad-049e-bb40-743e2cbac7b0",
-      "group": "Classes",
-      "divider": 60,
-      "evidence": {
-        "source": "external-category",
-        "installs": 4,
-        "workingInstalls": 4,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 3
       }
     },
     {
@@ -62642,6 +62642,25 @@
         "brokenInstalls": 0,
         "voloSortedInstalls": 2
       }
+    },
+    {
+      "name": "Twilight Cleric Redux",
+      "uuid": "ae739445-c6c3-01e2-b7b4-8943a2aaf682",
+      "group": "Classes",
+      "divider": 60,
+      "evidence": {
+        "source": "external-category",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 1
+      },
+      "dependencies": [
+        {
+          "uuid": "16d34a54-6bad-049e-bb40-743e2cbac7b0",
+          "name": "Twilight Cleric"
+        }
+      ]
     },
     {
       "name": "Twilight Flourish - Lunar True Strike 2024 - All Caster Addon",
@@ -87100,25 +87119,6 @@
       }
     },
     {
-      "name": "Twilight Cleric Redux",
-      "uuid": "ae739445-c6c3-01e2-b7b4-8943a2aaf682",
-      "group": "Classes",
-      "divider": 60,
-      "evidence": {
-        "source": "external-category",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 1
-      },
-      "dependencies": [
-        {
-          "uuid": "16d34a54-6bad-049e-bb40-743e2cbac7b0",
-          "name": "Twilight Cleric"
-        }
-      ]
-    },
-    {
       "name": "Twinkle",
       "uuid": "3f2bb00c-262d-01dc-ae05-6512b2af65b7",
       "group": "unsorted",
@@ -110050,6 +110050,19 @@
       }
     },
     {
+      "name": "Freedom of Religion",
+      "uuid": "4d9fdd9d-ad7c-4bde-bd62-3eb5fa8b8227",
+      "group": "Character Customization",
+      "divider": 62.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 0
+      }
+    },
+    {
       "name": "Friendship Pose Pack",
       "uuid": "a0d7d0c5-1d82-1cab-7c65-a601d46b5bee",
       "group": "Animations",
@@ -114247,6 +114260,19 @@
       "divider": 91,
       "evidence": {
         "source": "section",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 0
+      }
+    },
+    {
+      "name": "Items Restored",
+      "uuid": "b166d59d-21c4-e956-e368-7c2e321a6344",
+      "group": "Equipment",
+      "divider": 34.5,
+      "evidence": {
+        "source": "external-category",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
