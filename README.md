@@ -83,12 +83,12 @@ Full detail in [docs/architecture.md](docs/architecture.md).
 
 ## The masterlist
 
-`masterlist/bg3-masterlist.json` covers 9,843 mods. 5,305 were
+`masterlist/bg3-masterlist.json` covers 9,849 mods. 5,305 were
 categorised from section headers modders wrote in their own orders,
-2,022 from name patterns, 1,129 from a Nexus or mod.io listing,
+2,025 from name patterns, 1,132 from a Nexus or mod.io listing,
 18 from where their author's other catalogued mods sit, 274 inferred
 from their neighbours, 38 from curated overrides, and 1,057 are not
-categorised at all. 8,776 of the 9,843 sit on a divider position.
+categorised at all. 8,782 of the 9,849 sit on a divider position.
 
 These move as the corpus grows.
 [masterlist/coverage-report.md](masterlist/coverage-report.md) is regenerated on
@@ -98,7 +98,7 @@ covers the data licence.
 
 ## Known constraints
 
-68 working orders is a small corpus, and it is the binding constraint on
+69 working orders is a small corpus, and it is the binding constraint on
 quality rather than the algorithm. Several plausible improvements have measured
 *worse* than doing nothing, all recorded in
 [docs/decisions.md](docs/decisions.md). More submissions beat more cleverness.
