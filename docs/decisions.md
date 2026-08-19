@@ -29,7 +29,7 @@ Two scripts report it, and the difference matters.
 The in-sample figure runs about four points high because the masterlist has
 already read the answer. **Quote the held-out number.**
 
-Current: **65.4 percent held out**, against a 50.7 percent random baseline,
+Current: **65.3 percent held out**, against a 50.8 percent random baseline,
 over 71 distinct working orders.
 
 Two caveats on the held-out figure itself. The group sequence is fixed across
@@ -396,6 +396,39 @@ mistake. It is not. The identity ladder had it right, and the paks confirm it.
 The general rule: a shared name is only evidence of a shared mod when the UUID
 agrees, and the UUID is in `meta.lsx` inside the pak. `scripts/pak-uuid.mjs` reads
 it, so this is a lookup rather than an argument.
+
+### ornaments-are-separators-at-three
+
+**A divider is a divider whatever it is drawn with, and the run has to be three.**
+Separator detection knew only ASCII, so an order built on 301 ornamented
+dividers was reported back to its author as containing no section headers, and
+all 301 entered the masterlist as mods with groups and divider slots. The
+browser carried the same rule, so importing that order would have sorted its
+dividers as mods and taken the structure apart. `mine-corpus.mjs` already named
+that outcome as the one thing this must never do.
+
+Three is measured, not chosen for neatness. At two the rule eats
+`Lagardia's Arcane Presets`, a real mod whose author put a pair of ornaments in
+front of the title, which is the same failure as the mod with four underscores
+in its name. At four it stops seeing the three-character banners that same
+submitter uses, catching 131 of 301 instead of all of them. Only three does
+both.
+
+Validated against every corpus row with the published Nexus and mod.io listings
+as the control, on the rule that no name anyone has published may ever be read
+as a header: zero were. Held-out agreement moved 65.4 to 65.3, which is the
+price of no longer scoring several hundred rows that were never mods.
+
+A wider ornament class was tried and dropped. It would have caught the last
+three stragglers, from one submitter whose dividers open with a full stop and
+mix star operators with halfwidth punctuation, at the cost of admitting ranges
+that real CJK-titled mods use as brackets. Three rows is not worth a rule that
+can delete somebody's mod, which is the same reasoning that rejected fuzzy name
+matching.
+
+None of this is the real fix for a divider set. Matching by UUID against a
+known table is, the way Astra's are, and shape matching is only what catches the
+ones we have not been given.
 
 ### never-alter-mod-names
 

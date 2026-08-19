@@ -687,8 +687,34 @@ function labelOf(file) {
  * never becomes a mod, is never sorted, and is never written back out.
  * Checked against the whole corpus before changing: of 31,363 rows this
  * classifies every one exactly as the looser rule did.
+ *
+ * Ornaments are read the same way, and were not until an author submitted an
+ * order built on 301 of them and was told it contained no section headers. All
+ * 301 entered the masterlist as mods with groups and slots, which means this
+ * rule failing sorts somebody's dividers as though they were mods and takes
+ * their order apart.
+ *
+ * Kept identical to isSeparator in client/src/lib/parser.ts. The two sides
+ * disagreeing means the browser sorts rows the corpus never learned from.
  */
-const SEPARATOR_RE = /^[\s\-=_~]*$|^\s*[-=_~]{4,}|[-=_~]{4,}\s*$|^\s*[\]>]\s*\S|^\s*\|.*\|\s*$/;
+
+/** Box drawing, blocks, geometric shapes, arrows and dingbats. */
+const ORNAMENT = '\\u2190-\\u21FF\\u2500-\\u257F\\u2580-\\u259F\\u25A0-\\u25FF\\u2600-\\u27BF\\u2B00-\\u2BFF';
+
+const SEPARATOR_RE = new RegExp([
+  String.raw`^[\s\-=_~]*$`,
+  String.raw`^\s*[-=_~]{4,}`,
+  String.raw`[-=_~]{4,}\s*$`,
+  String.raw`^\s*[\]>]\s*\S`,
+  String.raw`^\s*\|.*\|\s*$`,
+  /* Three, not two. Two takes "(ornament)(ornament).Lagardia's Arcane Presets",
+   * a real mod whose author put a pair of ornaments in front of the title.
+   * Four loses the three-character banners the same submitter uses. */
+  `^\\s*[${ORNAMENT}]{3,}`,
+  `[${ORNAMENT}]{3,}\\s*$`,
+  /* One ornament, a slot number, then a middot: the sub-divider shape. */
+  `^\\s*[${ORNAMENT}]\\s+\\d{1,4}[a-z]?\\s+[\\u00B7\\u2022\\u2027]\\s`,
+].join('|'));
 
 function sectionLabel(name) {
   const piped = name.match(/\|([^|]{2,60})\|/);

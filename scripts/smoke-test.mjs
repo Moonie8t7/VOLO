@@ -1038,19 +1038,62 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     ['into The Void----Chinese or Blend into the Void BUFF time changed to 10 turns', false],
     ['Better_Hotbar_2_16_9', false],
     ['BW_TaL_Ruler_of_the_North', false],
+
+    /* Ornamented dividers. An author submitted an order built on 301 of these
+     * and was told it held no section headers, so all 301 were mined as mods
+     * with groups and slots. Written as escapes because the audit keeps
+     * committed files ASCII. */
+    ['\u25C6\u2501\u2501 000 \u00B7 UI MODS \u2501\u2501\u25C6', true],
+    ['\u25C7 001 \u00B7 ImprovedUI', true],
+    ['\u2606\u2606\u2606 000x \u00B7 Unsorted UI Mods', true],
+
+    /* Real mods whose authors put ornaments in the title. These are why the run
+     * length is three: at two the first is read as a header and deleted. */
+    ['\u2718\u2B51.\u141F Lagardia\'s Arcane Presets', false],
+    ['\u02DA\u2661\u02DA Bambi\'s Anahita', false],
   ];
 
-  const source = fs.readFileSync('scripts/mine-corpus.mjs', 'utf8');
-  const declared = source.match(/const SEPARATOR_RE = (\/.*\/);/);
-  const minerRule = declared ? eval(declared[1]) : null;
+  /* Both copies are read from source rather than imported, because the miner is
+   * a script. The rule is a built expression now, not a literal, and the older
+   * extraction here silently returned null when that changed: it reported the
+   * rule as unreadable rather than passing, which is the only reason this was
+   * caught at all. */
+  const ruleFrom = file => {
+    const src = fs.readFileSync(file, 'utf8');
+    const from = src.indexOf('const ORNAMENT');
+    const close = "].join('|'));";
+    const to = src.indexOf(close, from);
+    if (from < 0 || to < 0) return null;
+    const decl = src.slice(from, to + close.length);
+    try {
+      return eval(`(function () { ${decl} return SEPARATOR_RE; })()`);
+    } catch {
+      return null;
+    }
+  };
+
+  const minerRule = ruleFrom('scripts/mine-corpus.mjs');
+  const browserRule = ruleFrom('client/src/lib/parser.ts');
 
   const wrong = probes.filter(([name, expected]) =>
     isSeparator(name) !== expected || (minerRule && minerRule.test(name) !== expected));
-  if (minerRule && !wrong.length) {
-    console.log(`  ok    both rules agree on ${probes.length} probes, mid-name runs kept`);
+
+  /* Behaviour agreeing on ten probes is not the same as the rules being equal,
+   * and the thing that drifts is the pattern. The miner decides what the corpus
+   * learns from and the browser decides what a user's order is sorted as, so a
+   * difference shows up as somebody's dividers shuffled into their mod list
+   * rather than as a failing build. */
+  const identical = minerRule && browserRule && minerRule.source === browserRule.source;
+
+  if (minerRule && browserRule && identical && !wrong.length) {
+    console.log(`  ok    both rules agree on ${probes.length} probes and are the same pattern`);
   } else {
     failures++;
     if (!minerRule) console.log("  FAIL  the miner's separator rule could not be read");
+    if (!browserRule) console.log("  FAIL  the browser's separator rule could not be read");
+    if (minerRule && browserRule && !identical) {
+      console.log('  FAIL  the miner and the browser no longer share one separator rule');
+    }
     for (const [name] of wrong) console.log(`  FAIL  separator rule wrong for ${JSON.stringify(name).slice(0, 60)}`);
   }
 }
