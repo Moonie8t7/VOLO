@@ -430,6 +430,41 @@ None of this is the real fix for a divider set. Matching by UUID against a
 known table is, the way Astra's are, and shape matching is only what catches the
 ones we have not been given.
 
+### missing-dependency-states-a-count
+
+**A missing requirement states what the corpus saw, and the rule that would have
+judged unknown ones was measured and thrown away.**
+
+The proposal was to let a dependency VOLO cannot identify be judged from corpus
+evidence, since only identified ones could ever be marked soft and the rest were
+always reported in red. Both forms of it fail.
+
+Resolving the assessment target by name as well as UUID makes exactly one more
+requirement assessable out of 263, and it crosses no threshold. Zero severities
+change. Testing presence by name is worse than useless: if identity resolution
+failed, the presence test falls back to the same name and fails there too, so
+measured absence is near 100 percent by construction. Nothing in the corpus
+carries the literal string `BG3MCM`, while 73 working orders hold Mod
+Configuration Menu, so the rule marks the most depended-on library in BG3
+modding probably optional. It would also have closed the report that prompted
+it by telling someone a mod they had installed was optional.
+
+What was actually wrong was an identity defect, not an evidence gap. A mod
+appearing in several orders is described by export formats that disagree about
+how much they carry: one states a requirement with its UUID, another states the
+same requirement as a bare name. Both were recorded, and the name-keyed copy
+could never resolve, because those keys only match mods the corpus has no UUID
+for. Two existed, and one user had both. Deduplicating them leaves every stated
+requirement naming a mod we know, and removes the need for the alias that had
+been written to paper over one of them.
+
+The counts behind the soft flag are now kept rather than collapsed into it. A
+card says "Of 33 working orders using these mods, 20 do not have it", or "All 5
+working orders using these mods have it" where the red is right. 171 of 172
+cards can cite a number. A colour asserts that an order is broken, which this
+cannot know, and it fires on more than half the orders whose submitters say they
+played on them; a number is checkable and lets the reader weigh it.
+
 ### never-alter-mod-names
 
 **Mod names are never altered.** They are matched against what players have

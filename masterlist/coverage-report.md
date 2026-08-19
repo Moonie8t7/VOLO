@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-19T18:24:54.219Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-19T20:36:56.905Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -157,7 +157,7 @@ Every "install X first" rests on knowing what X is. A name that matches no mod,
 no folder and no curated alias makes a warning nobody can act on, and the string
 would otherwise be formatted into a message and dropped without being counted.
 
-- `Eyes of the Beholder (EotB) - MAIN` (1 references)
+_none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 

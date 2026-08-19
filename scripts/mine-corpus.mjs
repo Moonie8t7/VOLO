@@ -1159,6 +1159,39 @@ for (const order of orders) {
 }
 
 /*
+ * One requirement stated twice, once with a UUID and once without.
+ *
+ * A mod appears in several orders and the exports do not agree on how much they
+ * carry: the array form states a requirement with its UUID, the TSV form states
+ * the same requirement as a bare name. Both are recorded, under different keys,
+ * and the name-keyed copy is a duplicate of one that already resolves.
+ *
+ * It cannot resolve on its own. `name:` keys only match a mod the corpus never
+ * supplied a UUID for, and this mod has one, so the copy sits in the masterlist
+ * as a requirement pointing at nothing. The browser reports it as a missing
+ * dependency in red, forever, for a mod the user has installed and which the
+ * very next line of the same record resolves correctly.
+ *
+ * Two of these existed. One was Tav's Hairpack, reported by a user who had the
+ * mod and was told twice it was missing; a requirement alias resolved that
+ * name, which fixed the symptom for one string and left the mechanism intact.
+ * The other is the Eyes of the Beholder patcher, still declaring its own
+ * sibling both ways.
+ */
+for (const r of mods.values()) {
+  const resolvable = new Set();
+  for (const [key, name] of r.dependencies) {
+    if (!String(key).startsWith('name:')) resolvable.add(externalKey(name));
+  }
+  if (!resolvable.size) continue;
+  for (const [key, name] of r.dependencies) {
+    if (String(key).startsWith('name:') && resolvable.has(externalKey(name))) {
+      r.dependencies.delete(key);
+    }
+  }
+}
+
+/*
  * Settle author and version from whichever observation won above, so every
  * consumer past this point sees one answer rather than a running best.
  */
@@ -1947,6 +1980,15 @@ const oftenAbsent = [];
       if (orderHolds(pos, required)) held++; else absent++;
     }
     const witnesses = held + absent;
+    /*
+     * Kept whatever the counts say, because the number is worth more than the
+     * flag it feeds. A card could previously only assert a colour, and red
+     * claims the order is broken, which this cannot know: it fires on 58
+     * percent of the orders whose submitters say they played on them. "31 of
+     * 33 working orders that use these mods do not have it" is checkable, and
+     * the reader can weigh it.
+     */
+    if (witnesses > 0) required.absence = { held, witnesses };
     if (witnesses < ABSENT_MIN_WITNESSES) continue;
     if (absent / witnesses < ABSENT_MIN_SHARE) continue;
     required.oftenAbsent = true;

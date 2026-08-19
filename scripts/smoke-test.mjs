@@ -1016,6 +1016,75 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * A requirement stated twice must not become a requirement on nothing.
+ *
+ * The same mod appears in several orders, and the export formats do not agree
+ * on how much they carry: one states a requirement with its uuid, another
+ * states it as a bare name. Both were recorded, under different keys, and the
+ * name-keyed copy could never resolve, because `name:` keys only match mods the
+ * corpus has no uuid for and this one has one. It sat in the masterlist as a
+ * requirement pointing at nothing, and the browser reported it in red forever.
+ *
+ * Two existed. A user had both, was told twice that mods he had installed were
+ * missing, and the count above the list read "2 mods require" while naming one
+ * patch twice.
+ */
+{
+  console.log('');
+  console.log('duplicate requirements');
+
+  const normDep = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const phantom = [];
+  for (const plugin of masterlist.plugins) {
+    const deps = plugin.dependencies ?? [];
+    if (deps.length < 2) continue;
+    const resolvable = new Set(
+      deps.filter(d => d.uuid && !String(d.uuid).startsWith('name:')).map(d => normDep(d.name)),
+    );
+    for (const d of deps) {
+      if (String(d.uuid ?? '').startsWith('name:') && resolvable.has(normDep(d.name))) {
+        phantom.push(`${plugin.name} requires ${JSON.stringify(d.name)} both ways`);
+      }
+    }
+  }
+
+  if (!phantom.length) {
+    console.log('  ok    no requirement is recorded both by uuid and by name');
+  } else {
+    failures++;
+    for (const line of phantom.slice(0, 5)) console.log(`  FAIL  ${line}`);
+  }
+
+  /* And the count above the list counts mods, not declarations. */
+  const twice = {
+    Order: [
+      { Name: 'Mod Configuration Menu', Folder: 'BG3MCM', UUID: '755a8a72-407f-4f0d-9a33-274ac75b1f7b' },
+      {
+        Name: 'Asks Twice',
+        Folder: 'AsksTwice',
+        UUID: '33333333-4444-5555-6666-777777777777',
+        Dependencies: [
+          { Name: 'Nothing At All', UUID: '99999999-8888-7777-6666-555555555555' },
+          { Name: 'Nothing At All', UUID: '' },
+        ],
+      },
+    ],
+  };
+  const asked = sortLoadOrder(
+    parseLoadOrder(JSON.stringify(twice), 'asks-twice.json').mods,
+    masterlist,
+  ).issues.filter(i => i.kind === 'missing-dependency');
+
+  if (asked.length === 1 && asked[0].uuids.length === 1 && /^1 mod requires/.test(asked[0].message)) {
+    console.log('  ok    one mod asking twice is reported as one mod');
+  } else {
+    failures++;
+    console.log(`  FAIL  ${asked.length} issue(s), first names ${asked[0]?.uuids.length} mod(s): `
+      + `${JSON.stringify(asked[0]?.message ?? '').slice(0, 90)}`);
+  }
+}
+
+/**
  * A run of dashes inside a mod's name must not delete the mod.
  *
  * The separator rule matched a run anywhere, so "Angel Wings And Halos ____ By

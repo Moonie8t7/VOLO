@@ -69,6 +69,17 @@ export interface MasterlistPlugin {
    */
   oftenAbsent?: boolean;
   /**
+   * The count behind that flag: working orders holding a mod that requires this
+   * one, and how many of them have it.
+   *
+   * The measurement was taken and thrown away for the boolean, so a card could
+   * only assert a colour. A number is checkable and a colour is not, and the
+   * red one claims the order is broken, which this cannot know. Present
+   * whenever the corpus witnessed the requirement at all, not only when the
+   * absence crossed a threshold.
+   */
+  absence?: { held: number; witnesses: number };
+  /**
    * Mods this one loads after because an author published a sequence saying so.
    *
    * An ordering, deliberately not a requirement. A published load order says

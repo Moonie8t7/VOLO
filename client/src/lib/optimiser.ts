@@ -442,6 +442,8 @@ export function sortLoadOrder(
   const missing = new Map<string, string[]>();
   /** Requirement names the corpus shows most working orders do without. */
   const softRequirements = new Set<string>();
+  /** What the corpus saw of each, so a card can cite a count rather than a colour. */
+  const absenceOf = new Map<string, { held: number; witnesses: number }>();
 
   /**
    * Whether a mod that stands in for a requirement is in the list.
@@ -525,8 +527,15 @@ export function sortLoadOrder(
         const standIns = required ? satisfiedBy[required.uuid] : undefined;
         if (standIns?.some(standInPresent)) continue;
 
+        /*
+         * Once per mod, not once per way it said so. `declared` above is the
+         * mod's own dependency list concatenated with the masterlist's record
+         * of it, so a mod stating one requirement in both arrives here twice
+         * and was counted twice. A user reported it reading "2 mods require
+         * Tav's Hairpack" above a list naming the same patch twice.
+         */
         const list = missing.get(dep.name) ?? [];
-        list.push(mod.uuid);
+        if (!list.includes(mod.uuid)) list.push(mod.uuid);
         missing.set(dep.name, list);
         /*
          * How firmly it can be called missing. A requirement absent from most
@@ -536,6 +545,9 @@ export function sortLoadOrder(
          * many mods asked for it.
          */
         if (required?.oftenAbsent) softRequirements.add(dep.name);
+        /* What the corpus actually saw, so the card can cite it rather than
+         * only choosing a colour from it. */
+        if (required?.absence) absenceOf.set(dep.name, required.absence);
         continue;
       }
       if (target.uuid === mod.uuid || linked.has(target.uuid)) continue;
@@ -614,6 +626,27 @@ export function sortLoadOrder(
   for (const [depName, wanters] of missing) {
     const soft = softRequirements.has(depName);
     const asks = `${wanters.length} mod${wanters.length > 1 ? 's require' : ' requires'}`;
+    /*
+     * The count the corpus actually holds, said plainly. A reader can weigh
+     * "31 of 33 working orders that use these mods do not have it" and cannot
+     * weigh a colour, and the number is the same evidence the severity was
+     * chosen from, so stating it is honest either way it falls.
+     */
+    const seen = absenceOf.get(depName);
+    const without = seen ? seen.witnesses - seen.held : 0;
+    const orders = seen
+      ? `${seen.witnesses} working order${seen.witnesses === 1 ? '' : 's'} using these mods`
+      : '';
+    /*
+     * None missing it is the strongest reading available and was the most
+     * confusing to write out: "0 do not have it" is the same fact as "every one
+     * of them has it" and says it backwards. That case is the one where the red
+     * is right, so it should read that way.
+     */
+    const evidence = !seen || seen.witnesses === 0 ? ''
+      : without === 0
+        ? ` All ${orders} have it.`
+        : ` Of ${orders}, ${without} ${without === 1 ? 'does' : 'do'} not have it.`;
     issues.push({
       /*
        * Critical means the order is broken without it, which is true of a
@@ -623,9 +656,7 @@ export function sortLoadOrder(
        */
       severity: soft ? 'warning' : 'critical',
       kind: 'missing-dependency',
-      message: soft
-        ? `${asks} "${depName}", which is not in your load order. Most working orders that use these mods do not have it either.`
-        : `${asks} "${depName}", which is not in your load order.`,
+      message: `${asks} "${depName}", which is not in your load order.${evidence}`,
       uuids: wanters,
       resolution: soft
         ? `Probably optional, or covered by another mod you already have. Install ${depName} if something these mods add is missing in game.`

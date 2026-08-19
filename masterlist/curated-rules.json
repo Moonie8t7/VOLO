@@ -152,13 +152,13 @@
       "requirement": "Tav's Hairpack",
       "mod": "Tav's Hair Salon",
       "nexusId": 213,
-      "why": "Nexus 213 by Toarie, whose icon patch publishes as 'Icon and Race Patches for Tav's Hair Salon' and ships as 'Tav's Hairpack - Icon Patch', so the patch asks for a name the salon no longer answers to. The corpus has never held a mod called 'Tav's Hairpack', while the salon is carried under an alternate name ending in it. Reported from a load order that had the salon installed and was told twice it was missing."
+      "why": "Nexus 213 by Toarie, whose icon patch publishes as 'Icon and Race Patches for Tav's Hair Salon' and ships as 'Tav's Hairpack - Icon Patch', so the patch asks for a name the salon no longer answers to. The corpus has never held a mod called 'Tav's Hairpack', while the salon is carried under an alternate name ending in it. Reported from a load order that had the salon installed and was told twice it was missing. The duplicate requirement that made this fire for everyone is deduped in the miner now, so this covers the remaining case: an export that states the requirement as a bare name, which the TSV format does, where the name is the only handle there is."
     },
     {
       "requirement": "Scantily_Separator",
       "mod": "Scantily Outfit Separator",
       "nexusId": 6643,
-      "why": "Nexus 6643 by NightmareThrenody. The Unique Tav patch declares the pak folder rather than the published title, and nothing anywhere is named Scantily_Separator. All three corpus orders holding the patch hold the separator. Reported alongside the hairpack by the same person."
+      "why": "Nexus 6643 by NightmareThrenody. The Unique Tav patch declares the pak folder rather than the published title, and nothing anywhere is named Scantily_Separator. All three corpus orders holding the patch hold the separator. Reported alongside the hairpack by the same person. The duplicate requirement that made this fire for everyone is deduped in the miner now, so this covers the remaining case: an export that states the requirement as a bare name, which the TSV format does, where the name is the only handle there is."
     }
   ],
   "requirementSatisfiedBy": [
