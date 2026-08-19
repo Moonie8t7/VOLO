@@ -124,14 +124,78 @@ const escapeCsv = (v: string) => (/[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"
  */
 export function dividerPlan(result: SortResult, sections: ImportedSection[] = []) {
   const carried = sections.filter(s => s.uuid && s.name).length;
-  const placeable = ownDividersByGroup(sections, result.mods, result.placements).size;
   return {
     /** Dividers the imported file carried as real paks. */
     carried,
     /** How many of those can be put back where they belong. */
-    placeable,
+    placeable: plannedDividers(result.mods, result.placements, sections).length,
     source: carried ? ('yours' as const) : ('astra' as const),
   };
+}
+
+/**
+ * The dividers an export will insert, in the order they will appear.
+ *
+ * One function rather than a count here and the real decision in the writer.
+ * They had drifted: the page promised eighteen headings while the file was
+ * about to carry seventy, and a number the user is shown has to be produced by
+ * the thing it describes.
+ */
+function plannedDividers(
+  mods: Mod[],
+  placements: Map<string, Placement>,
+  sections: ImportedSection[],
+): { before: string; uuid: string; name: string }[] {
+  const own = ownDividersByGroup(sections, mods, placements);
+  const numbered = dividers.all as { num: number; uuid: string; name: string }[];
+
+  // Every divider uuid the imported file actually carried.
+  //
+  // Owning one divider used to suppress the numbered set entirely, on the
+  // reasoning that BG3MM can only resolve paks the user has. That is right
+  // about the risk and wrong about the test. A group holds at most one divider,
+  // and this set has 131 against roughly thirty groups, so a user who imported
+  // all 131 got eighteen back: the finer headings, which are the reason to
+  // install the set at all, were the ones dropped.
+  //
+  // The honest test is whether they have that exact pak, and the import says
+  // so. Our dividers carry the same uuids as the set they are based on,
+  // differing only in their labels, so anyone running either resolves all of
+  // them. Someone using a different set matches none of these uuids and keeps
+  // the per-group behaviour, which is what they can resolve.
+  const imported = new Map(
+    sections.filter(s => s.uuid).map(s => [String(s.uuid).toLowerCase(), s.name]),
+  );
+
+  const used = new Set<string>();
+  const planned: { before: string; uuid: string; name: string }[] = [];
+
+  for (const m of mods) {
+    const placement = placements.get(m.uuid);
+    const exact = placement?.divider !== undefined
+      ? numbered.find(d => d.num === placement.divider)
+      : undefined;
+    const theirs = exact && imported.has(exact.uuid.toLowerCase()) ? exact : undefined;
+    const mine = placement?.group ? own.get(placement.group) : undefined;
+    const fallback = own.size ? undefined : (exact ?? (placement?.group
+      ? (dividers.byGroup as Record<string, { uuid: string; name: string } | undefined>)[placement.group]
+      : undefined));
+
+    // The precise heading beats the group's, because "Skillset / Spells" says
+    // more than "Spells".
+    const divider = theirs ?? mine ?? fallback;
+    if (!divider || used.has(divider.uuid)) continue;
+    used.add(divider.uuid);
+    planned.push({
+      before: m.uuid,
+      uuid: divider.uuid,
+      // Their label for a pak they installed. The uuid is what BG3MM resolves,
+      // so the name is only what a person reads, and it should be the one they
+      // will see in their manager rather than ours for the same pak.
+      name: imported.get(divider.uuid.toLowerCase()) ?? divider.name,
+    });
+  }
+  return planned;
 }
 
 export function exportOrder(result: SortResult, format: ExportFormat, options: ExportOptions = {}): string {
@@ -147,30 +211,16 @@ export function exportOrder(result: SortResult, format: ExportFormat, options: E
   switch (format) {
     case 'bg3mm': {
       const entries: { UUID: string; Name: string }[] = [];
-      const usedDividers = new Set<string>();
-      const numbered = dividers.all as { num: number; uuid: string; name: string }[];
-      // Their dividers win over ours. They installed those paks, so BG3MM can
-      // resolve them; ours it can only resolve if they happen to have them.
-      const own = ownDividersByGroup(options.sections ?? [], mods, placements);
+      // The same plan the page reported, rather than a second copy of the
+      // decision that can disagree with it.
+      const plan = options.insertDividers
+        ? plannedDividers(mods, placements, options.sections ?? [])
+        : [];
+      const above = new Map(plan.map(d => [d.before, d]));
 
       for (const m of mods) {
-        if (options.insertDividers) {
-          const placement = placements.get(m.uuid);
-          const mine = placement?.group ? own.get(placement.group) : undefined;
-          // The specific divider when we have one, so a Warlock subclass lands
-          // under Subclasses / Warlock rather than a bare Classes heading.
-          const exact = placement?.divider !== undefined
-            ? numbered.find(d => d.num === placement.divider)
-            : undefined;
-          const fallback = own.size ? undefined : (exact ?? (placement?.group
-            ? (dividers.byGroup as Record<string, { uuid: string; name: string } | undefined>)[placement.group]
-            : undefined));
-          const divider = mine ?? fallback;
-          if (divider && !usedDividers.has(divider.uuid)) {
-            usedDividers.add(divider.uuid);
-            entries.push({ UUID: divider.uuid, Name: divider.name });
-          }
-        }
+        const divider = above.get(m.uuid);
+        if (divider) entries.push({ UUID: divider.uuid, Name: divider.name });
         entries.push({ UUID: realUuid(m), Name: m.name });
       }
       return JSON.stringify({ Order: entries }, null, 2);
