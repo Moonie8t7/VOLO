@@ -124,9 +124,16 @@ const out = {
   creditUrl: data.creditUrl,
   uuids: data.separators.map(s => s.uuid),
   names: Object.fromEntries(data.separators.map(s => [s.uuid, s.name])),
+  /*
+   * Pak filename prefixes, lower-cased once here so neither reader has to
+   * remember to fold case. Only the prefix travels: the set name and the
+   * author's link are for whoever maintains the list, not for the browser.
+   */
+  prefixes: (data.prefixes ?? []).map(p => p.prefix.toLowerCase()),
   all,
   byGroup,
 };
 
 fs.writeFileSync(TARGET, JSON.stringify(out, null, 1) + '\n');
-console.log(`wrote ${TARGET}: ${out.uuids.length} dividers (${all.length} numbered), ${Object.keys(byGroup).length} group mappings`);
+console.log(`wrote ${TARGET}: ${out.uuids.length} dividers (${all.length} numbered), `
+  + `${Object.keys(byGroup).length} group mappings, ${out.prefixes.length} filename prefixes`);

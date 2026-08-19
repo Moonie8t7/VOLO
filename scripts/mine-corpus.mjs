@@ -100,6 +100,33 @@ const DIVIDERS_BY_LOWER = new Map([...DIVIDERS].map(([u, n]) => [String(u).toLow
  * them by name and wrote those UUIDs into the exported order, which is the one
  * outcome that could make BG3 Mod Manager move somebody's actual dividers.
  */
+/**
+ * Divider sets identified by the prefix their pak filenames carry.
+ *
+ * A UUID is exact but not durable. Keileon rebuilt Ragnarok Raven's dividers
+ * from scratch, which issues new identifiers for every pak, and the names are
+ * changing too. The filename prefix is what an author can promise across a
+ * rebuild, and the only signal here that survives both.
+ *
+ * Kept the same as isDividerPak in client/src/lib/parser.ts.
+ */
+const DIVIDER_PREFIXES = (() => {
+  try {
+    const d = JSON.parse(fs.readFileSync(path.join('client', 'src', 'lib', 'dividers.json'), 'utf8'));
+    return d.prefixes ?? [];
+  } catch {
+    return [];
+  }
+})();
+
+/** Whether an entry is a divider pak by its filename or folder. */
+const isDividerPak = entry => {
+  if (!DIVIDER_PREFIXES.length) return false;
+  const file = String(entry?.FileName ?? entry?.fileName ?? '').toLowerCase();
+  const folder = String(entry?.Folder ?? entry?.folder ?? '').toLowerCase();
+  return [file, folder].some(v => v.length > 0 && DIVIDER_PREFIXES.some(p => v.startsWith(p)));
+};
+
 const dividerNameOf = entry => {
   const key = String(keyOf(entry)).toLowerCase();
   if (DIVIDERS_BY_LOWER.has(key)) return DIVIDERS_BY_LOWER.get(key);
@@ -1025,7 +1052,7 @@ for (const order of orders) {
       continue;
     }
 
-    if (SEPARATOR_RE.test(name)) {
+    if (SEPARATOR_RE.test(name) || isDividerPak(entry)) {
       separatorCount++;
       currentSection = sectionLabel(name);
       // A hand-typed header starts a section the divider paks know nothing
@@ -1426,7 +1453,7 @@ const uuidSequences = orders
   .filter(o => o.positional)
   .map(o =>
     o.entries
-      .filter(e => e?.Name && !SEPARATOR_RE.test(e.Name) && dividerNameOf(e) === null)
+      .filter(e => e?.Name && !SEPARATOR_RE.test(e.Name) && dividerNameOf(e) === null && !isDividerPak(e))
       .map(e => canonicalKey(keyOf(e))),
   );
 // The voter pool the doc comment above promises: human signals and name
@@ -1560,7 +1587,7 @@ const workingOrders = orders.filter(o => o.label === 'working');
 const workingPositions = workingOrders.map(o => {
   const pos = new Map();
   o.entries.forEach((e, i) => {
-    if (!e.Name || SEPARATOR_RE.test(e.Name) || dividerNameOf(e) !== null) return;
+    if (!e.Name || SEPARATOR_RE.test(e.Name) || dividerNameOf(e) !== null || isDividerPak(e)) return;
     const k = canonicalKey(keyOf(e));
     if (!pos.has(k)) pos.set(k, i);
   });
@@ -2068,7 +2095,7 @@ const breakageOrders = orders.map(order => ({
   file: order.file,
   label: order.label,
   mods: order.entries
-    .filter(e => e?.Name && !SEPARATOR_RE.test(e.Name) && dividerNameOf(e) === null)
+    .filter(e => e?.Name && !SEPARATOR_RE.test(e.Name) && dividerNameOf(e) === null && !isDividerPak(e))
     .map(e => ({
       uuid: canonicalKey(keyOf(e)),
       name: e.Name,

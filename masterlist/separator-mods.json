@@ -3,6 +3,21 @@
   "source": "Astra's Load Order Dividers",
   "credit": "Made by Astralities, used with permission.",
   "creditUrl": "https://forums.nexusmods.com/profile/106303673-astralities/",
+  "prefixNote": "Pak filename prefixes that identify a divider set. A UUID is exact but not durable: an author who rebuilds their set issues new ones, and Keileon told us theirs will change because the project folders are gone. A filename prefix is the identifier an author can promise across a rebuild, and it is the only signal that survives both new UUIDs and restyled labels. Matched case-insensitively against the pak filename and the folder, and only ever used to classify a row as a divider rather than to place it.",
+  "prefixes": [
+    {
+      "prefix": "VOLOS_Dividers_",
+      "set": "Astra's Load Order Dividers",
+      "note": "The set below, as this project ships it."
+    },
+    {
+      "prefix": "RR_Divider_",
+      "set": "Ragnarok Raven's Load Order Dividers",
+      "author": "Keileon",
+      "url": "https://www.nexusmods.com/baldursgate3/mods/24474",
+      "note": "Given by the author, who is rebuilding the set from scratch and confirmed the prefix will hold."
+    }
+  ],
   "separators": [
     {
       "uuid": "3c0358e0-f0bd-473f-be95-4d64d4ffd95f",

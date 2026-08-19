@@ -21,6 +21,34 @@ import engineModules from './engine-modules.json';
  */
 const DIVIDER_UUIDS = new Set<string>(dividers.uuids);
 
+/**
+ * Divider sets identified by the prefix their pak filenames carry.
+ *
+ * A UUID is exact but not durable. Keileon rebuilt Ragnarok Raven's dividers
+ * from scratch, which issues new identifiers for every pak, and told us the
+ * names are changing too. What he could promise was the filename prefix, and
+ * that is the only signal here surviving both a reissued UUID and a restyled
+ * label.
+ *
+ * It reaches fewer files than the shape rule does, because a thin export
+ * carries no filenames at all: of 41,443 corpus rows only 1,018 have one. The
+ * two cover different failures and neither replaces the other.
+ */
+const DIVIDER_PREFIXES: string[] = dividers.prefixes ?? [];
+
+/** Whether a row is a divider pak by its filename or folder. */
+function isDividerPak(rec: Record<string, unknown>): boolean {
+  if (!DIVIDER_PREFIXES.length) return false;
+  const file = str(rec.FileName ?? rec.fileName) ?? '';
+  const folder = str(rec.Folder ?? rec.folder) ?? '';
+  /* The folder as well as the file, because a modsettings entry has the folder
+   * and no filename, and the two agree on these sets. */
+  return [file, folder].some(v => {
+    const lower = v.toLowerCase();
+    return lower.length > 0 && DIVIDER_PREFIXES.some(p => lower.startsWith(p));
+  });
+}
+
 /** "decorated 047 . Skillset . Spells" style names reduced to their subject. */
 function dividerLabel(name: string): string | null {
   const parts = name.split(String.fromCharCode(183)).map(p => p.trim());
@@ -231,11 +259,17 @@ function collect(entries: unknown[], format: string): ParseResult {
     const rawUuid = normaliseUuid(rec.UUID ?? rec.uuid)
       || uuidFromFileName(str(rec.FileName ?? rec.fileName))
       || '';
-    if (rawUuid && DIVIDER_UUIDS.has(rawUuid)) {
+    if ((rawUuid && DIVIDER_UUIDS.has(rawUuid)) || isDividerPak(rec)) {
       // Users can rename dividers in their manager, so prefer the canonical
       // pak name and only then fall back to whatever the file says.
       const canonical = (dividers.names as Record<string, string | undefined>)[rawUuid];
-      const label = (canonical ? dividerLabel(canonical) : null) ?? dividerLabel(name);
+      // dividerLabel wants the numbered middot form these sets use. A divider
+      // recognised by its filename need not be written that way at all, and
+      // dropping its label would strip the row and lose the section with it,
+      // which is worse than treating it as a mod.
+      const label = (canonical ? dividerLabel(canonical) : null)
+        ?? dividerLabel(name)
+        ?? sectionLabel(name);
       // The uuid and the name exactly as written, so the export can hand the
       // user back the dividers they arrived with rather than a different
       // author's set they may not own.
