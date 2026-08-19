@@ -1300,6 +1300,58 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * The community watcher reads the comment, not the label above it.
+ *
+ * A comment's body sits in comment-content-text. The enclosing comment-content
+ * opens with a hidden "Locked" div, so a pattern that closes on the first
+ * </div> returns the word "Locked" for every comment ever posted. It did that
+ * for weeks, and nothing could tell: the output looked like a list of comments,
+ * the counts were right, and only the words were wrong.
+ *
+ * The markup here is a trimmed copy of the real page. It will drift, and when
+ * it does this fails and says so, which is the whole point: a scraper of
+ * somebody else's HTML is the last thing that should be trusted silently.
+ */
+{
+  console.log('');
+  console.log('community watcher');
+
+  const { parseNexus } = await import('./watch-community.mjs');
+
+  const page = [
+    '<li class="comment odd" id="comment-174046263">',
+    '  <a class="comment-user" href="https://next.nexusmods.com/profile/Keileon">',
+    '    <img src="https://avatars.nexusmods.com/22130454/100" /></a>',
+    '  <div class="comment-content">',
+    '    <div id="locked-comment-label-174046263" class="locked" style="display:none;">',
+    '      Locked',
+    '    </div>',
+    '    <div class="dst-date-adjust" data-date="1787091420"></div>',
+    '    <div class="comment-content-text">',
+    '      Sent in Issue 114 with all of my new section dividers in!',
+    '    </div>',
+    '  </div>',
+    '</li>',
+  ].join('\n');
+
+  const { items } = parseNexus(page);
+  const one = items[0];
+
+  if (!one) {
+    failures++;
+    console.log('  FAIL  the watcher parsed no comment out of the sample page');
+  } else if (/^Locked$/i.test(one.text)) {
+    failures++;
+    console.log('  FAIL  the watcher is reading the locked label instead of the comment');
+  } else if (!one.text.includes('section dividers') || one.author !== 'Keileon') {
+    failures++;
+    console.log(`  FAIL  the watcher misread the sample: ${JSON.stringify(one.author)} said ${JSON.stringify(one.text)}`);
+  } else {
+    console.log('  ok    the watcher reads the comment body and its author');
+  }
+}
+
+/**
  * What the built pages tell search engines about themselves.
  *
  * /optimise and /export render whatever load order someone imported. They are

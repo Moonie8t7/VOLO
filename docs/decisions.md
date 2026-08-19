@@ -507,6 +507,27 @@ Fixed by capping asset cache at an hour and adding `verify-deploy.mjs`, which
 detects and repairs it. A stronger fix, routing rules that return a real 404,
 is still open.
 
+### watcher-read-locked-2026-08-19
+
+**The community watcher reported the word "Locked" as every comment, for weeks.**
+It reads the Nexus posts tab, and a comment's text sits in
+`comment-content-text`. The enclosing `comment-content` opens with a hidden
+"Locked" label, so a pattern closing on the first `</div>` returned that label
+every time. Nothing looked wrong: the comment count was right, the authors and
+timestamps were right, and only the words were missing.
+
+It was outside the repository at the time, on the reasoning that it was a
+maintainer's aid scraping markup that is nobody's contract. The scraping part
+holds. The conclusion did not: this is the only thing that says what players are
+reporting, so a fault in it decides what never gets fixed. Two real bugs were
+sitting in comments it had already fetched and rendered as "Locked".
+
+It now lives in `scripts/`, its parser is separate from its fetching so a test
+can hand it a saved page, and the smoke test asserts the body of a known comment
+comes back rather than the label above it. Verified by restoring the old
+selector and watching the test fail. Its state file stays uncommitted, being one
+machine's reading history rather than project data.
+
 ### stranded-submission-2026-08-16
 
 **A submission accepted and then lost, 16 August 2026.** Issue #105 was
