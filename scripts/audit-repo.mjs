@@ -85,7 +85,22 @@ const PERSONAL = [
  * has installed. House style applies to prose this project writes, not to data
  * it faithfully repeats.
  */
-const VERBATIM = /^(Load Orders - Public Submitted|nexus\/|modio\/|masterlist\/(bg3-masterlist|external-categories)\.json|public\/(bg3-masterlist|external-categories)\.json)/;
+const VERBATIM = new RegExp([
+  '^Load Orders - Public Submitted',
+  '^nexus/',
+  '^modio/',
+  '^masterlist/(bg3-masterlist|external-categories|separator-mods)\\.json',
+  '^public/(bg3-masterlist|external-categories)\\.json',
+  /*
+   * Built from separator-mods.json, so it carries the same divider labels. Four
+   * of that set's characters used to be listed one by one in the allowlist
+   * above, which worked only while this project shipped the set relabelled in
+   * its own house style. Recording the labels the original ships put another
+   * six in, and the answer to a file of somebody else's mod names is the rule
+   * that already covers files of somebody else's mod names.
+   */
+  '^client/src/lib/dividers\\.json',
+].join('|'));
 
 /** Test fixtures deliberately contain the shapes the scrubbers must catch. */
 const FIXTURES = /^scripts\/(smoke-test|audit-repo)\.mjs$/;

@@ -130,10 +130,29 @@ const out = {
    * author's link are for whoever maintains the list, not for the browser.
    */
   prefixes: (data.prefixes ?? []).map(p => p.prefix.toLowerCase()),
+  /*
+   * Every label a divider is known by, pointing at its uuid.
+   *
+   * An export carrying uuids does not need this. A thin export carries none,
+   * and then the label is the only handle: we knew our own names and not the
+   * ones the original set ships, so a player running that set had 39 dividers
+   * in one corpus order read as mods.
+   */
+  byName: Object.fromEntries(
+    data.separators.flatMap(s => [s.name, ...(s.alternateNames ?? [])]
+      .filter(Boolean)
+      /*
+       * Trimmed and with runs of space collapsed, because the labels are
+       * padded and BG3MM writes them back trimmed. Matching them verbatim
+       * found none of the 39 in the order that prompted this.
+       */
+      .map(n => [n.trim().replace(/\s+/g, ' '), s.uuid])),
+  ),
   all,
   byGroup,
 };
 
 fs.writeFileSync(TARGET, JSON.stringify(out, null, 1) + '\n');
 console.log(`wrote ${TARGET}: ${out.uuids.length} dividers (${all.length} numbered), `
+  + `${Object.keys(out.byName).length} known labels, `
   + `${Object.keys(byGroup).length} group mappings, ${out.prefixes.length} filename prefixes`);

@@ -36,7 +36,7 @@ Two caveats on the held-out figure itself. The group sequence is fixed across
 folds rather than re-learned per fold, so it is very slightly optimistic. And
 the summary is a mean over orders, not over mods, so a 41-mod order counts as
 much as a 999-mod one; on the same data, weighting by mods barely moves the
-figure, and the 48 orders above 200 mods average 65.4 on their own. Read
+figure, and the 48 orders above 200 mods average 65.5 on their own. Read
 the per-order table before treating a change in the summary as real.
 
 ## Adopted

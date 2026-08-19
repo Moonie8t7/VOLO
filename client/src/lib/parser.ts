@@ -36,6 +36,18 @@ const DIVIDER_UUIDS = new Set<string>(dividers.uuids);
  */
 const DIVIDER_PREFIXES: string[] = dividers.prefixes ?? [];
 
+/**
+ * Every label a divider is known by, pointing at its uuid.
+ *
+ * This project ships the set relabelled and knew only its own names, so a
+ * player running the original had their dividers read as mods whenever the
+ * export carried no uuids. Resolving to the uuid rather than just accepting
+ * the row means the export can still hand back the right pak.
+ */
+const DIVIDER_BY_NAME = new Map<string, string>(
+  Object.entries((dividers as { byName?: Record<string, string> }).byName ?? {}),
+);
+
 /** Whether a row is a divider pak by its filename or folder. */
 function isDividerPak(rec: Record<string, unknown>): boolean {
   if (!DIVIDER_PREFIXES.length) return false;
@@ -259,10 +271,14 @@ function collect(entries: unknown[], format: string): ParseResult {
     const rawUuid = normaliseUuid(rec.UUID ?? rec.uuid)
       || uuidFromFileName(str(rec.FileName ?? rec.fileName))
       || '';
-    if ((rawUuid && DIVIDER_UUIDS.has(rawUuid)) || isDividerPak(rec)) {
+    // A thin export gives no uuid at all, so the label is the only handle left.
+    const byLabel = DIVIDER_BY_NAME.get(name.trim().replace(/\s+/g, ' ')) ?? '';
+    const dividerUuid = (rawUuid && DIVIDER_UUIDS.has(rawUuid)) ? rawUuid : byLabel;
+
+    if (dividerUuid || isDividerPak(rec)) {
       // Users can rename dividers in their manager, so prefer the canonical
       // pak name and only then fall back to whatever the file says.
-      const canonical = (dividers.names as Record<string, string | undefined>)[rawUuid];
+      const canonical = (dividers.names as Record<string, string | undefined>)[dividerUuid];
       // dividerLabel wants the numbered middot form these sets use. A divider
       // recognised by its filename need not be written that way at all, and
       // dropping its label would strip the row and lose the section with it,
@@ -272,8 +288,12 @@ function collect(entries: unknown[], format: string): ParseResult {
         ?? sectionLabel(name);
       // The uuid and the name exactly as written, so the export can hand the
       // user back the dividers they arrived with rather than a different
-      // author's set they may not own.
-      if (label) sections.push({ label, afterIndex: mods.length, uuid: rawUuid, name });
+      // author's set they may not own. A row matched on its label alone
+      // carried no uuid of its own, and the one its label resolves to is the
+      // pak they are running, so the export can put it back.
+      if (label) {
+        sections.push({ label, afterIndex: mods.length, uuid: rawUuid || dividerUuid, name });
+      }
       continue;
     }
 

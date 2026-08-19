@@ -80,6 +80,27 @@ const DIVIDERS = (() => {
  * not by uuid is still read as a skeleton marker rather than as a mod. */
 const DIVIDER_NAMES = new Set(DIVIDERS.values());
 
+/**
+ * Every label a divider is known by, mapped to the canonical one.
+ *
+ * This project ships the set relabelled, and knew only its own names, so a
+ * player running the original had their dividers read as mods whenever the
+ * export carried no uuids: 39 of them in one corpus order. Resolving to the
+ * canonical name rather than keeping the label found means everything
+ * downstream, the slot number included, carries on unchanged.
+ */
+const DIVIDER_CANONICAL = (() => {
+  const map = new Map();
+  try {
+    const d = JSON.parse(fs.readFileSync(path.join('masterlist', 'separator-mods.json'), 'utf8'));
+    for (const s of d.separators) {
+      const key = n => String(n).trim().replace(/\s+/g, ' ');
+      for (const alt of s.alternateNames ?? []) map.set(key(alt), s.name);
+    }
+  } catch { /* the set is optional */ }
+  return map;
+})();
+
 /** Divider lookup that does not care how an export cased its UUIDs. */
 const DIVIDERS_BY_LOWER = new Map([...DIVIDERS].map(([u, n]) => [String(u).toLowerCase(), n]));
 
@@ -130,7 +151,8 @@ const isDividerPak = entry => {
 const dividerNameOf = entry => {
   const key = String(keyOf(entry)).toLowerCase();
   if (DIVIDERS_BY_LOWER.has(key)) return DIVIDERS_BY_LOWER.get(key);
-  return DIVIDER_NAMES.has(entry.Name) ? entry.Name : null;
+  if (DIVIDER_NAMES.has(entry.Name)) return entry.Name;
+  return DIVIDER_CANONICAL.get(String(entry.Name).trim().replace(/\s+/g, ' ')) ?? null;
 };
 
 /**
