@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-08-19T17:33:21.182Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-19T18:24:54.219Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -158,7 +158,6 @@ no folder and no curated alias makes a warning nobody can act on, and the string
 would otherwise be formatted into a message and dropped without being counted.
 
 - `Eyes of the Beholder (EotB) - MAIN` (1 references)
-- `Tav's Hairpack` (1 references)
 
 ## Known limitations
 
