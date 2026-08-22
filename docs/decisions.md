@@ -465,6 +465,52 @@ cards can cite a number. A colour asserts that an order is broken, which this
 cannot know, and it fires on more than half the orders whose submitters say they
 played on them; a number is checkable and lets the reader weigh it.
 
+### ordering-prose-in-mod-descriptions
+
+**Every published mod description was read, and almost nothing in them can be
+used.** Authors do write down load order advice, and where the corpus has never
+seen two mods together it is the only evidence there is, which is the argument
+for reading it. So all 16,957 published descriptions carrying text were fetched
+through the official API and put through a written spec: six patterns that each
+say which mod loads first, and seven that refuse a sentence outright.
+
+The funnel is brutal and most of the loss is correct. 9,245 sentences mention
+loading; 1,174 are refused as instructions for the mod manager, advice about
+loading a save, or statements about a category of mods rather than one mod;
+7,773 match no pattern at all. 298 survive as candidates and 143 as edges. One
+author pasting the same caveat across seventeen mods accounts for a fifth of
+those, so the honest figure is 114 distinct claims, 71 of them between two named
+mods.
+
+Then the join takes almost all of it. 60 of those 71 name a mod that cannot be
+tied to anything the masterlist knows, because the catalogue is joined to the
+masterlist by exact name and that reaches under a third of it. Three claims
+repeat what working orders already show. One contradicts them, and is settled by
+corpus arbitration in the players' favour, as it should be.
+
+Seven claims cover pairs no submitted order has ever held together, which is the
+entire yield. Read one by one, two are clean, two are the same claim written
+twice, and three are wrong: a target resolved to `5.5e Spells` when the sentence
+said `5e Spells`; a sentence reading "place it before Occultist" where "it" is
+the named mod and not the subject, which inverts the edge; and the pasted caveat
+again, on a mod it cannot apply to.
+
+Three usable constraints, at about 43 percent precision, from the whole
+catalogue. Nothing is generated from this, and an inverted edge reorders
+somebody's game, so nothing here may be promoted without a person reading the
+sentence.
+
+The measurement was still worth making, because it moved the target. The
+bottleneck is not the prose and never was: it is the name-based join between the
+catalogue and the masterlist. Fixing that would release these 60 claims and a
+proportional share of the 803 requirement edges already sitting in the catalogue,
+which is a better return than any further work on patterns. Mod descriptions
+also carry the module UUID in their manual-install blocks, which joins exactly
+and without name matching, and is the most promising thread here. Measured over
+the top 2,000 mods it yields about 156 new joins, not the 1,776 a 75 mod sample
+first suggested; the head of the endorsement list is far richer than the tail,
+and sampling it alone is sampling the answer.
+
 ### never-alter-mod-names
 
 **Mod names are never altered.** They are matched against what players have
