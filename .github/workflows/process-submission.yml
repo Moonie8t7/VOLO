@@ -34,9 +34,22 @@ name: Process load order submission
 # `labeled` is the reprocess lever: intake improves, and an order rejected by
 # an older version should get another run without asking its submitter to
 # refile. Removing and re-adding the label replays it.
+#
+# That lever only works for a person. An event made with the workflow token
+# starts nothing, by design, so a label GitHub Actions toggles is invisible
+# here: the replay net spent its whole life logging that it had replayed an
+# order and never once started a run. `workflow_dispatch` is the way in for
+# anything automated, and it needs no secret, because the same token already
+# dispatches checks.yml from inside this file.
 on:
   issues:
     types: [opened, edited, labeled]
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: Number of the submission issue to process
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -65,7 +78,12 @@ jobs:
     # never been created. So this branch had never once run, on any report,
     # while reading as though it were handled. A heading the template writes
     # into every body cannot go missing the same way.
+    #
+    # A dispatch carries no issue payload to test, so it is admitted here and
+    # judged by intake like anything else. Asking for one by number is already
+    # a deliberate act.
     if: >
+      github.event_name == 'workflow_dispatch' ||
       contains(github.event.issue.labels.*.name, 'load-order-submission') ||
       contains(github.event.issue.body, '### Does this load order work?') ||
       ((contains(github.event.issue.labels.*.name, 'wrong-placement') ||
@@ -86,24 +104,42 @@ jobs:
 
       - run: npm ci
 
-      - name: Write issue body to file
+      # The issue this run is about, read the same way whichever door it came
+      # in by. Fetched rather than taken from the event payload so there is one
+      # code path: a dispatch has no payload, and a payload can be stale
+      # anyway, since an edit replays and the body is what matters.
+      - name: Which issue this run is about
+        id: subject
         env:
-          BODY: ${{ github.event.issue.body }}
-        run: printf '%s' "$BODY" > /tmp/issue-body.txt
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number || inputs.issue }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NUMBER:-}" ]; then
+            echo "no issue number from the event or the input"
+            exit 1
+          fi
+          gh issue view "$NUMBER" --json body,labels,state > /tmp/issue.json
+          jq -r '.body // ""' /tmp/issue.json > /tmp/issue-body.txt
+          jq -c '[.labels[].name]' /tmp/issue.json > /tmp/issue-labels.json
+          echo "number=$NUMBER" >> "$GITHUB_OUTPUT"
+          echo "approved=$(jq -r 'any(.labels[].name; . == "approved")' /tmp/issue.json)" >> "$GITHUB_OUTPUT"
+          echo "issue #$NUMBER, $(wc -c < /tmp/issue-body.txt) bytes of body, labels $(cat /tmp/issue-labels.json)"
 
       - name: Process the submission
         id: process
-        env:
-          # Read from the event rather than interpolated into the script, so a
-          # label containing a quote cannot end the command and run the rest.
-          # As JSON, because a label may contain a comma and splitting a joined
-          # string back apart would be a guess that decides whether an order lands.
-          LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
         run: |
           set +e
+          # Labels come from the file the step above wrote, never interpolated
+          # into the command, so a label containing a quote cannot end it and
+          # run the rest. As JSON, because a label may contain a comma and
+          # splitting a joined string back apart would be a guess that decides
+          # whether an order lands.
+          LABELS="$(cat /tmp/issue-labels.json)"
           node scripts/process-submission.mjs \
             --body /tmp/issue-body.txt \
-            --number "${{ github.event.issue.number }}" \
+            --number "${{ steps.subject.outputs.number }}" \
             --labels "$LABELS" \
             --report /tmp/report.md \
             --gate /tmp/gate.json
@@ -202,7 +238,7 @@ jobs:
             }
             node scripts/graft-provenance.mjs write "$(basename "$order")" /tmp/provenance-entry.json
             git add "Load Orders - Public Submitted"
-            git commit -m "Add load order from issue #${{ github.event.issue.number }}"
+            git commit -m "Add load order from issue #${{ steps.subject.outputs.number }}"
 
             node scripts/mine-corpus.mjs
             node scripts/build-divider-map.mjs
@@ -217,7 +253,7 @@ jobs:
             npm test
 
             git add masterlist public client/src/lib README.md docs/decisions.md
-            git commit --amend --no-edit -m "Add load order from issue #${{ github.event.issue.number }} and regenerate the masterlist"
+            git commit --amend --no-edit -m "Add load order from issue #${{ steps.subject.outputs.number }} and regenerate the masterlist"
 
             if git push origin HEAD:main; then
               echo "landed=yes" >> "$GITHUB_OUTPUT"
@@ -239,14 +275,14 @@ jobs:
         if: steps.land.outputs.landed == 'yes'
         env:
           GH_TOKEN: ${{ github.token }}
-          APPROVED: ${{ contains(github.event.issue.labels.*.name, 'approved') }}
+          APPROVED: ${{ steps.subject.outputs.approved }}
         run: |
           if [ "$APPROVED" = "true" ]; then
             note="Approved and landed. The masterlist was regenerated from the whole corpus in the same commit. Thank you."
           else
             note="Merged automatically: the order validated and left the verification metric intact. Thank you."
           fi
-          gh issue close "${{ github.event.issue.number }}" --comment "$note"
+          gh issue close "${{ steps.subject.outputs.number }}" --comment "$note"
 
       # An order held for review already has a pull request carrying its corpus
       # file. Approving lands that order on main by the direct path, so the
@@ -270,7 +306,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           for label in approved held-for-review; do
-            gh issue edit "${{ github.event.issue.number }}" --remove-label "$label" \
+            gh issue edit "${{ steps.subject.outputs.number }}" --remove-label "$label" \
               || echo "no $label label to remove"
           done
 
@@ -292,7 +328,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh issue edit "${{ github.event.issue.number }}" --add-label held-for-review \
+          gh issue edit "${{ steps.subject.outputs.number }}" --add-label held-for-review \
             || echo "could not label the issue"
 
       # Always runs. A submitter who hears nothing assumes the tool is broken,
@@ -321,7 +357,7 @@ jobs:
              && [ "${{ steps.land.outputs.landed }}" != "yes" ]; then
             git fetch origin main --quiet || true
             if git ls-tree --name-only origin/main "Load Orders - Public Submitted/" \
-               | grep -q "issue-${{ github.event.issue.number }}_"; then
+               | grep -q "issue-${{ steps.subject.outputs.number }}_"; then
               echo "not reporting a failure: the order is on main, landed by the run the other event started"
             else
               printf '\n---\n\n**This order validated but did not land.** Something went wrong while committing it, so it is not in the corpus yet. Nothing is wrong with your submission and it does not need resending: a maintainer will replay it.\n' >> /tmp/report.md
@@ -341,14 +377,14 @@ jobs:
           # submitter staring at the first. The marker is an HTML comment, so
           # it is invisible in the rendered issue.
           marker="<!-- volo-report:$(sha256sum /tmp/report.md | cut -c1-16) -->"
-          if gh issue view "${{ github.event.issue.number }}" \
+          if gh issue view "${{ steps.subject.outputs.number }}" \
                --json comments \
                --jq '.comments[] | select(.author.login == "github-actions") | .body' \
              | grep -Fq "$marker"; then
             echo "not commenting: the run the other event started has already said exactly this"
           else
             printf '\n%s\n' "$marker" >> /tmp/report.md
-            gh issue comment "${{ github.event.issue.number }}" --body-file /tmp/report.md
+            gh issue comment "${{ steps.subject.outputs.number }}" --body-file /tmp/report.md
           fi
 
       # A rejection nothing can change. Editing an issue re-runs intake, so a
@@ -360,4 +396,4 @@ jobs:
         if: always() && steps.process.outputs.accepted == 'no' && steps.process.outputs.final == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue close "${{ github.event.issue.number }}"
+        run: gh issue close "${{ steps.subject.outputs.number }}"

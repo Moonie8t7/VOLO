@@ -8,10 +8,21 @@ name: Replay stranded submissions
 # which reads exactly like the site being broken. Nothing in the pipeline
 # notices, because nothing ran.
 #
-# This looks for submission issues that are open and have no reply from the
-# pipeline, and replays them by toggling the label. Replaying is safe: intake
+# This looks for submission issues that are open and have not been dealt with,
+# and asks the submission workflow to run them again. Replaying is safe: intake
 # rejects duplicates against the corpus, so an order that did land cannot land
 # twice.
+#
+# It replays by dispatching, not by toggling the label, and that is the whole
+# reason this file was ever worth anything. Toggling is the lever a person
+# pulls, and GitHub does not start a workflow from an event its own token
+# made, to stop workflows triggering each other forever. So every replay this
+# ran went nowhere: it removed a label, waited, put it back, and wrote
+# "replayed" into the summary, hourly, for its entire life. Issue #122 sat
+# accepted and unlanded for fourteen hours underneath that, and the log said
+# the net had caught it four times.
+#
+# Nothing about the detection was wrong, which is what made it convincing.
 
 on:
   schedule:
@@ -61,9 +72,7 @@ jobs:
             fi
 
             echo "#$n has no reply from the pipeline, replaying"
-            gh issue edit "$n" --repo "$REPO" --remove-label load-order-submission
-            sleep 5
-            gh issue edit "$n" --repo "$REPO" --add-label load-order-submission
+            gh workflow run process-submission.yml --repo "$REPO" --ref main -f issue="$n"
             echo "replayed=$n" >> "$GITHUB_STEP_SUMMARY"
 
             # One per run. Each replay takes the masterlist group, and queueing
@@ -132,9 +141,7 @@ jobs:
             fi
 
             echo "#$n was accepted as $file and main does not have it, replaying"
-            gh issue edit "$n" --repo "$REPO" --remove-label load-order-submission
-            sleep 5
-            gh issue edit "$n" --repo "$REPO" --add-label load-order-submission
+            gh workflow run process-submission.yml --repo "$REPO" --ref main -f issue="$n"
             echo "replayed unlanded acceptance=$n ($file)" >> "$GITHUB_STEP_SUMMARY"
             break
           done
@@ -173,7 +180,5 @@ jobs:
           fi
 
           echo "#$stalled is still labelled approved and has not landed, replaying"
-          gh issue edit "$stalled" --repo "$REPO" --remove-label load-order-submission
-          sleep 5
-          gh issue edit "$stalled" --repo "$REPO" --add-label load-order-submission
+          gh workflow run process-submission.yml --repo "$REPO" --ref main -f issue="$stalled"
           echo "replayed stalled approval=$stalled" >> "$GITHUB_STEP_SUMMARY"
