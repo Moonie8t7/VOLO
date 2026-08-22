@@ -2110,8 +2110,31 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 
   const checks = [
     [
+      /*
+       * Labels used to be interpolated from the event payload as JSON. They now
+       * come from a file the run writes after reading the issue by number,
+       * because a dispatched run has no payload at all. Both halves still
+       * matter: the gate has to receive them, and they must not be pasted into
+       * the command, where a label carrying a quote could end it.
+       */
       'the issue labels reach the gate',
-      workflow.includes('--labels') && /LABELS:\s*\$\{\{\s*toJSON/.test(workflow),
+      workflow.includes('--labels')
+        && /jq -c '\[\.labels\[\]\.name\]'/.test(workflow)
+        && /LABELS="\$\(cat \/tmp\/issue-labels\.json\)"/.test(workflow)
+        && !/LABELS:\s*\$\{\{/.test(workflow),
+    ],
+    [
+      /*
+       * A label toggled by the workflow token starts nothing, so the replay net
+       * has to ask for a run rather than nudge an issue.
+       */
+      'the replay net dispatches rather than toggling a label',
+      (() => {
+        const net = fs.readFileSync('.github/workflows/replay-stranded.yml', 'utf8');
+        return /workflow_dispatch:\s*\n\s*inputs:\s*\n\s*issue:/.test(workflow)
+          && net.includes('gh workflow run process-submission.yml')
+          && !/--(add|remove)-label load-order-submission/.test(net);
+      })(),
     ],
     [
       'approval overrides the hold',
