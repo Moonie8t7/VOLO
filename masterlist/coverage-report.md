@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-08-22T05:03:59.190Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-22T07:25:25.197Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 112 |
-| labelled working | 95 |
+| Load orders analysed | 113 |
+| labelled working | 96 |
 | labelled broken | 15 |
 | load-after edges promoted from catalogues | 579 |
 | unlabelled | 2 |
-| Separator headers parsed | 2515 |
-| **Unique mods indexed** | **9691** |
-| Seen in more than one order | 6659 |
+| Separator headers parsed | 2563 |
+| **Unique mods indexed** | **9706** |
+| Seen in more than one order | 6666 |
 | With declared dependencies | 602 |
 | With Script Extender flags | 176 |
 | With author metadata | 1126 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 3 of 112 orders carry it, because the short
+this comes from. Only 3 of 113 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -39,8 +39,8 @@ the tool flag a mod as last verified on an older patch.
 | Source | Count | Trust |
 |---|---|---|
 | Curated override | 31 | highest, hand-verified infrastructure |
-| Human-authored section header | 5953 | high, a modder put it there |
-| Name pattern fallback | 1692 | medium, needs review |
+| Human-authored section header | 5971 | high, a modder put it there |
+| Name pattern fallback | 1689 | medium, needs review |
 | Nexus or mod.io listing category | 1059 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 18 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 91 | high, measured 97 percent accurate at this band |
@@ -61,17 +61,17 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Animations`: 145
 - `User Interface`: 160
 - `Clothing`: 126
-- `Equipment`: 1289
-- `Miscellaneous`: 169
-- `Spells`: 626
-- `Dyes`: 65
+- `Equipment`: 1287
+- `Miscellaneous`: 168
+- `Spells`: 625
+- `Dyes`: 66
 - `Armor`: 445
-- `Weapons`: 548
-- `Gameplay`: 507
+- `Weapons`: 550
+- `Gameplay`: 505
 - `Races`: 255
 - `Classes`: 1095
 - `Character Customization`: 381
-- `Bug Fixes`: 461
+- `Bug Fixes`: 481
 - `Accessories`: 124
 - `Quests`: 23
 - `Environment`: 52
@@ -79,7 +79,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Heads`: 535
 - `Hair`: 308
 - `Companions`: 397
-- `NPC`: 203
+- `NPC`: 201
 - `Bodies`: 33
 - `Dice`: 451
 - `Bottom of Load Order`: 5
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 23.4% | 23.6% | no, and it points the other way |
+| Category pairs against the working consensus | 23.4% | 23.7% | no, and it points the other way |
 | Mods in no working order anywhere | 9% | 0% | yes |
 | Declared dependencies not installed | 0.1 | 0.0 | yes |
 
-Measured over 15 broken and 95 working orders, against 134 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 15 broken and 96 working orders, against 135 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -160,7 +160,7 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 95
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 96
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
