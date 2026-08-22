@@ -94,7 +94,7 @@ was matched as the target of any segment containing them. Prefer `unresolved`
 over a guess: unresolved evidence can be resolved later, an invented target
 cannot be found again.
 
-## Confidence, and when a second reader is required
+## Confidence, second reading and adjudication
 
 Every claim carries a `label_confidence`:
 
@@ -114,12 +114,29 @@ gets an independent second reading:
 - an identity resolved by anything weaker than a link or an exact title
 - a categorical claim
 
-The second reader sees neither the first reader's labels nor any parser output.
+The second reader sees neither the first reader labels nor any parser output.
 
-Disagreement is recorded, not resolved away. Two careful readers differing is
-the strongest available evidence that an extractor should decline to parse that
-segment, and abstention is a perfectly good outcome for a sorter that reorders
-somebody's game.
+Where the two readers differ, the disagreement goes to adjudication, and the
+outcome is recorded as one of:
+
+| `adjudication` | meaning |
+| --- | --- |
+| `RESOLVED` | one reading was right. The gold label is that reading |
+| `GENUINELY_AMBIGUOUS` | the prose supports both. No single gold relation is invented |
+
+Two readers differing is not by itself evidence that prose is ambiguous. A
+reader can simply be wrong, miss the sentence above, resolve an entity badly, or
+be following an instruction that was unclear. Treating every disagreement as
+ambiguity would quietly convert annotator error into a property of the corpus.
+
+`GENUINELY_AMBIGUOUS` claims are held out of precision and recall entirely and
+scored separately, because the wanted behaviour there is abstention:
+
+    of 37 genuinely ambiguous segments, the parser abstained on 35
+    and asserted a rule on 2
+
+That is a more useful number than folding them into an accuracy figure, and it
+measures the thing that actually matters for a tool that reorders somebody game.
 
 ## What counts as a correct extraction
 

@@ -1,63 +1,87 @@
+#!/usr/bin/env node
 /**
- * Every description whose prose has already been read during this research.
+ * Which descriptions have already been read, and how.
  *
- * These cannot serve as held-out evidence: their sentences shaped the schema,
- * the refusal patterns and the regression cases, so a parser built afterwards
- * has effectively already seen them. Recording which they are is the only way
- * the test half means anything.
+ * Exposure is not one thing. A page whose prose was read cannot be held-out
+ * evidence, because its sentences shaped the schema and the refusal patterns.
+ * A page that was merely *named* by another page's sentence is different: its
+ * identity is known, its prose has never been seen, and excluding it buys no
+ * protection while making the held-out set smaller and stranger.
  *
- * Deliberately generous. Anything the old run surfaced is included whether or
- * not a particular sentence was displayed, because the set as a whole is what
- * the design was reacting to.
+ * So exposure is graded, and only the first two kinds force a description out
+ * of the test half.
  */
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const RESEARCH = 'd:/Dev/VOLO/research/nexus-prose';
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+const RESEARCH = path.resolve(HERE, '..');
+
+/** Ordered by severity. TEXT_SEEN and CLAIM_SEEN force development. */
+const KINDS = {
+  TEXT_SEEN: 'the prose of this description was read during the research',
+  CLAIM_SEEN: 'a claim extracted from this description was examined',
+  TARGET_ONLY: 'named as a target by another page, prose never read',
+  NAME_ONLY: 'the mod name came up, prose never read',
+};
+const FORCES_DEVELOPMENT = new Set(['TEXT_SEEN', 'CLAIM_SEEN']);
 
 const ids = new Map();
-const note = (id, why) => {
+const note = (id, kind, why) => {
   const n = Number(id);
   if (!Number.isFinite(n)) return;
-  if (!ids.has(n)) ids.set(n, new Set());
-  ids.get(n).add(why);
+  if (!ids.has(n)) ids.set(n, { kinds: new Set(), reasons: new Set() });
+  ids.get(n).kinds.add(kind);
+  ids.get(n).reasons.add(why);
 };
 
-/* Everything the invalidated run produced. */
+/* Everything the invalidated extractor surfaced: its sentences were the material
+ * the schema and the refusal patterns were written against. */
 for (const line of fs.readFileSync(path.join(RESEARCH, 'old-extraction.jsonl'), 'utf8').split('\n')) {
   if (!line.trim()) continue;
   const r = JSON.parse(line);
-  note(r.nexusId, 'surfaced by the invalidated extractor');
-  if (r.targetId) note(r.targetId, 'named as a target by the invalidated extractor');
+  note(r.nexusId, 'CLAIM_SEEN', 'a claim from this page was extracted and reviewed');
+  /* The target was named inside somebody else's sentence. Its own page was
+   * never opened, so it is not contaminated as text. */
+  if (r.targetId) note(r.targetId, 'TARGET_ONLY', 'named as a target by another page');
 }
 
-/* Mods discussed by name while designing the schema and the regression suite. */
-const BY_NAME = {
+/* Pages actually opened and read while designing the schema. */
+const READ = {
   744: 'worked example throughout, and a segmenter test',
   1186: 'the corroborating pair with 744',
-  87: 'named as a requirement target in the worked example',
-  97: 'named as a requirement target in the worked example',
-  213: "Tav's Hair Salon, the requirement alias case",
-  6643: 'Scantily Outfit Separator, the requirement alias case',
+  213: "Tav's Hair Salon, read while resolving the requirement alias",
+  6643: 'Scantily Outfit Separator, read while resolving the requirement alias',
   24474: "Keileon's dividers, read while designing identity handling",
   24316: 'the VOLO page itself, read repeatedly',
 };
-for (const [id, why] of Object.entries(BY_NAME)) note(id, why);
+for (const [id, why] of Object.entries(READ)) note(id, 'TEXT_SEEN', why);
 
-/* The regression cases, by the page each was taken from. */
 const REG = JSON.parse(fs.readFileSync(path.join(RESEARCH, 'regression-cases.json'), 'utf8'));
-const pages = REG.map(r => r.page).filter(Boolean);
+
+const descriptions = [...ids.entries()]
+  .map(([nexusId, v]) => {
+    /* The most severe kind wins. */
+    const kind = ['TEXT_SEEN', 'CLAIM_SEEN', 'TARGET_ONLY', 'NAME_ONLY'].find(k => v.kinds.has(k));
+    return { nexusId, exposure: kind, forcesDevelopment: FORCES_DEVELOPMENT.has(kind), reasons: [...v.reasons] };
+  })
+  .sort((a, b) => a.nexusId - b.nexusId);
 
 const out = {
-  note: 'Descriptions already read during this research. They are forced into the development half, and any duplicate cluster touching one goes with them. A parser designed after reading these cannot be evaluated on them.',
-  generated: '2026-08-22',
-  regressionPages: pages,
-  descriptions: [...ids.entries()]
-    .sort((a, b) => a[0] - b[0])
-    .map(([id, why]) => ({ nexusId: id, reasons: [...why] })),
+  note: 'Descriptions already encountered during this research, graded by how. Only TEXT_SEEN and CLAIM_SEEN force the development half: a page merely named by another page has never been read, and excluding it shrinks the held-out set for no protection.',
+  kinds: KINDS,
+  forcesDevelopment: [...FORCES_DEVELOPMENT],
+  regressionPages: REG.map(r => r.page).filter(Boolean),
+  descriptions,
 };
-
 fs.writeFileSync(path.join(RESEARCH, 'known-development-sources.json'), `${JSON.stringify(out, null, 2)}\n`);
-console.log(`descriptions marked as already read: ${out.descriptions.length}`);
-console.log(`regression pages named: ${pages.length}`);
+
+const byKind = {};
+for (const d of descriptions) byKind[d.exposure] = (byKind[d.exposure] ?? 0) + 1;
+console.log(`descriptions encountered: ${descriptions.length}`);
+for (const [k, v] of Object.entries(byKind)) {
+  console.log(`  ${String(v).padStart(4)}  ${k.padEnd(12)}${FORCES_DEVELOPMENT.has(k) ? 'forces development' : 'does not force'}`);
+}
+console.log(`forcing development: ${descriptions.filter(d => d.forcesDevelopment).length}`);

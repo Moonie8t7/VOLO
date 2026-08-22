@@ -105,7 +105,7 @@ for (const f of files) {
 
 const alreadyRead = new Set(
   JSON.parse(fs.readFileSync(path.join(OUTDIR, 'known-development-sources.json'), 'utf8'))
-    .descriptions.map(d => d.nexusId));
+    .descriptions.filter(d => d.forcesDevelopment).map(d => d.nexusId));
 
 const { split, clusterOf, stats } = partition({
   descriptions, bySegment, alreadyRead, seed: SEED,

@@ -76,15 +76,23 @@ Split by duplicate cluster, not by description, and certainly not by segment.
 Splitting by description is not enough on its own, because authors paste the
 same instruction across their whole collection. Descriptions sharing a
 normalised segment are joined and the whole group goes to one side. That is not
-a rare correction: 19,485 joins bind 6,384 of the 16,957 descriptions into
-shared clusters, the largest covering 400 of them. Without it, a parser tuned on
-one copy of a pasted caveat would score perfectly on another copy of the same
-words and have learned nothing.
+a rare correction: 2,139 joins bind 1,541 descriptions into shared clusters.
+Without it, a parser tuned on one copy of a pasted caveat would score perfectly
+on another copy of the same words and have learned nothing.
 
-Every description already read during this research is forced into development,
-listed in `known-development-sources.json`, along with any cluster touching one.
-Their sentences shaped the schema, the refusal patterns and the regression
-cases, so they cannot also serve as held-out evidence.
+Only text that could teach a parser something is allowed to join. Joining on any
+repeat at all is transitive, and one translator install routine, a donation
+footer and a maintenance notice welded 400 descriptions into a single component
+with 310 of the 343 binding segments carrying no ordering language. Restricting
+the join to signal-bearing text takes the largest component from 400 to 52, and
+the descriptions forced out of the held-out half from 1,200 to 213.
+
+Exposure is graded in `known-development-sources.json`. A page whose prose was
+read, or whose extracted claim was reviewed, is forced into development: its
+sentences shaped the schema and the refusal patterns. A page merely named as a
+target by somebody else sentence is not, because its own description has never
+been opened and excluding it would shrink the held-out set for no protection.
+Of 151 encountered descriptions, 110 force development and 41 do not.
 
 The split is a hash of the cluster rather than the magnitude of a mod id, so it
 does not track publication era. Verified uniform near 0.30 across id bands, and

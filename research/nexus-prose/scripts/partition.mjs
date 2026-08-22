@@ -9,15 +9,23 @@
  * on the first scores perfectly on the second while having learned nothing.
  *
  * So descriptions sharing a normalised segment are joined into one cluster and
- * the whole cluster goes to one side. Exact-after-normalisation only, which is
- * the minimum that catches known boilerplate; near-duplicate clustering would
- * catch more and is not needed to close this hole.
+ * the whole cluster goes to one side.
+ *
+ * Only segments that could teach a parser something are allowed to join. The
+ * danger is materially equivalent load order evidence appearing on both sides,
+ * not any text at all appearing twice, and joining on any repeat is transitive:
+ * one translator's install steps, a donation footer and a maintenance notice
+ * welded 400 descriptions into a single component, 310 of the 343 segments
+ * holding it together carrying no ordering language whatsoever. Restricting the
+ * join to signal-bearing text takes the largest component from 400 to 52 and
+ * the descriptions forced out of the test half from 1,200 to 269, without
+ * weakening the protection that matters.
  *
  * Any cluster touching a description that has already been read during the
  * research goes to development, whatever the hash says.
  */
 
-import { rng } from './strata.mjs';
+import { rng, signalsOf } from './strata.mjs';
 
 /** Text reduced to what a paste would keep: no case, punctuation, links or ids. */
 export function normaliseSegment(text) {
@@ -63,9 +71,13 @@ export function partition({ descriptions, bySegment, alreadyRead, seed, testShar
   for (const id of descriptions) uf.find(id);
 
   let joins = 0;
+  let skippedGeneric = 0;
   for (const [text, ids] of bySegment) {
     if (text.length < minJoinLength) continue;
     if (ids.size < 2) continue;
+    /* Repeated prose that carries no discovery signal cannot teach a parser
+     * how to recognise ordering evidence, so it does not bind the two pages. */
+    if (!signalsOf(text).length) { skippedGeneric++; continue; }
     const list = [...ids];
     for (let i = 1; i < list.length; i++) { uf.union(list[0], list[i]); joins++; }
   }
@@ -102,8 +114,15 @@ export function partition({ descriptions, bySegment, alreadyRead, seed, testShar
       multiDescriptionClusters: multi.length,
       largestCluster: multi.reduce((n, c) => Math.max(n, c.length), 0),
       descriptionsInMultiClusters: multi.reduce((n, c) => n + c.length, 0),
+      skippedGenericDuplicates: skippedGeneric,
       forcedClusters: forced.size,
-      forcedDescriptions: [...split.values()].filter(v => v === 'development').length,
+      /* Forced by contamination, not merely assigned to development. Reporting
+       * the latter under this name once made a 70/30 split look like a 73
+       * percent contamination event. */
+      forcedDescriptions: [...split.entries()]
+        .filter(([id, side]) => side === 'development' && forced.has(uf.find(id))).length,
+      inDevelopment: [...split.values()].filter(v => v === 'development').length,
+      inTest: [...split.values()].filter(v => v === 'test').length,
     },
   };
 }
