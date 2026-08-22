@@ -2034,6 +2034,28 @@ const requirementAliases = {};
 /** Required mod uuid -> uuids of mods that stand in for it. */
 const requirementSatisfiedBy = {};
 {
+  /*
+   * A fold is allowed to lose the mod a rule names.
+   *
+   * Stopping the build on a rule that resolves to nothing is right for a real
+   * build: the rule matches nothing, and silence is how a dead rule survives.
+   * A held-out fold deliberately removes an order, and with it every mod only
+   * that order carried, so the same check there fails on a rule that is
+   * perfectly good.
+   *
+   * It did. An alias added for a mod carried by exactly one order made every
+   * fold that excluded that order throw, which failed the landing step of a
+   * submission that had already been accepted and reported to its submitter.
+   * The order sat unlanded for fourteen hours, and it will happen again for any
+   * rule whose target has a single witness.
+   */
+  const fold = EXCLUDE !== null || OUT_DIR !== 'masterlist';
+  const complain = (what, lines) => {
+    if (!lines.length) return;
+    const message = `curated ${what} name mods the masterlist does not have:\n  ${lines.join('\n  ')}`;
+    if (fold) console.log(`  (fold) ${message}`);
+    else throw new Error(message);
+  };
   const byNameKey = new Map();
   const byFolderKey = new Map();
   for (const p of plugins) {
@@ -2051,11 +2073,7 @@ const requirementSatisfiedBy = {};
     }
     requirementAliases[externalKey(rule.requirement)] = target.uuid;
   }
-  if (unresolved.length) {
-    throw new Error(
-      `curated requirement aliases name mods the masterlist does not have:\n  ${unresolved.join('\n  ')}`,
-    );
-  }
+  complain('requirement aliases', unresolved);
   console.log(`requirement aliases: ${Object.keys(requirementAliases).length} resolved`);
 
   // Same check for the stand-ins, where both sides have to exist.
@@ -2073,11 +2091,7 @@ const requirementSatisfiedBy = {};
       requirementSatisfiedBy[required.uuid] = list;
     }
   }
-  if (missingSide.length) {
-    throw new Error(
-      `curated stand-ins name mods the masterlist does not have:\n  ${missingSide.join('\n  ')}`,
-    );
-  }
+  complain('stand-ins', missingSide);
   console.log(
     `requirement stand-ins: ${Object.keys(requirementSatisfiedBy).length} requirements can be met another way`,
   );

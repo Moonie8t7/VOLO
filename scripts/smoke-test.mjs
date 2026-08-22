@@ -1016,6 +1016,53 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * A curated rule naming a mod no order carries stops a build, and not a fold.
+ *
+ * Stopping is right for a real build: the rule matches nothing, and a dead rule
+ * survives by being quiet. A held-out fold removes an order on purpose, and
+ * every mod only that order carried goes with it, so the same check there fires
+ * on a rule that is perfectly good.
+ *
+ * It did. An alias added for a mod carried by one order made every fold
+ * excluding that order throw, which failed the landing step of a submission
+ * already accepted and reported to its submitter. The order sat unlanded for
+ * fourteen hours, and the safety net that should have retried it could not,
+ * so nothing recovered it until somebody looked.
+ */
+{
+  console.log('');
+  console.log('curated rules in a fold');
+
+  const rules = JSON.parse(fs.readFileSync('masterlist/curated-rules.json', 'utf8'));
+  const named = [
+    ...rules.requirementAliases.map(r => r.mod),
+    ...rules.requirementSatisfiedBy.flatMap(r => [r.requirement, r.satisfiedBy]),
+  ];
+  const key = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const have = new Set(masterlist.plugins.flatMap(p => [key(p.name), key(p.folder)]).filter(Boolean));
+
+  /* On a full build every rule must resolve, which is the guard's real job. */
+  const dead = named.filter(n => !have.has(key(n)));
+  if (!dead.length) {
+    console.log(`  ok    all ${named.length} mods named by curated rules are in the masterlist`);
+  } else {
+    failures++;
+    for (const n of dead.slice(0, 5)) console.log(`  FAIL  curated rules name "${n}", which no order carries`);
+  }
+
+  /* And the guard must be written so a fold can survive losing one. */
+  const miner = fs.readFileSync('scripts/mine-corpus.mjs', 'utf8');
+  const foldAware = /const fold = EXCLUDE !== null \|\| OUT_DIR !== 'masterlist';/.test(miner)
+    && /if \(fold\) console\.log/.test(miner);
+  if (foldAware) {
+    console.log('  ok    and the guard warns rather than throws during a fold');
+  } else {
+    failures++;
+    console.log('  FAIL  the curated-rule guard throws unconditionally, so a fold can fail a landing');
+  }
+}
+
+/**
  * A requirement stated twice must not become a requirement on nothing.
  *
  * The same mod appears in several orders, and the export formats do not agree
