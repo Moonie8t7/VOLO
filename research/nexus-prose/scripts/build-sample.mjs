@@ -19,7 +19,8 @@ import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { segments } from './segment.mjs';
-import { STRATA, signalsOf, primaryStratum, rng, splitOf } from './strata.mjs';
+import { STRATA, signalsOf, primaryStratum, rng } from './strata.mjs';
+import { partition, normaliseSegment } from './partition.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const OUTDIR = path.resolve(HERE, '..');
@@ -75,9 +76,14 @@ for (const s of ['segment.mjs', 'strata.mjs', 'build-sample.mjs']) {
   generatorDigest.update(fs.readFileSync(path.join(HERE, s)));
 }
 
-const pools = new Map(STRATA.map(s => [s.id, []]));
-let segmentCount = 0;
+/*
+ * First pass: segment everything and record which descriptions share text, so
+ * pasted boilerplate cannot be split across the experiment.
+ */
+const all = [];
 const descriptions = new Set();
+const bySegment = new Map();
+let segmentCount = 0;
 
 for (const f of files) {
   let rec;
@@ -88,11 +94,33 @@ for (const f of files) {
     const text = scrub(seg.text);
     if (text.length < 15 || text.length > 600) continue;
     segmentCount++;
+    const key = normaliseSegment(text);
+    if (key) {
+      if (!bySegment.has(key)) bySegment.set(key, new Set());
+      bySegment.get(key).add(rec.id);
+    }
+    all.push({ rec, i, segs, seg, text, key });
+  }
+}
+
+const alreadyRead = new Set(
+  JSON.parse(fs.readFileSync(path.join(OUTDIR, 'known-development-sources.json'), 'utf8'))
+    .descriptions.map(d => d.nexusId));
+
+const { split, clusterOf, stats } = partition({
+  descriptions, bySegment, alreadyRead, seed: SEED,
+});
+
+const pools = new Map(STRATA.map(s => [s.id, []]));
+for (const a of all) {
+  const { rec, i, segs, seg, text } = a;
+  {
     pools.get(primaryStratum(text)).push({
       nexusId: rec.id,
       mod: rec.name,
       author: rec.author ?? '',
-      split: splitOf(rec.id, SEED),
+      split: split.get(rec.id),
+      cluster: clusterOf.get(rec.id),
       index: i,
       heading: scrub(seg.heading),
       prev: i > 0 ? scrub(segs[i - 1].text).slice(0, 300) : '',
@@ -112,8 +140,9 @@ const manifest = {
   generatorDigest: generatorDigest.digest('hex'),
   descriptions: files.length,
   segments: segmentCount,
-  splitBy: 'description',
+  splitBy: 'duplicate-cluster of descriptions',
   testShare: 0.3,
+  partition: stats,
   strata: {},
 };
 

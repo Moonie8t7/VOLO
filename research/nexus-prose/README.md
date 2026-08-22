@@ -50,6 +50,9 @@ a target unambiguous.
 | --- | --- |
 | `scripts/` | the segmenter, strata and sampler that produced everything here |
 | `scripts/segment-tests.mjs` | segmenter regression suite. Run it before trusting a redraw |
+| `scripts/reproducibility-test.mjs` | redraws with discovery scrambled and requires an identical sample |
+| `scripts/partition.mjs` | duplicate clustering and the development/test split |
+| `known-development-sources.json` | descriptions already read, forced into development |
 | `claim-schema.md` | the vocabulary every label uses |
 | `sampling-manifest.json` | seed, corpus hash, population and draw per stratum |
 | `segments-sampled.jsonl` | the drawn segments with context, offsets and links |
@@ -68,14 +71,29 @@ than merely a similar one.
 
 ## Development and test
 
-Split by description, not by segment, so two near-identical bullets from one mod
-cannot land on both sides and flatter a parser tuned on one of them. Roughly 70
-percent development, 30 percent held back.
+Split by duplicate cluster, not by description, and certainly not by segment.
 
-The invalidated run and its nine regression cases are development material by
-definition: their whole purpose is to teach what the known defects are. The test
-portion stays unlabelled by anyone designing a parser until that parser is
-frozen, or the numbers it eventually reports will describe the set it was built
+Splitting by description is not enough on its own, because authors paste the
+same instruction across their whole collection. Descriptions sharing a
+normalised segment are joined and the whole group goes to one side. That is not
+a rare correction: 19,485 joins bind 6,384 of the 16,957 descriptions into
+shared clusters, the largest covering 400 of them. Without it, a parser tuned on
+one copy of a pasted caveat would score perfectly on another copy of the same
+words and have learned nothing.
+
+Every description already read during this research is forced into development,
+listed in `known-development-sources.json`, along with any cluster touching one.
+Their sentences shaped the schema, the refusal patterns and the regression
+cases, so they cannot also serve as held-out evidence.
+
+The split is a hash of the cluster rather than the magnitude of a mod id, so it
+does not track publication era. Verified uniform near 0.30 across id bands, and
+`reproducibility-test.mjs` redraws the whole sample with file discovery
+scrambled and requires an identical result: a seed proves nothing if the draw
+depends on the order a filesystem happens to enumerate a directory.
+
+The test portion stays unlabelled by anyone designing a parser until that parser
+is frozen, or the numbers it eventually reports describe the set it was built
 against.
 
 ## Signals and strata

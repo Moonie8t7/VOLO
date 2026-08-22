@@ -1,67 +1,77 @@
 {
   "seed": 20260822,
   "corpusDigest": "2a25d24f5a742ec60347a4c1ab0e28ccb4126ab87a65b14861d0a830c1a85a35",
-  "generatorDigest": "8685a36fcab8faeae1d7974c1ee1c12fe047ae8843bd40e2e7fadcd106339df6",
+  "generatorDigest": "66f2ae2faa4d4769381f9a4164b12ebd556516a38831aabcbf0377a6b6767359",
   "descriptions": 16957,
   "segments": 199564,
-  "splitBy": "description",
+  "splitBy": "duplicate-cluster of descriptions",
   "testShare": 0.3,
+  "partition": {
+    "descriptions": 16957,
+    "joins": 19485,
+    "clusters": 11611,
+    "multiDescriptionClusters": 1038,
+    "largestCluster": 400,
+    "descriptionsInMultiClusters": 6384,
+    "forcedClusters": 131,
+    "forcedDescriptions": 12452
+  },
   "strata": {
     "explicit_relative": {
       "what": "one thing ordered against another, in any verb",
       "population": 10564,
       "sampled": 150,
       "selectionProbability": 0.01419916698220371,
-      "inDevelopment": 104,
-      "inTest": 46
+      "inDevelopment": 115,
+      "inTest": 35
     },
     "absolute_region": {
       "what": "a position in the order rather than a relation to a mod",
       "population": 362,
       "sampled": 150,
       "selectionProbability": 0.4143646408839779,
-      "inDevelopment": 102,
-      "inTest": 48
+      "inDevelopment": 121,
+      "inTest": 29
     },
     "categorical": {
       "what": "a class of mods against another class",
       "population": 1382,
       "sampled": 150,
       "selectionProbability": 0.1085383502170767,
-      "inDevelopment": 107,
-      "inTest": 43
+      "inDevelopment": 114,
+      "inTest": 36
     },
     "conditional": {
       "what": "a remedy, or advice that depends on something",
       "population": 615,
       "sampled": 150,
       "selectionProbability": 0.24390243902439024,
-      "inDevelopment": 106,
-      "inTest": 44
+      "inDevelopment": 102,
+      "inTest": 48
     },
     "gate_gap": {
       "what": "inflections the first attempt could not match",
       "population": 2379,
       "sampled": 150,
       "selectionProbability": 0.06305170239596469,
-      "inDevelopment": 105,
-      "inTest": 45
+      "inDevelopment": 122,
+      "inTest": 28
     },
     "overwrite_conflict": {
       "what": "override semantics, kept separate because it is noisy",
       "population": 2839,
       "sampled": 150,
       "selectionProbability": 0.0528355054596689,
-      "inDevelopment": 111,
-      "inTest": 39
+      "inDevelopment": 118,
+      "inTest": 32
     },
     "background": {
       "what": "matched nothing above, sampled so the rest can be estimated",
       "population": 181423,
       "sampled": 1200,
       "selectionProbability": 0.006614376346990183,
-      "inDevelopment": 860,
-      "inTest": 340
+      "inDevelopment": 923,
+      "inTest": 277
     }
   }
 }

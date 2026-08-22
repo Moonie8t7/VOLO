@@ -94,11 +94,69 @@ was matched as the target of any segment containing them. Prefer `unresolved`
 over a guess: unresolved evidence can be resolved later, an invented target
 cannot be found again.
 
-## Second reading
+## Confidence, and when a second reader is required
 
-Any claim marked ambiguous, `unresolved` identity, multi-claim, conditional or
-`UNKNOWN` scope gets an independent second reading before it becomes gold. The
-second reader sees neither the first reader's labels nor any parser output.
+Every claim carries a `label_confidence`:
 
-Disagreement is kept rather than resolved away. A segment two careful readers
-read differently is one an extractor should decline to parse.
+| value | meaning |
+| --- | --- |
+| `CLEAR` | one careful reader would read it the same way |
+| `AMBIGUOUS` | the segment supports more than one reading |
+| `UNRESOLVED` | it is advice, but what it refers to cannot be settled from the text |
+
+Anything not `CLEAR`, and anything in these categories whatever its confidence,
+gets an independent second reading:
+
+- a pronoun standing for something named earlier
+- more than one claim in the segment
+- a conditional or a remedy
+- scope that is a file, patch or component rather than the mod
+- an identity resolved by anything weaker than a link or an exact title
+- a categorical claim
+
+The second reader sees neither the first reader's labels nor any parser output.
+
+Disagreement is recorded, not resolved away. Two careful readers differing is
+the strongest available evidence that an extractor should decline to parse that
+segment, and abstention is a perfectly good outcome for a sorter that reorders
+somebody's game.
+
+## What counts as a correct extraction
+
+Fixed before any parser exists, so it cannot be chosen afterwards to flatter
+one.
+
+A `PAIRWISE` claim is correct only when actor identity, target identity,
+relation, scope and condition are all correct. A `PLACEMENT` claim needs actor,
+placement, scope and condition. A `CATEGORICAL` claim needs both categories and
+the relation.
+
+Placement is scored exactly. Gold `NEAR_BOTTOM` against predicted `LAST` is
+wrong, because the author hedged and the parser did not. A second, clearly
+separate figure may report region compatibility, where `LATE`, `NEAR_BOTTOM`
+and `BOTTOM` count as one region; it is never the headline, and never called
+precision without saying which.
+
+Scoring is per claim, not per segment. A segment whose gold is
+
+    A LAST
+    B BEFORE A
+
+and whose parser output is only `A LAST` has found one of two claims. Counting
+that segment as correct would hide half the recall.
+
+## Estimating anything about the corpus
+
+The strata are sampled at wildly different rates: about 41 percent of
+`absolute_region`, about 1.4 percent of `explicit_relative`, about 0.66 percent
+of `background`. So a raw count over the sample describes the sample and not
+Nexus.
+
+Each drawn segment carries `selectionProbability`. A corpus estimate weights
+each by its reciprocal, and every claim inside a segment inherits that segment's
+weight. Averaging the seven per-stratum percentages is not a corpus figure and
+must not be reported as one.
+
+Report both, labelled: per-stratum results, which say which signals are worth
+having, and the weighted estimate, which is the only thing that answers how much
+evidence Nexus prose actually holds.
