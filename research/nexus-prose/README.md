@@ -134,11 +134,23 @@ misled once by numbers nobody could re-derive.
 
 ## Order of work
 
-1. Label `annotate-blind.tsv`. It carries no parser output, so it cannot anchor.
-2. Lock the labels, then join them against `old-extraction.jsonl` to score the
-   previous run. Scoring it first would let its errors bias the labels.
-3. Only then design a parser, against the labels rather than against whatever
-   examples happened to be visible while writing patterns.
+Frozen as v1 at this point. The steps run in this order and the order is the
+protection: several of them are worthless if taken out of sequence.
+
+1. Label the development sample, blind. It carries no parser output.
+2. Second-read and adjudicate everything the schema requires.
+3. Do not open the test labels while a parser is being designed.
+4. Build a parser against development plus the regression suite.
+5. Freeze the parser.
+6. Reveal and adjudicate test.
+7. Run the final evaluation once.
+8. Score the invalidated run against the labels, which can happen any time after
+   step 2, but never before it.
+9. Then decide whether the held-out background subset gives a tight enough bound
+   or whether a pre-specified supplementary sample is needed.
+
+Changing the sampling or the schema after seeing what the labels reveal makes a
+new experiment, not a better one. If that becomes necessary, version it.
 
 ## The strata
 

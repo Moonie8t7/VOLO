@@ -177,3 +177,59 @@ must not be reported as one.
 Report both, labelled: per-stratum results, which say which signals are worth
 having, and the weighted estimate, which is the only thing that answers how much
 evidence Nexus prose actually holds.
+
+## Two measurements, and why they cannot be mixed
+
+There are two questions here and they are answered from different material.
+
+**How much load order evidence exists in Nexus prose.** Answered from every
+human-labelled segment, development and test alike, weighted by the reciprocal
+of each segment's inclusion probability. A label does not stop being true
+because the person who wrote a parser had seen it.
+
+**How well a parser recovers that evidence.** Answered from the held-out test
+portion only, and reported as held-out precision, recall and abstention, with a
+per-stratum breakdown.
+
+The trap is applying the sampling weights to the second one and calling the
+result an estimate of parser performance across Nexus.
+
+It is not, and cannot be, because the test half is deliberately not a random
+subset of the corpus any more. Descriptions whose prose was read are forced out
+of it. So are descriptions sharing signal-bearing text with those. What remains
+is the corpus minus everything this research has touched, which is the right
+population for an honest parser score and the wrong one for extrapolating to
+Nexus as a whole.
+
+So a held-out figure is reported as a held-out figure. Any statement about
+expected performance across the whole catalogue is a qualified inference drawn
+from both measurements together, and says so.
+
+## Near-duplicate templates, a diagnostic rather than a partition rule
+
+Identical signal-bearing prose can no longer straddle the split. Templates still
+can:
+
+    If using War Caster ..., place it before/above Mirror Blade.
+    If using War Caster ..., place it before/above True Strike.
+    If using War Caster ..., place it before/above Occultist.
+
+Those are different segments after normalisation, because the mod names differ,
+and one could sit in development while another sits in test.
+
+This is not fixed by clustering harder. Some repeated construction is what
+language is, and a test set with every familiar phrasing removed would measure
+something nobody cares about. It is handled as a diagnostic instead, run after
+labelling and before any parser result is looked at: for each test positive,
+find its nearest development segment by text similarity, and report the
+distribution.
+
+    exact duplicate            0
+    very high near duplicate   n
+    moderate similarity        n
+    no close analogue          n
+
+Then report parser performance twice: on all held-out claims, and on held-out
+claims with no very-high near analogue in development. The gap between those two
+is the generalisation measurement, and it is worth more than either number
+alone.
