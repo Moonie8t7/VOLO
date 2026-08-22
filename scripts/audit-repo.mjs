@@ -100,6 +100,13 @@ const VERBATIM = new RegExp([
    * that already covers files of somebody else's mod names.
    */
   '^client/src/lib/dividers\\.json',
+  /*
+   * Sampled mod descriptions, quoted exactly as their authors wrote them. The
+   * sample carries Korean, emoji and every punctuation habit on Nexus, and the
+   * point of it is that it is verbatim: a labelled sentence that has been
+   * tidied is not the sentence anybody has to parse.
+   */
+  '^research/nexus-prose/',
 ].join('|'));
 
 /** Test fixtures deliberately contain the shapes the scrubbers must catch. */
