@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-21T23:03:29.176Z",
+  "generated": "2026-08-22T05:03:59.190Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -32,7 +32,7 @@
     "working": 95,
     "broken": 15,
     "unlabelled": 2,
-    "externalDependencyEdges": 577,
+    "externalDependencyEdges": 579,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -408,8 +408,8 @@
       "usesScriptExtender": true,
       "loadsAfterDependents": true,
       "absence": {
-        "held": 16,
-        "witnesses": 16
+        "held": 17,
+        "witnesses": 17
       }
     },
     {
@@ -29333,7 +29333,13 @@
         "workingInstalls": 5,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Morrigan Outfit By REN",
@@ -48682,10 +48688,6 @@
         "workingInstalls": 4,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      },
-      "absence": {
-        "held": 2,
-        "witnesses": 2
       }
     },
     {
@@ -81594,13 +81596,7 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      },
-      "dependencies": [
-        {
-          "uuid": "ac319a63-3844-6981-221c-3fb8b13f34d9",
-          "name": "Ghost's Deck Of Many Feats (v6.0)"
-        }
-      ]
+      }
     },
     {
       "name": "Ghouls Customization Compendium - Aasimar Eyes of the Beholder",
@@ -99541,7 +99537,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "5R Conjure Animals - all classes addon",
@@ -114433,7 +114435,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "GimblebockAndCrewRedoneVanilla",
