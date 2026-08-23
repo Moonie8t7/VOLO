@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-22T19:52:34.293Z",
+  "generated": "2026-08-23T05:12:29.099Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -32,7 +32,7 @@
     "working": 98,
     "broken": 15,
     "unlabelled": 2,
-    "externalDependencyEdges": 583,
+    "externalDependencyEdges": 586,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -393,8 +393,8 @@
       "usesScriptExtender": true,
       "loadsAfterDependents": true,
       "absence": {
-        "held": 16,
-        "witnesses": 16
+        "held": 17,
+        "witnesses": 17
       }
     },
     {
@@ -61218,6 +61218,10 @@
           "name": "Camp Robes"
         },
         {
+          "uuid": "9b288d77-ec8e-10e5-3d13-6ac2e33fd7a7",
+          "name": "BoringDyes"
+        },
+        {
           "uuid": "b993354c-4a77-2cdb-0301-c62d8a23d126",
           "name": "Barrel Tweaks"
         },
@@ -106334,6 +106338,10 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
+      },
+      "absence": {
+        "held": 1,
+        "witnesses": 3
       }
     },
     {
@@ -110684,7 +110692,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "Disciple of Darkness (Shadowheart Passive)",
@@ -124188,7 +124202,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "More Makeup and Tattoos - Unique Tav and EOTB",
