@@ -1634,6 +1634,34 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     failures++;
     for (const [file] of missing) console.log(`  FAIL  ${file} is missing a scrub pattern`);
   }
+
+  /*
+   * Holding the pattern is not the same as applying it to what a person types.
+   * The order was scrubbed at all three boundaries while the note was scrubbed
+   * at none of them, so it reached the public issue carrying whatever had been
+   * pasted into it, and an issue is permanent. The note is the likelier of the
+   * two to hold a path: the box asks what went wrong, which is when somebody
+   * pastes one.
+   */
+  const submitApi = copies['functions/api/submit.js'];
+  const submitPage = fs.readFileSync('client/src/pages/SubmitPage.tsx', 'utf8');
+  const applied = [
+    [submitApi.includes('strip(s)'),
+      'the API cleans free text for the issue without stripping paths from it'],
+    [/clean\(notes,/.test(submitApi),
+      'the API writes the note into the issue without cleaning it'],
+    [/clean\(patch,/.test(submitApi),
+      'the API writes the patch into the issue without cleaning it'],
+    [/scrubPersonalPaths\(notes\)/.test(submitPage),
+      'the submit page sends the note without scrubbing it first'],
+  ];
+  const unapplied = applied.filter(([ok]) => !ok);
+  if (!unapplied.length) {
+    console.log('  ok    the order, the note and the patch are all scrubbed before they are published');
+  } else {
+    failures++;
+    for (const [, why] of unapplied) console.log(`  FAIL  ${why}`);
+  }
 }
 
 /**

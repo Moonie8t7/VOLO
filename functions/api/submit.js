@@ -73,17 +73,24 @@ export async function onRequestPost({ request, env }) {
   /*
    * Scrubbed again here, having already been scrubbed in the browser.
    *
-   * This is the last point before the order becomes a public GitHub issue,
+   * This is the last point before the submission becomes a public GitHub issue,
    * which is permanent. A cached copy of the app could be months old, and a
    * request can be made without the app at all, so the guarantee cannot rest on
    * the client having done it. Kept in step with client/src/lib/scrub.ts by a
    * check in scripts/smoke-test.mjs.
+   *
+   * Applied to everything a person can type rather than to the order alone. The
+   * order used to be the only field scrubbed here, on the reasoning that BG3MM
+   * is what writes a path into a file; but the note is typed by hand into a box
+   * that invites saying what went wrong, which is exactly when somebody pastes
+   * a path, and it lands in the same permanent issue.
    */
-  const order = typeof rawOrder === 'string'
-    ? rawOrder
+  const strip = s => (typeof s === 'string'
+    ? s
       .replace(/(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g, '$1')
       .replace(/(?<![A-Za-z0-9])\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g, '$1')
-    : rawOrder;
+    : s);
+  const order = strip(rawOrder);
   if (verdict !== 'working' && verdict !== 'broken') {
     return json(400, { error: 'Say whether the order worked.' });
   }
@@ -143,8 +150,13 @@ export async function onRequestPost({ request, env }) {
     : 'Not working, it has problems';
   // Backtick fences delimit the order in the issue body, so they cannot be
   // allowed inside free text. Real BG3MM JSON never contains them.
+  /*
+   * Free text on its way into the issue body. Stripped before it is cut, not
+   * after: truncating first can leave half a path, and half a path still names
+   * the person.
+   */
   const clean = (s, max) =>
-    typeof s === 'string' ? s.replace(/`/g, "'").slice(0, max).trim() : '';
+    typeof s === 'string' ? strip(s).replace(/`/g, "'").slice(0, max).trim() : '';
 
   /*
    * An order VOLO sorted, played and sent back is not a second opinion: its

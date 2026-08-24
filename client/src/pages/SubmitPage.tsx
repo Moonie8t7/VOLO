@@ -139,8 +139,11 @@ export default function SubmitPage() {
       const { url } = await submitOrder({
         order: order.text,
         verdict,
-        notes: notes.trim() || undefined,
-        patch: patch.trim() || undefined,
+        // Scrubbed here for the same reason the order is at prepare(): the note
+        // box asks what went wrong, which is when somebody pastes a path, and a
+        // path removed on arrival has already left the machine.
+        notes: scrubPersonalPaths(notes).trim() || undefined,
+        patch: scrubPersonalPaths(patch).trim() || undefined,
         sortedByVolo: arrangement ?? undefined,
         turnstileToken: turnstileToken.current,
       });
