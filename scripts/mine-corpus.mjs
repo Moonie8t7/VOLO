@@ -854,18 +854,38 @@ for (const file of fs.readdirSync(CORPUS_DIR).sort()) {
 }
 
 /**
- * One vote per person on sequence, however many times they export it.
+ * One vote on sequence per family of near-identical orders.
  *
- * Seven groups of near-identical orders sit in the corpus, seventeen files
+ * Eleven families of near-identical orders sit in the corpus, twenty-six files
  * between them: somebody refines their list and submits again a day later, or
  * submits both a thin and a full export of the same evening. Every copy is real
  * and every copy is honest, and counting each one as another opinion about
- * ordering weights one person four times. Fifty-nine working orders are
- * forty-nine independent ones.
+ * ordering weights one list four times. Ninety-nine working files are eighty-four
+ * independent orders.
+ *
+ * Per family, not per person, and the distinction is not pedantry. Submissions
+ * are anonymous, so nothing here can know whether two similar orders came from
+ * one person twice or from two people who started from the same published
+ * collection. What is measurable is that the two sequences are nearly the same
+ * sequence, and that is the whole of the claim: a list that agrees with itself
+ * is not a second opinion. An earlier version of this comment said "one vote per
+ * person", which asserts something the corpus cannot support.
  *
  * Only the sequence is de-duplicated. Presence still counts from every copy,
- * because each one is a person genuinely running those mods together, and the
- * never-verified caution reads presence.
+ * and that is a deliberate trade rather than a free one. The same reasoning that
+ * mutes the second sequence applies to presence: if a family is one person
+ * exporting four times, four installs is one install. Measured on 25 August, the
+ * cost is 24.1 percent: 47,018 install observations counted per file are 37,896
+ * counted per family, and 4,224 of 10,070 mods would carry a smaller number.
+ *
+ * It is left inflated because nothing currently reads presence as a magnitude
+ * that has to be right. The never-verified caution reads it as a threshold, two
+ * separate broken orders, and every one of the eleven families is a working
+ * order: nobody submits the same broken list twice. Counted per family the
+ * caution fires on exactly the same 1,217 mods, so no warning anywhere rests on
+ * a family being counted more than once. If presence ever starts deciding
+ * something on magnitude rather than presence or absence, this is the first
+ * thing to revisit.
  *
  * Compared by name, since a thin export and a full export of the same order
  * agree on names and barely on identifiers until the vote below has run. The
