@@ -24,7 +24,7 @@
 import { execSync } from 'child_process';
 import { build } from 'esbuild';
 import crypto from 'crypto';
-import { writeProvenance, judge, readProvenance } from './corpus-provenance.mjs';
+import { writeProvenance, judge, readProvenance, noteFromIssueBody } from './corpus-provenance.mjs';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -527,12 +527,26 @@ const baseline = measureAgreement();
 
 fs.writeFileSync(path.join(CORPUS, filename), orderText.trim() + '\n');
 
+/**
+ * What the submitter wrote about their own order.
+ *
+ * Kept because it is the one part of a submission nothing else preserves. The
+ * order records what was installed and the metric records how it sorted;
+ * neither records a person saying which two mods fight, or that the crash was
+ * in Last Light Inn. Recorded rather than acted on: a note is one player's
+ * reading, and nothing here promotes it to a rule.
+ */
+const note = noteFromIssueBody(body);
+
 // Recorded before mining, so the miner sees it on the very first pass and never
 // reads a VOLO-sorted order as evidence of where mods belong.
 writeProvenance(filename, {
   declared,
   agreementWithVolo: matchesVolo === null ? null : Math.round(matchesVolo * 1000) / 1000,
   sortedByVolo: judge({ declared, agreementWithVolo: matchesVolo, nearest }),
+  // Absent rather than null when nobody wrote one, so the file does not carry a
+  // hundred empty fields to say that most submissions are silent.
+  ...(note ? { note } : {}),
 });
 
 // Step 6: regenerate everything and capture the verification numbers.

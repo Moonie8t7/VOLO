@@ -30,7 +30,7 @@ import os from 'os';
 import { execSync } from 'child_process';
 import { build } from 'esbuild';
 import {
-  readProvenance, writeProvenance, judge, VOLO_MATCH_THRESHOLD,
+  readProvenance, writeProvenance, judge, VOLO_MATCH_THRESHOLD, noteFromIssueBody,
 } from './corpus-provenance.mjs';
 
 const CORPUS = 'Load Orders - Public Submitted';
@@ -210,6 +210,79 @@ if (WRITE) {
   console.log(`\nwritten to ${path.join(CORPUS, 'provenance.json')}`);
 } else if (written.length) {
   console.log('\ndry run. pass --write to apply.');
+}
+
+/*
+ * What each submitter said about their own order.
+ *
+ * Intake records this now, but only for orders arriving after it started to,
+ * and the corpus predates that by a hundred submissions. Those notes are not
+ * lost: they are sitting in the issues the orders came from, which is a place
+ * nothing in this repository can search. Issue #130 named two mods that fight
+ * each other, and finding that out meant a person opening the thread and
+ * reading it.
+ *
+ * Only orders that actually landed are considered. A rejected duplicate still
+ * has an issue and a note, and has no corpus file for the note to belong to.
+ */
+let issues = null;
+try {
+  issues = JSON.parse(execSync(
+    'gh issue list --label load-order-submission --state all --limit 500 --json number,body',
+    {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+      /*
+       * A submission issue can hold an entire pasted load order, so a hundred
+       * of them run to tens of megabytes. The default buffer is one, and
+       * overflowing it fails with ENOBUFS, which the first version of this
+       * reported as gh being unavailable: the notes were sitting right there
+       * and the script said it could not reach them.
+       */
+      maxBuffer: 256 * 1024 * 1024,
+    },
+  ));
+} catch (err) {
+  // The reason, not a guess at it. Signed out, offline and too large all land
+  // here and need different answers from whoever is running this.
+  console.log(`\nnotes: could not read the submission issues, so notes were left alone`);
+  console.log(`  ${String(err.stderr || err.message).trim().split('\n')[0]}`);
+}
+
+if (issues) {
+  const landedAs = new Map();
+  for (const file of files) {
+    const numbered = file.match(/_issue-(\d+)_/);
+    if (numbered) landedAs.set(Number(numbered[1]), file);
+  }
+
+  // Re-read, because the pass above may have added records this one merges into.
+  const recorded = readProvenance();
+  const notes = [];
+  for (const issue of issues) {
+    const file = landedAs.get(issue.number);
+    if (!file) continue;
+    const note = noteFromIssueBody(issue.body);
+    if (!note) continue;
+    const record = recorded[file];
+    if (!record || record.note === note) continue;
+    notes.push({ file, issue: issue.number, note, replacing: record.note ?? null, entry: { ...record, note } });
+  }
+
+  console.log(`\nnotes: ${issues.length} submission issue(s), ${landedAs.size} of them landed`);
+  console.log(`would write ${notes.length} note(s)`);
+  for (const n of notes) {
+    const first = n.note.split('\n')[0];
+    console.log(`  #${n.issue} ${n.file}`);
+    console.log(`    ${n.replacing === null ? 'new' : 'replaces a recorded note'}: ${first.slice(0, 96)}`);
+  }
+
+  if (WRITE) {
+    for (const { file, entry } of notes) writeProvenance(file, entry);
+    if (notes.length) console.log(`\nnotes written to ${path.join(CORPUS, 'provenance.json')}`);
+  } else if (notes.length) {
+    console.log('\ndry run. pass --write to apply the notes.');
+  }
 }
 
 /*

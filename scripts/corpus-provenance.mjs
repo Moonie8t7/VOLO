@@ -104,6 +104,67 @@ export function echoesNeighbour(agreementWithVolo, nearest) {
     && agreementWithVolo - nearest.agreementWithVolo > NEIGHBOUR_JUMP;
 }
 
+/**
+ * The longest submitter note kept, in characters.
+ *
+ * Deliberately about three times the longest anyone has written, so it bounds
+ * the file without cutting anything real. A note that hits this is truncated
+ * and said to be, because a silently shortened sentence reads as a complete
+ * one and can reverse its own meaning.
+ */
+export const NOTE_MAX = 2000;
+
+/**
+ * Lines the tooling wrote into the Notes box, rather than the submitter.
+ *
+ * GitHub fills an empty field with "_No response_", the site signs what it
+ * forwards, and one order was reprocessed by hand with a line saying so. None
+ * of that is what a person typed, and keeping it would mean every silent
+ * submission carries a note that says nothing.
+ *
+ * Matched by phrase rather than by "any line in italics" on purpose. The
+ * general rule also eats a line holding nothing but a pak name, because pak
+ * names are full of underscores, and losing a submitter's words is worse than
+ * keeping one of our own footers. A new footer has to be added here.
+ */
+const MACHINE_LINE =
+  /^\s*_(?:No response|Submitted through [^\n_]*|Reprocessed after [^\n_]*)_\s*$/;
+
+/**
+ * The Notes field of a submission issue, or null when nobody wrote one.
+ *
+ * What a submitter says about their own order is the only part of a submission
+ * nothing else records. Issue #130 reported that one mod interferes with
+ * another, which no amount of reading the order itself would reveal, and until
+ * this existed that sentence lived only in the issue thread.
+ *
+ * Personal paths are stripped here as well as at intake. The note is free text
+ * from a stranger and lands in a file published under CC0, so it gets the same
+ * treatment as the order: see client/src/lib/scrub.ts for why this pattern is
+ * repeated rather than shared, and scripts/smoke-test.mjs for the check that
+ * every copy stays in step.
+ */
+export function noteFromIssueBody(body) {
+  const section = String(body ?? '')
+    .match(/^###[ \t]+Notes[ \t]*$([\s\S]*?)(?=^###[ \t]|$(?![\s\S]))/m);
+  if (!section) return null;
+
+  const written = section[1]
+    .split('\n')
+    .filter(line => !MACHINE_LINE.test(line))
+    .join('\n')
+    .trim();
+  if (!written) return null;
+
+  const scrubbed = written
+    .replace(/(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g, '$1')
+    .replace(/(?<![A-Za-z0-9])\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g, '$1');
+
+  return scrubbed.length > NOTE_MAX
+    ? `${scrubbed.slice(0, NOTE_MAX)} [truncated]`
+    : scrubbed;
+}
+
 /** Adds or replaces one order's provenance, keeping the file sorted. */
 export function writeProvenance(filename, entry) {
   const orders = readProvenance();

@@ -1615,16 +1615,21 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     for (const [input] of wrong) console.log(`  FAIL  scrub wrong for ${input}`);
   }
 
-  // All three copies must contain the same two patterns.
+  /*
+   * Every copy must contain the same two patterns. The fourth is the submitter
+   * note, which is free text from a stranger rather than an exported order, and
+   * reaches the same published file by a route none of the other three cover.
+   */
   const copies = {
     'client/src/lib/scrub.ts': fs.readFileSync('client/src/lib/scrub.ts', 'utf8'),
     'functions/api/submit.js': fs.readFileSync('functions/api/submit.js', 'utf8'),
     'scripts/process-submission.mjs': fs.readFileSync('scripts/process-submission.mjs', 'utf8'),
+    'scripts/corpus-provenance.mjs': fs.readFileSync('scripts/corpus-provenance.mjs', 'utf8'),
   };
   const missing = Object.entries(copies).filter(([, src]) =>
     !src.includes('home|Users') || !src.includes('[A-Za-z]:'));
   if (!missing.length) {
-    console.log('  ok    all three scrub points cover Windows and Unix paths');
+    console.log(`  ok    all ${Object.keys(copies).length} scrub points cover Windows and Unix paths`);
   } else {
     failures++;
     for (const [file] of missing) console.log(`  FAIL  ${file} is missing a scrub pattern`);
@@ -1681,6 +1686,54 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   } else {
     failures++;
     console.log('  FAIL  an unrecorded order is being treated as VOLO-sorted');
+  }
+
+  /*
+   * The submitter's own words, which reach a published file without ever being
+   * an exported order. Two ways this goes wrong and neither announces itself:
+   * keeping the placeholder GitHub writes into an empty box, so every silent
+   * submission acquires a note saying nothing, and dropping a line because it
+   * happens to be wrapped in underscores, which is what a bare pak name looks
+   * like.
+   */
+  const { noteFromIssueBody, NOTE_MAX } = await import('./corpus-provenance.mjs');
+  const heading = '### Notes\n\n';
+  const notes = [
+    ['no Notes field at all', '### Something else\n\nwords', null],
+    ['an empty box is not a note', `${heading}_No response_\n`, null],
+    ['the site footer alone is not a note', `${heading}_Submitted through volobg3.com_\n`, null],
+    ['a note is kept', `${heading}It crashed in act 2.\n`, 'It crashed in act 2.'],
+    ['the footer is dropped from a real note',
+      `${heading}It crashed.\n\n_Submitted through volobg3.com_\n`, 'It crashed.'],
+    ['a line that is only a pak name survives',
+      `${heading}_Elven_Weaponry_Chest_Only_\n`, '_Elven_Weaponry_Chest_Only_'],
+    ['the note stops at the next field',
+      `${heading}the note\n\n### Anything\n\nnot the note\n`, 'the note'],
+    ['a Windows path is stripped',
+      `${heading}from C:\\Users\\someone\\Mods\\A.pak here`, 'from A.pak here'],
+    ['a Unix home is stripped',
+      `${heading}see /home/someone/mods/B.pak ok`, 'see B.pak ok'],
+    ['a URL containing /Users/ is left alone',
+      `${heading}https://cdn.example.com/Users/team/C.pak`, 'https://cdn.example.com/Users/team/C.pak'],
+  ];
+  const wrongNotes = notes.filter(([, body, expected]) => noteFromIssueBody(body) !== expected);
+  if (!wrongNotes.length) {
+    console.log(`  ok    submitter notes read correctly in ${notes.length} cases`);
+  } else {
+    failures++;
+    for (const [name, body] of wrongNotes) {
+      console.log(`  FAIL  ${name}: got ${JSON.stringify(noteFromIssueBody(body))}`);
+    }
+  }
+
+  // A truncated note must say so. A sentence cut in half reads as a whole one
+  // and can mean the opposite of what was written.
+  const long = noteFromIssueBody(heading + 'x'.repeat(NOTE_MAX + 500));
+  if (long.length <= NOTE_MAX + 20 && long.endsWith('[truncated]')) {
+    console.log(`  ok    an overlong note is cut at ${NOTE_MAX} and marked`);
+  } else {
+    failures++;
+    console.log(`  FAIL  an overlong note was kept at ${long.length} characters`);
   }
 }
 
