@@ -107,12 +107,16 @@ export function echoesNeighbour(agreementWithVolo, nearest) {
 /**
  * The longest submitter note kept, in characters.
  *
- * Deliberately about three times the longest anyone has written, so it bounds
- * the file without cutting anything real. A note that hits this is truncated
- * and said to be, because a silently shortened sentence reads as a complete
- * one and can reverse its own meaning.
+ * The same limit functions/api/submit.js applies when it writes the note into
+ * the issue, so the corpus never cuts something the issue kept whole. It still
+ * has work to do: an issue opened by hand never passes through that endpoint,
+ * and a GitHub issue body holds sixteen times this.
+ *
+ * A note that hits it is truncated and said to be, because a silently
+ * shortened sentence reads as a complete one and can reverse its own meaning.
+ * The longest anyone has written is 645 characters.
  */
-export const NOTE_MAX = 2000;
+export const NOTE_MAX = 4000;
 
 /**
  * Lines the tooling wrote into the Notes box, rather than the submitter.

@@ -93,6 +93,14 @@ export default function PrivacyPage() {
             checksum. That copy holds the same scrubbed text that would have
             gone into the issue.
           </p>
+          <p>
+            Anything you write in the Notes box is kept too, beside the order in
+            the same public corpus, because what a submitter says about their
+            own game is often the only record that two mods fight or where a
+            crash happened. It is your words as you wrote them, with filesystem
+            paths stripped the same way, and nothing acts on it automatically.
+            Leaving the box empty records nothing at all.
+          </p>
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">

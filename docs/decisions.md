@@ -200,6 +200,31 @@ worth automating. The ceiling is roughly 250 to 300 genuinely new constraints in
 the entire corpus and a better parser does not raise it. Full working in
 [nexus-prose-findings.md](nexus-prose-findings.md).
 
+### submitter-notes-recorded-not-acted-on
+
+**What a submitter says about their own order is kept, and nothing reads it.** A
+submission carries three things: the order, whether it worked, and whatever the
+person wrote in the Notes box. The first two were recorded and the third was read
+once by whoever handled the issue and then left there. Issue #130 says one mod
+directly interferes with another, which no amount of reading the order itself
+would reveal, and nothing in this repository could find that sentence.
+
+The note now sits in the order's provenance record. 43 of 106 submission issues
+carry one, 42 of those landed as corpus files, and the one that did not is a
+rejected duplicate. It is stored as written, with filesystem paths stripped,
+because a note is free text from a stranger landing in a file published under
+CC0; that is a fourth copy of the scrub and the smoke test checks all four stay
+in step.
+
+Recorded is the whole of it. Nothing reads the field: the miner takes only
+`sortedByVolo` from provenance, and rebuilding the masterlist with all 42 notes
+present gives a file identical outside its timestamp. A note is one player's
+reading of their own game, and turning "these two fight" into an `incompatible`
+entry is a separate decision needing its own evidence, which
+[caution-needs-two-orders](#caution-needs-two-orders) already sets the bar for.
+The value here is that the sentence is now greppable instead of buried in an
+issue thread.
+
 ## Rejected
 
 Each experiment below quotes the figure it was measured against at the time,

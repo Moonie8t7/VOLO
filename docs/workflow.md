@@ -73,7 +73,7 @@ production, and this is the only check that runs against the real host.
 | `audit-repo.mjs` | Every tracked file: parses, links, secrets, personal data, style. |
 | `diagnose-order.mjs` | Explains what is probably wrong with a broken order. |
 | `process-submission.mjs` | Validates a submission, gates it, writes the report. |
-| `corpus-provenance.mjs` | Records and reads whether an order is VOLO's own output. |
+| `corpus-provenance.mjs` | Records and reads how an order reached us: VOLO's own output or not, and what its submitter said. |
 | `curated-rules.mjs` | Loads `masterlist/curated-rules.json` and checks each pattern. |
 | `bulk-list-nexus.mjs` | Crawls the Nexus catalogue. `--updates` for the daily top-up. |
 | `bulk-list-modio.mjs` | Crawls mod.io. `--updates` and `--deps`. |
@@ -94,6 +94,7 @@ question comes up again:
 | `extract-separator-mods.mjs` | Astra ships new or changed divider paks |
 | `learn-breakage.mjs` | Asking what broken orders do that working ones never do |
 | `learn-category-order.mjs` | Re-deriving the category sequence as the corpus grows |
+| `backfill-provenance.mjs` | An order has no provenance record, or a submitter's note is only in the issue. Dry run by default, `--write` to apply |
 
 ## Environment
 
@@ -167,6 +168,15 @@ capped after parsing, because the agreement measure compares every pair and a
 six figure entry count would hold a runner until Actions killed it. And a
 submission that validates but fails to land now says so on the issue rather
 than thanking its submitter, which is what it used to do.
+
+What the submitter wrote in the Notes box is kept alongside the order, in its
+provenance record. It is stored as written and nothing reads it: the miner takes
+only `sortedByVolo` from provenance, so a note changes no group, divider or
+sequence. It exists because the order says what was installed and the metric
+says how it sorted, and neither records a person saying which two mods fight.
+Personal paths are stripped from it on the way in, GitHub's placeholder for an
+empty box is not a note, and `backfill-provenance.mjs` fills in orders that
+landed before any of this existed.
 
 Re-adding the `load-order-submission` label replays an issue through current
 intake. That is how orders rejected by an older version get another run
