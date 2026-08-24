@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-23T18:27:12.974Z",
+  "generated": "2026-08-24T05:22:27.021Z",
   "generator": "scripts/mine-corpus.mjs",
   "gameBuild": "4.8.700.7143220",
   "gamePatch": "Patch 8",
@@ -32,7 +32,7 @@
     "working": 98,
     "broken": 17,
     "unlabelled": 2,
-    "externalDependencyEdges": 599,
+    "externalDependencyEdges": 603,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -4673,8 +4673,7 @@
         "workingInstalls": 21,
         "brokenInstalls": 3,
         "voloSortedInstalls": 5
-      },
-      "usesScriptExtender": true
+      }
     },
     {
       "name": "PK Hair Collection",
@@ -124696,7 +124695,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "390fe96d-d38a-49ef-a522-9335d0a948d6",
+          "name": "Race CC Universal Automatic Patcher (UAP)"
+        },
+        {
+          "uuid": "b42552c8-4642-4c3a-b0e2-422822348fd6",
+          "name": "Head VFX Universal Automatic Patcher (UAP)"
+        }
+      ]
     },
     {
       "name": "Moon's Medieval Heads",
@@ -129759,7 +129768,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Priest Outfit By REN",
@@ -135904,7 +135914,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "cef3bd38-43eb-4e9e-b3ba-8a96ddcb0e38",
+          "name": "Strong Female Heads "
+        }
+      ]
     },
     {
       "name": "Strong Gale",
@@ -139954,7 +139970,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "Virgin Killer Dress",

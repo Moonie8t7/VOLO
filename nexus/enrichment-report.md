@@ -6,27 +6,27 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 9864 |
-| Matched exactly by name | 2281 |
-| Matched fuzzily (>= 0.9) | 578 |
-| Unmatched | 7005 |
+| Masterlist mods | 9928 |
+| Matched exactly by name | 2303 |
+| Matched fuzzily (>= 0.9) | 581 |
+| Unmatched | 7044 |
 
 ## What the match would add
 
-- 32 currently unsorted mods would receive a category from their
+- 33 currently unsorted mods would receive a category from their
   Nexus listing.
-- 946 mods have a Nexus category that disagrees with the
+- 958 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1642 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 749 of them resolved to a uuid on both
+- 1655 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 757 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
 
 - Grit and Glory - Injuries, Exhaustion and Madness: Gameplay (fuzzy match)
-- Hunted - Dynamic Ambushes & Revenge System: Gameplay (fuzzy match)
 - Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
+- Hunted - Dynamic Ambushes & Revenge System: Gameplay (fuzzy match)
 - Use highest modifier: Gameplay (fuzzy match)
 - Automatic_Inventory_Manager: Gameplay (fuzzy match)
 - EW_Proficiency_Potion: Utilities (fuzzy match)
@@ -51,8 +51,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Utilities (section-majority), Nexus says Gameplay
 - HT_Camp Event Overhaul: ours Miscellaneous (section-majority), Nexus says Gameplay
-- HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
+- HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - PixellBytes' Adjustable Party Limit: ours Resources (section-majority), Nexus says Companions
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
@@ -60,8 +60,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
-- HT_Dark Urge Tweeaks: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
+- HT_Dark Urge Tweeaks: ours Bug Fixes (section-majority), Nexus says Gameplay
 
 ## Unmapped Nexus categories
 
