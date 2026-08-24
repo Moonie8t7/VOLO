@@ -44,10 +44,46 @@ const ok = (msg) => console.log(`  ok    ${msg}`);
 
 const groupRank = new Map(masterlist.groups.map((g, i) => [g.name, i]));
 
+/*
+ * Names carried by more than one row, where the rows disagree about the group.
+ *
+ * A mod is looked up by uuid first and by name only when that fails, and
+ * client/src/lib/optimiser.ts keeps the first row it meets for a name. Where
+ * two rows share a name and sit in different groups, whichever was mined first
+ * decides where the mod goes, which is a coin toss rather than an answer.
+ *
+ * The masterlist count is the wrong measure of this and was quoted for ten days
+ * as though it were the right one: it counts rows, and rows are not placements.
+ * What matters is how often the coin is actually tossed, which is counted in
+ * the loop below and bounded after it. Identity is deliberately unresolved, so
+ * the point here is not to fix it but to notice if it ever starts to matter.
+ */
+const rowsByName = new Map();
+for (const p of masterlist.plugins) {
+  const key = p.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+  if (!key) continue;
+  if (!rowsByName.has(key)) rowsByName.set(key, []);
+  rowsByName.get(key).push(p);
+}
+const knownUuids = new Set(masterlist.plugins.map(p => p.uuid).filter(Boolean));
+const ambiguousNames = new Set(
+  [...rowsByName.entries()]
+    .filter(([, rows]) => rows.length > 1 && new Set(rows.map(r => r.group)).size > 1)
+    .map(([key]) => key),
+);
+let placementsSeen = 0;
+let placementsTossed = 0;
+
 for (const file of fs.readdirSync(CORPUS).sort()) {
   const raw = fs.readFileSync(path.join(CORPUS, file), 'utf8');
   const parsed = parseLoadOrder(raw, file);
   if (!parsed.mods.length) continue;
+
+  for (const mod of parsed.mods) {
+    placementsSeen++;
+    if (knownUuids.has(mod.uuid)) continue;
+    if (ambiguousNames.has(mod.name.toLowerCase().replace(/[^a-z0-9]/g, ''))) placementsTossed++;
+  }
 
   const t0 = performance.now();
   const result = sortLoadOrder(parsed.mods, masterlist);
@@ -105,6 +141,28 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   if (critical.length) {
     console.log(`  note  ${critical.length} critical issue(s) reported:`);
     for (const c of critical.slice(0, 3)) console.log(`        - ${c.message.slice(0, 110)}`);
+  }
+}
+
+/*
+ * The bound on the coin toss above, deliberately loose.
+ *
+ * It measured 52 placements of 47,075, which is 0.11 percent, and the entry in
+ * the worklist stays open on the strength of that being negligible rather than
+ * on anyone having solved identity. One percent is roughly ten times worse and
+ * is where that reasoning stops holding, so this fails there rather than at the
+ * current figure: the number is expected to drift as the corpus grows, and a
+ * test that fails on ordinary drift teaches people to raise the threshold
+ * without reading it.
+ */
+{
+  console.log('\nname twins');
+  const share = placementsSeen ? placementsTossed / placementsSeen : 0;
+  const shown = `${placementsTossed} of ${placementsSeen} placements (${(100 * share).toFixed(2)}%)`;
+  if (share < 0.01) {
+    ok(`a name twin decides ${shown}, still negligible`);
+  } else {
+    fail(`a name twin now decides ${shown}; identity was left open on the basis that this stays small`);
   }
 }
 

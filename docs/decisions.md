@@ -39,6 +39,34 @@ much as a 999-mod one; on the same data, weighting by mods barely moves the
 figure, and the 53 orders above 200 mods average 66.1 on their own. Read
 the per-order table before treating a change in the summary as real.
 
+### A table of outcome rates is not evidence about placement
+
+Held-out agreement is the arbiter for any change to where mods go. It is slow,
+so the temptation is to reach instead for a table: group mods by how their
+category was decided, count how often each group appears in orders somebody
+reported broken, and read the difference as the weaker sources causing breakage.
+That reasoning does not hold here, and the reason is worth writing down because
+the table looks convincing.
+
+The evidence source is partly decided by which orders a mod appears in. Section
+evidence comes from a mod sitting under a divider label, broken orders carry
+dividers less often than working ones, 47 percent against 61, so a mod appearing
+mostly in broken orders is less likely to earn section evidence and falls
+through to a weaker source. The arrow runs both ways and the table cannot say
+which way it runs. Controlling for install count does not rescue it, because
+install count is not the confounded variable.
+
+This was not hypothetical. A rule was proposed on exactly that table, to make a
+mod inherit its group from a name-prefix sibling with stronger evidence. Sized
+before it was built, it moved 121 mods, and reading the moves showed most were
+wrong: it filed `Karlach's Long Hair` under Companions because it shares a
+prefix with Karlach companion mods. The idea died on inspection, having cost
+nothing, and would have cost a great deal more had the table been believed.
+
+Two rules follow. Size a rule before building it, by listing what it would
+actually change and reading a sample. And where a correlation is the argument,
+ask what else could produce it before treating the number as a finding.
+
 ## Adopted
 
 ### generated-category-sequence
