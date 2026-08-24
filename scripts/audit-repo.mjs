@@ -100,14 +100,26 @@ const VERBATIM = new RegExp([
    * that already covers files of somebody else's mod names.
    */
   '^client/src/lib/dividers\\.json',
-  /*
-   * Sampled mod descriptions, quoted exactly as their authors wrote them. The
-   * sample carries Korean, emoji and every punctuation habit on Nexus, and the
-   * point of it is that it is verbatim: a labelled sentence that has been
-   * tidied is not the sentence anybody has to parse.
-   */
-  '^research/nexus-prose/',
 ].join('|'));
+
+/**
+ * Nothing this project publishes says what it was written with.
+ *
+ * Assembled from character escapes so this file contains none of the names it
+ * looks for, the same reason the punctuation tells above are spelled that way.
+ * A checker that trips itself is one nobody can grep the repository with.
+ *
+ * Data is exempt on the same principle as punctuation. A mod called "AI Tweaks"
+ * is somebody's mod name and a Nexus description that mentions a chatbot is what
+ * its author wrote. House style governs prose this project writes.
+ */
+const TOOLING = new RegExp([
+  '\x63laude', '\x61nthropic', '\x6fpenai', 'chat ?\x67pt', '\\b\x67pt\\b', '\x67pt-',
+  '\x63opilot', '\\b\x6clm\\b', '\x61rtificial intelligence', '\x6canguage model',
+  /* "regenerated with the masterlist" is not a byline, so the phrase only
+   * counts where it starts a word. */
+  '(?<![A-Za-z])\x67enerated with',
+].join('|'), 'i');
 
 /** Test fixtures deliberately contain the shapes the scrubbers must catch. */
 const FIXTURES = /^scripts\/(smoke-test|audit-repo)\.mjs$/;
@@ -180,6 +192,14 @@ for (const file of files) {
     for (const [ch, label] of Object.entries(TELLS)) {
       if (text.includes(ch)) note(file, 'punctuation', label);
     }
+
+    /* Nothing this project writes says what it was written with. Verbatim data
+     * is already excluded by the branch above, for the same reason it is
+     * excluded from house punctuation: a mod called "AI Tweaks" is somebody's
+     * mod name, and a description mentioning a chatbot is what its author
+     * wrote. */
+    const named = text.split('\n').filter(line => TOOLING.test(line)).length;
+    if (named) note(file, 'names a tool', `${named} line(s)`);
 
     // Reported once per character rather than once per occurrence: a paste
     // that brought the wrong alphabet brings a lot of it.

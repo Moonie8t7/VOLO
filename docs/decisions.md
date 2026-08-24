@@ -168,6 +168,38 @@ which stays open and undecided; all it records is that the name works for
 somebody. Together: 496 mods to 34, with placement measured as untouched rather
 than assumed, because the caution is advice and never an input to the sort.
 
+### prose-is-discovery-not-authority
+
+**Mod descriptions are not a usable source of ordering constraints.** A stratified
+sample of 2,100 segments from 199,564 across 16,957 BG3 descriptions was labelled
+by hand against a frozen codebook, and a parser was built on half of it and
+measured once against the half it had never seen.
+
+Detection generalised: on unseen descriptions it finds a segment carrying a load
+order claim at precision 68 and recall 87, catching 34 of 39. Complete extraction
+did not: a claim with every field right at once came out at precision 3.9 and
+recall 4.5, two of forty-four.
+
+That alone would argue for a human checking each result, but the corpus argues
+against bothering. Scaled to the whole of Nexus the sample implies roughly 600
+pairwise claims naming two identifiable mods, of which about half are a patch,
+addon or variant ordered after its own base, which the requirements metadata
+already gives us. Authors mostly say where their own mod goes rather than how it
+relates to a named other one: 70 of 157 recorded claims were "put this at the
+bottom", which is a region and not a pair.
+
+The structural problem is worse than the yield. An author writes "load X after Y"
+because they built X to patch Y, and whoever installs the patch installs the
+base, so the pairs prose describes are largely the pairs that already appear
+together in submitted orders. Prose is thinnest exactly where it was meant to
+help, on pairs no player has installed together.
+
+So no constraint derived from prose enters the masterlist automatically, and
+since verifying one costs about as much as reading the page, prose mining is not
+worth automating. The ceiling is roughly 250 to 300 genuinely new constraints in
+the entire corpus and a better parser does not raise it. Full working in
+[nexus-prose-findings.md](nexus-prose-findings.md).
+
 ## Rejected
 
 Each experiment below quotes the figure it was measured against at the time,
