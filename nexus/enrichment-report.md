@@ -6,27 +6,26 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 9928 |
-| Matched exactly by name | 2303 |
-| Matched fuzzily (>= 0.9) | 581 |
-| Unmatched | 7044 |
+| Masterlist mods | 10000 |
+| Matched exactly by name | 2314 |
+| Matched fuzzily (>= 0.9) | 585 |
+| Unmatched | 7101 |
 
 ## What the match would add
 
-- 33 currently unsorted mods would receive a category from their
+- 32 currently unsorted mods would receive a category from their
   Nexus listing.
-- 958 mods have a Nexus category that disagrees with the
+- 967 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1655 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 757 of them resolved to a uuid on both
+- 1659 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 759 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
 
 - Grit and Glory - Injuries, Exhaustion and Madness: Gameplay (fuzzy match)
 - Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
-- Hunted - Dynamic Ambushes & Revenge System: Gameplay (fuzzy match)
 - Use highest modifier: Gameplay (fuzzy match)
 - Automatic_Inventory_Manager: Gameplay (fuzzy match)
 - EW_Proficiency_Potion: Utilities (fuzzy match)
@@ -44,6 +43,7 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Ase Glamping - Player Housing for Camp: Character Customization (fuzzy match)
 - AstralElves: Races (fuzzy match)
 - Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
+- Block-Miss-Differentiation-CHS: User Interface (fuzzy match)
 
 ### Sample disagreements
 
