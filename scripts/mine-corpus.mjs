@@ -856,36 +856,47 @@ for (const file of fs.readdirSync(CORPUS_DIR).sort()) {
 /**
  * One vote on sequence per family of near-identical orders.
  *
- * Eleven families of near-identical orders sit in the corpus, twenty-six files
+ * Nine families of near-identical orders sit in the corpus, twenty-one files
  * between them: somebody refines their list and submits again a day later, or
  * submits both a thin and a full export of the same evening. Every copy is real
  * and every copy is honest, and counting each one as another opinion about
- * ordering weights one list four times. Ninety-nine working files are eighty-four
- * independent orders.
+ * ordering weights one list four times. The run prints the current figures,
+ * which are the ones to trust; at the time of writing 117 orders are 105
+ * near-duplicate-adjusted families and 98 working orders are 86.
  *
- * Per family, not per person, and the distinction is not pedantry. Submissions
- * are anonymous, so nothing here can know whether two similar orders came from
- * one person twice or from two people who started from the same published
- * collection. What is measurable is that the two sequences are nearly the same
+ * Families, not independent orders, and not people. Submissions are anonymous,
+ * so nothing here can know whether two similar orders are one person twice or
+ * two people who started from the same published collection. Nor is a family an
+ * independence estimate in the other direction: two lists that share a common
+ * ancestor but have drifted below the threshold are related and are counted
+ * separately. All this measures is that two sequences are nearly the same
  * sequence, and that is the whole of the claim: a list that agrees with itself
  * is not a second opinion. An earlier version of this comment said "one vote per
- * person", which asserts something the corpus cannot support.
+ * person", which asserts something the corpus cannot support, and then justified
+ * keeping presence on the opposite assumption three sentences later.
+ *
+ * A family is a connected component, not a clique. Links are pairwise at 0.85,
+ * so A can reach C through B while A and C are below the threshold. For one list
+ * evolving over several submissions that is the behaviour you want, and it does
+ * mean no member is guaranteed to be near-identical to every other member.
  *
  * Only the sequence is de-duplicated. Presence still counts from every copy,
  * and that is a deliberate trade rather than a free one. The same reasoning that
- * mutes the second sequence applies to presence: if a family is one person
- * exporting four times, four installs is one install. Measured on 25 August, the
- * cost is 24.1 percent: 47,018 install observations counted per file are 37,896
- * counted per family, and 4,224 of 10,070 mods would carry a smaller number.
+ * mutes the second sequence applies to presence: if a family is one list exported
+ * four times, four installs is one install. The run prints the cost, 20.0 percent
+ * at the time of writing, 49,638 observations per file against 41,348 per family.
  *
  * It is left inflated because nothing currently reads presence as a magnitude
  * that has to be right. The never-verified caution reads it as a threshold, two
- * separate broken orders, and every one of the eleven families is a working
- * order: nobody submits the same broken list twice. Counted per family the
- * caution fires on exactly the same 1,217 mods, so no warning anywhere rests on
- * a family being counted more than once. If presence ever starts deciding
- * something on magnitude rather than presence or absence, this is the first
- * thing to revisit.
+ * separate broken orders, and no family in the corpus holds more than one broken
+ * submission, so no caution can rest on one list counted twice. That is a fact
+ * about the corpus today rather than a rule about what people submit, so the
+ * block below tests it on every run and says so if it stops being true.
+ *
+ * If presence ever starts deciding something on magnitude rather than presence
+ * or absence, this is the first thing to revisit: an install threshold, a score
+ * built on workingInstalls, a dependency promotion rule, or an absence
+ * percentage would each need family weighting before it could be trusted.
  *
  * Compared by name, since a thin export and a full export of the same order
  * agree on names and barely on identifiers until the vote below has run. The
@@ -930,8 +941,85 @@ const NEAR_DUPLICATE = 0.85;
       muted++;
     }
   }
+  /*
+   * Reported from the miner's own selection rather than measured beside it.
+   * The figures in the comment above were first taken from a scratch script
+   * that read the corpus directory directly, and it disagreed with this one by
+   * a file: production drops an order whose name sequence fingerprints
+   * identically to another before family detection ever runs, so a pair the
+   * scratch script called a family is a single order here. Numbers about the
+   * corpus have to come from the code that decides what the corpus is.
+   */
+  const families = [...groups.values()].filter(m => m.length > 1);
+  const filesInFamilies = families.reduce((a, m) => a + m.length, 0);
+  const workingFamilies = families.filter(m => orders[m[0]].label === 'working');
+  const workingFiles = workingFamilies.reduce((a, m) => a + m.length, 0);
+  const workingOrders = orders.filter(o => o.label === 'working').length;
+
+  /*
+   * The cost of keeping presence per file, measured rather than asserted.
+   *
+   * Counted here, beside the family structure, because it is the only place
+   * that knows it. A mod shared by a four-file family is credited four
+   * installs, and how much that inflates the corpus as a whole cannot be read
+   * off the masterlist afterwards, which carries the inflated number and no
+   * record of where it came from.
+   */
+  let perFile = 0, perFamily = 0;
+  {
+    const seenFiles = new Map(), seenFamilies = new Map();
+    orders.forEach((o, i) => {
+      const root = find(i);
+      for (const e of o.entries) {
+        const n = externalKey(e?.Name ?? '');
+        if (!n) continue;
+        if (!seenFiles.has(n)) { seenFiles.set(n, new Set()); seenFamilies.set(n, new Set()); }
+        seenFiles.get(n).add(i);
+        seenFamilies.get(n).add(root);
+      }
+    });
+    for (const [n, files] of seenFiles) {
+      perFile += files.size;
+      perFamily += seenFamilies.get(n).size;
+    }
+  }
+
+  /*
+   * The condition under which keeping presence per file stays safe.
+   *
+   * The never-verified caution is the only rule that reads presence as a
+   * threshold, and it asks for two separate broken orders. While every family
+   * is working-labelled, no caution can rest on one list counted twice. The
+   * day a family contains two broken submissions that stops being true without
+   * anything else changing, so it says so here rather than waiting to be
+   * noticed.
+   */
+  const brokenFamily = families.find(m => m.filter(i => orders[i].label === 'broken').length > 1);
+
   if (muted) {
     console.log(`near-duplicates: ${muted} order(s) keep their mods but not their sequence`);
+    console.log(
+      `  ${families.length} famil${families.length === 1 ? 'y' : 'ies'} over ${filesInFamilies} files; `
+      + `${orders.length} orders are ${orders.length - filesInFamilies + families.length} `
+      + `near-duplicate-adjusted families`,
+    );
+    console.log(
+      `  working: ${workingOrders} orders are `
+      + `${workingOrders - workingFiles + workingFamilies.length} families`,
+    );
+    console.log(
+      `  presence kept per file: ${perFile.toLocaleString()} observations against `
+      + `${perFamily.toLocaleString()} per family, ${((100 * (perFile / perFamily - 1))).toFixed(1)}% higher`,
+    );
+  }
+  if (brokenFamily) {
+    console.log(
+      `  WARNING: a near-duplicate family holds more than one broken order `
+      + `(${brokenFamily.map(i => orders[i].file).join(', ')}). The never-verified `
+      + `caution asks for two separate broken orders and can now be answered by `
+      + `one list counted twice. Presence needs family weighting before that rule `
+      + `is trusted again.`,
+    );
   }
 }
 
