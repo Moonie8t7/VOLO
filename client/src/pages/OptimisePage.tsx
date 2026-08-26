@@ -13,6 +13,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useStore } from '@/lib/store';
 import { countWord } from '@/lib/words';
 import dividers from '@/lib/dividers.json';
@@ -372,7 +373,7 @@ export default function OptimisePage() {
         <header className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h1 className="text-4xl font-display font-bold text-gradient-bg3">Sorted order</h1>
-            <p className="text-muted-foreground mt-2 font-body">
+            <p className="text-muted-foreground mt-2 font-body" role="status" aria-atomic="true">
               {sourceName && <span className="font-mono text-xs">{sourceName}</span>}
             {sourceName && ', '}
               {stats.total} mods, {stats.moved} moved, {stats.hardEdges} dependency
@@ -676,25 +677,48 @@ export default function OptimisePage() {
   );
 }
 
+/**
+ * One provenance figure, with its jargon label explained on the label itself
+ * rather than behind an icon.
+ *
+ * The label is a button so the explanation is reachable by keyboard: a `title`
+ * attribute is not, in any browser.
+ */
 function Metric({ label, value, hint, muted }: {
   label: string; value: number; hint?: string; muted?: boolean;
 }) {
-  /*
-   * The hint rides on the whole tile, not an icon: these are short jargon
-   * labels and the question a reader has is "what does this word mean", so
-   * hovering the word itself must answer it. The dotted underline is the only
-   * signal there is something to hover. A title attribute is hover-only, so
-   * the same text also sits in the label as visually hidden copy, which is
-   * what a screen reader actually announces.
-   */
+  const numeral = (
+    <dd className={`font-display text-2xl font-bold tabular-nums ${muted ? 'text-muted-foreground' : 'text-primary'}`}>
+      {value.toLocaleString()}
+    </dd>
+  );
+
+  if (!hint) {
+    return (
+      <div className="flex items-baseline gap-2">
+        {numeral}
+        <dt className="text-sm text-muted-foreground">{label}</dt>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex items-baseline gap-2" title={hint}>
-      <dd className={`font-display text-2xl font-bold tabular-nums ${muted ? 'text-muted-foreground' : 'text-primary'}`}>
-        {value.toLocaleString()}
-      </dd>
-      <dt className={`text-sm text-muted-foreground ${hint ? 'cursor-help underline decoration-dotted decoration-muted-foreground/50 underline-offset-4' : ''}`}>
-        {label}
-        {hint && <span className="sr-only">. {hint}</span>}
+    <div className="flex items-baseline gap-2">
+      {numeral}
+      <dt className="text-sm text-muted-foreground">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              type="button"
+              className="cursor-help underline decoration-dotted decoration-muted-foreground/50 underline-offset-4"
+            >
+              {label}
+            </button>
+          </TooltipTrigger>
+          <TooltipContent className="max-w-xs font-body text-xs leading-relaxed">
+            {hint}
+          </TooltipContent>
+        </Tooltip>
       </dt>
     </div>
   );

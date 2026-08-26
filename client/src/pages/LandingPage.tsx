@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import DonationSection from "@/components/DonationSection";
+import SortingDemo from "@/components/SortingDemo";
 import { useStore } from "@/lib/store";
 import summary from "@/lib/masterlist-summary.json";
 
@@ -96,9 +97,7 @@ export default function LandingPage() {
             </Link>
             .
           </p>
-          {/* Charm, not information, so it sits after the action rather than
-              in front of it. */}
-          <p className="mt-8 text-sm italic" style={{ color: "hsl(var(--bg3-main) / 0.6)" }}>
+          <p className="mt-8 text-sm italic md:text-right" style={{ color: "hsl(var(--bg3-main) / 0.6)" }}>
             Named after the Realms' most confident chronicler. Unlike Volo... we verify.
           </p>
         </div>
@@ -139,7 +138,7 @@ export default function LandingPage() {
                 height={630}
                 loading="lazy"
                 decoding="async"
-                className="w-full rounded border border-border/60 shadow-bg3"
+                className="w-full border border-border/60 shadow-bg3"
               />
             </picture>
             <figcaption className="mt-3 text-sm" style={{ color: "hsl(var(--bg3-main) / 0.75)" }}>
@@ -164,6 +163,7 @@ export default function LandingPage() {
             frame of the order, whether or not you install the dividers
             themselves.
           </p>
+          <SortingDemo />
           <p>
             Which position a mod belongs at comes from the best evidence there
             is, in that order: where players filed it in orders they submitted,

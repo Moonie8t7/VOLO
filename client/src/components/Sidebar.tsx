@@ -115,7 +115,7 @@ function Footer() {
   const mods = masterlist?.plugins.length ?? summary.mods;
   const patch = masterlist?.gamePatch ?? summary.gamePatch;
   return (
-    <div className="space-y-1 border-t border-border/20 bg-card/50 px-6 py-5 text-xs text-muted-foreground">
+    <footer className="space-y-1 border-t border-border/20 bg-card/50 px-6 py-5 text-xs text-muted-foreground">
       <p>Masterlist: {mods.toLocaleString()} mods</p>
       {patch && <p>Calibrated for BG3 {patch}</p>}
       {/* The one page that belongs in a footer rather than the nav: nobody
@@ -126,7 +126,7 @@ function Footer() {
           Privacy
         </Link>
       </p>
-    </div>
+    </footer>
   );
 }
 

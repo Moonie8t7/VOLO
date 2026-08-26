@@ -255,7 +255,7 @@ function GroupChip({
   return (
     <button
       onClick={onClick}
-      className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+      className={`border px-3 py-1 text-xs transition-colors ${
         active
           ? 'border-primary bg-primary/15 text-foreground'
           : 'border-border text-muted-foreground hover:border-primary/50'
