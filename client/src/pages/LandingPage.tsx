@@ -127,13 +127,13 @@ export default function LandingPage() {
             <picture>
               <source
                 type="image/webp"
-                srcSet="/assets/volo-sorted-order-preview-900.v2.webp 900w,
-                        /assets/volo-sorted-order-preview.v2.webp 1200w"
+                srcSet="/assets/volo-sorted-order-preview-900.v3.webp 900w,
+                        /assets/volo-sorted-order-preview.v3.webp 1200w"
                 sizes="(min-width: 768px) 720px, calc(100vw - 3rem)"
               />
               <img
-                src="/assets/volo-sorted-order-preview.v2.png"
-                alt="A sorted load order in VOLO. ImpUI sits first on its ImprovedUI slot, and each mod shows how far it moved, the slot it landed on such as Caites' UI Mods or Gameplay, and a note such as curated or listing wherever the placement came from something other than a played order."
+                src="/assets/volo-sorted-order-preview.v3.png"
+                alt="A sorted load order in VOLO. ImpUI sits first on its ImprovedUI slot, having moved up 84 places, and each row below shows how far that mod travelled, the slot it landed on such as Caites' UI Mods or Community Library, and a note such as curated or guessed wherever the placement came from something other than a played order."
                 width={1200}
                 height={630}
                 loading="lazy"

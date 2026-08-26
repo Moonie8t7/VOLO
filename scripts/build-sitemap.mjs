@@ -35,7 +35,7 @@ const ROUTES = [
      */
     images: [
       {
-        loc: '/assets/volo-sorted-order-preview.v2.png',
+        loc: '/assets/volo-sorted-order-preview.v3.png',
         title: 'A sorted Baldur\'s Gate 3 load order in VOLO',
         caption:
           'Each mod shows its position, how far it moved, the section it belongs '
