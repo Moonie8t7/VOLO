@@ -302,7 +302,7 @@ export default function ExportPage() {
 
             <div>
               <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Preview</p>
-              <pre className="max-h-72 overflow-auto rounded border border-border bg-card/50 p-4 text-xs font-mono">
+              <pre className="max-h-72 overflow-auto border border-border bg-card/50 p-4 text-xs font-mono">
                 {content.slice(0, 4000)}
                 {content.length > 4000 ? '\n(preview truncated)' : ''}
               </pre>

@@ -354,9 +354,9 @@ export default function OptimisePage() {
     return (
       <div className="p-8 min-h-screen bg-gradient-to-br from-background via-background to-card">
         <div className="max-w-6xl mx-auto animate-pulse space-y-4">
-          <div className="h-10 w-1/3 rounded bg-card/50 border border-primary/20" />
+          <div className="h-10 w-1/3 bg-card/50 border border-primary/20" />
           {[...Array(6)].map((_, i) => (
-            <div key={i} className="h-14 rounded bg-card/30 border border-primary/10" />
+            <div key={i} className="h-14 bg-card/30 border border-primary/10" />
           ))}
         </div>
       </div>
@@ -555,7 +555,7 @@ export default function OptimisePage() {
                 const isOpen = expanded === mod.uuid;
                 return (
                   <li key={mod.uuid} className={isOpen ? undefined : 'row-defer'}>
-                    <div className="group flex items-center rounded transition-colors hover:bg-primary/5">
+                    <div className="group flex items-center transition-colors hover:bg-primary/5">
                     {/* Offered on mods with no category, and on the ones you
                         have already filed, so a wrong pick can be taken back. */}
                     {/*

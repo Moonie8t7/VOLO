@@ -133,7 +133,7 @@ export default function LandingPage() {
               />
               <img
                 src="/assets/volo-sorted-order-preview.png"
-                alt="A sorted load order in VOLO. ImpUI sits first on its ImprovedUI slot, and each mod shows how far it moved, the slot it landed on such as Caites' UI Mods or Gameplay, and a note reading curated, listing or guessed wherever the placement came from something other than a played order."
+                alt="A sorted load order in VOLO. ImpUI sits first on its ImprovedUI slot, and each mod shows how far it moved, the slot it landed on such as Caites' UI Mods or Gameplay, and a note such as curated or listing wherever the placement came from something other than a played order."
                 width={1200}
                 height={630}
                 loading="lazy"

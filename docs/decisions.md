@@ -270,12 +270,19 @@ event and was silent to anyone not watching it. Checkbox and radio rows were
 20 pixels tall against a 24 pixel minimum. The accordion trigger carried
 `transition-all`, which stood ready to animate whatever the open state changed.
 
-Two more were the design disagreeing with itself. `--radius` is 0 because the
+The rest were the design disagreeing with itself. `--radius` is 0 because the
 official BG3 site frames panels with thin borders and no corner radius
-anywhere, and two vendor defaults ignored it: `rounded-full` on badges, which
-is a literal 9999 pixels rather than the token, and a 4 pixel radius on the
-landing screenshot. Sixty-two badges a page were the largest single visual
-correction.
+anywhere, and only `rounded-sm`, `rounded-md` and `rounded-lg` are wired to
+that token. Everything else in Tailwind is a literal, and six places used one:
+`rounded-full` on badges at 9999 pixels, and a 4 pixel `rounded` on the landing
+screenshot, on every mod row in the sorted order, on the two loading skeletons
+behind it, and on the export preview block. Sixty-two badges and fifty-nine mod
+rows a page were the largest visual correction.
+
+The row radius is worth naming separately, because it survived the first sweep.
+Measuring `/optimise` before importing an order finds an empty state and
+declares it clean, and the rows only exist once there is an order to draw. Any
+check of a route that needs data has to load data first.
 
 Four of the first pass's findings were the measurement being wrong rather than
 the site. A 5 percent alpha overlay read as an opaque background until the
