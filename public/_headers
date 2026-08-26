@@ -1,5 +1,14 @@
-# Vite fingerprints everything under /assets, so these URLs never change and can
-# be cached for a year.
+# A year, because nothing served from here is meant to change at its own URL.
+#
+# Vite fingerprints what it compiles, so the bundles genuinely never change.
+# It does not fingerprint what public/assets holds: those filenames are copied
+# through verbatim, and this rule pins them for a year with no revalidation.
+# Replacing one in place therefore reaches nobody. The screenshot was swapped on
+# 2026-08-26 and the edge kept serving the eleven-day-old copy, incognito
+# included, because immutable means browsers do not even ask.
+#
+# So a replaced file needs a new name, which is why the preview carries a .v2.
+# Bump the suffix and update every reference rather than overwriting the bytes.
 #
 # They were capped at an hour for a reason worth keeping written down. If a
 # request landed in the moment between a new index.html going live and its

@@ -82,7 +82,7 @@ function Brand({ compact = false }: { compact?: boolean }) {
         alt=""
         width={compact ? 40 : 56}
         height={compact ? 40 : 56}
-        className={`${compact ? "h-10 w-10" : "h-14 w-14"} shrink-0 rounded-md border border-border object-cover shadow-bg3`}
+        className={`${compact ? "h-10 w-10" : "h-14 w-14"} shrink-0`}
       />
       <span className="min-w-0">
         <span className="block font-display text-2xl font-bold text-primary">VOLO</span>
