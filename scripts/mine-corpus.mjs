@@ -2312,6 +2312,19 @@ const masterlist = {
   version: '2.0.0',
   generated: new Date().toISOString(),
   generator: 'scripts/mine-corpus.mjs',
+  /*
+   * Who made this and what may be done with it, carried by the file rather
+   * than by the repository around it. This is the copy that travels: anyone
+   * consuming the masterlist has fetched one JSON file and has no NOTICE beside
+   * it, so without these they have to guess at the licence or assume there
+   * isn't one. The notice link matters as much as the licence, because CC0
+   * covers what was mined and not the mod names inside it or Astra's dividers.
+   */
+  license: 'CC0-1.0',
+  licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/',
+  creator: 'VOLO Contributors',
+  source: 'https://volobg3.com/masterlist',
+  notice: 'https://github.com/Moonie8t7/VOLO/blob/main/NOTICE',
   // The BG3 build this masterlist is calibrated against. Patches change what is
   // compatible, so consumers need to know how current the data is.
   gameBuild: newestBuild,

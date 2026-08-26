@@ -97,7 +97,7 @@ export default function LandingPage() {
             </Link>
             .
           </p>
-          <p className="mt-8 text-sm italic md:text-right" style={{ color: "hsl(var(--bg3-main) / 0.6)" }}>
+          <p className="mt-6 text-sm italic" style={{ color: "hsl(var(--bg3-main) / 0.6)" }}>
             Named after the Realms' most confident chronicler. Unlike Volo... we verify.
           </p>
         </div>

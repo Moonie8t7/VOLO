@@ -26,6 +26,35 @@
       "type": "string",
       "description": "The script that wrote it. Nothing here is hand-edited."
     },
+    "license": {
+      "type": "string",
+      "description": "SPDX identifier for the mined data. The mod names inside it belong to their authors and Astra's dividers are separate; see notice.",
+      "examples": [
+        "CC0-1.0"
+      ]
+    },
+    "licenseUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical text of the licence named above."
+    },
+    "creator": {
+      "type": "string",
+      "description": "Who to attribute the mined data to.",
+      "examples": [
+        "VOLO Contributors"
+      ]
+    },
+    "source": {
+      "type": "string",
+      "format": "uri",
+      "description": "Where this file is published and can be re-fetched."
+    },
+    "notice": {
+      "type": "string",
+      "format": "uri",
+      "description": "Licensing map and third party material, including what CC0 does not cover."
+    },
     "gameBuild": {
       "type": [
         "string",
