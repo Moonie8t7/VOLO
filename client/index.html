@@ -9,7 +9,14 @@
     <meta name="theme-color" content="#161411" />
     <title>VOLO: Load Order Optimisation for Baldur's Gate 3</title>
     <meta name="description" content="Sort your Baldur's Gate 3 mod load order against orders players have actually played on. Runs in your browser, nothing to install, and every placement shows its reasoning." />
+    <!--
+      Two, because browsers and crawlers ask for /favicon.ico at the root
+      whether or not a link element names one: it was the site's most requested
+      missing file, fifteen 404s a day. The png is declared for anything that
+      prefers it, and the ico carries 16, 32 and 48 for tabs and bookmarks.
+    -->
     <link rel="icon" href="/assets/volo-logo-128.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <!--
       Defaults for the home page and for anything reading the HTML before the
       app runs. src/lib/head.ts rewrites both as the route changes.
