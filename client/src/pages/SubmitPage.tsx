@@ -291,7 +291,7 @@ export default function SubmitPage() {
               </CardHeader>
               <CardContent className="space-y-4 font-body">
                 <div className="flex flex-col gap-2">
-                  <label className="flex items-center gap-3 cursor-pointer">
+                  <label className="flex min-h-6 items-center gap-3 cursor-pointer">
                     <input
                       type="radio"
                       name="verdict"
@@ -301,7 +301,7 @@ export default function SubmitPage() {
                     />
                     <span className="text-sm">It worked, I have played on it</span>
                   </label>
-                  <label className="flex items-center gap-3 cursor-pointer">
+                  <label className="flex min-h-6 items-center gap-3 cursor-pointer">
                     <input
                       type="radio"
                       name="verdict"
@@ -331,7 +331,7 @@ export default function SubmitPage() {
                     ['self', 'I arranged it myself'],
                     ['volo', 'I sorted it with VOLO'],
                   ] as const).map(([value, label]) => (
-                    <label key={value} className="flex items-center gap-3 cursor-pointer">
+                    <label key={value} className="flex min-h-6 items-center gap-3 cursor-pointer">
                       <input
                         type="radio"
                         name="arrangement"
@@ -365,16 +365,25 @@ export default function SubmitPage() {
                   />
                 </div>
 
-                <Textarea
-                  value={notes}
-                  onChange={e => setNotes(e.target.value)}
-                  placeholder={
-                    verdict === 'broken'
-                      ? 'What went wrong? That detail is the most valuable part.'
-                      : 'Anything worth knowing (optional)'
-                  }
-                  className="font-body text-sm h-20"
-                />
+                <div className="space-y-1">
+                  <label htmlFor="submit-notes" className="text-sm font-medium font-subheader">
+                    Anything worth knowing
+                    <span className="block text-xs font-normal text-muted-foreground mt-1">
+                      Optional. {verdict === 'broken' ? 'What went wrong is the most valuable part.' : 'Anything the order does not say for itself.'}
+                    </span>
+                  </label>
+                  <Textarea
+                    id="submit-notes"
+                    value={notes}
+                    onChange={e => setNotes(e.target.value)}
+                    placeholder={
+                      verdict === 'broken'
+                        ? 'What went wrong? That detail is the most valuable part.'
+                        : 'Anything worth knowing (optional)'
+                    }
+                    className="font-body text-sm h-20"
+                  />
+                </div>
 
                 <div ref={turnstileRef} className={TURNSTILE_SITE_KEY ? '' : 'hidden'} />
 

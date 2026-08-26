@@ -253,6 +253,63 @@ entry is a separate decision needing its own evidence, which
 The value here is that the sentence is now greppable instead of buried in an
 issue thread.
 
+### interface-passes-its-own-rules
+
+**The interface was measured against a written standard rather than an opinion,
+and the gaps that were real got fixed.** Every route was driven in a real
+browser at 1280 and at 320 wide: contrast composited through the full ancestor
+stack, target sizes against WCAG 2.2, transition properties, focus rings, form
+labelling and landmarks.
+
+Most of it already held. No text on any of the eleven routes falls below 4.5:1,
+the worst pairing anywhere being 4.93; nothing animates a layout property;
+focus rings never fade in. Four findings were real. A textarea on the submit
+page had a placeholder and no label, so a screen reader announced an unnamed
+field. The sorted order said nothing when it changed, which is a visual
+event and was silent to anyone not watching it. Checkbox and radio rows were
+20 pixels tall against a 24 pixel minimum. The accordion trigger carried
+`transition-all`, which stood ready to animate whatever the open state changed.
+
+Two more were the design disagreeing with itself. `--radius` is 0 because the
+official BG3 site frames panels with thin borders and no corner radius
+anywhere, and two vendor defaults ignored it: `rounded-full` on badges, which
+is a literal 9999 pixels rather than the token, and a 4 pixel radius on the
+landing screenshot. Sixty-two badges a page were the largest single visual
+correction.
+
+Four of the first pass's findings were the measurement being wrong rather than
+the site. A 5 percent alpha overlay read as an opaque background until the
+stack was composited; a table flagged as overflowing was inside
+`overflow-x-auto` and had simply not settled when it was measured; a focus ring
+read as failing because the deliberately transparent `outline` was measured
+instead of the box-shadow that draws it. Trust the composited number, not the
+first one.
+
+### sorting-demo-shows-the-frame
+
+**The section describing the section frame now shows one.** Three sections of
+the landing page ran as heading and prose with nothing to look at, and the
+first of them described the divider frame in two paragraphs. Six of the
+masterlist's own groups now arrive scrambled and settle into the order VOLO
+files them in.
+
+The names and their sequence are read from the first six entries of the
+masterlist's `groups` array rather than written for the page, so the
+illustration is the product's own data and goes wrong if that data changes.
+
+Sorted is the default state, not the end of the animation. That is what the
+prerendered HTML carries, what a reader without JavaScript gets, and what
+anyone with `prefers-reduced-motion` set sees, because a scrambled list is the
+wrong thing to leave in a page for a reader who will never see it move. The
+scramble is applied after mount and only when it is going to be animated away,
+and the permutation is written down rather than generated so the prerendered
+HTML and the browser agree.
+
+It is the only motion on the site. Nothing was added to the bundle for it:
+transform and opacity, one IntersectionObserver, no animation library. The
+fonts are self-hosted to save 601ms and a scroll-motion dependency would have
+given that back several times over for one effect on one section.
+
 ## Rejected
 
 Each experiment below quotes the figure it was measured against at the time,

@@ -129,7 +129,7 @@ export default function ImportPage() {
               for everyone else, so it is the user's call rather than ours.
             */}
             <div className="mt-8 border-t border-border/40 pt-4">
-              <label className="flex items-start gap-3 cursor-pointer">
+              <label className="flex min-h-6 items-start gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   name="rememberOrder"
