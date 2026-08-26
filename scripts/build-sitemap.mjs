@@ -111,9 +111,35 @@ const shallow = (() => {
   }
 })();
 
+/**
+ * The dates the last full-history build wrote, read back from the file this
+ * one is about to replace.
+ *
+ * The host that publishes the site builds it too, from its own shallow
+ * checkout, so `shallow` is true there and every date was dropped: the
+ * deployed sitemap carried none at all while the committed one carried all
+ * eight. Reusing what a full-history build worked out is not the invented
+ * freshness this file refuses to emit. It is the same date, computed from real
+ * history, surviving a checkout that cannot see that history.
+ */
+const previousDates = (() => {
+  const dates = new Map();
+  try {
+    const xml = fs.readFileSync('public/sitemap.xml', 'utf8');
+    for (const block of xml.split('<url>').slice(1)) {
+      const loc = block.match(/<loc>([^<]+)<\/loc>/)?.[1];
+      const mod = block.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1];
+      if (loc && mod) dates.set(loc.replace(SITE, '') || '/', mod);
+    }
+  } catch {
+    /* No previous sitemap on a first build. */
+  }
+  return dates;
+})();
+
 /** Commit date of the newest change to any of these files, as YYYY-MM-DD. */
-function lastModified(sources) {
-  if (shallow) return null;
+function lastModified(sources, routePath) {
+  if (shallow) return previousDates.get(routePath) ?? null;
   const dates = sources
     .filter(file => fs.existsSync(file))
     .map(file => {
@@ -134,7 +160,7 @@ const escapeXml = value =>
   String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const entries = ROUTES.map(route => {
-  const lastmod = lastModified(route.sources);
+  const lastmod = lastModified(route.sources, route.path);
   const images = (route.images ?? []).flatMap(image => [
     '    <image:image>',
     `      <image:loc>${SITE}${image.loc}</image:loc>`,
@@ -168,6 +194,8 @@ fs.writeFileSync('public/sitemap.xml', xml);
 
 console.log(`wrote public/sitemap.xml with ${entries.length} routes`);
 if (shallow) {
-  console.log('  shallow clone: dates omitted, check out with fetch-depth: 0 for them');
+  const kept = entries.filter(e => e.lastmod).length;
+  console.log(`  shallow clone: ${kept} date(s) carried over from the previous sitemap,`
+    + ` ${entries.length - kept} without one. Check out with fetch-depth: 0 to refresh them.`);
 }
 for (const e of entries) console.log(`  ${e.path.padEnd(12)} ${e.lastmod ?? 'no date'}`);
