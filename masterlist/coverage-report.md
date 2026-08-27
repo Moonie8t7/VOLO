@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-08-27T15:36:52.591Z by `scripts/mine-corpus.mjs`.
+Generated 2026-08-28T00:13:26.869Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 120 |
+| Load orders analysed | 121 |
 | labelled working | 101 |
-| labelled broken | 17 |
+| labelled broken | 18 |
 | load-after edges promoted from catalogues | 618 |
 | unlabelled | 2 |
 | Separator headers parsed | 2910 |
 | **Unique mods indexed** | **10041** |
-| Seen in more than one order | 6881 |
+| Seen in more than one order | 6918 |
 | With declared dependencies | 626 |
 | With Script Extender flags | 176 |
 | With author metadata | 1127 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 3 of 120 orders carry it, because the short
+this comes from. Only 3 of 121 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 20.9% | 23.5% | no, and it points the other way |
+| Category pairs against the working consensus | 19.9% | 23.5% | no, and it points the other way |
 | Mods in no working order anywhere | 8% | 0% | yes |
 | Declared dependencies not installed | 0.1 | 0.0 | yes |
 
-Measured over 17 broken and 101 working orders, against 128 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 18 broken and 101 working orders, against 128 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
