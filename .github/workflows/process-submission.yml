@@ -128,6 +128,12 @@ jobs:
           # submission starts agree on the filename whatever hour they run at.
           # See the comment on the stamp in scripts/process-submission.mjs.
           echo "created=$(jq -r '.createdAt' /tmp/issue.json)" >> "$GITHUB_OUTPUT"
+          # Whether this is a placement report rather than a plain submission.
+          # Tested on the heading as well as the label, for the same reason the
+          # job's own `if` is: a template can ask for a label the repository
+          # does not have and GitHub drops it silently. Written in the same
+          # shape as `approved` below, which is the form known to work here.
+          echo "placement=$(jq -r 'any(.labels[].name; . == "wrong-placement") or ((.body // "") | contains("### Where VOLO put it"))' /tmp/issue.json)" >> "$GITHUB_OUTPUT"
           echo "approved=$(jq -r 'any(.labels[].name; . == "approved")' /tmp/issue.json)" >> "$GITHUB_OUTPUT"
           echo "issue #$NUMBER, $(wc -c < /tmp/issue-body.txt) bytes of body, labels $(cat /tmp/issue-labels.json)"
 
@@ -276,8 +282,19 @@ jobs:
 
       # Only once the push is real. Closing on the strength of the validation
       # alone is how five submitters were thanked for orders that never landed.
+      #
+      # A placement report is answered, never closed. It enters here because it
+      # carries an order somebody played on, and that order is worth having; the
+      # report is a separate claim about one mod that nothing in this workflow
+      # reads. Issue #135 said "Choose Your Starting Gear" must load after
+      # Compatibility Framework, per its mod page, and was closed with a receipt
+      # for the attachment while the placement stayed wrong. It was the first
+      # report ever to reach this branch: the earlier ones did not answer that
+      # they had been played on, so they failed the gate, stayed open, and a
+      # person fixed them and wrote the rule down. Landing the order must not
+      # cost a report that outcome.
       - name: Close the issue
-        if: steps.land.outputs.landed == 'yes'
+        if: steps.land.outputs.landed == 'yes' && steps.subject.outputs.placement != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           APPROVED: ${{ steps.subject.outputs.approved }}
@@ -288,6 +305,20 @@ jobs:
             note="Merged automatically: the order validated and left the verification metric intact. Thank you."
           fi
           gh issue close "${{ steps.subject.outputs.number }}" --comment "$note"
+
+      # Says which half was handled, so the reporter is not left guessing whether
+      # the placement was accepted along with the order.
+      - name: Answer a placement report without closing it
+        if: steps.land.outputs.landed == 'yes' && steps.subject.outputs.placement == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ steps.subject.outputs.number }}" --body "$(cat <<'NOTE'
+          Your load order has been added to the corpus and the masterlist was regenerated from it. Thank you: an order somebody has played on teaches placement for every mod in it, not only the one reported.
+
+          The placement report itself is a separate question and this issue stays open until a person has read it. Nothing automated here decides where a mod belongs on the strength of a report, because that would let any report move any mod.
+          NOTE
+          )"
 
       # An order held for review already has a pull request carrying its corpus
       # file. Approving lands that order on main by the direct path, so the

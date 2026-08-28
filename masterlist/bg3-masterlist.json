@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-28T01:45:19.429Z",
+  "generated": "2026-08-28T02:25:25.911Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -50554,7 +50554,14 @@
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "loadAfter": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework",
+          "why": "Reported in issue #135: the mod page states that with Compatibility Framework installed this mod must load after it or it will not work. VOLO was doing the opposite, filing it as Bug Fixes on three section observations and lifting it eleven groups above the framework it depends on. Three separate things agree and none of them is decisive alone: the reporter's quotation of the mod page, which nobody here has read directly; two independent working orders that place the framework first and none that place it second, which is one witness short of the three the corpus normally requires; and the Nexus listing, which files this as Equipment rather than Bug Fixes. A stated constraint from the author outranks three section observations either way."
+        }
+      ]
     },
     {
       "name": "Chosen's Attire - Bhaal",

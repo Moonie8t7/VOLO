@@ -36,22 +36,52 @@ const MIN_AGREEMENT = 0.8;
 /** Findings shown per section, so a report stays readable. */
 const MAX_SHOWN = 12;
 
-const target = process.argv[2];
+const args = process.argv.slice(2);
+const flag = name => {
+  const i = args.indexOf(`--${name}`);
+  return i !== -1 && args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : null;
+};
+
+const target = args.find(a => !a.startsWith('--') && a !== flag('mod'));
+
+/**
+ * Diagnose what VOLO would produce from this order, rather than the order as
+ * submitted.
+ *
+ * A placement report attaches an order that works, so diagnosing it finds
+ * nothing: the reporter already has the mod in the right place. The thing under
+ * suspicion is VOLO's own answer, and this asks the corpus about that instead.
+ */
+const SORTED = args.includes('--sorted');
+
+/**
+ * Narrow every finding to one mod.
+ *
+ * A placement report names the mod it is about, and a report on a thousand-mod
+ * order buries that mod in three hundred other findings. Reported both ways
+ * round, because the complaint may be that the mod loads too early or too late
+ * and the caller does not have to know which.
+ */
+const ONLY = flag('mod');
+
 if (!target || !fs.existsSync(target)) {
-  console.error('usage: node scripts/diagnose-order.mjs "<order file>"');
+  console.error('usage: node scripts/diagnose-order.mjs "<order file>" [--sorted] [--mod "<name>"]');
   process.exit(2);
 }
 
 const bundle = path.join(os.tmpdir(), `volo-diagnose-${process.pid}.mjs`);
 await build({
   stdin: {
-    contents: `export { parseLoadOrder } from './client/src/lib/parser';`,
+    contents: `
+      export { parseLoadOrder } from './client/src/lib/parser';
+      export { sortLoadOrder } from './client/src/lib/optimiser';
+    `,
     resolveDir: process.cwd(),
     loader: 'ts',
   },
   bundle: true, format: 'esm', platform: 'node', outfile: bundle, logLevel: 'error',
 });
-const { parseLoadOrder } = await import(`file://${bundle}`);
+const { parseLoadOrder, sortLoadOrder } = await import(`file://${bundle}`);
 fs.rmSync(bundle, { force: true });
 
 const read = file => {
@@ -62,11 +92,15 @@ const read = file => {
   }
 };
 
-const subject = read(target);
-if (!subject?.mods.length) {
+const parsedTarget = read(target);
+if (!parsedTarget?.mods.length) {
   console.log('The order could not be read for diagnosis.');
   process.exit(0);
 }
+
+const subject = SORTED
+  ? { mods: sortLoadOrder(parsedTarget.mods, JSON.parse(fs.readFileSync(MASTERLIST, 'utf8'))).mods }
+  : parsedTarget;
 
 /** Working orders carry the naming convention the whole pipeline relies on. */
 const isWorking = name => /^(working_|current_)/i.test(name);
@@ -169,8 +203,25 @@ for (let i = 0; i < subjectUuids.length; i++) {
   }
 }
 
-const ranked = [...against.entries()]
+let ranked = [...against.entries()]
   .sort((x, y) => y[1].count - x[1].count || y[1].best.witnesses - x[1].best.witnesses);
+
+if (ONLY) {
+  const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+  const wanted = norm(ONLY);
+  const matches = [...nameOf.entries()].filter(([, n]) => norm(n) === wanted).map(([u]) => u);
+  if (!matches.length) {
+    // Said plainly rather than reported as a clean bill of health. An empty
+    // result and a mod that is not in the order look identical downstream, and
+    // only one of them means nothing is wrong.
+    console.log(`### What the corpus says about "${ONLY}"\n`);
+    console.log(`That mod is not in ${path.basename(target)}, so there is nothing to compare.`);
+    process.exit(0);
+  }
+  const keep = new Set(matches);
+  ranked = ranked.filter(([uuid]) => keep.has(uuid));
+  lines[0] = `### What the corpus says about "${nameOf.get(matches[0])}"`;
+}
 
 if (ranked.length) {
   lines.push('#### Placements the working orders disagree with', '');

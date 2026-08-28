@@ -2357,6 +2357,21 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
         && /--created "\$\{\{ steps\.subject\.outputs\.created \}\}"/.test(workflow)
         && fs.readFileSync('scripts/process-submission.mjs', 'utf8').includes("opt('created')"),
     ],
+    /*
+     * A placement report is answered, never closed. It reaches intake because
+     * it carries an order somebody played on, which is worth having, and the
+     * report is a separate claim about one mod that nothing in this workflow
+     * reads. Issue #135 was closed with a receipt for the attachment while the
+     * placement it reported stayed wrong, and it was the first report ever to
+     * reach this branch: the earlier ones did not say they had been played on,
+     * so they failed the gate, stayed open, and a person answered them.
+     */
+    [
+      'a placement report is not closed by landing its order',
+      /placement != 'true'/.test(workflow)
+        && /placement == 'true'/.test(workflow)
+        && workflow.includes("any(.labels[].name; . == \"wrong-placement\")"),
+    ],
   ];
 
   for (const [what, held] of checks) {
