@@ -452,7 +452,37 @@ for (const f of fs.readdirSync(CORPUS)) {
  * Step 5: file it. The filename prefix is what labels it for every downstream
  * script, so the convention is the contract.
  */
-const stamp = new Date().toISOString().slice(0, 10);
+
+/**
+ * The day the order was submitted, not the day a runner reached it.
+ *
+ * One submission starts two runs, because an issue created with its label
+ * already on emits `opened` and `labeled` together. The guard further down the
+ * workflow catches that by asking whether this file is already on main, which
+ * works only while both runs compute the same name.
+ *
+ * They did not, once. Issue #134 arrived at 23:58 UTC; the first run stamped it
+ * 2026-08-27, the concurrency group held the second until 00:29, and it stamped
+ * 2026-08-28. Two different names, so the second applied cleanly as a new file
+ * and the guard was never consulted, since it only runs when the apply fails.
+ * The corpus took a byte-identical copy of the same order. Harmless, because
+ * the miner drops it on its name-sequence fingerprint, and only harmless by
+ * luck: the caution fires at two broken orders and 62 mods sit on exactly two.
+ *
+ * Taking the date from the issue makes both runs agree at any hour, and is the
+ * more truthful name in any case. Absent, it falls back to now and says so,
+ * rather than quietly restoring the bug.
+ */
+const submittedAt = opt('created');
+let stamp;
+if (submittedAt && !Number.isNaN(Date.parse(submittedAt))) {
+  stamp = new Date(submittedAt).toISOString().slice(0, 10);
+} else {
+  stamp = new Date().toISOString().slice(0, 10);
+  console.log(submittedAt
+    ? `--created ${submittedAt} is not a date, so this order is stamped with today, ${stamp}`
+    : `no --created given, so this order is stamped with today, ${stamp}`);
+}
 const prefix = working ? 'working' : 'not_working';
 
 /**

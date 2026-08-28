@@ -2341,6 +2341,22 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
       workflow.includes("grep -v '/provenance\\.json$'")
         && !workflow.includes('order=$(git diff --cached --name-only | head -1)'),
     ],
+    /*
+     * And that guard compares filenames, so both runs one submission starts
+     * have to compute the same one. The name carries a date, and the date used
+     * to come from the runner's clock: issue #134 arrived at 23:58 UTC, the
+     * first run stamped it the 27th, the concurrency group held the second
+     * until 00:29 and it stamped the 28th, so the guard compared two different
+     * names and the corpus took a byte-identical second copy. The date comes
+     * from the issue now. Dropping the flag does not fail anything at runtime,
+     * because intake falls back to the clock, which is why it is checked here.
+     */
+    [
+      'the filename date comes from the issue, not the runner clock',
+      workflow.includes('--json body,labels,state,createdAt')
+        && /--created "\$\{\{ steps\.subject\.outputs\.created \}\}"/.test(workflow)
+        && fs.readFileSync('scripts/process-submission.mjs', 'utf8').includes("opt('created')"),
+    ],
   ];
 
   for (const [what, held] of checks) {

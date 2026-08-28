@@ -120,10 +120,14 @@ jobs:
             echo "no issue number from the event or the input"
             exit 1
           fi
-          gh issue view "$NUMBER" --json body,labels,state > /tmp/issue.json
+          gh issue view "$NUMBER" --json body,labels,state,createdAt > /tmp/issue.json
           jq -r '.body // ""' /tmp/issue.json > /tmp/issue-body.txt
           jq -c '[.labels[].name]' /tmp/issue.json > /tmp/issue-labels.json
           echo "number=$NUMBER" >> "$GITHUB_OUTPUT"
+          # Read from the issue rather than the clock, so the two runs one
+          # submission starts agree on the filename whatever hour they run at.
+          # See the comment on the stamp in scripts/process-submission.mjs.
+          echo "created=$(jq -r '.createdAt' /tmp/issue.json)" >> "$GITHUB_OUTPUT"
           echo "approved=$(jq -r 'any(.labels[].name; . == "approved")' /tmp/issue.json)" >> "$GITHUB_OUTPUT"
           echo "issue #$NUMBER, $(wc -c < /tmp/issue-body.txt) bytes of body, labels $(cat /tmp/issue-labels.json)"
 
@@ -140,6 +144,7 @@ jobs:
           node scripts/process-submission.mjs \
             --body /tmp/issue-body.txt \
             --number "${{ steps.subject.outputs.number }}" \
+            --created "${{ steps.subject.outputs.created }}" \
             --labels "$LABELS" \
             --report /tmp/report.md \
             --gate /tmp/gate.json
