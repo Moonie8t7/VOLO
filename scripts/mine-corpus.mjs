@@ -1375,6 +1375,8 @@ for (const r of mods.values()) {
 
   let group = null, confidence = null;
   let dividerFromCurated = null;
+  /** The curated rule that decided this row, when one did. */
+  let placedBy = null;
 
   // A curated rule names the divider slot itself, so a person can say
   // "this belongs at 105" and be obeyed exactly.
@@ -1383,6 +1385,12 @@ for (const r of mods.values()) {
       group = rule.group;
       dividerFromCurated = rule.divider ?? null;
       confidence = 'curated';
+      // Kept so the row can say why it sits there. Every other tier is a
+      // measurement anyone can reproduce from the corpus; this one is a
+      // judgement somebody made, and until now the reason stayed in the rules
+      // file while the masterlist published the verdict alone. A person asking
+      // "why is this here" had no way to find out from the data.
+      placedBy = rule;
       stats.curated++;
       break;
     }
@@ -1485,6 +1493,26 @@ for (const r of mods.values()) {
   const notes = curated.messages.filter(m => m.re.test(name));
   if (notes.length) {
     plugin.messages = notes.map(m => ({ text: m.text, severity: m.severity ?? 'info' }));
+  }
+  /*
+   * Why a curated row sits where it does, published with the row.
+   *
+   * The same shape `loadAfter` already carries for a curated ordering edge, and
+   * for the same reason: every other tier can be re-derived from the corpus by
+   * anyone holding it, so the evidence is the data itself. A curated placement
+   * cannot. Somebody read a mod page, or a report, and decided; without this the
+   * masterlist published that verdict with no way to find the argument behind
+   * it, and nothing linked a placement back to the report that caused it.
+   *
+   * Reports are cited in `why` by issue number, which makes the trail
+   * greppable in both directions: from a mod to what was said about it, and
+   * from an issue to what it changed.
+   */
+  if (placedBy?.why) {
+    plugin.placement = {
+      why: placedBy.why,
+      ...(placedBy.source ? { source: placedBy.source } : {}),
+    };
   }
   plugin.evidence = {
     source: confidence,

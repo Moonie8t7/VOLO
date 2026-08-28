@@ -353,6 +353,22 @@
                 "name"
               ]
             }
+          },
+          "placement": {
+            "type": "object",
+            "description": "Why a curated rule put this mod where it is, carried from masterlist/curated-rules.json. Present only on rows a person placed by hand. Every other tier is a measurement anyone holding the corpus can reproduce, so its evidence is the data itself; a curated placement is a judgement, and this is the argument behind it. Reports that prompted a placement are cited by issue number in the text.",
+            "properties": {
+              "why": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string",
+                "description": "A page supporting the decision, where one exists."
+              }
+            },
+            "required": [
+              "why"
+            ]
           }
         }
       },

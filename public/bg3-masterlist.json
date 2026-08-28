@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-08-28T01:45:19.429Z",
+  "generated": "2026-08-28T15:23:57.910Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -263,6 +263,9 @@
       "version": "288230382594162699",
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 1,
+      "placement": {
+        "why": "The interface framework a great many UI mods depend on."
+      },
       "evidence": {
         "source": "curated",
         "installs": 119,
@@ -286,6 +289,9 @@
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 14,
+      "placement": {
+        "why": "MCM itself, ahead of the mods that register settings with it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 112,
@@ -335,6 +341,9 @@
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 7,
+      "placement": {
+        "why": "A library, and Astra gives it a divider of its own."
+      },
       "evidence": {
         "source": "curated",
         "installs": 95,
@@ -358,6 +367,9 @@
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 8,
+      "placement": {
+        "why": "A library, and Astra gives it a divider of its own."
+      },
       "evidence": {
         "source": "curated",
         "installs": 87,
@@ -388,6 +400,9 @@
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 105,
+      "placement": {
+        "why": "A patcher, not a library: it rewrites what other mods added, so it has to run after them. Astra places it at 105 and the corpus puts it at the very end of the order holding it. Filing it as a Resource loaded it far too early."
+      },
       "evidence": {
         "source": "curated",
         "installs": 84,
@@ -570,6 +585,9 @@
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 104,
+      "placement": {
+        "why": "Also a patcher, and Astra places it at 104 under Late Loaders."
+      },
       "evidence": {
         "source": "curated",
         "installs": 71,
@@ -688,6 +706,9 @@
       "version": "2.0.1.0",
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 104,
+      "placement": {
+        "why": "Also a patcher, and Astra places it at 104 under Late Loaders."
+      },
       "evidence": {
         "source": "curated",
         "installs": 62,
@@ -995,6 +1016,9 @@
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 15,
+      "placement": {
+        "why": "A framework other mods deliver items through."
+      },
       "evidence": {
         "source": "curated",
         "installs": 51,
@@ -1537,6 +1561,9 @@
       "version": "36028797018963973",
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 10,
+      "placement": {
+        "why": "Shared assets other mods read from."
+      },
       "evidence": {
         "source": "curated",
         "installs": 44,
@@ -1892,6 +1919,9 @@
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 10,
+      "placement": {
+        "why": "Shared assets other mods read from."
+      },
       "evidence": {
         "source": "curated",
         "installs": 40,
@@ -2285,6 +2315,9 @@
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 10,
+      "placement": {
+        "why": "Shared assets other mods read from."
+      },
       "evidence": {
         "source": "curated",
         "installs": 37,
@@ -6558,6 +6591,9 @@
       "version": "2.3.2.8",
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 105,
+      "placement": {
+        "why": "A patcher, not a library: it rewrites what other mods added, so it has to run after them. Astra places it at 105 and the corpus puts it at the very end of the order holding it. Filing it as a Resource loaded it far too early."
+      },
       "evidence": {
         "source": "curated",
         "installs": 20,
@@ -13672,6 +13708,9 @@
       "folder": "Trips_Aasimar",
       "version": "108086393204375552",
       "divider": 19,
+      "placement": {
+        "why": "Script Extender support loads before anything that calls into it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 14,
@@ -15370,6 +15409,9 @@
       "group": "Utilities",
       "folder": "WPHB2024-ScriptExtenderPatch",
       "divider": 19,
+      "placement": {
+        "why": "Script Extender support loads before anything that calls into it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 13,
@@ -21030,6 +21072,9 @@
       "group": "Resources",
       "author": "Lukyrim",
       "divider": 14,
+      "placement": {
+        "why": "MCM itself, ahead of the mods that register settings with it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 10,
@@ -26105,6 +26150,9 @@
         }
       ],
       "divider": 36,
+      "placement": {
+        "why": "Three armour and clothing mods reported as unsorted by a player running all three. Named one at a time rather than by author prefix, because BW_ and PK cover work that is not all clothing. Group without a slot, since Clothing is what was reported."
+      },
       "evidence": {
         "source": "curated",
         "installs": 8,
@@ -28388,6 +28436,9 @@
       "folder": "PK_AIO2_Howling_Dragon_ef508807-28f8-86ee-9437-96b6f5dd93e0",
       "author": "PseudoKociara",
       "divider": 36,
+      "placement": {
+        "why": "Three armour and clothing mods reported as unsorted by a player running all three. Named one at a time rather than by author prefix, because BW_ and PK cover work that is not all clothing. Group without a slot, since Clothing is what was reported."
+      },
       "evidence": {
         "source": "curated",
         "installs": 8,
@@ -30536,6 +30587,9 @@
       "uuid": "43979fe0-28ab-9ee7-4a87-64f23b9ccd75",
       "group": "Clothing",
       "divider": 36,
+      "placement": {
+        "why": "Three armour and clothing mods reported as unsorted by a player running all three. Named one at a time rather than by author prefix, because BW_ and PK cover work that is not all clothing. Group without a slot, since Clothing is what was reported."
+      },
       "evidence": {
         "source": "curated",
         "installs": 7,
@@ -34922,6 +34976,9 @@
       "group": "Bottom of Load Order",
       "version": "36028797018963968",
       "divider": 105,
+      "placement": {
+        "why": "A patcher, not a library: it rewrites what other mods added, so it has to run after them. Astra places it at 105 and the corpus puts it at the very end of the order holding it. Filing it as a Resource loaded it far too early."
+      },
       "evidence": {
         "source": "curated",
         "installs": 6,
@@ -37031,6 +37088,9 @@
       "uuid": "486d1526-3505-4b09-9790-0f6a60f5ac0f",
       "group": "Gameplay",
       "divider": 18.5,
+      "placement": {
+        "why": "Reported unsorted by a player, four of its addons separately, each citing the mod page. VOLO has never seen any of them in a load order, so only a rule on the name can place them, and it covers the addons that ship next. The group is stated without a slot because that is what was reported: Gameplay, not a position within it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 6,
@@ -50554,7 +50614,14 @@
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "loadAfter": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework",
+          "why": "Reported in issue #135: the mod page states that with Compatibility Framework installed this mod must load after it or it will not work. VOLO was doing the opposite, filing it as Bug Fixes on three section observations and lifting it eleven groups above the framework it depends on. Three separate things agree and none of them is decisive alone: the reporter's quotation of the mod page, which nobody here has read directly; two independent working orders that place the framework first and none that place it second, which is one witness short of the three the corpus normally requires; and the Nexus listing, which files this as Equipment rather than Bug Fixes. A stated constraint from the author outranks three section observations either way."
+        }
+      ]
     },
     {
       "name": "Chosen's Attire - Bhaal",
@@ -66703,6 +66770,9 @@
       "folder": "GCC_Aasimar",
       "version": "180143985094819840",
       "divider": 19,
+      "placement": {
+        "why": "Script Extender support loads before anything that calls into it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 3,
@@ -88608,6 +88678,9 @@
         "HomeBrew - Comprehensive Reworks (Addon - Fades Randomized Loot)"
       ],
       "divider": 18.5,
+      "placement": {
+        "why": "Reported unsorted by a player, four of its addons separately, each citing the mod page. VOLO has never seen any of them in a load order, so only a rule on the name can place them, and it covers the addons that ship next. The group is stated without a slot because that is what was reported: Gameplay, not a position within it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 2,
@@ -88621,6 +88694,9 @@
       "uuid": "e2cfcb5f-f7b9-49a9-848c-06c753e4548c",
       "group": "Gameplay",
       "divider": 18.5,
+      "placement": {
+        "why": "Reported unsorted by a player, four of its addons separately, each citing the mod page. VOLO has never seen any of them in a load order, so only a rule on the name can place them, and it covers the addons that ship next. The group is stated without a slot because that is what was reported: Gameplay, not a position within it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 2,
@@ -91688,10 +91764,14 @@
     {
       "name": "Magus Codex Gigas",
       "uuid": "90722b7c-2701-268e-cada-7276952d9dca",
-      "group": "unsorted",
+      "group": "Spells",
       "author": "Magus",
+      "divider": 47,
+      "placement": {
+        "why": "Reported in issue #138 as belonging in Spells, on the reporter's reading of the mod page. Support is thin and worth stating: the catalogues do not list this mod at all, and the Magus family in the masterlist is split across Bug Fixes, Classes and Spells, so its siblings do not settle it either. A separate mod called Codex Gigas is filed under Spells on Nexus, which is suggestive and is not the same mod. Anchored to the exact name so it cannot reach the other Magus rows."
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0,
@@ -92470,6 +92550,9 @@
       "uuid": "472f5394-3d6a-4814-8e62-7022ae2acf4d",
       "group": "Resources",
       "divider": 14,
+      "placement": {
+        "why": "MCM itself, ahead of the mods that register settings with it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 2,
@@ -92496,6 +92579,9 @@
       "uuid": "name:modfixer",
       "group": "Utilities",
       "divider": 19,
+      "placement": {
+        "why": "Loaders and fixers have to be in place before the mods they serve."
+      },
       "evidence": {
         "source": "curated",
         "installs": 2,
@@ -93467,10 +93553,14 @@
     {
       "name": "NES_Main",
       "uuid": "name:nesmain",
-      "group": "unsorted",
+      "group": "Spells",
       "author": "Lemon Jungle",
+      "divider": 47,
+      "placement": {
+        "why": "Reported in issue #137 as belonging in Spells, on the reporter's reading of the mod page. Nothing else supports it: NES_Main is a pak name rather than a listing title, neither catalogue holds it, and its one appearance in the corpus sits under no divider. This rests on one person's word alone, which is why the pattern is anchored to the exact name: NES matches 179 rows loosely and a wider pattern would move mods nobody has said anything about."
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1,
@@ -108868,7 +108958,7 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0,
-        "confidence": 0.92
+        "confidence": 0.78
       },
       "divider": 82
     },
@@ -112422,6 +112512,9 @@
       "uuid": "b878a3a9-a574-48a6-a72c-a1c0e34f08e2",
       "group": "Resources",
       "divider": 8,
+      "placement": {
+        "why": "A library, and Astra gives it a divider of its own."
+      },
       "evidence": {
         "source": "curated",
         "installs": 1,
@@ -119088,6 +119181,9 @@
       "uuid": "bde0def8-b795-4d99-9ba0-3aae58d700a1",
       "group": "Bottom of Load Order",
       "divider": 105,
+      "placement": {
+        "why": "A patcher, not a library: it rewrites what other mods added, so it has to run after them. Astra places it at 105 and the corpus puts it at the very end of the order holding it. Filing it as a Resource loaded it far too early."
+      },
       "evidence": {
         "source": "curated",
         "installs": 1,
@@ -120290,6 +120386,9 @@
       "uuid": "6a481858-96c5-4591-9bd6-159e0b12bf88",
       "group": "Bottom of Load Order",
       "divider": 105,
+      "placement": {
+        "why": "A patcher, not a library: it rewrites what other mods added, so it has to run after them. Astra places it at 105 and the corpus puts it at the very end of the order holding it. Filing it as a Resource loaded it far too early."
+      },
       "evidence": {
         "source": "curated",
         "installs": 1,
@@ -121523,7 +121622,7 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0,
-        "confidence": 0.85
+        "confidence": 0.79
       },
       "divider": 82
     },
@@ -121639,6 +121738,9 @@
       "uuid": "69dc3c10-f92c-482f-a761-807ce1473042",
       "group": "Gameplay",
       "divider": 18.5,
+      "placement": {
+        "why": "Reported unsorted by a player, four of its addons separately, each citing the mod page. VOLO has never seen any of them in a load order, so only a rule on the name can place them, and it covers the addons that ship next. The group is stated without a slot because that is what was reported: Gameplay, not a position within it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 1,
@@ -121652,6 +121754,9 @@
       "uuid": "17596796-4083-49ae-9b77-6ba379682ce3",
       "group": "Gameplay",
       "divider": 18.5,
+      "placement": {
+        "why": "Reported unsorted by a player, four of its addons separately, each citing the mod page. VOLO has never seen any of them in a load order, so only a rule on the name can place them, and it covers the addons that ship next. The group is stated without a slot because that is what was reported: Gameplay, not a position within it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 1,
@@ -121665,6 +121770,9 @@
       "uuid": "273221bf-e52c-4aaa-a856-1b52ae663d8a",
       "group": "Gameplay",
       "divider": 18.5,
+      "placement": {
+        "why": "Reported unsorted by a player, four of its addons separately, each citing the mod page. VOLO has never seen any of them in a load order, so only a rule on the name can place them, and it covers the addons that ship next. The group is stated without a slot because that is what was reported: Gameplay, not a position within it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 1,
@@ -125433,7 +125541,7 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0,
-        "confidence": 0.78
+        "confidence": 0.74
       },
       "divider": 102.5
     },
@@ -126254,17 +126362,15 @@
     {
       "name": "Midsize BT1",
       "uuid": "074a4e00-7e11-49ef-ac49-a8197d227b60",
-      "group": "Bug Fixes",
+      "group": "unsorted",
       "author": "Haarlepspup",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 0.71
-      },
-      "divider": 102.5
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "MidsizeMistress",
@@ -126695,6 +126801,9 @@
       "uuid": "958fa196-396c-480c-9b05-9d05481f4f0d",
       "group": "Resources",
       "divider": 14,
+      "placement": {
+        "why": "MCM itself, ahead of the mods that register settings with it."
+      },
       "evidence": {
         "source": "curated",
         "installs": 1,

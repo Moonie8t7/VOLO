@@ -3,6 +3,32 @@
   "documentation": "docs/architecture.md",
   "placements": [
     {
+      "pattern": "^Void ?Step\\b",
+      "group": "Spells",
+      "why": "Reported in issue #139, and corroborated: the Nexus listing for Void Step is filed by its author under Spells. No masterlist row exists yet, because no submitted order contains it, so this rule places nothing today and answers immediately the first time somebody's order includes it. That is the point of writing it down: with ten thousand known mods and most of them seen once or twice, a mod nobody has submitted may not come round again for months.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/15560",
+      "examples": [
+        "Void Step",
+        "Void Step - New Spell"
+      ]
+    },
+    {
+      "pattern": "^Magus Codex Gigas$",
+      "group": "Spells",
+      "why": "Reported in issue #138 as belonging in Spells, on the reporter's reading of the mod page. Support is thin and worth stating: the catalogues do not list this mod at all, and the Magus family in the masterlist is split across Bug Fixes, Classes and Spells, so its siblings do not settle it either. A separate mod called Codex Gigas is filed under Spells on Nexus, which is suggestive and is not the same mod. Anchored to the exact name so it cannot reach the other Magus rows.",
+      "examples": [
+        "Magus Codex Gigas"
+      ]
+    },
+    {
+      "pattern": "^NES_Main$",
+      "group": "Spells",
+      "why": "Reported in issue #137 as belonging in Spells, on the reporter's reading of the mod page. Nothing else supports it: NES_Main is a pak name rather than a listing title, neither catalogue holds it, and its one appearance in the corpus sits under no divider. This rests on one person's word alone, which is why the pattern is anchored to the exact name: NES matches 179 rows loosely and a wider pattern would move mods nobody has said anything about.",
+      "examples": [
+        "NES_Main"
+      ]
+    },
+    {
       "pattern": "^bg3se|script\\s*extender|^norbyte",
       "group": "Utilities",
       "divider": 19,
