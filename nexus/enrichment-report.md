@@ -6,10 +6,10 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 10046 |
-| Matched exactly by name | 2324 |
+| Masterlist mods | 10068 |
+| Matched exactly by name | 2327 |
 | Matched fuzzily (>= 0.9) | 586 |
-| Unmatched | 7136 |
+| Unmatched | 7155 |
 
 ## What the match would add
 
@@ -52,8 +52,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Transmog Enhanced Revamped: ours Utilities (section-majority), Nexus says Gameplay
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
-- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
+- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
