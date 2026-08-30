@@ -6,10 +6,10 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 10068 |
+| Masterlist mods | 10071 |
 | Matched exactly by name | 2327 |
-| Matched fuzzily (>= 0.9) | 586 |
-| Unmatched | 7155 |
+| Matched fuzzily (>= 0.9) | 587 |
+| Unmatched | 7157 |
 
 ## What the match would add
 
@@ -18,8 +18,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - 971 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1662 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 761 of them resolved to a uuid on both
+- 1661 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 760 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -53,9 +53,9 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
-- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
+- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
