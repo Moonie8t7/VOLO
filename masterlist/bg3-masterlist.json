@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-01T01:47:30.292Z",
+  "generated": "2026-09-01T09:54:19.819Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -37,7 +37,7 @@
     "working": 109,
     "broken": 19,
     "unlabelled": 2,
-    "externalDependencyEdges": 623,
+    "externalDependencyEdges": 624,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -68316,10 +68316,11 @@
     {
       "name": "Gabes Sneak Attack",
       "uuid": "b473e79c-65fc-3922-d9a7-8f03400a8878",
-      "group": "unsorted",
+      "group": "Spells",
       "folder": "GabesSneakAttack_b473e79c-65fc-3922-d9a7-8f03400a8878",
+      "divider": 47,
       "evidence": {
-        "source": "none",
+        "source": "external-category",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0,
@@ -80349,7 +80350,7 @@
     {
       "name": "Auto Scroll Transcribing",
       "uuid": "24ad03a4-38df-40aa-86ef-b6a0e1a629d5",
-      "group": "Accessories",
+      "group": "Gameplay",
       "folder": "AutoScrollTranscribing",
       "author": "Volitio",
       "version": "1.0.1.0",
@@ -80363,7 +80364,7 @@
         "Lua"
       ],
       "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 35,
+      "divider": 18.5,
       "evidence": {
         "source": "external-category",
         "installs": 2,
@@ -85024,6 +85025,10 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
+      },
+      "absence": {
+        "held": 2,
+        "witnesses": 2
       }
     },
     {
@@ -92936,7 +92941,13 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "f6c7657d-7c5e-cd0e-f0a9-6c851d5c473d",
+          "name": "Divinity: Preludes"
+        }
+      ]
     },
     {
       "name": "LL's Hair Colours",
@@ -98069,9 +98080,10 @@
     {
       "name": "Random Spawns (Comprehensive Difficulty Boost)(P8)",
       "uuid": "7a4b0918-f9cc-490b-7120-c783df338e9b",
-      "group": "unsorted",
+      "group": "Equipment",
+      "divider": 34.5,
       "evidence": {
-        "source": "none",
+        "source": "external-category",
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1,
@@ -119014,9 +119026,10 @@
     {
       "name": "Explosives!",
       "uuid": "950e6da6-dc7a-924d-5413-2c244e54f589",
-      "group": "unsorted",
+      "group": "Spells",
+      "divider": 47,
       "evidence": {
-        "source": "none",
+        "source": "external-category",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -123955,9 +123968,10 @@
     {
       "name": "HT_Elminster Eats All Your Cheese",
       "uuid": "name:htelminstereatsallyourcheese",
-      "group": "unsorted",
+      "group": "Equipment",
+      "divider": 34.5,
       "evidence": {
-        "source": "none",
+        "source": "external-category",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -142495,9 +142509,10 @@
     {
       "name": "Treasure Goblins",
       "uuid": "167c7152-627b-49f4-91c0-1a7e6c63ec88",
-      "group": "unsorted",
+      "group": "Equipment",
+      "divider": 34.5,
       "evidence": {
-        "source": "none",
+        "source": "external-category",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,

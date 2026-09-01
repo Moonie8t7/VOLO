@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 10191 |
-| Matched exactly by name | 2354 |
-| Matched fuzzily (>= 0.9) | 588 |
-| Unmatched | 7249 |
+| Masterlist mods | 10218 |
+| Matched exactly by name | 2362 |
+| Matched fuzzily (>= 0.9) | 589 |
+| Unmatched | 7267 |
 
 ## What the match would add
 
-- 32 currently unsorted mods would receive a category from their
+- 31 currently unsorted mods would receive a category from their
   Nexus listing.
-- 977 mods have a Nexus category that disagrees with the
+- 987 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
 - 1667 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 759 of them resolved to a uuid on both
+  on matched masterlist mods, 760 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -30,25 +30,25 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - EW_Proficiency_Potion: Utilities (fuzzy match)
 - Guilt-Free Slayer Form: Quests (fuzzy match)
 - Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
+- Exhaustion: User Interface (fuzzy match)
 - Initiative Variants - D20: Gameplay (fuzzy match)
 - AskewShaders: Utilities (fuzzy match)
+- Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
 - BetterDualWieldingAlt: Gameplay (fuzzy match)
 - DuplicationSE: User Interface (fuzzy match)
-- Exhaustion: User Interface (fuzzy match)
 - IllithidPowersOverhaul: Gameplay (fuzzy match)
 - Lay on Hands Enhanced - DND 5R: Classes (fuzzy match)
 - Random Spawns (Comprehensive Difficulty Boost)(P8): Gameplay (fuzzy match)
 - AbjurationWizardShield: Gameplay (fuzzy match)
 - Ase Glamping - Player Housing for Camp: Character Customization (fuzzy match)
 - AstralElves: Races (fuzzy match)
-- Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
 - Block-Miss-Differentiation-CHS: User Interface (fuzzy match)
 - Durge Noblestalk Memory Swap: Gameplay (fuzzy match)
 
 ### Sample disagreements
 
-- Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
 - Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
+- Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Utilities (section-majority), Nexus says Gameplay
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
