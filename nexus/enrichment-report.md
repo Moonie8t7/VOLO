@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 10218 |
-| Matched exactly by name | 2362 |
-| Matched fuzzily (>= 0.9) | 589 |
-| Unmatched | 7267 |
+| Masterlist mods | 10239 |
+| Matched exactly by name | 2367 |
+| Matched fuzzily (>= 0.9) | 590 |
+| Unmatched | 7282 |
 
 ## What the match would add
 
-- 31 currently unsorted mods would receive a category from their
+- 28 currently unsorted mods would receive a category from their
   Nexus listing.
-- 987 mods have a Nexus category that disagrees with the
+- 992 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1667 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 760 of them resolved to a uuid on both
+- 1666 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 759 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -38,12 +38,12 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - DuplicationSE: User Interface (fuzzy match)
 - IllithidPowersOverhaul: Gameplay (fuzzy match)
 - Lay on Hands Enhanced - DND 5R: Classes (fuzzy match)
-- Random Spawns (Comprehensive Difficulty Boost)(P8): Gameplay (fuzzy match)
 - AbjurationWizardShield: Gameplay (fuzzy match)
 - Ase Glamping - Player Housing for Camp: Character Customization (fuzzy match)
 - AstralElves: Races (fuzzy match)
 - Block-Miss-Differentiation-CHS: User Interface (fuzzy match)
 - Durge Noblestalk Memory Swap: Gameplay (fuzzy match)
+- FollowersOfZerthimon: Races (fuzzy match)
 
 ### Sample disagreements
 
@@ -52,15 +52,15 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Transmog Enhanced Revamped: ours Utilities (section-majority), Nexus says Gameplay
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
-- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
-- AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
+- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
+- AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
-- Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
 - Essential_Feats: ours Classes (section), Nexus says Gameplay
+- Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
 - HairUnlocked: ours Hair (section-majority), Nexus says Character Customization
 
 ## Unmapped Nexus categories

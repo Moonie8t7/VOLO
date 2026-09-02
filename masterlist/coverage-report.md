@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-09-01T20:47:51.135Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-02T09:09:44.304Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,7 +9,7 @@ Generated 2026-09-01T20:47:51.135Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 132 |
 | labelled working | 111 |
 | labelled broken | 19 |
-| load-after edges promoted from catalogues | 624 |
+| load-after edges promoted from catalogues | 623 |
 | unlabelled | 2 |
 | Separator headers parsed | 3139 |
 | **Unique mods indexed** | **10239** |
@@ -59,10 +59,10 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Utilities`: 89
 - `Visuals`: 121
 - `Animations`: 153
-- `User Interface`: 178
+- `User Interface`: 179
 - `Clothing`: 117
 - `Equipment`: 1448
-- `Miscellaneous`: 198
+- `Miscellaneous`: 197
 - `Spells`: 712
 - `Dyes`: 72
 - `Armor`: 419
@@ -94,7 +94,7 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 19.6% | 22.4% | no, and it points the other way |
+| Category pairs against the working consensus | 19.8% | 22.4% | no, and it points the other way |
 | Mods in no working order anywhere | 8% | 0% | yes |
 | Declared dependencies not installed | 0.1 | 0.0 | yes |
 
