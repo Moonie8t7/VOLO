@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 10239 |
-| Matched exactly by name | 2367 |
-| Matched fuzzily (>= 0.9) | 590 |
-| Unmatched | 7282 |
+| Masterlist mods | 10276 |
+| Matched exactly by name | 2377 |
+| Matched fuzzily (>= 0.9) | 593 |
+| Unmatched | 7306 |
 
 ## What the match would add
 
-- 28 currently unsorted mods would receive a category from their
+- 30 currently unsorted mods would receive a category from their
   Nexus listing.
-- 992 mods have a Nexus category that disagrees with the
+- 1000 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1666 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 759 of them resolved to a uuid on both
+- 1673 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 760 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -28,22 +28,22 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
 - Automatic_Inventory_Manager: Gameplay (fuzzy match)
 - EW_Proficiency_Potion: Utilities (fuzzy match)
-- Guilt-Free Slayer Form: Quests (fuzzy match)
-- Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
 - Exhaustion: User Interface (fuzzy match)
+- Guilt-Free Slayer Form: Quests (fuzzy match)
+- Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
+- Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
 - Initiative Variants - D20: Gameplay (fuzzy match)
 - AskewShaders: Utilities (fuzzy match)
-- Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
 - BetterDualWieldingAlt: Gameplay (fuzzy match)
 - DuplicationSE: User Interface (fuzzy match)
 - IllithidPowersOverhaul: Gameplay (fuzzy match)
 - Lay on Hands Enhanced - DND 5R: Classes (fuzzy match)
 - AbjurationWizardShield: Gameplay (fuzzy match)
+- ArcaneArcher: Classes (fuzzy match)
 - Ase Glamping - Player Housing for Camp: Character Customization (fuzzy match)
 - AstralElves: Races (fuzzy match)
 - Block-Miss-Differentiation-CHS: User Interface (fuzzy match)
 - Durge Noblestalk Memory Swap: Gameplay (fuzzy match)
-- FollowersOfZerthimon: Races (fuzzy match)
 
 ### Sample disagreements
 
@@ -52,16 +52,16 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Transmog Enhanced Revamped: ours Utilities (section-majority), Nexus says Gameplay
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
-- PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
-- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
+- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
+- PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Essential_Feats: ours Classes (section), Nexus says Gameplay
 - Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
-- HairUnlocked: ours Hair (section-majority), Nexus says Character Customization
+- Aardi's Chest of Presents: ours Equipment (section-majority), Nexus says Utilities
 
 ## Unmapped Nexus categories
 
