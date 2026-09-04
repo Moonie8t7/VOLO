@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 10276 |
-| Matched exactly by name | 2377 |
-| Matched fuzzily (>= 0.9) | 593 |
-| Unmatched | 7306 |
+| Masterlist mods | 10326 |
+| Matched exactly by name | 2391 |
+| Matched fuzzily (>= 0.9) | 595 |
+| Unmatched | 7340 |
 
 ## What the match would add
 
-- 30 currently unsorted mods would receive a category from their
+- 31 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1000 mods have a Nexus category that disagrees with the
+- 1001 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1673 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 760 of them resolved to a uuid on both
+- 1682 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 767 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -28,10 +28,10 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
 - Automatic_Inventory_Manager: Gameplay (fuzzy match)
 - EW_Proficiency_Potion: Utilities (fuzzy match)
+- Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
 - Exhaustion: User Interface (fuzzy match)
 - Guilt-Free Slayer Form: Quests (fuzzy match)
 - Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
-- Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
 - Initiative Variants - D20: Gameplay (fuzzy match)
 - AskewShaders: Utilities (fuzzy match)
 - BetterDualWieldingAlt: Gameplay (fuzzy match)
@@ -47,15 +47,15 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 ### Sample disagreements
 
-- Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
 - Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
+- Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Utilities (section-majority), Nexus says Gameplay
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
-- Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
-- AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
+- Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
+- AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay

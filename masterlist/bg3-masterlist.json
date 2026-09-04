@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-04T04:40:20.701Z",
+  "generated": "2026-09-04T09:13:51.522Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -37,7 +37,7 @@
     "working": 115,
     "broken": 21,
     "unlabelled": 2,
-    "externalDependencyEdges": 627,
+    "externalDependencyEdges": 632,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -1457,6 +1457,10 @@
         "workingInstalls": 41,
         "brokenInstalls": 7,
         "voloSortedInstalls": 18
+      },
+      "absence": {
+        "held": 1,
+        "witnesses": 1
       }
     },
     {
@@ -116475,7 +116479,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Death Pose Photo Mode",
@@ -124071,7 +124081,25 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "194a7429-5b34-7d68-06ee-494607e165e4",
+          "name": "Knights and Dames"
+        },
+        {
+          "uuid": "57b22f40-4886-91a0-7f70-8fec6275e773",
+          "name": "Tepkunset Hair Collection"
+        },
+        {
+          "uuid": "a34a1b2d-bcaa-44e0-885a-6087ccf92357",
+          "name": "TepkunsetHairCollection"
+        },
+        {
+          "uuid": "c40e6b56-db36-4e62-89c5-c8bad4c48ab4",
+          "name": "Knights and Dames"
+        }
+      ]
     },
     {
       "name": "Hawke | Dragon Age 2",
@@ -126898,7 +126926,11 @@
           "uuid": "08aaab4b-03b9-5dc1-bbc7-cdd80ff2084e",
           "name": "Aardi's Chest of Presents"
         }
-      ]
+      ],
+      "absence": {
+        "held": 0,
+        "witnesses": 1
+      }
     },
     {
       "name": "Knock & Lock",
@@ -142735,6 +142767,10 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 1
       }
     },
     {
