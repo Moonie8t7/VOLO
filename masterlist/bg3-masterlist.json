@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-05T06:21:35.085Z",
+  "generated": "2026-09-05T08:43:31.250Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -37,7 +37,7 @@
     "working": 115,
     "broken": 22,
     "unlabelled": 2,
-    "externalDependencyEdges": 632,
+    "externalDependencyEdges": 633,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -17459,8 +17459,8 @@
       },
       "usesScriptExtender": true,
       "absence": {
-        "held": 0,
-        "witnesses": 2
+        "held": 1,
+        "witnesses": 3
       }
     },
     {
@@ -96928,7 +96928,14 @@
         "workingInstalls": 1,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "0c692104-c83f-48b8-9fcd-ca7e33be5098",
+          "name": "Combat Extender"
+        }
+      ]
     },
     {
       "name": "NPC Visual Overhaul (All NPC)",
