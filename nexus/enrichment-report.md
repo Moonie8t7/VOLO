@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 10356 |
-| Matched exactly by name | 2398 |
-| Matched fuzzily (>= 0.9) | 596 |
-| Unmatched | 7362 |
+| Masterlist mods | 10388 |
+| Matched exactly by name | 2403 |
+| Matched fuzzily (>= 0.9) | 597 |
+| Unmatched | 7388 |
 
 ## What the match would add
 
-- 32 currently unsorted mods would receive a category from their
+- 33 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1002 mods have a Nexus category that disagrees with the
+- 1003 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1689 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 768 of them resolved to a uuid on both
+- 1690 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 762 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -48,12 +48,11 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 ### Sample disagreements
 
 - Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
-- Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Utilities (section-majority), Nexus says Gameplay
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
-- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
+- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
@@ -62,6 +61,7 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Essential_Feats: ours Classes (section), Nexus says Gameplay
 - Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
 - Aardi's Chest of Presents: ours Equipment (section-majority), Nexus says Utilities
+- HairUnlocked: ours Hair (section-majority), Nexus says Character Customization
 
 ## Unmapped Nexus categories
 
