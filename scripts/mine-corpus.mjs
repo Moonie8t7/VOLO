@@ -2157,6 +2157,40 @@ if (lateLoaders.length) {
   console.log('declared deps: no ordering claims contradicted by the corpus');
 }
 
+/**
+ * Every handle a curated rule might name a mod by: its name, its folder, and
+ * the names it has also been published under.
+ *
+ * Aliases are indexed in a second pass so a canonical name always wins its own
+ * key, which is how client/src/lib/optimiser.ts indexes them and for the same
+ * reason: an alias must never displace the real thing.
+ *
+ * They have to be indexed at all because which spelling is canonical is decided
+ * by a vote among the orders carrying the mod, and that vote moves. Issue #160
+ * arrived carrying "Tav's Hair Salon - Tav's Hairpack" often enough to win,
+ * which turned "Tav's Hair Salon" into an alternate name. A rule naming the
+ * salon then resolved to nothing, the check below stopped the build, and no
+ * submission could land until somebody noticed. The rule was correct throughout
+ * and the mod was in fifteen orders; only the handle had moved.
+ */
+function nameIndex(rows) {
+  const byNameKey = new Map();
+  const byFolderKey = new Map();
+  for (const p of rows) {
+    const n = externalKey(p.name);
+    if (n && !byNameKey.has(n)) byNameKey.set(n, p);
+    const f = externalKey(p.folder ?? '');
+    if (f && !byFolderKey.has(f)) byFolderKey.set(f, p);
+  }
+  for (const p of rows) {
+    for (const alias of p.alternateNames ?? []) {
+      const a = externalKey(alias);
+      if (a && !byNameKey.has(a)) byNameKey.set(a, p);
+    }
+  }
+  return { byNameKey, byFolderKey };
+}
+
 /*
  * Curated requirement aliases, resolved to the mods they name.
  *
@@ -2192,14 +2226,7 @@ const requirementSatisfiedBy = {};
     if (fold) console.log(`  (fold) ${message}`);
     else throw new Error(message);
   };
-  const byNameKey = new Map();
-  const byFolderKey = new Map();
-  for (const p of plugins) {
-    const n = externalKey(p.name);
-    if (n && !byNameKey.has(n)) byNameKey.set(n, p);
-    const f = externalKey(p.folder ?? '');
-    if (f && !byFolderKey.has(f)) byFolderKey.set(f, p);
-  }
+  const { byNameKey, byFolderKey } = nameIndex(plugins);
   const unresolved = [];
   for (const rule of curated.requirementAliases) {
     const target = byNameKey.get(externalKey(rule.mod)) ?? byFolderKey.get(externalKey(rule.mod));
@@ -2246,14 +2273,7 @@ const requirementSatisfiedBy = {};
  * stops being.
  */
 const unidentifiedRequirements = (() => {
-  const byNameKey = new Map();
-  const byFolderKey = new Map();
-  for (const p of plugins) {
-    const n = externalKey(p.name);
-    if (n && !byNameKey.has(n)) byNameKey.set(n, p);
-    const f = externalKey(p.folder ?? '');
-    if (f && !byFolderKey.has(f)) byFolderKey.set(f, p);
-  }
+  const { byNameKey, byFolderKey } = nameIndex(plugins);
   const byUuidKey = new Map(plugins.map(p => [p.uuid, p]));
   const counts = new Map();
   const consider = (name, uuid) => {
