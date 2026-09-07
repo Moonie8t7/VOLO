@@ -3,6 +3,15 @@
   "documentation": "docs/architecture.md",
   "placements": [
     {
+      "pattern": "^Instruments for Non-Charisma-Based Party Faces$",
+      "group": "Equipment",
+      "why": "Reported in issue #156, and the cause is in the name. The name-pattern tier matches a trailing \"Faces\" and files the mod under Heads; the same name with that one word removed sorts to Equipment, which is where it belongs. Nexus 18937 by StylizedPenguin files it under Equipment too, and the reporter plays with it there. Handled as a named exception rather than by loosening the pattern: that pattern places 84 rows in Heads and the catalogues disagree with only three of them, so it earns its keep. No masterlist row exists yet, because no submitted order carries this mod, so the rule waits and answers the first time one does.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/18937",
+      "examples": [
+        "Instruments for Non-Charisma-Based Party Faces"
+      ]
+    },
+    {
       "pattern": "^Void ?Step\\b",
       "group": "Spells",
       "why": "Reported in issue #139, and corroborated: the Nexus listing for Void Step is filed by its author under Spells. No masterlist row exists yet, because no submitted order contains it, so this rule places nothing today and answers immediately the first time somebody's order includes it. That is the point of writing it down: with ten thousand known mods and most of them seen once or twice, a mod nobody has submitted may not come round again for months.",

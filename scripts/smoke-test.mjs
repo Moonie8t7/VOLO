@@ -1097,7 +1097,19 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     ...rules.requirementSatisfiedBy.flatMap(r => [r.requirement, r.satisfiedBy]),
   ];
   const key = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
-  const have = new Set(masterlist.plugins.flatMap(p => [key(p.name), key(p.folder)]).filter(Boolean));
+  /*
+   * Alternate names count, because a rule names a mod by one of its spellings
+   * and which spelling is canonical is decided by a vote among the orders
+   * carrying it. That vote moves. Issue #160 arrived carrying "Tav's Hair Salon
+   * - Tav's Hairpack" often enough to win, which turned "Tav's Hair Salon" into
+   * an alternate, and a rule naming the salon read as dead while the mod sat in
+   * fifteen orders. The miner had the same omission and was fixed first; this
+   * copy then failed the landing step on the very next run, which is the same
+   * outage wearing a second face.
+   */
+  const have = new Set(masterlist.plugins
+    .flatMap(p => [key(p.name), key(p.folder), ...(p.alternateNames ?? []).map(key)])
+    .filter(Boolean));
 
   /* On a full build every rule must resolve, which is the guard's real job. */
   const dead = named.filter(n => !have.has(key(n)));
