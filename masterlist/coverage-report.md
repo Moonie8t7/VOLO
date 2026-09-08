@@ -1,20 +1,20 @@
 # Masterlist coverage report
 
-Generated 2026-09-08T10:29:29.246Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-08T14:01:13.440Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 142 |
-| labelled working | 117 |
+| Load orders analysed | 143 |
+| labelled working | 118 |
 | labelled broken | 23 |
-| load-after edges promoted from catalogues | 642 |
+| load-after edges promoted from catalogues | 650 |
 | unlabelled | 2 |
 | Separator headers parsed | 3352 |
-| **Unique mods indexed** | **10466** |
-| Seen in more than one order | 7327 |
-| With declared dependencies | 644 |
+| **Unique mods indexed** | **10495** |
+| Seen in more than one order | 7341 |
+| With declared dependencies | 651 |
 | With Script Extender flags | 176 |
 | With author metadata | 1128 |
 
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 3 of 142 orders carry it, because the short
+this comes from. Only 3 of 143 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -38,14 +38,14 @@ the tool flag a mod as last verified on an older patch.
 
 | Source | Count | Trust |
 |---|---|---|
-| Curated override | 34 | highest, hand-verified infrastructure |
+| Curated override | 35 | highest, hand-verified infrastructure |
 | Human-authored section header | 6648 | high, a modder put it there |
-| Name pattern fallback | 1704 | medium, needs review |
-| Nexus or mod.io listing category | 1087 | medium, the author's own words about what the mod is |
+| Name pattern fallback | 1719 | medium, needs review |
+| Nexus or mod.io listing category | 1095 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 17 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 90 | high, measured 97 percent accurate at this band |
-| Neighbour inference, 0.70 to 0.85 | 87 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 799 | none, needs community input |
+| Neighbour inference, 0.70 to 0.85 | 86 | medium, roughly 75 percent accurate, carries a confidence score |
+| Uncategorised | 805 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -55,35 +55,35 @@ inferred entry stores its agreement score as `evidence.confidence`.
 ## Group distribution
 
 - `Top of Load Order`: 10
-- `Resources`: 272
-- `Utilities`: 93
+- `Resources`: 273
+- `Utilities`: 94
 - `Visuals`: 124
 - `Animations`: 153
-- `User Interface`: 181
-- `Clothing`: 124
-- `Equipment`: 1464
+- `User Interface`: 182
+- `Clothing`: 125
+- `Equipment`: 1466
 - `Miscellaneous`: 200
-- `Spells`: 722
+- `Spells`: 727
 - `Dyes`: 78
 - `Armor`: 430
-- `Weapons`: 544
-- `Gameplay`: 548
+- `Weapons`: 545
+- `Gameplay`: 551
 - `Races`: 273
-- `Classes`: 1218
-- `Character Customization`: 399
-- `Bug Fixes`: 514
-- `Accessories`: 118
+- `Classes`: 1221
+- `Character Customization`: 400
+- `Bug Fixes`: 515
+- `Accessories`: 119
 - `Quests`: 40
 - `Environment`: 62
 - `Audio`: 28
 - `Heads`: 609
 - `Hair`: 312
-- `Companions`: 423
+- `Companions`: 425
 - `NPC`: 225
 - `Bodies`: 32
 - `Dice`: 464
 - `Bottom of Load Order`: 7
-- `unsorted`: 799
+- `unsorted`: 805
 
 ## What the broken orders do differently
 
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 19.8% | 22.1% | no, and it points the other way |
+| Category pairs against the working consensus | 19.8% | 22.0% | no, and it points the other way |
 | Mods in no working order anywhere | 9% | 0% | yes |
 | Declared dependencies not installed | 0.0 | 0.0 | yes |
 
-Measured over 23 broken and 117 working orders, against 128 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 23 broken and 118 working orders, against 128 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -130,7 +130,7 @@ mine, so a change to this list shows up in a diff where somebody sees it.
 
 | Mod | Loaded after its dependants | Mods declaring it |
 |---|---|---|
-| `CompatibilityFramework` | 12 of 14 placements | 14 |
+| `CompatibilityFramework` | 11 of 13 placements | 13 |
 
 ## Requirements the working orders do without
 
@@ -149,10 +149,9 @@ Framework are present in every working order that needs them.
 | `Calimshan Pirate Outfit` | 4 | 3 | 1 |
 | `Camp Robes` | 4 | 3 | 1 |
 | `Celestial Threads` | 4 | 3 | 1 |
-| `UnlockLevelCurve - Level 13-20 | Patch 8` | 9 | 6 | 9 |
-| `TutorialChestSummoning` | 41 | 25 | 29 |
-| `Fade's Equipment Distribution` | 5 | 3 | 2 |
+| `Fade's Equipment Distribution` | 6 | 4 | 3 |
 | `Snapshots` | 5 | 3 | 2 |
+| `UnlockLevelCurve - Level 13-20 | Patch 8` | 10 | 6 | 9 |
 
 ## Requirements naming something unknown
 
@@ -164,11 +163,11 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 117
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 118
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **799 mods are `unsorted`.** These need community categorisation.
+- **805 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 
