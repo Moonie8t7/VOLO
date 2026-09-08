@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-07T13:46:54.226Z",
+  "generated": "2026-09-08T09:15:18.126Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -37,7 +37,7 @@
     "working": 116,
     "broken": 23,
     "unlabelled": 2,
-    "externalDependencyEdges": 637,
+    "externalDependencyEdges": 641,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -92858,7 +92858,13 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
+          "name": "Tav's Hair Salon"
+        }
+      ]
     },
     {
       "name": "InstamommyNady_Races",
@@ -114314,6 +114320,10 @@
         "voloSortedInstalls": 1
       },
       "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        },
         {
           "uuid": "8b8624ed-6b98-781b-659f-7e8be5ef5856",
           "name": "Summon Tutorial Chest"
@@ -141540,7 +141550,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "SkillsUnlockedEXTENDED",
@@ -143510,7 +143521,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "0e63a5b0-4518-4f87-b5d4-a1cafe91dc58",
+          "name": "SummerBeach: Core"
+        }
+      ]
     },
     {
       "name": "SummerBeach: TheFirstDescendant_BunnySummerParadise",
@@ -147326,7 +147343,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+          "name": "TutorialChestSummoning"
+        }
+      ]
     },
     {
       "name": "VoicedLinesPriority",

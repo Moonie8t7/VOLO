@@ -17,7 +17,7 @@
   "nexusCategory": "Utilities",
   "suggestedGroup": "Utilities",
   "adult": false,
-  "endorsements": 14744
+  "endorsements": 14765
  },
  "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca": {
   "nexusId": 7676,
@@ -162,6 +162,16 @@
   "adult": false,
   "endorsements": 4404
  },
+ "da0b99ca-4406-49c1-bef9-3a08621280a2": {
+  "nexusId": 213,
+  "nexusName": "Tav's Hair Salon",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 61788
+ },
  "03b0b84a-2689-77c2-5ef6-ebcf88b88037": {
   "nexusId": 5673,
   "nexusName": "Better Dyeing",
@@ -282,6 +292,30 @@
   "adult": false,
   "endorsements": 25326
  },
+ "310ba0c7-374e-4e56-8c42-b7c7ad3a38b0": {
+  "nexusId": 10795,
+  "nexusName": "Fix Stragglers",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 1826,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+    "notes": "1.38.2+"
+   },
+   {
+    "name": "Volition Cabinet",
+    "nexusId": 7676,
+    "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+    "notes": "1.15.1+"
+   }
+  ]
+ },
  "2653082c-88d7-62dd-da48-b32be67c033b": {
   "nexusId": 15125,
   "nexusName": "Lesser Restoration - Assorted Bug Fixes",
@@ -306,30 +340,6 @@
     "name": "Fade's Assorted Treasure Expansion - FATE",
     "nexusId": 20745,
     "notes": "Обязательно"
-   }
-  ]
- },
- "310ba0c7-374e-4e56-8c42-b7c7ad3a38b0": {
-  "nexusId": 10795,
-  "nexusName": "Fix Stragglers",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Utilities",
-  "suggestedGroup": "Utilities",
-  "adult": false,
-  "endorsements": 1826,
-  "requires": [
-   {
-    "name": "Mod Configuration Menu (MCM)",
-    "nexusId": 9162,
-    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-    "notes": "1.38.2+"
-   },
-   {
-    "name": "Volition Cabinet",
-    "nexusId": 7676,
-    "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-    "notes": "1.15.1+"
    }
   ]
  },
@@ -373,6 +383,16 @@
   "adult": false,
   "endorsements": 52
  },
+ "6324f71c-80f2-6c13-b2e8-1c3441fa6072": {
+  "nexusId": 18968,
+  "nexusName": "Extra encounters and Minibosses CHS",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 8
+ },
  "1c132ec4-4cd2-4c40-aeb9-ff6ee0467da8": {
   "nexusId": 6086,
   "nexusName": "Auto Send Food To Camp",
@@ -396,16 +416,6 @@
     "notes": "1.14+"
    }
   ]
- },
- "6324f71c-80f2-6c13-b2e8-1c3441fa6072": {
-  "nexusId": 18968,
-  "nexusName": "Extra encounters and Minibosses CHS",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 8
  },
  "e6333436-9cf0-4464-aaf2-39246292575e": {
   "nexusId": 8838,
@@ -447,6 +457,16 @@
    }
   ]
  },
+ "505c630c-79fa-49b6-9f21-29a5f2322c2d": {
+  "nexusId": 457,
+  "nexusName": "Tutorial Chest Summoning",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 30684
+ },
  "4cb0fd40-7212-4fe9-8733-9a8dbc6637ae": {
   "nexusId": 16325,
   "nexusName": "KAVT - Kazstra's Virtual Tav x Tattoo Makeup and Scar Extender",
@@ -467,15 +487,28 @@
   "adult": false,
   "endorsements": 1873
  },
- "505c630c-79fa-49b6-9f21-29a5f2322c2d": {
-  "nexusId": 457,
-  "nexusName": "Tutorial Chest Summoning",
+ "88e1d176-4259-f98f-6b9a-486caaaf2c70": {
+  "nexusId": 15060,
+  "nexusName": "5e Fighter Subclasses Combined",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
   "adult": false,
-  "endorsements": 30684
+  "endorsements": 823,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Community Library",
+    "nexusId": 1333,
+    "notes": "Subclass compatibility"
+   },
+   {
+    "name": "Compatibility Framework",
+    "nexusId": 1933,
+    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+    "notes": "Subclass compatibility"
+   }
+  ]
  },
  "6f8c201d-27b1-417c-34d8-e2c155b6b39c": {
   "nexusId": 14626,
@@ -510,28 +543,15 @@
    }
   ]
  },
- "88e1d176-4259-f98f-6b9a-486caaaf2c70": {
-  "nexusId": 15060,
-  "nexusName": "5e Fighter Subclasses Combined",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
+ "868bf4c5-e0ee-44de-875e-315462e6bf42": {
+  "nexusId": 16830,
+  "nexusName": "Early Access Scenes Restored",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.96,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 823,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Community Library",
-    "nexusId": 1333,
-    "notes": "Subclass compatibility"
-   },
-   {
-    "name": "Compatibility Framework",
-    "nexusId": 1933,
-    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
-    "notes": "Subclass compatibility"
-   }
-  ]
+  "endorsements": 1313
  },
  "896aa172-c026-9e72-7c91-9d67e17595e6": {
   "nexusId": 16222,
@@ -576,15 +596,23 @@
   "adult": false,
   "endorsements": 2607
  },
- "868bf4c5-e0ee-44de-875e-315462e6bf42": {
-  "nexusId": 16830,
-  "nexusName": "Early Access Scenes Restored",
+ "65e55feb-aada-4fec-821f-7d913e9b4d82": {
+  "nexusId": 17561,
+  "nexusName": "Dialogue and Reactivity Tags (DART) Framework",
   "matchKind": "fuzzy",
-  "matchConfidence": 0.96,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
   "adult": false,
-  "endorsements": 1313
+  "endorsements": 500,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+    "notes": "Optional - Provides settings for players."
+   }
+  ]
  },
  "192f57e4-a961-47be-ab94-e70042f9d211": {
   "nexusId": 466,
@@ -602,6 +630,16 @@
     "notes": "Recommended to get more horn colors"
    }
   ]
+ },
+ "3a0b775f-bdc1-1bf2-8b95-df894d25bc3f": {
+  "nexusId": 18260,
+  "nexusName": "Scratch Evolved",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 322
  },
  "49b32147-5aed-c262-1fa6-ec51939978c0": {
   "nexusId": 15037,
@@ -632,34 +670,6 @@
    }
   ]
  },
- "65e55feb-aada-4fec-821f-7d913e9b4d82": {
-  "nexusId": 17561,
-  "nexusName": "Dialogue and Reactivity Tags (DART) Framework",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 500,
-  "requires": [
-   {
-    "name": "Mod Configuration Menu (MCM)",
-    "nexusId": 9162,
-    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-    "notes": "Optional - Provides settings for players."
-   }
-  ]
- },
- "3a0b775f-bdc1-1bf2-8b95-df894d25bc3f": {
-  "nexusId": 18260,
-  "nexusName": "Scratch Evolved",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 322
- },
  "c56b9bae-fddc-083d-0862-95d73646c304": {
   "nexusId": 14242,
   "nexusName": "Shovel Evolved",
@@ -669,16 +679,6 @@
   "suggestedGroup": "Companions",
   "adult": false,
   "endorsements": 514
- },
- "5d1bd6cb-6361-45ef-b20c-d997acfba822": {
-  "nexusId": 9832,
-  "nexusName": "AahzLib",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Utilities",
-  "suggestedGroup": "Utilities",
-  "adult": false,
-  "endorsements": 1941
  },
  "fa49db03-caa7-49c8-7c76-e6c38b60267a": {
   "nexusId": 14581,
@@ -714,6 +714,26 @@
    }
   ]
  },
+ "5d1bd6cb-6361-45ef-b20c-d997acfba822": {
+  "nexusId": 9832,
+  "nexusName": "AahzLib",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 1941
+ },
+ "01d87964-fc46-7140-b29e-3956de333929": {
+  "nexusId": 12868,
+  "nexusName": "Crazy Color pack",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 681
+ },
  "163484d1-8511-4a95-8061-1ede8838b28b": {
   "nexusId": 9701,
   "nexusName": "Mod Uninstaller",
@@ -748,15 +768,25 @@
   "adult": false,
   "endorsements": 780
  },
- "01d87964-fc46-7140-b29e-3956de333929": {
-  "nexusId": 12868,
-  "nexusName": "Crazy Color pack",
+ "9216e4a7-0ef1-d5c1-67ca-2857703d06ee": {
+  "nexusId": 14521,
+  "nexusName": "Us Evolved",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
   "adult": false,
-  "endorsements": 681
+  "endorsements": 362
+ },
+ "da838ab2-4d4b-4ca2-9e11-0257a03b13fc": {
+  "nexusId": 11239,
+  "nexusName": "Warlock Spell List Fixer",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 411
  },
  "a6474f89-8efc-443d-cc95-9cdf142f931e": {
   "nexusId": 16007,
@@ -814,26 +844,6 @@
     "notes": "ImpUI Patch 8 Slim"
    }
   ]
- },
- "9216e4a7-0ef1-d5c1-67ca-2857703d06ee": {
-  "nexusId": 14521,
-  "nexusName": "Us Evolved",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 362
- },
- "da838ab2-4d4b-4ca2-9e11-0257a03b13fc": {
-  "nexusId": 11239,
-  "nexusName": "Warlock Spell List Fixer",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 411
  },
  "ec242417-f146-78b8-05f9-fd065380ad91": {
   "nexusId": 6126,
@@ -915,26 +925,6 @@
    }
   ]
  },
- "71f4c896-045d-4bb9-b7ad-55f1332b61d2": {
-  "nexusId": 9608,
-  "nexusName": "Spell List Sorter",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 1085
- },
- "dd4845b6-a1fa-3938-7d05-c887002446ad": {
-  "nexusId": 18777,
-  "nexusName": "Book of Sorcerers - 5e Sorcerer Subclasses",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 205
- },
  "0f86b73c-928c-033f-6d2d-abf4f06f462f": {
   "nexusId": 4163,
   "nexusName": "Jerinski's Alt Hairs",
@@ -952,6 +942,16 @@
    }
   ]
  },
+ "71f4c896-045d-4bb9-b7ad-55f1332b61d2": {
+  "nexusId": 9608,
+  "nexusName": "Spell List Sorter",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1085
+ },
  "08aaab4b-03b9-5dc1-bbc7-cdd80ff2084e": {
   "nexusId": 21186,
   "nexusName": "Aardi's Chest of Presents",
@@ -961,6 +961,16 @@
   "suggestedGroup": "Utilities",
   "adult": false,
   "endorsements": 318
+ },
+ "dd4845b6-a1fa-3938-7d05-c887002446ad": {
+  "nexusId": 18777,
+  "nexusName": "Book of Sorcerers - 5e Sorcerer Subclasses",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 205
  },
  "36134629-de40-94cf-8e14-beb17341147b": {
   "nexusId": 17982,
@@ -1029,23 +1039,6 @@
   "adult": false,
   "endorsements": 789
  },
- "e4aaf48d-06ef-f536-144a-2da821695182": {
-  "nexusId": 12482,
-  "nexusName": "HairUnlocked",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 454,
-  "requires": [
-   {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
-   }
-  ]
- },
  "c72a3d25-aed2-b011-3cd9-5ee0618e99a2": {
   "nexusId": 17508,
   "nexusName": "Raphael Restored - Last Light Fixes",
@@ -1069,6 +1062,33 @@
    {
     "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
     "nexusId": 1258
+   }
+  ]
+ },
+ "6ab03096-6cb0-fd00-ac8f-8776a95133da": {
+  "nexusId": 18163,
+  "nexusName": "Dawnstar's Necromancy Spells",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 358
+ },
+ "e4aaf48d-06ef-f536-144a-2da821695182": {
+  "nexusId": 12482,
+  "nexusName": "HairUnlocked",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 454,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
    }
   ]
  },
@@ -1098,16 +1118,6 @@
     "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca"
    }
   ]
- },
- "6ab03096-6cb0-fd00-ac8f-8776a95133da": {
-  "nexusId": 18163,
-  "nexusName": "Dawnstar's Necromancy Spells",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 358
  },
  "8d23b363-3880-46c1-a378-373223569100": {
   "nexusId": 20629,
@@ -1186,6 +1196,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 893
+ },
+ "f82f9dde-83c8-3f72-efec-2b213bd027c1": {
+  "nexusId": 18021,
+  "nexusName": "Owlbear Cub Evolved",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 248
  },
  "7d6712c3-3b64-e94d-6f1a-9de67678b44b": {
   "nexusId": 13685,
@@ -1275,6 +1295,24 @@
   "adult": false,
   "endorsements": 1054
  },
+ "96bc14a7-733e-4bea-859d-3695d745efc1": {
+  "nexusId": 18231,
+  "nexusName": "MazzleLib",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 240,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+    "notes": "1.35+ recommended"
+   }
+  ]
+ },
  "2be84b2b-8661-6596-b3af-c236589a7dce": {
   "nexusId": 17679,
   "nexusName": "Myky's Accessories",
@@ -1285,15 +1323,22 @@
   "adult": false,
   "endorsements": 922
  },
- "f82f9dde-83c8-3f72-efec-2b213bd027c1": {
-  "nexusId": 18021,
-  "nexusName": "Owlbear Cub Evolved",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
+ "d07015de-33a8-6ee9-cda2-571c7bf39008": {
+  "nexusId": 15257,
+  "nexusName": "Wings Character Customization - WCC",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 248
+  "endorsements": 499,
+  "requires": [
+   {
+    "name": "Aardi's Chest of Presents",
+    "nexusId": 21186,
+    "uuid": "08aaab4b-03b9-5dc1-bbc7-cdd80ff2084e"
+   }
+  ]
  },
  "37e450bf-009b-4a82-8845-23940b0c3430": {
   "nexusId": 11768,
@@ -1352,23 +1397,25 @@
   "adult": false,
   "endorsements": 668
  },
- "96bc14a7-733e-4bea-859d-3695d745efc1": {
-  "nexusId": 18231,
-  "nexusName": "MazzleLib",
+ "1b215646-6200-451a-9c4a-b21406f69edd": {
+  "nexusId": 11639,
+  "nexusName": "Many More Monsters",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1495
+ },
+ "da5d2ea8-51c2-42ba-8d0f-34b5b198a19e": {
+  "nexusId": 405,
+  "nexusName": "Metamagic Extended",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 240,
-  "requires": [
-   {
-    "name": "Mod Configuration Menu (MCM)",
-    "nexusId": 9162,
-    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-    "notes": "1.35+ recommended"
-   }
-  ]
+  "endorsements": 1491
  },
  "b5377116-0017-69b4-059e-79c488f86889": {
   "nexusId": 11941,
@@ -1480,23 +1527,6 @@
    }
   ]
  },
- "d07015de-33a8-6ee9-cda2-571c7bf39008": {
-  "nexusId": 15257,
-  "nexusName": "Wings Character Customization - WCC",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.93,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 499,
-  "requires": [
-   {
-    "name": "Aardi's Chest of Presents",
-    "nexusId": 21186,
-    "uuid": "08aaab4b-03b9-5dc1-bbc7-cdd80ff2084e"
-   }
-  ]
- },
  "761958a6-5c80-60ba-a050-9d1c80c18e55": {
   "nexusId": 23156,
   "nexusName": "Minthara's Immersive Redesign JP",
@@ -1538,6 +1568,24 @@
   "adult": false,
   "endorsements": 644
  },
+ "ea4f827e-2da8-616d-24f5-6882a126a25a": {
+  "nexusId": 22290,
+  "nexusName": "Dynamic Extra Encounters",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 199,
+  "requires": [
+   {
+    "name": "COLORS - Custom Rarities",
+    "nexusId": 22418,
+    "uuid": "91a2adb5-b303-c25f-3b40-1bdc8adc0478",
+    "notes": "HIGHLY RECOMMENDED - Displays Cursed Items Correctly."
+   }
+  ]
+ },
  "334ba284-8488-c63b-368e-82e514346958": {
   "nexusId": 19081,
   "nexusName": "Ember's Wardrobe",
@@ -1557,81 +1605,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 352
- },
- "1b215646-6200-451a-9c4a-b21406f69edd": {
-  "nexusId": 11639,
-  "nexusName": "Many More Monsters",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 1494
- },
- "da5d2ea8-51c2-42ba-8d0f-34b5b198a19e": {
-  "nexusId": 405,
-  "nexusName": "Metamagic Extended",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 1491
- },
- "54d6da6e-40c5-a338-1476-2ef340123eee": {
-  "nexusId": 14369,
-  "nexusName": "Actually Infernal Rapier",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Weapons",
-  "suggestedGroup": "Weapons",
-  "adult": false,
-  "endorsements": 376
- },
- "2d1ca631-35dd-3afa-8ca9-34f0f3e084e4": {
-  "nexusId": 12023,
-  "nexusName": "Cheaters Spell Scroll - Formerly Cheaters Ring",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 897
- },
- "ea4f827e-2da8-616d-24f5-6882a126a25a": {
-  "nexusId": 22290,
-  "nexusName": "Dynamic Extra Encounters",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 198,
-  "requires": [
-   {
-    "name": "COLORS - Custom Rarities",
-    "nexusId": 22418,
-    "uuid": "91a2adb5-b303-c25f-3b40-1bdc8adc0478",
-    "notes": "HIGHLY RECOMMENDED - Displays Cursed Items Correctly."
-   }
-  ]
- },
- "1b2f6885-ce5d-46e1-91c5-275b523fe469": {
-  "nexusId": 9756,
-  "nexusName": "Elven Weaponry - Longbows (RU)",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "User Interface",
-  "suggestedGroup": "User Interface",
-  "adult": false,
-  "endorsements": 51,
-  "requires": [
-   {
-    "name": "Elven Weaponry - Longbows and Quivers",
-    "nexusId": 4246,
-    "notes": "Необходимо"
-   }
-  ]
  },
  "6345e0b1-9e08-7421-ede3-5d2e625aaf3d": {
   "nexusId": 18472,
@@ -1658,6 +1631,53 @@
     "nexusId": 9024
    }
   ]
+ },
+ "54d6da6e-40c5-a338-1476-2ef340123eee": {
+  "nexusId": 14369,
+  "nexusName": "Actually Infernal Rapier",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
+  "adult": false,
+  "endorsements": 376
+ },
+ "2d1ca631-35dd-3afa-8ca9-34f0f3e084e4": {
+  "nexusId": 12023,
+  "nexusName": "Cheaters Spell Scroll - Formerly Cheaters Ring",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 897
+ },
+ "1b2f6885-ce5d-46e1-91c5-275b523fe469": {
+  "nexusId": 9756,
+  "nexusName": "Elven Weaponry - Longbows (RU)",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 51,
+  "requires": [
+   {
+    "name": "Elven Weaponry - Longbows and Quivers",
+    "nexusId": 4246,
+    "notes": "Необходимо"
+   }
+  ]
+ },
+ "8cf3e67f-3f3a-a787-6ceb-ad5fab9ce0e1": {
+  "nexusId": 18040,
+  "nexusName": "Tara Evolved",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 348
  },
  "cabed99e-5db6-4f0d-a69f-d49e8a20e663": {
   "nexusId": 6880,
@@ -1774,6 +1794,23 @@
   "adult": false,
   "endorsements": 559
  },
+ "f323b958-b845-4c79-b139-d39570658fbb": {
+  "nexusId": 11521,
+  "nexusName": "Necromancy Reanimated CH",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 16,
+  "requires": [
+   {
+    "name": "Necromancy Reanimated (Formerly Animate Dead Plus Plus)",
+    "nexusId": 642,
+    "notes": "简繁中文"
+   }
+  ]
+ },
  "eb263453-0cc2-4f0c-2375-f4e0f60e8a12": {
   "nexusId": 745,
   "nexusName": "No Press Any Key Menu",
@@ -1800,15 +1837,35 @@
    }
   ]
  },
- "8cf3e67f-3f3a-a787-6ceb-ad5fab9ce0e1": {
-  "nexusId": 18040,
-  "nexusName": "Tara Evolved",
+ "4db7fba5-b28c-abf1-29ab-8f9e1152b095": {
+  "nexusId": 18694,
+  "nexusName": "Squire Evolved",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Companions",
   "suggestedGroup": "Companions",
   "adult": false,
-  "endorsements": 348
+  "endorsements": 196
+ },
+ "2da3bc36-b4b2-4652-a611-3fe16527417e": {
+  "nexusId": 11061,
+  "nexusName": "Utut's Core Library",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 1117
+ },
+ "3f94216f-8cce-46f2-b358-46573518acfc": {
+  "nexusId": 19832,
+  "nexusName": "Wyll - Theo Solomon Banter",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Audio",
+  "suggestedGroup": "Audio",
+  "adult": false,
+  "endorsements": 567
  },
  "a74d34b5-899a-0a12-8afc-5ce33e3cfaaf": {
   "nexusId": 24512,
@@ -1819,6 +1876,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 0
+ },
+ "3539eba9-6d77-c53d-1009-b3c77c9cd04c": {
+  "nexusId": 12257,
+  "nexusName": "Alfira Joins The Party",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 830
  },
  "16b5fbb6-72fe-4a08-814a-87a9fc0b14bc": {
   "nexusId": 11172,
@@ -1848,6 +1915,16 @@
   "adult": false,
   "endorsements": 147
  },
+ "01296564-0f8a-19b0-e639-32f8e1d903a1": {
+  "nexusId": 19241,
+  "nexusName": "Eternal Queen Set_KOR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.9,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 17
+ },
  "e34f4a47-7015-bbd5-8940-0b94c597508f": {
   "nexusId": 13885,
   "nexusName": "FearTaylor's Camp Clothes",
@@ -1868,22 +1945,25 @@
   "adult": false,
   "endorsements": 1769
  },
- "f323b958-b845-4c79-b139-d39570658fbb": {
-  "nexusId": 11521,
-  "nexusName": "Necromancy Reanimated CH",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
+ "a87fe076-1873-4237-8cd7-e4febefd97c7": {
+  "nexusId": 23834,
+  "nexusName": "Never Dark Again - Give Arabella Komira's Locket (And Other Act 2 Tweaks)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 149
+ },
+ "0c50deb2-303c-4e00-9bc7-a60a347d6593": {
+  "nexusId": 3940,
+  "nexusName": "Object Character Support",
+  "matchKind": "exact",
+  "matchConfidence": 1,
   "nexusCategory": "Miscellaneous",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 16,
-  "requires": [
-   {
-    "name": "Necromancy Reanimated (Formerly Animate Dead Plus Plus)",
-    "nexusId": 642,
-    "notes": "简繁中文"
-   }
-  ]
+  "endorsements": 1619
  },
  "4909b11d-fa26-4fd0-8c5b-9d8612ca07db": {
   "nexusId": 12639,
@@ -1931,16 +2011,6 @@
    }
   ]
  },
- "4db7fba5-b28c-abf1-29ab-8f9e1152b095": {
-  "nexusId": 18694,
-  "nexusName": "Squire Evolved",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 196
- },
  "d903677e-f24b-48ec-ab20-98dcc116a371": {
   "nexusId": 2295,
   "nexusName": "UnlockLevelCurve-CHS",
@@ -1958,36 +2028,6 @@
    }
   ]
  },
- "2da3bc36-b4b2-4652-a611-3fe16527417e": {
-  "nexusId": 11061,
-  "nexusName": "Utut's Core Library",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Utilities",
-  "suggestedGroup": "Utilities",
-  "adult": false,
-  "endorsements": 1117
- },
- "3f94216f-8cce-46f2-b358-46573518acfc": {
-  "nexusId": 19832,
-  "nexusName": "Wyll - Theo Solomon Banter",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Audio",
-  "suggestedGroup": "Audio",
-  "adult": false,
-  "endorsements": 567
- },
- "3539eba9-6d77-c53d-1009-b3c77c9cd04c": {
-  "nexusId": 12257,
-  "nexusName": "Alfira Joins The Party",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 830
- },
  "639931a5-e4fc-4b25-92d2-7b7ffd2d4b40": {
   "nexusId": 9029,
   "nexusName": "Elven Weaponry - Tutorial Chest",
@@ -2004,16 +2044,6 @@
     "notes": "Just as example. Any other way to access the tutorial chest will work."
    }
   ]
- },
- "01296564-0f8a-19b0-e639-32f8e1d903a1": {
-  "nexusId": 19241,
-  "nexusName": "Eternal Queen Set_KOR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.9,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 17
  },
  "bad404aa-feed-a0ee-9999-feedfeed0002": {
   "nexusId": 936,
@@ -2085,132 +2115,6 @@
   "adult": false,
   "endorsements": 0
  },
- "a87fe076-1873-4237-8cd7-e4febefd97c7": {
-  "nexusId": 23834,
-  "nexusName": "Never Dark Again - Give Arabella Komira's Locket (And Other Act 2 Tweaks)",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 149
- },
- "0c50deb2-303c-4e00-9bc7-a60a347d6593": {
-  "nexusId": 3940,
-  "nexusName": "Object Character Support",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 1619
- },
- "20c00910-53ee-907c-6ece-957441bf8ce3": {
-  "nexusId": 20346,
-  "nexusName": "Dawnstar's Arcane Spells",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 238
- },
- "c6970cf1-0b51-6f7a-44ab-7f4a3ee100c0": {
-  "nexusId": 21645,
-  "nexusName": "A Nice Simple Hug - Longer Hug for Astarion - Act 2",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.92,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 276
- },
- "5afae2ed-cea2-ae90-11f2-6eb28c502fd9": {
-  "nexusId": 15387,
-  "nexusName": "Astarion Kisses Revamped",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 917
- },
- "2f44ca65-8a5d-26d7-9843-defd614fa2bd": {
-  "nexusId": 17493,
-  "nexusName": "G.A.L.E. - More Dead Spider Reactions",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.96,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 293
- },
- "ec1b65ea-36e9-4469-b01c-07b346a36500": {
-  "nexusId": 9607,
-  "nexusName": "Kylin's Piercings",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Accessories",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 2251
- },
- "4023c256-4242-4cd0-9afa-9026aaedf2d4": {
-  "nexusId": 416,
-  "nexusName": "Secret Scrolls",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 1983
- },
- "22a5106e-1ca0-4fd4-8814-18fad02e8d44": {
-  "nexusId": 5549,
-  "nexusName": "Tasha's Cauldron of Hairstyles",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 5150,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Mod Fixer",
-    "nexusId": 141,
-    "notes": "mandatory"
-   },
-   {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-    "notes": "mandatory"
-   }
-  ]
- },
- "296545d8-50a9-4e5f-83f2-d5e5ba52ee4b": {
-  "nexusId": 20353,
-  "nexusName": "Ultimate Cut Content Restoration Mod",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 442,
-  "requires": [
-   {
-    "name": "ImpUI_P8_Fork (ImprovedUI)",
-    "nexusId": 16649,
-    "notes": "This or the Patch 8 CC Fixes from the primary mod (please for the love of god not both)"
-   },
-   {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-    "notes": "This or the ImpUI P8 Fork (please for the love of god not both)"
-   }
-  ]
- },
  "344c8115-2630-4934-31a1-33adf8f4d58e": {
   "nexusId": 18685,
   "nexusName": "A Beautiful Webbing - Minthara's Romance Scene Unlocked",
@@ -2248,25 +2152,15 @@
   "adult": false,
   "endorsements": 536
  },
- "621674a3-2366-a411-a746-0ff51b931d90": {
-  "nexusId": 1416,
-  "nexusName": "Better Containers",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.91,
-  "nexusCategory": "User Interface",
-  "suggestedGroup": "User Interface",
-  "adult": false,
-  "endorsements": 14816
- },
- "4374c4e1-be02-d9c9-b47a-429f0504f76b": {
-  "nexusId": 12559,
-  "nexusName": "Ember's Lute (Celestial Instruments)",
+ "20c00910-53ee-907c-6ece-957441bf8ce3": {
+  "nexusId": 20346,
+  "nexusName": "Dawnstar's Arcane Spells",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Visuals",
+  "nexusCategory": "Spells",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 208
+  "endorsements": 238
  },
  "0c036a05-f3e4-4422-87bd-eadadf96c161": {
   "nexusId": 167,
@@ -2276,7 +2170,7 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 9404,
+  "endorsements": 9420,
   "requires": [
    {
     "name": "5e Spells",
@@ -2286,32 +2180,35 @@
    }
   ]
  },
- "ad5805ea-45e8-ced4-b304-373dfd86f02b": {
-  "nexusId": 20345,
-  "nexusName": "Drunken Humming",
+ "c6970cf1-0b51-6f7a-44ab-7f4a3ee100c0": {
+  "nexusId": 21645,
+  "nexusName": "A Nice Simple Hug - Longer Hug for Astarion - Act 2",
   "matchKind": "fuzzy",
-  "matchConfidence": 0.93,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
+  "matchConfidence": 0.92,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
   "adult": false,
-  "endorsements": 181
+  "endorsements": 276
  },
- "76ff2472-bd2d-f645-cd23-3cef07559f6f": {
-  "nexusId": 4706,
-  "nexusName": "Izzli's Pigments - A Dye Mod",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
+ "5afae2ed-cea2-ae90-11f2-6eb28c502fd9": {
+  "nexusId": 15387,
+  "nexusName": "Astarion Kisses Revamped",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 1907,
-  "requires": [
-   {
-    "name": "AV Item Shipment Framework (AV ISF)",
-    "nexusId": 8295,
-    "notes": "Not required, but definitely recommended!"
-   }
-  ]
+  "endorsements": 917
+ },
+ "2f44ca65-8a5d-26d7-9843-defd614fa2bd": {
+  "nexusId": 17493,
+  "nexusName": "G.A.L.E. - More Dead Spider Reactions",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.96,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 293
  },
  "46818a22-079d-4346-8b3f-3f47dbeeecf9": {
   "nexusId": 8636,
@@ -2322,6 +2219,16 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 1544
+ },
+ "ec1b65ea-36e9-4469-b01c-07b346a36500": {
+  "nexusId": 9607,
+  "nexusName": "Kylin's Piercings",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 2251
  },
  "4253e2c0-a1e2-f8ce-92ce-f5365e8f4c61": {
   "nexusId": 11456,
@@ -2405,15 +2312,71 @@
    }
   ]
  },
- "df71caf0-0731-b9b9-c20d-790870a20368": {
-  "nexusId": 12649,
-  "nexusName": "Show me my Dream Guardian",
+ "4023c256-4242-4cd0-9afa-9026aaedf2d4": {
+  "nexusId": 416,
+  "nexusName": "Secret Scrolls",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Visuals",
+  "nexusCategory": "Spells",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 418
+  "endorsements": 1983
+ },
+ "22a5106e-1ca0-4fd4-8814-18fad02e8d44": {
+  "nexusId": 5549,
+  "nexusName": "Tasha's Cauldron of Hairstyles",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 5150,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "mandatory"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "mandatory"
+   }
+  ]
+ },
+ "296545d8-50a9-4e5f-83f2-d5e5ba52ee4b": {
+  "nexusId": 20353,
+  "nexusName": "Ultimate Cut Content Restoration Mod",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 444,
+  "requires": [
+   {
+    "name": "ImpUI_P8_Fork (ImprovedUI)",
+    "nexusId": 16649,
+    "notes": "This or the Patch 8 CC Fixes from the primary mod (please for the love of god not both)"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "This or the ImpUI P8 Fork (please for the love of god not both)"
+   }
+  ]
+ },
+ "621674a3-2366-a411-a746-0ff51b931d90": {
+  "nexusId": 1416,
+  "nexusName": "Better Containers",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 14816
  },
  "3060ca1e-6a6a-079e-e999-7398f55bee4b": {
   "nexusId": 9702,
@@ -2432,15 +2395,15 @@
    }
   ]
  },
- "b8efd00b-375b-5f97-e28f-c33d3ef7311a": {
-  "nexusId": 2037,
-  "nexusName": "Enhanced World Tooltips",
+ "4374c4e1-be02-d9c9-b47a-429f0504f76b": {
+  "nexusId": 12559,
+  "nexusName": "Ember's Lute (Celestial Instruments)",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "User Interface",
-  "suggestedGroup": "User Interface",
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
   "adult": false,
-  "endorsements": 1827
+  "endorsements": 208
  },
  "16f151f9-fddc-fb68-afec-11e9f368bc55": {
   "nexusId": 1658,
@@ -2451,6 +2414,155 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 1755
+ },
+ "e8766cb7-3791-4fd9-ba47-1ff7880082d8": {
+  "nexusId": 6068,
+  "nexusName": "Hairstyles of Faerun",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 3104,
+  "requires": [
+   {
+    "name": "P4 Patches",
+    "nexusId": 353,
+    "notes": "Recommended to get horn colors for non-TIF races"
+   }
+  ]
+ },
+ "ad5805ea-45e8-ced4-b304-373dfd86f02b": {
+  "nexusId": 20345,
+  "nexusName": "Drunken Humming",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 181
+ },
+ "c7204c46-3ce4-3c36-c262-c65bd5001b65": {
+  "nexusId": 16493,
+  "nexusName": "Iron Throne Rescue Extended",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 235
+ },
+ "76ff2472-bd2d-f645-cd23-3cef07559f6f": {
+  "nexusId": 4706,
+  "nexusName": "Izzli's Pigments - A Dye Mod",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1907,
+  "requires": [
+   {
+    "name": "AV Item Shipment Framework (AV ISF)",
+    "nexusId": 8295,
+    "notes": "Not required, but definitely recommended!"
+   }
+  ]
+ },
+ "9b4ebeae-112c-dccf-ca35-b7c1197aee01": {
+  "nexusId": 4023,
+  "nexusName": "Kay's Hair Mod",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1283,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Required"
+   },
+   {
+    "name": "P4 Horn Makeup Lip and Tattoo Colours (Custom and Vanilla)",
+    "nexusId": 340,
+    "notes": "Requires the \"Vanilla CC Colours for All Sections\" file to enable Horn Tip Colour for other races."
+   }
+  ]
+ },
+ "df71caf0-0731-b9b9-c20d-790870a20368": {
+  "nexusId": 12649,
+  "nexusName": "Show me my Dream Guardian",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 418
+ },
+ "fd3e90d4-1355-5fbb-b915-a4379ce42bce": {
+  "nexusId": 13525,
+  "nexusName": "Slayer Assets - Dark Urge Dragonborn CC",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 338,
+  "requires": [
+   {
+    "name": "Crazy Color pack",
+    "nexusId": 12868,
+    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
+    "notes": "For Colors"
+   },
+   {
+    "name": "Dragonborn Extra Tabs - Horns and Hair",
+    "nexusId": 12876,
+    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
+    "notes": "Opens Horns and Hair tabs"
+   }
+  ]
+ },
+ "a43f8334-d0cd-b6b9-4c9f-3914e868e6fa": {
+  "nexusId": 2417,
+  "nexusName": "Better Hotbar 2",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 10392,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "ImpUI Patch 8 Slim"
+   }
+  ]
+ },
+ "63d49a75-99e4-4163-8e43-16fd7e1fbb02": {
+  "nexusId": 18904,
+  "nexusName": "Condition Fixer",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 210
+ },
+ "b8efd00b-375b-5f97-e28f-c33d3ef7311a": {
+  "nexusId": 2037,
+  "nexusName": "Enhanced World Tooltips",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 1827
  },
  "831f1b5d-8837-4cf7-87aa-3c48885e81c4": {
   "nexusId": 5485,
@@ -2479,23 +2591,6 @@
   "adult": false,
   "endorsements": 1967
  },
- "e8766cb7-3791-4fd9-ba47-1ff7880082d8": {
-  "nexusId": 6068,
-  "nexusName": "Hairstyles of Faerun",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 3104,
-  "requires": [
-   {
-    "name": "P4 Patches",
-    "nexusId": 353,
-    "notes": "Recommended to get horn colors for non-TIF races"
-   }
-  ]
- },
  "6dff611f-9f2e-45b1-b43e-06b62753cff9": {
   "nexusId": 3444,
   "nexusName": "Boring Dyes",
@@ -2510,39 +2605,6 @@
     "name": "AV Item Shipment Framework (AV ISF)",
     "nexusId": 8295,
     "notes": "optional: to spawn dye bag directly to camp chest &lt;3"
-   }
-  ]
- },
- "c7204c46-3ce4-3c36-c262-c65bd5001b65": {
-  "nexusId": 16493,
-  "nexusName": "Iron Throne Rescue Extended",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 235
- },
- "9b4ebeae-112c-dccf-ca35-b7c1197aee01": {
-  "nexusId": 4023,
-  "nexusName": "Kay's Hair Mod",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 1283,
-  "requires": [
-   {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-    "notes": "Required"
-   },
-   {
-    "name": "P4 Horn Makeup Lip and Tattoo Colours (Custom and Vanilla)",
-    "nexusId": 340,
-    "notes": "Requires the \"Vanilla CC Colours for All Sections\" file to enable Horn Tip Colour for other races."
    }
   ]
  },
@@ -2631,29 +2693,15 @@
    }
   ]
  },
- "fd3e90d4-1355-5fbb-b915-a4379ce42bce": {
-  "nexusId": 13525,
-  "nexusName": "Slayer Assets - Dark Urge Dragonborn CC",
+ "f716bc99-6684-c720-9f89-44cf26d9865f": {
+  "nexusId": 17399,
+  "nexusName": "Rugan Restored - A Sweet Sight",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
   "adult": false,
-  "endorsements": 338,
-  "requires": [
-   {
-    "name": "Crazy Color pack",
-    "nexusId": 12868,
-    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
-    "notes": "For Colors"
-   },
-   {
-    "name": "Dragonborn Extra Tabs - Horns and Hair",
-    "nexusId": 12876,
-    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
-    "notes": "Opens Horns and Hair tabs"
-   }
-  ]
+  "endorsements": 384
  },
  "6774b964-dbe9-5d04-c049-06f2d1be391d": {
   "nexusId": 6635,
@@ -2741,21 +2789,20 @@
   "adult": false,
   "endorsements": 101
  },
- "a43f8334-d0cd-b6b9-4c9f-3914e868e6fa": {
-  "nexusId": 2417,
-  "nexusName": "Better Hotbar 2",
+ "76307fbd-505d-4247-b263-0392f291e885": {
+  "nexusId": 12628,
+  "nexusName": "Awakened Blood of Lathander",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "User Interface",
-  "suggestedGroup": "User Interface",
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 10392,
+  "endorsements": 454,
   "requires": [
    {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-    "notes": "ImpUI Patch 8 Slim"
+    "name": "Vlad's Grimoire - Spell VFX Library",
+    "nexusId": 1820,
+    "notes": "(required for Bloodcursed Scorchray)"
    }
   ]
  },
@@ -2769,15 +2816,15 @@
   "adult": false,
   "endorsements": 371
  },
- "63d49a75-99e4-4163-8e43-16fd7e1fbb02": {
-  "nexusId": 18904,
-  "nexusName": "Condition Fixer",
+ "05827e11-37eb-4820-8916-1fa2060a84c7": {
+  "nexusId": 1870,
+  "nexusName": "Deity Tag Activator",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
   "adult": false,
-  "endorsements": 210
+  "endorsements": 1854
  },
  "e3867982-8e20-4f2a-9066-9f170b19baa8": {
   "nexusId": 9793,
@@ -2849,15 +2896,27 @@
   "adult": false,
   "endorsements": 385
  },
- "f716bc99-6684-c720-9f89-44cf26d9865f": {
-  "nexusId": 17399,
-  "nexusName": "Rugan Restored - A Sweet Sight",
+ "3e303d29-c44c-4355-b4da-35edb432ad08": {
+  "nexusId": 17919,
+  "nexusName": "Valkrana's Necrobroker - Wizard Subclass",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
   "adult": false,
-  "endorsements": 384
+  "endorsements": 219,
+  "requires": [
+   {
+    "name": "Command Undead - Necromancy Subclass Feature",
+    "nexusId": 6291,
+    "notes": "Required for level 14 feature. Load before Necrobroker."
+   },
+   {
+    "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
+    "nexusId": 1258,
+    "notes": "Required"
+   }
+  ]
  },
  "4176096c-ea85-4c61-a162-0f84409bd8db": {
   "nexusId": 4718,
@@ -2886,23 +2945,6 @@
    }
   ]
  },
- "76307fbd-505d-4247-b263-0392f291e885": {
-  "nexusId": 12628,
-  "nexusName": "Awakened Blood of Lathander",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 454,
-  "requires": [
-   {
-    "name": "Vlad's Grimoire - Spell VFX Library",
-    "nexusId": 1820,
-    "notes": "(required for Bloodcursed Scorchray)"
-   }
-  ]
- },
  "043cec67-c265-477a-80d3-f15c1cec1ae9": {
   "nexusId": 17062,
   "nexusName": "Compatibility Framework Patch for Modded Subclasses",
@@ -2926,6 +2968,16 @@
    }
   ]
  },
+ "7a8d7a63-07c7-819b-9a00-49a887367d81": {
+  "nexusId": 10292,
+  "nexusName": "Crystal Crown - Gem Dragonborn CC",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 645
+ },
  "391f8c7c-d49d-ee1c-30a4-b077843ac94b": {
   "nexusId": 18683,
   "nexusName": "Dark Urge - Slayer Equipments and Spells_KOR",
@@ -2935,16 +2987,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 6
- },
- "05827e11-37eb-4820-8916-1fa2060a84c7": {
-  "nexusId": 1870,
-  "nexusName": "Deity Tag Activator",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 1854
  },
  "139c922a-7657-4514-b393-0f08e992c985": {
   "nexusId": 1394,
@@ -2963,6 +3005,16 @@
    }
   ]
  },
+ "4de3b7a4-cdb7-68c7-a223-74261907682c": {
+  "nexusId": 19472,
+  "nexusName": "Flind Evolved",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 102
+ },
  "8007e4f8-4cf1-4077-9953-3e67e456329c": {
   "nexusId": 22731,
   "nexusName": "If Fate Chose Differently - Wyll Pact Points Overhaul (WCU Mod 4)",
@@ -2972,6 +3024,23 @@
   "suggestedGroup": "Companions",
   "adult": false,
   "endorsements": 280
+ },
+ "71820a46-bb56-9758-3584-fdd6bd4dad67": {
+  "nexusId": 9479,
+  "nexusName": "Koralina's Aesthetics - Head Collection",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1285,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "468e4135-72b3-44ff-a15b-3374b502b46d": {
   "nexusId": 5706,
@@ -2992,6 +3061,41 @@
     "name": "Unique Tav Custom Appearance",
     "nexusId": 2754,
     "notes": "Optional"
+   }
+  ]
+ },
+ "415363fd-bef0-5376-658c-2540fd8e37b7": {
+  "nexusId": 10761,
+  "nexusName": "Pearl - Seadragon - Dragonborn CC",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 532,
+  "requires": [
+   {
+    "name": "Crazy Color pack",
+    "nexusId": 12868,
+    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
+    "notes": "For Colors"
+   },
+   {
+    "name": "Dragonborn Extra Tabs - Horns and Hair",
+    "nexusId": 12876,
+    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
+    "notes": "Opens Horns and Hair tabs"
+   },
+   {
+    "name": "P4 Patches",
+    "nexusId": 353,
+    "notes": "Restore VFX effects for eyes. You need Patches_for_VFX_Heads file "
+   },
+   {
+    "name": "Seadragon Assets - Dragonborn CC",
+    "nexusId": 13324,
+    "uuid": "ccfff6aa-9e2d-dd90-b49a-53b30e6255c7",
+    "notes": "Assets, mats, textures there"
    }
   ]
  },
@@ -3037,28 +3141,6 @@
   "adult": false,
   "endorsements": 615
  },
- "3e303d29-c44c-4355-b4da-35edb432ad08": {
-  "nexusId": 17919,
-  "nexusName": "Valkrana's Necrobroker - Wizard Subclass",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 219,
-  "requires": [
-   {
-    "name": "Command Undead - Necromancy Subclass Feature",
-    "nexusId": 6291,
-    "notes": "Required for level 14 feature. Load before Necrobroker."
-   },
-   {
-    "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
-    "nexusId": 1258,
-    "notes": "Required"
-   }
-  ]
- },
  "e65d6c00-4152-4358-a475-dee07b01f116": {
   "nexusId": 10835,
   "nexusName": "Bububull's hair pack 02",
@@ -3078,16 +3160,6 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 497
- },
- "7a8d7a63-07c7-819b-9a00-49a887367d81": {
-  "nexusId": 10292,
-  "nexusName": "Crystal Crown - Gem Dragonborn CC",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 645
  },
  "93661131-47d9-415a-996f-a590f3d3397d": {
   "nexusId": 5061,
@@ -3109,32 +3181,51 @@
   "adult": false,
   "endorsements": 1241
  },
- "4de3b7a4-cdb7-68c7-a223-74261907682c": {
-  "nexusId": 19472,
-  "nexusName": "Flind Evolved",
+ "c2f1a230-8c0c-481b-9ab2-987e27d7db05": {
+  "nexusId": 15044,
+  "nexusName": "Feats Overhaul",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 355,
+  "requires": [
+   {
+    "name": "Goon's Library - Passives Functions Spells and More",
+    "nexusId": 12834
+   }
+  ]
+ },
+ "2b6f55ad-8c57-5e7a-ab19-7c07fc193f68": {
+  "nexusId": 16702,
+  "nexusName": "Florrick - Dirt B Gone",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 209
+ },
+ "77165a7d-6194-4a36-b044-91b3356fb234": {
+  "nexusId": 23439,
+  "nexusName": "Goon's Inheritance Fixes",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 84
+ },
+ "593b02e9-e8c6-8e0e-f1b5-9487f3182d52": {
+  "nexusId": 16040,
+  "nexusName": "Justice For Nessa",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Companions",
   "suggestedGroup": "Companions",
   "adult": false,
-  "endorsements": 102
- },
- "71820a46-bb56-9758-3584-fdd6bd4dad67": {
-  "nexusId": 9479,
-  "nexusName": "Koralina's Aesthetics - Head Collection",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 1285,
-  "requires": [
-   {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
-   }
-  ]
+  "endorsements": 363
  },
  "fd2dbc21-08cf-473b-8d42-3beacea86b72": {
   "nexusId": 20134,
@@ -3146,38 +3237,26 @@
   "adult": false,
   "endorsements": 224
  },
- "415363fd-bef0-5376-658c-2540fd8e37b7": {
-  "nexusId": 10761,
-  "nexusName": "Pearl - Seadragon - Dragonborn CC",
+ "56bee93d-ecd1-4680-cca1-44ee52514b9c": {
+  "nexusId": 10343,
+  "nexusName": "Rathgor - Reforged  head - Dark Urge Dragonborn CC",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 532,
+  "endorsements": 549,
   "requires": [
-   {
-    "name": "Crazy Color pack",
-    "nexusId": 12868,
-    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
-    "notes": "For Colors"
-   },
-   {
-    "name": "Dragonborn Extra Tabs - Horns and Hair",
-    "nexusId": 12876,
-    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
-    "notes": "Opens Horns and Hair tabs"
-   },
    {
     "name": "P4 Patches",
     "nexusId": 353,
-    "notes": "Restore VFX effects for eyes. You need Patches_for_VFX_Heads file "
+    "notes": "Restore VFX effects for eyes. You need Patches_for_VFX_Heads file"
    },
    {
-    "name": "Seadragon Assets - Dragonborn CC",
-    "nexusId": 13324,
-    "uuid": "ccfff6aa-9e2d-dd90-b49a-53b30e6255c7",
-    "notes": "Assets, mats, textures there"
+    "name": "Reforged Assets - Dark Urge Dragonborn CC",
+    "nexusId": 13313,
+    "uuid": "68df2229-1684-00ba-49a7-68ad954a64e6",
+    "notes": "Assets inside"
    }
   ]
  },
@@ -3214,6 +3293,26 @@
     "notes": "1.11.0+"
    }
   ]
+ },
+ "f1f6fbec-f087-c70f-a28f-4437385f3433": {
+  "nexusId": 24191,
+  "nexusName": "Requiem for the Absolute - Dynamic Encounters",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 94
+ },
+ "67933c1b-4a1c-8c30-74c7-03638ceb5d65": {
+  "nexusId": 22287,
+  "nexusName": "Sazza Evolved",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 103
  },
  "cef3bd38-43eb-4e9e-b3ba-8a96ddcb0e38": {
   "nexusId": 2657,
@@ -3259,6 +3358,29 @@
   "adult": false,
   "endorsements": 360
  },
+ "1af5bb45-412a-1f20-8bcb-6d5b6094a98c": {
+  "nexusId": 5549,
+  "nexusName": "Tasha's Cauldron of Hairstyles",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 5150,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "mandatory"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "mandatory"
+   }
+  ]
+ },
  "011d7668-c586-4104-8a14-89c46adcfc74": {
   "nexusId": 3925,
   "nexusName": "TC Dyes",
@@ -3269,6 +3391,41 @@
   "adult": false,
   "endorsements": 2487
  },
+ "0571ff38-d7c9-f409-4591-33bb086c5f52": {
+  "nexusId": 11622,
+  "nexusName": "Vexa - Dark Urge Slayer Dragonborn CC",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 400,
+  "requires": [
+   {
+    "name": "Crazy Color pack",
+    "nexusId": 12868,
+    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
+    "notes": "For Colors"
+   },
+   {
+    "name": "Dragonborn Extra Tabs - Horns and Hair",
+    "nexusId": 12876,
+    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
+    "notes": "Opens Horns and Hair tabs"
+   },
+   {
+    "name": "P4 Patches",
+    "nexusId": 353,
+    "notes": "Restore VFX effects for eyes. You need Patches_for_VFX_Heads file "
+   },
+   {
+    "name": "Slayer Assets - Dark Urge Dragonborn CC",
+    "nexusId": 13525,
+    "uuid": "fd3e90d4-1355-5fbb-b915-a4379ce42bce",
+    "notes": "Assets"
+   }
+  ]
+ },
  "697e3c67-8157-d34f-3ecc-c5c4f683ba00": {
   "nexusId": 16639,
   "nexusName": "Brynna - Andrick - Edowin Edits",
@@ -3278,6 +3435,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 275
+ },
+ "271d5d51-20f7-41d1-88ec-805afef41b19": {
+  "nexusId": 13833,
+  "nexusName": "Awakened Spear of Shar",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
+  "adult": false,
+  "endorsements": 294
  },
  "342ff937-c053-f814-b496-6b52990e27a6": {
   "nexusId": 15879,
@@ -3481,31 +3648,15 @@
   "adult": false,
   "endorsements": 93
  },
- "c2f1a230-8c0c-481b-9ab2-987e27d7db05": {
-  "nexusId": 15044,
-  "nexusName": "Feats Overhaul",
+ "d412b8d3-2e9c-c1cc-9013-de87438d2fae": {
+  "nexusId": 21599,
+  "nexusName": "Friends With Benefits - Approval Rating Buffs",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 355,
-  "requires": [
-   {
-    "name": "Goon's Library - Passives Functions Spells and More",
-    "nexusId": 12834
-   }
-  ]
- },
- "2b6f55ad-8c57-5e7a-ab19-7c07fc193f68": {
-  "nexusId": 16702,
-  "nexusName": "Florrick - Dirt B Gone",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 209
+  "endorsements": 185
  },
  "49f60f92-cde9-4621-aeae-7a5c9d412c03": {
   "nexusId": 5317,
@@ -3551,16 +3702,6 @@
    }
   ]
  },
- "77165a7d-6194-4a36-b044-91b3356fb234": {
-  "nexusId": 23439,
-  "nexusName": "Goon's Inheritance Fixes",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 84
- },
  "9c09be69-50e8-cfcf-cea9-1576947a6a2d": {
   "nexusId": 22614,
   "nexusName": "No Wound Flares During Party Banter",
@@ -3590,16 +3731,6 @@
   "suggestedGroup": "User Interface",
   "adult": false,
   "endorsements": 66
- },
- "593b02e9-e8c6-8e0e-f1b5-9487f3182d52": {
-  "nexusId": 16040,
-  "nexusName": "Justice For Nessa",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 363
  },
  "0570792d-f161-433d-b7b9-a65c2bdd58db": {
   "nexusId": 17702,
@@ -3644,6 +3775,54 @@
    }
   ]
  },
+ "2c92a4e4-a565-a60d-df27-120fbe28dce4": {
+  "nexusId": 24088,
+  "nexusName": "Level 9 Hotbar Slots",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 66
+ },
+ "4cd3ad72-b261-9f3d-6191-f4af18d069ca": {
+  "nexusId": 11456,
+  "nexusName": "Mantis' Face Preset Collections",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.94,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 3935,
+  "requires": [
+   {
+    "name": "Less Wrinkled Expression and Forehead for Face",
+    "nexusId": 1058,
+    "notes": "OPTIONAL - If you don't want the expression wrinkles to be so prominent. "
+   },
+   {
+    "name": "P4 Patches",
+    "nexusId": 353,
+    "notes": "OPTIONAL - 'Patches_for_VFX_Heads' for speak with dead VFX."
+   },
+   {
+    "name": "Vanilla Enhanced - A Simple ReShade Preset",
+    "nexusId": 4577,
+    "notes": "OPTIONAL - 'Baratheon' preset for same ReShade preset I use in my photos."
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "REQUIRED"
+   },
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "REQUIRED"
+   }
+  ]
+ },
  "93c6116d-631a-cdc4-c0d3-37c568de4b76": {
   "nexusId": 2786,
   "nexusName": "Mystic Class",
@@ -3674,29 +3853,6 @@
   "adult": false,
   "endorsements": 842
  },
- "56bee93d-ecd1-4680-cca1-44ee52514b9c": {
-  "nexusId": 10343,
-  "nexusName": "Rathgor - Reforged  head - Dark Urge Dragonborn CC",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 549,
-  "requires": [
-   {
-    "name": "P4 Patches",
-    "nexusId": 353,
-    "notes": "Restore VFX effects for eyes. You need Patches_for_VFX_Heads file"
-   },
-   {
-    "name": "Reforged Assets - Dark Urge Dragonborn CC",
-    "nexusId": 13313,
-    "uuid": "68df2229-1684-00ba-49a7-68ad954a64e6",
-    "notes": "Assets inside"
-   }
-  ]
- },
  "776e25bb-6128-479d-8923-089146901e46": {
   "nexusId": 10924,
   "nexusName": "5e Reckless Attack",
@@ -3717,16 +3873,6 @@
   "adult": false,
   "endorsements": 590
  },
- "f1f6fbec-f087-c70f-a28f-4437385f3433": {
-  "nexusId": 24191,
-  "nexusName": "Requiem for the Absolute - Dynamic Encounters",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 94
- },
  "7072652d-7832-8125-88ce-95d00d9a8a66": {
   "nexusId": 11708,
   "nexusName": "Rox's Heads",
@@ -3736,16 +3882,6 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 180
- },
- "67933c1b-4a1c-8c30-74c7-03638ceb5d65": {
-  "nexusId": 22287,
-  "nexusName": "Sazza Evolved",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 103
  },
  "78753062-b430-4cbf-9e5a-4c3a87cf224a": {
   "nexusId": 3423,
@@ -3800,29 +3936,6 @@
    }
   ]
  },
- "1af5bb45-412a-1f20-8bcb-6d5b6094a98c": {
-  "nexusId": 5549,
-  "nexusName": "Tasha's Cauldron of Hairstyles",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 5150,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Mod Fixer",
-    "nexusId": 141,
-    "notes": "mandatory"
-   },
-   {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-    "notes": "mandatory"
-   }
-  ]
- },
  "5d1585fa-973a-5721-8bce-4bfbbc84072a": {
   "nexusId": 17598,
   "nexusName": "Use 5e Spells with Mystra's Spells",
@@ -3837,41 +3950,6 @@
     "name": "5e Spells",
     "nexusId": 125,
     "uuid": "33b799a4-c2ad-ad84-bc01-4ed5496fb410"
-   }
-  ]
- },
- "0571ff38-d7c9-f409-4591-33bb086c5f52": {
-  "nexusId": 11622,
-  "nexusName": "Vexa - Dark Urge Slayer Dragonborn CC",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 400,
-  "requires": [
-   {
-    "name": "Crazy Color pack",
-    "nexusId": 12868,
-    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
-    "notes": "For Colors"
-   },
-   {
-    "name": "Dragonborn Extra Tabs - Horns and Hair",
-    "nexusId": 12876,
-    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
-    "notes": "Opens Horns and Hair tabs"
-   },
-   {
-    "name": "P4 Patches",
-    "nexusId": 353,
-    "notes": "Restore VFX effects for eyes. You need Patches_for_VFX_Heads file "
-   },
-   {
-    "name": "Slayer Assets - Dark Urge Dragonborn CC",
-    "nexusId": 13525,
-    "uuid": "fd3e90d4-1355-5fbb-b915-a4379ce42bce",
-    "notes": "Assets"
    }
   ]
  },
@@ -3891,15 +3969,45 @@
    }
   ]
  },
- "271d5d51-20f7-41d1-88ec-805afef41b19": {
-  "nexusId": 13833,
-  "nexusName": "Awakened Spear of Shar",
+ "10648c86-4837-498e-9a82-bc77f16e518c": {
+  "nexusId": 1087,
+  "nexusName": "Arcanist Feat",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.92,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 399
+ },
+ "7b5ed0e6-94fe-40e8-842d-f65f4ed25f05": {
+  "nexusId": 10922,
+  "nexusName": "Automated Summons",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.94,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 423
+ },
+ "dc4702de-e7e8-4c2e-8c9d-9fd67139988e": {
+  "nexusId": 20247,
+  "nexusName": "Automatic Magical Secrets Extender",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Weapons",
-  "suggestedGroup": "Weapons",
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 294
+  "endorsements": 119
+ },
+ "cb93bf8a-cebc-cd54-7705-01d531e2341b": {
+  "nexusId": 20056,
+  "nexusName": "Bernard Evolved",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 121
  },
  "1ae4224b-23fc-dafe-06e4-fb251d1919bd": {
   "nexusId": 1893,
@@ -3910,6 +4018,16 @@
   "suggestedGroup": "User Interface",
   "adult": false,
   "endorsements": 3277
+ },
+ "a719abd8-3ede-4f72-b1db-7686be26c8e5": {
+  "nexusId": 3810,
+  "nexusName": "Big Dwarven Beards",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 901
  },
  "442d5b05-28f5-ea9f-8540-e22fa9e4f4d6": {
   "nexusId": 14720,
@@ -4022,15 +4140,15 @@
    }
   ]
  },
- "d412b8d3-2e9c-c1cc-9013-de87438d2fae": {
-  "nexusId": 21599,
-  "nexusName": "Friends With Benefits - Approval Rating Buffs",
+ "1a8d03c2-e6af-577a-fb58-8c454e07c4f0": {
+  "nexusId": 19763,
+  "nexusName": "Florrick Is Not Dumb",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
+  "nexusCategory": "Quests",
+  "suggestedGroup": "Quests",
   "adult": false,
-  "endorsements": 185
+  "endorsements": 231
  },
  "ba4e395a-674a-4443-a7a5-0afad2f17326": {
   "nexusId": 18642,
@@ -4069,15 +4187,22 @@
   "adult": false,
   "endorsements": 204
  },
- "2c92a4e4-a565-a60d-df27-120fbe28dce4": {
-  "nexusId": 24088,
-  "nexusName": "Level 9 Hotbar Slots",
+ "c635ec91-b4da-449d-ba6a-6799eeba769f": {
+  "nexusId": 9359,
+  "nexusName": "Interesting Origins",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "User Interface",
-  "suggestedGroup": "User Interface",
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 66
+  "endorsements": 931,
+  "requires": [
+   {
+    "name": "Legacy of Death - True Dark Urge Experience",
+    "nexusId": 7030,
+    "notes": "Not required, but supported"
+   }
+  ]
  },
  "ac62681a-1188-aef1-d579-8dd1874be393": {
   "nexusId": 10692,
@@ -4089,44 +4214,6 @@
   "adult": false,
   "endorsements": 655
  },
- "4cd3ad72-b261-9f3d-6191-f4af18d069ca": {
-  "nexusId": 11456,
-  "nexusName": "Mantis' Face Preset Collections",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.94,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 3935,
-  "requires": [
-   {
-    "name": "Less Wrinkled Expression and Forehead for Face",
-    "nexusId": 1058,
-    "notes": "OPTIONAL - If you don't want the expression wrinkles to be so prominent. "
-   },
-   {
-    "name": "P4 Patches",
-    "nexusId": 353,
-    "notes": "OPTIONAL - 'Patches_for_VFX_Heads' for speak with dead VFX."
-   },
-   {
-    "name": "Vanilla Enhanced - A Simple ReShade Preset",
-    "nexusId": 4577,
-    "notes": "OPTIONAL - 'Baratheon' preset for same ReShade preset I use in my photos."
-   },
-   {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-    "notes": "REQUIRED"
-   },
-   {
-    "name": "Baldur's Gate 3 Mod Fixer",
-    "nexusId": 141,
-    "notes": "REQUIRED"
-   }
-  ]
- },
  "7ddddd0f-6b71-4565-bbd1-a7183ae90d04": {
   "nexusId": 443,
   "nexusName": "Modular Equipment",
@@ -4136,6 +4223,26 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 5872
+ },
+ "ca8bfe06-88ec-a4e7-b49e-44eb5658f434": {
+  "nexusId": 24342,
+  "nexusName": "Native Mod Configuration Menu",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 47
+ },
+ "ee953702-9f2a-ea1f-5618-e90d6f1dd2c4": {
+  "nexusId": 21343,
+  "nexusName": "Pooldripp Evolved",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 59
  },
  "1a46087f-d926-4a4e-ac55-49058ced5618": {
   "nexusId": 21777,
@@ -4154,6 +4261,16 @@
     "notes": "1.39+"
    }
   ]
+ },
+ "3d96b5d0-aa63-48ba-bff3-cfddbc20d2d7": {
+  "nexusId": 10278,
+  "nexusName": "softer hair and beards",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.97,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1794
  },
  "a2ffd0e4-c407-8642-2611-c934ea0b0a77": {
   "nexusId": 377,
@@ -4201,36 +4318,6 @@
   "adult": false,
   "endorsements": 622
  },
- "10648c86-4837-498e-9a82-bc77f16e518c": {
-  "nexusId": 1087,
-  "nexusName": "Arcanist Feat",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.92,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 398
- },
- "7b5ed0e6-94fe-40e8-842d-f65f4ed25f05": {
-  "nexusId": 10922,
-  "nexusName": "Automated Summons",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.94,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 423
- },
- "dc4702de-e7e8-4c2e-8c9d-9fd67139988e": {
-  "nexusId": 20247,
-  "nexusName": "Automatic Magical Secrets Extender",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 119
- },
  "b993354c-4a77-2cdb-0301-c62d8a23d126": {
   "nexusId": 14394,
   "nexusName": "Barrel Tweaks",
@@ -4240,26 +4327,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 185
- },
- "cb93bf8a-cebc-cd54-7705-01d531e2341b": {
-  "nexusId": 20056,
-  "nexusName": "Bernard Evolved",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 121
- },
- "a719abd8-3ede-4f72-b1db-7686be26c8e5": {
-  "nexusId": 3810,
-  "nexusName": "Big Dwarven Beards",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.91,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 901
  },
  "95af5329-5b26-4647-bc7d-87b743ad2eb1": {
   "nexusId": 24569,
@@ -4376,16 +4443,6 @@
   "adult": false,
   "endorsements": 43
  },
- "1a8d03c2-e6af-577a-fb58-8c454e07c4f0": {
-  "nexusId": 19763,
-  "nexusName": "Florrick Is Not Dumb",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Quests",
-  "suggestedGroup": "Quests",
-  "adult": false,
-  "endorsements": 231
- },
  "6cfb5d57-36af-4b11-bae3-9c1ee1f75a5c": {
   "nexusId": 15920,
   "nexusName": "Ghouls Haunting Horns",
@@ -4449,20 +4506,26 @@
   "adult": false,
   "endorsements": 121
  },
- "c635ec91-b4da-449d-ba6a-6799eeba769f": {
-  "nexusId": 9359,
-  "nexusName": "Interesting Origins",
-  "matchKind": "exact",
-  "matchConfidence": 1,
+ "8f01fd84-ea83-401c-a04a-8d981eabcb3a": {
+  "nexusId": 5105,
+  "nexusName": "Illithid Powers Overhaul 2",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.98,
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 931,
+  "endorsements": 1336,
   "requires": [
    {
-    "name": "Legacy of Death - True Dark Urge Experience",
-    "nexusId": 7030,
-    "notes": "Not required, but supported"
+    "name": "Better Various Widgets",
+    "nexusId": 5291,
+    "uuid": "2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a",
+    "notes": "Recommended for Brain menu"
+   },
+   {
+    "name": "ImpUI_P8_Fork (ImprovedUI)",
+    "nexusId": 16649,
+    "notes": "Required"
    }
   ]
  },
@@ -4486,16 +4549,6 @@
   "adult": false,
   "endorsements": 98
  },
- "ca8bfe06-88ec-a4e7-b49e-44eb5658f434": {
-  "nexusId": 24342,
-  "nexusName": "Native Mod Configuration Menu",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.93,
-  "nexusCategory": "Utilities",
-  "suggestedGroup": "Utilities",
-  "adult": false,
-  "endorsements": 47
- },
  "7fa55404-7280-11ed-4c26-63116a161862": {
   "nexusId": 680,
   "nexusName": "No Intro",
@@ -4505,16 +4558,6 @@
   "suggestedGroup": "User Interface",
   "adult": false,
   "endorsements": 6580
- },
- "ee953702-9f2a-ea1f-5618-e90d6f1dd2c4": {
-  "nexusId": 21343,
-  "nexusName": "Pooldripp Evolved",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 59
  },
  "42d1e5cf-b283-2280-29f0-31aa5759929f": {
   "nexusId": 14744,
@@ -4533,6 +4576,16 @@
     "notes": "REQUIRED"
    }
   ]
+ },
+ "58e080fe-4a02-46c0-beba-5ef16c992197": {
+  "nexusId": 5755,
+  "nexusName": "Rebalance - Common Effects",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1011
  },
  "142323a2-cd9e-68bd-6023-4ccdb28683b4": {
   "nexusId": 12709,
@@ -4578,16 +4631,6 @@
     "notes": "heavily Recommended, not neccessary though (grove vendor has the armors)"
    }
   ]
- },
- "3d96b5d0-aa63-48ba-bff3-cfddbc20d2d7": {
-  "nexusId": 10278,
-  "nexusName": "softer hair and beards",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.97,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 1794
  },
  "7a3e31e4-502b-43d7-915c-53c58860fa30": {
   "nexusId": 12800,
@@ -4870,6 +4913,16 @@
   "adult": false,
   "endorsements": 1204
  },
+ "c10a353d-d536-414e-a3ca-eebe90a57a54": {
+  "nexusId": 5475,
+  "nexusName": "Extra Attack Fix SE",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 473
+ },
  "b72a4134-b658-0c6f-0d45-d4c69e1d6d7a": {
   "nexusId": 9415,
   "nexusName": "Faith and Fortitude - Cleric Equipment",
@@ -4885,6 +4938,23 @@
     "nexusId": 13824,
     "uuid": "3baef2b9-80d3-777b-a256-394f7f7be0d8",
     "notes": "REQUIRED"
+   }
+  ]
+ },
+ "8da6f70b-e37a-493b-aba2-86a147afe64e": {
+  "nexusId": 17963,
+  "nexusName": "Goon's Slayer Overhaul",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 134,
+  "requires": [
+   {
+    "name": "Goon's Library - Passives Functions Spells and More",
+    "nexusId": 12834,
+    "notes": "Mandatory."
    }
   ]
  },
@@ -4938,29 +5008,6 @@
   "suggestedGroup": "User Interface",
   "adult": false,
   "endorsements": 445
- },
- "8f01fd84-ea83-401c-a04a-8d981eabcb3a": {
-  "nexusId": 5105,
-  "nexusName": "Illithid Powers Overhaul 2",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.98,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 1336,
-  "requires": [
-   {
-    "name": "Better Various Widgets",
-    "nexusId": 5291,
-    "uuid": "2f8f216d-dd2a-7731-cf1e-9d6bae9eb04a",
-    "notes": "Recommended for Brain menu"
-   },
-   {
-    "name": "ImpUI_P8_Fork (ImprovedUI)",
-    "nexusId": 16649,
-    "notes": "Required"
-   }
-  ]
  },
  "3d146a0c-4ef8-f20c-2afa-0208d0a49a0b": {
   "nexusId": 10653,
@@ -5112,16 +5159,6 @@
   "adult": false,
   "endorsements": 2
  },
- "58e080fe-4a02-46c0-beba-5ef16c992197": {
-  "nexusId": 5755,
-  "nexusName": "Rebalance - Common Effects",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 1011
- },
  "1f11c512-5c14-4459-9379-4039773a6a91": {
   "nexusId": 9165,
   "nexusName": "Subtle Nature Eyes",
@@ -5245,6 +5282,16 @@
    }
   ]
  },
+ "75d0f89f-c212-4433-83fc-1d63bf7efb10": {
+  "nexusId": 14505,
+  "nexusName": "Armouries of the Allegiant",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 401
+ },
  "a1613ff8-0101-8338-cef1-f9bca61a56c0": {
   "nexusId": 23264,
   "nexusName": "Axi Dyes",
@@ -5276,6 +5323,26 @@
     "notes": "If you want VFX and have several different head mods, download the file Patches_for_VFX_Heads"
    }
   ]
+ },
+ "7c345e8f-a290-e2ce-3757-b2dc4fd9870f": {
+  "nexusId": 16330,
+  "nexusName": "Better Hag Hair",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 172
+ },
+ "9c4c253b-99ef-e03a-df13-6ba4e50f1637": {
+  "nexusId": 7778,
+  "nexusName": "Beyond Divine Smite",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 300
  },
  "b5c10147-9934-bcfc-4fe3-1aa806b77795": {
   "nexusId": 12639,
@@ -5478,16 +5545,6 @@
   "adult": false,
   "endorsements": 84
  },
- "c10a353d-d536-414e-a3ca-eebe90a57a54": {
-  "nexusId": 5475,
-  "nexusName": "Extra Attack Fix SE",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 473
- },
  "25925f26-f8bd-4a96-d5d6-a9ee36963748": {
   "nexusId": 12483,
   "nexusName": "FacesUnlocked",
@@ -5677,23 +5734,6 @@
    }
   ]
  },
- "8da6f70b-e37a-493b-aba2-86a147afe64e": {
-  "nexusId": 17963,
-  "nexusName": "Goon's Slayer Overhaul",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 134,
-  "requires": [
-   {
-    "name": "Goon's Library - Passives Functions Spells and More",
-    "nexusId": 12834,
-    "notes": "Mandatory."
-   }
-  ]
- },
  "d378662a-9ed5-4c0d-827e-4c94f9d04ad0": {
   "nexusId": 14850,
   "nexusName": "Spawn Astarion - Epilogue Edits",
@@ -5734,6 +5774,16 @@
   "adult": false,
   "endorsements": 4149
  },
+ "39e75230-e067-483f-9a3b-004f57dada6d": {
+  "nexusId": 22759,
+  "nexusName": "Look At This Photograph - Isobel Dialogue Unlocker",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 157
+ },
  "78929dee-d6e8-f714-c3cb-c8bcea2d4091": {
   "nexusId": 15236,
   "nexusName": "Oath and Order - Paladin Equipment",
@@ -5749,6 +5799,23 @@
     "nexusId": 13824,
     "uuid": "3baef2b9-80d3-777b-a256-394f7f7be0d8",
     "notes": "REQUIRED"
+   }
+  ]
+ },
+ "c4100869-a15c-4f8c-a72b-eea8aa1ce207": {
+  "nexusId": 13616,
+  "nexusName": "Physics Hair Pack",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 828,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
    }
   ]
  },
@@ -5800,6 +5867,16 @@
     "notes": "required for 2.3.0.0+"
    }
   ]
+ },
+ "0686b753-fb20-1772-fa5a-822f45a27ed4": {
+  "nexusId": 21237,
+  "nexusName": "Skirbie's Arcane Witch - Progressive Equipment Set - KR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.98,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 10
  },
  "f2c1318b-b093-da32-888a-6191355d1f24": {
   "nexusId": 18660,
@@ -5980,15 +6057,15 @@
    }
   ]
  },
- "75d0f89f-c212-4433-83fc-1d63bf7efb10": {
-  "nexusId": 14505,
-  "nexusName": "Armouries of the Allegiant",
+ "9ef1089a-2941-94e0-99c3-5efebb69f9de": {
+  "nexusId": 23665,
+  "nexusName": "Aylin and Isobel Join the Party",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
   "adult": false,
-  "endorsements": 401
+  "endorsements": 121
  },
  "63dc902e-90eb-7bb8-1e88-831caad5144a": {
   "nexusId": 2212,
@@ -6007,26 +6084,6 @@
     "notes": "ImpUI Patch 8 Slim"
    }
   ]
- },
- "7c345e8f-a290-e2ce-3757-b2dc4fd9870f": {
-  "nexusId": 16330,
-  "nexusName": "Better Hag Hair",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 172
- },
- "9c4c253b-99ef-e03a-df13-6ba4e50f1637": {
-  "nexusId": 7778,
-  "nexusName": "Beyond Divine Smite",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 300
  },
  "3876189d-cb2a-4867-88a6-f169371f8783": {
   "nexusId": 10206,
@@ -6108,6 +6165,16 @@
   "adult": false,
   "endorsements": 156
  },
+ "78cbf5b6-2d89-3b71-0591-b268e0b24968": {
+  "nexusId": 13605,
+  "nexusName": "DLC Items Remastered",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 167
+ },
  "93dc5505-2038-baaa-f845-551ec08a0636": {
   "nexusId": 12409,
   "nexusName": "DnD Expanded",
@@ -6123,6 +6190,36 @@
     "nexusId": 366,
     "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
     "notes": "Only required to see Goliath custom resource"
+   }
+  ]
+ },
+ "d319af2e-34e0-cfae-5d11-92dca7c30b9d": {
+  "nexusId": 13315,
+  "nexusName": "Durge's Horns - Dark Urge Dragonborn CC",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 171,
+  "requires": [
+   {
+    "name": "Crazy Color pack",
+    "nexusId": 12868,
+    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
+    "notes": "Color Palette"
+   },
+   {
+    "name": "Dragonborn Extra Tabs - Horns and Hair",
+    "nexusId": 12876,
+    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
+    "notes": "Opens Horns and Hair Tabs for Dragonborn"
+   },
+   {
+    "name": "Durge's mangled head - Dark Urge Dragonborn CC",
+    "nexusId": 9702,
+    "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
+    "notes": "Not hard requirement, u could use horns with Vanilla male Head 1"
    }
   ]
  },
@@ -6244,6 +6341,26 @@
    }
   ]
  },
+ "3b49f139-7dcc-d9f3-b2dd-143e47ad2abd": {
+  "nexusId": 19197,
+  "nexusName": "Feat - Dexterous Weapon Master",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 76
+ },
+ "2f276457-cfe6-2ad7-0d03-7f8edfc77a0f": {
+  "nexusId": 21846,
+  "nexusName": "Fix Your Incubus - Tail Animations Restored",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Animations",
+  "suggestedGroup": "Animations",
+  "adult": false,
+  "endorsements": 69
+ },
  "673c5b7b-a274-4916-ad89-4e3c591e1187": {
   "nexusId": 5127,
   "nexusName": "Flutter and Whimsy (Fairy Race)",
@@ -6270,6 +6387,23 @@
     "nexusId": 6545,
     "uuid": "2cba831e-bc5e-4ed5-b831-b5c4580b02b0",
     "notes": "for removing Baldurian tag/adding Rare tag for extra dialogue options"
+   }
+  ]
+ },
+ "c37d6364-49bd-b4aa-8a91-8a58ae601f9a": {
+  "nexusId": 16308,
+  "nexusName": "Gabes Auto Depositor (Modders Resource) CHS",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.96,
+  "nexusCategory": "Resources",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 2,
+  "requires": [
+   {
+    "name": "Gabes Auto Depositor (Modders Resource) - DELETED",
+    "nexusId": 13296,
+    "notes": "必须使用原MOD"
    }
   ]
  },
@@ -6344,6 +6478,23 @@
     "nexusId": 279,
     "notes": "Optional. (1.5.0.0+ otherwise there will be some cosmetic tooltip issues.)"
    },
+   {
+    "name": "Goon's Library - Passives Functions Spells and More",
+    "nexusId": 12834,
+    "notes": "Mandatory."
+   }
+  ]
+ },
+ "d9403cba-2f48-4f26-9710-f4be44e076b7": {
+  "nexusId": 17320,
+  "nexusName": "Goon's Condition and Surface Overhaul",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.92,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 183,
+  "requires": [
    {
     "name": "Goon's Library - Passives Functions Spells and More",
     "nexusId": 12834,
@@ -6428,16 +6579,6 @@
   "adult": false,
   "endorsements": 221
  },
- "39e75230-e067-483f-9a3b-004f57dada6d": {
-  "nexusId": 22759,
-  "nexusName": "Look At This Photograph - Isobel Dialogue Unlocker",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 157
- },
  "3319f057-577a-e8f9-501b-41764066c130": {
   "nexusId": 14616,
   "nexusName": "Moonblade Of Selune",
@@ -6491,20 +6632,20 @@
    }
   ]
  },
- "c4100869-a15c-4f8c-a72b-eea8aa1ce207": {
-  "nexusId": 13616,
-  "nexusName": "Physics Hair Pack",
+ "fe04695e-d206-4a88-b3f9-b2a65855ac4c": {
+  "nexusId": 9164,
+  "nexusName": "Path Of Undeath",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 828,
+  "endorsements": 808,
   "requires": [
    {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+    "name": "WotD Aasimar - Script Extender Edition",
+    "nexusId": 8932,
+    "notes": "Required unless using the optionnal file (Definitive Edition should work too)"
    }
   ]
  },
@@ -6616,16 +6757,6 @@
   "adult": false,
   "endorsements": 144
  },
- "0686b753-fb20-1772-fa5a-822f45a27ed4": {
-  "nexusId": 21237,
-  "nexusName": "Skirbie's Arcane Witch - Progressive Equipment Set - KR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.98,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 10
- },
  "7c3bf56c-32f9-3db5-7d24-3624dab8ec46": {
   "nexusId": 14078,
   "nexusName": "Song and Steel - Bard Equipment",
@@ -6658,6 +6789,29 @@
     "name": "Advanced Tabletop Spells",
     "nexusId": 14429,
     "notes": "Version 1.1.9.1. AdvancedTabletopSpells is a required dependency for SpellsOfExandria."
+   }
+  ]
+ },
+ "2a023bc0-c24b-37ad-31cc-f477e070a361": {
+  "nexusId": 7274,
+  "nexusName": "Tasha's Cauldron of Hairstyles Pack 2",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 2257,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "mandatory"
+   },
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "mandatory"
    }
   ]
  },
@@ -6732,6 +6886,7 @@
    {
     "name": "Tav's Hair Salon",
     "nexusId": 213,
+    "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
     "notes": "OPTIONAL - FOR WIP LEON HAIR IN MISC FILES (doesn't use the mods assets, just the hair slot)"
    },
    {
@@ -6826,16 +6981,6 @@
   "adult": false,
   "endorsements": 134
  },
- "9ef1089a-2941-94e0-99c3-5efebb69f9de": {
-  "nexusId": 23665,
-  "nexusName": "Aylin and Isobel Join the Party",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 121
- },
  "a7e5f088-a595-da9a-7c7d-a8451bed66f0": {
   "nexusId": 20626,
   "nexusName": "Medea Collection",
@@ -6873,16 +7018,6 @@
    }
   ]
  },
- "78cbf5b6-2d89-3b71-0591-b268e0b24968": {
-  "nexusId": 13605,
-  "nexusName": "DLC Items Remastered",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 167
- },
  "c714f127-6475-4e82-1816-3922fc220bee": {
   "nexusId": 24407,
   "nexusName": "DTO Otherworldly Archetypes - RUS",
@@ -6892,36 +7027,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 1
- },
- "d319af2e-34e0-cfae-5d11-92dca7c30b9d": {
-  "nexusId": 13315,
-  "nexusName": "Durge's Horns - Dark Urge Dragonborn CC",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 171,
-  "requires": [
-   {
-    "name": "Crazy Color pack",
-    "nexusId": 12868,
-    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
-    "notes": "Color Palette"
-   },
-   {
-    "name": "Dragonborn Extra Tabs - Horns and Hair",
-    "nexusId": 12876,
-    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
-    "notes": "Opens Horns and Hair Tabs for Dragonborn"
-   },
-   {
-    "name": "Durge's mangled head - Dark Urge Dragonborn CC",
-    "nexusId": 9702,
-    "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
-    "notes": "Not hard requirement, u could use horns with Vanilla male Head 1"
-   }
-  ]
  },
  "1df68f31-734e-4598-b1dd-6cddc83f2732": {
   "nexusId": 11560,
@@ -6979,43 +7084,6 @@
   "adult": false,
   "endorsements": 147
  },
- "3b49f139-7dcc-d9f3-b2dd-143e47ad2abd": {
-  "nexusId": 19197,
-  "nexusName": "Feat - Dexterous Weapon Master",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 76
- },
- "2f276457-cfe6-2ad7-0d03-7f8edfc77a0f": {
-  "nexusId": 21846,
-  "nexusName": "Fix Your Incubus - Tail Animations Restored",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Animations",
-  "suggestedGroup": "Animations",
-  "adult": false,
-  "endorsements": 69
- },
- "c37d6364-49bd-b4aa-8a91-8a58ae601f9a": {
-  "nexusId": 16308,
-  "nexusName": "Gabes Auto Depositor (Modders Resource) CHS",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.96,
-  "nexusCategory": "Resources",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 2,
-  "requires": [
-   {
-    "name": "Gabes Auto Depositor (Modders Resource) - DELETED",
-    "nexusId": 13296,
-    "notes": "必须使用原MOD"
-   }
-  ]
- },
  "ee606255-e4a4-496a-8497-1ca38af7d3fb": {
   "nexusId": 1470,
   "nexusName": "Golden Death Dice",
@@ -7038,20 +7106,26 @@
    }
   ]
  },
- "d9403cba-2f48-4f26-9710-f4be44e076b7": {
-  "nexusId": 17320,
-  "nexusName": "Goon's Condition and Surface Overhaul",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.92,
+ "30d3cc83-87a9-4efc-8b32-885c10f82132": {
+  "nexusId": 15126,
+  "nexusName": "Goon's (Gear and) Throwing Overhaul",
+  "matchKind": "exact",
+  "matchConfidence": 1,
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 183,
+  "endorsements": 210,
   "requires": [
+   {
+    "name": "5e Reckless Attack",
+    "nexusId": 10924,
+    "uuid": "776e25bb-6128-479d-8923-089146901e46",
+    "notes": "Optional: load after (below) Goon's Throwing Overhaul in the load order. (Reckless Attack edits not present in Goon's Gear and Throwing Overhaul, moved to Goon's Barbarian Overhaul.)"
+   },
    {
     "name": "Goon's Library - Passives Functions Spells and More",
     "nexusId": 12834,
-    "notes": "Mandatory."
+    "notes": "Manadatory."
    }
   ]
  },
@@ -7134,6 +7208,16 @@
   "adult": false,
   "endorsements": 596
  },
+ "732311a6-4443-400f-b102-dcab208e0b72": {
+  "nexusId": 9357,
+  "nexusName": "Interesting Body Types",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 389
+ },
  "4270d77d-5448-d88d-4d2b-dd1649b9f9f4": {
   "nexusId": 2218,
   "nexusName": "Iridescent Pearl Dice",
@@ -7160,6 +7244,24 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 233
+ },
+ "138e27e8-4385-e758-ad41-7bf24b4d6f06": {
+  "nexusId": 3055,
+  "nexusName": "More Noblestalk",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 888,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+    "notes": "Optional. Only if you want to use MCM."
+   }
+  ]
  },
  "85fc4be9-db01-4d37-fa83-62f180c9c85e": {
   "nexusId": 24292,
@@ -7207,20 +7309,27 @@
    }
   ]
  },
- "fe04695e-d206-4a88-b3f9-b2a65855ac4c": {
-  "nexusId": 9164,
-  "nexusName": "Path Of Undeath",
+ "ad0455a0-72e3-c994-c0ec-2fcdb1778b22": {
+  "nexusId": 13314,
+  "nexusName": "Reforged Assets DMH- Dark Urge Dragonborn CC",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 808,
+  "endorsements": 169,
   "requires": [
    {
-    "name": "WotD Aasimar - Script Extender Edition",
-    "nexusId": 8932,
-    "notes": "Required unless using the optionnal file (Definitive Edition should work too)"
+    "name": "Durge's mangled head - Dark Urge Dragonborn CC",
+    "nexusId": 9702,
+    "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
+    "notes": "The Heads"
+   },
+   {
+    "name": "Reforged Assets - Dark Urge Dragonborn CC",
+    "nexusId": 13313,
+    "uuid": "68df2229-1684-00ba-49a7-68ad954a64e6",
+    "notes": "The Assets"
    }
   ]
  },
@@ -7242,26 +7351,75 @@
    }
   ]
  },
- "2a023bc0-c24b-37ad-31cc-f477e070a361": {
-  "nexusId": 7274,
-  "nexusName": "Tasha's Cauldron of Hairstyles Pack 2",
+ "012f1a5a-ffba-143f-8160-2363b2f3aa34": {
+  "nexusId": 13530,
+  "nexusName": "Slayer Assets DMH - Dark Urge Dragonborn CC",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 2257,
+  "endorsements": 158,
   "requires": [
    {
-    "name": "Baldur's Gate 3 Mod Fixer",
-    "nexusId": 141,
-    "notes": "mandatory"
+    "name": "Crazy Color pack",
+    "nexusId": 12868,
+    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
+    "notes": "For Colors"
    },
    {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-    "notes": "mandatory"
+    "name": "Dragonborn Extra Tabs - Horns and Hair",
+    "nexusId": 12876,
+    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
+    "notes": "Opens Horns and Hair tabs"
+   },
+   {
+    "name": "Durge's mangled head - Dark Urge Dragonborn CC",
+    "nexusId": 9702,
+    "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
+    "notes": "The Heads"
+   },
+   {
+    "name": "Slayer Assets - Dark Urge Dragonborn CC",
+    "nexusId": 13525,
+    "uuid": "fd3e90d4-1355-5fbb-b915-a4379ce42bce",
+    "notes": "Assets"
+   }
+  ]
+ },
+ "62a82780-e0a0-ed59-77e6-096d11d38409": {
+  "nexusId": 13538,
+  "nexusName": "Slayer Assets Rathgor - Dark Urge Dragonborn CC",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 140,
+  "requires": [
+   {
+    "name": "Crazy Color pack",
+    "nexusId": 12868,
+    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
+    "notes": "For Colors"
+   },
+   {
+    "name": "Dragonborn Extra Tabs - Horns and Hair",
+    "nexusId": 12876,
+    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
+    "notes": "Opens Horns and Hair tabs"
+   },
+   {
+    "name": "Rathgor - Reforged  head - Dark Urge Dragonborn CC",
+    "nexusId": 10343,
+    "uuid": "56bee93d-ecd1-4680-cca1-44ee52514b9c",
+    "notes": "The Heads"
+   },
+   {
+    "name": "Slayer Assets - Dark Urge Dragonborn CC",
+    "nexusId": 13525,
+    "uuid": "fd3e90d4-1355-5fbb-b915-a4379ce42bce",
+    "notes": "Assets"
    }
   ]
  },
@@ -7325,6 +7483,16 @@
   "adult": false,
   "endorsements": 1042
  },
+ "a0b1e4c2-8419-14fc-78c0-a28ed807cc84": {
+  "nexusId": 18079,
+  "nexusName": "Aylin Always Summons Moonlight Slivers",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 247
+ },
  "1eaa6046-2d5c-47e3-85f4-88c077f6d946": {
   "nexusId": 12329,
   "nexusName": "Blackguard KR",
@@ -7360,6 +7528,16 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 1093
+ },
+ "9e29929b-0e45-3f08-3740-8218ed5330b4": {
+  "nexusId": 17245,
+  "nexusName": "Cat's Library",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 91
  },
  "057cb283-8dfa-4f3f-b8d1-a2f854c18dff": {
   "nexusId": 2811,
@@ -7398,6 +7576,50 @@
     "notes": "Optional."
    }
   ]
+ },
+ "55e52017-cc06-2d9e-603f-7814f06fc668": {
+  "nexusId": 13726,
+  "nexusName": "DMH Assets Rathgor - Dark Urge Dragonborn CC",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 132,
+  "requires": [
+   {
+    "name": "Durge's mangled head - Dark Urge Dragonborn CC",
+    "nexusId": 9702,
+    "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
+    "notes": "Assets"
+   },
+   {
+    "name": "Rathgor - Reforged  head - Dark Urge Dragonborn CC",
+    "nexusId": 10343,
+    "uuid": "56bee93d-ecd1-4680-cca1-44ee52514b9c",
+    "notes": "The Heads"
+   }
+  ]
+ },
+ "4bcd3665-0b05-54ad-922a-ed7155bb756a": {
+  "nexusId": 10445,
+  "nexusName": "Do Not Attack the Ground of yms",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 289
+ },
+ "55249f39-faa9-4e51-a36c-0ac6560d8a0c": {
+  "nexusId": 4939,
+  "nexusName": "Druid Perfection",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1301
  },
  "dee6dde4-f9f5-456b-b7e3-5ac2eb87f87d": {
   "nexusId": 2939,
@@ -7469,29 +7691,6 @@
   "adult": false,
   "endorsements": 178
  },
- "30d3cc83-87a9-4efc-8b32-885c10f82132": {
-  "nexusId": 15126,
-  "nexusName": "Goon's (Gear and) Throwing Overhaul",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 210,
-  "requires": [
-   {
-    "name": "5e Reckless Attack",
-    "nexusId": 10924,
-    "uuid": "776e25bb-6128-479d-8923-089146901e46",
-    "notes": "Optional: load after (below) Goon's Throwing Overhaul in the load order. (Reckless Attack edits not present in Goon's Gear and Throwing Overhaul, moved to Goon's Barbarian Overhaul.)"
-   },
-   {
-    "name": "Goon's Library - Passives Functions Spells and More",
-    "nexusId": 12834,
-    "notes": "Manadatory."
-   }
-  ]
- },
  "9b086038-0313-4508-b335-2642b3f42abc": {
   "nexusId": 17706,
   "nexusName": "Goon's Monk Overhaul",
@@ -7531,16 +7730,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 1581
- },
- "732311a6-4443-400f-b102-dcab208e0b72": {
-  "nexusId": 9357,
-  "nexusName": "Interesting Body Types",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 389
  },
  "35518e8c-e697-ab86-205d-dcb6ee710587": {
   "nexusId": 15647,
@@ -7582,24 +7771,6 @@
   "adult": false,
   "endorsements": 56
  },
- "138e27e8-4385-e758-ad41-7bf24b4d6f06": {
-  "nexusId": 3055,
-  "nexusName": "More Noblestalk",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 888,
-  "requires": [
-   {
-    "name": "Mod Configuration Menu (MCM)",
-    "nexusId": 9162,
-    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-    "notes": "Optional. Only if you want to use MCM."
-   }
-  ]
- },
  "95467730-d153-a600-e4b1-d773131098e9": {
   "nexusId": 14584,
   "nexusName": "Mouse's Manacles - Raphael Themed Collars n Cuffs",
@@ -7609,6 +7780,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 191
+ },
+ "5997535b-0b41-cae3-2508-a1cfabb2819e": {
+  "nexusId": 12666,
+  "nexusName": "Necromancy Heals Undead",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 90
  },
  "77caa8ed-e3a5-33cd-4204-0432fd3f1036": {
   "nexusId": 9996,
@@ -7633,6 +7814,23 @@
    {
     "name": "Baldur's Gate 3 Mod Fixer",
     "nexusId": 141
+   }
+  ]
+ },
+ "dfcef5d8-812a-b0f2-e07e-4ec68b48a100": {
+  "nexusId": 15532,
+  "nexusName": "Path of the Skull Collector PTBR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.92,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 1,
+  "requires": [
+   {
+    "name": "Path of the Skull Collector - Barbarian Subclass",
+    "nexusId": 13249,
+    "notes": "Tradução da versão 2.2"
    }
   ]
  },
@@ -7665,30 +7863,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 1585
- },
- "ad0455a0-72e3-c994-c0ec-2fcdb1778b22": {
-  "nexusId": 13314,
-  "nexusName": "Reforged Assets DMH- Dark Urge Dragonborn CC",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 169,
-  "requires": [
-   {
-    "name": "Durge's mangled head - Dark Urge Dragonborn CC",
-    "nexusId": 9702,
-    "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
-    "notes": "The Heads"
-   },
-   {
-    "name": "Reforged Assets - Dark Urge Dragonborn CC",
-    "nexusId": 13313,
-    "uuid": "68df2229-1684-00ba-49a7-68ad954a64e6",
-    "notes": "The Assets"
-   }
-  ]
  },
  "9f128411-7ff6-51b8-f119-cd9d80ea1291": {
   "nexusId": 13661,
@@ -7772,78 +7946,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 16
- },
- "012f1a5a-ffba-143f-8160-2363b2f3aa34": {
-  "nexusId": 13530,
-  "nexusName": "Slayer Assets DMH - Dark Urge Dragonborn CC",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 158,
-  "requires": [
-   {
-    "name": "Crazy Color pack",
-    "nexusId": 12868,
-    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
-    "notes": "For Colors"
-   },
-   {
-    "name": "Dragonborn Extra Tabs - Horns and Hair",
-    "nexusId": 12876,
-    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
-    "notes": "Opens Horns and Hair tabs"
-   },
-   {
-    "name": "Durge's mangled head - Dark Urge Dragonborn CC",
-    "nexusId": 9702,
-    "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
-    "notes": "The Heads"
-   },
-   {
-    "name": "Slayer Assets - Dark Urge Dragonborn CC",
-    "nexusId": 13525,
-    "uuid": "fd3e90d4-1355-5fbb-b915-a4379ce42bce",
-    "notes": "Assets"
-   }
-  ]
- },
- "62a82780-e0a0-ed59-77e6-096d11d38409": {
-  "nexusId": 13538,
-  "nexusName": "Slayer Assets Rathgor - Dark Urge Dragonborn CC",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 140,
-  "requires": [
-   {
-    "name": "Crazy Color pack",
-    "nexusId": 12868,
-    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
-    "notes": "For Colors"
-   },
-   {
-    "name": "Dragonborn Extra Tabs - Horns and Hair",
-    "nexusId": 12876,
-    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
-    "notes": "Opens Horns and Hair tabs"
-   },
-   {
-    "name": "Rathgor - Reforged  head - Dark Urge Dragonborn CC",
-    "nexusId": 10343,
-    "uuid": "56bee93d-ecd1-4680-cca1-44ee52514b9c",
-    "notes": "The Heads"
-   },
-   {
-    "name": "Slayer Assets - Dark Urge Dragonborn CC",
-    "nexusId": 13525,
-    "uuid": "fd3e90d4-1355-5fbb-b915-a4379ce42bce",
-    "notes": "Assets"
-   }
-  ]
  },
  "7b55cfdc-76f3-17a8-340d-377fff43435e": {
   "nexusId": 11978,
@@ -7948,15 +8050,15 @@
   "adult": false,
   "endorsements": 320
  },
- "a0b1e4c2-8419-14fc-78c0-a28ed807cc84": {
-  "nexusId": 18079,
-  "nexusName": "Aylin Always Summons Moonlight Slivers",
+ "ed6b20cb-e078-d0ce-2951-6b8c529ecff2": {
+  "nexusId": 17157,
+  "nexusName": "Bath Before Bed (Clean Camp Nights)",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 247
+  "endorsements": 290
  },
  "3cd15211-82c7-684e-ab11-ea39898ca44e": {
   "nexusId": 18767,
@@ -7968,6 +8070,16 @@
   "adult": false,
   "endorsements": 5
  },
+ "3be48882-d772-ccd1-cbda-aa83600257cb": {
+  "nexusId": 13404,
+  "nexusName": "Black Hand Armor",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 711
+ },
  "5576e2a6-0640-e35e-22c0-494950d0476f": {
   "nexusId": 105,
   "nexusName": "Carry Weight Extra",
@@ -7978,16 +8090,6 @@
   "adult": false,
   "endorsements": 1670
  },
- "9e29929b-0e45-3f08-3740-8218ed5330b4": {
-  "nexusId": 17245,
-  "nexusName": "Cat's Library",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Utilities",
-  "suggestedGroup": "Utilities",
-  "adult": false,
-  "endorsements": 91
- },
  "a88d400b-febb-4662-abdd-5d0b5d6e57cc": {
   "nexusId": 206,
   "nexusName": "Choose Your Stats (CYS)",
@@ -7996,7 +8098,7 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 5721,
+  "endorsements": 5731,
   "requires": [
    {
     "name": "Essential Feats",
@@ -8014,6 +8116,77 @@
     "name": "War Caster (2014 and 2024)",
     "nexusId": 5822,
     "notes": "ONLY required for the better version of War Caster"
+   }
+  ]
+ },
+ "d38b29fc-44ab-2017-6de0-aa8241e9ba40": {
+  "nexusId": 19947,
+  "nexusName": "Clansong - Speaking Dragonborns CC Heads",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 143,
+  "requires": [
+   {
+    "name": "Crazy Color pack",
+    "nexusId": 12868,
+    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
+    "notes": "Requirment of dependencies"
+   },
+   {
+    "name": "Crystal Crown - Gem Dragonborn CC",
+    "nexusId": 10292,
+    "uuid": "7a8d7a63-07c7-819b-9a00-49a887367d81",
+    "notes": "Contain textures and button pictures for Crystal Crown assets"
+   },
+   {
+    "name": "Dragonborn Extra Tabs - Horns and Hair",
+    "nexusId": 12876,
+    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
+    "notes": "Requirment of dependencies"
+   },
+   {
+    "name": "Durge's mangled head - Dark Urge Dragonborn CC",
+    "nexusId": 9702,
+    "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
+    "notes": "Version: 1.0.0.16+. Contain textures and button pictures  for DMH assts and heads"
+   },
+   {
+    "name": "P4 Patches",
+    "nexusId": 353,
+    "notes": "Patches_for_VFX_Heads."
+   },
+   {
+    "name": "Pearl - Seadragon - Dragonborn CC",
+    "nexusId": 10761,
+    "uuid": "415363fd-bef0-5376-658c-2540fd8e37b7",
+    "notes": "Version: 1.0.0.14+. Textures for the heads"
+   },
+   {
+    "name": "Rathgor - Reforged  head - Dark Urge Dragonborn CC",
+    "nexusId": 10343,
+    "uuid": "56bee93d-ecd1-4680-cca1-44ee52514b9c",
+    "notes": "Version: 1.0.0.14+. Textures for the heads"
+   },
+   {
+    "name": "Reforged Assets - Dark Urge Dragonborn CC",
+    "nexusId": 13313,
+    "uuid": "68df2229-1684-00ba-49a7-68ad954a64e6",
+    "notes": "Contain textures and button pictures for Reforged assets"
+   },
+   {
+    "name": "Seadragon Assets - Dragonborn CC",
+    "nexusId": 13324,
+    "uuid": "ccfff6aa-9e2d-dd90-b49a-53b30e6255c7",
+    "notes": "Contain textures and button pictures for Seadragon assets"
+   },
+   {
+    "name": "Vexa - Dark Urge Slayer Dragonborn CC",
+    "nexusId": 11622,
+    "uuid": "0571ff38-d7c9-f409-4591-33bb086c5f52",
+    "notes": "Version: 1.0.0.16+.Must have. Textures for the heads in this one"
    }
   ]
  },
@@ -8074,15 +8247,15 @@
   "adult": false,
   "endorsements": 327
  },
- "55e52017-cc06-2d9e-603f-7814f06fc668": {
-  "nexusId": 13726,
-  "nexusName": "DMH Assets Rathgor - Dark Urge Dragonborn CC",
+ "18119da1-cad4-6d77-73e9-3d3f8533b3ff": {
+  "nexusId": 13534,
+  "nexusName": "DMH Assets Vexa - Dark Urge Dragonborn CC",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 132,
+  "endorsements": 153,
   "requires": [
    {
     "name": "Durge's mangled head - Dark Urge Dragonborn CC",
@@ -8091,22 +8264,12 @@
     "notes": "Assets"
    },
    {
-    "name": "Rathgor - Reforged  head - Dark Urge Dragonborn CC",
-    "nexusId": 10343,
-    "uuid": "56bee93d-ecd1-4680-cca1-44ee52514b9c",
+    "name": "Vexa - Dark Urge Slayer Dragonborn CC",
+    "nexusId": 11622,
+    "uuid": "0571ff38-d7c9-f409-4591-33bb086c5f52",
     "notes": "The Heads"
    }
   ]
- },
- "4bcd3665-0b05-54ad-922a-ed7155bb756a": {
-  "nexusId": 10445,
-  "nexusName": "Do Not Attack the Ground of yms",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 289
  },
  "23b14491-69f0-4a9c-99f2-345a636eb220": {
   "nexusId": 12077,
@@ -8141,16 +8304,6 @@
     "notes": "OPTIONAL. Required to customize armors (Female body 1 elf/human series only)"
    }
   ]
- },
- "55249f39-faa9-4e51-a36c-0ac6560d8a0c": {
-  "nexusId": 4939,
-  "nexusName": "Druid Perfection",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 1301
  },
  "e82d1d87-32fe-425d-8de0-fb81fd778347": {
   "nexusId": 24433,
@@ -8209,6 +8362,16 @@
   "adult": false,
   "endorsements": 44
  },
+ "a6f0bab9-67f4-b8c3-bb29-581037cf1d5a": {
+  "nexusId": 20552,
+  "nexusName": "Emperor vs. Orpheus",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 223
+ },
  "a1e0e7e7-47db-41c6-823b-ae05b3d83b9b": {
   "nexusId": 14858,
   "nexusName": "FANG's Dress",
@@ -8254,7 +8417,7 @@
   "nexusCategory": "Equipment",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 165
+  "endorsements": 167
  },
  "cda8ec98-ec8f-6f5d-4849-e4fb9da33dca": {
   "nexusId": 19267,
@@ -8378,15 +8541,15 @@
    }
   ]
  },
- "5997535b-0b41-cae3-2508-a1cfabb2819e": {
-  "nexusId": 12666,
-  "nexusName": "Necromancy Heals Undead",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
+ "1ee5c56d-4e23-c725-c13f-097cb119fece": {
+  "nexusId": 23582,
+  "nexusName": "Monster Slayer Progressive Equipment Set TR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.97,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
   "adult": false,
-  "endorsements": 90
+  "endorsements": 1
  },
  "099a83ee-bd5e-4368-a4dd-5a6f5aff0328": {
   "nexusId": 8495,
@@ -8441,23 +8604,6 @@
     "name": "Path of the Corpse Eater Barbarian Subclass",
     "nexusId": 15056,
     "notes": "Mod necessário."
-   }
-  ]
- },
- "dfcef5d8-812a-b0f2-e07e-4ec68b48a100": {
-  "nexusId": 15532,
-  "nexusName": "Path of the Skull Collector PTBR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.92,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 1,
-  "requires": [
-   {
-    "name": "Path of the Skull Collector - Barbarian Subclass",
-    "nexusId": 13249,
-    "notes": "Tradução da versão 2.2"
    }
   ]
  },
@@ -8648,7 +8794,23 @@
   "nexusCategory": "Equipment",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 72
+  "endorsements": 73
+ },
+ "57d87816-ac58-4a37-90ad-0fda409c5557": {
+  "nexusId": 17581,
+  "nexusName": "StrongerBosses-KR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 5,
+  "requires": [
+   {
+    "name": "(PATCH8 READY) Stronger Bosses and Enemies",
+    "nexusId": 782
+   }
+  ]
  },
  "d5b21c42-fb77-493b-8502-a8491bc9a34c": {
   "nexusId": 14712,
@@ -8684,6 +8846,73 @@
     "name": "Succubus Attire",
     "nexusId": 12106,
     "notes": "本体，必须下"
+   }
+  ]
+ },
+ "a7b5810e-3ac1-4a8f-bcc9-d18d91de2505": {
+  "nexusId": 18743,
+  "nexusName": "Ultimate NPC Stat Overhaul_KOR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.9,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 5,
+  "requires": [
+   {
+    "name": "Absolute's Laboratory - NPC and Combat Inspector and Mutator",
+    "nexusId": 16217,
+    "notes": "선택 사항입니다. Combat Extender 모드(일명 CX)를 대체하기 위해 만들어지는 모드로, 아직 완성되지 않았습니다."
+   },
+   {
+    "name": "Combat Extender",
+    "nexusId": 5207,
+    "uuid": "0c692104-c83f-48b8-9fcd-ca7e33be5099",
+    "notes": "선택 사항입니다. 없어도 작동합니다. 아군과 적의 강함을 입맛대로 편집하려면 개인적으로는 쓰는 걸 권장드립니다."
+   },
+   {
+    "name": "Expansion Level 13-20 (Configurable)",
+    "nexusId": 279,
+    "notes": "선택 사항입니다. 하지만 원본 모더에 따르면 적극 권장됩니다."
+   },
+   {
+    "name": "Goon's Library - Passives Functions Spells and More",
+    "nexusId": 12834,
+    "notes": "원본 모드의 필수 라이브러리 모드입니다."
+   },
+   {
+    "name": "Goon's Library_KOR",
+    "nexusId": 18742,
+    "notes": "선택 사항입니다. 상기한 Goon's Library - Passives Functions Spells and More 모드의 한글 번역입니다."
+   },
+   {
+    "name": "Ultimate NPC Stat Overhaul (UNSO)",
+    "nexusId": 15535,
+    "notes": "반드시 필요한 원본 모드입니다."
+   }
+  ]
+ },
+ "04c9dcd5-9bc2-4560-8c41-a801bfbca5ed": {
+  "nexusId": 17478,
+  "nexusName": "Valkrana's Limited Edition Bone-KR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.96,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 2,
+  "requires": [
+   {
+    "name": "Valkrana's Limited Edition Bone - Necromancer Item",
+    "nexusId": 5005
+   },
+   {
+    "name": "Valkrana's Skeleton Crew - Over 60 Random Undead Allies",
+    "nexusId": 4496
+   },
+   {
+    "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
+    "nexusId": 1258
    }
   ]
  },
@@ -8763,16 +8992,6 @@
    }
   ]
  },
- "ed6b20cb-e078-d0ce-2951-6b8c529ecff2": {
-  "nexusId": 17157,
-  "nexusName": "Bath Before Bed (Clean Camp Nights)",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 290
- },
  "c4b61fcc-5450-49da-a2c1-6b24acdd4dd9": {
   "nexusId": 1028,
   "nexusName": "Better Dual Wielding",
@@ -8782,16 +9001,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 3562
- },
- "3be48882-d772-ccd1-cbda-aa83600257cb": {
-  "nexusId": 13404,
-  "nexusName": "Black Hand Armor",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 711
  },
  "e66a17aa-b5f7-6ba5-fcbf-39dff34e8a3c": {
   "nexusId": 16818,
@@ -8829,77 +9038,6 @@
   "suggestedGroup": "Classes",
   "adult": false,
   "endorsements": 1
- },
- "d38b29fc-44ab-2017-6de0-aa8241e9ba40": {
-  "nexusId": 19947,
-  "nexusName": "Clansong - Speaking Dragonborns CC Heads",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 143,
-  "requires": [
-   {
-    "name": "Crazy Color pack",
-    "nexusId": 12868,
-    "uuid": "01d87964-fc46-7140-b29e-3956de333929",
-    "notes": "Requirment of dependencies"
-   },
-   {
-    "name": "Crystal Crown - Gem Dragonborn CC",
-    "nexusId": 10292,
-    "uuid": "7a8d7a63-07c7-819b-9a00-49a887367d81",
-    "notes": "Contain textures and button pictures for Crystal Crown assets"
-   },
-   {
-    "name": "Dragonborn Extra Tabs - Horns and Hair",
-    "nexusId": 12876,
-    "uuid": "646e5ff9-350d-ec39-1cde-90c765414288",
-    "notes": "Requirment of dependencies"
-   },
-   {
-    "name": "Durge's mangled head - Dark Urge Dragonborn CC",
-    "nexusId": 9702,
-    "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
-    "notes": "Version: 1.0.0.16+. Contain textures and button pictures  for DMH assts and heads"
-   },
-   {
-    "name": "P4 Patches",
-    "nexusId": 353,
-    "notes": "Patches_for_VFX_Heads."
-   },
-   {
-    "name": "Pearl - Seadragon - Dragonborn CC",
-    "nexusId": 10761,
-    "uuid": "415363fd-bef0-5376-658c-2540fd8e37b7",
-    "notes": "Version: 1.0.0.14+. Textures for the heads"
-   },
-   {
-    "name": "Rathgor - Reforged  head - Dark Urge Dragonborn CC",
-    "nexusId": 10343,
-    "uuid": "56bee93d-ecd1-4680-cca1-44ee52514b9c",
-    "notes": "Version: 1.0.0.14+. Textures for the heads"
-   },
-   {
-    "name": "Reforged Assets - Dark Urge Dragonborn CC",
-    "nexusId": 13313,
-    "uuid": "68df2229-1684-00ba-49a7-68ad954a64e6",
-    "notes": "Contain textures and button pictures for Reforged assets"
-   },
-   {
-    "name": "Seadragon Assets - Dragonborn CC",
-    "nexusId": 13324,
-    "uuid": "ccfff6aa-9e2d-dd90-b49a-53b30e6255c7",
-    "notes": "Contain textures and button pictures for Seadragon assets"
-   },
-   {
-    "name": "Vexa - Dark Urge Slayer Dragonborn CC",
-    "nexusId": 11622,
-    "uuid": "0571ff38-d7c9-f409-4591-33bb086c5f52",
-    "notes": "Version: 1.0.0.16+.Must have. Textures for the heads in this one"
-   }
-  ]
  },
  "2d7e7665-a9ec-8e61-edbf-647f6bd072ce": {
   "nexusId": 13088,
@@ -9028,30 +9166,6 @@
    }
   ]
  },
- "18119da1-cad4-6d77-73e9-3d3f8533b3ff": {
-  "nexusId": 13534,
-  "nexusName": "DMH Assets Vexa - Dark Urge Dragonborn CC",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 153,
-  "requires": [
-   {
-    "name": "Durge's mangled head - Dark Urge Dragonborn CC",
-    "nexusId": 9702,
-    "uuid": "3060ca1e-6a6a-079e-e999-7398f55bee4b",
-    "notes": "Assets"
-   },
-   {
-    "name": "Vexa - Dark Urge Slayer Dragonborn CC",
-    "nexusId": 11622,
-    "uuid": "0571ff38-d7c9-f409-4591-33bb086c5f52",
-    "notes": "The Heads"
-   }
-  ]
- },
  "897914ef-5c96-053c-44af-0be823f895fe": {
   "nexusId": 12727,
   "nexusName": "DnD 5.5e All-in-One BEYOND",
@@ -9060,7 +9174,7 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 545,
+  "endorsements": 546,
   "requires": [
    {
     "name": "ImpUI (ImprovedUI)",
@@ -9079,16 +9193,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 111
- },
- "a6f0bab9-67f4-b8c3-bb29-581037cf1d5a": {
-  "nexusId": 20552,
-  "nexusName": "Emperor vs. Orpheus",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 223
  },
  "87bf7f7c-8dfb-4bb3-a6d8-deb5516e4b24": {
   "nexusId": 17190,
@@ -9163,6 +9267,16 @@
     "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
    }
   ]
+ },
+ "0ef0046c-46c1-a8dd-011d-099d58656ea0": {
+  "nexusId": 14668,
+  "nexusName": "Infinite Illithid Wisdom Check",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 128
  },
  "76b43e55-5713-4d3d-86e2-76e600b593e1": {
   "nexusId": 7820,
@@ -9279,16 +9393,6 @@
    }
   ]
  },
- "1ee5c56d-4e23-c725-c13f-097cb119fece": {
-  "nexusId": 23582,
-  "nexusName": "Monster Slayer Progressive Equipment Set TR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.97,
-  "nexusCategory": "User Interface",
-  "suggestedGroup": "User Interface",
-  "adult": false,
-  "endorsements": 1
- },
  "735bf68d-bc19-a2ed-4237-b48966923592": {
   "nexusId": 19804,
   "nexusName": "Origin Oddities - Bags and Bundles",
@@ -9358,6 +9462,62 @@
    {
     "name": "Full Release Mod Fixer",
     "nexusId": 550
+   }
+  ]
+ },
+ "c4f983ea-5a79-e568-ebbf-6535dc6a0d7e": {
+  "nexusId": 13545,
+  "nexusName": "Reforged Assets Vexa - Dark Urge Dragonborn CC",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 146,
+  "requires": [
+   {
+    "name": "Reforged Assets - Dark Urge Dragonborn CC",
+    "nexusId": 13313,
+    "uuid": "68df2229-1684-00ba-49a7-68ad954a64e6",
+    "notes": "Assets"
+   },
+   {
+    "name": "Vexa - Dark Urge Slayer Dragonborn CC",
+    "nexusId": 11622,
+    "uuid": "0571ff38-d7c9-f409-4591-33bb086c5f52",
+    "notes": "The Head"
+   }
+  ]
+ },
+ "bea74574-57da-e902-25ed-e5875d88679f": {
+  "nexusId": 20379,
+  "nexusName": "Scion Of The Three - Rogue Subclass (ENG-KOR)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 37,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Community Library",
+    "nexusId": 1333
+   },
+   {
+    "name": "Compatibility Framework",
+    "nexusId": 1933,
+    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"
+   },
+   {
+    "name": "Expansion Level 13-20 (Configurable)",
+    "nexusId": 279,
+    "notes": "Install only one of this mod and the mod above."
+   },
+   {
+    "name": "UnlockLevelCurve - Level 13-20 I PATCH 8",
+    "nexusId": 377,
+    "uuid": "a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+    "notes": "Install only one of this mod and the mod below."
    }
   ]
  },
@@ -9437,22 +9597,6 @@
   "adult": false,
   "endorsements": 123
  },
- "57d87816-ac58-4a37-90ad-0fda409c5557": {
-  "nexusId": 17581,
-  "nexusName": "StrongerBosses-KR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.93,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 5,
-  "requires": [
-   {
-    "name": "(PATCH8 READY) Stronger Bosses and Enemies",
-    "nexusId": 782
-   }
-  ]
- },
  "bcc7986a-d2e3-0670-f738-a2973390b798": {
   "nexusId": 18758,
   "nexusName": "Style N Dye",
@@ -9462,49 +9606,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 108
- },
- "a7b5810e-3ac1-4a8f-bcc9-d18d91de2505": {
-  "nexusId": 18743,
-  "nexusName": "Ultimate NPC Stat Overhaul_KOR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.9,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 5,
-  "requires": [
-   {
-    "name": "Absolute's Laboratory - NPC and Combat Inspector and Mutator",
-    "nexusId": 16217,
-    "notes": "선택 사항입니다. Combat Extender 모드(일명 CX)를 대체하기 위해 만들어지는 모드로, 아직 완성되지 않았습니다."
-   },
-   {
-    "name": "Combat Extender",
-    "nexusId": 5207,
-    "uuid": "0c692104-c83f-48b8-9fcd-ca7e33be5099",
-    "notes": "선택 사항입니다. 없어도 작동합니다. 아군과 적의 강함을 입맛대로 편집하려면 개인적으로는 쓰는 걸 권장드립니다."
-   },
-   {
-    "name": "Expansion Level 13-20 (Configurable)",
-    "nexusId": 279,
-    "notes": "선택 사항입니다. 하지만 원본 모더에 따르면 적극 권장됩니다."
-   },
-   {
-    "name": "Goon's Library - Passives Functions Spells and More",
-    "nexusId": 12834,
-    "notes": "원본 모드의 필수 라이브러리 모드입니다."
-   },
-   {
-    "name": "Goon's Library_KOR",
-    "nexusId": 18742,
-    "notes": "선택 사항입니다. 상기한 Goon's Library - Passives Functions Spells and More 모드의 한글 번역입니다."
-   },
-   {
-    "name": "Ultimate NPC Stat Overhaul (UNSO)",
-    "nexusId": 15535,
-    "notes": "반드시 필요한 원본 모드입니다."
-   }
-  ]
  },
  "b1d32a88-1bfd-4714-b1d6-6bd55055d6bd": {
   "nexusId": 22472,
@@ -9521,30 +9622,6 @@
     "nexusId": 9162,
     "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
     "notes": "1.40+"
-   }
-  ]
- },
- "04c9dcd5-9bc2-4560-8c41-a801bfbca5ed": {
-  "nexusId": 17478,
-  "nexusName": "Valkrana's Limited Edition Bone-KR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.96,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 2,
-  "requires": [
-   {
-    "name": "Valkrana's Limited Edition Bone - Necromancer Item",
-    "nexusId": 5005
-   },
-   {
-    "name": "Valkrana's Skeleton Crew - Over 60 Random Undead Allies",
-    "nexusId": 4496
-   },
-   {
-    "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
-    "nexusId": 1258
    }
   ]
  },
@@ -10066,15 +10143,35 @@
   "adult": false,
   "endorsements": 368
  },
- "0ef0046c-46c1-a8dd-011d-099d58656ea0": {
-  "nexusId": 14668,
-  "nexusName": "Infinite Illithid Wisdom Check",
+ "6705c0d5-d602-d598-9d0d-a5d51e337c8c": {
+  "nexusId": 18663,
+  "nexusName": "Infernal Champion- Battle Trance Set_KOR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 4
+ },
+ "a78e620f-1192-079d-2ccc-be5ff556fd8e": {
+  "nexusId": 12654,
+  "nexusName": "Karlach Burning Immune and Attacks Have Fire Damage",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.96,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 154
+ },
+ "00a612fe-4676-4535-a6e3-79cacee74e44": {
+  "nexusId": 13540,
+  "nexusName": "Lich Feats",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 128
+  "endorsements": 321
  },
  "443e6d35-4d40-feb5-3a21-936ddd2711a5": {
   "nexusId": 16546,
@@ -10244,6 +10341,29 @@
   "adult": false,
   "endorsements": 417
  },
+ "1ce193c7-343b-4278-9f11-161a1e92854e": {
+  "nexusId": 17713,
+  "nexusName": "Ornamental Body Jewellery",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": true,
+  "endorsements": 566,
+  "requires": [
+   {
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "Required to spawn"
+   },
+   {
+    "name": "AV Item Shipment Framework (AV ISF)",
+    "nexusId": 8295,
+    "notes": "Optional way to spawn"
+   }
+  ]
+ },
  "06f797f9-e687-4bd3-8198-c5346dca2a87": {
   "nexusId": 2981,
   "nexusName": "P4 Dragonborn Scale Colours",
@@ -10263,6 +10383,22 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 84
+ },
+ "7b3c319d-aec0-477c-851f-b386dd16e417": {
+  "nexusId": 18562,
+  "nexusName": "Paired Weapons and Improved Dual Wielding",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 96,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
+    "nexusId": 2172
+   }
+  ]
  },
  "957f4912-8d5e-4ad2-8add-a7f7ed7caa71": {
   "nexusId": 496,
@@ -10284,30 +10420,6 @@
   "adult": false,
   "endorsements": 115
  },
- "c4f983ea-5a79-e568-ebbf-6535dc6a0d7e": {
-  "nexusId": 13545,
-  "nexusName": "Reforged Assets Vexa - Dark Urge Dragonborn CC",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 146,
-  "requires": [
-   {
-    "name": "Reforged Assets - Dark Urge Dragonborn CC",
-    "nexusId": 13313,
-    "uuid": "68df2229-1684-00ba-49a7-68ad954a64e6",
-    "notes": "Assets"
-   },
-   {
-    "name": "Vexa - Dark Urge Slayer Dragonborn CC",
-    "nexusId": 11622,
-    "uuid": "0571ff38-d7c9-f409-4591-33bb086c5f52",
-    "notes": "The Head"
-   }
-  ]
- },
  "df8ed7d1-c924-e40b-fa4e-4dd8146075b9": {
   "nexusId": 20082,
   "nexusName": "Sanguine Weave - Blood-Woven Outfit Set",
@@ -10317,38 +10429,6 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 204
- },
- "bea74574-57da-e902-25ed-e5875d88679f": {
-  "nexusId": 20379,
-  "nexusName": "Scion Of The Three - Rogue Subclass (ENG-KOR)",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 37,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Community Library",
-    "nexusId": 1333
-   },
-   {
-    "name": "Compatibility Framework",
-    "nexusId": 1933,
-    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"
-   },
-   {
-    "name": "Expansion Level 13-20 (Configurable)",
-    "nexusId": 279,
-    "notes": "Install only one of this mod and the mod above."
-   },
-   {
-    "name": "UnlockLevelCurve - Level 13-20 I PATCH 8",
-    "nexusId": 377,
-    "uuid": "a2ffd0e4-c407-8642-2611-c934ea0b0a77",
-    "notes": "Install only one of this mod and the mod below."
-   }
-  ]
  },
  "52bc7ae8-16c6-472c-bb6f-dde5a71b8cb5": {
   "nexusId": 11953,
@@ -10590,6 +10670,23 @@
   "adult": false,
   "endorsements": 2422
  },
+ "b6734115-955b-4238-8ca6-4adae030c6ef": {
+  "nexusId": 16860,
+  "nexusName": "True Strike (2024)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 147,
+  "requires": [
+   {
+    "name": "War Caster (2014 and 2024)",
+    "nexusId": 5822,
+    "notes": "(Optional) Required for War Caster support"
+   }
+  ]
+ },
  "e125bfa4-56c6-f77f-c4af-f794b6cba425": {
   "nexusId": 16625,
   "nexusName": "Tutorial Quick Exit",
@@ -10793,6 +10890,16 @@
   "suggestedGroup": "User Interface",
   "adult": false,
   "endorsements": 329
+ },
+ "556ee609-f262-fb23-2e7a-a69ed9a93c95": {
+  "nexusId": 17008,
+  "nexusName": "Better Mirror of Loss",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 127
  },
  "2657d808-c6e1-2c29-788f-aec43de50295": {
   "nexusId": 12517,
@@ -11209,6 +11316,16 @@
   "adult": false,
   "endorsements": 65
  },
+ "906a69b9-71b2-9edc-3d6d-a41548f21f50": {
+  "nexusId": 18865,
+  "nexusName": "Female Planar Ally Bare",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": true,
+  "endorsements": 231
+ },
  "5cd5cdb0-382e-b5b5-1781-1eb3eb630ca3": {
   "nexusId": 9013,
   "nexusName": "Feywild Dice",
@@ -11312,6 +11429,16 @@
   "adult": false,
   "endorsements": 35
  },
+ "1f666801-df81-4cad-8a01-39d547291bba": {
+  "nexusId": 14861,
+  "nexusName": "Illithid Dominion",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 228
+ },
  "11fb351c-fd93-4d69-9da5-be10715bc942": {
   "nexusId": 13840,
   "nexusName": "Immersive Gear",
@@ -11332,15 +11459,15 @@
   "adult": false,
   "endorsements": 31
  },
- "6705c0d5-d602-d598-9d0d-a5d51e337c8c": {
-  "nexusId": 18663,
-  "nexusName": "Infernal Champion- Battle Trance Set_KOR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Miscellaneous",
+ "e2761c2f-2713-4c40-fb98-b68a02c0e0f4": {
+  "nexusId": 16773,
+  "nexusName": "Inferna Victoria - Raphael's Regal Redesign",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 4
+  "endorsements": 305
  },
  "8f178298-6297-466b-a863-afe2173a7014": {
   "nexusId": 831,
@@ -11401,16 +11528,6 @@
    }
   ]
  },
- "a78e620f-1192-079d-2ccc-be5ff556fd8e": {
-  "nexusId": 12654,
-  "nexusName": "Karlach Burning Immune and Attacks Have Fire Damage",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.96,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 154
- },
  "f1008616-43ee-9264-fa97-7a9451864334": {
   "nexusId": 23723,
   "nexusName": "Lady of Space and Time - Ciri's alternative outfit",
@@ -11450,16 +11567,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 49
- },
- "00a612fe-4676-4535-a6e3-79cacee74e44": {
-  "nexusId": 13540,
-  "nexusName": "Lich Feats",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 321
  },
  "49ae2e76-4497-a8c9-c156-b67ad4fea463": {
   "nexusId": 12813,
@@ -11657,29 +11764,6 @@
   "adult": false,
   "endorsements": 57
  },
- "1ce193c7-343b-4278-9f11-161a1e92854e": {
-  "nexusId": 17713,
-  "nexusName": "Ornamental Body Jewellery",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": true,
-  "endorsements": 566,
-  "requires": [
-   {
-    "name": "Tutorial Chest Summoning",
-    "nexusId": 457,
-    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
-    "notes": "Required to spawn"
-   },
-   {
-    "name": "AV Item Shipment Framework (AV ISF)",
-    "nexusId": 8295,
-    "notes": "Optional way to spawn"
-   }
-  ]
- },
  "393138af-ca62-34ae-ec4e-cf07a2c04fa8": {
   "nexusId": 18429,
   "nexusName": "Pact of the Heart and Additional Invocations",
@@ -11721,22 +11805,6 @@
     "name": "Baldur's Gate 3 Community Library",
     "nexusId": 1333,
     "notes": "Required"
-   }
-  ]
- },
- "7b3c319d-aec0-477c-851f-b386dd16e417": {
-  "nexusId": 18562,
-  "nexusName": "Paired Weapons and Improved Dual Wielding",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 96,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
-    "nexusId": 2172
    }
   ]
  },
@@ -12058,6 +12126,16 @@
   "adult": false,
   "endorsements": 431
  },
+ "29bbb038-233f-4e37-9427-03d904fe36e5": {
+  "nexusId": 18949,
+  "nexusName": "Tharchiate Ascendency",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 105
+ },
  "ce063aee-68c5-137c-55a3-5cb6874104c4": {
   "nexusId": 14175,
   "nexusName": "The Alchemist",
@@ -12121,23 +12199,6 @@
    {
     "name": "Baldur's Gate 3 Script Extender (BG3SE)",
     "nexusId": 2172
-   }
-  ]
- },
- "b6734115-955b-4238-8ca6-4adae030c6ef": {
-  "nexusId": 16860,
-  "nexusName": "True Strike (2024)",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 147,
-  "requires": [
-   {
-    "name": "War Caster (2014 and 2024)",
-    "nexusId": 5822,
-    "notes": "(Optional) Required for War Caster support"
    }
   ]
  },
@@ -12281,15 +12342,23 @@
   "adult": false,
   "endorsements": 2206
  },
- "556ee609-f262-fb23-2e7a-a69ed9a93c95": {
-  "nexusId": 17008,
-  "nexusName": "Better Mirror of Loss",
+ "6952dc49-289f-4bb6-bf2a-14a6cd3526e9": {
+  "nexusId": 18657,
+  "nexusName": "Better Skills",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 127
+  "endorsements": 54,
+  "requires": [
+   {
+    "name": "Compatibility Framework",
+    "nexusId": 1933,
+    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+    "notes": "for version 1.3"
+   }
+  ]
  },
  "e5a93242-28c0-cd0b-a535-57f8dfc4fac5": {
   "nexusId": 2790,
@@ -12641,16 +12710,6 @@
   "adult": false,
   "endorsements": 56
  },
- "906a69b9-71b2-9edc-3d6d-a41548f21f50": {
-  "nexusId": 18865,
-  "nexusName": "Female Planar Ally Bare",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": true,
-  "endorsements": 231
- },
  "1655f3a6-9402-49ba-9deb-d1a4b6b30fa9": {
   "nexusId": 20924,
   "nexusName": "Ferrety's Spells - Elemental Cantrips",
@@ -12690,6 +12749,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 35
+ },
+ "a831b501-eb83-7e85-6560-7414e9022a3e": {
+  "nexusId": 19495,
+  "nexusName": "Frost King - Progressive Equipment Set_KOR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 8
  },
  "a8aaf58d-a9c0-47e3-a5bc-919ea0b62a65": {
   "nexusId": 14442,
@@ -12767,7 +12836,7 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": true,
-  "endorsements": 347,
+  "endorsements": 351,
   "requires": [
    {
     "name": "BG3AF - Animation Framework",
@@ -12890,26 +12959,6 @@
   "adult": false,
   "endorsements": 2224
  },
- "1f666801-df81-4cad-8a01-39d547291bba": {
-  "nexusId": 14861,
-  "nexusName": "Illithid Dominion",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 228
- },
- "e2761c2f-2713-4c40-fb98-b68a02c0e0f4": {
-  "nexusId": 16773,
-  "nexusName": "Inferna Victoria - Raphael's Regal Redesign",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 305
- },
  "55f1e395-f030-4227-8c6d-cb8911ea8d81": {
   "nexusId": 9359,
   "nexusName": "Interesting Origins",
@@ -12965,6 +13014,16 @@
   "adult": false,
   "endorsements": 523
  },
+ "4600af28-3652-e12f-d6e2-a64cd741948e": {
+  "nexusId": 16284,
+  "nexusName": "Leathers of the Vagabond",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 189
+ },
  "684c5816-2757-4fb3-92ba-fe8e01c65659": {
   "nexusId": 9746,
   "nexusName": "Less Crowd Characters",
@@ -12974,6 +13033,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 565
+ },
+ "8a3dd49c-f8a3-483c-8fff-a0f222c903e2": {
+  "nexusId": 17350,
+  "nexusName": "Less Empty Vases",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 147
  },
  "75da22c8-7759-4f2e-df9d-f0d36b161407": {
   "nexusId": 16032,
@@ -13508,15 +13577,44 @@
    }
   ]
  },
- "29bbb038-233f-4e37-9427-03d904fe36e5": {
-  "nexusId": 18949,
-  "nexusName": "Tharchiate Ascendency",
+ "34eb0556-e0b9-4c74-8181-d1f71500b335": {
+  "nexusId": 19848,
+  "nexusName": "The Necrobroker Patron - Warlock Subclass",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
   "adult": false,
-  "endorsements": 105
+  "endorsements": 55,
+  "requires": [
+   {
+    "name": "5e Spells",
+    "nexusId": 125,
+    "uuid": "33b799a4-c2ad-ad84-bc01-4ed5496fb410",
+    "notes": "Expanded Spell List (Optional)"
+   },
+   {
+    "name": "Necromancy Reanimated (Formerly Animate Dead Plus Plus)",
+    "nexusId": 642,
+    "notes": "Expanded Spell List (Optional)"
+   },
+   {
+    "name": "Command Undead - Necromancy Subclass Feature",
+    "nexusId": 6291,
+    "notes": "Required for level 14 feature. Load before Necrobroker."
+   },
+   {
+    "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
+    "nexusId": 1258,
+    "notes": "Required"
+   },
+   {
+    "name": "Warlock Spell List Fixer",
+    "nexusId": 11239,
+    "uuid": "da838ab2-4d4b-4ca2-9e11-0257a03b13fc",
+    "notes": "Adds modded spells to spell list. (Optional)"
+   }
+  ]
  },
  "e1731aa5-1196-2534-2718-a08095a2e23e": {
   "nexusId": 17326,
@@ -13774,6 +13872,16 @@
   "adult": false,
   "endorsements": 57
  },
+ "5f593a3f-0374-42d8-a5c6-e07e3ae36f07": {
+  "nexusId": 19530,
+  "nexusName": "Zethino Love Test Buff Fix",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 387
+ },
  "e8c91dd8-c8e4-7306-151b-221d6e3bd60e": {
   "nexusId": 13679,
   "nexusName": "Ziva Long Gloves",
@@ -13793,6 +13901,16 @@
   "suggestedGroup": "Weapons",
   "adult": false,
   "endorsements": 70
+ },
+ "e847810e-0d90-4a2b-8e51-65aefdb56f44": {
+  "nexusId": 5352,
+  "nexusName": "Aether's Useful Daggers",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 261
  },
  "4d3a67f5-5cc3-8568-3f42-04dfb4734fef": {
   "nexusId": 19088,
@@ -14071,24 +14189,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 24
- },
- "6952dc49-289f-4bb6-bf2a-14a6cd3526e9": {
-  "nexusId": 18657,
-  "nexusName": "Better Skills",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 54,
-  "requires": [
-   {
-    "name": "Compatibility Framework",
-    "nexusId": 1933,
-    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
-    "notes": "for version 1.3"
-   }
-  ]
  },
  "e47cfc02-4a5e-437f-abbf-d795f5b9963e": {
   "nexusId": 20740,
@@ -14470,6 +14570,26 @@
    }
   ]
  },
+ "7811817b-fd5b-7e86-0658-0a79f12a3a8f": {
+  "nexusId": 24254,
+  "nexusName": "Eilistraee's Moonsword",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 22
+ },
+ "07207a23-ec13-1077-7872-c03de60e6c51": {
+  "nexusId": 1498,
+  "nexusName": "Eldritch Blast (Enhanced)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 421
+ },
  "74b3d181-c27f-4d91-a21f-4688ee6b4400": {
   "nexusId": 23654,
   "nexusName": "Elven Head Pack",
@@ -14700,16 +14820,6 @@
   "adult": false,
   "endorsements": 139
  },
- "a831b501-eb83-7e85-6560-7414e9022a3e": {
-  "nexusId": 19495,
-  "nexusName": "Frost King - Progressive Equipment Set_KOR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 8
- },
  "acbc4ff8-633a-221d-1ad6-a132fdbb7eb6": {
   "nexusId": 21113,
   "nexusName": "Full Moon - Sailor Moon Inspired Dress",
@@ -14848,6 +14958,16 @@
   "adult": false,
   "endorsements": 64
  },
+ "be37d703-7597-4878-90bf-9c4221835509": {
+  "nexusId": 14860,
+  "nexusName": "Illithid Emporium",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 208
+ },
  "439489b8-2b67-46fb-8260-f36da7add941": {
   "nexusId": 16902,
   "nexusName": "Immersive Deathstalker Mantle",
@@ -14932,26 +15052,6 @@
     "nexusId": 690
    }
   ]
- },
- "4600af28-3652-e12f-d6e2-a64cd741948e": {
-  "nexusId": 16284,
-  "nexusName": "Leathers of the Vagabond",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 189
- },
- "8a3dd49c-f8a3-483c-8fff-a0f222c903e2": {
-  "nexusId": 17350,
-  "nexusName": "Less Empty Vases",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 147
  },
  "288a7d53-7c16-9c0f-f2c5-0c6a0f84b9c8": {
   "nexusId": 18702,
@@ -15633,45 +15733,6 @@
    }
   ]
  },
- "34eb0556-e0b9-4c74-8181-d1f71500b335": {
-  "nexusId": 19848,
-  "nexusName": "The Necrobroker Patron - Warlock Subclass",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 55,
-  "requires": [
-   {
-    "name": "5e Spells",
-    "nexusId": 125,
-    "uuid": "33b799a4-c2ad-ad84-bc01-4ed5496fb410",
-    "notes": "Expanded Spell List (Optional)"
-   },
-   {
-    "name": "Necromancy Reanimated (Formerly Animate Dead Plus Plus)",
-    "nexusId": 642,
-    "notes": "Expanded Spell List (Optional)"
-   },
-   {
-    "name": "Command Undead - Necromancy Subclass Feature",
-    "nexusId": 6291,
-    "notes": "Required for level 14 feature. Load before Necrobroker."
-   },
-   {
-    "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
-    "nexusId": 1258,
-    "notes": "Required"
-   },
-   {
-    "name": "Warlock Spell List Fixer",
-    "nexusId": 11239,
-    "uuid": "da838ab2-4d4b-4ca2-9e11-0257a03b13fc",
-    "notes": "Adds modded spells to spell list. (Optional)"
-   }
-  ]
- },
  "0eb93f44-00de-49f6-b370-28bb301d4c9c": {
   "nexusId": 17805,
   "nexusName": "The underdark's Songbird armor",
@@ -15871,16 +15932,6 @@
   "adult": false,
   "endorsements": 91
  },
- "5f593a3f-0374-42d8-a5c6-e07e3ae36f07": {
-  "nexusId": 19530,
-  "nexusName": "Zethino Love Test Buff Fix",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 387
- },
  "dea210d5-8b66-3555-fb87-823c32648a1e": {
   "nexusId": 21169,
   "nexusName": "Silk and Shadow",
@@ -15938,16 +15989,6 @@
     "notes": "Needed to allow scrolling of Background selection screen and icons"
    }
   ]
- },
- "e847810e-0d90-4a2b-8e51-65aefdb56f44": {
-  "nexusId": 5352,
-  "nexusName": "Aether's Useful Daggers",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 261
  },
  "c9161efc-3a6f-9ab0-bb6f-64aa069ac23f": {
   "nexusId": 23875,
@@ -16324,6 +16365,16 @@
   "adult": false,
   "endorsements": 24
  },
+ "de23e93f-9b56-40e0-95bc-83a0e8c1570a": {
+  "nexusId": 3931,
+  "nexusName": "Class Specialization Feats",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1067
+ },
  "9f8c8c81-92db-4b5e-b70f-8a1a7424e987": {
   "nexusId": 23466,
   "nexusName": "Clean My Hotbar By Doya Solutions",
@@ -16574,26 +16625,6 @@
    }
   ]
  },
- "7811817b-fd5b-7e86-0658-0a79f12a3a8f": {
-  "nexusId": 24254,
-  "nexusName": "Eilistraee's Moonsword",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 22
- },
- "07207a23-ec13-1077-7872-c03de60e6c51": {
-  "nexusId": 1498,
-  "nexusName": "Eldritch Blast (Enhanced)",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 421
- },
  "2a1ac81c-6207-b82e-637a-388033e20e79": {
   "nexusId": 23095,
   "nexusName": "Ember's Wardrobe (Trickster's Finery)",
@@ -16659,6 +16690,26 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 401
+ },
+ "2a059e43-d863-53b6-6f7f-3a8507c9cb53": {
+  "nexusId": 24046,
+  "nexusName": "Female Animate Dead",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": true,
+  "endorsements": 25
+ },
+ "b62391aa-9e2a-5680-2f3a-498e43e0aea3": {
+  "nexusId": 24045,
+  "nexusName": "Female Create Undead",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": true,
+  "endorsements": 19
  },
  "dc4041fd-1646-dec4-ea25-0573edd361e0": {
   "nexusId": 5256,
@@ -16827,6 +16878,16 @@
   "adult": false,
   "endorsements": 183
  },
+ "3540f2cc-910b-4c38-ab02-19657561ca16": {
+  "nexusId": 22088,
+  "nexusName": "His Majesty's Plot Armor",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 52
+ },
  "c5bae22f-4e8e-e0a4-914f-2f75a39ff74c": {
   "nexusId": 22428,
   "nexusName": "Human-ish God of Ambition",
@@ -16856,16 +16917,6 @@
   "suggestedGroup": "Dice",
   "adult": false,
   "endorsements": 585
- },
- "be37d703-7597-4878-90bf-9c4221835509": {
-  "nexusId": 14860,
-  "nexusName": "Illithid Emporium",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 208
  },
  "0ff202ab-a577-49fe-b400-e421f0047884": {
   "nexusId": 18754,
@@ -17311,6 +17362,35 @@
   "adult": false,
   "endorsements": 66
  },
+ "deba3096-24c5-4b6d-bd77-52c2e3661d21": {
+  "nexusId": 17746,
+  "nexusName": "Occultist Class (Blue Mage)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 183,
+  "requires": [
+   {
+    "name": "Dialogue and Reactivity Tags (DART) Framework",
+    "nexusId": 17561,
+    "uuid": "65e55feb-aada-4fec-821f-7d913e9b4d82",
+    "notes": "(Optional) Tags dialogue lines with Occultist instead of Wizard/Ranger"
+   },
+   {
+    "name": "True Strike (2024)",
+    "nexusId": 16860,
+    "uuid": "b6734115-955b-4238-8ca6-4adae030c6ef",
+    "notes": "(Optional) Recommended starting cantrip, has Occultist-specific VFX"
+   },
+   {
+    "name": "War Caster (2014 and 2024)",
+    "nexusId": 5822,
+    "notes": "(Optional) Required for War Caster reactions for 100+ mimicries"
+   }
+  ]
+ },
  "5232767f-5258-a4ca-4f47-bf63fe7d16c4": {
   "nexusId": 22644,
   "nexusName": "Odile's Gown - Outfit Ensemble",
@@ -17342,6 +17422,16 @@
     "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"
    }
   ]
+ },
+ "ed24957e-ce48-8f9b-2679-314312da455e": {
+  "nexusId": 12866,
+  "nexusName": "Permanent Summons",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 62
  },
  "ac9a9d62-5a19-4715-aef3-b1e8e18ccef9": {
   "nexusId": 12184,
@@ -17616,7 +17706,7 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 21
+  "endorsements": 22
  },
  "a96b1f5d-0571-7d1a-477c-08dd3e5222ac": {
   "nexusId": 6964,
@@ -17851,6 +17941,16 @@
   "adult": false,
   "endorsements": 71
  },
+ "22fe70ad-c877-9aec-136b-1b76f16490fb": {
+  "nexusId": 18843,
+  "nexusName": "Temi Longsword_Warden Armor Set_KOR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 3
+ },
  "69979892-c180-73fd-83f7-d78706663238": {
   "nexusId": 22172,
   "nexusName": "The Best Hair Pack Ever",
@@ -18019,6 +18119,16 @@
    }
   ]
  },
+ "34c6c040-e5c9-3ab8-e215-ba06931d1c42": {
+  "nexusId": 16629,
+  "nexusName": "Thornsong Bow",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
+  "adult": false,
+  "endorsements": 47
+ },
  "b048f9f4-5f5a-43f5-adb4-faa08537ec8d": {
   "nexusId": 19693,
   "nexusName": "UA Fighting Styles",
@@ -18045,6 +18155,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 19
+ },
+ "5f69f66a-142b-4875-91a0-38c385d7aee3": {
+  "nexusId": 5660,
+  "nexusName": "Unlock Summon Skills",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 187
  },
  "bca0e000-cd50-4e76-987a-1808e9ece800": {
   "nexusId": 5963,
@@ -18359,6 +18479,16 @@
   "adult": false,
   "endorsements": 453
  },
+ "500363fd-f696-4288-affb-bff7b49cb06e": {
+  "nexusId": 5351,
+  "nexusName": "Aether's Useful Bows",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 397
+ },
  "8f4cf5de-c7a4-4733-8d3f-2cdf4f450b5c": {
   "nexusId": 2327,
   "nexusName": "All Elemental Adept",
@@ -18582,6 +18712,16 @@
    }
   ]
  },
+ "888ffc86-32a0-ca23-61c6-bf01d0138337": {
+  "nexusId": 19006,
+  "nexusName": "Berserk Griffith Armor_Weapon Set_KOR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 6
+ },
  "0bf015b9-8408-4b0d-a500-42660cee7be7": {
   "nexusId": 17847,
   "nexusName": "Better Daggers",
@@ -18778,16 +18918,6 @@
   "suggestedGroup": "Classes",
   "adult": false,
   "endorsements": 408
- },
- "de23e93f-9b56-40e0-95bc-83a0e8c1570a": {
-  "nexusId": 3931,
-  "nexusName": "Class Specialization Feats",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 1067
  },
  "94ae2070-01e3-f342-e45f-14154db406f6": {
   "nexusId": 14980,
@@ -19352,26 +19482,6 @@
    }
   ]
  },
- "2a059e43-d863-53b6-6f7f-3a8507c9cb53": {
-  "nexusId": 24046,
-  "nexusName": "Female Animate Dead",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": true,
-  "endorsements": 25
- },
- "b62391aa-9e2a-5680-2f3a-498e43e0aea3": {
-  "nexusId": 24045,
-  "nexusName": "Female Create Undead",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": true,
-  "endorsements": 19
- },
  "47a9b306-2755-4c05-be77-cb3bd7c49cd5": {
   "nexusId": 21233,
   "nexusName": "Ferrety's Feats - The Dead Three",
@@ -19460,6 +19570,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 98
+ },
+ "23ba8f6f-44a9-92a0-60e5-4fb3abe0230d": {
+  "nexusId": 20262,
+  "nexusName": "Garb of the Ghustil",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Clothing",
+  "suggestedGroup": "Clothing",
+  "adult": false,
+  "endorsements": 119
  },
  "6882559d-49bf-4a91-b7c5-5f9d78dabcda": {
   "nexusId": 7855,
@@ -19690,16 +19810,6 @@
    }
   ]
  },
- "3540f2cc-910b-4c38-ab02-19657561ca16": {
-  "nexusId": 22088,
-  "nexusName": "His Majesty's Plot Armor",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 52
- },
  "18e49fd9-725f-4d4b-ae0e-83af8ce8c381": {
   "nexusId": 16301,
   "nexusName": "GraphicFade's Items Patch for HomeBrew (All in One Edition)",
@@ -19825,6 +19935,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 62
+ },
+ "e895eb0e-a371-a2c5-cf86-d3704f8087ad": {
+  "nexusId": 18664,
+  "nexusName": "Kanshou and Bakuya - Yin Yang Swords_KOR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1
  },
  "c2392913-08da-2047-8b57-927b4ad92118": {
   "nexusId": 4848,
@@ -20174,6 +20294,16 @@
   "adult": false,
   "endorsements": 96
  },
+ "4b4fe717-1e50-8b2e-547c-dbfbb89270bc": {
+  "nexusId": 18350,
+  "nexusName": "Night Orchid Hair Accessory for Shadowheart and CC",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.94,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 97
+ },
  "bd707281-78cc-4ca7-8842-b496b84001bc": {
   "nexusId": 17766,
   "nexusName": "No More Sorcerous Sundries Magic Show",
@@ -20266,35 +20396,6 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 198
- },
- "deba3096-24c5-4b6d-bd77-52c2e3661d21": {
-  "nexusId": 17746,
-  "nexusName": "Occultist Class (Blue Mage)",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 183,
-  "requires": [
-   {
-    "name": "Dialogue and Reactivity Tags (DART) Framework",
-    "nexusId": 17561,
-    "uuid": "65e55feb-aada-4fec-821f-7d913e9b4d82",
-    "notes": "(Optional) Tags dialogue lines with Occultist instead of Wizard/Ranger"
-   },
-   {
-    "name": "True Strike (2024)",
-    "nexusId": 16860,
-    "uuid": "b6734115-955b-4238-8ca6-4adae030c6ef",
-    "notes": "(Optional) Recommended starting cantrip, has Occultist-specific VFX"
-   },
-   {
-    "name": "War Caster (2014 and 2024)",
-    "nexusId": 5822,
-    "notes": "(Optional) Required for War Caster reactions for 100+ mimicries"
-   }
-  ]
  },
  "141eaf3e-b4fb-b12a-418c-9d95124a3780": {
   "nexusId": 23103,
@@ -20413,16 +20514,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 231
- },
- "ed24957e-ce48-8f9b-2679-314312da455e": {
-  "nexusId": 12866,
-  "nexusName": "Permanent Summons",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 62
  },
  "e3ea6b54-3bfa-4377-907c-a4fb8c3f71ab": {
   "nexusId": 23601,
@@ -20598,6 +20689,24 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 38
+ },
+ "1a6073d3-ed21-4e41-ac9e-2b1b012555eb": {
+  "nexusId": 5744,
+  "nexusName": "RetaliationAbsolute",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 252,
+  "requires": [
+   {
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "Tuturial Chest version"
+   }
+  ]
  },
  "d2117da5-61a4-cff0-bd69-e65df6c47bb0": {
   "nexusId": 24232,
@@ -20900,16 +21009,6 @@
   "adult": true,
   "endorsements": 318
  },
- "22fe70ad-c877-9aec-136b-1b76f16490fb": {
-  "nexusId": 18843,
-  "nexusName": "Temi Longsword_Warden Armor Set_KOR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 3
- },
  "7a30897c-1e40-f6ca-8cc8-0bddae08cfa2": {
   "nexusId": 14943,
   "nexusName": "Tensura Classes (Rimuru)",
@@ -20966,6 +21065,24 @@
   "adult": false,
   "endorsements": 32
  },
+ "e7adb940-58a2-3d57-a98a-87038eb76ffd": {
+  "nexusId": 7753,
+  "nexusName": "The Pugilist",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 219,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "You need this and the Assets, prevents softlock on a progression"
+   }
+  ]
+ },
  "8fb09895-d74b-4717-b42a-48442201d403": {
   "nexusId": 24212,
   "nexusName": "The Winding Way - Fey Labyrinth Mini Map (WIP)",
@@ -20985,16 +21102,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 116
- },
- "34c6c040-e5c9-3ab8-e215-ba06931d1c42": {
-  "nexusId": 16629,
-  "nexusName": "Thornsong Bow",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Weapons",
-  "suggestedGroup": "Weapons",
-  "adult": false,
-  "endorsements": 47
  },
  "25f54c6b-63d3-4281-a64a-51f0dc49888d": {
   "nexusId": 24352,
@@ -21141,15 +21248,21 @@
   "adult": false,
   "endorsements": 33
  },
- "5f69f66a-142b-4875-91a0-38c385d7aee3": {
-  "nexusId": 5660,
-  "nexusName": "Unlock Summon Skills",
+ "30552a1f-1b5a-4c21-80df-b025c3e67991": {
+  "nexusId": 14954,
+  "nexusName": "Valkrana's Undead Champion",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 187
+  "endorsements": 163,
+  "requires": [
+   {
+    "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
+    "nexusId": 1258
+   }
+  ]
  },
  "6b5e1703-a51c-df2a-36d8-c537c7348b43": {
   "nexusId": 16088,
@@ -21409,16 +21522,6 @@
   "adult": false,
   "endorsements": 102
  },
- "500363fd-f696-4288-affb-bff7b49cb06e": {
-  "nexusId": 5351,
-  "nexusName": "Aether's Useful Bows",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 397
- },
  "dfef6343-b835-4678-135b-f808904db3a1": {
   "nexusId": 14755,
   "nexusName": "Aitze's Swordtember Weapons",
@@ -21531,6 +21634,16 @@
   "suggestedGroup": null,
   "adult": true,
   "endorsements": 903
+ },
+ "946579ce-040f-4d6e-a5c1-f86883207d57": {
+  "nexusId": 7706,
+  "nexusName": "Astarion - Serana Female Voice",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Audio",
+  "suggestedGroup": "Audio",
+  "adult": false,
+  "endorsements": 442
  },
  "4d949b94-6401-4020-ac0f-ed5fe8c0268c": {
   "nexusId": 7442,
@@ -21743,16 +21856,6 @@
   "adult": false,
   "endorsements": 131
  },
- "888ffc86-32a0-ca23-61c6-bf01d0138337": {
-  "nexusId": 19006,
-  "nexusName": "Berserk Griffith Armor_Weapon Set_KOR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 6
- },
  "f72580cd-3702-405c-b107-e417101c23e6": {
   "nexusId": 5644,
   "nexusName": "Better Companion Cantrips",
@@ -21799,6 +21902,16 @@
   "suggestedGroup": "Races",
   "adult": false,
   "endorsements": 12
+ },
+ "dcb3e0d7-f86a-421f-8fe2-426913e9e367": {
+  "nexusId": 18012,
+  "nexusName": "Better Goblins",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Races",
+  "suggestedGroup": "Races",
+  "adult": false,
+  "endorsements": 27
  },
  "49923a3f-741d-a0b1-f1d5-71fe15527156": {
   "nexusId": 12640,
@@ -22617,6 +22730,16 @@
   "adult": false,
   "endorsements": 77
  },
+ "7deea48e-8b9d-45e4-8685-5acfd0ce39ad": {
+  "nexusId": 2166,
+  "nexusName": "Enemies Enhanced",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1693
+ },
  "71566060-d082-0eac-0479-4ee1cff9d73d": {
   "nexusId": 17972,
   "nexusName": "Enver Gortash - A Younger Handsome Man",
@@ -22757,6 +22880,16 @@
   "adult": false,
   "endorsements": 51
  },
+ "5935aee7-8e5d-4a1d-ab45-629ef5b41beb": {
+  "nexusId": 2446,
+  "nexusName": "Femstarion",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 1858
+ },
  "61838be6-fd54-4399-91ae-c42562e36c4a": {
   "nexusId": 1005,
   "nexusName": "Finesse Spears",
@@ -22861,15 +22994,15 @@
   "adult": false,
   "endorsements": 17
  },
- "23ba8f6f-44a9-92a0-60e5-4fb3abe0230d": {
-  "nexusId": 20262,
-  "nexusName": "Garb of the Ghustil",
+ "890baefa-6732-f9c3-b068-cb8e376c269b": {
+  "nexusId": 20463,
+  "nexusName": "Garments of the Supreme Necromancer",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Clothing",
-  "suggestedGroup": "Clothing",
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
   "adult": false,
-  "endorsements": 119
+  "endorsements": 35
  },
  "244672fd-ed08-4626-b0a3-f31fce85e23c": {
   "nexusId": 3063,
@@ -23267,16 +23400,6 @@
    }
   ]
  },
- "e895eb0e-a371-a2c5-cf86-d3704f8087ad": {
-  "nexusId": 18664,
-  "nexusName": "Kanshou and Bakuya - Yin Yang Swords_KOR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 1
- },
  "e583335f-07f8-6863-e560-35377356edbd": {
   "nexusId": 20902,
   "nexusName": "Karlach's New Look Revamped",
@@ -23286,6 +23409,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 55
+ },
+ "a7f0a9ac-f158-4b19-b544-ae73fc519896": {
+  "nexusId": 24476,
+  "nexusName": "King Thranduil Armor By REN",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 36
  },
  "0f790011-dcef-2b17-38f6-bf9f536f204b": {
   "nexusId": 21068,
@@ -23489,6 +23622,7 @@
    {
     "name": "Tav's Hair Salon",
     "nexusId": 213,
+    "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
     "notes": "OPTIONAL - FOR WIP LEON HAIR IN MISC FILES (doesn't use the mods assets, just the hair slot)"
    },
    {
@@ -23915,6 +24049,23 @@
    }
   ]
  },
+ "517c587c-f945-4522-89dc-7ba489b8f03e": {
+  "nexusId": 1495,
+  "nexusName": "Necromancy Expanded",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 603,
+  "requires": [
+   {
+    "name": "Necromancy Reanimated (Formerly Animate Dead Plus Plus)",
+    "nexusId": 642,
+    "notes": "Not strictly required, but HIGHLY recommended"
+   }
+  ]
+ },
  "8a57bdd4-eba0-4145-af80-dcd4ff670132": {
   "nexusId": 5030,
   "nexusName": "Neon's Assorted Eyes",
@@ -23957,16 +24108,6 @@
     "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
    }
   ]
- },
- "4b4fe717-1e50-8b2e-547c-dbfbb89270bc": {
-  "nexusId": 18350,
-  "nexusName": "Night Orchid Hair Accessory for Shadowheart and CC",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.94,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 97
  },
  "a4941e02-3dbe-a982-dc38-2c7a7322f192": {
   "nexusId": 18445,
@@ -24485,24 +24626,6 @@
   "adult": false,
   "endorsements": 814
  },
- "1a6073d3-ed21-4e41-ac9e-2b1b012555eb": {
-  "nexusId": 5744,
-  "nexusName": "RetaliationAbsolute",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 252,
-  "requires": [
-   {
-    "name": "Tutorial Chest Summoning",
-    "nexusId": 457,
-    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
-    "notes": "Tuturial Chest version"
-   }
-  ]
- },
  "602e0acb-6aef-46b9-9ea8-8345452ff059": {
   "nexusId": 12943,
   "nexusName": "Revised Vicious Mockery",
@@ -24771,6 +24894,16 @@
   "adult": false,
   "endorsements": 92
  },
+ "f45850da-37e3-b8f9-df3e-668b8ff00aed": {
+  "nexusId": 15388,
+  "nexusName": "Snafu's Feats Collection",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 133
+ },
  "ccf0be9f-61e4-e7f4-8755-24fecb2f1f9b": {
   "nexusId": 17934,
   "nexusName": "Snapshots",
@@ -25037,21 +25170,26 @@
    }
   ]
  },
- "e7adb940-58a2-3d57-a98a-87038eb76ffd": {
-  "nexusId": 7753,
-  "nexusName": "The Pugilist",
+ "e0d0dc5e-0be7-4ba6-941a-f84aa22c052e": {
+  "nexusId": 24001,
+  "nexusName": "The Outfit With No Name",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
   "adult": false,
-  "endorsements": 219,
+  "endorsements": 18,
   "requires": [
    {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-    "notes": "You need this and the Assets, prevents softlock on a progression"
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "OPTIONAL. Only if you're using the Tutorial Chest Patch, and only if you want to be able to get the items from the mod outside of the tutorial."
+   },
+   {
+    "name": "AV Item Shipment Framework (AV ISF)",
+    "nexusId": 8295,
+    "notes": "OPTIONAL. Can be used to get the items for this mod when ISF is installed."
    }
   ]
  },
@@ -25202,7 +25340,7 @@
   "nexusCategory": "Equipment",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 442,
+  "endorsements": 444,
   "requires": [
    {
     "name": "ImpUI_P8_Fork (ImprovedUI)",
@@ -25261,22 +25399,6 @@
     "name": "Baldur's Gate 3 Mod Fixer",
     "nexusId": 141,
     "notes": "Optional - Without this if the mod is installed during a play-through some traders may not have the cauldron."
-   }
-  ]
- },
- "30552a1f-1b5a-4c21-80df-b025c3e67991": {
-  "nexusId": 14954,
-  "nexusName": "Valkrana's Undead Champion",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 163,
-  "requires": [
-   {
-    "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
-    "nexusId": 1258
    }
   ]
  },
@@ -25442,7 +25564,7 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 27
+  "endorsements": 32
  },
  "dfdf1f09-33b7-8b22-7bf3-f340273f0ff8": {
   "nexusId": 18209,
@@ -25933,6 +26055,16 @@
   "adult": false,
   "endorsements": 74
  },
+ "4420c433-718f-4749-8e5d-1da521a84b19": {
+  "nexusId": 23058,
+  "nexusName": "Akm Tiefling Body",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": true,
+  "endorsements": 137
+ },
  "23fa39d3-2194-416c-9df1-a304097d25ff": {
   "nexusId": 11202,
   "nexusName": "Allure - Stylish and Diverse Dyes",
@@ -26077,16 +26209,6 @@
   "suggestedGroup": "Utilities",
   "adult": false,
   "endorsements": 26
- },
- "946579ce-040f-4d6e-a5c1-f86883207d57": {
-  "nexusId": 7706,
-  "nexusName": "Astarion - Serana Female Voice",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Audio",
-  "suggestedGroup": "Audio",
-  "adult": false,
-  "endorsements": 442
  },
  "19de44c7-5578-444f-b166-69cc8e9296e4": {
   "nexusId": 9888,
@@ -26330,16 +26452,6 @@
   "adult": false,
   "endorsements": 3
  },
- "dcb3e0d7-f86a-421f-8fe2-426913e9e367": {
-  "nexusId": 18012,
-  "nexusName": "Better Goblins",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Races",
-  "suggestedGroup": "Races",
-  "adult": false,
-  "endorsements": 27
- },
  "82e29964-2d9c-42ba-981b-47af4845a11d": {
   "nexusId": 18365,
   "nexusName": "Better Half Elves",
@@ -26403,6 +26515,16 @@
    }
   ]
  },
+ "f64d9ec1-db83-3c30-f06f-d945b25ac6c5": {
+  "nexusId": 16568,
+  "nexusName": "Better Staff of Crones",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 8
+ },
  "0106b8a0-a1ee-23ff-f5bb-d508435a035f": {
   "nexusId": 19500,
   "nexusName": "Better Bursting Sinew",
@@ -26422,6 +26544,31 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 3562
+ },
+ "c70c0ceb-16a8-4bc1-95d8-a95687d7dc5c": {
+  "nexusId": 24122,
+  "nexusName": "Better Girlfriends",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": true,
+  "endorsements": 9,
+  "requires": [
+   {
+    "name": "BG3SX - Sex Framework",
+    "nexusId": 6045
+   },
+   {
+    "name": "BG3AF - Animation Framework",
+    "nexusId": 16207
+   },
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d"
+   }
+  ]
  },
  "94fb2dc9-842e-408f-8b79-f3aa6c14ec56": {
   "nexusId": 11794,
@@ -27385,16 +27532,6 @@
   "adult": true,
   "endorsements": 195
  },
- "7deea48e-8b9d-45e4-8685-5acfd0ce39ad": {
-  "nexusId": 2166,
-  "nexusName": "Enemies Enhanced",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 1693
- },
  "f4020645-7d3a-26fd-53b1-adee679a7a93": {
   "nexusId": 1774,
   "nexusName": "Extra Dyes for the Fashionable Folk of Faerun",
@@ -27483,16 +27620,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 51
- },
- "5935aee7-8e5d-4a1d-ab45-629ef5b41beb": {
-  "nexusId": 2446,
-  "nexusName": "Femstarion",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 1858
  },
  "6161ea1b-ea2c-41d8-9a58-4231a0daac2f": {
   "nexusId": 21134,
@@ -27644,6 +27771,16 @@
   "adult": false,
   "endorsements": 59
  },
+ "9a17d47c-3076-679a-e6f0-c23f3fa4668b": {
+  "nexusId": 20355,
+  "nexusName": "Forged in Cania - Mace and Shield Set",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
+  "adult": false,
+  "endorsements": 41
+ },
  "b2750d1e-b8dc-e6c6-51b5-5eb6745bc11d": {
   "nexusId": 10225,
   "nexusName": "Forgotten Realms Armaments",
@@ -27737,16 +27874,6 @@
   "adult": false,
   "endorsements": 1463
  },
- "890baefa-6732-f9c3-b068-cb8e376c269b": {
-  "nexusId": 20463,
-  "nexusName": "Garments of the Supreme Necromancer",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 35
- },
  "20bd8c42-b054-e63c-9705-18e6d98bcf0d": {
   "nexusId": 13565,
   "nexusName": "Gate Stones",
@@ -27799,6 +27926,16 @@
     "notes": "Required"
    }
   ]
+ },
+ "fbce759c-4942-4660-0061-75697f826361": {
+  "nexusId": 17647,
+  "nexusName": "Githyanki Frog Eyes",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 68
  },
  "9490fc79-bb34-3337-5613-5e7e00ec74ab": {
   "nexusId": 22480,
@@ -28412,6 +28549,7 @@
    {
     "name": "Tav's Hair Salon",
     "nexusId": 213,
+    "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
     "notes": "hair from screens"
    },
    {
@@ -28492,16 +28630,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 16
- },
- "a7f0a9ac-f158-4b19-b544-ae73fc519896": {
-  "nexusId": 24476,
-  "nexusName": "King Thranduil Armor By REN",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 36
  },
  "49acfdf3-3a07-741e-93f0-8ebcd731da40": {
   "nexusId": 6488,
@@ -29039,6 +29167,16 @@
   "adult": false,
   "endorsements": 112
  },
+ "ae9d1319-ab06-5bed-c686-0cfd706dea56": {
+  "nexusId": 24675,
+  "nexusName": "Mizora Joins the Party",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 16
+ },
  "aac48a7f-e3c5-f612-55b3-c42490c78c47": {
   "nexusId": 12577,
   "nexusName": "Monastic Adventurer Armor",
@@ -29217,23 +29355,6 @@
   "suggestedGroup": "Races",
   "adult": false,
   "endorsements": 164
- },
- "517c587c-f945-4522-89dc-7ba489b8f03e": {
-  "nexusId": 1495,
-  "nexusName": "Necromancy Expanded",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 603,
-  "requires": [
-   {
-    "name": "Necromancy Reanimated (Formerly Animate Dead Plus Plus)",
-    "nexusId": 642,
-    "notes": "Not strictly required, but HIGHLY recommended"
-   }
-  ]
  },
  "cb378b32-01d8-42bc-8593-d621b5e08fff": {
   "nexusId": 3495,
@@ -30304,7 +30425,7 @@
   "nexusCategory": "Utilities",
   "suggestedGroup": "Utilities",
   "adult": false,
-  "endorsements": 103,
+  "endorsements": 110,
   "requires": [
    {
     "name": "Baldur's Gate 3 Script Extender (BG3SE)",
@@ -30387,6 +30508,16 @@
   "suggestedGroup": "Races",
   "adult": false,
   "endorsements": 21
+ },
+ "840ef04d-60c4-8e7b-bd26-9bf528b3a8ef": {
+  "nexusId": 20118,
+  "nexusName": "Shield of the Hidden Lord",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 18
  },
  "7416ff60-d860-4d0b-a0fc-8aaa13f62734": {
   "nexusId": 5618,
@@ -30497,16 +30628,6 @@
     "notes": "Currently required to load Virtual Textures. https://github.com/Norbyte/bg3se/blob/535bf3aa02406a51b3e2ce325c5af3b1fbc8da05/Docs/VirtualTextures.md#loading-virtual-textures"
    }
   ]
- },
- "f45850da-37e3-b8f9-df3e-668b8ff00aed": {
-  "nexusId": 15388,
-  "nexusName": "Snafu's Feats Collection",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 133
  },
  "05848c36-cf4b-4324-93d2-3cb45687447e": {
   "nexusId": 20305,
@@ -30731,6 +30852,16 @@
    }
   ]
  },
+ "75d2d721-1e37-d98f-9e4e-dc330c33ee10": {
+  "nexusId": 24685,
+  "nexusName": "Symphony of a Vampire - Vampirism Overhaul",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 31
+ },
  "61ec1bc2-dd05-fdeb-1c61-cb7495a06b3e": {
   "nexusId": 21394,
   "nexusName": "Tadpole Daily Bonus",
@@ -30953,29 +31084,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 91
- },
- "e0d0dc5e-0be7-4ba6-941a-f84aa22c052e": {
-  "nexusId": 24001,
-  "nexusName": "The Outfit With No Name",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 18,
-  "requires": [
-   {
-    "name": "Tutorial Chest Summoning",
-    "nexusId": 457,
-    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
-    "notes": "OPTIONAL. Only if you're using the Tutorial Chest Patch, and only if you want to be able to get the items from the mod outside of the tutorial."
-   },
-   {
-    "name": "AV Item Shipment Framework (AV ISF)",
-    "nexusId": 8295,
-    "notes": "OPTIONAL. Can be used to get the items for this mod when ISF is installed."
-   }
-  ]
  },
  "f82a47de-4a4a-ab7c-d3dd-87e5e0caf4e1": {
   "nexusId": 17705,
@@ -32084,16 +32192,6 @@
   "adult": false,
   "endorsements": 18
  },
- "4420c433-718f-4749-8e5d-1da521a84b19": {
-  "nexusId": 23058,
-  "nexusName": "Akm Tiefling Body",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": true,
-  "endorsements": 132
- },
  "87b8d7d6-edde-46a2-9e66-16be9a72ead8": {
   "nexusId": 20259,
   "nexusName": "Alchemy Better Descriptions CHS",
@@ -32878,6 +32976,16 @@
   "adult": false,
   "endorsements": 329
  },
+ "b781f78d-d5fb-4f3b-bb1d-a6d1ff5e78a8": {
+  "nexusId": 16895,
+  "nexusName": "Better Reaper",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 48
+ },
  "94585c3d-83a8-7014-aae0-d29490babdec": {
   "nexusId": 16229,
   "nexusName": "Better Selunites",
@@ -32907,16 +33015,6 @@
   "suggestedGroup": "Weapons",
   "adult": false,
   "endorsements": 28
- },
- "f64d9ec1-db83-3c30-f06f-d945b25ac6c5": {
-  "nexusId": 16568,
-  "nexusName": "Better Staff of Crones",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 8
  },
  "c67b11a9-53dd-d13c-ad85-401d5a5ee4d4": {
   "nexusId": 19776,
@@ -32970,31 +33068,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 120
- },
- "c70c0ceb-16a8-4bc1-95d8-a95687d7dc5c": {
-  "nexusId": 24122,
-  "nexusName": "Better Girlfriends",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": true,
-  "endorsements": 9,
-  "requires": [
-   {
-    "name": "BG3SX - Sex Framework",
-    "nexusId": 6045
-   },
-   {
-    "name": "BG3AF - Animation Framework",
-    "nexusId": 16207
-   },
-   {
-    "name": "Mod Configuration Menu (MCM)",
-    "nexusId": 9162,
-    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d"
-   }
-  ]
  },
  "name:betterslayer": {
   "nexusId": 1530,
@@ -33222,6 +33295,24 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 76
+ },
+ "76c7ac92-8a72-4260-81f6-1c60e218343e": {
+  "nexusId": 20929,
+  "nexusName": "Bricosta Family Dice",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 10,
+  "requires": [
+   {
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "To get the dice mid-game"
+   }
+  ]
  },
  "31f64535-81b4-47c1-a9a9-2198135ca699": {
   "nexusId": 10180,
@@ -34255,6 +34346,23 @@
   "adult": false,
   "endorsements": 25
  },
+ "3b5c7626-59df-49cd-af7c-59e7dcc19e9e": {
+  "nexusId": 19852,
+  "nexusName": "Elder Vampire Heart",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 24,
+  "requires": [
+   {
+    "name": "Vlad's Grimoire - Spell VFX Library",
+    "nexusId": 1820,
+    "notes": "for glowing hands and other vfx linked to my spells ( \"\"\"\"\"\"might\"\"\"\"\"\" work without but looks off )"
+   }
+  ]
+ },
  "231a74fd-a664-2144-2e8a-f51f29c7dbdf": {
   "nexusId": 22118,
   "nexusName": "Eldritch Knight Add Reverse War Magic",
@@ -35002,16 +35110,6 @@
   "adult": false,
   "endorsements": 2
  },
- "9a17d47c-3076-679a-e6f0-c23f3fa4668b": {
-  "nexusId": 20355,
-  "nexusName": "Forged in Cania - Mace and Shield Set",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Weapons",
-  "suggestedGroup": "Weapons",
-  "adult": false,
-  "endorsements": 41
- },
  "8564afa9-961d-654a-b35e-87f8a7b8b5dc": {
   "nexusId": 18960,
   "nexusName": "Forged Thorn",
@@ -35071,6 +35169,38 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 34
+ },
+ "7a180e68-0939-061e-cd88-b4106cea16d0": {
+  "nexusId": 5302,
+  "nexusName": "Frostmourne 3",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 45,
+  "requires": [
+   {
+    "name": "Divinity's Instruction",
+    "nexusId": 5423,
+    "notes": "Optional. This makes spell work"
+   },
+   {
+    "name": "Frostmourne - World of Warcraft",
+    "nexusId": 1179,
+    "notes": "required"
+   },
+   {
+    "name": "Necromancer Warlock - The Dread Overlord - Hotfix 36 Compatible",
+    "nexusId": 394,
+    "notes": "Optional. This makes spell work"
+   },
+   {
+    "name": "True Animate Dead",
+    "nexusId": 3003,
+    "notes": "Optional. This makes spell work"
+   }
+  ]
  },
  "7be8baa9-50e8-4c23-aefd-e1633d619bc6": {
   "nexusId": 5302,
@@ -35278,16 +35408,6 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 75
- },
- "fbce759c-4942-4660-0061-75697f826361": {
-  "nexusId": 17647,
-  "nexusName": "Githyanki Frog Eyes",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 68
  },
  "5f8f7b68-e5af-ee20-e13f-b08a1bf3d104": {
   "nexusId": 21397,
@@ -35987,6 +36107,16 @@
    }
   ]
  },
+ "3d63db5a-3cc0-4156-9c74-0124c86350c5": {
+  "nexusId": 23118,
+  "nexusName": "InvisibleItems",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 37
+ },
  "606530e7-69da-4ab8-9c2f-2f22d0c4a6a8": {
   "nexusId": 831,
   "nexusName": "Invocations Expanded",
@@ -36612,7 +36742,7 @@
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 49
+  "endorsements": 63
  },
  "70a27b03-3d8f-46f9-94fd-9303d1603cfa": {
   "nexusId": 21093,
@@ -36640,7 +36770,7 @@
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 1494
+  "endorsements": 1495
  },
  "a7a152c5-687e-4646-b344-9ff843b331a5": {
   "nexusId": 20417,
@@ -36743,6 +36873,16 @@
    }
   ]
  },
+ "103e49fc-e61c-42d5-a01c-d8c1aac650e6": {
+  "nexusId": 24834,
+  "nexusName": "Midas's Golden Arsenal",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
+  "adult": false,
+  "endorsements": 2
+ },
  "171431f1-47f5-a393-f46f-b063a8a5bf51": {
   "nexusId": 17333,
   "nexusName": "Mighty Impel Anytime",
@@ -36812,16 +36952,6 @@
     "notes": "Required"
    }
   ]
- },
- "ae9d1319-ab06-5bed-c686-0cfd706dea56": {
-  "nexusId": 24675,
-  "nexusName": "Mizora Joins the Party",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 16
  },
  "0719f313-0749-484e-809d-83780b83f047": {
   "nexusId": 14985,
@@ -36981,6 +37111,16 @@
     "nexusId": 5842
    }
   ]
+ },
+ "a3593d3e-3d67-f403-d51d-d0047983f33b": {
+  "nexusId": 15949,
+  "nexusName": "Moon Devotion Robe without killing Isobel",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 43
  },
  "0ad3841f-672c-46cf-b1cf-044a8af97b0e": {
   "nexusId": 24508,
@@ -37228,6 +37368,22 @@
     "nexusId": 14167,
     "uuid": "96e19744-cf28-5223-b445-06471230386a",
     "notes": "While it's not required, I recommend it as it adds a lot of colors for tinting."
+   }
+  ]
+ },
+ "9cda7308-fc26-4abc-8c2e-0049f96351e7": {
+  "nexusId": 1606,
+  "nexusName": "MyPetsAreSafe",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 331,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141
    }
   ]
  },
@@ -37782,6 +37938,24 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 726
+ },
+ "d1ee762f-0816-dc7a-300a-b8b909cc1c65": {
+  "nexusId": 24503,
+  "nexusName": "Permanent Domination",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1,
+  "requires": [
+   {
+    "name": "Really Dominate Person",
+    "nexusId": 9606,
+    "uuid": "8e8fbc52-7e41-4ba4-af47-c78b23016898",
+    "notes": "Optional. Highly recommended to allow yourself to actually control your new friends."
+   }
+  ]
  },
  "ebcb8081-31f5-4d27-9865-d2ec76868f1e": {
   "nexusId": 2929,
@@ -38345,6 +38519,16 @@
   "adult": false,
   "endorsements": 154
  },
+ "b28763fe-549f-4cb7-aa32-f22515a4831b": {
+  "nexusId": 1010,
+  "nexusName": "Legendary Reaper's Embrace",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 198
+ },
  "b424bf83-8c11-4893-86fa-61ee2788df08": {
   "nexusId": 17892,
   "nexusName": "Rebalance - Class Spells - CHS",
@@ -38535,6 +38719,34 @@
     "name": "Jujutsu Sorcerer (Base class)",
     "nexusId": 13544,
     "notes": "Base"
+   }
+  ]
+ },
+ "c657bd59-7da8-c017-8f08-1c23acc45aca": {
+  "nexusId": 24386,
+  "nexusName": "Scarlet Witch",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 11,
+  "requires": [
+   {
+    "name": "Dawnstar's Telekinetic Spells",
+    "nexusId": 16781,
+    "notes": "Required"
+   },
+   {
+    "name": "Normal Half Illithid",
+    "nexusId": 12026,
+    "uuid": "c6d0164d-6ae7-ff37-492c-26b0482b2475",
+    "notes": "Recommended"
+   },
+   {
+    "name": "No More Dirt And Blood - Slower and Faster Options",
+    "nexusId": 344,
+    "notes": "Recommended"
    }
   ]
  },
@@ -38779,16 +38991,6 @@
    }
   ]
  },
- "840ef04d-60c4-8e7b-bd26-9bf528b3a8ef": {
-  "nexusId": 20118,
-  "nexusName": "Shield of the Hidden Lord",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 18
- },
  "1ddc684b-52fd-4db0-8273-36a97178c89f": {
   "nexusId": 21056,
   "nexusName": "Shield Spell Reaction Fix",
@@ -38977,6 +39179,16 @@
   "adult": false,
   "endorsements": 67
  },
+ "dbfef037-e52b-41e9-a574-1c21da88b664": {
+  "nexusId": 24362,
+  "nexusName": "Skeletor's Havoc Staff",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
+  "adult": false,
+  "endorsements": 5
+ },
  "1e1ec6e4-5ad6-49a0-9422-28490b280cd7": {
   "nexusId": 24596,
   "nexusName": "Skip Prologue",
@@ -39116,6 +39328,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 22
+ },
+ "75ba8d2f-e9b4-8f3d-0ddb-d9174b10afd1": {
+  "nexusId": 23763,
+  "nexusName": "Sparkstring",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 5
  },
  "4d7e2580-86a1-422f-81b6-7f6aa5ea7074": {
   "nexusId": 9034,
@@ -39270,6 +39492,16 @@
   "adult": false,
   "endorsements": 31
  },
+ "50bff7eb-d5e6-54b2-3c35-d302928cd31e": {
+  "nexusId": 15803,
+  "nexusName": "Staff Of Parthalan",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
+  "adult": false,
+  "endorsements": 72
+ },
  "ffef7f18-19c4-414a-bd88-e390edb24017": {
   "nexusId": 14700,
   "nexusName": "Star's Sun Ring",
@@ -39351,6 +39583,16 @@
   "adult": false,
   "endorsements": 107
  },
+ "1e2849bd-c86b-4634-9b45-e5c93d710524": {
+  "nexusId": 12207,
+  "nexusName": "Strong as a Barbarian",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 60
+ },
  "b56cf921-9a2b-4e8d-8043-3c36aaeb046e": {
   "nexusId": 6460,
   "nexusName": "Strong Female Heads - WotD Patch",
@@ -39391,6 +39633,53 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 221
+ },
+ "0e63a5b0-4518-4f87-b5d4-a1cafe91dc58": {
+  "nexusId": 24581,
+  "nexusName": "SummerBeach_Core",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 12
+ },
+ "1719657b-f2d7-43e4-96de-72ae0982bfb0": {
+  "nexusId": 24584,
+  "nexusName": "SummerBeach_TheFirstDescendant_BunnyOasisParty",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 16,
+  "requires": [
+   {
+    "name": "SummerBeach_Core",
+    "nexusId": 24581,
+    "uuid": "0e63a5b0-4518-4f87-b5d4-a1cafe91dc58"
+   }
+  ]
+ },
+ "10dd4976-9648-435e-a33b-e0911d031338": {
+  "nexusId": 24707,
+  "nexusName": "SummerBeach_TheFirstDescendant_BunnySummerParadise",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 10
+ },
+ "393cebbc-3eb4-479a-a126-203494bda985": {
+  "nexusId": 24837,
+  "nexusName": "SummerBeach_TheFirstDescendant_FreynaDesertedIslandVacation",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 4
  },
  "93bf9298-5c3b-40e1-ae6c-1e5e21128fbe": {
   "nexusId": 14229,
@@ -39458,16 +39747,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 69
- },
- "75d2d721-1e37-d98f-9e4e-dc330c33ee10": {
-  "nexusId": 24685,
-  "nexusName": "Symphony of a Vampire - Vampirism Overhaul",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 29
  },
  "fad6cc8b-277f-77b6-66ae-41b9c74318c6": {
   "nexusId": 16733,
@@ -39671,6 +39950,16 @@
   "adult": false,
   "endorsements": 162
  },
+ "9d67c3f6-197a-46e4-b106-0dfd9c26b447": {
+  "nexusId": 16692,
+  "nexusName": "Thief's Trinkets",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 41
+ },
  "ef08313f-f960-28be-1d4a-d29d8e83d5fe": {
   "nexusId": 20204,
   "nexusName": "This Little Dance",
@@ -39685,6 +39974,22 @@
     "name": "Compatibility Patch for Photo Mode Pose Mods",
     "nexusId": 19414,
     "notes": "Required If you use other pose mods"
+   }
+  ]
+ },
+ "42b06705-5695-4afb-ae5a-144d3ec8ef50": {
+  "nexusId": 3383,
+  "nexusName": "Thor - God of Thunder GER",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 10,
+  "requires": [
+   {
+    "name": "Thor - God of Thunder -  Stormbreaker and Mjolnir",
+    "nexusId": 1454
    }
   ]
  },
@@ -40074,6 +40379,16 @@
    }
   ]
  },
+ "2f2eb3ca-ea74-2ffb-b53f-abf9583d7576": {
+  "nexusId": 18887,
+  "nexusName": "Unique Falataeric Cli Lyre",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 37
+ },
  "7692da54-9c7e-4d08-8fbe-a252194df561": {
   "nexusId": 4985,
   "nexusName": "Unique Starter Robes for Gale",
@@ -40279,6 +40594,24 @@
    {
     "name": "Baldur's Gate 3 Mod Fixer",
     "nexusId": 141
+   }
+  ]
+ },
+ "019b7a9f-9f81-40e2-b151-9afff19345ba": {
+  "nexusId": 10077,
+  "nexusName": "Voben",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 52,
+  "requires": [
+   {
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "If you're passed the tutorial, this is the easiest way to get it, otherwise, go shopping!"
    }
   ]
  },

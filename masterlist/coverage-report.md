@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-09-07T13:46:54.226Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-08T09:15:18.126Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-09-07T13:46:54.226Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 141 |
 | labelled working | 116 |
 | labelled broken | 23 |
-| load-after edges promoted from catalogues | 637 |
+| load-after edges promoted from catalogues | 641 |
 | unlabelled | 2 |
 | Separator headers parsed | 3352 |
 | **Unique mods indexed** | **10458** |
 | Seen in more than one order | 7325 |
-| With declared dependencies | 640 |
+| With declared dependencies | 643 |
 | With Script Extender flags | 176 |
 | With author metadata | 1128 |
 
@@ -150,7 +150,7 @@ Framework are present in every working order that needs them.
 | `Camp Robes` | 4 | 3 | 1 |
 | `Celestial Threads` | 4 | 3 | 1 |
 | `UnlockLevelCurve - Level 13-20 | Patch 8` | 9 | 6 | 9 |
-| `TutorialChestSummoning` | 41 | 25 | 27 |
+| `TutorialChestSummoning` | 41 | 25 | 29 |
 | `Snapshots` | 5 | 3 | 2 |
 
 ## Requirements naming something unknown
