@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-09T04:54:49.833Z",
+  "generated": "2026-09-09T09:21:43.811Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -37,7 +37,7 @@
     "working": 121,
     "broken": 24,
     "unlabelled": 2,
-    "externalDependencyEdges": 657,
+    "externalDependencyEdges": 666,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -841,8 +841,8 @@
         "voloSortedInstalls": 29
       },
       "absence": {
-        "held": 21,
-        "witnesses": 21
+        "held": 22,
+        "witnesses": 22
       }
     },
     {
@@ -1836,8 +1836,8 @@
         }
       ],
       "absence": {
-        "held": 1,
-        "witnesses": 1
+        "held": 2,
+        "witnesses": 2
       }
     },
     {
@@ -1861,8 +1861,8 @@
         }
       ],
       "absence": {
-        "held": 18,
-        "witnesses": 18
+        "held": 19,
+        "witnesses": 19
       }
     },
     {
@@ -3122,6 +3122,10 @@
         "workingInstalls": 28,
         "brokenInstalls": 8,
         "voloSortedInstalls": 10
+      },
+      "absence": {
+        "held": 1,
+        "witnesses": 1
       }
     },
     {
@@ -3735,7 +3739,7 @@
       "usesScriptExtender": true,
       "absence": {
         "held": 2,
-        "witnesses": 2
+        "witnesses": 3
       }
     },
     {
@@ -8071,8 +8075,8 @@
         "voloSortedInstalls": 11
       },
       "absence": {
-        "held": 1,
-        "witnesses": 1
+        "held": 2,
+        "witnesses": 2
       }
     },
     {
@@ -25693,6 +25697,10 @@
         "workingInstalls": 6,
         "brokenInstalls": 3,
         "voloSortedInstalls": 2
+      },
+      "absence": {
+        "held": 1,
+        "witnesses": 1
       }
     },
     {
@@ -114809,7 +114817,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "6e49e906-f0de-9abb-d7e1-b361e22be6a2",
+          "name": "Best in Party Skills"
+        }
+      ]
     },
     {
       "name": "Best in Party Skills RUS",
@@ -123575,7 +123589,22 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "49b32147-5aed-c262-1fa6-ec51939978c0",
+          "name": "5e Ranger Subclasses Combined"
+        },
+        {
+          "uuid": "7131033f-821a-3993-dad4-5bc235cbeb3b",
+          "name": "AnimationUnlocker"
+        },
+        {
+          "uuid": "96bc14a7-733e-4bea-859d-3695d745efc1",
+          "name": "Mazzle_Lib"
+        }
+      ]
     },
     {
       "name": "FamilyGuyDeathPose_V2",
@@ -130145,7 +130174,7 @@
       ],
       "absence": {
         "held": 0,
-        "witnesses": 1
+        "witnesses": 2
       }
     },
     {
@@ -140046,7 +140075,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "f324020f-de52-34ac-bb86-5974ade9d203",
+          "name": "Rebalance Gear"
+        }
+      ]
     },
     {
       "name": "Recast spells use bonus action",
@@ -145774,7 +145809,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "SwordBardMellowHarmony",
@@ -145905,7 +145946,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "7d6712c3-3b64-e94d-6f1a-9de67678b44b",
+          "name": "PixellBytes' Tactician Enhanced"
+        }
+      ]
     },
     {
       "name": "TacticianPlusHealth",
@@ -148038,7 +148085,17 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "194a7429-5b34-7d68-06ee-494607e165e4",
+          "name": "Knights and Dames"
+        },
+        {
+          "uuid": "c40e6b56-db36-4e62-89c5-c8bad4c48ab4",
+          "name": "Knights and Dames"
+        }
+      ]
     },
     {
       "name": "Ultimate Cut Content Summons Weapons Add-On",
@@ -150859,9 +150916,10 @@
     {
       "name": "Yet Another Party",
       "uuid": "2799067d-d379-4367-b135-ddb45e0d96cb",
-      "group": "unsorted",
+      "group": "Utilities",
+      "divider": 19,
       "evidence": {
-        "source": "none",
+        "source": "external-category",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,

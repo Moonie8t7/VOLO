@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-09-09T04:54:49.833Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-09T09:21:43.811Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-09-09T04:54:49.833Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 147 |
 | labelled working | 121 |
 | labelled broken | 24 |
-| load-after edges promoted from catalogues | 657 |
+| load-after edges promoted from catalogues | 666 |
 | unlabelled | 2 |
 | Separator headers parsed | 3680 |
 | **Unique mods indexed** | **10588** |
 | Seen in more than one order | 7467 |
-| With declared dependencies | 655 |
+| With declared dependencies | 661 |
 | With Script Extender flags | 176 |
 | With author metadata | 1128 |
 
@@ -41,11 +41,11 @@ the tool flag a mod as last verified on an older patch.
 | Curated override | 35 | highest, hand-verified infrastructure |
 | Human-authored section header | 6655 | high, a modder put it there |
 | Name pattern fallback | 1776 | medium, needs review |
-| Nexus or mod.io listing category | 1108 | medium, the author's own words about what the mod is |
+| Nexus or mod.io listing category | 1109 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 17 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 90 | high, measured 97 percent accurate at this band |
 | Neighbour inference, 0.70 to 0.85 | 85 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 822 | none, needs community input |
+| Uncategorised | 821 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -56,7 +56,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 
 - `Top of Load Order`: 10
 - `Resources`: 273
-- `Utilities`: 98
+- `Utilities`: 99
 - `Visuals`: 126
 - `Animations`: 155
 - `User Interface`: 186
@@ -83,7 +83,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Bodies`: 32
 - `Dice`: 464
 - `Bottom of Load Order`: 7
-- `unsorted`: 822
+- `unsorted`: 821
 
 ## What the broken orders do differently
 
@@ -168,7 +168,7 @@ _none: every stated requirement names a mod this masterlist knows_
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **822 mods are `unsorted`.** These need community categorisation.
+- **821 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 
