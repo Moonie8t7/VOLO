@@ -658,9 +658,21 @@ export function sortLoadOrder(
       kind: 'missing-dependency',
       message: `${asks} "${depName}", which is not in your load order.${evidence}`,
       uuids: wanters,
+      /*
+       * "Install it" is the wrong first instruction, and it cost somebody an
+       * afternoon. VOLO reads an exported load order and nothing else, so the
+       * only thing it can honestly say is that the mod is not in the export. A
+       * mod manager lists what is installed on disk, which is a different set:
+       * a mod sitting there disabled shows as present in the manager and is
+       * absent from the export. Issue #168 was exactly that, and the reporter
+       * reinstalled the mod twice and refreshed the manager because the message
+       * told them to, none of which could have changed the file they gave us.
+       * So the enabling case goes first, because it is the one where the tool
+       * and the user disagree while both are looking at something real.
+       */
       resolution: soft
-        ? `Probably optional, or covered by another mod you already have. Install ${depName} if something these mods add is missing in game.`
-        : `Install ${depName}, or remove the mods that depend on it.`,
+        ? `Probably optional, or covered by another mod you already have. Add ${depName} if something these mods add is missing in game.`
+        : `Add ${depName} to your load order. A mod manager can list it as installed while it is switched off, and a switched-off mod is not in the order VOLO reads. Otherwise install it, or remove the mods that depend on it.`,
     });
   }
 
