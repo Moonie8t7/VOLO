@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-10T08:19:00.203Z",
+  "generated": "2026-09-10T09:21:32.855Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -37,7 +37,7 @@
     "working": 123,
     "broken": 27,
     "unlabelled": 2,
-    "externalDependencyEdges": 666,
+    "externalDependencyEdges": 924,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -402,6 +402,10 @@
         {
           "uuid": "396c5966-09b0-40a1-af3f-93a5e9ce71c0",
           "name": "CommunityLibrary"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ],
       "featureFlags": [
@@ -505,8 +509,8 @@
       },
       "usesScriptExtender": true,
       "absence": {
-        "held": 60,
-        "witnesses": 64
+        "held": 61,
+        "witnesses": 65
       }
     },
     {
@@ -881,8 +885,8 @@
         "voloSortedInstalls": 31
       },
       "absence": {
-        "held": 24,
-        "witnesses": 24
+        "held": 27,
+        "witnesses": 30
       }
     },
     {
@@ -951,6 +955,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -1086,6 +1094,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -1446,6 +1458,12 @@
         "voloSortedInstalls": 19
       },
       "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ],
       "absence": {
         "held": 1,
         "witnesses": 1
@@ -1594,6 +1612,12 @@
         "voloSortedInstalls": 20
       },
       "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ],
       "absence": {
         "held": 2,
         "witnesses": 2
@@ -1758,6 +1782,12 @@
         "voloSortedInstalls": 19
       },
       "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ],
       "absence": {
         "held": 1,
         "witnesses": 1
@@ -1891,6 +1921,10 @@
         {
           "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
           "name": "5eSpells"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ],
       "absence": {
@@ -2017,6 +2051,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -2285,6 +2323,12 @@
         "voloSortedInstalls": 18
       },
       "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ],
       "absence": {
         "held": 22,
         "witnesses": 26
@@ -2417,6 +2461,10 @@
         {
           "uuid": "4b516620-9c56-aa18-96ae-a9ee4f57b515",
           "name": "Mystra's Spells"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ]
     },
@@ -3045,6 +3093,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -3091,6 +3143,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "divider": 18.5,
@@ -3243,6 +3299,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "BG3MCM"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -3278,6 +3338,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -3758,6 +3822,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -4065,6 +4133,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -5148,6 +5220,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -5196,6 +5272,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -6394,7 +6474,13 @@
         "brokenInstalls": 6,
         "voloSortedInstalls": 10
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:vladsgrimoirespellvfxlibrary",
+          "name": "+Vlad's Grimoire - Spell VFX Library"
+        }
+      ]
     },
     {
       "name": "Better Combat Log Default",
@@ -6507,6 +6593,12 @@
         "brokenInstalls": 3,
         "voloSortedInstalls": 9
       },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ],
       "absence": {
         "held": 1,
         "witnesses": 1
@@ -6683,6 +6775,10 @@
         {
           "uuid": "33eec47a-b349-c938-3af3-c07e7352abc7",
           "name": "Homebrew Blade Cantrips"
+        },
+        {
+          "uuid": "name:vladsgrimoirespellvfxlibrary",
+          "name": "+Vlad's Grimoire - Spell VFX Library"
         }
       ],
       "absence": {
@@ -6824,7 +6920,13 @@
         "workingInstalls": 20,
         "brokenInstalls": 5,
         "voloSortedInstalls": 10
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:nativemodloader",
+          "name": "+Native Mod Loader"
+        }
+      ]
     },
     {
       "name": "Ultimate Cut Content Restoration Mod",
@@ -8007,6 +8109,10 @@
         {
           "uuid": "07fbc2f1-f359-4b9d-b243-fe28bd783e4c",
           "name": "Goon's Library"
+        },
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
         }
       ],
       "divider": 60,
@@ -8795,6 +8901,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "divider": 16,
@@ -8878,6 +8988,12 @@
         "brokenInstalls": 5,
         "voloSortedInstalls": 10
       },
+      "dependencies": [
+        {
+          "uuid": "7131033f-821a-3993-dad4-5bc235cbeb3b",
+          "name": "AnimationUnlocker"
+        }
+      ],
       "absence": {
         "held": 12,
         "witnesses": 12
@@ -8949,6 +9065,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -9535,6 +9655,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "divider": 19,
@@ -9821,7 +9945,13 @@
         "workingInstalls": 15,
         "brokenInstalls": 5,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "Whispers of the Divine: Aasimar Script Extender Edition",
@@ -10087,7 +10217,13 @@
         "workingInstalls": 15,
         "brokenInstalls": 4,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "ChaoticNeuThrall Head Pack",
@@ -10383,7 +10519,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 8
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ]
     },
     {
       "name": "Hedge Mage",
@@ -10676,7 +10818,13 @@
         "workingInstalls": 15,
         "brokenInstalls": 4,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "RecklessAttack5e",
@@ -11035,7 +11183,13 @@
         "workingInstalls": 14,
         "brokenInstalls": 4,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "Better Hag Hair",
@@ -11325,7 +11479,13 @@
         "workingInstalls": 14,
         "brokenInstalls": 4,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "Frozen Sorcery",
@@ -11371,7 +11531,13 @@
         "workingInstalls": 14,
         "brokenInstalls": 4,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "HT_Wyll You Sit With Me?",
@@ -11459,7 +11625,13 @@
         "workingInstalls": 15,
         "brokenInstalls": 3,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "MoveFaster",
@@ -11538,7 +11710,13 @@
         "workingInstalls": 15,
         "brokenInstalls": 3,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "Rebalance_Lvl3_Spells",
@@ -11670,7 +11848,13 @@
         "workingInstalls": 14,
         "brokenInstalls": 4,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "Veil and Venom: Rogue Equipment",
@@ -11686,7 +11870,13 @@
         "workingInstalls": 14,
         "brokenInstalls": 4,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "Yves Hair Gallery",
@@ -12061,6 +12251,10 @@
         {
           "uuid": "1850c081-9a44-44be-9ed3-0fdfb24f0124",
           "name": "Bleeding Overhaul"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ],
       "absence": {
@@ -12261,7 +12455,13 @@
         "workingInstalls": 15,
         "brokenInstalls": 2,
         "voloSortedInstalls": 8
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ]
     },
     {
       "name": "Goon's Wizard Overhaul",
@@ -12278,7 +12478,13 @@
         "workingInstalls": 16,
         "brokenInstalls": 1,
         "voloSortedInstalls": 6
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ]
     },
     {
       "name": "Graviturgy Magic",
@@ -12476,7 +12682,13 @@
         "workingInstalls": 15,
         "brokenInstalls": 2,
         "voloSortedInstalls": 7
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "Oath of the Moon",
@@ -13067,6 +13279,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -13282,6 +13498,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -13392,6 +13612,12 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 6
       },
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ],
       "absence": {
         "held": 1,
         "witnesses": 1
@@ -13409,6 +13635,10 @@
         {
           "uuid": "07fbc2f1-f359-4b9d-b243-fe28bd783e4c",
           "name": "Goon's Library"
+        },
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
         }
       ],
       "divider": 59,
@@ -13434,7 +13664,13 @@
         "workingInstalls": 15,
         "brokenInstalls": 1,
         "voloSortedInstalls": 6
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ]
     },
     {
       "name": "Hope Once More - Hope as an Endgame Ally",
@@ -14213,7 +14449,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 5
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Song and Steel: Bard Equipment",
@@ -14229,7 +14471,13 @@
         "workingInstalls": 12,
         "brokenInstalls": 4,
         "voloSortedInstalls": 5
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:fadesequipmentdistributionfed",
+          "name": "+Fade's Equipment Distribution (FED)"
+        }
+      ]
     },
     {
       "name": "Sorceress 4033",
@@ -14258,7 +14506,13 @@
         "workingInstalls": 13,
         "brokenInstalls": 3,
         "voloSortedInstalls": 5
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:advancedtabletopspells",
+          "name": "+Advanced Tabletop Spells"
+        }
+      ]
     },
     {
       "name": "Tasha's Cauldron of Faces",
@@ -15570,7 +15824,13 @@
         "workingInstalls": 14,
         "brokenInstalls": 1,
         "voloSortedInstalls": 6
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ]
     },
     {
       "name": "Goon's Gear and Throwing Overhaul",
@@ -15589,6 +15849,12 @@
         "voloSortedInstalls": 6
       },
       "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ],
       "absence": {
         "held": 1,
         "witnesses": 1
@@ -15606,6 +15872,10 @@
         {
           "uuid": "07fbc2f1-f359-4b9d-b243-fe28bd783e4c",
           "name": "Goon's Library"
+        },
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
         }
       ],
       "divider": 57,
@@ -17044,6 +17314,10 @@
         {
           "uuid": "2cba831e-bc5e-4ed5-b831-b5c4580b02b0",
           "name": "TagFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ],
       "absence": {
@@ -17138,7 +17412,13 @@
         "workingInstalls": 13,
         "brokenInstalls": 1,
         "voloSortedInstalls": 6
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ]
     },
     {
       "name": "Hand Cannon - Gunslinger Pistol",
@@ -18530,7 +18810,13 @@
         "workingInstalls": 12,
         "brokenInstalls": 1,
         "voloSortedInstalls": 6
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:halftiefstieflinghornsandtailforall",
+          "name": "+Half-Tiefs (Tiefling Horns and Tail for All)"
+        }
+      ]
     },
     {
       "name": "Heroic Inspiration 2024",
@@ -19673,7 +19959,13 @@
         "brokenInstalls": 0,
         "voloSortedInstalls": 3
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ]
     },
     {
       "name": "Xara's Spellbook",
@@ -19688,7 +19980,13 @@
         "workingInstalls": 13,
         "brokenInstalls": 0,
         "voloSortedInstalls": 3
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:vladsgrimoirespellvfxlibrary",
+          "name": "+Vlad's Grimoire - Spell VFX Library"
+        }
+      ]
     },
     {
       "name": "[Aza] NPC Redesign: Mystra (Alt. Head)",
@@ -21915,6 +22213,14 @@
         {
           "uuid": "4fa17abe-993c-4e7e-ab2a-e7370b166ac9",
           "name": "Character Preset Framework"
+        },
+        {
+          "uuid": "name:characterpresetframeworkcpf",
+          "name": "+Character Preset Framework (CPF)"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -23858,7 +24164,13 @@
         "brokenInstalls": 3,
         "voloSortedInstalls": 3
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Valkrana's Skeleton Emporium",
@@ -24216,7 +24528,13 @@
         "brokenInstalls": 0,
         "voloSortedInstalls": 4
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "BaneDice",
@@ -24598,7 +24916,13 @@
         "workingInstalls": 9,
         "brokenInstalls": 1,
         "voloSortedInstalls": 3
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "Concept Art Styled Withers",
@@ -25921,7 +26245,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 4
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Myky's Heads - Unique Tav Patch",
@@ -26026,7 +26356,13 @@
         "brokenInstalls": 2,
         "voloSortedInstalls": 4
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "OBSC_Arethel",
@@ -26180,6 +26516,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -26532,7 +26872,13 @@
         "workingInstalls": 9,
         "brokenInstalls": 1,
         "voloSortedInstalls": 5
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "SCO-Addon",
@@ -28353,7 +28699,13 @@
         "workingInstalls": 7,
         "brokenInstalls": 1,
         "voloSortedInstalls": 3
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:kazlabassortedshaderpack",
+          "name": "+Kaz Lab Assorted Shader Pack"
+        }
+      ]
     },
     {
       "name": "Faces of Faerûn: Whispers of the Divine: Aasimar Patch",
@@ -29506,7 +29858,13 @@
         "workingInstalls": 8,
         "brokenInstalls": 1,
         "voloSortedInstalls": 4
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "Paired Weapons and Improved Dual Wielding",
@@ -29777,7 +30135,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 3
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Sin Terrna",
@@ -29830,6 +30194,14 @@
         {
           "uuid": "7d6c9a73-729d-4ea5-a06e-73670efbdfce",
           "name": "ZipsHeads"
+        },
+        {
+          "uuid": "name:bg3afanimationframework",
+          "name": "+BG3AF - Animation Framework"
+        },
+        {
+          "uuid": "name:heartsheads",
+          "name": "+Hearts' Heads"
         }
       ]
     },
@@ -30812,7 +31184,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 5
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Aylin - Camp Clothes",
@@ -31054,7 +31432,13 @@
         "workingInstalls": 6,
         "brokenInstalls": 2,
         "voloSortedInstalls": 5
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "BootsandGlovesofAgilityRestored",
@@ -32321,7 +32705,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 3
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ]
     },
     {
       "name": "Githyanki Unleashed - Astral Guardians",
@@ -34265,7 +34655,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "SMH_Gloomstalker_Gear",
@@ -34553,6 +34949,10 @@
         {
           "uuid": "ccf0be9f-61e4-e7f4-8755-24fecb2f1f9b",
           "name": "Snapshots"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ]
     },
@@ -36300,6 +36700,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -36493,7 +36897,13 @@
         "workingInstalls": 7,
         "brokenInstalls": 0,
         "voloSortedInstalls": 3
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:spellsextradnd5elibrary",
+          "name": "+Spells Extra - DND 5E Library"
+        }
+      ]
     },
     {
       "name": "ColorPresetsAsDyes",
@@ -36528,6 +36938,10 @@
         {
           "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
           "name": "VolitionCabinet"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ]
     },
@@ -36566,6 +36980,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -38537,7 +38955,13 @@
         "workingInstalls": 7,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "More_Weapons_by_Guigodead",
@@ -38816,7 +39240,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "OneDnD_SpellListAdditions",
@@ -39264,6 +39694,10 @@
         {
           "uuid": "08aaab4b-03b9-5dc1-bbc7-cdd80ff2084e",
           "name": "Aardi's Chest of Presents"
+        },
+        {
+          "uuid": "name:wingscharactercustomizationwcc",
+          "name": "+Wings Character Customization - WCC"
         }
       ]
     },
@@ -39480,6 +39914,10 @@
         {
           "uuid": "49f60f92-cde9-4621-aeae-7a5c9d412c03",
           "name": "Ghouls Custom Piercings"
+        },
+        {
+          "uuid": "name:tripsaccessorycollection",
+          "name": "+Trips' Accessory Collection"
         }
       ]
     },
@@ -39607,7 +40045,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Shadows of the Gate -- Instanced Objects",
@@ -39927,7 +40371,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Temi Longsword + Warden Armor Set",
@@ -40043,6 +40493,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "divider": 16,
@@ -40359,7 +40813,13 @@
         "workingInstalls": 7,
         "brokenInstalls": 0,
         "voloSortedInstalls": 4
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ]
     },
     {
       "name": "Witch Class",
@@ -42042,6 +42502,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -42287,7 +42751,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 3
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "DisastrousDyes",
@@ -43944,7 +44414,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 4
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "invisi-bee Heads - Head B for Body Type 2",
@@ -44386,7 +44862,13 @@
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Love and Deepspace Hairstyles - Catch-22",
@@ -45443,7 +45925,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "OneDnD UA5 Barbarian Relentless Rage",
@@ -46727,6 +47215,10 @@
         {
           "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
           "name": "TutorialChestSummoning"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ],
       "absence": {
@@ -48501,7 +48993,17 @@
         "workingInstalls": 5,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:bg3afanimationframework",
+          "name": "+BG3AF - Animation Framework"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "BG3NSFWAssets",
@@ -49146,6 +49648,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -49653,6 +50159,14 @@
         {
           "uuid": "fdc7b6ec-abd0-4db0-88c6-d0657ad6f334",
           "name": "Calimshan Pirate Outfit"
+        },
+        {
+          "uuid": "name:asymmetricalshadowheartconceptoutfit",
+          "name": "+Asymmetrical Shadowheart Concept Outfit"
+        },
+        {
+          "uuid": "name:camprobesforgale",
+          "name": "+Camp Robes for Gale"
         }
       ]
     },
@@ -49884,6 +50398,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "divider": 19,
@@ -51378,7 +51896,13 @@
         "workingInstalls": 5,
         "brokenInstalls": 0,
         "voloSortedInstalls": 3
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Infinity Nexus Staff",
@@ -53294,7 +53818,13 @@
         "workingInstalls": 3,
         "brokenInstalls": 2,
         "voloSortedInstalls": 2
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ]
     },
     {
       "name": "Poisonarcherequipment",
@@ -54221,7 +54751,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Smaller Boo",
@@ -54406,7 +54942,13 @@
         "workingInstalls": 5,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "Spellsword Class + 5e Spells",
@@ -56874,7 +57416,13 @@
         "workingInstalls": 4,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:wingscharactercustomizationwcc",
+          "name": "+Wings Character Customization - WCC"
+        }
+      ]
     },
     {
       "name": "Animate Dead - Attack Command",
@@ -59217,7 +59765,13 @@
         "workingInstalls": 3,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:kazlabassortedshaderpack",
+          "name": "+Kaz Lab Assorted Shader Pack"
+        }
+      ]
     },
     {
       "name": "Deities Dice Pack",
@@ -63916,6 +64470,10 @@
         {
           "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
           "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ]
     },
@@ -65222,6 +65780,10 @@
         {
           "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
           "name": "5eSpells"
+        },
+        {
+          "uuid": "name:vladsgrimoirespellvfxlibrary",
+          "name": "+Vlad's Grimoire - Spell VFX Library"
         }
       ]
     },
@@ -66725,7 +67287,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:advancedtabletopspells",
+          "name": "+Advanced Tabletop Spells"
+        }
+      ]
     },
     {
       "name": "Truant's Bastion - Progressive Shield",
@@ -67494,7 +68062,13 @@
         "workingInstalls": 3,
         "brokenInstalls": 1,
         "voloSortedInstalls": 2
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ]
     },
     {
       "name": "Wild Card - The Rogue of Cards",
@@ -69904,6 +70478,10 @@
         {
           "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
           "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "name:bettercharacterandpartypanels",
+          "name": "+Better Character and Party Panels"
         }
       ]
     },
@@ -71313,7 +71891,13 @@
         "workingInstalls": 2,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ]
     },
     {
       "name": "Companions Bed - Elfsong - Shar.pak",
@@ -77664,7 +78248,13 @@
         "workingInstalls": 2,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Morinth's Armor",
@@ -78938,6 +79528,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "divider": 19,
@@ -79513,7 +80107,13 @@
         "workingInstalls": 3,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:progressionpreviewfullclassprogressionsshowningame",
+          "name": "+Progression Preview - Full Class Progressions Shown Ingame"
+        }
+      ]
     },
     {
       "name": "ProperRange",
@@ -80119,7 +80719,13 @@
         "workingInstalls": 3,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:cunningstrikeandua6swashbuckler",
+          "name": "+Cunning Strike and UA6 Swashbuckler"
+        }
+      ]
     },
     {
       "name": "RogueMistress Outfit ",
@@ -82647,7 +83253,13 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "VergilClothes",
@@ -83098,6 +83710,10 @@
         {
           "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
           "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "name:vladsgrimoirespellvfxlibrary",
+          "name": "+Vlad's Grimoire - Spell VFX Library"
         }
       ]
     },
@@ -84886,6 +85502,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "divider": 47,
@@ -86354,6 +86974,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "featureFlags": [
@@ -87440,7 +88064,17 @@
         "workingInstalls": 1,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:bg3afanimationframework",
+          "name": "+BG3AF - Animation Framework"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "BetterGontrMael",
@@ -89774,7 +90408,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Crimson Demon",
@@ -90221,6 +90861,10 @@
         {
           "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
           "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ]
     },
@@ -97122,7 +97766,13 @@
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "KaylaKAVT",
@@ -97699,7 +98349,13 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "Legendary ShadowBlades Ring",
@@ -110531,6 +111187,10 @@
         {
           "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
           "name": "VolitionCabinet"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "absence": {
@@ -110657,7 +111317,13 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ]
     },
     {
       "name": "WeightlessContainers",
@@ -111813,6 +112479,20 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ],
+      "absence": {
+        "held": 0,
+        "witnesses": 1
       }
     },
     {
@@ -112394,7 +113074,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "037c6df9-f376-4dc3-addf-afd1f8510e99",
+          "name": "Companions - Old Shaders"
+        },
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ]
     },
     {
       "name": "-Tav with a Backstory - Scar Options",
@@ -112433,6 +113123,10 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 1
       }
     },
     {
@@ -112485,7 +113179,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "-Wyll's True Bloodstone Eye",
@@ -112879,7 +113579,13 @@
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "[Localization] Astaria",
@@ -116785,7 +117491,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "+5eSpells and Expansion Patch - Level 13 to 20",
@@ -116850,7 +117562,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "96bc14a7-733e-4bea-859d-3695d745efc1",
+          "name": "Mazzle_Lib"
+        }
+      ]
     },
     {
       "name": "+Actual Green-Flame Blade",
@@ -116876,7 +117595,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 16
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Aeries' Gale Dekarios - Hugs Kisses Voiced Dialog",
@@ -116902,7 +117626,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "194a7429-5b34-7d68-06ee-494607e165e4",
+          "name": "Knights and Dames"
+        },
+        {
+          "uuid": "c40e6b56-db36-4e62-89c5-c8bad4c48ab4",
+          "name": "Knights and Dames"
+        }
+      ]
     },
     {
       "name": "+Aradin and Crew Redone - The Beno Boys",
@@ -116941,7 +117675,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Armory - Auto-Transmog Vanity Outfit Manager",
@@ -116954,7 +117689,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "+Artificer Class",
@@ -117175,7 +117917,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 4
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Attitude Adjuster - Approval Gains SE",
@@ -117188,7 +117935,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Attunement (And Rarity Limits)",
@@ -117201,7 +117949,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "+Auntie Ethel - Dark Urge Dialogue Bug Fix (with Optional Astarion Priority)",
@@ -117240,7 +117995,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "+Automatic Spell Sniper List Modifier",
@@ -117253,7 +118015,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Automatically Hide Summons",
@@ -117266,7 +118029,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Awakened Spear of Selune",
@@ -117333,7 +118097,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 90
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Bambi's Bits n Bobs - Cazador Replacer",
@@ -117504,6 +118273,16 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "absence": {
+        "held": 0,
+        "witnesses": 2
       }
     },
     {
@@ -117517,7 +118296,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Better Disguise Self Icons",
@@ -117595,7 +118375,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "absence": {
+        "held": 0,
+        "witnesses": 15
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Big Dwarven Beards",
@@ -117750,7 +118536,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Camp Event Overhaul",
@@ -117776,7 +118563,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 4
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Cannibal's Vitality",
@@ -117802,7 +118594,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Cazador Redone - Vampire Lord of the Gate",
@@ -117880,7 +118673,18 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ],
+      "absence": {
+        "held": 0,
+        "witnesses": 9
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+CHARACTER VISUALS_separator",
@@ -117919,7 +118723,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "+Chromatic Dyes",
@@ -117945,7 +118755,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Circle of Stormchasers Druid Subclass",
@@ -117958,7 +118775,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Circle of the Blighted Druid Subclass",
@@ -117971,7 +118795,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Circle of the Land Spells Revised - DND 5E",
@@ -117997,7 +118828,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Circle of Witchcraft - A Druid subclass",
@@ -118221,7 +119059,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Consumable - Dyes_separator",
@@ -118321,7 +119160,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "57b22f40-4886-91a0-7f70-8fec6275e773",
+          "name": "Tepkunset Hair Collection"
+        },
+        {
+          "uuid": "a34a1b2d-bcaa-44e0-885a-6087ccf92357",
+          "name": "TepkunsetHairCollection"
+        }
+      ]
     },
     {
       "name": "+Critical Miss Has Consequences",
@@ -118334,7 +119183,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Critical Miss Has Consequences FIXED",
@@ -118347,7 +119197,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:criticalmisshasconsequences",
+          "name": "+Critical Miss Has Consequences"
+        }
+      ]
     },
     {
       "name": "+Cunning Strike and UA6 Swashbuckler",
@@ -118360,6 +119217,10 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 3
       }
     },
     {
@@ -118398,7 +119259,25 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "194a7429-5b34-7d68-06ee-494607e165e4",
+          "name": "Knights and Dames"
+        },
+        {
+          "uuid": "680b2b14-1663-0701-506a-c5c23c68247e",
+          "name": "Myky's Hairstyles"
+        },
+        {
+          "uuid": "c40e6b56-db36-4e62-89c5-c8bad4c48ab4",
+          "name": "Knights and Dames"
+        },
+        {
+          "uuid": "name:wingscharactercustomizationwcc",
+          "name": "+Wings Character Customization - WCC"
+        }
+      ]
     },
     {
       "name": "+Dark Urge Tweeaks",
@@ -118450,7 +119329,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Debonaire Rogue Subclass",
@@ -118463,7 +119348,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Deities For All - All Classes Can Choose A Deity",
@@ -118476,7 +119368,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+DEITIES_separator",
@@ -118752,7 +119645,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "194a7429-5b34-7d68-06ee-494607e165e4",
+          "name": "Knights and Dames"
+        },
+        {
+          "uuid": "c40e6b56-db36-4e62-89c5-c8bad4c48ab4",
+          "name": "Knights and Dames"
+        }
+      ]
     },
     {
       "name": "+DVQR - All-in-One",
@@ -118804,7 +119707,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Dynamic Wildheart Barbarian",
@@ -118817,7 +119721,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Early Access Scenes Restored",
@@ -118856,7 +119761,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Eldritch Domain Cleric Subclass",
@@ -118869,7 +119775,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Elixir Rebalance",
@@ -118947,7 +119860,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ]
     },
     {
       "name": "+Epilogue bug fixes",
@@ -119179,7 +120098,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 28
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Faithful and Faithless - No Mandatory Choice of God",
@@ -119192,7 +120116,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Familiar Casting - Help via Familiar",
@@ -119218,7 +120148,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Feats - Custom_separator",
@@ -119269,7 +120200,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:roguefencersubclass",
+          "name": "+Rogue Fencer Subclass"
+        }
+      ]
     },
     {
       "name": "+Feywild Eyes - Eye Color Collection",
@@ -119360,7 +120297,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:spellsextradnd5elibrary",
+          "name": "+Spells Extra - DND 5E Library"
+        }
+      ]
     },
     {
       "name": "+Foundational Overhauls - The Bone Zone_separator",
@@ -119436,6 +120379,16 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "absence": {
+        "held": 0,
+        "witnesses": 1
       }
     },
     {
@@ -119475,7 +120428,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "+Goon's Condition and Surface Overhaul",
@@ -119488,7 +120448,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:goonslibrarypassivesfunctionsspellsandmore",
+          "name": "+Goon's Library - Passives Functions Spells and More"
+        }
+      ]
     },
     {
       "name": "+Goon's Library - Passives Functions Spells and More",
@@ -119501,7 +120467,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "absence": {
+        "held": 0,
+        "witnesses": 29
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Goon's Short Legs Overhaul - Full Movement for Short Races",
@@ -119514,7 +120486,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "+Goon's Vendor Overhaul - Trader Exploit Prevention",
@@ -119540,7 +120518,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Grim Surgeon Rogue Subclass",
@@ -119553,7 +120532,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Gunner Feat - Immersive Firearms Series",
@@ -119566,7 +120552,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:maradisimmersivefirearms",
+          "name": "+Maradi's Immersive Firearms"
+        }
+      ]
     },
     {
       "name": "+Half-Orcs Stand Tall (Female)",
@@ -119591,7 +120583,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 12
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Hallowleaf Epilogue Letters",
@@ -119617,7 +120614,18 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "absence": {
+        "held": 0,
+        "witnesses": 8
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Heavy Armor Impedes Movement",
@@ -119656,7 +120664,18 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "+HGY Small Heads",
@@ -119695,7 +120714,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:advancedtabletopspells",
+          "name": "+Advanced Tabletop Spells"
+        },
+        {
+          "uuid": "name:spellsextradnd5elibrary",
+          "name": "+Spells Extra - DND 5E Library"
+        }
+      ]
     },
     {
       "name": "+Homebrew Spells Compatibility Patch",
@@ -119708,7 +120737,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "84958e84-fd62-474f-bd1f-cbabc132c4b3",
+          "name": "Homebrew Spells"
+        }
+      ]
     },
     {
       "name": "+Honey's Hair Kitchen - Missing Hair Fix",
@@ -119825,7 +120860,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
+          "name": "Tav's Hair Salon"
+        }
+      ]
     },
     {
       "name": "+Icon Library",
@@ -119850,7 +120891,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Improved Unholy Smite for Oathbreakers",
@@ -119863,6 +120910,10 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 1
       }
     },
     {
@@ -119889,7 +120940,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "+Injuries - JWL Discordant Instruments Patch",
@@ -119915,7 +120972,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Inquisitor Class",
@@ -119928,6 +120992,11 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
+      },
+      "usesScriptExtender": true,
+      "absence": {
+        "held": 0,
+        "witnesses": 1
       }
     },
     {
@@ -120019,7 +121088,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Jerinski's Masc Gith Heads",
@@ -120032,7 +121107,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Justicar - 5e Spells Compatibility 1.5.0",
@@ -120058,7 +121139,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:spellsextradnd5elibrary",
+          "name": "+Spells Extra - DND 5E Library"
+        }
+      ]
     },
     {
       "name": "+Kagha Redux - The Viper in the Grass",
@@ -120071,7 +121158,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:naturesgarb",
+          "name": "+Nature's Garb"
+        }
+      ]
     },
     {
       "name": "+Karlach Romance - Better Hot Date",
@@ -120097,7 +121190,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 8
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Ketheric Thorm Redone - Reithwin's Fallen Glory",
@@ -120354,7 +121452,21 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "+Longbows Without Spikes",
@@ -120380,7 +121492,21 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "194a7429-5b34-7d68-06ee-494607e165e4",
+          "name": "Knights and Dames"
+        },
+        {
+          "uuid": "680b2b14-1663-0701-506a-c5c23c68247e",
+          "name": "Myky's Hairstyles"
+        },
+        {
+          "uuid": "c40e6b56-db36-4e62-89c5-c8bad4c48ab4",
+          "name": "Knights and Dames"
+        }
+      ]
     },
     {
       "name": "+Lorroakan Redone - The Lord of Ramazith's Tower",
@@ -120393,7 +121519,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "680b2b14-1663-0701-506a-c5c23c68247e",
+          "name": "Myky's Hairstyles"
+        }
+      ]
     },
     {
       "name": "+Lunar Smite for Paladins and Clerics",
@@ -120471,7 +121603,21 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "84958e84-fd62-474f-bd1f-cbabc132c4b3",
+          "name": "Homebrew Spells"
+        },
+        {
+          "uuid": "ca3df55b-c576-41a1-87c4-3cf5f01922e4",
+          "name": "Essential_Feats"
+        },
+        {
+          "uuid": "name:maradisimmersivefirearms",
+          "name": "+Maradi's Immersive Firearms"
+        }
+      ]
     },
     {
       "name": "+Mayrina and Brothers Edits",
@@ -120497,7 +121643,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "807fb10c-d697-dce1-8047-04651b560acf",
+          "name": "Rogue Tattoo"
+        }
+      ]
     },
     {
       "name": "+Mind Domain - Cleric Subclass",
@@ -120668,7 +121820,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "absence": {
+        "held": 0,
+        "witnesses": 98
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Mol Persuasion Bug Fix",
@@ -120748,7 +121906,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:wingscharactercustomizationwcc",
+          "name": "+Wings Character Customization - WCC"
+        }
+      ]
     },
     {
       "name": "+More Amnesia for the Haunted One (Dark Urge Not Baldurian)",
@@ -120852,7 +122016,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+More Spell Choices and Slots",
@@ -120906,7 +122071,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 20
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Nature's Garb",
@@ -120997,7 +122167,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Nightsong Points Bug Fix",
@@ -121143,7 +122314,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Oath of Pestilence Paladin Subclass",
@@ -121169,7 +122341,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Oath of Zeal - Paladin Subclass",
@@ -121247,7 +122426,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "+Original NightSong Cinematic",
@@ -121390,7 +122576,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "+Path of the Corpse Eater Barbarian Subclass",
@@ -121403,7 +122595,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Penance Domain Cleric Subclass",
@@ -121455,6 +122654,11 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
+      },
+      "usesScriptExtender": true,
+      "absence": {
+        "held": 0,
+        "witnesses": 3
       }
     },
     {
@@ -121468,7 +122672,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "+Races - Reworks_separator",
@@ -121560,7 +122771,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "+Remove Broken Objects",
@@ -121586,7 +122804,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+REPLACER Dither Shader Fix",
@@ -121675,7 +122894,26 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        },
+        {
+          "uuid": "name:cunningstrikeandua6swashbuckler",
+          "name": "+Cunning Strike and UA6 Swashbuckler"
+        }
+      ]
     },
     {
       "name": "+ROGUE_separator",
@@ -121702,7 +122940,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+SanSpidersilk Armour",
@@ -121741,7 +122985,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "+Script Extender - Fixes_separator",
@@ -121786,7 +123037,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Secret Scrolls for 5e Spells",
@@ -121799,7 +123051,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "+Sensible Ambushing - Stealth Combat Overhaul",
@@ -121812,7 +123070,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "+Shadowheart Cantrip Night Piercer",
@@ -121825,7 +123089,18 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "+Shadowheart Concept Art Tattoos - All in One",
@@ -121983,7 +123258,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Spells - Common Actions_separator",
@@ -122087,7 +123363,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 8
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+SPELLS_separator",
@@ -122113,7 +123394,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "239127c3-1efe-493d-85d3-8518c8d8819b",
+          "name": "Dr. Kekyll's Grappling Framework"
+        }
+      ]
     },
     {
       "name": "+Stackable ASI Feats - Planescape Patch",
@@ -122164,7 +123451,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Strange Ox - Dialogue Flow Fix",
@@ -122320,7 +123613,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "680b2b14-1663-0701-506a-c5c23c68247e",
+          "name": "Myky's Hairstyles"
+        }
+      ]
     },
     {
       "name": "+The Eye of Vecna",
@@ -122333,7 +123632,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+The First Vampire Warlock Subclass",
@@ -122346,7 +123646,18 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "+The Goblin Leaders Redone - Servants of Her Will",
@@ -122372,7 +123683,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "e4ee55aa-1b75-43e4-a640-7096a1cc5e44",
+          "name": "AgileArmor"
+        }
+      ]
     },
     {
       "name": "+The Hand of Vecna",
@@ -122385,7 +123702,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+The Leg Thing - Astarion's Act 3 Camera Tweaks",
@@ -122477,7 +123795,14 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "+Tomes and Manuals",
@@ -122516,7 +123841,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 5
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Trips' Shader Pack",
@@ -122529,7 +123859,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 24
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+True Darkness - 5e RAW",
@@ -122542,7 +123877,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+UA6 Invoke Duplicity",
@@ -122555,7 +123891,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Ulder Ravengard Redone - Grand Marshall of the Gate",
@@ -122568,7 +123905,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "194a7429-5b34-7d68-06ee-494607e165e4",
+          "name": "Knights and Dames"
+        },
+        {
+          "uuid": "c40e6b56-db36-4e62-89c5-c8bad4c48ab4",
+          "name": "Knights and Dames"
+        }
+      ]
     },
     {
       "name": "+Universal Feat Every X Levels",
@@ -122594,7 +123941,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Valkrana's Limited Edition Bone - Necromancer Item",
@@ -122607,7 +123955,8 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "+Vampire Lord Astarion - Epilogue Party Affection Dialog",
@@ -122659,7 +124008,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "+Vessnelle's Hair Collection pack 1",
@@ -122763,7 +124118,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "56f43956-b1cb-43c6-badc-782c1e0def0f",
+          "name": "Myky's Heads"
+        },
+        {
+          "uuid": "680b2b14-1663-0701-506a-c5c23c68247e",
+          "name": "Myky's Hairstyles"
+        }
+      ]
     },
     {
       "name": "+Visual Artefact Fix",
@@ -122875,7 +124240,12 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 44
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Voss' Sword Glow Fix",
@@ -122914,6 +124284,11 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
+      },
+      "usesScriptExtender": true,
+      "absence": {
+        "held": 0,
+        "witnesses": 1
       }
     },
     {
@@ -123006,7 +124381,18 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "08aaab4b-03b9-5dc1-bbc7-cdd80ff2084e",
+          "name": "Aardi's Chest of Presents"
+        }
+      ],
+      "absence": {
+        "held": 0,
+        "witnesses": 10
+      },
+      "oftenAbsent": true
     },
     {
       "name": "+Winter Walker Ranger Subclass",
@@ -123032,7 +124418,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:spellsextradnd5elibrary",
+          "name": "+Spells Extra - DND 5E Library"
+        }
+      ]
     },
     {
       "name": "+Wizard - Other_separator",
@@ -123149,7 +124541,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "194a7429-5b34-7d68-06ee-494607e165e4",
+          "name": "Knights and Dames"
+        },
+        {
+          "uuid": "c40e6b56-db36-4e62-89c5-c8bad4c48ab4",
+          "name": "Knights and Dames"
+        }
+      ]
     },
     {
       "name": "♡ Dakota Preset Commission ♡",
@@ -123871,6 +125273,10 @@
         {
           "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
           "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ]
     },
@@ -124605,7 +126011,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:advancedtabletopspells",
+          "name": "+Advanced Tabletop Spells"
+        }
+      ]
     },
     {
       "name": "Adventurer",
@@ -128749,6 +130161,10 @@
         {
           "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
           "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ]
     },
@@ -130381,6 +131797,10 @@
         {
           "uuid": "d594f105-ef17-4456-9799-a0a9cd5b81ae",
           "name": "Aether's No Party Limits"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ]
     },
@@ -135169,7 +136589,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:vladsgrimoirespellvfxlibrary",
+          "name": "+Vlad's Grimoire - Spell VFX Library"
+        }
+      ]
     },
     {
       "name": "Eldritch",
@@ -135920,7 +137346,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "EQUIPMENT_BUFF_SPELL_COLLECTION",
@@ -136798,6 +138230,10 @@
         {
           "uuid": "96bc14a7-733e-4bea-859d-3695d745efc1",
           "name": "Mazzle_Lib"
+        },
+        {
+          "uuid": "name:inquisitorclass",
+          "name": "+Inquisitor Class"
         }
       ]
     },
@@ -140429,7 +141865,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ]
     },
     {
       "name": "HardcoreLongRest-Food-120",
@@ -140459,6 +141901,10 @@
         {
           "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
           "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ]
     },
@@ -141974,7 +143420,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "Immersive Ketheric Armour",
@@ -142632,7 +144084,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ]
     },
     {
       "name": "Jax' Transgender Gale - Orb Vanilla Body",
@@ -144914,6 +146372,10 @@
         {
           "uuid": "2cba831e-bc5e-4ed5-b831-b5c4580b02b0",
           "name": "TagFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
         }
       ]
     },
@@ -145381,7 +146843,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:spellsextradnd5elibrary",
+          "name": "+Spells Extra - DND 5E Library"
+        }
+      ]
     },
     {
       "name": "Magical Rogue Armour",
@@ -146809,6 +148277,10 @@
         {
           "uuid": "e49ba956-192e-451f-8dde-9c1299ec8881",
           "name": "Auto Send Read Books To Camp"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ]
     },
@@ -147401,7 +148873,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:tripsshaderpack",
+          "name": "+Trips' Shader Pack"
+        }
+      ]
     },
     {
       "name": "More Better Sickles",
@@ -150233,7 +151711,17 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:improvedunholysmiteforoathbreakers",
+          "name": "+Improved Unholy Smite for Oathbreakers"
+        },
+        {
+          "uuid": "name:unholysmiteforoathbreakers",
+          "name": "-Unholy Smite for Oathbreakers"
+        }
+      ]
     },
     {
       "name": "OathOfCastigation",
@@ -150534,7 +152022,18 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "OneDnD UA7 Warlock Magical Cunning",
@@ -151474,7 +152973,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:bg3afanimationframework",
+          "name": "+BG3AF - Animation Framework"
+        }
+      ]
     },
     {
       "name": "Penitent",
@@ -157030,6 +158535,10 @@
         {
           "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
           "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ],
       "divider": 43,
@@ -160007,6 +161516,10 @@
         {
           "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
           "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "name:nativemodloader",
+          "name": "+Native Mod Loader"
         }
       ]
     },
@@ -160345,6 +161858,10 @@
         {
           "uuid": "ccf0be9f-61e4-e7f4-8755-24fecb2f1f9b",
           "name": "Snapshots"
+        },
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
         }
       ]
     },
@@ -160398,7 +161915,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "ThematicItems_Extra",
@@ -160657,7 +162180,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:alternatetieflingtails",
+          "name": "-Alternate Tiefling Tails"
+        }
+      ]
     },
     {
       "name": "TillDeathDontUsPart",
@@ -161626,7 +163155,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:warcaster2014and2024",
+          "name": "+War Caster (2014 and 2024)"
+        }
+      ]
     },
     {
       "name": "Ui_Mujer",
@@ -161661,6 +163196,10 @@
         {
           "uuid": "c40e6b56-db36-4e62-89c5-c8bad4c48ab4",
           "name": "Knights and Dames"
+        },
+        {
+          "uuid": "name:ghoulscustomizationcompendiumcustomheadshornsandbeards",
+          "name": "+Ghouls Customization Compendium - Custom Heads Horns and Beards"
         }
       ]
     },
@@ -163032,7 +164571,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:spellsextradnd5elibrary",
+          "name": "+Spells Extra - DND 5E Library"
+        }
+      ]
     },
     {
       "name": "War Magic PHB2024 For Others",
@@ -164999,7 +166544,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "name:modconfigurationmenumcm",
+          "name": "+Mod Configuration Menu (MCM)"
+        }
+      ]
     },
     {
       "name": "自律人形 Doll",

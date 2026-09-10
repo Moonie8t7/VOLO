@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-09-10T08:19:00.203Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-10T09:21:32.855Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-09-10T08:19:00.203Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 152 |
 | labelled working | 123 |
 | labelled broken | 27 |
-| load-after edges promoted from catalogues | 666 |
+| load-after edges promoted from catalogues | 924 |
 | unlabelled | 2 |
 | Separator headers parsed | 3948 |
 | **Unique mods indexed** | **11552** |
 | Seen in more than one order | 7523 |
-| With declared dependencies | 661 |
+| With declared dependencies | 828 |
 | With Script Extender flags | 176 |
 | With author metadata | 1128 |
 
@@ -142,6 +142,24 @@ Framework are present in every working order that needs them.
 
 | Requirement | Working orders needing it | Without it | Declaring mods |
 |---|---|---|---|
+| `+Advanced Tabletop Spells` | 16 | 16 | 4 |
+| `+Asymmetrical Shadowheart Concept Outfit` | 4 | 4 | 1 |
+| `+Baldur's Gate 3 Community Library` | 90 | 90 | 32 |
+| `+BG3AF - Animation Framework` | 15 | 15 | 4 |
+| `+Camp Robes for Gale` | 4 | 4 | 1 |
+| `+Character Preset Framework (CPF)` | 9 | 9 | 1 |
+| `+Fade's Equipment Distribution (FED)` | 28 | 28 | 13 |
+| `+Goon's Library - Passives Functions Spells and More` | 29 | 29 | 14 |
+| `+Half-Tiefs (Tiefling Horns and Tail for All)` | 12 | 12 | 1 |
+| `+Hearts' Heads` | 8 | 8 | 1 |
+| `+Kaz Lab Assorted Shader Pack` | 8 | 8 | 2 |
+| `+Mod Configuration Menu (MCM)` | 98 | 98 | 67 |
+| `+Native Mod Loader` | 20 | 20 | 2 |
+| `+Spells Extra - DND 5E Library` | 8 | 8 | 7 |
+| `+Trips' Accessory Collection` | 5 | 5 | 1 |
+| `+Trips' Shader Pack` | 24 | 24 | 11 |
+| `+Vlad's Grimoire - Spell VFX Library` | 44 | 44 | 6 |
+| `+Wings Character Customization - WCC` | 10 | 10 | 4 |
 | `Character Creation Overhaul` | 6 | 6 | 2 |
 | `HybridUI` | 17 | 15 | 1 |
 | `Ornamental Body Jewellery` | 8 | 7 | 2 |

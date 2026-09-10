@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 10588 |
-| Matched exactly by name | 2460 |
-| Matched fuzzily (>= 0.9) | 608 |
-| Unmatched | 7520 |
+| Masterlist mods | 11552 |
+| Matched exactly by name | 2775 |
+| Matched fuzzily (>= 0.9) | 672 |
+| Unmatched | 8105 |
 
 ## What the match would add
 
-- 35 currently unsorted mods would receive a category from their
+- 40 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1012 mods have a Nexus category that disagrees with the
+- 1122 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1739 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 793 of them resolved to a uuid on both
+- 1991 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 1086 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -38,12 +38,12 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - DuplicationSE: User Interface (fuzzy match)
 - IllithidPowersOverhaul: Gameplay (fuzzy match)
 - Lay on Hands Enhanced - DND 5R: Classes (fuzzy match)
+- -[NODELETE] Larger and Smaller Penis With Flopping Physics: Character Customization (fuzzy match)
+- +[HORNY] Haarlep Unleashed 2 - BG3SX Edition: Gameplay (fuzzy match)
+- +[NODELETE] Friends With Benefits - Approval Rating Buffs: Gameplay (fuzzy match)
+- +[NODELETE] Valkrana's Skeleton Emporium - Over 50 New Animate Dead Options: Classes (fuzzy match)
+- +Wifi Potions v2: Gameplay (fuzzy match)
 - AbjurationWizardShield: Gameplay (fuzzy match)
-- ArcaneArcher: Classes (fuzzy match)
-- Ase Glamping - Player Housing for Camp: Character Customization (fuzzy match)
-- AstralElves: Races (fuzzy match)
-- BG3CraftingUpdate: Gameplay (fuzzy match)
-- Block-Miss-Differentiation-CHS: User Interface (fuzzy match)
 
 ### Sample disagreements
 
@@ -61,7 +61,7 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Essential_Feats: ours Classes (section), Nexus says Gameplay
-- Aardi's Chest of Presents: ours Equipment (section-majority), Nexus says Utilities
+- Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
 
 ## Unmapped Nexus categories
 
