@@ -1,8 +1,7 @@
 /**
- * Small counts as words, because "ten working orders" reads as prose and
- * "10 working orders" reads as a spreadsheet. The counts come from generated
- * data now, so the words have to be generated too; past twenty a numeral is
- * the honest rendering anyway.
+ * Small counts as words: "ten working orders" is prose and "10 working orders"
+ * is a spreadsheet. The counts come from generated
+ * data now, so the words have to be generated too; past twenty a numeral is the clearer rendering.
  */
 
 const WORDS = [

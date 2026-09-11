@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-09-11T09:19:55.604Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-11T17:34:55.934Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -31,8 +31,7 @@ Builds observed across the corpus, newest first:
 
 - `4.8.700.7143220` (Patch 8)
 
-814 mods record the newest build they were seen on, which is what would let
-the tool flag a mod as last verified on an older patch.
+814 mods record the newest build they were seen on, which would let the tool flag a mod as last verified on an older patch.
 
 ## How each mod got its group
 
@@ -113,8 +112,7 @@ which is not a finding. It reads at all only because the requirements stated in
 a TSV are no longer discarded, and it is recorded rather than believed.
 
 Only the middle row feeds anything today. A mod seen in a broken order and in
-no working one is reported to the user as a place to start looking, worded as
-exactly that rather than as a fault.
+no working one is reported to the user as a place to start looking, worded as a place to look and not as a fault.
 
 ## Requirements the corpus overrules
 

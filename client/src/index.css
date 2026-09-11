@@ -1,24 +1,18 @@
-/*
- * EB Garamond, served from this origin.
- *
- * It used to come from Google Fonts, which cost a DNS lookup, a TLS handshake
- * and a stylesheet on a second origin before a single glyph could be requested:
- * 601ms to deliver one kilobyte on a throttled connection, all of it competing
- * with the render-blocking CSS for bandwidth. It also handed Google a request
- * from every visitor, which the privacy page had to disclose.
- *
- * These are the same files Google serves, taken from their CDN and kept under
- * the SIL Open Font Licence in public/assets/fonts/OFL.txt. One variable file
- * per subset covers every weight the site uses, which is why 400, 500 and 600
- * all point at the same URL: the browser fetches it once and interpolates.
- *
- * The unicode ranges are Google's own split. Latin-ext is more than twice the
- * size of latin and holds accented characters most pages never use, so keeping
- * the split means a reader of English prose never downloads it.
- *
- * font-display: swap renders in the fallback face immediately and swaps when
- * the real one lands, so text is never invisible while a font downloads.
- */
+/* EB Garamond, served from this origin. It used to come from Google Fonts,
+   which cost a DNS lookup, a TLS handshake and a stylesheet on a second
+   origin before a glyph could be requested: 601ms to deliver one kilobyte
+   on a throttled connection, competing with the render-blocking CSS for
+   bandwidth. It also sent Google a request from every visitor, and the
+   privacy page had to disclose that. These are the same files Google
+   serves, taken from their CDN and kept under the SIL Open Font Licence in
+   public/assets/fonts/OFL.txt. One variable file per subset covers every
+   weight the site uses, so 400, 500 and 600 all point at the same URL and
+   the browser fetches it once. The unicode ranges are Google's own split.
+   Latin-ext is more than twice the size of latin and holds accented
+   characters most pages never use, so a reader of English prose never
+   downloads it. font-display: swap renders in the fallback face at once and
+   swaps when the real one arrives, so text is never invisible while a font
+   downloads. */
 @font-face {
   font-family: 'EB Garamond';
   font-style: normal;
@@ -60,6 +54,32 @@
     U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* Gothic A1, the interface and data face. The BG3 site sets its UI in it,
+   and it is on Google Fonts under the OFL. Latin subsets only: the family
+   ships a hundred Korean subsets that are not needed, and leaving them out
+   is the difference between 30KB and several MB. It carries body copy,
+   numbers, labels, counts and identifiers. Garamond carries titles. */
+@font-face {
+  font-family: 'Gothic A1';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/gothic-a1-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Gothic A1';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/assets/fonts/gothic-a1-latin-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -69,7 +89,14 @@
     /* Final BG3 design specifications */
     --background: 30 20% 8%; /* #161411 charcoal background */
     --foreground: 35 50% 91%; /* #FDE5CD header text */
-    --card: 30 20% 10%; /* Slightly lighter than background */
+    /* Darker than the ground. Every panel in the BG3 inventory screen is
+       near black against a lighter surround, so a panel sits in the surface
+       instead of floating on it. This was 30 20% 10%, a couple of points
+       lighter than the background, which is the convention component
+       libraries ship and the reason the panels looked like boxes. Combined
+       with the bevel below: darker fill, lit top edge, shadowed bottom
+       edge. */
+    --card: 30 24% 4%;
     --card-foreground: 35 50% 91%;
     --popover: 30 20% 10%;
     --popover-foreground: 35 50% 91%;
@@ -103,6 +130,19 @@
     --bg3-dark-brown: 30 30% 20%; /* #443623 High contrast text on gold */
     --bg3-clay: 10 40% 50%; /* #B15A4A Burnt Red */
     --bg3-panel: 30 12% 15%; /* #24211A Panel Background */
+
+    /* The bevel colours, from the site's own divider, which draws border-
+       top #896d51 over border-bottom #553c22: a lit line above and a
+       shadowed line below. A single uniform ring, which this project drew
+       before, gives a surface no light source. */
+    --bg3-bevel-light: 30 26% 43%; /* #896d51 */
+    --bg3-bevel-dark: 30 43% 23%; /* #553c22 */
+
+    /* Danger and good, from the site. These were 0 84% 60% and 142 76% 36%,
+       Tailwind's defaults, inside a palette that had otherwise been chosen
+       by hand. */
+    --bg3-red: 0 62% 51%; /* #CF3939 */
+    --bg3-green: 154 100% 27%; /* #008951 */
   }
 
   .light {
@@ -128,13 +168,11 @@
   }
 }
 
-/* Vestibular disorders make movement genuinely painful, so honour the system
-   setting rather than treating motion as decoration everyone wants.
-
-   Reduced does not mean none. Movement goes: no transforms, no looping
-   animations, no smooth scrolling. Colour and opacity transitions stay, because
-   they carry meaning (hover, focus, selected) rather than motion, and stripping
-   them makes state changes harder to follow, not easier. */
+/* Vestibular disorders make movement painful, so the system setting is
+   honoured. Reduced does not mean none. Movement goes: no transforms, no
+   looping animations, no smooth scrolling. Colour and opacity transitions
+   stay, because they carry state (hover, focus, selected) and stripping
+   them makes state changes harder to follow. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -150,9 +188,9 @@
   }
 }
 
-/* Press feedback. A control that visibly gives under the press confirms the
-   interface heard you, before any actual work happens. Deliberately subtle, and
-   skipped entirely when the user has asked for reduced motion. */
+/* Press feedback. A control that gives slightly under the press confirms
+   the click before any work happens. Kept subtle, and skipped when the user
+   has asked for reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
   button:not(:disabled):active,
   a[data-press]:active {
@@ -165,43 +203,135 @@
     @apply border-border;
   }
   
+  /* The ground is the site's smoke, fixed to the viewport behind the whole
+     page as its own .smoke layer is: smoke.jpg at cover, fading out over
+     the last sixth so a long page does not end on a hard edge, and a
+     portrait cut of the same texture on narrow screens. Everything above it
+     that is not a panel is transparent, so the app shell and the landing
+     page no longer paint a ground of their own. This replaced a vignette,
+     before that two soft blobs, and before that a procedural field. The
+     files under /assets/bg3 are the site's own, taken at the maintainer's
+     decision; docs/design.md records it. */
   body {
     @apply bg-background text-foreground;
-    font-family: 'EB Garamond', serif;
-    font-weight: 300;
-    background-image: 
-      radial-gradient(circle at 25% 25%, hsl(var(--bg3-sienna) / 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, hsl(var(--bg3-gold) / 0.05) 0%, transparent 50%);
+    font-family: 'Gothic A1', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: url('/assets/bg3/jpg/smoke.jpg') center / cover no-repeat;
+    /* The JPEG's compression blocks show faintly in this layer too. A small
+       blur takes them out, and on a fixed layer it costs one raster. Runs
+       past the box so the blur has no fringe. */
+    filter: blur(2px);
+    inset: -6px;
+    mask-image: linear-gradient(180deg, #000 0, #000 84%, rgb(0 0 0 / 0.5) 94%, transparent);
+    /* Dimmed over the charcoal so the ground stays close to the flat dark
+       it was and the smoke is a haze on it. The hero's own lifted layer
+       carries the brighter smoke. */
+    opacity: 0.55;
+  }
+
+  @media (max-width: 969px) {
+    body::before {
+      background-image: url('/assets/bg3/png/smoke-mobile.png');
+    }
+  }
+
+  /* Everything the app renders sits above the ground. Without this the
+     smoke paints over the page instead of behind it, because both are in
+     the same stacking context and it comes later in the source. */
+  #root {
+    position: relative;
+    z-index: 1;
   }
   
-  /* The official BG3 site sets headings in Quadraat Demibold, uppercase, at a
-     flat weight, with hierarchy carried by size rather than boldness. Quadraat
-     is a commercial face, so EB Garamond demibold stands in for it; it is the
-     same humanist-serif family feel, where a carved display face is not. */
+  /* The BG3 site sets headings in Quadraat Demibold, uppercase, at one
+     weight, with hierarchy carried by size. Quadraat is commercial, so EB
+     Garamond demibold stands in for it; both are humanist serifs. Lines are
+     balanced so a two-line heading does not leave one word on its own. */
   h1, h2, h3, h4, h5, h6, .font-display {
     font-family: 'EB Garamond', serif;
     font-weight: 600;
     letter-spacing: 0.03em;
     text-transform: uppercase;
+    text-wrap: balance;
     color: hsl(var(--bg3-header)); /* #FDE5CD */
+  }
+
+  /* A paragraph never ends on a single short word. */
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Controls respond to the first tap; without this a phone waits to see
+     whether a second tap is coming. */
+  button, a, [role='button'] {
+    touch-action: manipulation;
+  }
+
+  /* The scale, fluid between two anchors. Taken from the site's own
+     formula, which interpolates between a 970px viewport and 1920px, so a
+     heading grows with the window instead of jumping at a breakpoint. Set
+     on the elements so anything unstyled inherits it, and offered as
+     utilities so a component can opt in. Ratios are the site's: 48 to 60,
+     36 to 48, 30 to 36, 24 to 30, 20 to 24, 18 to 20, body 14 to 16. */
+  h1, .fluid-h1 { font-size: clamp(48px, 3rem + 12 * (100vw - 970px) / 950, 60px); line-height: 1.08; }
+  h2, .fluid-h2 { font-size: clamp(36px, 2.25rem + 12 * (100vw - 970px) / 950, 48px); line-height: 1.12; }
+  h3, .fluid-h3 { font-size: clamp(30px, 1.875rem + 6 * (100vw - 970px) / 950, 36px); line-height: 1.16; }
+  h4, .fluid-h4 { font-size: clamp(24px, 1.5rem + 6 * (100vw - 970px) / 950, 30px); line-height: 1.2; }
+  h5, .fluid-h5 { font-size: clamp(20px, 1.25rem + 4 * (100vw - 970px) / 950, 24px); line-height: 1.25; }
+  h6, .fluid-h6 { font-size: clamp(18px, 1.125rem + 2 * (100vw - 970px) / 950, 20px); line-height: 1.3; }
+  .fluid-p { font-size: clamp(14px, 0.875rem + 2 * (100vw - 970px) / 950, 16px); }
+
+  /* The interface face for labels, counts, versions, identifiers and table
+     cells. Tabular figures so a column of numbers lines up. */
+  .font-ui {
+    font-family: 'Gothic A1', system-ui, sans-serif;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+  }
+
+  .font-ui-strong {
+    font-family: 'Gothic A1', system-ui, sans-serif;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Numbers anywhere, without changing the face around them. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
   }
 
   /* Section labels: uppercase gold, following the official site's H4 and nav
      treatment. */
   .font-subheader {
     font-family: 'EB Garamond', serif;
-    font-weight: 500;
-    letter-spacing: 0.04em;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: hsl(var(--bg3-small)); /* #FBCEA0 */
   }
   
-  /* Typography only. Colour is deliberately not set here: a blanket rule on
-     p/span/div overrides text on inverted surfaces, which made button and badge
-     labels disappear against light backgrounds. */
-  .font-body, p, span, div {
+  /* The serif where a component asks for it without being a heading:
+     accordion questions, emphasis, and titles that are not uppercase.
+     Italic is included because the sans has no italic and the browser would
+     slant it. */
+  .font-serif,
+  em,
+  i,
+  .italic {
     font-family: 'EB Garamond', serif;
-    font-weight: 300;
+    font-weight: 500;
   }
 
   /* Opt-in body copy colour, for prose sitting on the dark background. */
@@ -209,11 +339,11 @@
     color: hsl(var(--bg3-main)); /* #CFCFCE */
   }
 
-  /* Inline text links. An underline alone disappears into serif body copy, so
-     links take the gold that already means interactive on buttons and borders.
-     Scoped to anchors carrying the underline utility, which is every prose
-     link and nothing else; nav and button links keep their own treatment.
-     Hover utilities on the elements still win, so hover brightens as before. */
+  /* Inline text links. An underline alone is easy to miss in body copy, so
+     links take the gold that already marks interactive elements on buttons
+     and borders. Scoped to anchors carrying the underline utility, which is
+     every prose link; nav and button links keep their own treatment. Hover
+     utilities on the elements still win. */
   a.underline {
     color: hsl(var(--bg3-gold)); /* #D7A869 */
     text-decoration-color: hsl(var(--bg3-gold) / 0.45);
@@ -224,19 +354,15 @@
     color: hsl(var(--bg3-small)); /* #FBCEA0 */
   }
   
-  .bg-gradient-bg3 {
-    /* Stays dark across the whole sweep so cream text keeps its contrast.
-       The warmth comes from the coffee midpoint, not from lightness. */
-    background: linear-gradient(135deg,
-      hsl(var(--bg3-charcoal)) 0%,
-      hsl(var(--bg3-coffee)) 50%,
-      hsl(var(--bg3-charcoal)) 100%);
+  /* A panel over the smoke: black at 35 percent, the value the site puts
+     behind its menu and its banners. The sidebar uses it. */
+  .bg-veil {
+    background-color: rgb(0 0 0 / 0.35);
   }
-  
-  /* Solid, not a gradient. Gradient-filled text via background-clip is
-     decorative rather than meaningful, it weakens contrast across the sweep,
-     and it disappears entirely in forced-colours mode. Emphasis comes from
-     scale and weight instead. */
+
+  /* Solid. Gradient-filled text via background-clip weakens contrast across
+     the sweep and disappears in forced-colours mode. Emphasis comes from
+     scale and weight. */
   .text-gradient-bg3 {
     color: hsl(var(--bg3-header));
   }
@@ -248,11 +374,684 @@
       hsl(var(--bg3-border) / 0.4)) 1;
   }
   
-  /* The official site uses no box shadows at all; panel framing comes from
-     thin gold borders. The class stays because it marks framed surfaces, but
-     it now draws a hairline ring rather than a drop shadow. */
-  .shadow-bg3 {
-    box-shadow: 0 0 0 1px hsl(var(--bg3-border) / 0.25);
+  /* The bevel. The site builds its panels from named frame components, and
+     every one is lit from above: a pale hairline on the top edge, a dark
+     one on the bottom. This class used to draw box-shadow: 0 0 0 1px at a
+     quarter opacity, one uniform ring. Inset shadows instead of borders, so
+     a frame can be applied to something that already has a border and never
+     changes layout. */
+  .shadow-bg3,
+  .frame {
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--bg3-bevel-light) / 0.55),
+      inset 0 -1px 0 0 hsl(var(--bg3-bevel-dark) / 0.9),
+      inset 1px 0 0 0 hsl(var(--bg3-bevel-dark) / 0.35),
+      inset -1px 0 0 0 hsl(var(--bg3-bevel-dark) / 0.35);
+  }
+
+  /* The same light reversed, dark above and lit below, for wells that hold
+     something: an input, a code block, a table body. */
+  .frame-inset {
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--bg3-bevel-dark) / 0.9),
+      inset 0 -1px 0 0 hsl(var(--bg3-bevel-light) / 0.4),
+      inset 1px 0 0 0 hsl(var(--bg3-bevel-dark) / 0.5),
+      inset -1px 0 0 0 hsl(var(--bg3-bevel-dark) / 0.5);
+  }
+
+  /* The section divider, laid out as the site's divider.css lays it out and
+     drawn with its own files. Six pixels tall. divider-deco.svg, the 30 by
+     6 lens, at each end, the right one a mirrored copy. Between them the
+     bevel: one light hairline along the top, #896d51, one dark along the
+     bottom, #553c22. Inside, a band of black at a quarter opacity over a
+     5px backdrop blur, masked by divider_mask_left and right so its ends come to a point. On the site
+     the bottom line disappears into dark imagery and the band shows as a
+     solid strip under the bright line; on VOLO's smoke the line showed and
+     the band did not, so here the line is a trace and the band is darker than
+     theirs. */
+  .rule-bg3 {
+    position: relative;
+    height: 6px;
+    border: 0;
+    background-image:
+      url('/assets/bg3/svg/divider-deco.svg'),
+      url('/assets/bg3/svg/divider-deco-right.svg'),
+      linear-gradient(to bottom, #896d51 0 1px, transparent 1px 5px, rgb(85 60 34 / 0.55) 5px 6px);
+    background-repeat: no-repeat;
+    background-size: 30px 6px, 30px 6px, calc(100% - 60px) 6px;
+    background-position: left top, right top, center;
+  }
+
+  .rule-bg3::before {
+    content: '';
+    position: absolute;
+    /* A pixel in from the top and bottom so the band sits between the two
+       lines and never over them: on the site the band is a sibling stacked
+       beneath the lines, and drawn on a pseudo-element here it would
+       otherwise paint over them and bury the light line along its run. */
+    inset: 1px 30px;
+    background: rgb(0 0 0 / 0.3);
+    backdrop-filter: blur(5px);
+    mask-image: url('/assets/bg3/svg/divider_mask_left.svg'), url('/assets/bg3/svg/divider_mask_right.svg');
+    mask-position: left, right;
+    mask-size: 2000px 6px;
+    mask-repeat: no-repeat;
+    mask-composite: intersect;
+  }
+
+  /* The rule under a heading, as the site closes every section title: a
+     line the width of the title's block, one pixel, lit at the left and
+     darkening to the right, with a hollow diamond at its head and a small
+     point at its tail. On the heading's own pseudo-element so no page has
+     to add a second element, and the three parts are background layers on
+     it. Width and colours are the site's; the glyphs are drawn here. */
+  .ruled::after {
+    content: '';
+    display: block;
+    /* The site's deco line defaults to 190px and every section header
+       overrides it to the full width of its text block. The fixed width was
+       the default, and under a long title it stopped short. */
+    width: 100%;
+    height: 7px;
+    margin-top: 14px;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7'%3E%3Cpath d='M3.5 0.6L6.4 3.5L3.5 6.4L0.6 3.5Z' fill='none' stroke='%23DDC9A7' stroke-width='1'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 3'%3E%3Cpath d='M0 0L3 1.5L0 3Z' fill='%23B78F6D'/%3E%3C/svg%3E"),
+      linear-gradient(90deg, #e0ccb1, #b78f6d);
+    background-repeat: no-repeat;
+    background-size: 7px 7px, 3px 3px, calc(100% - 10px) 1px;
+    background-position: left center, right center, 7px center;
+  }
+
+  /* A centred heading keeps the site's fixed 190px line under it, as its
+     own centred deco lines do. A centred title sits in a wide container,
+     and a rule the container's width would look like a divider. */
+  .text-center.ruled::after {
+    width: 190px;
+    margin-inline: auto;
+  }
+
+  /* The chamfered control, built from the site's button files. Its shape is
+     four corner masks, diamond-mask-corner-1 to 4: 800 by 800 tiles pinned
+     one to each corner and composited with intersect, each cutting its
+     corner with a concave arc. Its edge is drawn in CSS as the site draws
+     it: a pale line along the top, #e1cbb7, a bronze one along the bottom,
+     #be9775, verticals fading between the two, and diamond-corner-*.svg,
+     the ten pixel arcs, inside each cut. Mask and edge are both measured
+     from the padding box, so a bordered element cannot have them a pixel
+     apart. Everything a variant changes is a custom property: the corner
+     marks, the arcs, the edge colours and the face. */
+  .chamfer {
+    --mark-tl: linear-gradient(transparent, transparent);
+    --mark-tr: linear-gradient(transparent, transparent);
+    --mark-bl: linear-gradient(transparent, transparent);
+    --mark-br: linear-gradient(transparent, transparent);
+    --mark-inset: 5px;
+    --corner-tl: url('/assets/bg3/btn/diamond-corner-top-left.svg');
+    --corner-tr: url('/assets/bg3/btn/diamond-corner-top-right.svg');
+    --corner-bl: url('/assets/bg3/btn/diamond-corner-bottom-left.svg');
+    --corner-br: url('/assets/bg3/btn/diamond-corner-bottom-right.svg');
+    --edge-x-top: linear-gradient(#e1cbb7, #e1cbb7);
+    --edge-x-bottom: linear-gradient(#be9775, #be9775);
+    --edge-y: linear-gradient(to bottom, #e1cbb7, #be9775);
+    --face: linear-gradient(transparent, transparent);
+    /* Half the gap left in the top and bottom lines at centre. Zero unless
+       a wrapper puts a diamond there. The site stops its lines 16px short
+       of centre and lets the mark's own bars carry them to the diamond;
+       here the bars are trimmed off the marks and the lines run to the
+       diamond's tips, because a bar drawn inside an image and a line drawn
+       by CSS land on different sub-pixels at a fractional device scale. */
+    --notch: 0px;
+    position: relative;
+    isolation: isolate;
+    mask-image:
+      url('/assets/bg3/btn/diamond-mask-corner-1.svg'),
+      url('/assets/bg3/btn/diamond-mask-corner-2.svg'),
+      url('/assets/bg3/btn/diamond-mask-corner-3.svg'),
+      url('/assets/bg3/btn/diamond-mask-corner-4.svg');
+    mask-position: left top, right top, left bottom, right bottom;
+    mask-size: 800px 800px;
+    mask-repeat: no-repeat;
+    mask-composite: intersect;
+    mask-clip: padding-box;
+    mask-origin: padding-box;
+  }
+
+  /* The face and the edge, under the content. The corner marks paint first
+     so they sit over the arcs and lines, then the arcs, then the four
+     lines, then the face a variant sets. */
+  .chamfer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      var(--mark-tl), var(--mark-tr), var(--mark-bl), var(--mark-br),
+      var(--corner-tl), var(--corner-tr), var(--corner-bl), var(--corner-br),
+      var(--edge-y), var(--edge-y),
+      var(--edge-x-top), var(--edge-x-top),
+      var(--edge-x-bottom), var(--edge-x-bottom),
+      var(--face);
+    background-repeat: no-repeat;
+    background-size:
+      18px 18px, 18px 18px, 18px 18px, 18px 18px,
+      10px 10px, 10px 10px, 10px 10px, 10px 10px,
+      1px 100%, 1px 100%,
+      calc(50% - var(--notch)) 1px, calc(50% - var(--notch)) 1px,
+      calc(50% - var(--notch)) 1px, calc(50% - var(--notch)) 1px,
+      cover;
+    background-position:
+      left var(--mark-inset) top var(--mark-inset), right var(--mark-inset) top var(--mark-inset),
+      left var(--mark-inset) bottom var(--mark-inset), right var(--mark-inset) bottom var(--mark-inset),
+      left top, right top, left bottom, right bottom,
+      left top, right top,
+      left top, right top,
+      left bottom, right bottom,
+      center;
+  }
+
+  /* The selector's brackets, select-corner-*.svg, 18 by 18, one in each
+     corner. The active set is heavier and paler and marks the chosen item;
+     the plain set frames the site's secondary buttons. */
+  .select-frame {
+    --mark-tl: url('/assets/bg3/svg/select-corner-left-top.svg');
+    --mark-tr: url('/assets/bg3/svg/select-corner-right-top.svg');
+    --mark-bl: url('/assets/bg3/svg/select-corner-left-bottom.svg');
+    --mark-br: url('/assets/bg3/svg/select-corner-right-bottom.svg');
+  }
+
+  .select-frame-active {
+    --mark-tl: url('/assets/bg3/svg/select-corner-active-left-top.svg');
+    --mark-tr: url('/assets/bg3/svg/select-corner-active-right-top.svg');
+    --mark-bl: url('/assets/bg3/svg/select-corner-active-left-bottom.svg');
+    --mark-br: url('/assets/bg3/svg/select-corner-active-right-bottom.svg');
+  }
+
+  /* The button skin, the site's call to action. Black at 35 percent over a
+     10px backdrop blur, and the label in the display serif, uppercase,
+     white. The hover flood is the site's: white at centre falling to
+     parchment, with its two hover textures over it, masked by diamond-
+     hover-mask-decor-top and bottom, which cut the flood round the marks,
+     and by the four hover corner masks. */
+  .btn-chamfer {
+    --flood: radial-gradient(circle, #ffffff 0, #ddc9a7 100%), url('/assets/bg3/btn/diamond-hover-texture-left.png'), url('/assets/bg3/btn/diamond-hover-texture-right.png');
+    --flood-position: 50%, 0, 100%;
+    --flood-mask:
+      url('/assets/bg3/btn/diamond-hover-mask-decor-top.svg'),
+      url('/assets/bg3/btn/diamond-hover-mask-decor-bottom.svg'),
+      url('/assets/bg3/btn/diamond-hover-mask-corner-1.svg'),
+      url('/assets/bg3/btn/diamond-hover-mask-corner-2.svg'),
+      url('/assets/bg3/btn/diamond-hover-mask-corner-3.svg'),
+      url('/assets/bg3/btn/diamond-hover-mask-corner-4.svg');
+    --flood-mask-position: center top, center bottom, left top, right top, left bottom, right bottom;
+    font-family: 'EB Garamond', serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    background-color: rgb(0 0 0 / 0.35);
+    backdrop-filter: blur(10px);
+    transition: color 150ms ease-out;
+  }
+
+  /* The plain control, the site's other button: the same glass with a one
+     pixel #b99b77 edge on all four sides, no arcs, corners cut by mask-
+     corner-1 to 4, which slit each corner on the diagonal and leave its tip
+     attached, a four pixel V notched into the top and bottom edges at
+     centre by mask-triangle-top and bottom, and the selector's plain
+     bracket in each corner. Its hover is texture-button.jpg fading in. */
+  .btn-chamfer-outline {
+    --edge-x-top: linear-gradient(#b99b77, #b99b77);
+    --edge-x-bottom: linear-gradient(#b99b77, #b99b77);
+    --edge-y: linear-gradient(#b99b77, #b99b77);
+    --corner-tl: linear-gradient(transparent, transparent);
+    --corner-tr: linear-gradient(transparent, transparent);
+    --corner-bl: linear-gradient(transparent, transparent);
+    --corner-br: linear-gradient(transparent, transparent);
+    --mark-inset: 4px;
+    --flood: url('/assets/bg3/jpg/texture-button.jpg');
+    --flood-position: center;
+    --flood-mask: none;
+    --flood-mask-position: 0 0;
+    color: hsl(var(--bg3-header));
+    background-color: rgb(0 0 0 / 0.35);
+    mask-image:
+      url('/assets/bg3/btn/mask-corner-1.svg'),
+      url('/assets/bg3/btn/mask-corner-2.svg'),
+      url('/assets/bg3/btn/mask-corner-3.svg'),
+      url('/assets/bg3/btn/mask-corner-4.svg'),
+      url('/assets/bg3/btn/mask-triangle-top.svg'),
+      url('/assets/bg3/btn/mask-triangle-bottom.svg');
+    mask-position: left top, right top, left bottom, right bottom, center top, center bottom;
+    mask-size: 2000px 600px;
+  }
+
+  .btn-chamfer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image: var(--flood);
+    background-position: var(--flood-position);
+    background-size: cover;
+    background-repeat: no-repeat;
+    mask-image: var(--flood-mask);
+    mask-position: var(--flood-mask-position);
+    mask-size: 800px 800px;
+    mask-repeat: no-repeat;
+    mask-composite: intersect;
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+  }
+
+  .btn-chamfer:hover,
+  .btn-chamfer:focus-visible {
+    color: hsl(var(--bg3-charcoal));
+  }
+
+  /* On the call to action the flood covers the edge: the site's hover layer
+     is stacked over its borders, so the lines and the corner arcs vanish
+     under the parchment and only the two dark notches remain. The plain
+     button keeps its border, as the site's does. */
+  .btn-chamfer::before {
+    transition: opacity 150ms ease-out;
+  }
+
+  .btn-chamfer:not(.btn-chamfer-outline):hover::before,
+  .btn-chamfer:not(.btn-chamfer-outline):focus-visible::before {
+    opacity: 0;
+  }
+
+  .btn-chamfer:hover::after,
+  .btn-chamfer:focus-visible::after {
+    opacity: 1;
+  }
+
+  /* The call to action's wrapper, padded 6 by 5, carrying the site's marks
+     and its hover. The marks, on the upper layer above the control:
+     diamond-left and diamond-right, 18 by 8, at the middle of each side,
+     six pixels outside the edge; decor-top and decor-bottom, 34 by 10,
+     straddling the top and bottom edges at centre with their bars trimmed
+     off so the edge line itself meets the diamond, the top one pale and the
+     bottom one bronze. The bottom one sits a pixel higher than symmetry
+     would put it because the site offsets it by four where the top is
+     offset by five, so its bar lands on the last row of the edge. The
+     hover, on the lower layer beneath the control: the site stacks its
+     flood over the whole wrapper box, above the borders and the marks, with
+     a second copy of the label on top. Here the flood sits under the
+     control and the control's glass and edge go clear on hover, so the
+     single label shows dark on the parchment. The flood is the site's:
+     white at centre falling to parchment with its two hover textures over
+     it, masked by diamond-hover-mask-decor-top and bottom, which cut the
+     notches where the marks were, and the four hover corner masks. */
+  .btn-diamond {
+    position: relative;
+    display: inline-flex;
+    padding: 5px 6px;
+    isolation: isolate;
+  }
+
+  .btn-diamond::before,
+  .btn-diamond::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    transition: opacity 150ms ease-out;
+  }
+
+  .btn-diamond::before {
+    z-index: -1;
+    opacity: 0;
+    background-image:
+      radial-gradient(circle, #ffffff 0, #ddc9a7 100%),
+      url('/assets/bg3/btn/diamond-hover-texture-left.png'),
+      url('/assets/bg3/btn/diamond-hover-texture-right.png');
+    background-position: 50%, 0, 100%;
+    background-size: cover;
+    mask-image:
+      url('/assets/bg3/btn/diamond-hover-mask-decor-top.svg'),
+      url('/assets/bg3/btn/diamond-hover-mask-decor-bottom.svg'),
+      url('/assets/bg3/btn/diamond-hover-mask-corner-1.svg'),
+      url('/assets/bg3/btn/diamond-hover-mask-corner-2.svg'),
+      url('/assets/bg3/btn/diamond-hover-mask-corner-3.svg'),
+      url('/assets/bg3/btn/diamond-hover-mask-corner-4.svg');
+    mask-position: center top, center bottom, left top, right top, left bottom, right bottom;
+    mask-size: 800px 800px;
+    mask-repeat: no-repeat;
+    mask-composite: intersect;
+  }
+
+  .btn-diamond::after {
+    z-index: 1;
+    background-image:
+      url('/assets/bg3/btn/diamond-left.svg'), url('/assets/bg3/btn/diamond-right.svg'),
+      url('/assets/bg3/btn/decor-top.svg'), url('/assets/bg3/btn/decor-bottom.svg');
+    background-size: 18px 8px, 18px 8px, 34px 10px, 34px 10px;
+    background-position: left center, right center, center top, center bottom 1px;
+  }
+
+  .btn-diamond:hover::before {
+    opacity: 1;
+  }
+
+  .btn-diamond:hover::after {
+    opacity: 0;
+  }
+
+  .btn-diamond > .btn-chamfer {
+    --notch: 5px;
+    transition: color 150ms ease-out, background-color 150ms ease-out;
+  }
+
+  .btn-diamond > .btn-chamfer::after {
+    content: none;
+  }
+
+  .btn-diamond:hover > .btn-chamfer {
+    color: hsl(var(--bg3-charcoal));
+    background-color: transparent;
+    backdrop-filter: none;
+  }
+
+  .btn-diamond:hover > .btn-chamfer::before {
+    opacity: 0;
+  }
+
+  /* A panel's frame, the site's merchFrame at its large size: corner.svg
+     turned into each corner, a top and bottom line bright at the ends and
+     dark at the middle, #bf9875 to #604b38, plain #bf9875 sides, all
+     starting eleven pixels in so they meet the ornament. No mask: the panel
+     keeps square corners and the ornament makes the corner. */
+  .frame-bg3 {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .frame-bg3::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    --line-x: linear-gradient(90deg, #bf9875, #604b38 50%, #bf9875);
+    background-image:
+      url('/assets/bg3/svg/corner-tl.svg'), url('/assets/bg3/svg/corner-tr.svg'),
+      url('/assets/bg3/svg/corner-bl.svg'), url('/assets/bg3/svg/corner-br.svg'),
+      var(--line-x), var(--line-x),
+      linear-gradient(#bf9875, #bf9875), linear-gradient(#bf9875, #bf9875);
+    background-repeat: no-repeat;
+    background-size:
+      21px 21px, 21px 21px, 21px 21px, 21px 21px,
+      calc(100% - 22px) 1px, calc(100% - 22px) 1px,
+      1px calc(100% - 22px), 1px calc(100% - 22px);
+    background-position:
+      left top, right top, left bottom, right bottom,
+      center top, center bottom,
+      left center, right center;
+  }
+
+  /* With the knotwork: frame-decor.svg, 420 by 18, on the top and bottom
+     edges at centre, and the lines fading out beneath it as the site's
+     --with-decor variant does. The layer stands twenty pixels proud of the
+     panel top and bottom so the knotwork has room, so the panel must not
+     clip its overflow. */
+  .frame-decor::before {
+    top: -20px;
+    bottom: -20px;
+    --line-x: linear-gradient(90deg, #bf9875, #604b38 25%, transparent 50%, #604b38 75%, #bf9875);
+    background-image:
+      url('/assets/bg3/svg/frame-decor.svg'), url('/assets/bg3/svg/frame-decor.svg'),
+      url('/assets/bg3/svg/corner-tl.svg'), url('/assets/bg3/svg/corner-tr.svg'),
+      url('/assets/bg3/svg/corner-bl.svg'), url('/assets/bg3/svg/corner-br.svg'),
+      var(--line-x), var(--line-x),
+      linear-gradient(#bf9875, #bf9875), linear-gradient(#bf9875, #bf9875);
+    background-size:
+      420px auto, 420px auto,
+      21px 21px, 21px 21px, 21px 21px, 21px 21px,
+      calc(100% - 22px) 1px, calc(100% - 22px) 1px,
+      1px calc(100% - 62px), 1px calc(100% - 62px);
+    background-position:
+      center top 3px, center bottom 3px,
+      left top 20px, right top 20px, left bottom 20px, right bottom 20px,
+      center top 20px, center bottom 20px,
+      left center, right center;
+  }
+
+  /* The shroud, built from the site's hero files. The site's hero is
+     imagery masked by about-hero-mask.png, whose alpha eats the sides and
+     the foot with a grainy, billowed edge, with cloud-left.png and cloud-
+     right.png hanging over the top as its menu hangs them: the left cloud
+     in a 433px box at left -3vw, the right one across the full width from
+     the right, both at contain. VOLO has no imagery, so the layer the mask
+     eats is the smoke itself lifted, and the ground it dissolves into is
+     the fixed smoke behind the page. A mirrored copy of the left cloud sits
+     at the right as well. Earlier versions of this rule were gradients,
+     then a procedural noise cloud. */
+  .shroud {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .shroud::before {
+    content: '';
+    position: absolute;
+    inset: -8px 0;
+    z-index: 0;
+    pointer-events: none;
+    background: url('/assets/bg3/jpg/smoke.jpg') center / cover no-repeat;
+    /* The site's smoke is 2880 by 1800 in 78KB, so lifting it makes its
+       compression blocks visible. A small blur dissolves them, and the
+       layer runs eight pixels past the box top and bottom so the blur has
+       no fringe there. The opacity keeps the step from this layer to the
+       ground small enough that the edge looks like haze thinning out. */
+    filter: brightness(1.8) blur(3px);
+    opacity: 0.8;
+    /* Three masks intersected. The painted one, softened before it ships
+       because its spatter is drawn to sit on detailed imagery and over a
+       blurred layer the specks look like noise. Then two plain feathers,
+       one across and one down, so the layer fades out before any box edge
+       whatever the painted rim does at that height: the rim is not fully
+       eaten everywhere, and without the feathers a surviving speck at the
+       edge was clipped square. The painted mask is stretched to the box.
+       The site's hero is taller than the mask's aspect so cover lands the
+       mask's foot on the hero's foot; VOLO's hero is shorter, and cover cut
+       off the band that fades the layer out. The file carries a version
+       suffix because /assets is cached for a year as immutable and a
+       replaced file needs a new name; it ships at 1600 wide, which is
+       enough for a mask this soft. */
+    mask-image:
+      url('/assets/bg3/png/about-hero-mask.v3.png'),
+      linear-gradient(90deg, transparent 0, #000 16%, #000 84%, transparent 100%),
+      linear-gradient(180deg, #000 0, #000 55%, transparent 100%);
+    mask-size: 100% 100%;
+    mask-position: center top;
+    mask-repeat: no-repeat;
+    mask-composite: intersect;
+  }
+
+  .shroud::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    /* The clouds ship with their palette alpha rewritten as eight-bit alpha
+       softened by a pixel, for the same reason as the mask: their stippled
+       edges are painted to sit on imagery. */
+    background-image:
+      url('/assets/bg3/menu/cloud-right.v2.png'),
+      url('/assets/bg3/menu/cloud-left.v2.png'),
+      url('/assets/bg3/menu/cloud-left-flipped.v2.png');
+    background-repeat: no-repeat;
+    background-size: calc(100% + 3vw) auto, 433px auto, 433px auto;
+    background-position: right -3vw top, left -3vw top, right -3vw top;
+  }
+
+  .shroud > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* The site's box frame, which its FAQ items and its news cards share.
+     Under the content, a fill of black at 35 percent over a 10px backdrop
+     blur, its corners cut by the site's own radial mask trick: a 5px
+     transparent circle tiled from minus 5, which lands one concave cut on
+     each corner. Over that, unmasked, the frame: the four faq corner
+     ornaments at 94px, top and bottom lines starting 60px in, side lines
+     inset 10px. The FAQ item is at least 104px tall, and the open item's
+     fill goes to 50 percent with a warm radial glow at its centre, which
+     is the site's active state. */
+  .box-bg3,
+  .faq-item {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .faq-item {
+    min-height: 104px;
+  }
+
+  .box-bg3::before,
+  .box-bg3::after,
+  .faq-item::before,
+  .faq-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .box-bg3::before,
+  .faq-item::before {
+    background-color: rgb(0 0 0 / 0.35);
+    backdrop-filter: blur(10px);
+    mask: radial-gradient(5px at 5px 5px, transparent 98%, #000) -5px -5px;
+    transition: background-color 300ms ease-out;
+  }
+
+  .faq-item[data-state='open']::before {
+    background-color: rgb(0 0 0 / 0.5);
+    background-image: radial-gradient(circle at 51%, hsl(32 32% 55% / 0.35) 0, hsl(32 32% 55% / 0) 120%);
+  }
+
+  .box-bg3::after,
+  .faq-item::after {
+    background-image:
+      url('/assets/bg3/faq/corner-small-left-top.svg'),
+      url('/assets/bg3/faq/corner-small-right-top.svg'),
+      url('/assets/bg3/faq/corner-small-left-bottom.svg'),
+      url('/assets/bg3/faq/corner-small-right-bottom.svg'),
+      linear-gradient(90deg, #b1906a, #534c3f 50%, #b1906a),
+      linear-gradient(90deg, #b1906a, #534c3f 50%, #b1906a),
+      linear-gradient(#b1906a, #b1906a),
+      linear-gradient(#b1906a, #b1906a);
+    background-repeat: no-repeat;
+    background-size:
+      94px 94px, 94px 94px, 94px 94px, 94px 94px,
+      calc(100% - 120px) 1px, calc(100% - 120px) 1px,
+      1px calc(100% - 20px), 1px calc(100% - 20px);
+    background-position:
+      left top, right top, left bottom, right bottom,
+      center top, center bottom,
+      left top 10px, right top 10px;
+  }
+
+  /* The question: the site's 22px uppercase serif, 35px in from the left,
+     kept to 85 percent of the width so it never runs under the ring. */
+  .faq-item__header {
+    min-height: 104px;
+    padding: 24px 28px 24px 35px;
+    font-size: clamp(18px, 1.125rem + 4 * (100vw - 970px) / 950, 22px);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  .faq-item__header > span {
+    position: relative;
+    max-width: 85%;
+  }
+
+  /* The site draws a short deco line under an open question, 120px wide,
+     and hides it on a closed one. The span carries the ruled class and the
+     line fades in with the state. */
+  .faq-item__header > span.ruled::after {
+    /* Out of the flow, so the hidden line takes no space and the question
+       centres in its box; it sits in the header's bottom padding when shown. */
+    position: absolute;
+    left: 0;
+    bottom: -14px;
+    width: 120px;
+    margin-top: 0;
+    opacity: 0;
+    transition: opacity 300ms ease-out;
+  }
+
+  .faq-item__header[data-state='open'] > span.ruled::after {
+    opacity: 1;
+  }
+
+  .faq-chevron {
+    transform-origin: center;
+    transition: transform 200ms ease-out;
+  }
+
+  .faq-item__header[data-state='open'] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* The answer: the site's Gothic A1 at 16px on 24px, white at 65 percent,
+     35px in from both sides. */
+  .faq-item__content {
+    padding: 0 35px 35px;
+    color: rgb(255 255 255 / 0.65);
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  /* The site's awards panel: black at 35 percent over a 10px backdrop blur,
+     corners cut by a 16px radial mask, and the merch frame with its knotwork
+     standing 10px inside the edge. The site also paints an ink wash across
+     the panel and a smoke puff over its right edge; both were tried and
+     dropped, because on the smoke ground they read as more smoke and the
+     panel stopped reading as a surface. */
+  .panel-bg3 {
+    position: relative;
+    isolation: isolate;
+    padding: 10px;
+  }
+
+  .panel-bg3::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-color: rgb(0 0 0 / 0.35);
+    backdrop-filter: blur(10px);
+    mask: radial-gradient(16px at 16px 16px, transparent 98%, #000) -16px -16px;
+  }
+
+  /* The site's plain text button: 16px uppercase serif in #fbcea0, white on
+     hover. It carries no arrow, by the house rule. */
+  .link-simple {
+    font-family: 'EB Garamond', serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: hsl(var(--bg3-small));
+    transition: color 200ms ease-out;
+  }
+
+  .link-simple:hover {
+    color: #fff;
   }
 
   /* BG3 themed colors for replacing modern blues/reds */
@@ -271,11 +1070,16 @@
   .border-bg3-clay { border-color: hsl(var(--bg3-clay)); }
 }
 
-/* Status colours, referenced by the component helpers below. */
+/* Status colours, referenced by the component helpers below. Amber 38 92%
+   50% and green 142 76% 36% were Tailwind's defaults and the values every
+   framework ships. These come from the site: its red, its green, and the
+   burnt clay already in use for the middle state. Nothing here is
+   distinguished by colour alone; every place these appear also carries a
+   word or a mark, because some readers cannot separate red from green. */
 :root {
-  --warning: 38 92% 50%;
-  --success: 142 76% 36%;
-  --error: 0 84% 60%;
+  --warning: 10 40% 50%; /* #B15A4A, the clay already in the palette */
+  --success: 154 100% 27%; /* #008951 */
+  --error: 0 62% 51%; /* #CF3939 */
 }
 
 
@@ -304,13 +1108,23 @@
     background-color: hsl(var(--error));
   }
 
-  /* A large load order is a thousand rows, and laying out the ones nobody has
-     scrolled to yet costs real time on a mid-range machine. This lets the
-     browser skip that work until a row approaches the viewport. The size hint
-     matches a collapsed row, so the scrollbar does not jump as rows resolve.
-     Cheaper than virtualising, and it keeps find-in-page working. */
+  /* A large load order is a thousand rows, and laying out the ones nobody
+     has scrolled to costs real time on a mid-range machine. This lets the
+     browser skip that work until a row approaches the viewport. The size
+     hint matches a collapsed row, so the scrollbar does not jump as rows
+     resolve. Cheaper than virtualising, and find-in-page keeps working. */
   .row-defer {
     content-visibility: auto;
     contain-intrinsic-size: auto 57px;
+  }
+
+  /* Where a dragged row would land: a gold line along the edge of the row
+     under the pointer, on the side the drop will take. */
+  .drop-before {
+    box-shadow: inset 0 2px 0 hsl(var(--bg3-gold));
+  }
+
+  .drop-after {
+    box-shadow: inset 0 -2px 0 hsl(var(--bg3-gold));
   }
 }

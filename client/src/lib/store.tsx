@@ -81,6 +81,8 @@ interface StoreValue {
   /** How many mods the user has moved by hand, overriding the sort. */
   manualMoves: number;
   moveMod: (uuid: string, direction: -1 | 1) => void;
+  /** Puts a mod immediately before another, or last when `before` is null. */
+  placeMod: (uuid: string, before: string | null) => void;
   clearManual: () => void;
 
   importParsed: (parsed: ParseResult, sourceName: string) => void;
@@ -271,6 +273,24 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     });
   }, [result]);
 
+  /**
+   * The drag counterpart of moveMod: one drop can carry a mod any distance,
+   * where a button carries it one place. The target is named by uuid rather
+   * than by index, so a drop made in a filtered view lands beside the row it
+   * was dropped on and not at that row's number in the shorter list.
+   */
+  const placeMod = useCallback((uuid: string, before: string | null) => {
+    setManualOrder(prev => {
+      const base = prev ?? result?.mods.map(m => m.uuid) ?? [];
+      if (!base.includes(uuid) || uuid === before) return prev;
+      const next = base.filter(u => u !== uuid);
+      const at = before === null ? next.length : next.indexOf(before);
+      if (at === -1) return prev;
+      next.splice(at, 0, uuid);
+      return next;
+    });
+  }, [result]);
+
   const clearManual = useCallback(() => setManualOrder(null), []);
 
   /** How many mods sit somewhere the sort did not put them. */
@@ -322,7 +342,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     masterlist, masterlistError, isLoadingMasterlist, requestMasterlist,
     result,
     remember, setRemember,
-    manualMoves, moveMod, clearManual,
+    manualMoves, moveMod, placeMod, clearManual,
     importParsed, reorder, removeMod, clear,
   };
 

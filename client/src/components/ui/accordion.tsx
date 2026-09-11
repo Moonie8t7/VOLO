@@ -1,6 +1,5 @@
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -12,7 +11,7 @@ const AccordionItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("border-b", className)}
+    className={cn("faq-item", className)}
     {...props}
   />
 ))
@@ -26,13 +25,25 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between py-4 font-medium transition-colors hover:underline [&[data-state=open]>svg]:rotate-180",
+        "faq-item__header font-display flex w-full items-center justify-between gap-4 text-left",
         className
       )}
       {...props}
     >
-      {children}
-      <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
+      <span className="ruled">{children}</span>
+      {/* The ring the site puts at the right of every question: a circle
+          with a small diamond at its top and a chevron inside. Drawn here. */}
+      <svg
+        className="h-14 w-14 shrink-0"
+        viewBox="0 0 56 56"
+        width="56"
+        height="56"
+        aria-hidden="true"
+      >
+        <circle cx="28" cy="28" r="25" fill="none" stroke="#b99b77" strokeWidth="1" />
+        <path d="M28 0.5l3 3-3 3-3-3z" fill="#b99b77" />
+        <path className="faq-chevron" d="M19 24l9 9 9-9" fill="none" stroke="#e1cbb7" strokeWidth="1.5" />
+      </svg>
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))
@@ -54,10 +65,10 @@ const AccordionContent = React.forwardRef<
   <AccordionPrimitive.Content
     ref={ref}
     forceMount
-    className="overflow-hidden text-sm data-[state=closed]:hidden data-[state=open]:animate-accordion-down"
+    className="overflow-hidden data-[state=closed]:hidden data-[state=open]:animate-accordion-down"
     {...props}
   >
-    <div className={cn("pb-4 pt-0", className)}>{children}</div>
+    <div className={cn("faq-item__content", className)}>{children}</div>
   </AccordionPrimitive.Content>
 ))
 

@@ -64,8 +64,7 @@ export interface MasterlistPlugin {
    */
   loadsAfterDependents?: boolean;
   /**
-   * Most working orders that declare this as a requirement do not have it, so
-   * its absence is not what breaks a load order. Measured, never hand-set.
+   * Most working orders that declare this as a requirement do not have it, so its absence does not break a load order. Measured, never hand-set.
    */
   oftenAbsent?: boolean;
   /**
@@ -145,7 +144,7 @@ export interface Masterlist {
    *
    * Hand-written only. Two mods appearing in an order that broke is not
    * evidence they conflict, and saying so about a real author's work on that
-   * basis would be a false claim rather than a cautious one.
+   * basis would be a false claim.
    */
   incompatible?: Incompatibility[];
   groups: Group[];

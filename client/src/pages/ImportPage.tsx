@@ -65,10 +65,10 @@ export default function ImportPage() {
   const parsed = preview?.parsed;
 
   return (
-    <div className="p-8 overflow-auto bg-gradient-to-br from-background via-background to-card min-h-screen">
+    <div className="p-8 overflow-auto bg-gradient-to-br from-background via-background to-card min-h-dvh">
       <div className="max-w-4xl mx-auto space-y-8">
         <header>
-          <h1 className="text-4xl font-display font-bold text-gradient-bg3">Import your load order</h1>
+          <h1 className="fluid-h2 ruled">Import your load order</h1>
           <p className="text-muted-foreground mt-2 font-body">
             Drop in a BG3 Mod Manager export, or the game's own modsettings.lsx.
           </p>
@@ -196,9 +196,8 @@ export default function ImportPage() {
               {parsed.sections.length > 0 && (
                 <p className="text-sm text-muted-foreground">
                   Found your own section headers ({parsed.sections.slice(0, 6).map(s => s.label).join(', ')}
-                  {parsed.sections.length > 6 ? ', and more' : ''}). They are not
-                  used to sort this order, but they are the most valuable thing
-                  in a submission: most of what the masterlist knows about
+                  {parsed.sections.length > 6 ? ', and more' : ''}). They are not used to sort this order. They are the most valuable part of a
+                  submission: most of what the masterlist knows about
                   categories came from headers somebody wrote by hand.
                 </p>
               )}

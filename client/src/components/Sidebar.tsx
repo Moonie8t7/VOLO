@@ -42,14 +42,15 @@ function NavLink({
   tone?: "primary" | "support";
   onNavigate?: () => void;
 }) {
-  // Selected state follows the official site's panel vocabulary: translucent
-  // black with a thin gold border and gold text, never a filled light block.
+  /* The selected state is the site's chamfered frame over translucent black
+     with gold text. The frame draws its own edge, so the border is
+     transparent. */
   const activeStyle = tone === "support"
-    ? "bg-black/35 text-destructive-foreground border-destructive/60"
-    : "bg-black/35 text-secondary border-border/80";
+    ? "chamfer select-frame select-frame-active bg-black/35 text-destructive-foreground border-transparent"
+    : "chamfer select-frame select-frame-active bg-black/35 text-secondary border-transparent";
   const idleStyle = tone === "support"
     ? "text-foreground/80 hover:text-foreground hover:bg-destructive/10 hover:border-destructive/20"
-    : "text-foreground/80 hover:text-foreground hover:bg-primary/10 hover:border-primary/20";
+    : "text-secondary/80 hover:text-secondary hover:bg-primary/10 hover:border-primary/20";
 
   return (
     <Link
@@ -59,10 +60,10 @@ function NavLink({
       className={`flex min-h-11 w-full items-center gap-4 rounded-md border px-4 py-2 text-left
         transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2
         focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background
-        ${active ? `${activeStyle} font-medium shadow-bg3` : `${idleStyle} border-transparent`}`}
+        ${active ? `${activeStyle} font-medium` : `${idleStyle} border-transparent`}`}
     >
       <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
-      <span className="flex-1 tracking-wide">{label}</span>
+      <span className="flex-1 font-display text-[15px]">{label}</span>
       {badge !== undefined && badge > 0 && (
         <Badge variant="secondary" className="text-xs">{badge}</Badge>
       )}
@@ -163,7 +164,7 @@ export default function Sidebar() {
     <>
       {/* Below lg the sidebar would eat most of the viewport, so it collapses
           into a top bar with a disclosure panel. */}
-      <header className="flex flex-col border-b border-ornate bg-gradient-bg3 shadow-bg3 lg:hidden">
+      <header className="flex flex-col border-b border-ornate bg-veil shadow-bg3 lg:hidden">
         <div className="flex items-center justify-between gap-4 px-4 py-3">
           <Brand compact />
           <button
@@ -191,7 +192,7 @@ export default function Sidebar() {
         )}
       </header>
 
-      <aside className="hidden w-72 shrink-0 flex-col border-r border-ornate bg-gradient-bg3 shadow-bg3 lg:flex">
+      <aside className="hidden w-72 shrink-0 flex-col border-r border-ornate bg-veil shadow-bg3 lg:flex">
         <div className="border-b border-border/20 p-6">
           <Brand />
         </div>

@@ -3,10 +3,12 @@
  * people actually ask. Mod counts are read from the live masterlist.
  */
 
+import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Separator } from "@/components/ui/separator";
+import { CorpusCharts, StatBand } from "@/components/CorpusStats";
 import DonationSection from "@/components/DonationSection";
 import SortingDemo from "@/components/SortingDemo";
 import { useStore } from "@/lib/store";
@@ -21,14 +23,18 @@ export default function LandingPage() {
    * so without the fallback this sentence would read "thousands of mods" on
    * first paint and in the prerendered HTML that search engines read.
    */
+  const [openQuestion, setOpenQuestion] = useState<string>("");
   const modCount = masterlist?.plugins.length ?? summary.mods;
   const patch = masterlist?.gamePatch ?? summary.gamePatch;
 
   return (
     /* The landing page renders outside the app shell, so it carries its own
        main landmark rather than inheriting the one in Layout. */
-    <main className="min-h-screen bg-background">
-      <div className="relative bg-gradient-bg3 overflow-hidden">
+    <main className="min-h-dvh">
+      {/* The hero carries the site's smoke and cloud. The site's hero is imagery with
+      dark cloud over its top and edges, and that darkening is the first thing
+      a visitor sees. */}
+      <div className="shroud relative overflow-hidden">
         <div className="relative max-w-4xl mx-auto px-6 py-20 text-center">
           {/*
             The wordmark and the descriptive line are one heading.
@@ -42,8 +48,8 @@ export default function LandingPage() {
             sets them. The expansion used to sit below the descriptive line as
             its own paragraph, which put an explanation of the name in the
             middle of the pitch; it belongs against the wordmark it explains.
-            The mark carries no frame: it is already a circle with a heavy
-            outline, and a box around it reads as an avatar chip.
+            The mark carries no frame. It is already a circle with a heavy outline, and a
+            box around it would look like an avatar chip.
           */}
           <h1 className="mb-6">
             <span className="flex items-center justify-center gap-4 md:gap-5">
@@ -59,7 +65,7 @@ export default function LandingPage() {
                   VOLO
                 </span>
                 <span
-                  className="block font-subheader text-[0.7rem] md:text-xs mt-1.5"
+                  className="block font-subheader text-xs mt-1.5"
                   style={{ color: "hsl(var(--bg3-main) / 0.75)" }}
                 >
                   Verified Order and Load Optimisation
@@ -70,7 +76,7 @@ export default function LandingPage() {
                 together in the heading's text unless a space is written in. */}
             {' '}
             <span
-              className="mt-6 block font-display text-xl md:text-2xl"
+              className="mt-6 block font-display fluid-h2"
               style={{ color: "hsl(var(--bg3-small))" }}
             >
               Load order sorting for Baldur's Gate 3
@@ -79,15 +85,18 @@ export default function LandingPage() {
           {/* The heading above already names the game and the job, so this
               says what is true of the result rather than repeating either. */}
           <p className="text-lg mb-8 max-w-2xl mx-auto leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
-            Sorted the way orders that actually work are sorted, with the
-            reasoning shown for every mod. Runs in your browser, needs no
-            account, and costs nothing.
+            Mods in the wrong order override each other or never load, and the
+            usual fix is moving them one at a time. VOLO sorts yours the way
+            orders that actually work are sorted, with the reasoning shown for
+            every mod. Runs in your browser, needs no account, and costs nothing.
           </p>
 
-          <Link href="/import">
-            <Button size="lg" className="px-8 text-lg">
+          {/* The marks ride the edges of the control, as on the site's primary call to
+          action. They live on a wrapper because the control's mask cuts
+          anything that crosses its edge. */}
+          <Link href="/import" className="btn-diamond">
+            <Button size="lg" className="px-10 text-lg">
               Sort my load order
-              <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </Button>
           </Link>
           <p className="mt-4 text-sm" style={{ color: "hsl(var(--bg3-main) / 0.8)" }}>
@@ -103,8 +112,13 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-6 py-16">
-        <h2 className="font-display text-2xl font-bold mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
+      {/* Paragraphs are held to 62ch, about 75 letters, the top of the
+          readable range. A ch is the zero glyph, and in Gothic A1 that is
+          wider than the average letter, so 75ch had given 90. The site runs
+          its copy at about 60; this is as wide as the lines can go before
+          the eye loses the return. */}
+      <div className="max-w-[1100px] mx-auto px-6 py-16 [&_p]:max-w-[62ch]">
+        <h2 className="ruled mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
           What it does
         </h2>
         <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
@@ -115,7 +129,7 @@ export default function LandingPage() {
             import it straight back.
           </p>
 
-          <figure className="mt-8">
+          <figure className="frame-bg3 frame-decor mt-14 mb-10 p-6">
             {/*
               WebP first at a fraction of the weight, with the PNG behind it for
               anything that will not take WebP. Two widths, because the figure is
@@ -127,13 +141,13 @@ export default function LandingPage() {
             <picture>
               <source
                 type="image/webp"
-                srcSet="/assets/volo-sorted-order-preview-900.v3.webp 900w,
-                        /assets/volo-sorted-order-preview.v3.webp 1200w"
+                srcSet="/assets/volo-sorted-order-preview-900.v4.webp 900w,
+                        /assets/volo-sorted-order-preview.v4.webp 1200w"
                 sizes="(min-width: 768px) 720px, calc(100vw - 3rem)"
               />
               <img
-                src="/assets/volo-sorted-order-preview.v3.png"
-                alt="A sorted load order in VOLO. ImpUI sits first on its ImprovedUI slot, having moved up 84 places, and each row below shows how far that mod travelled, the slot it landed on such as Caites' UI Mods or Community Library, and a note such as curated or guessed wherever the placement came from something other than a played order."
+                src="/assets/volo-sorted-order-preview.v4.png"
+                alt="A sorted load order in VOLO. ImpUI sits first on its ImprovedUI slot, having moved up 84 places, and each row below shows how far that mod travelled, the slot it landed on such as Caites' UI Mods, and a note such as curated wherever the placement came from something other than a played order."
                 width={1200}
                 height={630}
                 loading="lazy"
@@ -151,29 +165,40 @@ export default function LandingPage() {
 
         {/* Anchored so the issue templates can point straight at the evidence
             ladder rather than at the top of the page. */}
-        <h2 id="where-the-order-comes-from" className="font-display text-2xl font-bold mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
+        <Separator className="mb-12 -mx-[4vw] w-[calc(100%+8vw)]" />
+        <h2 id="where-the-order-comes-from" className="ruled mb-8 scroll-mt-6" style={{ color: "hsl(var(--bg3-header))" }}>
           Where the order comes from
         </h2>
-        <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
-          <p>
-            A working BG3 load order is already divided into sections, and the
-            community has settled on a set of divider mods that name them: a
-            hundred-odd labelled positions running from interface mods at the
-            top to compatibility patches at the bottom. VOLO treats those as the
-            frame of the order, whether or not you install the dividers
-            themselves.
-          </p>
-          <SortingDemo />
-          <p>
-            Which position a mod belongs at comes from the best evidence there
-            is, in that order: where players filed it in orders they submitted,
-            then what its name plainly says, then the category on its Nexus or
-            mod.io page. Every row tells you which of the three you are looking
-            at, so a guess never passes for evidence.
-          </p>
+        {/* The one section that pairs its copy with a visual: the frame demo
+            on the left and the copy centred beside it, as the site sets
+            imagery beside text. The other sections were tried this way and
+            put back, because a figure at half width was too small to read
+            and the stats band wanted the whole width. */}
+        <div className="mb-16 grid gap-10 leading-relaxed lg:grid-cols-[minmax(0,1fr)_minmax(0,55ch)] lg:items-center" style={{ color: "hsl(var(--bg3-main))" }}>
+          <div className="space-y-6 lg:order-2">
+            <p>
+              A working BG3 load order is already divided into sections, and the
+              community has settled on a set of divider mods that name them: a
+              hundred-odd labelled positions running from interface mods at the
+              top to compatibility patches at the bottom. VOLO treats those as the
+              frame of the order, whether or not you install the dividers
+              themselves.
+            </p>
+            <p>
+              Which position a mod belongs at comes from the best evidence there
+              is, in that order: where players filed it in orders they submitted,
+              then what its name plainly says, then the category on its Nexus or
+              mod.io page. Every row tells you which of the three you are looking
+              at, so a guess never passes for evidence.
+            </p>
+          </div>
+          <div className="lg:order-1">
+            <SortingDemo />
+          </div>
         </div>
 
-        <h2 className="font-display text-2xl font-bold mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
+        <Separator className="mb-12 -mx-[4vw] w-[calc(100%+8vw)]" />
+        <h2 className="ruled mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
           What it will not do
         </h2>
         <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
@@ -187,10 +212,11 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <h2 className="font-display text-2xl font-bold mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
+        <Separator className="mb-12 -mx-[4vw] w-[calc(100%+8vw)]" />
+        <h2 className="ruled mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
           How much to trust it
         </h2>
-        <div className="space-y-6 mb-16 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
+        <div className="space-y-6 mb-10 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>
           <p>
             The masterlist knows {modCount.toLocaleString()} mods
             {patch ? `, calibrated against BG3 ${patch}` : ""}, and you can{" "}
@@ -225,16 +251,23 @@ export default function LandingPage() {
             .
           </p>
         </div>
+        <StatBand />
+        <CorpusCharts />
 
-        <h2 className="font-display text-2xl font-bold mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
+        <Separator className="mb-12 -mx-[4vw] w-[calc(100%+8vw)]" />
+        <h2 className="ruled mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
           Questions
         </h2>
-        <Accordion type="single" collapsible className="w-full mb-16">
-          <AccordionItem value="upload" className="border-ornate/20">
-            <AccordionTrigger className="text-left font-semibold">
+        {/* Two columns that open independently, sharing one open question, which
+            is how the site lays its FAQ out: an open answer lengthens its own
+            column and leaves the other untouched. */}
+        <div className="mb-16 grid w-full items-start gap-y-[15px] md:grid-cols-2 md:gap-x-[30px]">
+        <Accordion type="single" collapsible value={openQuestion} onValueChange={setOpenQuestion} className="flex flex-col gap-y-[15px]">
+          <AccordionItem value="upload">
+            <AccordionTrigger>
               Is my mod list uploaded anywhere?
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-3">
+            <AccordionContent className="space-y-3">
               <p>
                 No, although two moments make it look that way: picking your
                 file, and saving the sorted one. Neither touches the network.
@@ -245,9 +278,9 @@ export default function LandingPage() {
                 runs. Picking a file hands it to that code through the
                 browser's file picker, which reads it straight from your disk
                 into the page's memory. The sorting happens in that memory.
-                Saving the result reuses the browser's download dialog, which
-                is what makes it feel like a download, but the file it writes
-                is built inside the page and goes from there to your disk.
+                Saving the result uses the browser's download dialog, so it feels like a
+                download, but the file is built inside the page and written
+                from there to your disk.
               </p>
               <p>
                 Check it in the browser's network panel. Everything you see
@@ -269,22 +302,21 @@ export default function LandingPage() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="account" className="border-ornate/20">
-            <AccordionTrigger className="text-left font-semibold">
+          <AccordionItem value="account">
+            <AccordionTrigger>
               Do I need an account?
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
-              No, for either. Sorting needs nothing, and submitting an order
-              goes through this site rather than requiring you to sign up
-              anywhere.
+            <AccordionContent>
+              No, for either. Sorting needs nothing, and submitting an order goes through
+              this site with no sign-up.
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="sources" className="border-ornate/20">
-            <AccordionTrigger className="text-left font-semibold">
+          <AccordionItem value="sources">
+            <AccordionTrigger>
               Does it matter where my mods are from?
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
+            <AccordionContent>
               No. VOLO sorts the load order file, and a pak is a pak whether it
               came from Nexus Mods, the official in-game mod manager at
               baldursgate3.game (which runs on mod.io), or anywhere else. VOLO
@@ -294,11 +326,11 @@ export default function LandingPage() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="labels" className="border-ornate/20">
-            <AccordionTrigger className="text-left font-semibold">
+          <AccordionItem value="labels">
+            <AccordionTrigger>
               What do the labels next to each mod mean?
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-3">
+            <AccordionContent className="space-y-3">
               <p>
                 They say how much the placement is worth, because a guess and a
                 verified position should not look alike. No label means players
@@ -306,9 +338,8 @@ export default function LandingPage() {
                 VOLO has. A curated placement is a maintainer's hand-written
                 rule. An inferred one was voted on by the mods either side of it
                 in submitted orders, and the percentage is how much they agreed.
-                A listing placement came from the mod's own Nexus or mod.io
-                page, which tells you what the mod is rather than where anyone
-                actually loads it. An author placement means the mod itself is
+                A listing placement came from the mod's own Nexus or mod.io page, which
+                describes the mod but says nothing about where people load it. An author placement means the mod itself is
                 listed nowhere, but its author's other catalogued mods
                 overwhelmingly sit in one section, so the mod is filed with
                 them. A guess means VOLO read the title and had
@@ -324,11 +355,13 @@ export default function LandingPage() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="wrong" className="border-ornate/20">
-            <AccordionTrigger className="text-left font-semibold">
+        </Accordion>
+        <Accordion type="single" collapsible value={openQuestion} onValueChange={setOpenQuestion} className="flex flex-col gap-y-[15px]">
+          <AccordionItem value="wrong">
+            <AccordionTrigger>
               What if VOLO gets something wrong?
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
+            <AccordionContent>
               It will, sometimes. The masterlist is only as good as the orders
               behind it, and plenty of mods have not been categorised yet. Every
               placement shows its reasoning, so you can see why a mod landed
@@ -338,11 +371,11 @@ export default function LandingPage() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="inactive" className="border-ornate/20">
-            <AccordionTrigger className="text-left font-semibold">
+          <AccordionItem value="inactive">
+            <AccordionTrigger>
               Some of my mods show as inactive in-game. Is that bad?
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
+            <AccordionContent>
               Usually not. Override-style mods do their work without joining the
               load order, so the in-game manager lists them as inactive; that is
               normal and safe to ignore. If every single mod is disabled after
@@ -351,14 +384,13 @@ export default function LandingPage() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="console" className="border-ornate/20">
-            <AccordionTrigger className="text-left font-semibold">
+          <AccordionItem value="console">
+            <AccordionTrigger>
               Can I use VOLO on Xbox or PlayStation?
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-3">
+            <AccordionContent className="space-y-3">
               <p>
-                Not today, and this is now a confirmed answer rather than a
-                guess.
+                Not today. This has been checked, so it is a confirmed answer.
               </p>
               <p>
                 I asked Larian directly in August 2026, and a Community Manager
@@ -368,12 +400,12 @@ export default function LandingPage() {
                 software is not compatible with mods on consoles at all.
               </p>
               <p>
-                It can't be done via a mod either, which is the next thing I was
-                looking into. Load order is decided before any mod runs, so a
-                mod cannot reorder the mods it was loaded alongside. Mod files
-                are data rather than programs and have no access to the file
-                system, and Script Extender, the only thing on PC that does, is
-                a Windows library that cannot exist on a console.
+                It cannot be done with a mod either, which I looked into next. Load order is
+                decided before any mod runs, so a mod cannot reorder the mods
+                it was loaded alongside. Mod files are data with no access to
+                the file system, and Script Extender, the only thing on PC
+                that has such access, is a Windows library that cannot exist
+                on a console.
               </p>
               <p>
                 What already works in your favour is that the masterlist is
@@ -401,30 +433,33 @@ export default function LandingPage() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="loot" className="border-ornate/20">
-            <AccordionTrigger className="text-left font-semibold">
+          <AccordionItem value="loot">
+            <AccordionTrigger>
               Is this like LOOT?
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
+            <AccordionContent>
               Same spirit, different method. LOOT sorts Bethesda games with a
               hand-written masterlist. VOLO is only for Baldur's Gate 3, and its
               rules are learned from orders the community has actually played on.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        </div>
 
         <div className="text-center">
-          <Link href="/import">
-            <Button size="lg" className="px-8 text-lg">
+          {/* The marks ride the edges of the control, as on the site's primary call to
+          action. They live on a wrapper because the control's mask cuts
+          anything that crosses its edge. */}
+          <Link href="/import" className="btn-diamond">
+            <Button size="lg" className="px-10 text-lg">
               Sort my load order
-              <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </Button>
           </Link>
         </div>
       </div>
 
-      <div className="py-16 bg-card/30">
-        <div className="max-w-4xl mx-auto px-6">
+      <div className="py-16">
+        <div className="max-w-[1100px] mx-auto px-6">
           <DonationSection />
         </div>
       </div>

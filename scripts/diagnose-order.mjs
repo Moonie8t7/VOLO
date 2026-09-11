@@ -6,8 +6,7 @@
  *   node scripts/diagnose-order.mjs "<order file>"
  *
  * Written for broken submissions: "it did not work" on its own teaches only
- * caution, but the same order read against the corpus often says exactly where
- * it disagrees with orders that do work. Three kinds of finding, strongest
+ * caution, but the same order read against the corpus often says where it disagrees with orders that do work. Three kinds of finding, strongest
  * first:
  *
  *   1. Declared dependencies loading after the mod that requires them. The mod

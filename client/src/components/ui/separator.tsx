@@ -15,9 +15,14 @@ const Separator = React.forwardRef<
       ref={ref}
       decorative={decorative}
       orientation={orientation}
+      /* The site's section divider: a lens ornament at each end, the two-tone
+         bevel between them, and a tapered shadow inside. All of it is in the
+         rule-bg3 class. */
       className={cn(
         "shrink-0 bg-border",
-        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+        orientation === "horizontal"
+          ? "rule-bg3 w-full bg-transparent"
+          : "h-full w-[1px]",
         className
       )}
       {...props}

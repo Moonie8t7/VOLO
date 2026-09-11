@@ -55,8 +55,8 @@ const groupRank = new Map(masterlist.groups.map((g, i) => [g.name, i]));
  * The masterlist count is the wrong measure of this and was quoted for ten days
  * as though it were the right one: it counts rows, and rows are not placements.
  * What matters is how often the coin is actually tossed, which is counted in
- * the loop below and bounded after it. Identity is deliberately unresolved, so
- * the point here is not to fix it but to notice if it ever starts to matter.
+ * the loop below and bounded after it. Identity is deliberately unresolved; this test notices if it ever starts to
+ * matter.
  */
 const rowsByName = new Map();
 for (const p of masterlist.plugins) {
@@ -168,8 +168,8 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 
 // Mods the masterlist has never seen fall back to name patterns. Every group a
 // pattern can emit must exist in the masterlist's vocabulary; an unknown name
-// ranks as nothing and silently sorts to the end, which is how a vocabulary
-// rename once broke the fallback without failing any corpus test.
+// ranks as nothing and silently sorts to the end, and a vocabulary rename once broke the fallback this way without failing any
+// corpus test.
 {
   const validGroups = new Set(masterlist.groups.map(g => g.name));
   const probes = [
@@ -406,10 +406,10 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     masterlist,
   );
   if (absentResult.issues.some(i => i.kind === 'missing-dependency')) {
-    console.log('  ok    a genuinely absent dependency is still reported');
+    console.log('  ok    an absent dependency is still reported');
   } else {
     failures++;
-    console.log('  FAIL  a genuinely missing dependency went unreported');
+    console.log('  FAIL  a missing dependency went unreported');
   }
 }
 
@@ -462,7 +462,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 
   // The control. Without the flag the requirement is an ordering edge as
-  // usual, which is what makes the assertion above mean anything.
+  // usual, which gives the assertion above its meaning.
   const plain = sortLoadOrder(mods, withFlag(false)).mods.map(m => m.name);
   if (plain.indexOf('Late Patcher') < plain.indexOf('Early Class Mod')) {
     console.log('  ok    and an ordinary requirement still orders first');
@@ -561,21 +561,21 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     const issues = sortWith([], [{ Name: soft.name, UUID: soft.uuid }]).issues
       .filter(i => i.kind === 'missing-dependency');
     if (issues.length && issues.every(i => i.severity === 'warning')) {
-      console.log(`  ok    "${soft.name}" reads as a warning, not a broken load order`);
+      console.log(`  ok    "${soft.name}" is reported as a warning, not as a broken load order`);
     } else {
       failures++;
       console.log(`  FAIL  expected a warning for "${soft.name}", got ${JSON.stringify(issues.map(i => i.severity))}`);
     }
   }
 
-  // A library, by contrast, is exactly what a load order is broken without.
+  // A library, by contrast, is what a load order is broken without.
   const hard = masterlist.plugins.find(p => !p.oftenAbsent && !p.uuid.startsWith('name:')
     && masterlist.plugins.some(q => (q.dependencies ?? []).some(d => d.uuid === p.uuid)));
   if (hard) {
     const issues = sortWith([], [{ Name: hard.name, UUID: hard.uuid }]).issues
       .filter(i => i.kind === 'missing-dependency');
     if (issues.length && issues.every(i => i.severity === 'critical')) {
-      console.log(`  ok    "${hard.name}" is still critical when genuinely absent`);
+      console.log(`  ok    "${hard.name}" is still critical when absent`);
     } else {
       failures++;
       console.log(`  FAIL  a hard requirement stopped being critical: ${JSON.stringify(issues.map(i => i.severity))}`);
@@ -750,8 +750,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 
 // Intake must not depend on a label alone. GitHub drops a label an issue
 // template asks for when the repository does not have it, with no error
-// anywhere, and that is exactly what happened: `wrong-placement` was never
-// created, so every report of a wrong placement arrived unlabelled and the
+// anywhere, and that happened: `wrong-placement` was never created, so every report of a wrong placement arrived unlabelled and the
 // branch handling them had never run on a single one.
 {
   console.log('');
@@ -1102,8 +1101,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
    * and which spelling is canonical is decided by a vote among the orders
    * carrying it. That vote moves. Issue #160 arrived carrying "Tav's Hair Salon
    * - Tav's Hairpack" often enough to win, which turned "Tav's Hair Salon" into
-   * an alternate, and a rule naming the salon read as dead while the mod sat in
-   * fifteen orders. The miner had the same omission and was fixed first; this
+   * an alternate, and a rule naming the salon looked dead while the mod sat in fifteen orders. The miner had the same omission and was fixed first; this
    * copy then failed the landing step on the very next run, which is the same
    * outage wearing a second face.
    */
@@ -1241,9 +1239,8 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 
   /* Both copies are read from source rather than imported, because the miner is
    * a script. The rule is a built expression now, not a literal, and the older
-   * extraction here silently returned null when that changed: it reported the
-   * rule as unreadable rather than passing, which is the only reason this was
-   * caught at all. */
+   * extraction here silently returned null when that changed: it reported the rule as unreadable instead of passing, which is the only
+   * reason this was caught. */
   const ruleFrom = file => {
     const src = fs.readFileSync(file, 'utf8');
     const from = src.indexOf('const ORNAMENT');
@@ -1265,7 +1262,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     isSeparator(name) !== expected || (minerRule && minerRule.test(name) !== expected));
 
   /* Behaviour agreeing on ten probes is not the same as the rules being equal,
-   * and the thing that drifts is the pattern. The miner decides what the corpus
+   * and what drifts is the pattern. The miner decides what the corpus
    * learns from and the browser decides what a user's order is sorted as, so a
    * difference shows up as somebody's dividers shuffled into their mod list
    * rather than as a failing build. */
@@ -1429,8 +1426,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 /**
  * Every client route needs prerendering, or it 404s in production.
  *
- * public/404.html turns off the host's fallback to index.html, which is what
- * makes a real 404 possible for addresses that are not pages. Each route earns
+ * public/404.html turns off the host's fallback to index.html, which makes a real 404 possible for addresses that are not pages. Each route earns
  * its 200 by having a file of its own, so a route the prerenderer does not know
  * about simply stops existing once deployed.
  */
@@ -1756,7 +1752,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     /*
      * The neighbour rule, which has to beat the declared answer or it catches
      * nothing: the case it exists for is somebody who sorted with VOLO, played
-     * it, and honestly answered that they arranged it themselves.
+     * it, and answered that they arranged it themselves.
      */
     ['a near-copy that suddenly agrees far more is flagged whatever was declared',
       { declared: 'self', agreementWithVolo: 0.93, nearest: { similarity: 0.95, agreementWithVolo: 0.64 } }, true],
@@ -1791,8 +1787,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
    * an exported order. Two ways this goes wrong and neither announces itself:
    * keeping the placeholder GitHub writes into an empty box, so every silent
    * submission acquires a note saying nothing, and dropping a line because it
-   * happens to be wrapped in underscores, which is what a bare pak name looks
-   * like.
+   * happens to be wrapped in underscores, and a bare pak name looks like that.
    */
   const { noteFromIssueBody, NOTE_MAX } = await import('./corpus-provenance.mjs');
   const heading = '### Notes\n\n';
@@ -1824,8 +1819,8 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     }
   }
 
-  // A truncated note must say so. A sentence cut in half reads as a whole one
-  // and can mean the opposite of what was written.
+  // A truncated note must say so. A sentence cut in half looks whole and can mean the opposite of what was
+  // written.
   const long = noteFromIssueBody(heading + 'x'.repeat(NOTE_MAX + 500));
   if (long.length <= NOTE_MAX + 20 && long.endsWith('[truncated]')) {
     console.log(`  ok    an overlong note is cut at ${NOTE_MAX} and marked`);
@@ -1839,8 +1834,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
  * Curated rules: the tier that states a constraint instead of measuring a habit.
  *
  * Two failure modes are checked. A pattern that matches nothing looks like the
- * case is handled while the mod falls through to a guess, which is how
- * Compatibility Framework was filed as a library for months. And an
+ * case is handled while the mod falls through to a guess, and Compatibility Framework was filed as a library this way for months. And an
  * incompatibility that never fires is a warning nobody will ever see.
  */
 {
@@ -2012,8 +2006,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
    * It passed 'submission.json' for every candidate, and the parser reads the
    * extension before the content, so every paste went down the JSON branch and
    * the TSV, CSV and plain-name branches could never be reached from an issue.
-   * A real 539 mod TSV export was rejected as "Not valid JSON" while the same
-   * bytes parse cleanly under an honest name. The formats are checked here
+   * A real 539 mod TSV export was rejected as "Not valid JSON" while the same bytes parse cleanly under the right name. The formats are checked here
    * against the parser rather than against the intake, because the bug was
    * that the two had quietly stopped agreeing.
    */
@@ -2091,9 +2084,8 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
  * A mod renamed since somebody's last update still has to be recognised.
  *
  * The corpus holds both names, because everyone who has not updated goes on
- * listing the old one, but only the most frequent reached the masterlist. UUID
- * covers most of that, which is why it never showed; a thin export carries no
- * UUID, and that is exactly when the name is all there is.
+ * listing the old one, but only the most frequent reached the masterlist. UUID covers most of that, so it never showed; a thin export carries no UUID,
+ * and then the name is all there is.
  *
  * The alias must never displace a real name. 64 of the corpus's alternates are
  * also some mod's canonical name, so the rule is that canonical always wins its
@@ -2153,8 +2145,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
  * and by the miner for the corpus. The parser decoded the five named entities
  * and both numeric forms; the miner decoded only the named ones. A mod called
  * `Tav&#39;s Hair` therefore reached the miner with the escape intact and the
- * browser without, and the two disagreed about the mod's name, which is what
- * every name lookup and the `name:` fallback identity are built on.
+ * browser without, and the two disagreed about the mod's name, which every name lookup and the `name:` fallback identity are built on.
  *
  * Compared by running the real thing through the parser and asserting the
  * miner's source carries the same rules, because the miner is a script rather
@@ -2199,8 +2190,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
  * A UUID is hexadecimal and case carries no meaning, but identity here is an
  * exact string match. The filename reader lower-cased what it extracted while
  * the UUID field was taken as written, so the two halves of the identity path
- * disagreed whenever an exporter chose upper-case. Nothing in the corpus does,
- * which is exactly why it went unnoticed: the failure needs one new exporter and
+ * disagreed whenever an exporter chose upper-case. Nothing in the corpus does, so it went unnoticed: the failure needs one new exporter and
  * takes the whole file with it when it arrives.
  *
  * Asserted on a real order rather than a fixture, because the fixture would have
@@ -2361,7 +2351,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
      * until 00:29 and it stamped the 28th, so the guard compared two different
      * names and the corpus took a byte-identical second copy. The date comes
      * from the issue now. Dropping the flag does not fail anything at runtime,
-     * because intake falls back to the clock, which is why it is checked here.
+     * because intake falls back to the clock, so it is checked here.
      */
     [
       'the filename date comes from the issue, not the runner clock',
@@ -2578,8 +2568,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
    * docs/decisions.md quotes the headline result, and until now nothing checked
    * it. sync-figures rewrites it and fails loudly if its pattern stops matching,
    * which catches the prose being reworded but not the file being edited by hand
-   * to a number nobody measured. The README half of this test exists because
-   * exactly that happened there.
+   * to a number nobody measured. The README half of this test exists because that happened there.
    *
    * Read from measured.json rather than recomputed, because that file is what
    * sync-figures itself writes from: the question is whether the prose agrees
@@ -2589,9 +2578,8 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   const measured = JSON.parse(fs.readFileSync('client/src/lib/measured.json', 'utf8'));
 
   /*
-   * Matched in the sentence rather than looked for anywhere in the file. A bare
-   * substring search passes on any page that happens to contain the digits
-   * somewhere, which is not a check, it is a coincidence detector.
+   * Matched in the sentence rather than looked for anywhere in the file. A bare substring search passes on any page that happens to contain the digits
+   * somewhere, so it checks nothing.
    */
   const headline = decisions.match(
     /Current: \*\*([\d.]+) percent held out\*\*, against a ([\d.]+) percent random baseline/,

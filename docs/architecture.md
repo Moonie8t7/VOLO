@@ -57,15 +57,15 @@ be installed together, warnings written about a specific mod, and the names a
 requirement can use for a mod that none of the mod's own strings match. None of
 them is ever mined. Two mods appearing in an order that broke is not evidence
 they conflict, and publishing that claim about a real author's work on that
-basis would be false rather than cautious.
+basis would be false.
 
 The aliases exist because mod pages, pak folders and published titles drift
 apart. An author writing "requires Vlad's Grimoire" is naming a mod page; the
 pak is called `VFX_Library_VladsGrimoire`. Nothing measurable joins those, and
 matching on resemblance would invent links between unrelated mods, so a person
 states the equivalence and records how they know. The mine fails if an alias
-names a mod the masterlist does not have, because an alias that matches nothing
-reads as a handled case while the requirement goes on failing.
+names a mod the masterlist does not have, because an alias that matches nothing looks handled while the requirement goes
+on failing.
 
 Requirements that resolve to no mod, no folder and no alias are counted and
 reported by every mine. That number is currently zero and is printed either
@@ -99,8 +99,7 @@ Nexus and mod.io catalogues, so a mod published yesterday sorts by its own
 listing without waiting for anyone to submit it. The catalogues index every
 name the crawlers have seen a listing under, plus the mod.io URL slug, which
 usually still carries the title the mod was created with; installed paks keep
-the name they shipped under, so those older names are exactly what stale paks
-match. A rename from before the crawlers watched, on a mod whose slug was
+the name they shipped under, so those older names are what stale paks match. A rename from before the crawlers watched, on a mod whose slug was
 edited too, is the one case that still misses.
 
 Astra's Load Order Dividers are the skeleton, and a mod is placed on one whether
@@ -125,7 +124,7 @@ something it requires.
 | `client/src/lib/submit.ts` | Posts a submission to `/api/submit`. |
 | `client/src/lib/head.ts` | Per-route title, description, canonical and robots tags. |
 | `client/src/lib/measured.json` | The held-out measurement, written by `verify-holdout.mjs`. |
-| `client/src/lib/words.ts` | Small counts as words, so generated figures read as prose. |
+| `client/src/lib/words.ts` | Small counts as words, so generated figures read like prose. |
 
 Two Pages Functions sit behind the site, and neither takes part in sorting.
 `functions/api/submit.js` opens the submission issue. `functions/api/submission/[id].js`
@@ -139,7 +138,7 @@ JavaScript runs. The browser hydrates that markup rather than rebuilding it.
 
 Two things follow from each route being a real file. The host needs no rewrite
 rules to map paths onto the shell, and an address that is not a route matches
-nothing, which is what lets `public/404.html` answer with a genuine 404 instead
+nothing, which lets `public/404.html` answer with a real 404 instead
 of a page that returns 200 and then says it does not exist.
 
 `scripts/serve-dist.mjs` serves `dist/` the way the host resolves it, because

@@ -2,7 +2,6 @@
  * Donation links. Rendered on the support page and the landing page.
  */
 
-import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -70,14 +69,14 @@ export default function DonationSection({ variant = "full", className = "" }: Do
         {donationPlatforms.map(platform => (
           <Button
             key={platform.name}
+            variant="outline"
             onClick={() => window.open(platform.url, "_blank", "noopener")}
           >
             {platform.icon}
             <span>{platform.name}</span>
-            {/* 0.75 rather than 0.6: the quieter text sat exactly on the 4.5
-                contrast threshold against the button and failed in practice. */}
+            {/* 0.75. At 0.6 the quieter text sat on the 4.5 contrast threshold against the
+            button and failed in practice. */}
             <span className="opacity-75 normal-case">({platform.description})</span>
-            <ExternalLink className="h-3 w-3 opacity-75" aria-hidden="true" />
           </Button>
         ))}
       </div>
@@ -107,28 +106,28 @@ export default function DonationSection({ variant = "full", className = "" }: Do
   }
 
   return (
-    <div className={`border border-border/40 bg-black/25 p-8 ${className}`}>
-      <h2 className="font-display text-xl font-bold mb-4" style={{ color: "hsl(var(--bg3-header))" }}>
+    <div className={className}>
+      <h2 className="ruled mb-8" style={{ color: "hsl(var(--bg3-header))" }}>
         Support VOLO
       </h2>
-      <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-2xl">
+      <p className="text-muted-foreground leading-relaxed mb-8 max-w-[62ch]">
         VOLO is free and stays free. There is nothing to pay for and no server
         bill to cover. If it saved you an evening of load order wrangling and
         you feel like putting something in the tip jar, these work:
       </p>
 
-      <div className="flex flex-wrap justify-center gap-3">
+      <div className="flex flex-wrap gap-3">
         {donationPlatforms.map(platform => (
           <Button
             key={platform.name}
+            variant="outline"
             onClick={() => window.open(platform.url, "_blank", "noopener")}
           >
             {platform.icon}
             <span>{platform.name}</span>
-            {/* 0.75 rather than 0.6: the quieter text sat exactly on the 4.5
-                contrast threshold against the button and failed in practice. */}
+            {/* 0.75. At 0.6 the quieter text sat on the 4.5 contrast threshold against the
+            button and failed in practice. */}
             <span className="opacity-75 normal-case">({platform.description})</span>
-            <ExternalLink className="h-3 w-3 opacity-75" aria-hidden="true" />
           </Button>
         ))}
       </div>

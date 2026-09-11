@@ -6,10 +6,10 @@ import DonationSection from "@/components/DonationSection";
 
 export default function DonationsPage() {
   return (
-    <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
+    <div className="p-8 overflow-auto min-h-dvh bg-gradient-to-br from-background via-background to-card">
       <div className="max-w-3xl mx-auto space-y-10">
         <header>
-          <h1 className="text-4xl font-display font-bold text-gradient-bg3">Support VOLO</h1>
+          <h1 className="fluid-h2 ruled">Support VOLO</h1>
         </header>
 
         <div className="space-y-4 leading-relaxed" style={{ color: "hsl(var(--bg3-main))" }}>

@@ -13,7 +13,7 @@
  * so the requirements harvester and the enricher pick them up unchanged.
  *
  * Searches already performed are remembered in nexus/search-state.json,
- * including misses, so reruns only try genuinely new names.
+ * including misses, so reruns only try new names.
  */
 
 import fs from 'fs';

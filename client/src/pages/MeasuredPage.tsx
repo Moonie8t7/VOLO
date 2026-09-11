@@ -7,7 +7,6 @@
  */
 
 import { Link } from 'wouter';
-import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import summary from '@/lib/masterlist-summary.json';
 import {
@@ -80,10 +79,10 @@ function OrderTable({ rows, caption }: { rows: MeasuredOrder[]; caption: string 
 
 export default function MeasuredPage() {
   return (
-    <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
+    <div className="p-8 overflow-auto min-h-dvh bg-gradient-to-br from-background via-background to-card">
       <div className="max-w-3xl mx-auto space-y-10">
         <header>
-          <h1 className="text-4xl font-display font-bold text-gradient-bg3">
+          <h1 className="fluid-h2 ruled">
             How well does VOLO actually sort?
           </h1>
           <p className="text-muted-foreground mt-2 font-body">
@@ -92,7 +91,7 @@ export default function MeasuredPage() {
         </header>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">The test</h2>
+          <h2 className="fluid-h3 ruled">The test</h2>
           <p>
             Take a load order somebody played on and enjoyed. Rebuild the
             masterlist from scratch with that order left out, so the tool has
@@ -108,7 +107,7 @@ export default function MeasuredPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">The result</h2>
+          <h2 className="fluid-h3 ruled">The result</h2>
           <p>
             Across {countWord(EVALUATED)} working orders, VOLO agrees with the player{' '}
             <strong>{HELD_OUT} percent</strong> of the time, against{' '}
@@ -137,7 +136,7 @@ export default function MeasuredPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">Where it helped most</h2>
+          <h2 className="fluid-h3 ruled">Where it helped most</h2>
           <p>
             The five orders VOLO reconstructed best, by how far it beat a random
             shuffle of the same list. This is the good end of the range and
@@ -149,7 +148,7 @@ export default function MeasuredPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">The ten most recent</h2>
+          <h2 className="fluid-h3 ruled">The ten most recent</h2>
           <p>
             Newest submissions first, which is the part of the corpus that has
             had the least chance to influence the rules it is being scored
@@ -170,7 +169,7 @@ export default function MeasuredPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">
+          <h2 className="fluid-h3 ruled">
             Things that sounded sensible and were not
           </h2>
           <p>
@@ -185,8 +184,8 @@ export default function MeasuredPage() {
             <div>
               <dt className="font-subheader">Filing unknown mods near their neighbours</dt>
               <dd className="text-muted-foreground">
-                Rather than sending a mod nobody has placed to the end, give it
-                the position of the last known mod above it. Scored 61.8 against
+                Instead of sending an unplaced mod to the end, give it the position of the
+                last known mod above it. Scored 61.8 against
                 63.6. Mods nobody has categorised really do pile up at the end of
                 real load orders, so the tool leaves them there.
               </dd>
@@ -219,7 +218,7 @@ export default function MeasuredPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">
+          <h2 className="fluid-h3 ruled">
             Why the score is not the goal
           </h2>
           <p>
@@ -245,7 +244,7 @@ export default function MeasuredPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">The honest limits</h2>
+          <h2 className="fluid-h3 ruled">The limits</h2>
           <p>
             {countWordCap(EVALUATED)} scored orders is a small corpus, and it is
             the thing holding the tool back rather than the sorting itself. The
@@ -275,7 +274,6 @@ export default function MeasuredPage() {
             <Link href="/submit">
               <Button>
                 Submit a load order
-                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Button>
             </Link>
             <a

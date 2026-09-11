@@ -4,8 +4,7 @@
  *
  *   node scripts/serve-dist.mjs [port]
  *
- * `vite preview` answers any unknown path with index.html, which is exactly the
- * behaviour prerendering removes, so it reports every route as working whether
+ * `vite preview` answers any unknown path with index.html, which is the behaviour prerendering removes, so it reports every route as working whether
  * or not it is. This resolves a request the way Cloudflare Pages does: an exact
  * file, else that path's index.html, else 404.html with a real 404 status.
  *

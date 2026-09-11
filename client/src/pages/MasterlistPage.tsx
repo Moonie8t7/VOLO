@@ -1,9 +1,8 @@
 /**
  * Browse the community masterlist and what is known about each mod.
  *
- * The category filters run in load order rather than alphabetically, which is
- * information in itself and so is labelled; unlabelled they read as an
- * arbitrary wall of chips. They collapse below the small breakpoint, where
+ * The category filters run in load order, which is information in itself, so the
+ * order is labelled; unlabelled they look like an arbitrary set of chips. They collapse below the small breakpoint, where
  * thirty-one of them would fill the viewport before a single mod appeared.
  */
 
@@ -47,11 +46,11 @@ export default function MasterlistPage() {
   }, [masterlist]);
 
   return (
-    <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
+    <div className="p-8 overflow-auto min-h-dvh bg-gradient-to-br from-background via-background to-card">
       <div className="max-w-5xl mx-auto space-y-8">
         <header className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-display font-bold text-gradient-bg3">
+            <h1 className="fluid-h2 ruled">
               Community masterlist
             </h1>
             <p className="text-muted-foreground mt-2 font-body">
@@ -83,8 +82,8 @@ export default function MasterlistPage() {
             marked <span className="mx-1 text-xs uppercase tracking-wider">listing</span>
             came from the second sort, and mods in{' '}
             <Badge variant="outline" className="mx-1">unsorted</Badge> from neither.
-            If you know where one belongs, that is the most useful thing you can
-            contribute.
+            If you know where one belongs, telling us is the most useful contribution you
+            can make.
           </AlertDescription>
         </Alert>
 
@@ -200,9 +199,7 @@ export default function MasterlistPage() {
                     * Orders confirmed working, not orders seen. The raw count
                     * included orders nobody ever said worked and orders VOLO
                     * itself sorted, so a mod could show "seen in 3" beside a
-                    * caution saying it had never been in a working order. Both
-                    * statements were true and together they read as a
-                    * contradiction. The rest of the count is still here, in the
+                    * caution saying it had never been in a working order. Both statements were true and together they looked like a contradiction. The rest of the count is still here, in the
                     * one place where a reader is asking about this mod.
                     */}
                   {p.evidence && p.evidence.installs > 1 && (

@@ -22,7 +22,7 @@ npm run build      # regenerate the masterlist, build, then prerender every rout
 The same three commands run on every push and pull request through
 `.github/workflows/checks.yml`, so a dependency bump that does not even
 install fails its pull request instead of waiting for someone to try it
-locally. One did exactly that.
+locally. One did.
 
 `npm run masterlist` re-mines `Load Orders - Public Submitted/` on its own. Run
 it when new submissions arrive.
@@ -68,7 +68,7 @@ production, and this is the only check that runs against the real host.
 | `serve-dist.mjs` | Serves `dist/` the way the host does, which `vite preview` does not. |
 | `build-sitemap.mjs` | Writes the sitemap, taking each `lastmod` from git. |
 | `verify-order.mjs` | In-sample agreement. Relative comparisons only. |
-| `verify-holdout.mjs` | Held-out agreement. The honest number. |
+| `verify-holdout.mjs` | Held-out agreement. The held-out number. |
 | `smoke-test.mjs` | Asserts the sort's promises against every corpus order. |
 | `audit-repo.mjs` | Every tracked file: parses, links, secrets, personal data, style. |
 | `diagnose-order.mjs` | Explains what is probably wrong with a broken order. |
@@ -156,7 +156,7 @@ to be thrown away.
 An order can arrive in the issue three ways, and intake tries each in turn
 until one parses, because only parsing tells a populated field from a useful
 one. It may be pasted into the body; it may be a file attached to the issue,
-which is what dragging an export in produces and what the template invites; or
+which dragging an export in produces and the template invites; or
 it may be staged, when the site found it too large for GitHub's 65,536
 character issue body and wrote it to R2 instead, leaving a pointer, an entry
 count and a checksum. A staged pointer is exclusive: the excerpt beside it is
@@ -166,8 +166,7 @@ land eight mods as somebody's load order.
 Two bounds keep one submission from costing everything else. Entries are
 capped after parsing, because the agreement measure compares every pair and a
 six figure entry count would hold a runner until Actions killed it. And a
-submission that validates but fails to land now says so on the issue rather
-than thanking its submitter, which is what it used to do.
+submission that validates but fails to land now says so on the issue instead of thanking its submitter, as it used to.
 
 What the submitter wrote in the Notes box is kept alongside the order, in its
 provenance record. It is stored as written and nothing reads it: the miner takes
@@ -186,7 +185,7 @@ has been answered.
 
 Both labels have to exist in the repository. GitHub drops a label an issue asks
 for when the repository does not have one by that name, silently and with no
-error anywhere, which is how `wrong-placement` sat unread for its whole life.
+error anywhere, so `wrong-placement` sat unread for its whole life.
 
 ## Where explanation lives
 

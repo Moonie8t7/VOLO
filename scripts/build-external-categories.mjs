@@ -19,8 +19,8 @@
  * current listing name, older names and slugs recorded before a rename, and
  * on mod.io the nameId slug, which usually still carries the title the mod
  * was created under because renaming the listing does not rename the URL.
- * Installed paks keep the name they shipped under, which makes old names
- * exactly what stale paks match. A current display name always outranks an
+ * Installed paks keep the name they shipped under, so old names are what stale
+ * paks match. A current display name always outranks an
  * old name; the precedence order is spelled out above `claim`.
  *
  * Nexus categorises with a category tree. mod.io categorises with per-game
@@ -248,8 +248,7 @@ for (const [alias, listing] of LISTING_ALIASES) {
  * How much of what is published VOLO has actually seen.
  *
  * The masterlist only holds mods that appear in an order somebody submitted,
- * so the gap between it and the two catalogues is the honest size of what the
- * corpus has never met. Counted here because this is the only script that
+ * so the gap between it and the two catalogues is the size of what the corpus has never met. Counted here because this is the only script that
  * reads both catalogues; the sceptical section of the about page renders it.
  *
  * A mod on both platforms is one mod, matched on name, so the two totals are
@@ -293,8 +292,7 @@ console.log(
  * Where the two catalogues disagree, and whether it reaches anybody.
  *
  * Nexus outranking mod.io decides a group for every name both publish, and the
- * rule was never measured. What matters is not how often they differ but how
- * often the difference reaches a mod: this map is the last tier before unsorted,
+ * rule was never measured. What matters is how often the difference reaches a mod: this map is the last tier before unsorted,
  * so a key only counts if some masterlist row is actually placed by it.
  */
 const disagreements = [...claimsByKey.entries()]

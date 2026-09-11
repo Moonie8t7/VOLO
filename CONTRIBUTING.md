@@ -123,7 +123,7 @@ Two things to know before changing how sorting works:
 never violated, divider order holds except where dependencies force otherwise,
 deterministic, and fast.
 
-`node scripts/verify-holdout.mjs` is the honest measure of quality. It rebuilds
+`node scripts/verify-holdout.mjs` is the measure of quality. It rebuilds
 the masterlist once per working order with that order left out, sorts it, and
 reports agreement. Run it before and after anything that touches placement, and
 quote that number rather than the higher one `verify-order.mjs` prints, which

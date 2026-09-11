@@ -30,7 +30,7 @@ const FILE = path.join('Load Orders - Public Submitted', 'provenance.json');
  *
  * VOLO's sort is deterministic, so its own output returns near-identical rather
  * than merely similar. The masterlist moves between someone exporting and
- * submitting, which is why this is not set at 1. Deliberately high: wrongly
+ * submitting, so this is not set at 1. Deliberately high: wrongly
  * discarding a real player's evidence costs more than letting one echo through,
  * and the declared answer is the primary signal in any case.
  */
@@ -112,8 +112,8 @@ export function echoesNeighbour(agreementWithVolo, nearest) {
  * has work to do: an issue opened by hand never passes through that endpoint,
  * and a GitHub issue body holds sixteen times this.
  *
- * A note that hits it is truncated and said to be, because a silently
- * shortened sentence reads as a complete one and can reverse its own meaning.
+ * A note that hits it is truncated and said to be, because a silently shortened sentence looks complete and can reverse its
+ * meaning.
  * The longest anyone has written is 645 characters.
  */
 export const NOTE_MAX = 4000;

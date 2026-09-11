@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 /**
- * Honest evaluation: how well does VOLO order an order it has never seen?
+ * Held-out evaluation: how well does VOLO order an order it has never seen?
  *
  *   node scripts/verify-holdout.mjs
  *
  * scripts/verify-order.mjs scores the sorter against the same working orders
- * the masterlist was built from. That is the right measure for comparing two
- * candidate rule sets, because both sides are scored identically, but as an
- * absolute number it flatters us: the masterlist has already read the answer.
+ * the masterlist was built from. That measure compares two candidate rule sets fairly, because both sides are
+ * scored identically, but as an absolute number it flatters: the masterlist
+ * has already read the answer.
  *
  * This rebuilds the masterlist once per working order with that order left
  * out, sorts the held-out order against the result, and reports the gap. The
  * held-out figure is the one to quote publicly, because it is the situation
  * every real user is in.
  *
- * One honesty caveat of its own: the group ordering baked into
+ * One caveat of its own: the group ordering baked into
  * scripts/mine-corpus.mjs was derived from the whole corpus, so it is not
  * re-learned per fold. A coarse 27-group ranking is unlikely to memorise any
  * single order, but the held-out number below is still very slightly
@@ -143,7 +143,7 @@ console.log(`random baseline         ${pct(mean('random'))}%`);
 const optimism = mean('inSample') - mean('heldOut');
 const lift = mean('heldOut') - mean('random');
 console.log(`\noptimism of the in-sample figure: ${(100 * optimism).toFixed(1)} points`);
-console.log(`honest lift over chance:          ${(100 * lift).toFixed(1)} points`);
+console.log(`lift over chance:                 ${(100 * lift).toFixed(1)} points`);
 
 /*
  * The measurement as data, so nothing quotes it from memory. The measured
@@ -172,7 +172,7 @@ fs.writeFileSync(
     ordersEvaluated: rows.length,
     // Working orders left out of the score because VOLO produced them. The
     // measured page says so, because the count differs from the corpus size
-    // quoted everywhere else and an unexplained gap reads as a mistake.
+    // quoted everywhere else and an unexplained gap looks like a mistake.
     selfSorted: selfScored,
     heldOut: round1(mean('heldOut')),
     random: round1(mean('random')),

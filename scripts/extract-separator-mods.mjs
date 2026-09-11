@@ -7,8 +7,7 @@
  * they surface.
  *
  * Why this matters: those paks are widely used to divide a load order into named
- * sections. When a submitted order contains them we can recognise the section
- * boundaries by UUID, exactly, instead of pattern-matching whatever dashes and
+ * sections. When a submitted order contains them we can recognise the section boundaries by UUID instead of pattern-matching whatever dashes and
  * pipes the submitter happened to type. Exact beats heuristic.
  *
  * A pak is an LSPK archive. For these files the metadata sits in a single LZ4
