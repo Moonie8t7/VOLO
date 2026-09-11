@@ -6,7 +6,7 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { Link } from 'wouter';
 import {
-  Search, AlertTriangle, Info, XCircle, Download, ChevronDown, ChevronUp, Layers,
+  Search, AlertTriangle, Info, XCircle, Download, ChevronDown, ChevronUp, GripVertical, Layers,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -57,8 +57,9 @@ function countByProvenance(result: SortResult): Record<Placement['groupSource'],
 /**
  * Nudges one mod earlier or later in the order.
  *
- * Buttons rather than a drag handle: they work on a phone, they work from a
- * keyboard, and dragging through a list of several hundred mods is miserable.
+ * Buttons beside the drag handle rather than instead of it: they work on a
+ * phone, where the browser's drag does not exist, and from a keyboard. A long
+ * move is the handle's job and a short one is theirs.
  */
 function MoveControls({ name, onMove }: { name: string; onMove: (d: -1 | 1) => void }) {
   const button =
@@ -230,10 +231,17 @@ const SEVERITY_ICON: Record<IssueSeverity, typeof Info> = {
 export default function OptimisePage() {
   const {
     mods, result, isLoadingMasterlist, masterlistError, sourceName,
-    manualMoves, moveMod, clearManual,
+    manualMoves, moveMod, placeMod, clearManual,
     assigned, assignSlot, clearAssignments,
   } = useStore();
   const [query, setQuery] = useState('');
+  /**
+   * The mod being dragged, and the row and side it would land on. This is the
+   * browser's own drag and drop, so it costs nothing to ship and scrolls the
+   * list by itself near the edges; the buttons cover what it cannot.
+   */
+  const [dragging, setDragging] = useState<string | null>(null);
+  const [dropAt, setDropAt] = useState<{ uuid: string; side: 'before' | 'after' } | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [unsortedOnly, setUnsortedOnly] = useState(false);
   const [selected, setSelected] = useState<Set<string>>(new Set());
@@ -252,6 +260,28 @@ export default function OptimisePage() {
       m.author ?? result?.placements.get(m.uuid)?.author,
     [result],
   );
+
+  /**
+   * Lands the dragged mod beside the row it was dropped on, in the full order
+   * rather than the filtered view. Dropping below a row puts the mod straight
+   * after that row, whatever the filter hid between them.
+   */
+  const dropOn = useCallback((moved: string, target: string, side: 'before' | 'after') => {
+    if (!result) return;
+    if (side === 'before') {
+      placeMod(moved, target);
+      return;
+    }
+    const at = result.mods.findIndex(m => m.uuid === target);
+    const next = result.mods[at + 1];
+    placeMod(moved, next ? next.uuid : null);
+  }, [result, placeMod]);
+
+  /** Which half of a row the pointer is in decides which side the drop takes. */
+  const sideOf = (e: React.DragEvent<HTMLElement>): 'before' | 'after' => {
+    const r = e.currentTarget.getBoundingClientRect();
+    return e.clientY < r.top + r.height / 2 ? 'before' : 'after';
+  };
 
   const visible = useMemo(() => {
     if (!result) return [];
@@ -551,7 +581,28 @@ export default function OptimisePage() {
                 const p = placements.get(mod.uuid);
                 const isOpen = expanded === mod.uuid;
                 return (
-                  <li key={mod.uuid} className={isOpen ? undefined : 'row-defer'}>
+                  <li
+                    key={mod.uuid}
+                    className={[
+                      isOpen ? '' : 'row-defer',
+                      dragging === mod.uuid ? 'opacity-40' : '',
+                      dropAt?.uuid === mod.uuid ? `drop-${dropAt.side}` : '',
+                    ].join(' ').trim() || undefined}
+                    onDragOver={e => {
+                      if (!dragging) return;
+                      e.preventDefault();
+                      e.dataTransfer.dropEffect = 'move';
+                      const side = sideOf(e);
+                      setDropAt(prev => (prev?.uuid === mod.uuid && prev.side === side ? prev : { uuid: mod.uuid, side }));
+                    }}
+                    onDrop={e => {
+                      if (!dragging) return;
+                      e.preventDefault();
+                      dropOn(dragging, mod.uuid, sideOf(e));
+                      setDragging(null);
+                      setDropAt(null);
+                    }}
+                  >
                     <div className="group flex items-center transition-colors hover:bg-primary/5">
                     {/* Offered on mods with no category, and on the ones you
                         have already filed, so a wrong pick can be taken back. */}
@@ -585,6 +636,32 @@ export default function OptimisePage() {
                       )}
                     </span>
                     <MoveControls name={mod.name} onMove={d => moveMod(mod.uuid, d)} />
+                    {/*
+                      The handle, not the row, is draggable, so a mod's name can
+                      still be selected and copied. The state change waits a
+                      tick because a row that repaints during dragstart makes
+                      the browser abandon the drag. Screen readers get the
+                      buttons, which do the same job.
+                    */}
+                    <span
+                      draggable
+                      title="Drag to move"
+                      aria-hidden="true"
+                      className="flex h-8 w-5 shrink-0 cursor-grab items-center justify-center text-muted-foreground/40 hover:text-foreground active:cursor-grabbing"
+                      onDragStart={e => {
+                        e.dataTransfer.effectAllowed = 'move';
+                        e.dataTransfer.setData('text/plain', mod.uuid);
+                        const row = e.currentTarget.closest('li');
+                        if (row) e.dataTransfer.setDragImage(row, 24, row.getBoundingClientRect().height / 2);
+                        window.setTimeout(() => setDragging(mod.uuid), 0);
+                      }}
+                      onDragEnd={() => {
+                        setDragging(null);
+                        setDropAt(null);
+                      }}
+                    >
+                      <GripVertical className="h-4 w-4" />
+                    </span>
                     <button
                       className="flex-1 min-w-0 flex items-center gap-4 py-3 text-left px-2"
                       /*

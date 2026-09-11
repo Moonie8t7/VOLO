@@ -1117,4 +1117,14 @@
     content-visibility: auto;
     contain-intrinsic-size: auto 57px;
   }
+
+  /* Where a dragged row would land: a gold line along the edge of the row
+     under the pointer, on the side the drop will take. */
+  .drop-before {
+    box-shadow: inset 0 2px 0 hsl(var(--bg3-gold));
+  }
+
+  .drop-after {
+    box-shadow: inset 0 -2px 0 hsl(var(--bg3-gold));
+  }
 }
