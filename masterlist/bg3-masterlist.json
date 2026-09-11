@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-11T04:06:09.852Z",
+  "generated": "2026-09-11T09:19:55.604Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -37,7 +37,7 @@
     "working": 124,
     "broken": 28,
     "unlabelled": 2,
-    "externalDependencyEdges": 941,
+    "externalDependencyEdges": 943,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -2612,6 +2612,10 @@
         "workingInstalls": 33,
         "brokenInstalls": 10,
         "voloSortedInstalls": 22
+      },
+      "absence": {
+        "held": 1,
+        "witnesses": 1
       }
     },
     {
@@ -111645,8 +111649,8 @@
     {
       "name": "Weave_Woven_Visages",
       "uuid": "5c3fcecb-26e2-05dc-982e-d1afbecd734a",
-      "group": "Character Customization",
-      "divider": 62.5,
+      "group": "Heads",
+      "divider": 63,
       "evidence": {
         "source": "external-category",
         "installs": 2,
@@ -137359,7 +137363,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Elf, Drow and Halfelf shared faces",
@@ -143566,7 +143576,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "777d21b5-c6ad-80d6-96ac-2dd80c879fcc",
+          "name": "Water Spells"
+        }
+      ]
     },
     {
       "name": "HoneyTrap",

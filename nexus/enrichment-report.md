@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11552 |
-| Matched exactly by name | 2775 |
-| Matched fuzzily (>= 0.9) | 672 |
-| Unmatched | 8105 |
+| Masterlist mods | 11606 |
+| Matched exactly by name | 2782 |
+| Matched fuzzily (>= 0.9) | 674 |
+| Unmatched | 8150 |
 
 ## What the match would add
 
 - 40 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1122 mods have a Nexus category that disagrees with the
+- 1124 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1991 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 1086 of them resolved to a uuid on both
+- 1995 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 1089 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
