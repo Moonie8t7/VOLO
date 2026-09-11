@@ -66,8 +66,7 @@ const decode = (s) => String(s)
  * Comments out of the posts-tab markup.
  *
  * Separate from fetching so a test can hand it a saved page. It had no test
- * while it silently returned the wrong element for every comment, and a parser
- * of somebody else's markup is exactly the thing that needs one.
+ * while it silently returned the wrong element for every comment, and a parser of somebody else's markup needs one.
  */
 export function parseNexus(html) {
   const items = [];

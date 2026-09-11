@@ -68,9 +68,8 @@ const SECRETS = [
 ];
 
 /**
- * The lookbehinds match the scrubbers in client/src/lib/scrub.ts: a URL whose
- * path contains /Users/ is an address, not a person, and an auditor that
- * flags what the scrubber correctly leaves alone teaches people to ignore it.
+ * The lookbehinds match the scrubbers in client/src/lib/scrub.ts: a URL whose path contains /Users/ is an address, and an auditor that flags
+ * what the scrubber leaves alone teaches people to ignore it.
  */
 const PERSONAL = [
   [/(?<![A-Za-z0-9])[A-Za-z]:\\Users\\[A-Za-z0-9._-]+/, 'Windows user path'],
@@ -238,8 +237,7 @@ for (const file of files) {
  * missing record is read as independent. That default was right for all fifteen
  * orders that had no record, but nothing separated "measured and found
  * independent" from "never looked at", so the corpus could not say which orders
- * had been checked. Silence is not a verdict, and this makes it impossible for a
- * new order to acquire one by default.
+ * had been checked. Silence is not a verdict; this stops a new order acquiring one by default.
  */
 {
   const provenanceFile = path.join(CORPUS, 'provenance.json');

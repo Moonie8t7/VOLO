@@ -4,16 +4,15 @@
  *
  *   node scripts/rejudge-provenance.mjs [--write]
  *
- * Provenance is decided once, at intake, and recorded. That is the right place
- * for it: the miner and the evaluation both read the recorded answer, so the
- * decision cannot drift between them. It does mean a rule added later applies
+ * Provenance is decided once, at intake, and recorded. The miner and the evaluation both read the recorded answer, so the decision
+ * cannot drift between them. It does mean a rule added later applies
  * only to what arrives after it, and the orders already here keep whatever the
  * old rule said.
  *
  * This re-runs the decision over the whole corpus so a new rule reaches the
  * orders that prompted it. Nothing is measured again: the recorded agreement
  * figures are the ones taken when each order arrived, against the masterlist as
- * it was then, which is the honest comparison. Only the verdict is recomputed.
+ * it was then, which is the correct comparison. Only the verdict is recomputed.
  *
  * Prints what would change and exits. Pass --write to apply it.
  */

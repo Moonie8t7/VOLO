@@ -42,8 +42,8 @@ function read() {
  *
  * Throws rather than warning. A curated rule that matches nothing is worse than
  * no rule: it looks like the case is handled while the mod falls through to a
- * guess, which is exactly how Compatibility Framework ended up filed as a
- * library and loading far too early.
+ * guess, and Compatibility Framework was filed as a library this way and loaded far too
+ * early.
  */
 export function loadCuratedRules() {
   const raw = read();

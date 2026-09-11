@@ -38,8 +38,7 @@ seventy.
 
 **Most authors describe where their own mod goes, not how it relates to a named
 other mod.** Of 157 claims recorded across both halves, 70 were of the form "put
-this at the bottom", which gives a region and not a pair. Of the 27 that were
-genuinely pairwise, only 13 identified both ends.
+this at the bottom", which gives a region and not a pair. Of the 27 that were pairwise, only 13 identified both ends.
 
 ## Why the yield is worth less than it looks
 
@@ -92,6 +91,5 @@ verified it, and since verification costs about as much as reading the page,
 prose mining is not currently worth automating at all.
 
 If this is ever revisited, revisit it because the corpus changed, not because a
-better parser is available. The ceiling measured here is roughly 250 to 300
-genuinely new cross-mod constraints in the entire corpus, and a perfect parser
+better parser is available. The ceiling measured here is roughly 250 to 300 new cross-mod constraints in the entire corpus, and a perfect parser
 does not raise it.

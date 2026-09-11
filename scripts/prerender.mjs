@@ -13,7 +13,7 @@
  * Two things fall out of that. Every route becomes a real file, so the host
  * serves it directly and public/_redirects is no longer needed to rewrite
  * paths onto the shell. And an address that is not a route now matches no file
- * at all, which is what lets 404.html answer with a genuine 404.
+ * at all, which lets 404.html answer with a real 404.
  *
  * The markup is whatever the app itself produces. Nothing is written here that
  * a visitor would not also see, because serving crawlers something different

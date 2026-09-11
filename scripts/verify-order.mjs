@@ -8,9 +8,9 @@
  *
  * The metric is the fraction of mod pairs placed in the same relative order as
  * the working order. Random shuffling scores about 0.5, so anything near that is
- * noise. Perfect agreement is 1.0, but perfect is not the target: a working
- * order is one valid arrangement, not the only one, and a submitter's exact
- * sequence includes plenty of arbitrary choices. What matters is being clearly
+ * noise. Perfect agreement is 1.0 and is not the target: a working order is one valid
+ * arrangement among several, and a submitter's exact sequence includes plenty
+ * of arbitrary choices. What matters is being clearly
  * better than chance, and never worse than leaving the order alone.
  *
  *   node scripts/verify-order.mjs

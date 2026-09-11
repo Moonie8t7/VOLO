@@ -57,8 +57,8 @@ Please do not post a working exploit in a public issue.
 
 ## What to expect
 
-VOLO is maintained by one person as a community project, so the honest answer is
-days rather than hours, and longer if it lands badly in a week.
+VOLO is maintained by one person as a community project, so the realistic answer is
+days, not hours, and longer if it lands badly in a week.
 
 - **Acknowledgement:** within a week.
 - **An assessment:** once it has been reproduced, with a plain statement of

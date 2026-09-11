@@ -12,7 +12,7 @@
  * lines neither of them means to disagree about, and `git apply` cannot tell
  * that from a real conflict.
  *
- * Issue #105 was lost exactly that way. It was validated, the submitter was
+ * Issue #105 was lost that way. It was validated, the submitter was
  * told so, and then #104, submitted five minutes earlier, landed first and
  * rewrote the map underneath it. The patch stopped applying, the run failed
  * after the comment had already gone out, and both safety nets read the comment

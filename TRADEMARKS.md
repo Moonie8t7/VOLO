@@ -16,8 +16,7 @@ by, or affiliation with, the official VOLO project.
 
 ## What this means in practice
 
-You may fork the code and the masterlist and run your own service. That is the
-point of the licences. Give it your own name and your own look, and say plainly
+You may fork the code and the masterlist and run your own service. That is what the licences allow. Give it your own name and your own look, and say plainly
 that it is a fork rather than the official project. Crediting VOLO as the
 origin is welcome; presenting yourself as VOLO is not.
 

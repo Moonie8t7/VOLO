@@ -7,7 +7,7 @@ on intuition.
 Every entry carries a slug heading, so a commit message, an issue reply or a
 code comment can point at one decision rather than at the whole file:
 `docs/decisions.md#alias-joins-for-constraints`. The slugs are stable. If an
-entry is reworded, keep its slug; if it is genuinely superseded, leave it where
+entry is reworded, keep its slug; if it is superseded, leave it where
 it is and add the new decision, because a link that quietly changes meaning is
 worse than one that breaks.
 
@@ -15,9 +15,8 @@ worse than one that breaks.
 
 Agreement with submitted working orders, pair by pair. Every pair of mods
 counts once, so it is Kendall's tau rescaled to 0 to 1. A random shuffle scores
-about 50 percent. Perfect agreement is not the goal: a working order is one
-valid arrangement, not the only one, and any submitter's exact sequence contains
-plenty of arbitrary choices.
+about 50 percent. Perfect agreement is not the goal: a working order is one valid arrangement among several, and any submitter's
+exact sequence contains plenty of arbitrary choices.
 
 Two scripts report it, and the difference matters.
 
@@ -45,8 +44,8 @@ Held-out agreement is the arbiter for any change to where mods go. It is slow,
 so the temptation is to reach instead for a table: group mods by how their
 category was decided, count how often each group appears in orders somebody
 reported broken, and read the difference as the weaker sources causing breakage.
-That reasoning does not hold here, and the reason is worth writing down because
-the table looks convincing.
+That reasoning does not hold here, and the table looks convincing, so the
+reason is recorded.
 
 The evidence source is partly decided by which orders a mod appears in. Section
 evidence comes from a mod sitting under a divider label, broken orders carry
@@ -56,7 +55,7 @@ through to a weaker source. The arrow runs both ways and the table cannot say
 which way it runs. Controlling for install count does not rescue it, because
 install count is not the confounded variable.
 
-This was not hypothetical. A rule was proposed on exactly that table, to make a
+This was not hypothetical. A rule was proposed on that table, to make a
 mod inherit its group from a name-prefix sibling with stronger evidence. Sized
 before it was built, it moved 121 mods, and reading the moves showed most were
 wrong: it filed `Karlach's Long Hair` under Companions because it shares a
@@ -152,7 +151,7 @@ listing does not exist, and its neighbours in submitted orders are
 alphabetical accidents. But its author has ten catalogued mods and every one
 is dice. An author with at least three categorised mods, at least eighty
 percent of them in one group, places their otherwise-unplaceable mods with the
-rest of their work, labelled `author` so it never reads as evidence. Placed 29
+rest of their work, labelled `author` so it is never taken as evidence. Placed 29
 mods at a cost of 0.1 held-out points, the same shape of trade as the listing
 tier above: the metric rewards leaving unknown mods parked at the end, and a
 mod placed in the right section beats a mod at the end of the file.
@@ -224,7 +223,7 @@ help, on pairs no player has installed together.
 
 So no constraint derived from prose enters the masterlist automatically, and
 since verifying one costs about as much as reading the page, prose mining is not
-worth automating. The ceiling is roughly 250 to 300 genuinely new constraints in
+worth automating. The ceiling is roughly 250 to 300 new constraints in
 the entire corpus and a better parser does not raise it. Full working in
 [nexus-prose-findings.md](nexus-prose-findings.md).
 
@@ -285,10 +284,9 @@ declares it clean, and the rows only exist once there is an order to draw. Any
 check of a route that needs data has to load data first.
 
 Four of the first pass's findings were the measurement being wrong rather than
-the site. A 5 percent alpha overlay read as an opaque background until the
+the site. A 5 percent alpha overlay looked like an opaque background until the
 stack was composited; a table flagged as overflowing was inside
-`overflow-x-auto` and had simply not settled when it was measured; a focus ring
-read as failing because the deliberately transparent `outline` was measured
+`overflow-x-auto` and had simply not settled when it was measured; a focus ring looked like a failure because the deliberately transparent `outline` was measured
 instead of the box-shadow that draws it. Trust the composited number, not the
 first one.
 
@@ -351,8 +349,7 @@ construction rather than by accident.
 
 The distinction to keep: the same field is safe for **placement** and unsafe for
 **constraints**. Resolving an unknown name to a group is a soft guess where being
-wrong costs a category, and `alternateNames` is used for exactly that in the
-browser, where it recovers 260 names nothing else reaches. Turning it into a hard
+wrong costs a category, and `alternateNames` is used for that in the browser, where it recovers 260 names nothing else reaches. Turning it into a hard
 ordering edge is a claim about two real authors' work that silently reorders
 somebody's game. Same data, entirely different blast radius.
 
@@ -369,8 +366,7 @@ genuine outside corroboration, and it agrees on almost everything: ImpUI first,
 libraries early, fixes before items, races and classes as expanded content, heads
 and hair among the visuals, dice last of them, Compatibility Framework last of
 all. Compared by divider slot rather than by the `groups` array, which is only
-the within-section tiebreak and reads as a contradiction if mistaken for the load
-order.
+the within-section tiebreak and looks like a contradiction if mistaken for the load order.
 
 Two specific claims were tested against the corpus and both lost.
 
@@ -424,8 +420,7 @@ on every name both catalogues publish, which was never a measured choice: it is
 simply the larger source. They disagree on 923 names, and 121 of those decide a
 mod's group today. The disagreements lean one way, Nexus broad and mod.io narrow:
 81 mods filed under Gameplay that mod.io calls Spells, 67 under Character
-Customization it calls Heads, 37 it calls Hair. Those narrower names are divider
-slots, which is what this map exists to supply, so preferring them from those
+Customization it calls Heads, 37 it calls Hair. Those narrower names are divider slots, which this map exists to supply, so preferring them from those
 three vague categories looked obviously right.
 
 It is not. The rule moved 339 keys and 41 masterlist rows, 40 of them into a
@@ -446,7 +441,7 @@ have to be reopened from scratch.
 
 **Keeping uncategorised mods in place.** Rather than sorting them to the end,
 give them the position of the last categorised mod above them. Measured 61.8
-against 63.6. Unplaced mods genuinely do cluster at the end of real orders.
+against 63.6. Unplaced mods do cluster at the end of real orders.
 
 ### divider-vocabulary-classifier
 
@@ -628,7 +623,7 @@ loading; 1,174 are refused as instructions for the mod manager, advice about
 loading a save, or statements about a category of mods rather than one mod;
 7,773 match no pattern at all. 298 survive as candidates and 143 as edges. One
 author pasting the same caveat across seventeen mods accounts for a fifth of
-those, so the honest figure is 114 distinct claims, 71 of them between two named
+those, so the real figure is 114 distinct claims, 71 of them between two named
 mods.
 
 Then the join takes almost all of it. 60 of those 71 name a mod that cannot be

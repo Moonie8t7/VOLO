@@ -80,8 +80,7 @@ function agreementAgainst(mods, list) {
 /**
  * The same measurement, against a masterlist this order did not help build.
  *
- * Intake measures an arriving order before admitting it, so its figure is
- * honestly held out. A backfilled order is already in the corpus, so measuring
+ * Intake measures an arriving order before admitting it, so its figure is held out. A backfilled order is already in the corpus, so measuring
  * it in place asks how well VOLO agrees with something VOLO was taught by, and
  * the answer flatters it. New8.json scored 0.981 in place and 0.774 once its own
  * contribution was removed. The first reading is above the threshold that
@@ -89,9 +88,8 @@ function agreementAgainst(mods, list) {
  * have thrown away a 297-mod order's sections on the strength of the order
  * having been listened to.
  *
- * Expensive: it rebuilds the masterlist from the rest of the corpus. Only run
- * for orders the cheap in-place reading already condemns, which is what makes
- * the cost bearable.
+ * Expensive: it rebuilds the masterlist from the rest of the corpus. Only run for orders the cheap in-place reading already condemns, which keeps
+ * the cost down.
  */
 function heldOutAgreement(file, mods) {
   const full = path.join(CORPUS, file);
@@ -194,8 +192,8 @@ for (const file of missing) {
       declared,
       agreementWithVolo: agreement === null ? null : Math.round(agreement * 1000) / 1000,
       sortedByVolo,
-      // Says the figure was taken later rather than on arrival, so it is not
-      // read as the arrival-time measurement the other records hold.
+      // Says the figure was taken later, so it is not mistaken for the arrival-time
+      // measurement the other records hold.
       backfilled: true,
     },
   });

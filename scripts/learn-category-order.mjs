@@ -189,8 +189,8 @@ const disagreement = order => {
  * won, for the same underlying reason: they scored each category in isolation
  * and hoped a good ordering fell out. Averaging win rates compared each category
  * against a different set of opponents, so the averages were not on one scale.
- * Copeland fixed that by counting only who beats whom, and thereby made a pair
- * resting on 118,127 observations weigh exactly as much as one resting on 52; it
+ * Copeland fixed that by counting only who beats whom, and thereby made a pair resting on 118,127 observations weigh the same as one resting on
+ * 52; it
  * shipped Character Customization ahead of Classes against a corpus that says
  * the opposite 87.7 percent of the time, and that single pair was 62 percent of
  * all the disagreement left in the result.
@@ -269,9 +269,7 @@ console.log(`\nadjacent pairs: ${agreed} supported, ${contested} contested, ${th
  *
  * The sequence in scripts/mine-corpus.mjs is a constant on purpose: adopting a
  * new one changes every sort, so it should be a decision somebody makes and
- * measures rather than something that moves under them overnight. The failure
- * mode of a constant is that it quietly stops matching the evidence, which is
- * exactly what happened: it sat unchanged while the corpus grew from nine orders
+ * measures rather than something that moves under them overnight. A constant can quietly stop matching the evidence, and this one did: it sat unchanged while the corpus grew from nine orders
  * to fifty-nine and ended up contradicting 54 of its own 281 pairwise
  * comparisons. Recording the fit turns that into something a test can see.
  */

@@ -6,8 +6,7 @@
  *
  * The UUID is the only identity that cannot be typed wrong, and a curated rule
  * naming somebody else's mod should use it rather than a name that two mods
- * might answer to. KAVT ships its pak as unique_tav.pak, which is exactly the
- * collision this avoids.
+ * might answer to. KAVT ships its pak as unique_tav.pak, which is the collision this avoids.
  *
  * LSPK v18: a header pointing at an LZ4-compressed file table, each entry 272
  * bytes, and file bodies that may themselves be LZ4. Only the byte ranges

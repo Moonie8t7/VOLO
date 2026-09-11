@@ -14,7 +14,7 @@
  *      working and broken labels
  *   5. regenerates the masterlist, relearns the category order, reruns
  *      verification
- *   6. writes a report of exactly what changed, for the pull request body
+ *   6. writes a report of what changed, for the pull request body
  *
  * Exit codes: 0 accepted, 1 rejected (reason on stdout and in the report),
  * 2 usage or environment error. Rejection is not failure; the report says why
@@ -609,7 +609,7 @@ const metricHeld = delta !== null && delta >= -MAX_AGREEMENT_DROP;
  * counted broken orders that way, so this changes who presses the button rather
  * than what the evidence means.
  *
- * The metric is the thing that would notice harm, and it applies unchanged. An
+ * The metric would notice harm, and it applies unchanged. An
  * order of either kind that drops agreement past the tolerance still waits.
  *
  * Approval overrides the hold, never the validation. An order a person has read

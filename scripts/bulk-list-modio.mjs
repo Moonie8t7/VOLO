@@ -71,8 +71,7 @@ const DEPS_MODE = process.argv.includes('--deps');
 /*
  * Restarts the full listing sweep from offset zero. The daily updates crawl
  * only sees mods whose update timestamp moved, so a change that does not bump
- * it, which some renames do not, is invisible until the next full pass; a
- * periodic restart is what guarantees every listing gets re-read eventually.
+ * it, which some renames do not, is invisible until the next full pass; a periodic restart guarantees every listing is re-read eventually.
  */
 const RESTART_MODE = process.argv.includes('--restart');
 
