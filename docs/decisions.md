@@ -720,6 +720,39 @@ any measurement taken in advance.
 **Move as little as possible.** A sorter that reshuffles a working load order
 without cause is worse than useless.
 
+### bg3-site-assets
+
+**The official site's decorative files are served from this repository, and the
+licensing question behind that is open rather than settled.** Recorded here so
+nobody finds them later and takes them for an oversight.
+
+`TRADEMARKS.md` reserves the VOLO name, logo and visual identity. The code is
+MIT, the data CC0. The same boundary runs the other way: VOLO is a third party
+tool and must not look like an official Larian product.
+
+The rule at the start of the interface work was to reproduce geometry and never
+ship an asset, and it held for two passes. Arcs, chamfers, tapers and bevels
+were built from clip paths and gradients, and the hero cloud from generated
+noise. On 11 September 2026 the maintainer compared that against the site,
+judged it ugly, and chose the site's own files instead. A set of the
+maintainer's own smoke and hero mask was tried the same day and withdrawn.
+
+What was taken: 56 decorative files, about 1.25MB, under `public/assets/bg3` in
+the folders the site serves them from, `btn`, `svg`, `faq`, `menu`, `mask`,
+`jpg` and `png`. What was not: the logo, the key art and the fonts. Gothic A1 is
+used and is not theirs to license, being on Google Fonts under the OFL; EB
+Garamond likewise.
+
+The press pack those files sit alongside carries no usage terms in any of its
+five archives, so nothing grants this and nothing refuses it. That is the open
+part. If it ever needs undoing, the geometry-only versions are in this
+repository's history, on the `design/bg3-material` branch before 11 September.
+
+One operational detail that outlives the decision: a file replaced after it has
+been served needs a new name, because `public/_headers` caches `/assets/*` for a
+year as immutable. Hence `about-hero-mask.v3.png`, `cloud-left.v2.png`,
+`cloud-right.v2.png` and `cloud-left-flipped.v2.png`.
+
 ## Incidents
 
 ### cache-poisoning-2026-08-04
