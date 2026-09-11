@@ -14,8 +14,7 @@ const useIsomorphicLayoutEffect =
 
 /**
  * The first six groups in masterlist order, each with the position a mod
- * manager hands it over at. Written down rather than shuffled, so the
- * prerendered HTML and the browser agree.
+ * manager hands it over at. Fixed values, so the prerendered HTML and the browser agree.
  */
 const ROWS = [
   { name: "Top of Load Order", from: 3 },
@@ -65,7 +64,7 @@ export default function SortingDemo() {
   }, [scrambled, settled]);
 
   return (
-    <figure className="mt-8 mb-2">
+    <figure>
       <div
         ref={ref}
         className="relative border border-border/60 bg-card/40 px-4 py-4 sm:px-6"

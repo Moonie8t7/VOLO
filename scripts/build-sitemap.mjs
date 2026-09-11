@@ -35,7 +35,7 @@ const ROUTES = [
      */
     images: [
       {
-        loc: '/assets/volo-sorted-order-preview.v3.png',
+        loc: '/assets/volo-sorted-order-preview.v4.png',
         title: 'A sorted Baldur\'s Gate 3 load order in VOLO',
         caption:
           'Each mod shows its position, how far it moved, the section it belongs '
@@ -96,9 +96,8 @@ const ROUTES = [
  *
  * A shallow clone holds one commit, so `git log -1 -- <file>` reports that
  * commit for every file and every route claims it changed today. The workflows
- * check out shallow by default, which is how the deployed sitemap came to
- * stamp the build date on pages untouched for days: exactly the invented
- * freshness the file header says is worse than no date. Checkouts now ask for
+ * check out shallow by default, so the deployed sitemap stamped the build date on pages untouched for days,
+ * the invented freshness the file header warns about. Checkouts now ask for
  * full history, and this refuses to guess if one ever does not.
  */
 const shallow = (() => {

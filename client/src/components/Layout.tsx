@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   if (location === "/") return <>{children}</>;
 
   return (
-    <div className="flex min-h-screen flex-col bg-background lg:h-screen lg:flex-row lg:overflow-hidden">
+    <div className="flex min-h-dvh flex-col lg:h-dvh lg:flex-row lg:overflow-hidden">
       {/* Visible only once focused, so keyboard users can jump the nav. */}
       <a
         href="#main"

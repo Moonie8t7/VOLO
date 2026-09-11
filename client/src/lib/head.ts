@@ -17,6 +17,8 @@ import measured from './measured.json';
 
 export const SITE = 'https://volobg3.com';
 
+export const REPO = 'https://github.com/Moonie8t7/VOLO';
+
 interface PageMeta {
   title: string;
   description: string;

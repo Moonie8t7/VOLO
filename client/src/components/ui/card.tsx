@@ -8,8 +8,15 @@ const Card = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
+    /* The site's panel frame, applied here so no page has to add it: corner
+       ornaments, edges bright at the corners and dark at the middle, and a
+       fill darker than the ground. The frame draws its own edge, so there is
+       no border or bevel here. An earlier `shadow-bg3` class was applied in
+       thirteen places and never to this component, and an earlier version
+       carried a fan of rays from card-corner.svg that the site itself never
+       shows on a desktop layout. */
     className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      "frame-bg3 overflow-hidden rounded-lg bg-card text-card-foreground",
       className
     )}
     {...props}
@@ -36,7 +43,7 @@ const CardTitle = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
+      "font-display text-2xl leading-none",
       className
     )}
     {...props}

@@ -6,7 +6,7 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { Link } from 'wouter';
 import {
-  Search, AlertTriangle, Info, XCircle, ArrowRight, Download, ChevronDown, ChevronUp, Layers,
+  Search, AlertTriangle, Info, XCircle, Download, ChevronDown, ChevronUp, Layers,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -84,9 +84,9 @@ function MoveControls({ name, onMove }: { name: string; onMove: (d: -1 | 1) => v
 /**
  * Divider slot numbers to the leaf of their label, e.g. 45 to "Feats".
  *
- * The slot is what actually decides where a mod sits, and it is finer than the
- * group: calling a feats mod "Classes" is true but not the reason it sits
- * where it does, and it reads as wrong to anyone who knows the taxonomy.
+ * The slot decides where a mod sits, and it is finer than the group: calling a
+ * feats mod "Classes" is true but is not the reason it sits where it does,
+ * and it looks wrong to anyone who knows the taxonomy.
  */
 const SLOT_LABEL: Map<number, string> = new Map(
   (dividers.all as { num: number; name: string }[]).map(d => {
@@ -266,7 +266,7 @@ export default function OptimisePage() {
       || authorOf(m)?.toLowerCase().includes(q));
   }, [result, query, unsortedOnly, authorOf]);
 
-  /* Shown rows that can be filed, which is what "select all" acts on. */
+  /* Shown rows that can be filed, the rows "select all" acts on. */
   const selectableShown = useMemo(
     () => (result
       ? visible.filter(m => {
@@ -280,7 +280,7 @@ export default function OptimisePage() {
   /* The rows as displayed, so a shift range covers what the user can see. */
   const visibleUuids = useMemo(() => visible.map(m => m.uuid), [visible]);
 
-  /** Mods with no category at all, which is what any of this is for. */
+  /** Mods with no category at all, the ones this page exists for. */
   const unsortedCount = useMemo(
     () => (result
       ? result.mods.filter(m => result.placements.get(m.uuid)?.groupSource === 'default').length
@@ -317,9 +317,9 @@ export default function OptimisePage() {
    * Deliberately refuses to pool. Selecting mods by two authors and offering
    * everything either of them made would file an author's weapon mod as
    * clothing because one of their dresses was in the selection, and the user
-   * would see only a count. An author's mods are not all one kind, which is
-   * why the mined version of this guess demands three catalogued mods and
-   * eighty percent agreement before it will say anything.
+   * would see only a count. An author's mods are not all one kind, so the mined version of this guess
+   * demands three catalogued mods and eighty percent agreement before it says
+   * anything.
    */
   const alsoByAuthor = useMemo(() => {
     if (!result || !selected.size) return [];
@@ -352,7 +352,7 @@ export default function OptimisePage() {
 
   if (isLoadingMasterlist || !result) {
     return (
-      <div className="p-8 min-h-screen bg-gradient-to-br from-background via-background to-card">
+      <div className="p-8 min-h-dvh bg-gradient-to-br from-background via-background to-card">
         <div className="max-w-6xl mx-auto animate-pulse space-y-4">
           <div className="h-10 w-1/3 bg-card/50 border border-primary/20" />
           {[...Array(6)].map((_, i) => (
@@ -368,11 +368,11 @@ export default function OptimisePage() {
   const byProvenance = countByProvenance(result);
 
   return (
-    <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
+    <div className="p-8 overflow-auto min-h-dvh bg-gradient-to-br from-background via-background to-card">
       <div className="max-w-6xl mx-auto space-y-8">
         <header className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-display font-bold text-gradient-bg3">Sorted order</h1>
+            <h1 className="fluid-h2 ruled">Sorted order</h1>
             <p className="text-muted-foreground mt-2 font-body" role="status" aria-atomic="true">
               {sourceName && <span className="font-mono text-xs">{sourceName}</span>}
             {sourceName && ', '}
@@ -384,7 +384,6 @@ export default function OptimisePage() {
             <Button size="lg">
               <Download className="mr-2 h-4 w-4" aria-hidden="true" />
               Export
-              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Button>
           </Link>
         </header>
@@ -396,9 +395,8 @@ export default function OptimisePage() {
           </Alert>
         )}
 
-        {/* A single dense strip rather than four big-number cards. The figures
-            are supporting detail, not the point of the page, and four identical
-            metric cards is the stock dashboard treatment. */}
+        {/* A single dense strip rather than four big-number cards. The figures are supporting detail, and four identical metric cards is the
+        stock dashboard treatment. */}
         <dl className="flex flex-wrap items-baseline gap-x-8 gap-y-3 border-y border-border/40 py-4">
           <Metric label="mods" value={stats.total} />
           <Metric
@@ -500,8 +498,7 @@ export default function OptimisePage() {
               )}
               {selectableShown.length > 0 && (
                 /* Fifty clothing mods from fifty authors have nothing in
-                   common a machine can see. Filtering to them and taking the
-                   lot is the shortest honest route. */
+                   common a machine can see. Filtering to them and taking the lot is the shortest route. */
                 <button
                   onClick={() => {
                     const all = selectableShown.map(m => m.uuid);
@@ -745,7 +742,7 @@ function IssueMods({ issue, mods }: { issue: Issue; mods: Mod[] }) {
 
   if (!named.length) return null;
 
-  // A handful reads as a sentence; ninety-one needs to be asked for.
+  // A handful fits in a sentence; ninety-one has to be asked for.
   const inline = named.length <= 6;
   const shown = inline || open ? named : named.slice(0, 6);
 
@@ -810,16 +807,15 @@ function IssueCard({ issue, mods }: { issue: Issue; mods: Mod[] }) {
 
 function EmptyState() {
   return (
-    <div className="p-8 min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-card">
+    <div className="p-8 min-h-dvh flex items-center justify-center bg-gradient-to-br from-background via-background to-card">
       <div className="text-center max-w-md">
-        <h1 className="text-3xl font-display font-bold text-gradient-bg3">Nothing to sort yet</h1>
+        <h1 className="fluid-h3 ruled">Nothing to sort yet</h1>
         <p className="text-muted-foreground mt-3 font-body">
           Import a load order from BG3 Mod Manager and VOLO will arrange it.
         </p>
         <Link href="/import">
           <Button size="lg" className="mt-6">
             Import a load order
-            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </Button>
         </Link>
       </div>

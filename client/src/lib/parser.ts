@@ -26,9 +26,8 @@ const DIVIDER_UUIDS = new Set<string>(dividers.uuids);
  *
  * A UUID is exact but not durable. Keileon rebuilt Ragnarok Raven's dividers
  * from scratch, which issues new identifiers for every pak, and told us the
- * names are changing too. What he could promise was the filename prefix, and
- * that is the only signal here surviving both a reissued UUID and a restyled
- * label.
+ * names are changing too. He could promise the filename prefix, the only signal that survives both a
+ * reissued UUID and a restyled label.
  *
  * It reaches fewer files than the shape rule does, because a thin export
  * carries no filenames at all: of 41,443 corpus rows only 1,018 have one. The
@@ -70,8 +69,8 @@ function dividerLabel(name: string): string | null {
 }
 
 /**
- * Cosmetic dividers modders insert to section their orders. They are not mods,
- * but they ARE the community's own categorisation, so we keep them separately.
+ * Cosmetic dividers modders insert to section their orders. They are not mods. They are the community's own categorisation, so they are
+ * kept separately.
  *
  *   ---------------------------|   Spells   |---------------------------
  *   ] Armor [

@@ -38,8 +38,7 @@ const CORPUS_DIR = 'Load Orders - Public Submitted';
 
 /**
  * `--out <dir>` writes elsewhere and `--exclude <file>` leaves one order out,
- * so a masterlist can be built that has never seen a given order. That is what
- * makes honest held-out evaluation possible: scoring against orders the
+ * so a masterlist can be built that has never seen a given order. That makes held-out evaluation possible: scoring against orders the
  * masterlist was built from measures memory, not generalisation.
  */
 const argOf = (name, fallback) => {
@@ -65,7 +64,7 @@ const ENGINE_MASTERS = new Set(
  * Astra's Load Order Dividers, recognised by exact UUID. In submitted orders
  * they are entries like any other, so without this they would be mined as
  * mods; instead they vanish from the mod list and their labels become section
- * hints, exactly like hand-typed dashed separators.
+ * hints, like hand-typed dashed separators.
  */
 const DIVIDERS = (() => {
   try {
@@ -858,9 +857,8 @@ for (const file of fs.readdirSync(CORPUS_DIR).sort()) {
  *
  * Nine families of near-identical orders sit in the corpus, twenty-one files
  * between them: somebody refines their list and submits again a day later, or
- * submits both a thin and a full export of the same evening. Every copy is real
- * and every copy is honest, and counting each one as another opinion about
- * ordering weights one list four times. The run prints the current figures,
+ * submits both a thin and a full export of the same evening. Every copy is real, and counting each one as another opinion about ordering
+ * weights one list four times. The run prints the current figures,
  * which are the ones to trust; at the time of writing 117 orders are 105
  * near-duplicate-adjusted families and 98 working orders are 86.
  *
@@ -869,9 +867,8 @@ for (const file of fs.readdirSync(CORPUS_DIR).sort()) {
  * two people who started from the same published collection. Nor is a family an
  * independence estimate in the other direction: two lists that share a common
  * ancestor but have drifted below the threshold are related and are counted
- * separately. All this measures is that two sequences are nearly the same
- * sequence, and that is the whole of the claim: a list that agrees with itself
- * is not a second opinion. An earlier version of this comment said "one vote per
+ * separately. This measures only that two sequences are nearly the same sequence. A list
+ * that agrees with itself is not a second opinion. An earlier version of this comment said "one vote per
  * person", which asserts something the corpus cannot support, and then justified
  * keeping presence on the opposite assumption three sentences later.
  *
@@ -1031,9 +1028,7 @@ const NEAR_DUPLICATE = 0.85;
  * has been seen under more than one UUID the one more entries agree on takes
  * it, and ties break on the UUID itself so a rebuild is deterministic.
  *
- * Only names that some export has actually supplied a UUID for appear here. A
- * mod nobody has ever exported with one stays keyed by its name, which is the
- * honest answer rather than a guess.
+ * Only names that some export has actually supplied a UUID for appear here. A mod nobody has ever exported with one stays keyed by its name.
  */
 const uuidByName = (() => {
   const votes = new Map();
@@ -1197,7 +1192,7 @@ for (const order of orders) {
     if (order.label === 'working') r.seenInWorking.add(order.file);
     if (order.label === 'broken') r.seenInBroken.add(order.file);
     // An order VOLO sorted still proves the mod exists and that somebody ran it,
-    // which is why it counts towards presence at all. Recorded separately so a
+    // so it counts towards presence. Recorded separately so a
     // page can say how much of a mod's support is VOLO's own answer returning.
     if (!order.positional) r.seenInVoloSorted.add(order.file);
     if (order.gameBuild && compareBuilds(order.gameBuild, r.lastGameBuild ?? '0') > 0) {
@@ -1367,9 +1362,8 @@ for (const r of mods.values()) {
    * A mod that is renamed keeps being listed under its old name by everyone who
    * has not updated, and the corpus holds both. Only the most frequent survived
    * into the masterlist, so a stale pak matched nothing by name and fell through
-   * to whatever the next rule guessed. UUID covers most of these, which is why
-   * it was survivable; a thin export has no UUID to fall back on, and that is
-   * exactly the case where the name is all there is.
+   * to whatever the next rule guessed. UUID covers most of these, so it was survivable; a thin export has no UUID to
+   * fall back on, and then the name is all there is.
    */
   const alternateNames = observed.slice(1).map(([n]) => n);
 
@@ -1430,8 +1424,7 @@ for (const r of mods.values()) {
       stats.fromExternal = (stats.fromExternal ?? 0) + 1;
     }
   }
-  // The author's other catalogued mods. Weaker than the mod's own listing,
-  // which is why it runs after; a specialist's habit is real information, but
+  // The author's other catalogued mods. Weaker than the mod's own listing, so it runs after; a specialist's habit is real information, but
   // it is about the author, not about this mod.
   if (!group && r.author && AUTHOR_PRIOR.has(r.author)) {
     group = AUTHOR_PRIOR.get(r.author);
@@ -1477,7 +1470,7 @@ for (const r of mods.values()) {
   // categorised mod lands on the skeleton rather than at the end of the order.
   // A curated slot outranks observation. It is the one tier where somebody has
   // stated the constraint, and the corpus filing Compatibility Framework as a
-  // library is exactly the case it exists to overrule.
+  // library is the case it exists to overrule.
   if (dividerFromCurated !== null) {
     plugin.divider = dividerFromCurated;
   } else if (r.dividers.size) {
@@ -1627,8 +1620,8 @@ const sequenceEdges = [];
  *
  * Validated by replaying each submission as if new and checking predictions
  * against labels the predictor could not see: 89.9 percent right overall, and
- * accuracy rises monotonically with the agreement score, which is what makes
- * that score worth storing as a confidence value. Placements below 0.7
+ * accuracy rises monotonically with the agreement score, so that score is worth
+ * storing as a confidence value. Placements below 0.7
  * agreement or with fewer than three voters stay unsorted; at that level the
  * measured accuracy approaches a coin flip.
  */
@@ -1724,9 +1717,8 @@ const nexusMatches = (() => {
      * The enrichment file is keyed by uuid and written by a nightly crawl, so a
      * mod whose identity this mine retires keeps its old key until the crawl
      * next runs. Dropping those is right: the alternative is attaching one mod's
-     * Nexus listing to another. But it fails quietly, and a mod losing its
-     * listing looks exactly like a mod that never had one, so the count is
-     * reported. Zero is the expected reading, and a number that stays high
+     * Nexus listing to another. But it fails quietly, and a mod losing its listing looks the same as a mod that never had one, so
+     * the count is reported. Zero is the expected reading, and a number that stays high
      * across several runs means the crawl has stopped keeping up.
      */
     if (retired) {
@@ -1863,7 +1855,7 @@ const corpusOverrules = (dependent, dependency) => {
  *
  *   - Nexus requirement tables are free text and include optional suggestions
  *     ("Works without, but...", "(Optional) Recommended Installation Tool")
- *     and install tools. Anything whose note reads as optional is dropped.
+ *     and install tools. Anything whose note says it is optional is dropped.
  *   - Only exact name matches join a mod to its Nexus entry. Fuzzy matches are
  *     fine for a category guess and not fine for a constraint.
  *   - mod.io names must match exactly and unambiguously; a name shared by two
@@ -2025,8 +2017,7 @@ if (process.env.VOLO_NO_EXTERNAL_DEPS) {
  * Overruling a mod's own metadata takes more evidence than overruling a
  * catalogue's requirements table, so this asks for more witnesses and a clear
  * majority rather than a bare one. Only the ordering claim is dropped. The
- * requirement stands, so a framework that is genuinely absent is still
- * reported as missing.
+ * requirement stands, so a framework that is absent is still reported as missing.
  */
 const DECLARED_MIN_WITNESSES = 3;
 const DECLARED_MIN_SHARE = 0.75;
@@ -2064,9 +2055,8 @@ for (const [uuid, acc] of pooled) {
   if (!plugin) continue;
   /*
    * The flag travels on the mod, not on each pairing, so a dependant nobody
-   * has posted an order for is covered too. That is the point: the reports
-   * that prompted this were from people whose exact combination the corpus
-   * had never seen.
+   * has posted an order for is covered too. The reports that prompted this were from people whose exact combination the
+   * corpus had never seen.
    */
   plugin.loadsAfterDependents = true;
   lateLoaders.push({ name: plugin.name, ...acc, witnesses });
@@ -2162,8 +2152,7 @@ if (lateLoaders.length) {
  * the names it has also been published under.
  *
  * Aliases are indexed in a second pass so a canonical name always wins its own
- * key, which is how client/src/lib/optimiser.ts indexes them and for the same
- * reason: an alias must never displace the real thing.
+ * key, as client/src/lib/optimiser.ts indexes them, for the same reason: an alias must never displace the real thing.
  *
  * They have to be indexed at all because which spelling is canonical is decided
  * by a vote among the orders carrying the mod, and that vote moves. Issue #160
@@ -2196,9 +2185,8 @@ function nameIndex(rows) {
  *
  * Checked here rather than where the file is read, because this is the first
  * point that holds a masterlist to check against. An alias naming a mod that
- * does not exist is inert: it reads as a handled case while the requirement
- * goes on matching nothing, which is the failure this whole tier is written to
- * be loud about. So it stops the build rather than shipping quietly.
+ * does not exist is inert: it looks handled while the requirement goes on matching nothing, the failure
+ * this tier is written to be loud about. So it stops the build rather than shipping quietly.
  */
 const requirementAliases = {};
 /** Required mod uuid -> uuids of mods that stand in for it. */
@@ -2453,8 +2441,7 @@ Builds observed across the corpus, newest first:
 
 ${builds.length ? builds.map(b => `- \`${b}\` (${patchLabel(b)})`).join('\n') : '_none recorded_'}
 
-${plugins.filter(p => p.lastSeenGameBuild).length} mods record the newest build they were seen on, which is what would let
-the tool flag a mod as last verified on an older patch.
+${plugins.filter(p => p.lastSeenGameBuild).length} mods record the newest build they were seen on, which would let the tool flag a mod as last verified on an older patch.
 
 ## How each mod got its group
 
@@ -2506,8 +2493,7 @@ which is not a finding. It reads at all only because the requirements stated in
 a TSV are no longer discarded, and it is recorded rather than believed.
 
 Only the middle row feeds anything today. A mod seen in a broken order and in
-no working one is reported to the user as a place to start looking, worded as
-exactly that rather than as a fault.
+no working one is reported to the user as a place to start looking, worded as a place to look and not as a fault.
 
 ## Requirements the corpus overrules
 
@@ -2586,10 +2572,63 @@ console.log(`game:      ${masterlist.gamePatch ?? 'unknown'} (build ${masterlist
  *
  * Only a full run may write it. Held-out evaluation rebuilds the masterlist
  * once per fold with --exclude and --out, and an unconditional write here let
- * the last fold's shrunken figures ship to every page, which is exactly what
- * happened once.
+ * the last fold's shrunken figures ship to every page, which happened once.
  */
 const foldRun = EXCLUDE !== null || OUT_DIR !== 'masterlist';
+
+/**
+ * The date a corpus file carries in its name, or null for a file that
+ * predates intake and has none.
+ *
+ * @param file a corpus file name such as working_issue-104_2026-08-16.json
+ * @returns the YYYY-MM-DD, or null
+ */
+function dateOf(file) {
+  const m = file.match(/_issue-\d+_(\d{4}-\d{2}-\d{2})\./);
+  return m ? m[1] : null;
+}
+
+/**
+ * The Monday of the ISO week a date falls in, as YYYY-MM-DD.
+ *
+ * @param date a YYYY-MM-DD string
+ * @returns the week's Monday
+ */
+function weekOf(date) {
+  const d = new Date(`${date}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7));
+  return d.toISOString().slice(0, 10);
+}
+
+/*
+ * The landing page's corpus growth chart and its placement sources chart
+ * read from the summary, so they cannot drift from the masterlist the way
+ * hand-typed figures did.
+ */
+const dated = orders.map(o => dateOf(o.file)).filter(d => d !== null).sort();
+const byWeek = new Map();
+for (const date of dated) {
+  const week = weekOf(date);
+  byWeek.set(week, (byWeek.get(week) ?? 0) + 1);
+}
+const weekKeys = [...byWeek.keys()].sort();
+const weekly = [];
+if (weekKeys.length > 0) {
+  const last = weekKeys[weekKeys.length - 1];
+  const cursor = new Date(`${weekKeys[0]}T00:00:00Z`);
+  for (;;) {
+    const week = cursor.toISOString().slice(0, 10);
+    weekly.push({ week, orders: byWeek.get(week) ?? 0 });
+    if (week === last) break;
+    cursor.setUTCDate(cursor.getUTCDate() + 7);
+  }
+}
+const placements = {};
+for (const p of plugins) {
+  const source = p.evidence?.source ?? 'none';
+  placements[source] = (placements[source] ?? 0) + 1;
+}
+
 if (!foldRun) {
   fs.writeFileSync(
     path.join('client', 'src', 'lib', 'masterlist-summary.json'),
@@ -2601,10 +2640,13 @@ if (!foldRun) {
       workingOrders: masterlist.provenance.working,
       orders: masterlist.provenance.ordersAnalysed,
       /*
-       * Null until the catalogues are next rebuilt, which is why the pages
-       * treat it as optional rather than assuming a number is there.
+       * Null until the catalogues are next rebuilt, so the pages treat it as optional.
        */
       catalogue: EXTERNAL?.catalogue ?? null,
+      latest: dated.length > 0 ? dated[dated.length - 1] : null,
+      undated: orders.length - dated.length,
+      weekly,
+      placements,
     }, null, 2)}\n`,
   );
 }

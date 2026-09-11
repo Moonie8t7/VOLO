@@ -36,8 +36,7 @@ async function fetchJson(url: string, timeoutMs: number): Promise<ExternalListin
  * Returns the best listing available, or null when neither copy loads.
  *
  * Never rejects. Sorting works without it; mods the masterlist and the name
- * patterns both miss simply stay unsorted, exactly as they did before this
- * tier existed.
+ * patterns both miss stay unsorted, as they did before this tier existed.
  */
 export async function loadListing(): Promise<ExternalListing | null> {
   if (cache) return cache;

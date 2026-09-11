@@ -55,8 +55,9 @@ function ownDividersByGroup(
   const withPaks = sections.filter((s): s is ImportedSection & DividerEntry => !!s.uuid && !!s.name);
   if (!withPaks.length) return assigned;
 
-  // afterIndex counts the mods parsed before the header, which is exactly each
-  // mod's originalIndex, so the file's own order is recoverable from the sort.
+  // afterIndex counts the mods parsed before the header, the same value as each
+  // mod's originalIndex, so the file's own order can be recovered after the
+  // sort.
   const original = [...mods].sort((a, b) => a.originalIndex - b.originalIndex);
   const takenDivider = new Set<string>();
 
@@ -119,8 +120,7 @@ const escapeCsv = (v: string) => (/[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"
  * rather than promising the user their whole set back.
  *
  * Not every header returns. Personal ones like "The Bone Zone" head mods that
- * scatter across several groups once sorted, and a divider that cannot be
- * placed honestly is left out.
+ * scatter across several groups once sorted, and a divider that cannot be placed with confidence is left out.
  */
 export function dividerPlan(result: SortResult, sections: ImportedSection[] = []) {
   const carried = sections.filter(s => s.uuid && s.name).length;
@@ -158,11 +158,10 @@ function plannedDividers(
   // all 131 got eighteen back: the finer headings, which are the reason to
   // install the set at all, were the ones dropped.
   //
-  // The honest test is whether they have that exact pak, and the import says
-  // so. Our dividers carry the same uuids as the set they are based on,
+  // The test is whether they have that exact pak, and the import says so. Our dividers carry the same uuids as the set they are based on,
   // differing only in their labels, so anyone running either resolves all of
-  // them. Someone using a different set matches none of these uuids and keeps
-  // the per-group behaviour, which is what they can resolve.
+  // them. Someone using a different set matches none of these uuids and keeps the per-
+  // group behaviour, which their set can resolve.
   const imported = new Map(
     sections.filter(s => s.uuid).map(s => [String(s.uuid).toLowerCase(), s.name]),
   );

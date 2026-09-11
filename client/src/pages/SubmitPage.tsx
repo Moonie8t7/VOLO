@@ -5,7 +5,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
-import { Check, Heart, Upload, ArrowRight } from 'lucide-react';
+import { Check, Heart, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -165,10 +165,10 @@ export default function SubmitPage() {
   };
 
   return (
-    <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
+    <div className="p-8 overflow-auto min-h-dvh bg-gradient-to-br from-background via-background to-card">
       <div className="max-w-3xl mx-auto space-y-8">
         <header>
-          <h1 className="text-4xl font-display font-bold text-gradient-bg3">Submit a load order</h1>
+          <h1 className="fluid-h2 ruled">Submit a load order</h1>
           <p className="text-muted-foreground mt-2 font-body">
             Orders you have actually played on are what VOLO learns from.
             Working orders sharpen where mods belong; broken ones sharpen the
@@ -221,15 +221,14 @@ export default function SubmitPage() {
                   <>
                     <p className="text-sm text-muted-foreground">
                       What helps most is an order you have actually played on,
-                      working or broken. Send the file as it is, a BG3 Mod
-                      Manager export or the game's own modsettings.lsx, rather
-                      than tidying it up first: the dividers, section headers
-                      and version data are half of what VOLO learns from.
+                      working or broken. Send the file as it is, a BG3 Mod Manager export or the game's own
+                      modsettings.lsx, without tidying it first. The dividers,
+                      section headers and version data are half of what VOLO
+                      learns from.
                     </p>
 
                     {mods.length >= 5 && (
                       <Button variant="outline" onClick={useSession}>
-                        <ArrowRight className="mr-2 h-4 w-4" aria-hidden="true" />
                         Use the order imported here ({mods.length} mods)
                       </Button>
                     )}
@@ -324,7 +323,7 @@ export default function SubmitPage() {
                     <span className="block text-xs text-muted-foreground mt-1">
                       An order VOLO sorted still teaches it which mods work
                       together. It cannot teach it where they go, because that
-                      part came from VOLO. Saying so keeps the numbers honest.
+                      part came from VOLO. Saying so keeps the figures accurate.
                     </span>
                   </p>
                   {([

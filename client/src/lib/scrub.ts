@@ -20,8 +20,7 @@
  * Drive-letter paths, matched on backslashes alone.
  *
  * Allowing forward slashes as well makes "https://host/a/b" satisfy the
- * drive-letter pattern, and an earlier version of this rewrote the URLs in a
- * mod's description because of exactly that. A Windows path uses backslashes
+ * drive-letter pattern, and an earlier version of this rewrote the URLs in a mod's description because of that. A Windows path uses backslashes
  * and a URL never does.
  */
 const WINDOWS_PATH = /(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g;

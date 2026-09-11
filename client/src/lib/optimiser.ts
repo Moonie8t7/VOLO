@@ -30,9 +30,8 @@ const DEFAULT_GROUP = 'unsorted';
  *
  * Each entry names the exact divider slot the mod belongs on, and its group
  * name must match the masterlist vocabulary exactly. A typo'd group does not
- * push the mod to the end, because the slot still places it; it silently
- * loses only the within-slot ranking, which is why the smoke test checks
- * every entry against the group list rather than trusting eyes.
+ * push the mod to the end, because the slot still places it; it loses only the within-slot ranking, and silently, so the smoke test checks
+ * every entry against the group list.
  * The dividers are the skeleton of the order whether or not the divider paks
  * are installed, so a feat mod belongs at 045 Skillset Feats; filing it under
  * "Classes" would land it on the 056 category marker, below every spell.
@@ -225,13 +224,12 @@ function indexMasterlist(masterlist: Masterlist) {
    *
    * A renamed mod goes on being listed under its old name by everyone who has
    * not updated, so a stale pak matched nothing and fell through to whatever the
-   * next rule guessed. UUID covers most of that, which is why it never showed;
-   * a thin export has no UUID, and that is precisely when the name is all there
-   * is. 260 of the corpus's 332 alternate names reach a mod nothing else reaches.
+   * next rule guessed. UUID covers most of that, so it never showed; a thin export has no UUID, and
+   * then the name is all there is. 260 of the corpus's 332 alternate names reach a mod nothing else reaches.
    *
-   * A second pass rather than one, so a canonical name always wins its own key:
-   * the other 64 alternates collide with a name some mod genuinely publishes
-   * under, and an alias must never displace the real thing.
+   * Two passes, so a canonical name always wins its own key: 64 of the alternates
+   * collide with a name some mod publishes under, and an alias must never
+   * displace it.
    */
   for (const p of masterlist.plugins ?? []) {
     for (const alias of p.alternateNames ?? []) {
@@ -420,8 +418,8 @@ export function sortLoadOrder(
      * submitted order holds 23 such mods: unguarded, all 23 shared a single
      * bucket and the last one written answered for every one of them, so a
      * dependency naming any of them resolved to whichever happened to be last.
-     * Unreachable by name is the honest answer when there is no name left to
-     * match on, and the uuid path is unaffected.
+     * Unreachable by name is the correct answer when there is no name left to match
+     * on, and the uuid path is unaffected.
      */
     const norm = m.name.toLowerCase().replace(/[^a-z0-9]/g, '');
     if (norm && !byNormName.has(norm)) byNormName.set(norm, m);
@@ -627,10 +625,9 @@ export function sortLoadOrder(
     const soft = softRequirements.has(depName);
     const asks = `${wanters.length} mod${wanters.length > 1 ? 's require' : ' requires'}`;
     /*
-     * The count the corpus actually holds, said plainly. A reader can weigh
-     * "31 of 33 working orders that use these mods do not have it" and cannot
-     * weigh a colour, and the number is the same evidence the severity was
-     * chosen from, so stating it is honest either way it falls.
+     * The count the corpus actually holds, said plainly. A reader can weigh "31 of 33 working orders that use these mods do not have
+     * it" and cannot weigh a colour. The number is the evidence the severity
+     * was chosen from, so it is stated either way.
      */
     const seen = absenceOf.get(depName);
     const without = seen ? seen.witnesses - seen.held : 0;
@@ -660,11 +657,11 @@ export function sortLoadOrder(
       uuids: wanters,
       /*
        * "Install it" is the wrong first instruction, and it cost somebody an
-       * afternoon. VOLO reads an exported load order and nothing else, so the
-       * only thing it can honestly say is that the mod is not in the export. A
+       * afternoon. VOLO reads an exported load order and nothing else, so all it can say is that
+       * the mod is not in the export. A
        * mod manager lists what is installed on disk, which is a different set:
        * a mod sitting there disabled shows as present in the manager and is
-       * absent from the export. Issue #168 was exactly that, and the reporter
+       * absent from the export. Issue #168 was one such case: the reporter
        * reinstalled the mod twice and refreshed the manager because the message
        * told them to, none of which could have changed the file they gave us.
        * So the enabling case goes first, because it is the one where the tool
@@ -872,7 +869,7 @@ export function sortLoadOrder(
   }
 
   /*
-   * Curated incompatibilities: the one thing a statistic cannot express.
+   * Curated incompatibilities, which no statistic can express.
    *
    * Everything else here says where a mod usually goes. This says two mods must
    * not both be installed, which no amount of counting co-occurrences can

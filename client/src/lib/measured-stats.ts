@@ -4,8 +4,7 @@
  * Three places talk about the held-out evaluation: the measured page, the
  * sceptical part of the about page, and the README that scripts/sync-figures
  * rewrites. Each hand-derived copy of these figures has gone stale at least
- * once, and a page arguing for honest measurement cannot contradict its own
- * table. So the prose interpolates from here and nothing is typed twice.
+ * once, and the measured page cannot be allowed to contradict its own table. So the prose interpolates from here and nothing is typed twice.
  */
 
 import measured from './measured.json';
@@ -26,7 +25,7 @@ const spread = (() => {
   return Math.sqrt(held.reduce((a, b) => a + (b - m) ** 2, 0) / (held.length - 1));
 })();
 
-/** Every scored order, exactly as verify-holdout wrote it. */
+/** Every scored order, as verify-holdout wrote it. */
 export const ORDERS = measured.orders;
 
 /** How many were scored, which is fewer than the corpus holds. */
@@ -38,7 +37,7 @@ export const SELF_SORTED = 'selfSorted' in measured ? (measured.selfSorted as nu
 /** The headline: agreement with players on orders the masterlist never read. */
 export const HELD_OUT = pct(mean(held));
 
-/** The same orders shuffled, which is what "better than nothing" has to beat. */
+/** The same orders shuffled, the figure the sorter has to beat. */
 export const RANDOM = pct(mean(ORDERS.map(o => o.random)));
 
 /**
@@ -51,9 +50,9 @@ export const WEIGHTED = pct(
 
 /**
  * How far the headline can be expected to move on its own, as the standard
- * error of the mean. It is the honest answer to "is 61 percent really 61
- * percent", and it shrinks only with the square root of the corpus, which is
- * why one more submission changes so little and a hundred change everything.
+ * error of the mean. It answers whether 61 percent is really 61 percent. It shrinks with the square
+ * root of the corpus, so one more submission changes it little and a hundred
+ * change it a lot.
  */
 export const ERROR = pct(spread / Math.sqrt(EVALUATED || 1));
 

@@ -15,15 +15,14 @@
 
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-
-const REPO = 'https://github.com/Moonie8t7/VOLO';
+import { REPO } from '@/lib/head';
 
 export default function PrivacyPage() {
   return (
-    <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
+    <div className="p-8 overflow-auto min-h-dvh bg-gradient-to-br from-background via-background to-card">
       <div className="max-w-3xl mx-auto space-y-10">
         <header>
-          <h1 className="text-4xl font-display font-bold text-gradient-bg3">
+          <h1 className="fluid-h2 ruled">
             Privacy
           </h1>
           <p className="text-muted-foreground mt-2 font-body">
@@ -32,7 +31,7 @@ export default function PrivacyPage() {
         </header>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">The short version</h2>
+          <h2 className="fluid-h3 ruled">The short version</h2>
           <p>
             There is no account, no advertising, no tracking cookie and nothing
             sold to anybody. Your load order is read inside your browser and is
@@ -42,7 +41,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">Sorting your order</h2>
+          <h2 className="fluid-h3 ruled">Sorting your order</h2>
           <p>
             The file you drop in is parsed by code running on your own machine.
             It is the masterlist that travels, downloaded to you, and the sort
@@ -54,7 +53,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">
+          <h2 className="fluid-h3 ruled">
             What is kept on your device
           </h2>
           <p>
@@ -68,7 +67,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">
+          <h2 className="fluid-h3 ruled">
             If you submit an order
           </h2>
           <p>
@@ -83,8 +82,7 @@ export default function PrivacyPage() {
             BG3 Mod Manager writes the full path of a pak into some entries, and
             that path contains the account name of whoever exported it, so one
             submitted order can publish a stranger's real name without them ever
-            deciding to. It happened once, which is why the same scrub now runs
-            three times: in your browser, again at the API, and again when the
+            deciding to. It happened once. The same scrub now runs three times: in your browser, again at the API, and again when the
             order is taken into the corpus.
           </p>
           <p>
@@ -104,7 +102,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">
+          <h2 className="fluid-h3 ruled">
             Other services your browser talks to
           </h2>
           <p>
@@ -126,18 +124,16 @@ export default function PrivacyPage() {
             <strong>GitHub</strong> is contacted only as a fallback, if the
             masterlist fails to download from this site.{' '}
             <strong>Ko-fi, Patreon and PayPal</strong> are contacted only if you
-            click one of those links: the support page uses plain links rather
-            than embedded widgets, precisely so that nothing loads from them
-            unless you choose to go there.
+            click one of those links: the support page uses plain links, not embedded widgets, so nothing loads from
+            them unless you choose to go there.
           </p>
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">Measurement</h2>
+          <h2 className="fluid-h3 ruled">Measurement</h2>
           <p>
-            VOLO uses Cloudflare Web Analytics. It is a small script that
-            Cloudflare adds at the edge, which is why you will not find it in
-            the source of this site, and it reports each page view together with
+            VOLO uses Cloudflare Web Analytics. It is a small script that Cloudflare adds at the edge, so it does not appear
+            in the source of this site, and it reports each page view together with
             how quickly the page painted and responded on your device. It also
             records the site that referred you, your browser, your operating
             system and your country.
@@ -150,15 +146,14 @@ export default function PrivacyPage() {
             fingerprinting.
           </p>
           <p>
-            Two smaller things, for completeness. Cloudflare keeps request logs
-            the way any host does, which is the paragraph above about them being
-            the host. And Search Console tells me which searches this site turns
-            up in, which is a fact about queries rather than about people.
+            Two smaller things. Cloudflare keeps request logs the way any host does,
+            covered above. Search Console tells me which searches this site
+            turns up in, which concerns queries, not people.
           </p>
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">
+          <h2 className="fluid-h3 ruled">
             Changing your mind
           </h2>
           <p>
@@ -166,14 +161,13 @@ export default function PrivacyPage() {
             taken out of the corpus and the masterlist rebuilt without it. Be
             aware of what that can and cannot undo: the file is removed from the
             project going forward, but it was public, and old commits keep their
-            contents unless the history is rewritten. If something personal
-            reached the corpus, say so plainly in the request and I will treat
-            it as a history rewrite rather than a deletion.
+            contents unless the history is rewritten. If something personal reached the corpus, say so in the request and I will
+            rewrite the history instead of only deleting the file.
           </p>
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">Asking about any of it</h2>
+          <h2 className="fluid-h3 ruled">Asking about any of it</h2>
           <p>
             Questions and removal requests go to{' '}
             <a
@@ -194,8 +188,8 @@ export default function PrivacyPage() {
             >
               the history is public
             </a>
-            , so you can read what changed and when rather than trust a line at
-            the bottom.
+            , so you can read what changed and when instead of trusting a line at the
+            bottom.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Link href="/about">

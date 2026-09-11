@@ -8,15 +8,14 @@
  */
 
 import { Link } from 'wouter';
-import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
   return (
-    <div className="p-8 min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-card">
+    <div className="p-8 min-h-dvh flex items-center justify-center bg-gradient-to-br from-background via-background to-card">
       <div className="text-center max-w-md">
         <p className="font-mono text-sm text-muted-foreground">404</p>
-        <h1 className="text-3xl font-display font-bold text-gradient-bg3 mt-2">
+        <h1 className="fluid-h3 ruled mt-2">
           There is no page here
         </h1>
         <p className="text-muted-foreground mt-3 font-body">
@@ -26,7 +25,6 @@ export default function NotFound() {
           <Link href="/import">
             <Button size="lg">
               Sort a load order
-              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Button>
           </Link>
           <Link href="/" className="underline hover:text-foreground text-sm">

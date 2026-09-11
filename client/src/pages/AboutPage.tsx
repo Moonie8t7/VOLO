@@ -8,13 +8,11 @@
  */
 
 import { Link } from 'wouter';
-import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useStore } from '@/lib/store';
 import summary from '@/lib/masterlist-summary.json';
 import { ENOUGH, ERROR, TARGET } from '@/lib/measured-stats';
-
-const REPO = 'https://github.com/Moonie8t7/VOLO';
+import { REPO } from '@/lib/head';
 
 const num = (n: number) => n.toLocaleString('en-GB');
 
@@ -32,10 +30,10 @@ export default function AboutPage() {
   const share = catalogue ? Math.round((100 * modCount) / catalogue.distinct) : null;
 
   return (
-    <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
+    <div className="p-8 overflow-auto min-h-dvh bg-gradient-to-br from-background via-background to-card">
       <div className="max-w-3xl mx-auto space-y-10">
         <header>
-          <h1 className="text-4xl font-display font-bold text-gradient-bg3">
+          <h1 className="fluid-h2 ruled">
             About VOLO
           </h1>
           <p className="text-muted-foreground mt-2 font-body">
@@ -44,7 +42,7 @@ export default function AboutPage() {
         </header>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">Who</h2>
+          <h2 className="fluid-h3 ruled">Who</h2>
           <p>
             VOLO is built and run by me,{' '}
             <a href={REPO} target="_blank" rel="noreferrer" className="underline hover:text-foreground">
@@ -75,7 +73,7 @@ export default function AboutPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">Why</h2>
+          <h2 className="fluid-h3 ruled">Why</h2>
           <p>
             I love this game. Baldur's Gate 3 is quite possibly my favourite
             game of all time, but there are only so many times I can play a
@@ -92,14 +90,14 @@ export default function AboutPage() {
             sitting in their mod manager, and nobody was collecting any of it.
           </p>
           <p>
-            So VOLO collects it. The rules come from orders people played on,
-            not from opinion, and where the evidence runs out the tool says so
-            and leaves the mod where you had it. That is the whole idea.
+            So VOLO collects it. The rules come from orders people played on. Where the
+            evidence runs out, the tool says so and leaves the mod where you
+            had it.
           </p>
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">How it is built</h2>
+          <h2 className="fluid-h3 ruled">How it is built</h2>
           <p>
             Submitted orders go into a public corpus, {num(summary.orders)} of
             them so far. A script reads them, works out which category each mod
@@ -109,12 +107,11 @@ export default function AboutPage() {
             about your own list is sent anywhere unless you choose to submit it.
           </p>
           <p>
-            The order the categories themselves go in is counted rather than
-            decided. Every pair of mods in every submitted order is tallied to
-            see which category tends to load before which, and the result is
-            what the sorter follows. Some of it contradicts the advice you will
-            read in comment sections, and where they disagree the orders people
-            played on win.
+            The order the categories go in comes from counting the corpus. Every pair of
+            mods in every submitted order is tallied to see which category
+            tends to load before which, and the sorter follows the result.
+            Some of it contradicts advice in comment sections. Where they
+            disagree, the played orders win.
           </p>
           <p>
             Two catalogues sit alongside the corpus: published BG3 mods on Nexus
@@ -139,7 +136,7 @@ export default function AboutPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">
+          <h2 className="fluid-h3 ruled">
             Reasons to be sceptical
           </h2>
           {ENOUGH ? (
@@ -183,7 +180,7 @@ export default function AboutPage() {
         </section>
 
         <section className="space-y-4 font-body leading-relaxed">
-          <h2 className="font-display text-2xl font-bold">Getting in touch</h2>
+          <h2 className="fluid-h3 ruled">Getting in touch</h2>
           <p>
             If a mod is filed wrongly,{' '}
             <a
@@ -223,9 +220,7 @@ export default function AboutPage() {
             masterlist rebuilt, usually within a few minutes of you pressing the
             button, and the issue closes itself to tell you it landed. Wrong
             placements and bug reports are read by me, which means one person in
-            one timezone, normally the same day and sometimes not. Nothing is
-            triaged silently: if a report cannot be acted on, the reply says why
-            rather than leaving it open forever.
+            one timezone, normally the same day and sometimes not. If a report cannot be acted on, the reply says why instead of leaving it open.
           </p>
           <p>
             Your{' '}
@@ -238,7 +233,6 @@ export default function AboutPage() {
             <Link href="/submit">
               <Button>
                 Submit a load order
-                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Button>
             </Link>
             <a href={REPO} target="_blank" rel="noreferrer">

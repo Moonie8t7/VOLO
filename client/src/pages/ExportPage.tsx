@@ -7,7 +7,7 @@
 
 import { useState } from 'react';
 import { Link } from 'wouter';
-import { Download, Copy, Check, ArrowRight, Heart } from 'lucide-react';
+import { Download, Copy, Check, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -64,16 +64,15 @@ export default function ExportPage() {
 
   if (!result) {
     return (
-      <div className="p-8 min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-card">
+      <div className="p-8 min-h-dvh flex items-center justify-center bg-gradient-to-br from-background via-background to-card">
         <div className="text-center max-w-md">
-          <h1 className="text-3xl font-display font-bold text-gradient-bg3">Nothing to export</h1>
+          <h1 className="fluid-h3 ruled">Nothing to export</h1>
           <p className="text-muted-foreground mt-3 font-body">
             Import and sort a load order first.
           </p>
           <Link href="/import">
             <Button size="lg" className="mt-6">
               Import a load order
-              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Button>
           </Link>
         </div>
@@ -105,10 +104,10 @@ export default function ExportPage() {
   };
 
   return (
-    <div className="p-8 overflow-auto min-h-screen bg-gradient-to-br from-background via-background to-card">
+    <div className="p-8 overflow-auto min-h-dvh bg-gradient-to-br from-background via-background to-card">
       <div className="max-w-4xl mx-auto space-y-8">
         <header>
-          <h1 className="text-4xl font-display font-bold text-gradient-bg3">Export</h1>
+          <h1 className="fluid-h2 ruled">Export</h1>
           <p className="text-muted-foreground mt-2 font-body">
             {result.mods.length} mods, ready to go back into BG3 Mod Manager.
           </p>
@@ -326,7 +325,6 @@ export default function ExportPage() {
             <Link href="/submit">
               <Button>
                 Submit this load order
-                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Button>
             </Link>
           </CardContent>
