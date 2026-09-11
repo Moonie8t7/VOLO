@@ -166,9 +166,11 @@ export async function onRequestPost({ request, env }) {
    */
   const arrangement = sortedByVolo === 'volo'
     ? 'I sorted it with VOLO'
-    : sortedByVolo === 'self'
-      ? 'I arranged it myself'
-      : '_No response_';
+    : sortedByVolo === 'ingame'
+      ? 'The in-game mod manager ordered it'
+      : sortedByVolo === 'self'
+        ? 'I arranged it myself'
+        : '_No response_';
 
   const head = [
     '### Does this load order work?',

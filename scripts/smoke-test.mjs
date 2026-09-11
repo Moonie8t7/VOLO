@@ -1746,6 +1746,15 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   const cases = [
     ['a submitter saying VOLO sorted it is believed', { declared: 'volo', agreementWithVolo: 0.4 }, true],
     ['a submitter saying they arranged it is believed', { declared: 'self', agreementWithVolo: 1 }, false],
+    /*
+     * The game orders a list by itself, and that sequence came from neither the
+     * player nor from us. It is independent of VOLO, which is what this rule is
+     * about, so it counts; it is recorded apart from `self` because it is not a
+     * person's judgement either.
+     */
+    ['an order the game arranged counts as independent', { declared: 'ingame', agreementWithVolo: 1 }, false],
+    ['and is still caught when it echoes a neighbour',
+      { declared: 'ingame', agreementWithVolo: 0.93, nearest: { similarity: 0.95, agreementWithVolo: 0.64 } }, true],
     ['an unanswered order matching almost exactly is flagged', { declared: 'unknown', agreementWithVolo: 0.99 }, true],
     ['an unanswered order merely agreeing is not', { declared: 'unknown', agreementWithVolo: 0.8 }, false],
     ['an unmeasurable unanswered order is not', { declared: 'unknown', agreementWithVolo: null }, false],
@@ -1772,6 +1781,56 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   } else {
     failures++;
     for (const [name] of wrong) console.log(`  FAIL  ${name}`);
+  }
+
+  /*
+   * The three places that spell the arrangement answer have to agree.
+   *
+   * A submission is a chain of strings: the template and the site offer an
+   * option, the API writes that wording into the issue body, and intake reads
+   * it back with a regular expression. Nothing links them, so rewording an
+   * option in one place silently records every order as unknown, and unknown is
+   * decided by measurement rather than refused, so nothing fails and nobody
+   * finds out.
+   *
+   * The real expression is lifted out of intake rather than restated, and run
+   * against the exact phrases the other two emit.
+   */
+  {
+    const intake = fs.readFileSync('scripts/process-submission.mjs', 'utf8');
+    const api = fs.readFileSync('functions/api/submit.js', 'utf8');
+    const template = fs.readFileSync('.github/ISSUE_TEMPLATE/submit-load-order.yml', 'utf8');
+
+    const from = intake.indexOf('const declared =');
+    const src = intake.slice(from, intake.indexOf(';', intake.indexOf("'unknown'", from)) + 1);
+    const readBack = new Function('body', `${src}\nreturn declared;`);
+
+    const phrases = [
+      ['I sorted it with VOLO', 'volo'],
+      ['The in-game mod manager ordered it', 'ingame'],
+      ['I arranged it myself', 'self'],
+      ['_No response_', 'unknown'],
+    ];
+
+    const wrong = phrases.filter(([phrase, expected]) => readBack(phrase) !== expected);
+    if (!wrong.length) {
+      console.log(`  ok    intake reads all ${phrases.length} arrangement answers back correctly`);
+    } else {
+      failures++;
+      for (const [phrase, expected] of wrong) {
+        console.log(`  FAIL  "${phrase}" reads back as ${readBack(phrase)}, not ${expected}`);
+      }
+    }
+
+    // And that the wordings are actually the ones on offer.
+    const offered = phrases.slice(0, 3).map(([p]) => p);
+    const missing = offered.filter(p => !api.includes(p) || !template.includes(p));
+    if (!missing.length) {
+      console.log('  ok    the template and the endpoint offer the same three wordings');
+    } else {
+      failures++;
+      for (const p of missing) console.log(`  FAIL  "${p}" is not offered by both the template and the endpoint`);
+    }
   }
 
   // Absence must read as independent, or the whole existing corpus is discarded.

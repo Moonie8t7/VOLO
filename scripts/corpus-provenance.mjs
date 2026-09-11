@@ -69,7 +69,26 @@ export function isVoloSorted(filename, provenance = readProvenance()) {
 export function judge({ declared, agreementWithVolo, nearest }) {
   if (declared === 'volo') return true;
   if (echoesNeighbour(agreementWithVolo, nearest)) return true;
-  if (declared === 'self') return false;
+  /*
+   * `ingame` counts as independent, the same as `self`.
+   *
+   * The in-game mod manager arrived with Patch 7 and orders a list by itself,
+   * so a growing share of submissions have a sequence that came from neither
+   * the player nor from us. The question only ever had two answers, and a
+   * submitter reported that neither fitted: "I arranged it myself" asserts a
+   * person chose the sequence, which is untrue, and leaving it blank says
+   * nothing at all. Seventeen orders were sitting in unknown with no way to
+   * tell which of them this was.
+   *
+   * What this rule is for is the feedback loop, and the game's ordering is not
+   * part of it: it is another program's opinion, formed without reading
+   * anything of ours, so counting it as agreement with VOLO is honest. It is
+   * still not a person's judgement, which is why it is recorded separately
+   * rather than folded into `self`. If it ever turns out that an ordering
+   * produced by a tool should carry less weight than one a player arranged by
+   * hand, the corpus can already tell them apart.
+   */
+  if (declared === 'self' || declared === 'ingame') return false;
   return typeof agreementWithVolo === 'number'
     && agreementWithVolo >= VOLO_MATCH_THRESHOLD;
 }

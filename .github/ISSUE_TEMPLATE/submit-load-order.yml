@@ -32,16 +32,22 @@ body:
       description: >
         An order VOLO sorted still shows which mods work together, but its
         sequence came from VOLO, so it cannot be counted as agreeing with VOLO.
-        Saying so keeps the published numbers honest.
+        Saying so keeps the published numbers honest. Pick the in-game answer
+        if the game's own mod manager decided the sequence: that is independent
+        of VOLO and counts, and it is recorded separately from an order a
+        person arranged by hand.
       options:
         - I arranged it myself
+        - The in-game mod manager ordered it
         - I sorted it with VOLO
   - type: input
     id: patch
     attributes:
       label: BG3 patch
-      description: The game version this order was used with, if you know it.
-      placeholder: Patch 8
+      description: >
+        The game version this order was used with, if you know it. The grey
+        text is only an example. An empty box is recorded as no answer.
+      placeholder: For example, Patch 8
   - type: textarea
     id: order
     attributes:

@@ -88,7 +88,7 @@ export default function SubmitPage() {
   const [orderError, setOrderError] = useState<string | null>(null);
   const [pasted, setPasted] = useState('');
   const [verdict, setVerdict] = useState<'working' | 'broken' | null>(null);
-  const [arrangement, setArrangement] = useState<'volo' | 'self' | null>(null);
+  const [arrangement, setArrangement] = useState<'volo' | 'self' | 'ingame' | null>(null);
   const [notes, setNotes] = useState('');
   const [patch, setPatch] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -324,10 +324,13 @@ export default function SubmitPage() {
                       An order VOLO sorted still teaches it which mods work
                       together. It cannot teach it where they go, because that
                       part came from VOLO. Saying so keeps the figures accurate.
+                      The game's own mod manager is independent of VOLO, so an
+                      order it arranged counts in full.
                     </span>
                   </p>
                   {([
                     ['self', 'I arranged it myself'],
+                    ['ingame', 'The in-game mod manager ordered it'],
                     ['volo', 'I sorted it with VOLO'],
                   ] as const).map(([value, label]) => (
                     <label key={value} className="flex min-h-6 items-center gap-3 cursor-pointer">
@@ -352,14 +355,15 @@ export default function SubmitPage() {
                   <label htmlFor="submit-patch" className="text-sm font-medium font-subheader">
                     BG3 patch this order was played on
                     <span className="block text-xs font-normal text-muted-foreground mt-1">
-                      Leave it blank if you are not sure.
+                      Leave it blank if you are not sure. The grey text is only
+                      an example.
                     </span>
                   </label>
                   <Input
                     id="submit-patch"
                     value={patch}
                     onChange={e => setPatch(e.target.value)}
-                    placeholder="Patch 8"
+                    placeholder="For example, Patch 8"
                     className="font-body text-sm max-w-48"
                   />
                 </div>

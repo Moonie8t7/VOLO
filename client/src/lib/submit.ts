@@ -19,13 +19,16 @@ export interface SubmissionPayload {
   notes?: string;
   patch?: string;
   /**
-   * Whether VOLO produced this order.
+   * How the sequence was arrived at.
    *
    * An order VOLO sorted and someone played is real evidence that the mods work
    * together, and no evidence at all about the sequence, which VOLO chose.
-   * Unanswered is left undefined rather than assumed either way.
+   * `ingame` is the game's own mod manager, which is independent of VOLO and
+   * so counts in full; it is kept apart from `self` because it is not a
+   * person's judgement either. Unanswered is left undefined rather than
+   * assumed either way.
    */
-  sortedByVolo?: 'volo' | 'self';
+  sortedByVolo?: 'volo' | 'self' | 'ingame';
   turnstileToken?: string;
 }
 

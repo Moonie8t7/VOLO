@@ -546,9 +546,15 @@ function agreementWithVolo() {
  * Absent when the issue predates the question or nobody answered, which is
  * treated as unknown rather than as either answer.
  */
+/*
+ * The in-game answer is tested first, because the phrase for it contains the
+ * word "ordered" and a future rewording could easily overlap the others. Order
+ * of these tests is the only thing keeping them apart.
+ */
 const declared = /sorted (?:it )?with volo/i.test(body) ? 'volo'
-  : /arranged (?:it )?myself|my own order/i.test(body) ? 'self'
-    : 'unknown';
+  : /in-?game mod manager/i.test(body) ? 'ingame'
+    : /arranged (?:it )?myself|my own order/i.test(body) ? 'self'
+      : 'unknown';
 
 const matchesVolo = agreementWithVolo();
 
