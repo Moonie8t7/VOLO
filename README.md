@@ -85,10 +85,10 @@ Full detail in [docs/architecture.md](docs/architecture.md).
 
 `masterlist/bg3-masterlist.json` covers 11,729 mods. 6,829 were
 categorised from section headers modders wrote in their own orders,
-2,379 from name patterns, 1,228 from a Nexus or mod.io listing,
+2,379 from name patterns, 1,229 from a Nexus or mod.io listing,
 17 from where their author's other catalogued mods sit, 260 inferred
-from their neighbours, 48 from curated overrides, and 968 are not
-categorised at all. 10,749 of the 11,729 sit on a divider position.
+from their neighbours, 48 from curated overrides, and 967 are not
+categorised at all. 10,750 of the 11,729 sit on a divider position.
 
 These move as the corpus grows.
 [masterlist/coverage-report.md](masterlist/coverage-report.md) is regenerated on
@@ -109,7 +109,7 @@ nothing scores well; a mod left at the end because nothing is known about it is
 rewarded precisely because unplaced mods cluster there. Read it alongside the
 per-order and mod-weighted splits rather than on its own.
 
-968 mods have no category from any source. Almost all appeared in exactly one
+967 mods have no category from any source. Almost all appeared in exactly one
 submitted order, so there is nothing to infer from.
 
 The automated checks parse VOLO's own output with VOLO's own parser, which is

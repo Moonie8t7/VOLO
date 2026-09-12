@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-12T01:50:02.580Z",
+  "generated": "2026-09-12T08:54:13.941Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -37,7 +37,7 @@
     "working": 128,
     "broken": 28,
     "unlabelled": 2,
-    "externalDependencyEdges": 951,
+    "externalDependencyEdges": 954,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -426,8 +426,8 @@
       "usesScriptExtender": true,
       "loadsAfterDependents": true,
       "absence": {
-        "held": 18,
-        "witnesses": 19
+        "held": 19,
+        "witnesses": 20
       }
     },
     {
@@ -78342,9 +78342,10 @@
     {
       "name": "KrynnspaceCoreLibrary",
       "uuid": "d1b9e7a3-3e13-4a52-2369-fa81c6737b86",
-      "group": "unsorted",
+      "group": "Gameplay",
+      "divider": 18.5,
       "evidence": {
-        "source": "none",
+        "source": "external-category",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0,
@@ -79538,7 +79539,13 @@
         "workingInstalls": 2,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "94bd1d83-cbb2-418a-b6b1-161243c954b6",
+          "name": "EquipmentLibrary"
+        }
+      ]
     },
     {
       "name": "Modular Resource Cheats",
@@ -113490,8 +113497,8 @@
     {
       "name": "Weave_Woven_Visages",
       "uuid": "5c3fcecb-26e2-05dc-982e-d1afbecd734a",
-      "group": "Heads",
-      "divider": 63,
+      "group": "Character Customization",
+      "divider": 62.5,
       "evidence": {
         "source": "external-category",
         "installs": 2,
@@ -139891,6 +139898,10 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
+      },
+      "absence": {
+        "held": 1,
+        "witnesses": 2
       }
     },
     {
@@ -161304,7 +161315,18 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        },
+        {
+          "uuid": "name:baldursgate3communitylibrary",
+          "name": "+Baldur's Gate 3 Community Library"
+        }
+      ]
     },
     {
       "name": "Smite Spell Overhaul",
