@@ -21,7 +21,7 @@ nothing reaches it unless you choose to submit an order from the Submit page.
 Mods from Nexus Mods and from mod.io, the platform behind the official in-game
 mod manager, are both supported.
 
-Measured on orders it has never seen, VOLO agrees with them **66.5 percent** of
+Measured on orders it has never seen, VOLO agrees with them **66.8 percent** of
 the time against **50.6 percent** for a random shuffle. That figure averages
 orders rather than mods, so a 41-mod order weighs as much as a 999-mod one,
 though weighting by mods barely moves it. It is a sorting aid with evidence
@@ -83,12 +83,12 @@ Full detail in [docs/architecture.md](docs/architecture.md).
 
 ## The masterlist
 
-`masterlist/bg3-masterlist.json` covers 11,729 mods. 6,829 were
+`masterlist/bg3-masterlist.json` covers 11,733 mods. 6,829 were
 categorised from section headers modders wrote in their own orders,
-2,379 from name patterns, 1,229 from a Nexus or mod.io listing,
+2,381 from name patterns, 1,231 from a Nexus or mod.io listing,
 17 from where their author's other catalogued mods sit, 260 inferred
 from their neighbours, 48 from curated overrides, and 967 are not
-categorised at all. 10,750 of the 11,729 sit on a divider position.
+categorised at all. 10,754 of the 11,733 sit on a divider position.
 
 These move as the corpus grows.
 [masterlist/coverage-report.md](masterlist/coverage-report.md) is regenerated on
@@ -98,7 +98,7 @@ covers the data licence.
 
 ## Known constraints
 
-92 working orders is a small corpus, and it is the binding constraint on
+93 working orders is a small corpus, and it is the binding constraint on
 quality rather than the algorithm. Several plausible improvements have measured
 *worse* than doing nothing, all recorded in
 [docs/decisions.md](docs/decisions.md). More submissions beat more cleverness.
