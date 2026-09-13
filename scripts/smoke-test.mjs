@@ -288,6 +288,39 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }
 }
 
+// A Mod Organizer mod list is not a load order, and one was accepted as a
+// "not working" one: 1,254 Nexus titles with a plus or minus in front, no
+// UUIDs, no sections, and 869 phantom rows in the masterlist by morning.
+{
+  console.log('');
+  console.log('a Mod Organizer list is refused');
+
+  const titles = Array.from({ length: 25 }, (_, i) => `Some Mod Title ${i}`);
+  const list = JSON.stringify({
+    Order: titles.map((t, i) => ({ UUID: '', Name: `${i % 5 === 0 ? '-' : '+'}${t}` })),
+  });
+  const refused = parseLoadOrder(list, 'modlist.json');
+  if (refused.errors.length === 1 && refused.mods.length === 0 && /Mod Organizer/.test(refused.errors[0])) {
+    console.log('  ok    marked names with no identifiers are refused, and told what to send instead');
+  } else {
+    failures++;
+    console.log(`  FAIL  the list parsed as ${refused.mods.length} mods with ${refused.errors.length} error(s)`);
+  }
+
+  // The same titles as a plain list are a thin export and still read, and
+  // marked names carrying real UUIDs are somebody's naming habit.
+  const plain = parseLoadOrder(JSON.stringify({ Order: titles.map(t => ({ UUID: '', Name: t })) }), 'plain.json');
+  const marked = parseLoadOrder(JSON.stringify({
+    Order: titles.map((t, i) => ({ UUID: `aaaaaaaa-0000-0000-0000-${String(i).padStart(12, '0')}`, Name: `+${t}` })),
+  }), 'marked.json');
+  if (plain.mods.length === 25 && !plain.errors.length && marked.mods.length === 25 && !marked.errors.length) {
+    console.log('  ok    a plain thin list and marked names with UUIDs both still parse');
+  } else {
+    failures++;
+    console.log(`  FAIL  plain read ${plain.mods.length} mods, marked read ${marked.mods.length}`);
+  }
+}
+
 // TSV export fixture, modelled on a real BG3MM "export to file" TSV: engine
 // modules appear as rows, there is no UUID column, and dependencies are one
 // comma-separated string of names.
@@ -795,6 +828,53 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   } else {
     failures++;
     for (const g of gaps) console.log(`  FAIL  ${g}`);
+  }
+}
+
+/*
+ * Intake must read what has landed, not what had landed when the issue was
+ * opened, and a burst of issues must not lose runs. Both failed on 13
+ * September 2026: docs/decisions.md#dropped-and-doubled-submissions-2026-09-13.
+ */
+{
+  console.log('');
+  console.log('intake survives a burst');
+
+  const workflow = fs.readFileSync('.github/workflows/process-submission.yml', 'utf8');
+  const checkout = workflow.slice(workflow.indexOf('actions/checkout'), workflow.indexOf('actions/setup-node'));
+  if (/^\s*ref:\s*main\s*$/m.test(checkout)) {
+    console.log('  ok    checkout takes main as it stands, not the sha the event carried');
+  } else {
+    failures++;
+    console.log('  FAIL  checkout has no ref: main, so intake validates against a stale tree');
+  }
+
+  const sweepFile = '.github/workflows/sweep-submissions.yml';
+  const sweep = fs.existsSync(sweepFile) ? fs.readFileSync(sweepFile, 'utf8') : '';
+  const wants = [
+    ['schedule:', 'runs on a schedule'],
+    ['gh workflow run process-submission.yml', 'dispatches intake'],
+    ['-f issue=', 'names the issue to process'],
+    ['github-actions', 'skips issues intake has already answered'],
+    ['load-order-submission', 'covers submissions'],
+    ['Working, I have played on it', 'covers placement reports carrying a played order'],
+  ];
+  const lacking = sweep ? wants.filter(([needle]) => !sweep.includes(needle)) : [['', 'exists']];
+  if (!lacking.length) {
+    console.log('  ok    the sweep dispatches unanswered submissions one at a time');
+  } else {
+    failures++;
+    for (const [, what] of lacking) console.log(`  FAIL  the sweep workflow: ${what} is missing`);
+  }
+
+  // The fragment rule asks GitHub who submitted the order, and stands aside
+  // rather than blocking a landing when it cannot ask.
+  const intake = fs.readFileSync('scripts/process-submission.mjs', 'utf8');
+  if (intake.includes('--json author') && intake.includes('speaks once') && intake.includes('stood aside')) {
+    console.log('  ok    a fragment of the same person\'s order is refused, and the rule stands aside without GitHub');
+  } else {
+    failures++;
+    console.log('  FAIL  the fragment rule is not wired into intake');
   }
 }
 

@@ -93,6 +93,14 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          # The branch as it stands now, not the commit the event was raised
+          # at. An issue event carries the sha main had when the issue was
+          # opened, and runs queue behind one another, so by the time one
+          # starts that sha can be several landings old. Issue #197 validated
+          # against a tree from before #194 landed, found no copy of an order
+          # that was already there, and pushed a second one; the landing step
+          # rebases onto the real tip, so the push went through.
+          ref: main
           # Full history, so build-sitemap can read each page's real last
           # change date. A shallow clone reports HEAD for every file.
           fetch-depth: 0

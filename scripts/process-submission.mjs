@@ -412,6 +412,26 @@ const submittedNames = new Set(
 );
 let nearest = null;
 
+/*
+ * One order, pasted twice, is one witness.
+ *
+ * A reporter filing one issue per mod pasted 51 rows of their order in the
+ * morning and all 125 in the afternoon, and both landed as separate working
+ * orders: the miner's family rule compares by Jaccard, and a fragment shares
+ * too little with the whole to look like a near-duplicate. One player's UI
+ * section then voted twice on every slot it touched.
+ *
+ * Scoped to the same submitter, because a small order that happens to sit
+ * inside a stranger's large one is an independent witness and must count.
+ * The identity is asked of GitHub rather than recorded anywhere, and if it
+ * cannot be asked the rule stands aside rather than blocking a landing on it.
+ */
+const FRAGMENT_MIN_MODS = 20;
+const FRAGMENT_CONTAINMENT = 0.95;
+const FRAGMENT_WINDOW_MS = 14 * 24 * 60 * 60 * 1000;
+const submittedDay = Date.parse(opt('created') ?? '') || Date.now();
+const fragments = [];
+
 for (const f of fs.readdirSync(CORPUS)) {
   let existing;
   try {
@@ -432,6 +452,16 @@ for (const f of fs.readdirSync(CORPUS)) {
           agreementWithVolo: readProvenance()[f]?.agreementWithVolo,
         };
       }
+      const from = f.match(/_issue-(\d+)_(\d{4}-\d{2}-\d{2})/);
+      if (from && Number(from[1]) !== Number(issueNumber)
+        && Math.min(submittedNames.size, theirs.size) >= FRAGMENT_MIN_MODS
+        && Math.abs(Date.parse(from[2]) - submittedDay) <= FRAGMENT_WINDOW_MS) {
+        const contained = shared / submittedNames.size;
+        const contains = shared / theirs.size;
+        if (Math.max(contained, contains) >= FRAGMENT_CONTAINMENT) {
+          fragments.push({ file: f, issue: Number(from[1]), contained, contains, shared, theirs: theirs.size });
+        }
+      }
     }
   } catch { continue; }
   if (existing === submitted) {
@@ -447,6 +477,38 @@ for (const f of fs.readdirSync(CORPUS)) {
       ['## Submission rejected', '', `This exact order is already in the corpus as \`${f}\`.`],
       { final: true },
     );
+  }
+}
+
+const supersedes = [];
+if (fragments.length) {
+  const login = n => {
+    try {
+      return execSync(`gh issue view ${Number(n)} --json author --jq .author.login`, {
+        encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'],
+      }).trim() || null;
+    } catch {
+      return null;
+    }
+  };
+  const submitter = login(issueNumber);
+  if (!submitter) {
+    console.log('fragments: could not read who submitted this from GitHub, so the rule stood aside');
+  } else {
+    for (const fr of fragments.sort((a, b) => b.contained - a.contained)) {
+      if (login(fr.issue) !== submitter) continue;
+      if (fr.contained >= FRAGMENT_CONTAINMENT) {
+        finish(
+          false,
+          ['## Submission rejected', '',
+            `This order is part of the one you sent on #${fr.issue}, which is already in the corpus as `
+            + `\`${fr.file}\`: ${fr.shared} of its ${submittedNames.size} mods are there. One copy of an `
+            + 'order speaks once, so the fuller one stands.'],
+          { final: true },
+        );
+      }
+      if (fr.contains >= FRAGMENT_CONTAINMENT) supersedes.push(fr);
+    }
   }
 }
 
@@ -727,6 +789,12 @@ finish(true, [
   `- Mods in the order: ${parsed.mods.length} (format: ${parsed.format})`,
   `- Section headers found: ${parsed.sections.length}`,
   identityNote,
+  // The reverse of a fragment: this order contains one the same person sent
+  // earlier. Landing replays only the new file as a patch, so the older copy
+  // is named here for a person to remove rather than deleted from a run.
+  ...supersedes.map(fr => `- This order contains the one you sent on #${fr.issue} (\`${fr.file}\`, `
+    + `${fr.shared} of its ${fr.theirs} mods). Both are in the corpus for now; the shorter copy `
+    + 'will be removed by a maintainer so one order speaks once.'),
   '',
   '### Masterlist changes',
   '',

@@ -327,6 +327,27 @@ function collect(entries: unknown[], format: string): ParseResult {
     mods.push(mod);
   }
 
+  /*
+   * A Mod Organizer mod list is not a load order. It has one line per mod,
+   * named by its Nexus page title, a plus for enabled and a minus for
+   * disabled, and no identifiers anywhere. One was accepted as a "not
+   * working" order on 9 September 2026 and the miner made 869 mods out of
+   * its titles, which the Nexus crawler then matched as the real thing, so
+   * every player was told they lacked a library no order could hold.
+   * Refused here so the site and intake say the same thing. A plain list of
+   * names is still a thin export, and a few marked names beside real UUIDs
+   * are somebody's naming habit; only the whole shape together is the list.
+   */
+  const marked = mods.filter(m => /^[+-]/.test(m.name)).length;
+  const identified = mods.filter(m => !m.uuid.startsWith('name:')).length;
+  if (mods.length >= 20 && marked >= mods.length * 0.8 && identified === 0) {
+    return empty(format, [
+      'This looks like a Mod Organizer mod list rather than a load order: nearly every line is a '
+      + 'name with a plus or minus in front, and none carries a UUID. Export the load order from '
+      + 'BG3 Mod Manager, or send the game\'s own modsettings.lsx.',
+    ]);
+  }
+
   return { mods, sections, format, warnings, errors: [] };
 }
 

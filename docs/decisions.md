@@ -845,3 +845,27 @@ carries a `nexusId` the miner now honours, where before the field was a note
 to the reader. The same day's reports from one player also showed a 51-row
 paste and a byte-identical repeat of the same order both landing beside the
 full one; those are out too. Why the repeat landed at all is the next entry.
+
+### dropped-and-doubled-submissions-2026-09-13
+
+**Six reports lost and one order landed twice, 13 September 2026.** One player
+filed fifteen placement reports in a day, six of them in eleven minutes.
+Intake runs are serialised through one concurrency group, and GitHub keeps a
+single pending run per group, replacing it whenever a newer one arrives, so
+five of the six were cancelled before they started: no order landed, no reply
+was posted, and nothing anywhere said so. Later the same afternoon a run
+checked out the commit its issue event was raised at, several landings old by
+the time it ran, found no copy of an order that was already in the corpus, and
+pushed a second one; the landing step rebases onto the real tip, so the push
+went through.
+
+Checkout now takes main as it stands when the run starts. A sweep runs every
+twenty minutes, finds open submissions intake has never replied to, and
+dispatches the oldest, one at a time and only when nothing is queued, so it
+can never be the run that evicts a real one. Two guards ride with it. A Mod
+Organizer list is refused by the parser, on the site and at intake alike,
+with a pointer to the export that is wanted. And an order contained in one the
+same person sent in the last fortnight is refused as a fragment of it; the
+reverse case, a full order arriving after its fragment, is named in the
+acceptance report for a person to tidy, because the landing step replays only
+the new file as a patch and cannot carry a deletion.
