@@ -24,7 +24,9 @@
 import { execSync } from 'child_process';
 import { build } from 'esbuild';
 import crypto from 'crypto';
-import { writeProvenance, judge, readProvenance, noteFromIssueBody } from './corpus-provenance.mjs';
+import {
+  writeProvenance, judge, readProvenance, noteFromIssueBody, patchFromIssueBody,
+} from './corpus-provenance.mjs';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -574,6 +576,15 @@ fs.writeFileSync(path.join(CORPUS, filename), orderText.trim() + '\n');
  */
 const note = noteFromIssueBody(body);
 
+/**
+ * Which game version the order was played on, in the submitter's words.
+ *
+ * A full BG3MM export carries the build on its base-game packages and the
+ * miner reads it from there, but most exports are the short format that
+ * omits it. This answer is the only version evidence those orders have.
+ */
+const patch = patchFromIssueBody(body);
+
 // Recorded before mining, so the miner sees it on the very first pass and never
 // reads a VOLO-sorted order as evidence of where mods belong.
 writeProvenance(filename, {
@@ -583,6 +594,7 @@ writeProvenance(filename, {
   // Absent rather than null when nobody wrote one, so the file does not carry a
   // hundred empty fields to say that most submissions are silent.
   ...(note ? { note } : {}),
+  ...(patch ? { patch } : {}),
 });
 
 // Step 6: regenerate everything and capture the verification numbers.

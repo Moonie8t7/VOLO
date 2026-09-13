@@ -1799,7 +1799,11 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   {
     const intake = fs.readFileSync('scripts/process-submission.mjs', 'utf8');
     const api = fs.readFileSync('functions/api/submit.js', 'utf8');
-    const template = fs.readFileSync('.github/ISSUE_TEMPLATE/submit-load-order.yml', 'utf8');
+    // Both forms that can land an order ask the question, and a placement
+    // report's order goes through the same intake, so both must offer the
+    // same answers. The in-game option was added to one form and not the other.
+    const templates = ['submit-load-order.yml', 'wrong-placement.yml']
+      .map(f => fs.readFileSync(`.github/ISSUE_TEMPLATE/${f}`, 'utf8'));
 
     const from = intake.indexOf('const declared =');
     const src = intake.slice(from, intake.indexOf(';', intake.indexOf("'unknown'", from)) + 1);
@@ -1824,12 +1828,12 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 
     // And that the wordings are actually the ones on offer.
     const offered = phrases.slice(0, 3).map(([p]) => p);
-    const missing = offered.filter(p => !api.includes(p) || !template.includes(p));
+    const missing = offered.filter(p => !api.includes(p) || templates.some(t => !t.includes(p)));
     if (!missing.length) {
-      console.log('  ok    the template and the endpoint offer the same three wordings');
+      console.log('  ok    both templates and the endpoint offer the same three wordings');
     } else {
       failures++;
-      for (const p of missing) console.log(`  FAIL  "${p}" is not offered by both the template and the endpoint`);
+      for (const p of missing) console.log(`  FAIL  "${p}" is not offered by both templates and the endpoint`);
     }
   }
 
@@ -1848,7 +1852,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
    * submission acquires a note saying nothing, and dropping a line because it
    * happens to be wrapped in underscores, and a bare pak name looks like that.
    */
-  const { noteFromIssueBody, NOTE_MAX } = await import('./corpus-provenance.mjs');
+  const { noteFromIssueBody, NOTE_MAX, patchFromIssueBody, PATCH_MAX } = await import('./corpus-provenance.mjs');
   const heading = '### Notes\n\n';
   const notes = [
     ['no Notes field at all', '### Something else\n\nwords', null],
@@ -1886,6 +1890,53 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   } else {
     failures++;
     console.log(`  FAIL  an overlong note was kept at ${long.length} characters`);
+  }
+
+  /*
+   * The patch field. Twenty-one submitters answered it before anything read
+   * it, and every one of them wrote the same patch three different ways, so
+   * the one shape everybody uses is folded together and everything else is
+   * kept as typed.
+   */
+  const patchHeading = '### BG3 patch\n\n';
+  const patches = [
+    ['no patch field at all', `${heading}words`, null],
+    ['an empty box is not a patch', `${patchHeading}_No response_\n`, null],
+    ['the usual answer is kept', `${patchHeading}Patch 8\n`, 'Patch 8'],
+    ['and its casings are one answer', `${patchHeading}patch 8\n`, 'Patch 8'],
+    ['however it is shouted', `${patchHeading}PATCH 8\n`, 'Patch 8'],
+    ['a bare number under that heading is the same answer', `${patchHeading}8\n`, 'Patch 8'],
+    ['a build number is kept as written', `${patchHeading}4.1.1.6848561\n`, '4.1.1.6848561'],
+    ['so is a hotfix', `${patchHeading}Patch 8 Hotfix 30\n`, 'Patch 8 Hotfix 30'],
+    ['the field stops at the next one', `${patchHeading}Patch 7\n\n${heading}Patch 8\n`, 'Patch 7'],
+    ['a Windows path is stripped', `${patchHeading}C:\\Users\\someone\\Patch8.txt\n`, 'Patch8.txt'],
+  ];
+  const wrongPatches = patches.filter(([, body, expected]) => patchFromIssueBody(body) !== expected);
+  if (!wrongPatches.length) {
+    console.log(`  ok    the patch field reads correctly in ${patches.length} cases`);
+  } else {
+    failures++;
+    for (const [name, body] of wrongPatches) {
+      console.log(`  FAIL  ${name}: got ${JSON.stringify(patchFromIssueBody(body))}`);
+    }
+  }
+
+  const longPatch = patchFromIssueBody(patchHeading + 'x'.repeat(PATCH_MAX + 50));
+  if (longPatch.length === PATCH_MAX) {
+    console.log(`  ok    an overlong patch is cut at ${PATCH_MAX}, the endpoint's own limit`);
+  } else {
+    failures++;
+    console.log(`  FAIL  an overlong patch was kept at ${longPatch.length} characters`);
+  }
+
+  // Read on both paths that write a record, or the field is asked and dropped again.
+  const writers = ['scripts/process-submission.mjs', 'scripts/backfill-provenance.mjs'];
+  const unwired = writers.filter(f => !fs.readFileSync(f, 'utf8').includes('patchFromIssueBody('));
+  if (!unwired.length) {
+    console.log('  ok    intake and backfill both record the patch');
+  } else {
+    failures++;
+    for (const f of unwired) console.log(`  FAIL  ${f} does not read the patch field`);
   }
 }
 

@@ -154,38 +154,83 @@ const MACHINE_LINE =
   /^\s*_(?:No response|Submitted through [^\n_]*|Reprocessed after [^\n_]*)_\s*$/;
 
 /**
+ * What a submitter typed under one heading of an issue body, or null when the
+ * form has no such field.
+ *
+ * GitHub renders each form field as a level-three heading followed by the
+ * answer, so a field runs to the next heading or the end of the body. The
+ * lines the tooling wrote are dropped; the person's own are kept.
+ */
+function fieldOf(body, heading) {
+  const section = String(body ?? '')
+    .match(new RegExp(`^###[ \\t]+${heading}[ \\t]*$([\\s\\S]*?)(?=^###[ \\t]|$(?![\\s\\S]))`, 'm'));
+  if (!section) return null;
+  return section[1].split('\n').filter(line => !MACHINE_LINE.test(line));
+}
+
+/**
+ * Personal paths stripped out of text a stranger typed.
+ *
+ * Both fields below are free text and land in a file published under CC0, so
+ * they get the same treatment as the order: see client/src/lib/scrub.ts for
+ * why this pattern is repeated rather than shared, and scripts/smoke-test.mjs
+ * for the check that every copy stays in step.
+ */
+function scrubPaths(text) {
+  return text
+    .replace(/(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g, '$1')
+    .replace(/(?<![A-Za-z0-9])\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g, '$1');
+}
+
+/**
  * The Notes field of a submission issue, or null when nobody wrote one.
  *
  * What a submitter says about their own order is the only part of a submission
  * nothing else records. Issue #130 reported that one mod interferes with
  * another, which no amount of reading the order itself would reveal, and until
  * this existed that sentence lived only in the issue thread.
- *
- * Personal paths are stripped here as well as at intake. The note is free text
- * from a stranger and lands in a file published under CC0, so it gets the same
- * treatment as the order: see client/src/lib/scrub.ts for why this pattern is
- * repeated rather than shared, and scripts/smoke-test.mjs for the check that
- * every copy stays in step.
  */
 export function noteFromIssueBody(body) {
-  const section = String(body ?? '')
-    .match(/^###[ \t]+Notes[ \t]*$([\s\S]*?)(?=^###[ \t]|$(?![\s\S]))/m);
-  if (!section) return null;
+  const lines = fieldOf(body, 'Notes');
+  if (!lines) return null;
 
-  const written = section[1]
-    .split('\n')
-    .filter(line => !MACHINE_LINE.test(line))
-    .join('\n')
-    .trim();
+  const written = lines.join('\n').trim();
   if (!written) return null;
 
-  const scrubbed = written
-    .replace(/(?<![A-Za-z0-9])[A-Za-z]:\\(?:[^\\\t"\r\n]*\\)*([^\\\t"\r\n]+)/g, '$1')
-    .replace(/(?<![A-Za-z0-9])\/(?:home|Users)\/[^/\t"\r\n]+\/(?:[^/\t"\r\n]*\/)*([^/\t"\r\n]+)/g, '$1');
-
+  const scrubbed = scrubPaths(written);
   return scrubbed.length > NOTE_MAX
     ? `${scrubbed.slice(0, NOTE_MAX)} [truncated]`
     : scrubbed;
+}
+
+/** The site endpoint already cuts the patch field here. The GitHub form does not. */
+export const PATCH_MAX = 60;
+
+/**
+ * The BG3 patch field of a submission issue, or null when it was left empty.
+ *
+ * Asked on both forms and written into every issue, and until now read back by
+ * nothing: twenty-one submitters had answered and every answer was discarded.
+ * It is the best explicit statement of the game version an order was played
+ * on. A full BG3MM export carries the build on its base-game packages and the
+ * miner reads that, but only three orders in a hundred and fifty are full
+ * exports, so the form answer covers seven times as many.
+ *
+ * Kept as written apart from the one shape everybody uses. "Patch 8", "patch 8",
+ * "PATCH 8" and a bare "8" under a heading that says patch are one answer and
+ * are recorded as one, so a count by patch does not split on capitalisation.
+ * Anything else is the submitter's own words and stays theirs.
+ */
+export function patchFromIssueBody(body) {
+  const lines = fieldOf(body, 'BG3 patch');
+  if (!lines) return null;
+
+  const written = lines.join(' ').replace(/\s+/g, ' ').trim();
+  if (!written) return null;
+
+  const plain = written.match(/^(?:patch\s*)?(\d+)$/i);
+  if (plain) return `Patch ${plain[1]}`;
+  return scrubPaths(written).slice(0, PATCH_MAX);
 }
 
 /** Adds or replaces one order's provenance, keeping the file sorted. */

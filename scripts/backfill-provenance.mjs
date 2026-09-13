@@ -30,7 +30,7 @@ import os from 'os';
 import { execSync } from 'child_process';
 import { build } from 'esbuild';
 import {
-  readProvenance, writeProvenance, judge, VOLO_MATCH_THRESHOLD, noteFromIssueBody,
+  readProvenance, writeProvenance, judge, VOLO_MATCH_THRESHOLD, noteFromIssueBody, patchFromIssueBody,
 } from './corpus-provenance.mjs';
 
 const CORPUS = 'Load Orders - Public Submitted';
@@ -211,39 +211,47 @@ if (WRITE) {
 }
 
 /*
- * What each submitter said about their own order.
+ * What each submitter said about their own order, and which patch they played
+ * it on.
  *
- * Intake records this now, but only for orders arriving after it started to,
- * and the corpus predates that by a hundred submissions. Those notes are not
+ * Intake records both now, but only for orders arriving after it started to,
+ * and the corpus predates that by a hundred submissions. Those answers are not
  * lost: they are sitting in the issues the orders came from, which is a place
  * nothing in this repository can search. Issue #130 named two mods that fight
  * each other, and finding that out meant a person opening the thread and
- * reading it.
+ * reading it. The patch field was worse: read back by nothing at all, so
+ * twenty-one answers sat unread in issues that had already landed.
  *
  * Only orders that actually landed are considered. A rejected duplicate still
  * has an issue and a note, and has no corpus file for the note to belong to.
+ * A placement report carries an order too, under its own label, so both
+ * labels are read.
  */
 let issues = null;
 try {
-  issues = JSON.parse(execSync(
-    'gh issue list --label load-order-submission --state all --limit 500 --json number,body',
-    {
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'pipe'],
-      /*
-       * A submission issue can hold an entire pasted load order, so a hundred
-       * of them run to tens of megabytes. The default buffer is one, and
-       * overflowing it fails with ENOBUFS, which the first version of this
-       * reported as gh being unavailable: the notes were sitting right there
-       * and the script said it could not reach them.
-       */
-      maxBuffer: 256 * 1024 * 1024,
-    },
-  ));
+  issues = [];
+  for (const label of ['load-order-submission', 'wrong-placement']) {
+    issues.push(...JSON.parse(execSync(
+      `gh issue list --label ${label} --state all --limit 500 --json number,body`,
+      {
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe'],
+        /*
+         * A submission issue can hold an entire pasted load order, so a hundred
+         * of them run to tens of megabytes. The default buffer is one, and
+         * overflowing it fails with ENOBUFS, which the first version of this
+         * reported as gh being unavailable: the notes were sitting right there
+         * and the script said it could not reach them.
+         */
+        maxBuffer: 256 * 1024 * 1024,
+      },
+    )));
+  }
 } catch (err) {
   // The reason, not a guess at it. Signed out, offline and too large all land
   // here and need different answers from whoever is running this.
-  console.log(`\nnotes: could not read the submission issues, so notes were left alone`);
+  issues = null;
+  console.log(`\nnotes: could not read the submission issues, so notes and patches were left alone`);
   console.log(`  ${String(err.stderr || err.message).trim().split('\n')[0]}`);
 }
 
@@ -256,30 +264,45 @@ if (issues) {
 
   // Re-read, because the pass above may have added records this one merges into.
   const recorded = readProvenance();
-  const notes = [];
+  const changes = [];
   for (const issue of issues) {
     const file = landedAs.get(issue.number);
     if (!file) continue;
-    const note = noteFromIssueBody(issue.body);
-    if (!note) continue;
     const record = recorded[file];
-    if (!record || record.note === note) continue;
-    notes.push({ file, issue: issue.number, note, replacing: record.note ?? null, entry: { ...record, note } });
+    if (!record) continue;
+    const note = noteFromIssueBody(issue.body);
+    const patch = patchFromIssueBody(issue.body);
+    // Only ever adds or replaces. A field the issue does not carry is not taken
+    // away from a record that already has it.
+    const entry = { ...record };
+    if (note && record.note !== note) entry.note = note;
+    if (patch && record.patch !== patch) entry.patch = patch;
+    if (entry.note === record.note && entry.patch === record.patch) continue;
+    changes.push({
+      file,
+      issue: issue.number,
+      note: entry.note !== record.note ? note : null,
+      replacingNote: record.note !== undefined,
+      patch: entry.patch !== record.patch ? patch : null,
+      entry,
+    });
   }
 
-  console.log(`\nnotes: ${issues.length} submission issue(s), ${landedAs.size} of them landed`);
-  console.log(`would write ${notes.length} note(s)`);
-  for (const n of notes) {
-    const first = n.note.split('\n')[0];
-    console.log(`  #${n.issue} ${n.file}`);
-    console.log(`    ${n.replacing === null ? 'new' : 'replaces a recorded note'}: ${first.slice(0, 96)}`);
+  console.log(`\nnotes and patches: ${issues.length} submission issue(s), ${landedAs.size} of them landed`);
+  console.log(`would update ${changes.length} record(s)`);
+  for (const c of changes) {
+    console.log(`  #${c.issue} ${c.file}`);
+    if (c.note) {
+      console.log(`    ${c.replacingNote ? 'replaces a recorded note' : 'note'}: ${c.note.split('\n')[0].slice(0, 96)}`);
+    }
+    if (c.patch) console.log(`    patch: ${c.patch}`);
   }
 
   if (WRITE) {
-    for (const { file, entry } of notes) writeProvenance(file, entry);
-    if (notes.length) console.log(`\nnotes written to ${path.join(CORPUS, 'provenance.json')}`);
-  } else if (notes.length) {
-    console.log('\ndry run. pass --write to apply the notes.');
+    for (const { file, entry } of changes) writeProvenance(file, entry);
+    if (changes.length) console.log(`\nwritten to ${path.join(CORPUS, 'provenance.json')}`);
+  } else if (changes.length) {
+    console.log('\ndry run. pass --write to apply.');
   }
 }
 
