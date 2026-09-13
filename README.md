@@ -21,7 +21,7 @@ nothing reaches it unless you choose to submit an order from the Submit page.
 Mods from Nexus Mods and from mod.io, the platform behind the official in-game
 mod manager, are both supported.
 
-Measured on orders it has never seen, VOLO agrees with them **67.6 percent** of
+Measured on orders it has never seen, VOLO agrees with them **67.7 percent** of
 the time against **50.7 percent** for a random shuffle. That figure averages
 orders rather than mods, so a 41-mod order weighs as much as a 999-mod one,
 though weighting by mods barely moves it. It is a sorting aid with evidence
