@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-13T09:54:04.682Z",
+  "generated": "2026-09-13T10:19:29.497Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -37,7 +37,7 @@
     "working": 131,
     "broken": 29,
     "unlabelled": 2,
-    "externalDependencyEdges": 955,
+    "externalDependencyEdges": 956,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -6299,7 +6299,11 @@
         "brokenInstalls": 3,
         "voloSortedInstalls": 10
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "absence": {
+        "held": 1,
+        "witnesses": 1
+      }
     },
     {
       "name": "AlreadyInspected",
@@ -128131,7 +128135,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "9010c099-c1e7-4ea8-8990-a883d6814975",
+          "name": "AbsoluteWrath"
+        }
+      ]
     },
     {
       "name": "Abstract Dice",
