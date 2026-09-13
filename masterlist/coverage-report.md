@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-09-13T22:31:09.318Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-13T23:59:09.369Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 163 |
-| labelled working | 133 |
+| Load orders analysed | 164 |
+| labelled working | 134 |
 | labelled broken | 28 |
 | load-after edges promoted from catalogues | 787 |
 | unlabelled | 2 |
 | Separator headers parsed | 4124 |
 | **Unique mods indexed** | **10887** |
-| Seen in more than one order | 7681 |
+| Seen in more than one order | 7683 |
 | With declared dependencies | 758 |
 | With Script Extender flags | 176 |
 | With author metadata | 1163 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 3 of 163 orders carry it, because the short
+this comes from. Only 3 of 164 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -93,11 +93,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 17.9% | 20.5% | no, and it points the other way |
+| Category pairs against the working consensus | 17.8% | 20.3% | no, and it points the other way |
 | Mods in no working order anywhere | 7% | 0% | yes |
 | Declared dependencies not installed | 0.0 | 0.1 | no |
 
-Measured over 28 broken and 133 working orders, against 134 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 28 broken and 134 working orders, against 135 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -164,7 +164,7 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 133
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 134
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
