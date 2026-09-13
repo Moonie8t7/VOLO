@@ -28,8 +28,8 @@ Two scripts report it, and the difference matters.
 The in-sample figure runs about four points high because the masterlist has
 already read the answer. **Quote the held-out number.**
 
-Current: **67.6 percent held out**, against a 50.7 percent random baseline,
-over 98 distinct working orders.
+Current: **67.2 percent held out**, against a 50.7 percent random baseline,
+over 97 distinct working orders.
 
 Two caveats on the held-out figure itself. The group sequence is fixed across
 folds rather than re-learned per fold, so it is very slightly optimistic. And
@@ -821,3 +821,27 @@ acceptance comment and asks whether main holds that file.
 importing a 59-mod file, because picking a file on the Submit page does not
 re-import it and the Export page silently used the remembered session. Fixed by
 naming the source import on the Export page and making persistence opt-in.
+
+### phantom-requirements-2026-09-13
+
+**Four libraries reported missing from every order, 13 September 2026.** An
+export attached to issue #168 carried Mod Configuration Menu, Community
+Library, Fade's Equipment Distribution and Goon's Library, and VOLO said all
+four were absent, adding that 106 of 106 working orders lacked the first. The
+figure was the clue: nobody had it, because it did not exist.
+
+A "not working" submission on 9 September was a Mod Organizer mod list rather
+than a load order: 1,254 lines, every one a Nexus page title with a plus or
+minus in front, no UUIDs, no sections. Intake accepted it and the miner made
+869 rows out of it. The nightly Nexus crawl then matched those rows to
+listings exactly, because a listing's title is exactly what they were, while
+the real rows, named after their paks, matched only loosely and the miner
+takes exact matches alone. Every requirement stated on those listings went to
+the phantom, and every player was told they lacked it.
+
+The list is out of the corpus, taking the rows it introduced with it, and the
+four listings are pinned to their real rows by hand: a requirement alias
+carries a `nexusId` the miner now honours, where before the field was a note
+to the reader. The same day's reports from one player also showed a 51-row
+paste and a byte-identical repeat of the same order both landing beside the
+full one; those are out too. Why the repeat landed at all is the next entry.

@@ -510,20 +510,24 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   // Each alias must actually satisfy a requirement written that way, which is
   // the only thing any of this is for.
   let broken = 0;
+  const probe = 'cccccccc-0000-0000-0000-000000000003';
   for (const { key, plugin } of aliased) {
     const order = JSON.stringify({
       Order: [
         { Name: plugin.name, UUID: plugin.uuid, Folder: plugin.folder ?? plugin.name },
         {
           Name: 'Something That Needs It',
-          UUID: 'cccccccc-0000-0000-0000-000000000003',
+          UUID: probe,
           Folder: 'SomethingThatNeedsIt',
           Dependencies: [{ Name: key, UUID: '' }],
         },
       ],
     });
     const result = sortLoadOrder(parseLoadOrder(order, 'alias.json').mods, masterlist);
-    if (result.issues.some(i => i.kind === 'missing-dependency')) {
+    // Only a complaint from the probe counts. The aliased mod may have
+    // requirements of its own that a two-mod order cannot meet, and Goon's
+    // Library does; those say nothing about whether the alias resolved.
+    if (result.issues.some(i => i.kind === 'missing-dependency' && i.uuids.includes(probe))) {
       broken++;
       console.log(`  FAIL  alias "${key}" did not satisfy a requirement naming it`);
     }

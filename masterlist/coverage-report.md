@@ -1,20 +1,20 @@
 # Masterlist coverage report
 
-Generated 2026-09-13T16:51:48.026Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-13T21:58:18.446Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 165 |
-| labelled working | 134 |
-| labelled broken | 29 |
-| load-after edges promoted from catalogues | 958 |
+| Load orders analysed | 163 |
+| labelled working | 133 |
+| labelled broken | 28 |
+| load-after edges promoted from catalogues | 787 |
 | unlabelled | 2 |
-| Separator headers parsed | 4133 |
-| **Unique mods indexed** | **11756** |
-| Seen in more than one order | 7689 |
-| With declared dependencies | 859 |
+| Separator headers parsed | 4124 |
+| **Unique mods indexed** | **10887** |
+| Seen in more than one order | 7681 |
+| With declared dependencies | 758 |
 | With Script Extender flags | 176 |
 | With author metadata | 1163 |
 
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 3 of 165 orders carry it, because the short
+this comes from. Only 3 of 163 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -37,14 +37,14 @@ Builds observed across the corpus, newest first:
 
 | Source | Count | Trust |
 |---|---|---|
-| Curated override | 49 | highest, hand-verified infrastructure |
-| Human-authored section header | 6847 | high, a modder put it there |
-| Name pattern fallback | 2384 | medium, needs review |
-| Nexus or mod.io listing category | 1231 | medium, the author's own words about what the mod is |
+| Curated override | 42 | highest, hand-verified infrastructure |
+| Human-authored section header | 6842 | high, a modder put it there |
+| Name pattern fallback | 1846 | medium, needs review |
+| Nexus or mod.io listing category | 1130 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 17 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
-| Neighbour inference, 0.85 agreement or better | 138 | high, measured 97 percent accurate at this band |
-| Neighbour inference, 0.70 to 0.85 | 119 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 971 | none, needs community input |
+| Neighbour inference, 0.85 agreement or better | 93 | high, measured 97 percent accurate at this band |
+| Neighbour inference, 0.70 to 0.85 | 86 | medium, roughly 75 percent accurate, carries a confidence score |
+| Uncategorised | 831 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -54,35 +54,35 @@ inferred entry stores its agreement score as `evidence.confidence`.
 ## Group distribution
 
 - `Top of Load Order`: 10
-- `Resources`: 297
-- `Utilities`: 122
-- `Visuals`: 172
-- `Animations`: 158
-- `User Interface`: 215
-- `Clothing`: 173
-- `Equipment`: 1572
-- `Miscellaneous`: 229
-- `Spells`: 840
-- `Dyes`: 83
-- `Armor`: 450
-- `Weapons`: 569
-- `Gameplay`: 594
-- `Races`: 305
-- `Classes`: 1422
-- `Character Customization`: 435
-- `Bug Fixes`: 542
-- `Accessories`: 122
+- `Resources`: 280
+- `Utilities`: 111
+- `Visuals`: 126
+- `Animations`: 156
+- `User Interface`: 200
+- `Clothing`: 127
+- `Equipment`: 1541
+- `Miscellaneous`: 221
+- `Spells`: 781
+- `Dyes`: 77
+- `Armor`: 427
+- `Weapons`: 556
+- `Gameplay`: 562
+- `Races`: 275
+- `Classes`: 1303
+- `Character Customization`: 411
+- `Bug Fixes`: 511
+- `Accessories`: 115
 - `Quests`: 43
-- `Environment`: 67
+- `Environment`: 66
 - `Audio`: 27
-- `Heads`: 674
-- `Hair`: 381
-- `Companions`: 497
-- `NPC`: 267
-- `Bodies`: 40
-- `Dice`: 471
-- `Bottom of Load Order`: 8
-- `unsorted`: 971
+- `Heads`: 614
+- `Hair`: 310
+- `Companions`: 437
+- `NPC`: 260
+- `Bodies`: 32
+- `Dice`: 470
+- `Bottom of Load Order`: 7
+- `unsorted`: 831
 
 ## What the broken orders do differently
 
@@ -93,11 +93,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 20.3% | 20.4% | no, and it points the other way |
-| Mods in no working order anywhere | 10% | 0% | yes |
+| Category pairs against the working consensus | 17.9% | 20.5% | no, and it points the other way |
+| Mods in no working order anywhere | 7% | 0% | yes |
 | Declared dependencies not installed | 0.0 | 0.1 | no |
 
-Measured over 29 broken and 134 working orders, against 134 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 28 broken and 133 working orders, against 134 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -141,24 +141,6 @@ Framework are present in every working order that needs them.
 
 | Requirement | Working orders needing it | Without it | Declaring mods |
 |---|---|---|---|
-| `+Advanced Tabletop Spells` | 17 | 17 | 4 |
-| `+Asymmetrical Shadowheart Concept Outfit` | 4 | 4 | 1 |
-| `+Baldur's Gate 3 Community Library` | 99 | 99 | 33 |
-| `+BG3AF - Animation Framework` | 15 | 15 | 4 |
-| `+Camp Robes for Gale` | 4 | 4 | 1 |
-| `+Character Preset Framework (CPF)` | 9 | 9 | 1 |
-| `+Fade's Equipment Distribution (FED)` | 30 | 30 | 13 |
-| `+Goon's Library - Passives Functions Spells and More` | 30 | 30 | 14 |
-| `+Half-Tiefs (Tiefling Horns and Tail for All)` | 12 | 12 | 1 |
-| `+Hearts' Heads` | 8 | 8 | 1 |
-| `+Kaz Lab Assorted Shader Pack` | 8 | 8 | 2 |
-| `+Mod Configuration Menu (MCM)` | 107 | 107 | 67 |
-| `+Native Mod Loader` | 20 | 20 | 2 |
-| `+Spells Extra - DND 5E Library` | 8 | 8 | 7 |
-| `+Trips' Accessory Collection` | 5 | 5 | 1 |
-| `+Trips' Shader Pack` | 24 | 24 | 11 |
-| `+Vlad's Grimoire - Spell VFX Library` | 46 | 46 | 6 |
-| `+Wings Character Customization - WCC` | 10 | 10 | 4 |
 | `Character Creation Overhaul` | 6 | 6 | 2 |
 | `ContainersExtended` | 8 | 8 | 5 |
 | `HybridUI` | 18 | 16 | 1 |
@@ -167,7 +149,6 @@ Framework are present in every working order that needs them.
 | `Calimshan Pirate Outfit` | 4 | 3 | 1 |
 | `Camp Robes` | 4 | 3 | 1 |
 | `Celestial Threads` | 4 | 3 | 1 |
-| `Fade's Equipment Distribution` | 6 | 4 | 3 |
 | `Snapshots` | 6 | 4 | 2 |
 | `TutorialChestSummoning` | 46 | 29 | 29 |
 | `HomeBrew - Comprehensive Reworks` | 5 | 3 | 1 |
@@ -183,11 +164,11 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 134
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 133
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **971 mods are `unsorted`.** These need community categorisation.
+- **831 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 
@@ -196,4 +177,3 @@ _none: every stated requirement names a mod this masterlist knows_
 - `Current_22.11.2025_10-32-17.json`: duplicate of another file
 - `not_working_issue-134_2026-08-28.json`: duplicate of another file
 - `provenance.json`: not a load order
-- `working_issue-197_2026-09-13.tsv`: duplicate of another file

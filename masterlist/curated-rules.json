@@ -162,6 +162,26 @@
         "BW_FF_Roseblood",
         "PK [AIO2] Howling Dragon [NonVT]"
       ]
+    },
+    {
+      "pattern": "^Waiting With Style\\b",
+      "group": "User Interface",
+      "why": "Reported in issue #191. One edition's name ends in [Companions Edition], the name-pattern tier matched the word and filed it under Companions Other, and a loading screen overhaul was sorted among companion mods. Nexus 10713 by Aimryax files it under User Interface, and the corpus agrees where it speaks: three divider votes for UI Other against two for Late Loaders, the two both from the reporter's own order, which parks its pair at the very end as patches. The group is stated without a slot so the divider votes keep deciding where within UI it sits. The rule exists so that a further variant with the same words in its name cannot fall back into Companions.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/10713",
+      "examples": [
+        "Waiting With Style - Better Loading Screens Patch [Companions Edition]",
+        "Waiting With Style - AIMRYAX Loading Screen Overhaul"
+      ]
+    },
+    {
+      "pattern": "^ContainersExtended$",
+      "group": "Equipment",
+      "divider": 35,
+      "why": "Reported in issue #194. The mod exists under two UUIDs, the Nexus release and the in-game one, and the divider votes for the in-game copy were a three-way tie: one order under UI Other, one under In-World Items, and the reporter's under Items & Equipment Accessories. Ties go to the lowest slot, so the sorted output kept it under UI Other while its group said Equipment. Settled by hand rather than by a coin: it adds container items, the hand-written headers above the Nexus copy say Containers and Items, and the only orders that file either copy under an Items divider put it at Accessories, where its French translation now sits too. Nexus 7980 by darkcharl files it under Gameplay, which decides nothing. Anchored to the exact name so the tutorial, extraplanar and translation variants keep their own evidence.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/7980",
+      "examples": [
+        "ContainersExtended"
+      ]
     }
   ],
   "requirementAliases": [
@@ -194,6 +214,30 @@
       "mod": "Scantily Outfit Separator",
       "nexusId": 6643,
       "why": "Nexus 6643 by NightmareThrenody. The Unique Tav patch declares the pak folder rather than the published title, and nothing anywhere is named Scantily_Separator. All three corpus orders holding the patch hold the separator. Reported alongside the hairpack by the same person. The duplicate requirement that made this fire for everyone is deduped in the miner now, so this covers the remaining case: an export that states the requirement as a bare name, which the TSV format does, where the name is the only handle there is."
+    },
+    {
+      "requirement": "Mod Configuration Menu (MCM)",
+      "mod": "Mod Configuration Menu",
+      "nexusId": 9162,
+      "why": "Nexus 9162 by Volitio publishes under the title with the acronym and ships as Mod Configuration Menu, a 0.93 match the crawler rightly declines to call exact. A mod list submitted in Mod Organizer's format carried the title verbatim, so a row named after the title took the exact match and every requirement on MCM pointed at it, a row no load order contains; issue #168 was told 106 of 106 working orders lacked it. The nexusId pins the listing to the real row, so those requirements land where the menu actually is."
+    },
+    {
+      "requirement": "Baldur's Gate 3 Community Library",
+      "mod": "CommunityLibrary",
+      "nexusId": 1333,
+      "why": "Nexus 1333 by NellsRelo publishes under the long title and ships as CommunityLibrary. The crawler's closest listing by title was the Korean translation, at 0.94, so the real library had no exact listing and a row named after the title, from the same Mod Organizer list, took every requirement on it. Reported in issue #168 alongside MCM. The nexusId pins the listing to the real row."
+    },
+    {
+      "requirement": "Fade's Equipment Distribution (FED)",
+      "mod": "Fade's Equipment Distribution",
+      "nexusId": 13824,
+      "why": "Nexus 13824 by GraphicFade publishes with the acronym and ships without it, a 0.94 match the crawler declines to call exact, so the twelve class equipment packs that require it were pointed at a title-named row from the same Mod Organizer list. Reported in issue #168 from an order running the all-in-one bundle, which the stand-in rule covers. The nexusId pins the listing to the real row."
+    },
+    {
+      "requirement": "Goon's Library - Passives Functions Spells and More",
+      "mod": "Goon's Library",
+      "nexusId": 12834,
+      "why": "Nexus 12834 by BaldursGoonsack publishes under the long title and ships as Goon's Library, with no listing matched to the real row at all, so the title-named row from the same Mod Organizer list took the requirement. Reported in issue #168. The nexusId pins the listing to the real row."
     }
   ],
   "requirementSatisfiedBy": [
@@ -211,6 +255,11 @@
       "requirement": "TutorialChestSummoning",
       "satisfiedBy": "AV Item Shipment Framework",
       "why": "Both deliver mod-added items to the player, and mods requiring one work with the other. Four of the five working orders that want it and lack it carry AV Item Shipment Framework, against it appearing in under a third of orders overall, so this is measured rather than assumed."
+    },
+    {
+      "requirement": "Fade's Equipment Distribution",
+      "satisfiedBy": "Fade's Equipment Distribution AIO",
+      "why": "The same author's all-in-one bundle carries the base distribution, so a pack asking for FED runs against the AIO. The order in issue #168 carries the AIO and twelve packs that require FED, and was told it lacked the requirement of all twelve."
     }
   ],
   "incompatible": [],

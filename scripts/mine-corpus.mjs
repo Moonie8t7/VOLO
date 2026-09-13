@@ -1725,8 +1725,35 @@ const nexusMatches = (() => {
       console.log(`nexus enrichment: ${retired} key(s) name identities this mine retired, dropped`);
     }
   } catch {
-    return [];
+    // No enrichment on disk. The hand-pinned listings below still apply.
   }
+
+  /*
+   * A requirement alias names the listing as well as the mod, and that pins
+   * it. Refusing loose matches above is right and has a cost: Mod
+   * Configuration Menu publishes as "Mod Configuration Menu (MCM)" and ships
+   * as "Mod Configuration Menu", 0.93 apart, so the real row had no listing at
+   * all. A row named after the title, mined from a mod list in Mod Organizer's
+   * format, matched exactly instead and took every requirement stated on the
+   * menu, and 106 working orders were told they lacked a mod none of them
+   * could contain. Community Library's nearest listing by title was its Korean
+   * translation. A person saying which listing a mod is outranks a string
+   * distance either way, and is the only thing that can.
+   */
+  const { byNameKey, byFolderKey } = nameIndex(plugins);
+  const listed = new Set(live.map(([uuid]) => uuid));
+  let pinned = 0;
+  for (const rule of curated.requirementAliases) {
+    if (!rule.nexusId) continue;
+    const target = byNameKey.get(externalKey(rule.mod)) ?? byFolderKey.get(externalKey(rule.mod));
+    if (!target || listed.has(target.uuid)) continue;
+    live.push([target.uuid, {
+      nexusId: rule.nexusId, nexusName: rule.requirement, matchKind: 'curated', matchConfidence: 1,
+    }]);
+    listed.add(target.uuid);
+    pinned++;
+  }
+  if (pinned) console.log(`nexus listings: ${pinned} pinned by hand through requirement aliases`);
   return live;
 })();
 
