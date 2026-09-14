@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11745 |
-| Matched exactly by name | 2815 |
-| Matched fuzzily (>= 0.9) | 677 |
-| Unmatched | 8253 |
+| Masterlist mods | 10929 |
+| Matched exactly by name | 2537 |
+| Matched fuzzily (>= 0.9) | 621 |
+| Unmatched | 7771 |
 
 ## What the match would add
 
-- 39 currently unsorted mods would receive a category from their
+- 34 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1151 mods have a Nexus category that disagrees with the
+- 1047 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 2005 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 1094 of them resolved to a uuid on both
+- 1776 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 809 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -35,31 +35,31 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Initiative Variants - D20: Gameplay (fuzzy match)
 - AskewShaders: Utilities (fuzzy match)
 - BetterDualWieldingAlt: Gameplay (fuzzy match)
+- BG3CraftingUpdate: Gameplay (fuzzy match)
 - DuplicationSE: User Interface (fuzzy match)
 - IllithidPowersOverhaul: Gameplay (fuzzy match)
 - Lay on Hands Enhanced - DND 5R: Classes (fuzzy match)
-- -[NODELETE] Larger and Smaller Penis With Flopping Physics: Character Customization (fuzzy match)
-- +[HORNY] Haarlep Unleashed 2 - BG3SX Edition: Gameplay (fuzzy match)
-- +[NODELETE] Friends With Benefits - Approval Rating Buffs: Gameplay (fuzzy match)
-- +[NODELETE] Valkrana's Skeleton Emporium - Over 50 New Animate Dead Options: Classes (fuzzy match)
-- +Wifi Potions v2: Gameplay (fuzzy match)
 - AbjurationWizardShield: Gameplay (fuzzy match)
+- ArcaneArcher: Classes (fuzzy match)
+- Ase Glamping - Player Housing for Camp: Character Customization (fuzzy match)
+- AstralElves: Races (fuzzy match)
+- Block-Miss-Differentiation-CHS: User Interface (fuzzy match)
 
 ### Sample disagreements
 
 - Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
 - Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Miscellaneous (section-majority), Nexus says Gameplay
-- AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
+- AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Auto Send Food To Camp: ours Utilities (section-majority), Nexus says Gameplay
 - Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
-- Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
+- Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - Essential_Feats: ours Classes (section), Nexus says Gameplay
 - HairUnlocked: ours Hair (section-majority), Nexus says Character Customization
 
