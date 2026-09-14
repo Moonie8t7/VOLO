@@ -24,9 +24,17 @@ name: Replay stranded submissions
 #
 # Nothing about the detection was wrong, which is what made it convincing.
 
+# It keyed on the submission label alone for its whole life, so a placement
+# report carrying an order, which intake takes by a different label, could stay
+# silent forever. On 13 September 2026 six of them did, after a burst of
+# fifteen in a day overran the queue. It now looks for anything intake would
+# take, by the same test intake applies, and checks nothing is queued first,
+# because a dispatch made while a run waits would replace that run and be the
+# very failure this repairs.
+
 on:
   schedule:
-    - cron: "35 * * * *"
+    - cron: "*/20 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -51,10 +59,37 @@ jobs:
           # Anything newer than this is probably still being processed.
           CUTOFF=$(date -u -d '20 minutes ago' +%Y-%m-%dT%H:%M:%SZ)
 
-          numbers=$(gh issue list --repo "$REPO" \
-            --label load-order-submission --state open \
-            --json number,createdAt,updatedAt \
-            --jq ".[] | select(.createdAt < \"$CUTOFF\") | .number")
+          # A run already waiting for the intake group would be replaced by a
+          # dispatch, which is the failure this exists to repair.
+          waiting=0
+          for status in queued pending waiting requested; do
+            n=$(gh run list --repo "$REPO" --workflow process-submission.yml \
+              --status "$status" --json databaseId --jq 'length')
+            waiting=$((waiting + n))
+          done
+          if [ "$waiting" != "0" ]; then
+            echo "$waiting run(s) waiting for the intake group; nothing replayed"
+            exit 0
+          fi
+
+          # The same gate as intake's own `if`: a submission, by label or by the
+          # heading its template writes, or a placement report that says its
+          # order was played on. Oldest first, since the oldest has waited
+          # longest.
+          numbers=$(gh issue list --repo "$REPO" --state open --limit 200 \
+            --json number,createdAt,labels,body \
+            --jq "[ .[]
+                  | select(.createdAt < \"$CUTOFF\")
+                  | select(
+                      any(.labels[].name; . == \"load-order-submission\")
+                      or ((.body // \"\") | contains(\"### Does this load order work?\"))
+                      or (
+                        (any(.labels[].name; . == \"wrong-placement\")
+                          or ((.body // \"\") | contains(\"### Where VOLO put it\")))
+                        and ((.body // \"\") | contains(\"Working, I have played on it\"))
+                      )
+                    )
+                ] | sort_by(.createdAt) | .[].number")
 
           if [ -z "$numbers" ]; then
             echo "no open submissions old enough to consider"

@@ -252,6 +252,20 @@ entry is a separate decision needing its own evidence, which
 The value here is that the sentence is now greppable instead of buried in an
 issue thread.
 
+The patch field went the same way, later and for a worse reason. Both forms
+asked which game patch the order was played on, the endpoint wrote the answer
+into every issue, and nothing read it back at all: twenty-three submitters had
+answered, every one of them Patch 8 in four spellings, and every answer was
+discarded. It is now kept as `patch` beside the note, with that one common
+shape folded to one and anything else kept as typed. It is the best explicit
+version evidence there is; the game build a full BG3MM export carries on its
+base-game packages covers three orders in a hundred and fifty, since most
+exports are the short format that omits it. Its worth is prospective. The
+corpus spans one patch so far, which is why every answer agrees, and the day
+a new patch splits it, this is what says which side of the split an order is
+on, where the filing date would misattribute anyone submitting an older order
+late.
+
 ### interface-passes-its-own-rules
 
 **The interface was measured against a written standard rather than an opinion,
@@ -504,6 +518,13 @@ sequence matches what VOLO would produce. The answer decides in both
 directions, including when someone says they arranged it themselves and the
 sequence happens to agree, because VOLO agreeing with a player is the goal
 rather than a fault. Measurement only settles the unanswered cases, at 0.98.
+
+The answer has three values since September 2026: arranged by hand, arranged
+by the game's own mod manager, or sorted with VOLO. The first two are
+independent of VOLO and count in full. They are kept apart because the game's
+ordering is not a person's judgement either, and because the form had offered
+only the other two, so anyone whose order the game arranged was choosing
+between two untruths, and mostly chose to leave the question blank.
 
 A flagged order still counts for which mods exist, whether they were played
 together, and whether it worked. It is dropped from section headers, divider
@@ -859,10 +880,11 @@ the time it ran, found no copy of an order that was already in the corpus, and
 pushed a second one; the landing step rebases onto the real tip, so the push
 went through.
 
-Checkout now takes main as it stands when the run starts. A sweep runs every
-twenty minutes, finds open submissions intake has never replied to, and
-dispatches the oldest, one at a time and only when nothing is queued, so it
-can never be the run that evicts a real one. Two guards ride with it. A Mod
+Checkout now takes main as it stands when the run starts. The replay net had
+keyed on the submission label alone, so it could not see a placement report;
+it now looks for anything intake would take, every twenty minutes, and
+dispatches the oldest it has never answered, one at a time and only when
+nothing is queued, so it can never be the run that evicts a real one. Two guards ride with it. A Mod
 Organizer list is refused by the parser, on the site and at intake alike,
 with a pointer to the export that is wanted. And an order contained in one the
 same person sent in the last fortnight is refused as a fragment of it; the

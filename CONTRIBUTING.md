@@ -25,6 +25,18 @@ attaching the exported file works as well as pasting it.
 Broken orders are wanted too. They teach the warnings, and the report you get
 back diagnoses where your order disagrees with orders known to work.
 
+The form asks three things about the order besides the order itself. Whether
+it worked, which decides what it is allowed to teach. How it was arranged: by
+you, by the game's own mod manager, or by VOLO. An order VOLO sorted still
+shows which mods run together, but its sequence is VOLO's own answer coming
+back, so it cannot count as a player agreeing with VOLO; the other two answers
+are independent and count in full. And which patch you played it on, which is
+optional and is recorded as you wrote it. A Mod Organizer mod list, one title
+per line with a plus or minus in front and no identifiers, is not a load order
+and is refused with a pointer to the export that is wanted; so is an order
+that is part of one you have already sent, since one copy of an order speaks
+once.
+
 ## Contributing a rule
 
 Some knowledge never appears in a load order: that two mods must not be

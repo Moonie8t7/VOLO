@@ -94,7 +94,7 @@ question comes up again:
 | `extract-separator-mods.mjs` | Astra ships new or changed divider paks |
 | `learn-breakage.mjs` | Asking what broken orders do that working ones never do |
 | `learn-category-order.mjs` | Re-deriving the category sequence as the corpus grows |
-| `backfill-provenance.mjs` | An order has no provenance record, or a submitter's note is only in the issue. Dry run by default, `--write` to apply |
+| `backfill-provenance.mjs` | An order has no provenance record, or a submitter's note or patch is only in the issue. Dry run by default, `--write` to apply |
 
 ## Environment
 
@@ -130,6 +130,16 @@ sequenceDiagram
 The gate is one question, asked of every order: does it leave agreement intact.
 An order that parses, is not a duplicate, and does not drop agreement by more
 than one point lands on its own, whether its submitter said it worked or not.
+
+Two things are refused at the door, before any of that. A Mod Organizer mod
+list, one Nexus title per line with a plus or minus in front and no identifiers
+anywhere, is not a load order; the parser says so, on the site and at intake
+alike, so one cannot again seed the masterlist with eight hundred rows named
+after listings. And an order that is part of one the same person sent in the
+last fortnight is a fragment, refused so that one player's paste does not vote
+twice; the reverse case, a full order arriving after its fragment, is named in
+the acceptance report for a person to tidy, because the landing step replays
+only the new file as a patch and cannot carry a deletion.
 
 Broken orders used to wait for a person on principle, because their value is the
 written diagnosis. The diagnosis is posted to the issue either way, and holding
@@ -177,11 +187,21 @@ Personal paths are stripped from it on the way in, GitHub's placeholder for an
 empty box is not a note, and `backfill-provenance.mjs` fills in orders that
 landed before any of this existed.
 
+The patch the order was played on is kept the same way, as `patch` on the
+record. The form had asked for it since the beginning and nothing read the
+answer back; twenty-three submitters had answered, every one of them Patch 8
+in one spelling or another, so that shape is folded to one and anything else
+is kept as typed. A full BG3MM export carries the game build on its base-game
+packages and the miner reads that too, but only a handful of orders are full
+exports, so the form answer is the version evidence most orders have.
+
 Re-adding the `load-order-submission` label replays an issue through current
 intake. That is how orders rejected by an older version get another run
 without asking anyone to file again, and it is the same lever `approved` pulls:
 labelling replays the submission, and the label is what tells the gate the hold
-has been answered.
+has been answered. That lever is a person's: a label toggled by the workflow
+token starts nothing, so anything automated goes in through
+`workflow_dispatch` with the issue number instead.
 
 Both labels have to exist in the repository. GitHub drops a label an issue asks
 for when the repository does not have one by that name, silently and with no

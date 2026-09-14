@@ -849,8 +849,10 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     console.log('  FAIL  checkout has no ref: main, so intake validates against a stale tree');
   }
 
-  const sweepFile = '.github/workflows/sweep-submissions.yml';
-  const sweep = fs.existsSync(sweepFile) ? fs.readFileSync(sweepFile, 'utf8') : '';
+  // The replay net keyed on the submission label alone, so a placement report
+  // carrying an order could stay silent forever, and six did.
+  const replayFile = '.github/workflows/replay-stranded.yml';
+  const replay = fs.existsSync(replayFile) ? fs.readFileSync(replayFile, 'utf8') : '';
   const wants = [
     ['schedule:', 'runs on a schedule'],
     ['gh workflow run process-submission.yml', 'dispatches intake'],
@@ -858,13 +860,14 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     ['github-actions', 'skips issues intake has already answered'],
     ['load-order-submission', 'covers submissions'],
     ['Working, I have played on it', 'covers placement reports carrying a played order'],
+    ['--status', 'checks nothing is queued before dispatching'],
   ];
-  const lacking = sweep ? wants.filter(([needle]) => !sweep.includes(needle)) : [['', 'exists']];
+  const lacking = replay ? wants.filter(([needle]) => !replay.includes(needle)) : [['', 'exists']];
   if (!lacking.length) {
-    console.log('  ok    the sweep dispatches unanswered submissions one at a time');
+    console.log('  ok    the replay net covers placement reports and dispatches one at a time');
   } else {
     failures++;
-    for (const [, what] of lacking) console.log(`  FAIL  the sweep workflow: ${what} is missing`);
+    for (const [, what] of lacking) console.log(`  FAIL  the replay net: ${what} is missing`);
   }
 
   // The fragment rule asks GitHub who submitted the order, and stands aside

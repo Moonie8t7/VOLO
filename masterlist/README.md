@@ -17,7 +17,7 @@ Nothing here needs to ask permission.
 | `bg3-masterlist.json` | The artefact: every mod VOLO knows, its category, evidence and dependencies |
 | `masterlist.schema.json` | JSON Schema for the artefact, for anyone consuming it |
 | `coverage-report.md` | What is known versus guessed, regenerated with the masterlist |
-| `curated-rules.json` | Hand-written rules: exact placements, incompatibilities, warnings |
+| `curated-rules.json` | Hand-written rules: exact placements, requirement aliases and stand-ins, load sequences, incompatibilities, warnings |
 | `separator-mods.json` | Astra's divider paks by UUID, so they can be recognised on import |
 | `external-categories.json` | Name to category map from the Nexus and mod.io catalogues, including names listings had before a rename |
 | `learned-order.json` | The category sequence learned from working orders |

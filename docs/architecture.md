@@ -67,6 +67,15 @@ states the equivalence and records how they know. The mine fails if an alias
 names a mod the masterlist does not have, because an alias that matches nothing looks handled while the requirement goes
 on failing.
 
+An alias may also name the Nexus listing, by id, and the miner then treats
+that listing as the mod's own: the requirements stated on it attach to the
+real row, and its Script Extender note counts. That is the one way a listing
+whose title the crawler could only match loosely reaches the mod it describes.
+Mod Configuration Menu publishes as "Mod Configuration Menu (MCM)" and ships
+without the acronym, a near miss the crawler rightly refuses to call exact,
+and four libraries were reported missing from every order until their listings
+were pinned this way.
+
 Requirements that resolve to no mod, no folder and no alias are counted and
 reported by every mine. That number is currently zero and is printed either
 way, so it stays visible when it stops being: a name appearing repeatedly is
@@ -154,16 +163,25 @@ data-size problem.
 | Workflow | Trigger | What it does |
 |---|---|---|
 | Catalogue crawl | Daily 04:20 UTC | Crawls Nexus and mod.io, rebuilds derived data, commits |
-| Process submission | A labelled issue | Validates, gates, then lands it or opens a pull request |
+| Process submission | A labelled issue, or a dispatch by number | Validates, gates, then lands it or holds it on its issue |
 | Regenerate masterlist | Corpus change on main | Rebuilds the masterlist from the whole corpus |
-| Replay stranded submissions | Hourly | Replays any submission the pipeline never answered |
+| Replay stranded submissions | Every 20 minutes | Dispatches a submission or placement report the pipeline never answered, an acceptance that never landed, or an approval that stalled |
 
 Submission and regeneration share a `masterlist` concurrency group, so two runs
-can never regenerate over each other. The crawl holds its own group instead:
-GitHub keeps a single pending run per group and cancels any earlier one still
-waiting, and a cancelled job never reports, so a submission arriving during the
-crawl's long fetch used to vanish without the submitter hearing anything. The
-hourly replay exists for the cases that still slip through.
+can never regenerate over each other. The group has a cost: GitHub keeps a
+single pending run per group and replaces it when a newer one arrives, and a
+replaced run never reports, so a burst of issues loses every run but the last
+without the submitters hearing anything. Six placement reports in eleven
+minutes lost five. The crawl holds its own group so its long fetch is never the
+run that evicts a submission. The replay net exists for what still slips
+through: it dispatches by issue number, because a label toggled by the workflow
+token starts nothing, and it takes one issue per run and only when nothing is
+queued, so that it is never itself the pending run that evicts a real one.
+
+Intake checks out main as it stands when its run starts, not the commit its
+issue event was raised at. Runs queue, so the event's commit can be several
+landings old by the time a run reads it, and a duplicate check against such a
+tree once let an order land twice.
 
 None of these rebase generated files. Each commits only what it is the source
 of, the submitted order or the crawled catalogues, and rebuilds everything
