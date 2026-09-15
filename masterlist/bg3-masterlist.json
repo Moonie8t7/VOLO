@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-15T12:06:17.985Z",
+  "generated": "2026-09-15T16:06:01.184Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -40,8 +40,8 @@
     ]
   },
   "provenance": {
-    "ordersAnalysed": 167,
-    "working": 136,
+    "ordersAnalysed": 168,
+    "working": 137,
     "broken": 29,
     "unlabelled": 2,
     "externalDependencyEdges": 795,
@@ -301,15 +301,15 @@
       },
       "evidence": {
         "source": "curated",
-        "installs": 149,
-        "workingInstalls": 121,
+        "installs": 150,
+        "workingInstalls": 122,
         "brokenInstalls": 26,
         "voloSortedInstalls": 52
       },
       "usesScriptExtender": true,
       "absence": {
-        "held": 119,
-        "witnesses": 127
+        "held": 120,
+        "witnesses": 128
       }
     },
     {
@@ -379,15 +379,15 @@
       },
       "evidence": {
         "source": "curated",
-        "installs": 122,
-        "workingInstalls": 96,
+        "installs": 123,
+        "workingInstalls": 97,
         "brokenInstalls": 24,
         "voloSortedInstalls": 47
       },
       "usesScriptExtender": true,
       "absence": {
-        "held": 94,
-        "witnesses": 101
+        "held": 95,
+        "witnesses": 102
       }
     },
     {
@@ -412,8 +412,8 @@
       },
       "evidence": {
         "source": "curated",
-        "installs": 119,
-        "workingInstalls": 94,
+        "installs": 120,
+        "workingInstalls": 95,
         "brokenInstalls": 23,
         "voloSortedInstalls": 47
       },
@@ -1385,6 +1385,31 @@
       "usesScriptExtender": true
     },
     {
+      "name": "EasyCheat",
+      "uuid": "5b5ad5b6-ce37-4a63-8dea-a1fee4cee156",
+      "group": "Utilities",
+      "version": "72479810797961216",
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        }
+      ],
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 16,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 57,
+        "workingInstalls": 50,
+        "brokenInstalls": 7,
+        "voloSortedInstalls": 18
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "MoreReactiveCompanions_Configurable",
       "uuid": "2b1e81bb-d0aa-4617-b3e9-271c7b02f252",
       "group": "Miscellaneous",
@@ -1448,31 +1473,6 @@
         "brokenInstalls": 11,
         "voloSortedInstalls": 18
       }
-    },
-    {
-      "name": "EasyCheat",
-      "uuid": "5b5ad5b6-ce37-4a63-8dea-a1fee4cee156",
-      "group": "Utilities",
-      "version": "72479810797961216",
-      "dependencies": [
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "Mod Configuration Menu"
-        }
-      ],
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 16,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 56,
-        "workingInstalls": 49,
-        "brokenInstalls": 7,
-        "voloSortedInstalls": 18
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Facial Animations",
@@ -2220,6 +2220,53 @@
       }
     },
     {
+      "name": "Warlock Spell List Fixer",
+      "uuid": "da838ab2-4d4b-4ca2-9e11-0257a03b13fc",
+      "group": "Classes",
+      "folder": "CharlatanListSupport",
+      "version": "36028809903865856",
+      "featureFlags": [
+        "Osiris",
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 19,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 49,
+        "workingInstalls": 45,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 18
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "AahzLib",
+      "uuid": "5d1bd6cb-6361-45ef-b20c-d997acfba822",
+      "group": "Resources",
+      "version": "36169534507319296",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 10,
+      "placement": {
+        "why": "Shared assets other mods read from."
+      },
+      "evidence": {
+        "source": "curated",
+        "installs": 48,
+        "workingInstalls": 41,
+        "brokenInstalls": 7,
+        "voloSortedInstalls": 18
+      },
+      "usesScriptExtender": true,
+      "absence": {
+        "held": 18,
+        "witnesses": 18
+      }
+    },
+    {
       "name": "MusicPerformWorkaround",
       "uuid": "a634d210-9926-494d-95bd-f263a092790e",
       "group": "Gameplay",
@@ -2253,53 +2300,6 @@
         "workingInstalls": 39,
         "brokenInstalls": 8,
         "voloSortedInstalls": 15
-      }
-    },
-    {
-      "name": "Warlock Spell List Fixer",
-      "uuid": "da838ab2-4d4b-4ca2-9e11-0257a03b13fc",
-      "group": "Classes",
-      "folder": "CharlatanListSupport",
-      "version": "36028809903865856",
-      "featureFlags": [
-        "Osiris",
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 19,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 48,
-        "workingInstalls": 44,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 18
-      },
-      "usesScriptExtender": true
-    },
-    {
-      "name": "AahzLib",
-      "uuid": "5d1bd6cb-6361-45ef-b20c-d997acfba822",
-      "group": "Resources",
-      "version": "36169534507319296",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 10,
-      "placement": {
-        "why": "Shared assets other mods read from."
-      },
-      "evidence": {
-        "source": "curated",
-        "installs": 47,
-        "workingInstalls": 40,
-        "brokenInstalls": 7,
-        "voloSortedInstalls": 18
-      },
-      "usesScriptExtender": true,
-      "absence": {
-        "held": 18,
-        "witnesses": 18
       }
     },
     {
@@ -2474,6 +2474,26 @@
         "workingInstalls": 38,
         "brokenInstalls": 7,
         "voloSortedInstalls": 14
+      },
+      "usesScriptExtender": true
+    },
+    {
+      "name": "Valkrana's Spellbook",
+      "uuid": "9deeb371-f01e-41b4-b20e-c5eee0751b12",
+      "group": "Spells",
+      "version": "73887181386547200",
+      "featureFlags": [
+        "Osiris",
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 47,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 45,
+        "workingInstalls": 39,
+        "brokenInstalls": 6,
+        "voloSortedInstalls": 16
       },
       "usesScriptExtender": true
     },
@@ -2663,26 +2683,6 @@
         "brokenInstalls": 8,
         "voloSortedInstalls": 17
       }
-    },
-    {
-      "name": "Valkrana's Spellbook",
-      "uuid": "9deeb371-f01e-41b4-b20e-c5eee0751b12",
-      "group": "Spells",
-      "version": "73887181386547200",
-      "featureFlags": [
-        "Osiris",
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 47,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 44,
-        "workingInstalls": 38,
-        "brokenInstalls": 6,
-        "voloSortedInstalls": 16
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "[Aza] Better Starting Gear (Gale) + Tutorial Chest",
@@ -3990,6 +3990,28 @@
       }
     },
     {
+      "name": "Valkrana's Undead Encounters",
+      "uuid": "4b83dd7a-0d18-4d6b-a6d3-e540a17c43de",
+      "group": "Miscellaneous",
+      "folder": "Valkrana's Skeletal Encounters",
+      "version": "37576917980807168",
+      "divider": 47,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 35,
+        "workingInstalls": 29,
+        "brokenInstalls": 6,
+        "voloSortedInstalls": 13
+      },
+      "loadAfter": [
+        {
+          "uuid": "0dd8b949-b56e-4248-9bf0-b03b3c3bd8c5",
+          "name": "Valkrana's Skeleton Crew",
+          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
+        }
+      ]
+    },
+    {
       "name": "[Aza] NPC Redesign: Vampire Spawns (WIP)",
       "uuid": "5bfc90ea-d4ef-ee45-38fd-df5583ca0d97",
       "group": "NPC",
@@ -4278,23 +4300,28 @@
       }
     },
     {
-      "name": "Valkrana's Undead Encounters",
-      "uuid": "4b83dd7a-0d18-4d6b-a6d3-e540a17c43de",
-      "group": "Miscellaneous",
-      "folder": "Valkrana's Skeletal Encounters",
-      "version": "37576917980807168",
+      "name": "Valkrana's Skeleton Crew Feat",
+      "uuid": "d76ff1e5-e09e-4565-a9d2-a035037f6134",
+      "group": "Classes",
+      "version": "40110186328752128",
+      "featureFlags": [
+        "Osiris",
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 47,
       "evidence": {
         "source": "section-majority",
         "installs": 34,
-        "workingInstalls": 28,
-        "brokenInstalls": 6,
-        "voloSortedInstalls": 13
+        "workingInstalls": 29,
+        "brokenInstalls": 5,
+        "voloSortedInstalls": 12
       },
+      "usesScriptExtender": true,
       "loadAfter": [
         {
-          "uuid": "0dd8b949-b56e-4248-9bf0-b03b3c3bd8c5",
-          "name": "Valkrana's Skeleton Crew",
+          "uuid": "f323b958-b845-4c79-b139-d39570658fbb",
+          "name": "Necromancy Reanimated",
           "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
         }
       ]
@@ -4376,6 +4403,37 @@
         "brokenInstalls": 6,
         "voloSortedInstalls": 17
       }
+    },
+    {
+      "name": "Command Undead School of Necromancy Feature [Lv14]",
+      "uuid": "c10aa909-2d24-4848-8e73-5e06eb3f04ab",
+      "group": "Classes",
+      "alternateNames": [
+        "Command Undead"
+      ],
+      "folder": "Command Undead Lv14",
+      "version": "36591749119868928",
+      "featureFlags": [
+        "Osiris",
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 45,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 33,
+        "workingInstalls": 30,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 10
+      },
+      "usesScriptExtender": true,
+      "loadAfter": [
+        {
+          "uuid": "87bb1e3e-89f7-4d10-be13-1c382eb5c653",
+          "name": "Control Undead Complete",
+          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
+        }
+      ]
     },
     {
       "name": "Extra Gear",
@@ -4537,33 +4595,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "Valkrana's Skeleton Crew Feat",
-      "uuid": "d76ff1e5-e09e-4565-a9d2-a035037f6134",
-      "group": "Classes",
-      "version": "40110186328752128",
-      "featureFlags": [
-        "Osiris",
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 47,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 33,
-        "workingInstalls": 28,
-        "brokenInstalls": 5,
-        "voloSortedInstalls": 12
-      },
-      "usesScriptExtender": true,
-      "loadAfter": [
-        {
-          "uuid": "f323b958-b845-4c79-b139-d39570658fbb",
-          "name": "Necromancy Reanimated",
-          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
-        }
-      ]
-    },
-    {
       "name": "Weightless Consumables",
       "uuid": "1d582ce5-a2e3-9938-d44d-e5f7256e9bbe",
       "group": "Gameplay",
@@ -4662,37 +4693,6 @@
       }
     },
     {
-      "name": "Command Undead School of Necromancy Feature [Lv14]",
-      "uuid": "c10aa909-2d24-4848-8e73-5e06eb3f04ab",
-      "group": "Classes",
-      "alternateNames": [
-        "Command Undead"
-      ],
-      "folder": "Command Undead Lv14",
-      "version": "36591749119868928",
-      "featureFlags": [
-        "Osiris",
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 45,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 32,
-        "workingInstalls": 29,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 10
-      },
-      "usesScriptExtender": true,
-      "loadAfter": [
-        {
-          "uuid": "87bb1e3e-89f7-4d10-be13-1c382eb5c653",
-          "name": "Control Undead Complete",
-          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
-        }
-      ]
-    },
-    {
       "name": "HT_Astarion Confession Edit 2",
       "uuid": "2c6afb73-a6b6-1193-56ac-7a04ce39c9b9",
       "group": "Bug Fixes",
@@ -4749,6 +4749,32 @@
         "held": 2,
         "witnesses": 2
       }
+    },
+    {
+      "name": "Necromancy Reanimated",
+      "uuid": "f323b958-b845-4c79-b139-d39570658fbb",
+      "group": "Equipment",
+      "alternateNames": [
+        "Animate Dead++"
+      ],
+      "folder": "Animate Dead++",
+      "version": "41939786562273280",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 48,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 32,
+        "workingInstalls": 28,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 9
+      },
+      "loadAfter": [
+        {
+          "uuid": "9deeb371-f01e-41b4-b20e-c5eee0751b12",
+          "name": "Valkrana's Spellbook",
+          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
+        }
+      ]
     },
     {
       "name": "Planewalker's Barbershop",
@@ -5003,32 +5029,6 @@
         "brokenInstalls": 3,
         "voloSortedInstalls": 8
       }
-    },
-    {
-      "name": "Necromancy Reanimated",
-      "uuid": "f323b958-b845-4c79-b139-d39570658fbb",
-      "group": "Equipment",
-      "alternateNames": [
-        "Animate Dead++"
-      ],
-      "folder": "Animate Dead++",
-      "version": "41939786562273280",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 48,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 31,
-        "workingInstalls": 27,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 9
-      },
-      "loadAfter": [
-        {
-          "uuid": "9deeb371-f01e-41b4-b20e-c5eee0751b12",
-          "name": "Valkrana's Spellbook",
-          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
-        }
-      ]
     },
     {
       "name": "PK Hair Collection",
@@ -7211,6 +7211,27 @@
       ]
     },
     {
+      "name": "Valkrana's Necrobroker Wizard Subclass",
+      "uuid": "3e303d29-c44c-4355-b4da-35edb432ad08",
+      "group": "Classes",
+      "folder": "Valkrana's Necrobroker",
+      "version": "36873221949095936",
+      "featureFlags": [
+        "Osiris",
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 60,
+      "evidence": {
+        "source": "section",
+        "installs": 25,
+        "workingInstalls": 21,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 9
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Vestments Of The Faithful",
       "uuid": "4176096c-ea85-4c61-a162-0f84409bd8db",
       "group": "Armor",
@@ -7658,27 +7679,6 @@
         "brokenInstalls": 7,
         "voloSortedInstalls": 14
       }
-    },
-    {
-      "name": "Valkrana's Necrobroker Wizard Subclass",
-      "uuid": "3e303d29-c44c-4355-b4da-35edb432ad08",
-      "group": "Classes",
-      "folder": "Valkrana's Necrobroker",
-      "version": "36873221949095936",
-      "featureFlags": [
-        "Osiris",
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 24,
-        "workingInstalls": 20,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 9
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "VividLandscapes_AllinOne",
@@ -8234,6 +8234,25 @@
         "brokenInstalls": 4,
         "voloSortedInstalls": 5
       }
+    },
+    {
+      "name": "Undead Thralls Fix",
+      "uuid": "65198f82-4248-48b4-aae6-992995b14074",
+      "group": "Resources",
+      "version": "36028803461414912",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 9.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 23,
+        "workingInstalls": 21,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Use 5eSpells with Mystra's Spells",
@@ -8842,25 +8861,6 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 4
       }
-    },
-    {
-      "name": "Undead Thralls Fix",
-      "uuid": "65198f82-4248-48b4-aae6-992995b14074",
-      "group": "Resources",
-      "version": "36028803461414912",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 9.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 22,
-        "workingInstalls": 20,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 4
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Veils of Faerun - Beard Slot",
@@ -9478,6 +9478,19 @@
       ]
     },
     {
+      "name": "Valkrana's Skeleton Crew XP Enabled",
+      "uuid": "b4568e73-abfb-4824-8730-7650eb91e5cb",
+      "group": "Spells",
+      "divider": 47,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 21,
+        "workingInstalls": 19,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      }
+    },
+    {
       "name": "Vexa - Dark Urge Slayer Dragonborn CC",
       "uuid": "0571ff38-d7c9-f409-4591-33bb086c5f52",
       "group": "Heads",
@@ -9610,6 +9623,26 @@
         "brokenInstalls": 3,
         "voloSortedInstalls": 9
       }
+    },
+    {
+      "name": "Automated Summons SE",
+      "uuid": "7b5ed0e6-94fe-40e8-842d-f65f4ed25f05",
+      "group": "Resources",
+      "version": "36028837821153280",
+      "featureFlags": [
+        "Osiris",
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 9.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 20,
+        "workingInstalls": 19,
+        "brokenInstalls": 1,
+        "voloSortedInstalls": 5
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Better Trade Menu",
@@ -10296,19 +10329,6 @@
       }
     },
     {
-      "name": "Valkrana's Skeleton Crew XP Enabled",
-      "uuid": "b4568e73-abfb-4824-8730-7650eb91e5cb",
-      "group": "Spells",
-      "divider": 47,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 20,
-        "workingInstalls": 18,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 4
-      }
-    },
-    {
       "name": "VisibleShield",
       "uuid": "87d131a1-cf57-74b3-e113-30a226283be8",
       "group": "Visuals",
@@ -10455,6 +10475,28 @@
       }
     },
     {
+      "name": "Arcanist Feat SE",
+      "uuid": "10648c86-4837-498e-9a82-bc77f16e518c",
+      "group": "Classes",
+      "alternateNames": [
+        "Arcanist Feat"
+      ],
+      "version": "36169545244737536",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 60,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 19,
+        "workingInstalls": 16,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 7
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "ASTRL Glowing Eyes Unique Tav Patch",
       "uuid": "4b1035f1-6e41-4591-8516-72752a448681",
       "group": "Bug Fixes",
@@ -10507,26 +10549,6 @@
         "brokenInstalls": 5,
         "voloSortedInstalls": 8
       }
-    },
-    {
-      "name": "Automated Summons SE",
-      "uuid": "7b5ed0e6-94fe-40e8-842d-f65f4ed25f05",
-      "group": "Resources",
-      "version": "36028837821153280",
-      "featureFlags": [
-        "Osiris",
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 9.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 19,
-        "workingInstalls": 18,
-        "brokenInstalls": 1,
-        "voloSortedInstalls": 5
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Better Hag Hair",
@@ -10750,6 +10772,27 @@
         "brokenInstalls": 2,
         "voloSortedInstalls": 5
       }
+    },
+    {
+      "name": "Dread Overlord (Nexus Version)",
+      "uuid": "2e686664-8fbb-4e08-9ec2-3eea5d0300ab",
+      "group": "Classes",
+      "folder": "DreadOverlord",
+      "author": "The Dread Overlord",
+      "version": "9.11.0.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 60,
+      "evidence": {
+        "source": "section",
+        "installs": 19,
+        "workingInstalls": 17,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 5
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Drow_Weaponry_Rapier",
@@ -11415,28 +11458,6 @@
       }
     },
     {
-      "name": "Arcanist Feat SE",
-      "uuid": "10648c86-4837-498e-9a82-bc77f16e518c",
-      "group": "Classes",
-      "alternateNames": [
-        "Arcanist Feat"
-      ],
-      "version": "36169545244737536",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 60,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 18,
-        "workingInstalls": 15,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 7
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "Astral Domain",
       "uuid": "2950dcde-1d7d-042d-1211-29f1c494cfc9",
       "group": "Classes",
@@ -11769,27 +11790,6 @@
         "held": 6,
         "witnesses": 6
       }
-    },
-    {
-      "name": "Dread Overlord (Nexus Version)",
-      "uuid": "2e686664-8fbb-4e08-9ec2-3eea5d0300ab",
-      "group": "Classes",
-      "folder": "DreadOverlord",
-      "author": "The Dread Overlord",
-      "version": "9.11.0.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 18,
-        "workingInstalls": 16,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 5
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Eldritch Domain",
@@ -20285,6 +20285,27 @@
       }
     },
     {
+      "name": "Valkrana's Limited Edition Bone",
+      "uuid": "04c9dcd5-9bc2-4560-8c41-a801bfbca5ed",
+      "group": "Equipment",
+      "version": "36028807756382208",
+      "divider": 34.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 13,
+        "workingInstalls": 12,
+        "brokenInstalls": 1,
+        "voloSortedInstalls": 3
+      },
+      "loadAfter": [
+        {
+          "uuid": "7ec9df06-62f9-4677-868b-ae0bb6bfff19",
+          "name": "Valkrana's Skeletal Challenge",
+          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
+        }
+      ]
+    },
+    {
       "name": "Violet's Head Presets",
       "uuid": "c2037bd7-fbc0-4ea6-b3f1-bdb2f1b3e771",
       "group": "Heads",
@@ -22026,22 +22047,28 @@
       }
     },
     {
-      "name": "Valkrana's Limited Edition Bone",
-      "uuid": "04c9dcd5-9bc2-4560-8c41-a801bfbca5ed",
-      "group": "Equipment",
-      "version": "36028807756382208",
-      "divider": 34.5,
+      "name": "Valkrana's Skeleton Emporium",
+      "uuid": "e11672e2-408f-44ef-8058-85f65032953b",
+      "group": "Miscellaneous",
+      "version": "36591751267352576",
+      "featureFlags": [
+        "Osiris",
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 89.5,
       "evidence": {
         "source": "section-majority",
         "installs": 12,
-        "workingInstalls": 11,
-        "brokenInstalls": 1,
-        "voloSortedInstalls": 3
+        "workingInstalls": 10,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
       },
+      "usesScriptExtender": true,
       "loadAfter": [
         {
-          "uuid": "7ec9df06-62f9-4677-868b-ae0bb6bfff19",
-          "name": "Valkrana's Skeletal Challenge",
+          "uuid": "04c9dcd5-9bc2-4560-8c41-a801bfbca5ed",
+          "name": "Valkrana's Limited Edition Bone",
           "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
         }
       ]
@@ -22118,6 +22145,24 @@
         "workingInstalls": 11,
         "brokenInstalls": 1,
         "voloSortedInstalls": 4
+      }
+    },
+    {
+      "name": "Wish Spell",
+      "uuid": "c5786672-3c9d-4bfb-a777-e92fb962fab5",
+      "group": "Spells",
+      "alternateNames": [
+        "Wish"
+      ],
+      "folder": "Wish",
+      "version": "36028803461414912",
+      "divider": 47,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 12,
+        "workingInstalls": 12,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 2
       }
     },
     {
@@ -24663,33 +24708,6 @@
       }
     },
     {
-      "name": "Valkrana's Skeleton Emporium",
-      "uuid": "e11672e2-408f-44ef-8058-85f65032953b",
-      "group": "Miscellaneous",
-      "version": "36591751267352576",
-      "featureFlags": [
-        "Osiris",
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 89.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 11,
-        "workingInstalls": 9,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 4
-      },
-      "usesScriptExtender": true,
-      "loadAfter": [
-        {
-          "uuid": "04c9dcd5-9bc2-4560-8c41-a801bfbca5ed",
-          "name": "Valkrana's Limited Edition Bone",
-          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
-        }
-      ]
-    },
-    {
       "name": "Vampires RAW",
       "uuid": "e89d08e0-f4ac-4108-a10d-e03ebcbdcd1e",
       "group": "Races",
@@ -24731,24 +24749,6 @@
         "installs": 11,
         "workingInstalls": 10,
         "brokenInstalls": 1,
-        "voloSortedInstalls": 2
-      }
-    },
-    {
-      "name": "Wish Spell",
-      "uuid": "c5786672-3c9d-4bfb-a777-e92fb962fab5",
-      "group": "Spells",
-      "alternateNames": [
-        "Wish"
-      ],
-      "folder": "Wish",
-      "version": "36028803461414912",
-      "divider": 47,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 11,
-        "workingInstalls": 11,
-        "brokenInstalls": 0,
         "voloSortedInstalls": 2
       }
     },
@@ -26763,6 +26763,20 @@
         "workingInstalls": 6,
         "brokenInstalls": 3,
         "voloSortedInstalls": 4
+      }
+    },
+    {
+      "name": "Lich Feats",
+      "uuid": "00a612fe-4676-4535-a6e3-79cacee74e44",
+      "group": "Classes",
+      "version": "36169568867057664",
+      "divider": 60,
+      "evidence": {
+        "source": "section",
+        "installs": 10,
+        "workingInstalls": 9,
+        "brokenInstalls": 1,
+        "voloSortedInstalls": 3
       }
     },
     {
@@ -30321,20 +30335,6 @@
       }
     },
     {
-      "name": "Lich Feats",
-      "uuid": "00a612fe-4676-4535-a6e3-79cacee74e44",
-      "group": "Classes",
-      "version": "36169568867057664",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 9,
-        "workingInstalls": 8,
-        "brokenInstalls": 1,
-        "voloSortedInstalls": 3
-      }
-    },
-    {
       "name": "Lost Shipment - Equipment for Clawstep",
       "uuid": "443e6d35-4d40-feb5-3a21-936ddd2711a5",
       "group": "Character Customization",
@@ -31566,6 +31566,28 @@
         "brokenInstalls": 4,
         "voloSortedInstalls": 3
       }
+    },
+    {
+      "name": "The Necrobroker Patron - Warlock Subclass",
+      "uuid": "34eb0556-e0b9-4c74-8181-d1f71500b335",
+      "group": "Classes",
+      "folder": "Valkrana Patron",
+      "author": "Sailor Cat",
+      "version": "1.2.0.0",
+      "featureFlags": [
+        "Osiris",
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 60,
+      "evidence": {
+        "source": "section",
+        "installs": 9,
+        "workingInstalls": 8,
+        "brokenInstalls": 1,
+        "voloSortedInstalls": 2
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "The Sparkstruck Scientist",
@@ -36205,28 +36227,6 @@
       }
     },
     {
-      "name": "The Necrobroker Patron - Warlock Subclass",
-      "uuid": "34eb0556-e0b9-4c74-8181-d1f71500b335",
-      "group": "Classes",
-      "folder": "Valkrana Patron",
-      "author": "Sailor Cat",
-      "version": "1.2.0.0",
-      "featureFlags": [
-        "Osiris",
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 8,
-        "workingInstalls": 7,
-        "brokenInstalls": 1,
-        "voloSortedInstalls": 2
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "The Underdark's Songbird armor",
       "uuid": "0eb93f44-00de-49f6-b370-28bb301d4c9c",
       "group": "Equipment",
@@ -37002,6 +37002,20 @@
         "workingInstalls": 4,
         "brokenInstalls": 2,
         "voloSortedInstalls": 1
+      }
+    },
+    {
+      "name": "Arcane Recovery",
+      "uuid": "3bb34546-a0d3-42ae-990f-137538c9e2b3",
+      "group": "Spells",
+      "author": "Sailor Cat",
+      "divider": 48,
+      "evidence": {
+        "source": "section",
+        "installs": 7,
+        "workingInstalls": 7,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 0
       }
     },
     {
@@ -38113,6 +38127,27 @@
         "brokenInstalls": 2,
         "voloSortedInstalls": 3
       }
+    },
+    {
+      "name": "Console Commands",
+      "uuid": "3fe1bccd-53b2-460e-ab69-c8f7a8da729c",
+      "group": "Utilities",
+      "folder": "End Turn",
+      "author": "Sailor Cat",
+      "version": "1.3.0.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 20,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 7,
+        "workingInstalls": 7,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 0
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "Container Loot Control",
@@ -42465,20 +42500,6 @@
       }
     },
     {
-      "name": "Arcane Recovery",
-      "uuid": "3bb34546-a0d3-42ae-990f-137538c9e2b3",
-      "group": "Spells",
-      "author": "Sailor Cat",
-      "divider": 48,
-      "evidence": {
-        "source": "section",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 0
-      }
-    },
-    {
       "name": "Ardent Robe",
       "uuid": "75c4fbc1-7567-436d-aa74-608182a6d74d",
       "group": "Armor",
@@ -43615,27 +43636,6 @@
         "brokenInstalls": 2,
         "voloSortedInstalls": 3
       }
-    },
-    {
-      "name": "Console Commands",
-      "uuid": "3fe1bccd-53b2-460e-ab69-c8f7a8da729c",
-      "group": "Utilities",
-      "folder": "End Turn",
-      "author": "Sailor Cat",
-      "version": "1.3.0.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 20,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 6,
-        "workingInstalls": 6,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 0
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "Cowgirl Clothing Set",
@@ -56531,6 +56531,39 @@
       }
     },
     {
+      "name": "Valkrana's Skeleton Crew",
+      "uuid": "0dd8b949-b56e-4248-9bf0-b03b3c3bd8c5",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 5,
+        "workingInstalls": 3,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 3
+      },
+      "loadAfter": [
+        {
+          "uuid": "d76ff1e5-e09e-4565-a9d2-a035037f6134",
+          "name": "Valkrana's Skeleton Crew Feat",
+          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
+        }
+      ]
+    },
+    {
+      "name": "Valkrana's Undead Champion",
+      "uuid": "30552a1f-1b5a-4c21-80df-b025c3e67991",
+      "group": "Gameplay",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 5,
+        "workingInstalls": 4,
+        "brokenInstalls": 1,
+        "voloSortedInstalls": 2
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Valuables Collector",
       "uuid": "6b5e1703-a51c-df2a-36d8-c537c7348b43",
       "group": "Utilities",
@@ -69099,39 +69132,6 @@
       }
     },
     {
-      "name": "Valkrana's Skeleton Crew",
-      "uuid": "0dd8b949-b56e-4248-9bf0-b03b3c3bd8c5",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 4,
-        "workingInstalls": 2,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
-      },
-      "loadAfter": [
-        {
-          "uuid": "d76ff1e5-e09e-4565-a9d2-a035037f6134",
-          "name": "Valkrana's Skeleton Crew Feat",
-          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
-        }
-      ]
-    },
-    {
-      "name": "Valkrana's Undead Champion",
-      "uuid": "30552a1f-1b5a-4c21-80df-b025c3e67991",
-      "group": "Gameplay",
-      "divider": 18.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 4,
-        "workingInstalls": 3,
-        "brokenInstalls": 1,
-        "voloSortedInstalls": 2
-      },
-      "usesScriptExtender": true
-    },
-    {
       "name": "Valkyrie Class Extra Feats",
       "uuid": "84cccaf1-9e79-689b-d79b-40aee6f6ab81",
       "group": "Classes",
@@ -81443,6 +81443,19 @@
         "workingInstalls": 2,
         "brokenInstalls": 1,
         "voloSortedInstalls": 2
+      }
+    },
+    {
+      "name": "Pernicious Thread",
+      "uuid": "6ba37c1f-8fd1-44b5-ade8-8c9486034bcd",
+      "group": "Resources",
+      "divider": 9.5,
+      "evidence": {
+        "source": "section",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 0
       }
     },
     {
@@ -102242,6 +102255,19 @@
       }
     },
     {
+      "name": "Minimal Main Menu",
+      "uuid": "78f51467-d9aa-4d13-90a7-0fda8a54ba20",
+      "group": "Bug Fixes",
+      "divider": 105,
+      "evidence": {
+        "source": "section",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 0
+      }
+    },
+    {
       "name": "Minthara Auto-KO Additional Grove Raid Dialogue Options - Patch",
       "uuid": "c8ee1458-a9e8-3e74-d19b-0a68080f0e27",
       "group": "Companions",
@@ -105722,19 +105748,6 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
-    },
-    {
-      "name": "Pernicious Thread",
-      "uuid": "6ba37c1f-8fd1-44b5-ade8-8c9486034bcd",
-      "group": "Resources",
-      "divider": 9.5,
-      "evidence": {
-        "source": "section",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 0
       }
     },
     {
@@ -112718,6 +112731,25 @@
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
       }
+    },
+    {
+      "name": "Valkrana's Skeletal Challenge",
+      "uuid": "7ec9df06-62f9-4677-868b-ae0bb6bfff19",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 2,
+        "workingInstalls": 2,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 0
+      },
+      "loadAfter": [
+        {
+          "uuid": "4b83dd7a-0d18-4d6b-a6d3-e540a17c43de",
+          "name": "Valkrana's Undead Encounters",
+          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
+        }
+      ]
     },
     {
       "name": "ValourousBard",
@@ -134725,6 +134757,18 @@
       }
     },
     {
+      "name": "Immersive Loading Screens - With Vignette",
+      "uuid": "ae71d0d9-bbce-412f-bc68-bd5e296801cf",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 0
+      }
+    },
+    {
       "name": "Immersive Preview CC Portraits",
       "uuid": "0890b160-704b-405d-8f84-861f399a00f3",
       "group": "User Interface",
@@ -139216,19 +139260,6 @@
       }
     },
     {
-      "name": "Minimal Main Menu",
-      "uuid": "name:minimalmainmenu",
-      "group": "Bug Fixes",
-      "divider": 105,
-      "evidence": {
-        "source": "section",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 0
-      }
-    },
-    {
       "name": "Minsca",
       "uuid": "da4fb2e0-2323-4ef3-94fe-207b0950073b",
       "group": "Companions",
@@ -142810,6 +142841,18 @@
     {
       "name": "NPCUA_Alfira",
       "uuid": "e4fc0446-986b-4a4a-8a10-d7388923adfc",
+      "group": "unsorted",
+      "evidence": {
+        "source": "none",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 0
+      }
+    },
+    {
+      "name": "NR - Corpse Conservation Bill",
+      "uuid": "59ea2a6c-8667-4f84-af3a-e3b83c20e592",
       "group": "unsorted",
       "evidence": {
         "source": "none",
@@ -155542,25 +155585,6 @@
         "confidence": 0.96
       },
       "divider": 60
-    },
-    {
-      "name": "Valkrana's Skeletal Challenge",
-      "uuid": "7ec9df06-62f9-4677-868b-ae0bb6bfff19",
-      "group": "unsorted",
-      "evidence": {
-        "source": "none",
-        "installs": 1,
-        "workingInstalls": 1,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 0
-      },
-      "loadAfter": [
-        {
-          "uuid": "4b83dd7a-0d18-4d6b-a6d3-e540a17c43de",
-          "name": "Valkrana's Undead Encounters",
-          "why": "Published by the mod's own author as the general load order for the Valkrana set and the mods built around it. An author stating the sequence for their own work is the strongest ordering evidence there is: everything else here is inferred from what players happened to do."
-        }
-      ]
     },
     {
       "name": "Vampir Hairstyles - T1 Patch ",
