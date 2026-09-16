@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 10952 |
-| Matched exactly by name | 2546 |
-| Matched fuzzily (>= 0.9) | 623 |
-| Unmatched | 7783 |
+| Masterlist mods | 11045 |
+| Matched exactly by name | 2567 |
+| Matched fuzzily (>= 0.9) | 626 |
+| Unmatched | 7852 |
 
 ## What the match would add
 
 - 34 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1047 mods have a Nexus category that disagrees with the
+- 1065 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1775 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 810 of them resolved to a uuid on both
+- 1794 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 814 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -30,8 +30,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
 - EW_Proficiency_Potion: Utilities (fuzzy match)
 - Exhaustion: User Interface (fuzzy match)
-- Guilt-Free Slayer Form: Quests (fuzzy match)
 - Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
+- Guilt-Free Slayer Form: Quests (fuzzy match)
 - Initiative Variants - D20: Gameplay (fuzzy match)
 - AskewShaders: Utilities (fuzzy match)
 - BetterDualWieldingAlt: Gameplay (fuzzy match)
