@@ -879,6 +879,19 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     failures++;
     console.log('  FAIL  the fragment rule is not wired into intake');
   }
+
+  // Reading main as it stands has a twin: the second run one submission
+  // starts now sees the file the first one landed. It must stay quiet, or
+  // every submitter reads "rejected" under "accepted".
+  const quiet = intake.includes('silent: true')
+    && workflow.includes('silent=$(node')
+    && workflow.includes('steps.process.outputs.silent');
+  if (quiet) {
+    console.log('  ok    the twin run of a landed submission says nothing');
+  } else {
+    failures++;
+    console.log('  FAIL  the silent gate is not carried from intake to the report step');
+  }
 }
 
 // A slot the user picked for their own mod. Asked for by somebody with a lot

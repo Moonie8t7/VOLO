@@ -165,7 +165,7 @@ data-size problem.
 | Catalogue crawl | Daily 04:20 UTC | Crawls Nexus and mod.io, rebuilds derived data, commits |
 | Process submission | A labelled issue, or a dispatch by number | Validates, gates, then lands it or holds it on its issue |
 | Regenerate masterlist | Corpus change on main | Rebuilds the masterlist from the whole corpus |
-| Replay stranded submissions | Every 20 minutes | Dispatches a submission or placement report the pipeline never answered, an acceptance that never landed, or an approval that stalled |
+| Replay stranded submissions | Scheduled every 20 minutes; GitHub runs it a few times a day | Dispatches a submission or placement report the pipeline never answered, an acceptance that never landed, or an approval that stalled |
 
 Submission and regeneration share a `masterlist` concurrency group, so two runs
 can never regenerate over each other. The group has a cost: GitHub keeps a

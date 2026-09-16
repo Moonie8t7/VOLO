@@ -882,9 +882,22 @@ went through.
 
 Checkout now takes main as it stands when the run starts. The replay net had
 keyed on the submission label alone, so it could not see a placement report;
-it now looks for anything intake would take, every twenty minutes, and
-dispatches the oldest it has never answered, one at a time and only when
-nothing is queued, so it can never be the run that evicts a real one. Two guards ride with it. A Mod
+it now looks for anything intake would take and dispatches the oldest it has
+never answered, one at a time and only when nothing is queued, so it can never
+be the run that evicts a real one. It is scheduled every twenty minutes, and
+GitHub runs it six or seven times a day, which is exactly what it did on the
+hourly schedule before; the cron line states an intent the scheduler does not
+keep, so the delay a dropped submission can wait is hours, not minutes.
+
+The checkout fix had a twin. One submission starts two runs, `opened` and
+`labeled`, and the second had always validated against the stale tree, landed
+nothing because the first had, and posted nothing because its report matched
+the first's word for word. Reading main as it stands, the second run found the
+first's file and rejected the order as a duplicate of itself, twenty seconds
+under the acceptance. Six submissions read that way before it was noticed, all
+from the maintainer's own account. Intake now recognises a duplicate that
+carries its own issue number as this submission already landed, and hands the
+workflow a silent gate that posts nothing. Two guards ride with it. A Mod
 Organizer list is refused by the parser, on the site and at intake alike,
 with a pointer to the export that is wanted. And an order contained in one the
 same person sent in the last fortnight is refused as a fragment of it; the

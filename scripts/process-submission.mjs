@@ -466,6 +466,21 @@ for (const f of fs.readdirSync(CORPUS)) {
   } catch { continue; }
   if (existing === submitted) {
     /*
+     * One submission starts two runs, `opened` and `labeled`, and the second
+     * reads main as it stands, which holds the file the first one landed. That
+     * is this submission, not a duplicate of it, and the run that landed it
+     * has already answered the submitter. Six submitters read "rejected"
+     * twenty seconds after "accepted" before this was caught. The workflow
+     * posts nothing for a silent gate.
+     */
+    if (new RegExp(`_issue-${Number(issueNumber)}_`).test(f)) {
+      finish(
+        false,
+        [`Already landed as \`${f}\` by the run the other event started. Nothing to do.`],
+        { final: false, silent: true },
+      );
+    }
+    /*
      * Final, unlike the other two rejections. Editing an issue re-runs intake,
      * so an order that could not be read is worth leaving open for the
      * submitter to fix. Nothing anybody edits will make this order stop

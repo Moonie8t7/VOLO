@@ -167,10 +167,14 @@ jobs:
           if [ $code -eq 0 ]; then accepted=yes; else accepted=no; fi
           automerge=$(node -e "try{process.stdout.write(String(require('/tmp/gate.json').autoMerge===true))}catch{process.stdout.write('false')}")
           final=$(node -e "try{process.stdout.write(String(require('/tmp/gate.json').final===true))}catch{process.stdout.write('false')}")
+          # Nothing to say: the run the other event started has already
+          # landed this order and answered its submitter.
+          silent=$(node -e "try{process.stdout.write(String(require('/tmp/gate.json').silent===true))}catch{process.stdout.write('false')}")
           echo "accepted=$accepted" >> "$GITHUB_OUTPUT"
           echo "automerge=$automerge" >> "$GITHUB_OUTPUT"
           echo "final=$final" >> "$GITHUB_OUTPUT"
-          echo "accepted=$accepted automerge=$automerge final=$final"
+          echo "silent=$silent" >> "$GITHUB_OUTPUT"
+          echo "accepted=$accepted automerge=$automerge final=$final silent=$silent"
 
       # The corpus file is the only thing that rebases.
       #
@@ -383,6 +387,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # The twin run of a landed submission. The run that landed it has
+          # already told the submitter everything; a second word here read as
+          # "rejected" under "accepted".
+          if [ "${{ steps.process.outputs.silent }}" = "true" ]; then
+            echo "nothing to report: this order was landed and answered by the run the other event started"
+            exit 0
+          fi
           if [ ! -s /tmp/report.md ]; then
             printf 'The intake job did not complete. A maintainer will look at this submission.\n' > /tmp/report.md
           fi
