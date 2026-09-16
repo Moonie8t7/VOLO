@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-09-16T09:45:27.960Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-16T21:19:06.990Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 169 |
+| Load orders analysed | 170 |
 | labelled working | 137 |
-| labelled broken | 30 |
-| load-after edges promoted from catalogues | 798 |
+| labelled broken | 31 |
+| load-after edges promoted from catalogues | 799 |
 | unlabelled | 2 |
 | Separator headers parsed | 4191 |
-| **Unique mods indexed** | **11045** |
-| Seen in more than one order | 7797 |
+| **Unique mods indexed** | **11046** |
+| Seen in more than one order | 7806 |
 | With declared dependencies | 769 |
 | With Script Extender flags | 176 |
 | With author metadata | 1163 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 3 of 169 orders carry it, because the short
+this comes from. Only 3 of 170 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -37,7 +37,7 @@ Builds observed across the corpus, newest first:
 
 | Source | Count | Trust |
 |---|---|---|
-| Curated override | 42 | highest, hand-verified infrastructure |
+| Curated override | 43 | highest, hand-verified infrastructure |
 | Human-authored section header | 6929 | high, a modder put it there |
 | Name pattern fallback | 1893 | medium, needs review |
 | Nexus or mod.io listing category | 1139 | medium, the author's own words about what the mod is |
@@ -58,7 +58,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Utilities`: 111
 - `Visuals`: 131
 - `Animations`: 156
-- `User Interface`: 200
+- `User Interface`: 201
 - `Clothing`: 123
 - `Equipment`: 1667
 - `Miscellaneous`: 221
@@ -93,11 +93,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 16.8% | 20.4% | no, and it points the other way |
-| Mods in no working order anywhere | 8% | 0% | yes |
+| Category pairs against the working consensus | 17.9% | 20.4% | no, and it points the other way |
+| Mods in no working order anywhere | 7% | 0% | yes |
 | Declared dependencies not installed | 0.0 | 0.1 | no |
 
-Measured over 30 broken and 137 working orders, against 137 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 31 broken and 137 working orders, against 137 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
