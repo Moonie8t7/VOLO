@@ -6,10 +6,10 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11045 |
+| Masterlist mods | 11046 |
 | Matched exactly by name | 2567 |
-| Matched fuzzily (>= 0.9) | 626 |
-| Unmatched | 7852 |
+| Matched fuzzily (>= 0.9) | 625 |
+| Unmatched | 7854 |
 
 ## What the match would add
 
@@ -24,10 +24,10 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 ### Sample category fills
 
+- Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
 - Grit and Glory - Injuries, Exhaustion and Madness: Gameplay (fuzzy match)
 - Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
 - Automatic_Inventory_Manager: Gameplay (fuzzy match)
-- Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
 - EW_Proficiency_Potion: Utilities (fuzzy match)
 - Exhaustion: User Interface (fuzzy match)
 - Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
@@ -52,8 +52,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Transmog Enhanced Revamped: ours Miscellaneous (section-majority), Nexus says Gameplay
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
-- Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
+- Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Auto Send Food To Camp: ours Utilities (section-majority), Nexus says Gameplay
 - Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
