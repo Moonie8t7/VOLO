@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-09-17T09:44:32.475Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-17T17:28:04.123Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -177,3 +177,4 @@ _none: every stated requirement names a mod this masterlist knows_
 - `Current_22.11.2025_10-32-17.json`: duplicate of another file
 - `not_working_issue-134_2026-08-28.json`: duplicate of another file
 - `provenance.json`: not a load order
+- `working_issue-213_2026-09-17.csv`: not a load order
