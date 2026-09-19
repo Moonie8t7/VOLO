@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-09-18T09:26:49.744Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-19T09:09:57.618Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
