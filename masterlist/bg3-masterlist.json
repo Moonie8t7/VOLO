@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-22T09:40:55.422Z",
+  "generated": "2026-09-22T10:21:13.382Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -40,8 +40,8 @@
     ]
   },
   "provenance": {
-    "ordersAnalysed": 178,
-    "working": 144,
+    "ordersAnalysed": 179,
+    "working": 145,
     "broken": 32,
     "unlabelled": 2,
     "externalDependencyEdges": 802,
@@ -275,14 +275,14 @@
       },
       "evidence": {
         "source": "curated",
-        "installs": 171,
-        "workingInstalls": 139,
+        "installs": 172,
+        "workingInstalls": 140,
         "brokenInstalls": 30,
-        "voloSortedInstalls": 66
+        "voloSortedInstalls": 67
       },
       "absence": {
-        "held": 134,
-        "witnesses": 135
+        "held": 135,
+        "witnesses": 136
       }
     },
     {
@@ -309,7 +309,7 @@
       "usesScriptExtender": true,
       "absence": {
         "held": 124,
-        "witnesses": 132
+        "witnesses": 133
       }
     },
     {
@@ -361,7 +361,7 @@
       "usesScriptExtender": true,
       "absence": {
         "held": 109,
-        "witnesses": 111
+        "witnesses": 112
       }
     },
     {
@@ -456,13 +456,39 @@
       "divider": 38,
       "evidence": {
         "source": "section-majority",
-        "installs": 114,
-        "workingInstalls": 88,
+        "installs": 115,
+        "workingInstalls": 89,
         "brokenInstalls": 25,
-        "voloSortedInstalls": 47
+        "voloSortedInstalls": 48
       },
       "absence": {
         "held": 2,
+        "witnesses": 2
+      }
+    },
+    {
+      "name": "BetterTooltips",
+      "uuid": "bc1081b4-e2a9-ce49-8b60-6f64b7eecce4",
+      "group": "User Interface",
+      "folder": "BetterTooltips_bc1081b4-e2a9-ce49-8b60-6f64b7eecce4",
+      "version": "36451009484029982",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 2,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 114,
+        "workingInstalls": 90,
+        "brokenInstalls": 23,
+        "voloSortedInstalls": 46
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "absence": {
+        "held": 1,
         "witnesses": 2
       }
     },
@@ -489,32 +515,6 @@
       }
     },
     {
-      "name": "BetterTooltips",
-      "uuid": "bc1081b4-e2a9-ce49-8b60-6f64b7eecce4",
-      "group": "User Interface",
-      "folder": "BetterTooltips_bc1081b4-e2a9-ce49-8b60-6f64b7eecce4",
-      "version": "36451009484029982",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 2,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 113,
-        "workingInstalls": 89,
-        "brokenInstalls": 23,
-        "voloSortedInstalls": 45
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ],
-      "absence": {
-        "held": 1,
-        "witnesses": 2
-      }
-    },
-    {
       "name": "Better Dyeing",
       "uuid": "03b0b84a-2689-77c2-5ef6-ebcf88b88037",
       "group": "User Interface",
@@ -524,10 +524,10 @@
       "divider": 2,
       "evidence": {
         "source": "section-majority",
-        "installs": 106,
-        "workingInstalls": 84,
+        "installs": 107,
+        "workingInstalls": 85,
         "brokenInstalls": 22,
-        "voloSortedInstalls": 40
+        "voloSortedInstalls": 41
       }
     },
     {
@@ -716,10 +716,10 @@
       "divider": 20,
       "evidence": {
         "source": "section-majority",
-        "installs": 86,
-        "workingInstalls": 69,
+        "installs": 87,
+        "workingInstalls": 70,
         "brokenInstalls": 17,
-        "voloSortedInstalls": 29
+        "voloSortedInstalls": 30
       }
     },
     {
@@ -872,6 +872,31 @@
       }
     },
     {
+      "name": "Better Hotbar [Vova's Edition]",
+      "uuid": "191c52f3-07bb-f83e-e1db-bb06ea262000",
+      "group": "User Interface",
+      "folder": "BetterHotbar_191c52f3-07bb-f83e-e1db-bb06ea262000",
+      "version": "72057594037927970",
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 77,
+        "workingInstalls": 65,
+        "brokenInstalls": 11,
+        "voloSortedInstalls": 34
+      },
+      "absence": {
+        "held": 9,
+        "witnesses": 9
+      }
+    },
+    {
       "name": "Mystra's Spells",
       "uuid": "4b516620-9c56-aa18-96ae-a9ee4f57b515",
       "group": "Spells",
@@ -893,31 +918,6 @@
       }
     },
     {
-      "name": "Better Hotbar [Vova's Edition]",
-      "uuid": "191c52f3-07bb-f83e-e1db-bb06ea262000",
-      "group": "User Interface",
-      "folder": "BetterHotbar_191c52f3-07bb-f83e-e1db-bb06ea262000",
-      "version": "72057594037927970",
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ],
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 76,
-        "workingInstalls": 64,
-        "brokenInstalls": 11,
-        "voloSortedInstalls": 33
-      },
-      "absence": {
-        "held": 8,
-        "witnesses": 8
-      }
-    },
-    {
       "name": "PixellBytes' Adjustable Party Limit",
       "uuid": "33c1de88-dfd0-351d-8904-a5ee730880c6",
       "group": "Miscellaneous",
@@ -926,10 +926,10 @@
       "divider": 19,
       "evidence": {
         "source": "section-majority",
-        "installs": 75,
-        "workingInstalls": 58,
+        "installs": 76,
+        "workingInstalls": 59,
         "brokenInstalls": 17,
-        "voloSortedInstalls": 28
+        "voloSortedInstalls": 29
       },
       "absence": {
         "held": 2,
@@ -1336,6 +1336,21 @@
       }
     },
     {
+      "name": "Item and Spell Bug Fixes",
+      "uuid": "010e73d5-9342-e528-eb01-8289c03ea7cb",
+      "group": "Spells",
+      "folder": "ItemBugFix_010e73d5-9342-e528-eb01-8289c03ea7cb",
+      "author": "Rydiak",
+      "divider": 19,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 61,
+        "workingInstalls": 51,
+        "brokenInstalls": 10,
+        "voloSortedInstalls": 24
+      }
+    },
+    {
       "name": "EasyCheat",
       "uuid": "5b5ad5b6-ce37-4a63-8dea-a1fee4cee156",
       "group": "Utilities",
@@ -1359,21 +1374,6 @@
         "voloSortedInstalls": 20
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "Item and Spell Bug Fixes",
-      "uuid": "010e73d5-9342-e528-eb01-8289c03ea7cb",
-      "group": "Spells",
-      "folder": "ItemBugFix_010e73d5-9342-e528-eb01-8289c03ea7cb",
-      "author": "Rydiak",
-      "divider": 19,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 60,
-        "workingInstalls": 50,
-        "brokenInstalls": 10,
-        "voloSortedInstalls": 23
-      }
     },
     {
       "name": "MoreReactiveCompanions_Configurable",
@@ -2438,6 +2438,24 @@
       }
     },
     {
+      "name": "[BS] Dye Support For Shields",
+      "uuid": "37e450bf-009b-4a82-8845-23940b0c3430",
+      "group": "Equipment",
+      "alternateNames": [
+        "[BS] Dye Support for Shields"
+      ],
+      "folder": "BS-DyeSupportForShields_37e450bf-009b-4a82-8845-23940b0c3430",
+      "version": "1",
+      "divider": 43,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 46,
+        "workingInstalls": 38,
+        "brokenInstalls": 8,
+        "voloSortedInstalls": 23
+      }
+    },
+    {
       "name": "5e Cleric Subclasses Combined",
       "uuid": "a6474f89-8efc-443d-cc95-9cdf142f931e",
       "group": "Classes",
@@ -2550,6 +2568,21 @@
       }
     },
     {
+      "name": "Raphael, Restored - Last Light Fixes",
+      "uuid": "c72a3d25-aed2-b011-3cd9-5ee0618e99a2",
+      "group": "Bug Fixes",
+      "folder": "RaphaelRestored_c72a3d25-aed2-b011-3cd9-5ee0618e99a2",
+      "version": "36028801313931319",
+      "divider": 17,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 46,
+        "workingInstalls": 39,
+        "brokenInstalls": 7,
+        "voloSortedInstalls": 18
+      }
+    },
+    {
       "name": "Weightless Gold",
       "uuid": "81117bd5-de2f-a13f-7efa-b99a146173dc",
       "group": "Gameplay",
@@ -2561,24 +2594,6 @@
         "workingInstalls": 37,
         "brokenInstalls": 9,
         "voloSortedInstalls": 21
-      }
-    },
-    {
-      "name": "[BS] Dye Support For Shields",
-      "uuid": "37e450bf-009b-4a82-8845-23940b0c3430",
-      "group": "Equipment",
-      "alternateNames": [
-        "[BS] Dye Support for Shields"
-      ],
-      "folder": "BS-DyeSupportForShields_37e450bf-009b-4a82-8845-23940b0c3430",
-      "version": "1",
-      "divider": 43,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 45,
-        "workingInstalls": 37,
-        "brokenInstalls": 8,
-        "voloSortedInstalls": 22
       }
     },
     {
@@ -2703,21 +2718,6 @@
       }
     },
     {
-      "name": "Raphael, Restored - Last Light Fixes",
-      "uuid": "c72a3d25-aed2-b011-3cd9-5ee0618e99a2",
-      "group": "Bug Fixes",
-      "folder": "RaphaelRestored_c72a3d25-aed2-b011-3cd9-5ee0618e99a2",
-      "version": "36028801313931319",
-      "divider": 17,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 45,
-        "workingInstalls": 38,
-        "brokenInstalls": 7,
-        "voloSortedInstalls": 17
-      }
-    },
-    {
       "name": "[Aza] Better Starting Gear (Lae'zel) + Tutorial Chest ",
       "uuid": "b637575e-1188-a203-7645-8dfbaf610f07",
       "group": "Companions",
@@ -2735,6 +2735,23 @@
         "workingInstalls": 37,
         "brokenInstalls": 6,
         "voloSortedInstalls": 19
+      }
+    },
+    {
+      "name": "All Camp Clothes and Dyes",
+      "uuid": "045e745f-af5a-a04a-fe57-ebd61f264454",
+      "group": "Equipment",
+      "folder": "LIX_AllCampClothesAndDyesAct1_045e745f-af5a-a04a-fe57-ebd61f264454",
+      "author": "KatLix",
+      "version": "1.2.1.12",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 37,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 44,
+        "workingInstalls": 29,
+        "brokenInstalls": 14,
+        "voloSortedInstalls": 18
       }
     },
     {
@@ -2785,23 +2802,6 @@
         "workingInstalls": 35,
         "brokenInstalls": 7,
         "voloSortedInstalls": 15
-      }
-    },
-    {
-      "name": "All Camp Clothes and Dyes",
-      "uuid": "045e745f-af5a-a04a-fe57-ebd61f264454",
-      "group": "Equipment",
-      "folder": "LIX_AllCampClothesAndDyesAct1_045e745f-af5a-a04a-fe57-ebd61f264454",
-      "author": "KatLix",
-      "version": "1.2.1.12",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 37,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 43,
-        "workingInstalls": 28,
-        "brokenInstalls": 14,
-        "voloSortedInstalls": 17
       }
     },
     {
@@ -3649,6 +3649,20 @@
       "usesScriptExtender": true
     },
     {
+      "name": "More enemies in basic fights",
+      "uuid": "a33f6ead-093c-5f68-89ef-1722b980547e",
+      "group": "Environment",
+      "folder": "Extra_enemies_honour_a33f6ead-093c-5f68-89ef-1722b980547e",
+      "divider": 31,
+      "evidence": {
+        "source": "section",
+        "installs": 38,
+        "workingInstalls": 29,
+        "brokenInstalls": 9,
+        "voloSortedInstalls": 16
+      }
+    },
+    {
       "name": "Normal Volo's Eye",
       "uuid": "045a6ef0-4e3b-4150-ae92-7f53bf4fd84a",
       "group": "Gameplay",
@@ -3840,20 +3854,6 @@
       }
     },
     {
-      "name": "More enemies in basic fights",
-      "uuid": "a33f6ead-093c-5f68-89ef-1722b980547e",
-      "group": "Environment",
-      "folder": "Extra_enemies_honour_a33f6ead-093c-5f68-89ef-1722b980547e",
-      "divider": 31,
-      "evidence": {
-        "source": "section",
-        "installs": 37,
-        "workingInstalls": 28,
-        "brokenInstalls": 9,
-        "voloSortedInstalls": 15
-      }
-    },
-    {
       "name": "Rox's Shimmering Eyes",
       "uuid": "519afbff-d182-4496-6203-87f03b345b11",
       "group": "Character Customization",
@@ -3971,6 +3971,20 @@
       "absence": {
         "held": 22,
         "witnesses": 22
+      }
+    },
+    {
+      "name": "LIX_OriginDialogTags",
+      "uuid": "4d98334b-85cc-6e74-9d83-12ce80e8793c",
+      "group": "Bug Fixes",
+      "folder": "LIX_OriginDialogTags_4d98334b-85cc-6e74-9d83-12ce80e8793c",
+      "divider": 5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 36,
+        "workingInstalls": 26,
+        "brokenInstalls": 10,
+        "voloSortedInstalls": 16
       }
     },
     {
@@ -4192,20 +4206,6 @@
         "voloSortedInstalls": 10
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "LIX_OriginDialogTags",
-      "uuid": "4d98334b-85cc-6e74-9d83-12ce80e8793c",
-      "group": "Bug Fixes",
-      "folder": "LIX_OriginDialogTags_4d98334b-85cc-6e74-9d83-12ce80e8793c",
-      "divider": 5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 35,
-        "workingInstalls": 25,
-        "brokenInstalls": 10,
-        "voloSortedInstalls": 15
-      }
     },
     {
       "name": "MetamagicExtended",
@@ -4733,6 +4733,22 @@
       }
     },
     {
+      "name": "HT_A Nice, Simple Hug: Longer Hug for Astarion",
+      "uuid": "c6970cf1-0b51-6f7a-44ab-7f4a3ee100c0",
+      "group": "Bug Fixes",
+      "folder": "HT_LongerAstHug_c6970cf1-0b51-6f7a-44ab-7f4a3ee100c0",
+      "version": "36028797018963994",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 24,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 33,
+        "workingInstalls": 29,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 11
+      }
+    },
+    {
       "name": "HT_Astarion Confession Edit 2",
       "uuid": "2c6afb73-a6b6-1193-56ac-7a04ce39c9b9",
       "group": "Bug Fixes",
@@ -5074,22 +5090,6 @@
       }
     },
     {
-      "name": "HT_A Nice, Simple Hug: Longer Hug for Astarion",
-      "uuid": "c6970cf1-0b51-6f7a-44ab-7f4a3ee100c0",
-      "group": "Bug Fixes",
-      "folder": "HT_LongerAstHug_c6970cf1-0b51-6f7a-44ab-7f4a3ee100c0",
-      "version": "36028797018963994",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 24,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 32,
-        "workingInstalls": 28,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 10
-      }
-    },
-    {
       "name": "HT_Firestarter: Karlach Romance Overhaul",
       "uuid": "664c4105-4125-d780-8617-b9731f6f44f5",
       "group": "Bug Fixes",
@@ -5191,6 +5191,24 @@
         "source": "section-majority",
         "installs": 32,
         "workingInstalls": 26,
+        "brokenInstalls": 5,
+        "voloSortedInstalls": 16
+      }
+    },
+    {
+      "name": "Show Me My Dream Guardian!",
+      "uuid": "df71caf0-0731-b9b9-c20d-790870a20368",
+      "group": "Gameplay",
+      "alternateNames": [
+        "SMMDG"
+      ],
+      "folder": "ShowMeMyDaisy_df71caf0-0731-b9b9-c20d-790870a20368",
+      "version": "36028797018963969",
+      "divider": 33,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 32,
+        "workingInstalls": 27,
         "brokenInstalls": 5,
         "voloSortedInstalls": 16
       }
@@ -5351,24 +5369,6 @@
         "workingInstalls": 23,
         "brokenInstalls": 8,
         "voloSortedInstalls": 18
-      }
-    },
-    {
-      "name": "Show Me My Dream Guardian!",
-      "uuid": "df71caf0-0731-b9b9-c20d-790870a20368",
-      "group": "Gameplay",
-      "alternateNames": [
-        "SMMDG"
-      ],
-      "folder": "ShowMeMyDaisy_df71caf0-0731-b9b9-c20d-790870a20368",
-      "version": "36028797018963969",
-      "divider": 33,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 31,
-        "workingInstalls": 26,
-        "brokenInstalls": 5,
-        "voloSortedInstalls": 15
       }
     },
     {
@@ -5694,6 +5694,21 @@
       }
     },
     {
+      "name": "Alchemy Better Descriptions",
+      "uuid": "961fedca-3e74-0d1c-17d5-bf673534c458",
+      "group": "User Interface",
+      "folder": "AlchemyBetterDescription_961fedca-3e74-0d1c-17d5-bf673534c458",
+      "author": "SwissFred",
+      "divider": 5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 29,
+        "workingInstalls": 26,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 13
+      }
+    },
+    {
       "name": "Auto Use Soap",
       "uuid": "cabed99e-5db6-4f0d-a69f-d49e8a20e663",
       "group": "Spells",
@@ -5736,6 +5751,20 @@
         "workingInstalls": 24,
         "brokenInstalls": 5,
         "voloSortedInstalls": 16
+      }
+    },
+    {
+      "name": "CampApproval",
+      "uuid": "6698ea1d-19bc-a98b-c61e-bb33480df7b7",
+      "group": "Gameplay",
+      "folder": "CampApproval_6698ea1d-19bc-a98b-c61e-bb33480df7b7",
+      "divider": 19,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 29,
+        "workingInstalls": 17,
+        "brokenInstalls": 12,
+        "voloSortedInstalls": 15
       }
     },
     {
@@ -5796,6 +5825,21 @@
         "workingInstalls": 27,
         "brokenInstalls": 2,
         "voloSortedInstalls": 9
+      }
+    },
+    {
+      "name": "HT_No Wound Flares During Party Banter",
+      "uuid": "9c09be69-50e8-cfcf-cea9-1576947a6a2d",
+      "group": "Bug Fixes",
+      "folder": "HT_ShutUpShar_9c09be69-50e8-cfcf-cea9-1576947a6a2d",
+      "version": "36028797018963978",
+      "divider": 15,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 29,
+        "workingInstalls": 25,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 11
       }
     },
     {
@@ -6073,21 +6117,6 @@
       }
     },
     {
-      "name": "Alchemy Better Descriptions",
-      "uuid": "961fedca-3e74-0d1c-17d5-bf673534c458",
-      "group": "User Interface",
-      "folder": "AlchemyBetterDescription_961fedca-3e74-0d1c-17d5-bf673534c458",
-      "author": "SwissFred",
-      "divider": 5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 28,
-        "workingInstalls": 25,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 12
-      }
-    },
-    {
       "name": "Awakened Spear of Selûne",
       "uuid": "9e30653e-f1f4-42ea-893a-fa812405862b",
       "group": "Equipment",
@@ -6103,18 +6132,28 @@
       }
     },
     {
-      "name": "CampApproval",
-      "uuid": "6698ea1d-19bc-a98b-c61e-bb33480df7b7",
-      "group": "Gameplay",
-      "folder": "CampApproval_6698ea1d-19bc-a98b-c61e-bb33480df7b7",
-      "divider": 19,
+      "name": "ContainersExtended",
+      "uuid": "c52c2d4d-2aa1-e9ea-db5c-3b61d111ec16",
+      "group": "Equipment",
+      "folder": "ContainersExtended_c52c2d4d-2aa1-e9ea-db5c-3b61d111ec16",
+      "author": "darkcharl",
+      "divider": 35,
+      "placement": {
+        "why": "Reported in issue #194. The mod exists under two UUIDs, the Nexus release and the in-game one, and the divider votes for the in-game copy were a three-way tie: one order under UI Other, one under In-World Items, and the reporter's under Items & Equipment Accessories. Ties go to the lowest slot, so the sorted output kept it under UI Other while its group said Equipment. Settled by hand rather than by a coin: it adds container items, the hand-written headers above the Nexus copy say Containers and Items, and the only orders that file either copy under an Items divider put it at Accessories, where its French translation now sits too. Nexus 7980 by darkcharl files it under Gameplay, which decides nothing. Anchored to the exact name so the tutorial, extraplanar and translation variants keep their own evidence.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/7980"
+      },
       "evidence": {
-        "source": "section-majority",
+        "source": "curated",
         "installs": 28,
-        "workingInstalls": 16,
-        "brokenInstalls": 12,
-        "voloSortedInstalls": 14
-      }
+        "workingInstalls": 21,
+        "brokenInstalls": 7,
+        "voloSortedInstalls": 12
+      },
+      "absence": {
+        "held": 0,
+        "witnesses": 10
+      },
+      "oftenAbsent": true
     },
     {
       "name": "Dark Urge - Slayer Equipments and Spells",
@@ -6226,21 +6265,6 @@
         "workingInstalls": 27,
         "brokenInstalls": 1,
         "voloSortedInstalls": 11
-      }
-    },
-    {
-      "name": "HT_No Wound Flares During Party Banter",
-      "uuid": "9c09be69-50e8-cfcf-cea9-1576947a6a2d",
-      "group": "Bug Fixes",
-      "folder": "HT_ShutUpShar_9c09be69-50e8-cfcf-cea9-1576947a6a2d",
-      "version": "36028797018963978",
-      "divider": 15,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 28,
-        "workingInstalls": 24,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 10
       }
     },
     {
@@ -6504,30 +6528,6 @@
         "brokenInstalls": 6,
         "voloSortedInstalls": 7
       }
-    },
-    {
-      "name": "ContainersExtended",
-      "uuid": "c52c2d4d-2aa1-e9ea-db5c-3b61d111ec16",
-      "group": "Equipment",
-      "folder": "ContainersExtended_c52c2d4d-2aa1-e9ea-db5c-3b61d111ec16",
-      "author": "darkcharl",
-      "divider": 35,
-      "placement": {
-        "why": "Reported in issue #194. The mod exists under two UUIDs, the Nexus release and the in-game one, and the divider votes for the in-game copy were a three-way tie: one order under UI Other, one under In-World Items, and the reporter's under Items & Equipment Accessories. Ties go to the lowest slot, so the sorted output kept it under UI Other while its group said Equipment. Settled by hand rather than by a coin: it adds container items, the hand-written headers above the Nexus copy say Containers and Items, and the only orders that file either copy under an Items divider put it at Accessories, where its French translation now sits too. Nexus 7980 by darkcharl files it under Gameplay, which decides nothing. Anchored to the exact name so the tutorial, extraplanar and translation variants keep their own evidence.",
-        "source": "https://www.nexusmods.com/baldursgate3/mods/7980"
-      },
-      "evidence": {
-        "source": "curated",
-        "installs": 27,
-        "workingInstalls": 20,
-        "brokenInstalls": 7,
-        "voloSortedInstalls": 11
-      },
-      "absence": {
-        "held": 0,
-        "witnesses": 10
-      },
-      "oftenAbsent": true
     },
     {
       "name": "Elven_Weaponry_Tutorial_Chest",
@@ -6922,6 +6922,20 @@
         "voloSortedInstalls": 11
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "D20Initiative",
+      "uuid": "1504a1b3-0934-8264-9e12-ed0f4ceecdde",
+      "group": "User Interface",
+      "folder": "D20Initiative_1504a1b3-0934-8264-9e12-ed0f4ceecdde",
+      "divider": 5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 26,
+        "workingInstalls": 19,
+        "brokenInstalls": 7,
+        "voloSortedInstalls": 17
+      }
     },
     {
       "name": "Ember's Lute (Celestial Instruments)",
@@ -7319,20 +7333,6 @@
         "workingInstalls": 20,
         "brokenInstalls": 5,
         "voloSortedInstalls": 9
-      }
-    },
-    {
-      "name": "D20Initiative",
-      "uuid": "1504a1b3-0934-8264-9e12-ed0f4ceecdde",
-      "group": "User Interface",
-      "folder": "D20Initiative_1504a1b3-0934-8264-9e12-ed0f4ceecdde",
-      "divider": 5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 25,
-        "workingInstalls": 18,
-        "brokenInstalls": 7,
-        "voloSortedInstalls": 16
       }
     },
     {
@@ -7752,6 +7752,21 @@
         "voloSortedInstalls": 11
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "Better Hag Hair",
+      "uuid": "7c345e8f-a290-e2ce-3757-b2dc4fd9870f",
+      "group": "Bug Fixes",
+      "folder": "BetterHagHair_7c345e8f-a290-e2ce-3757-b2dc4fd9870f",
+      "version": "36028799166447619",
+      "divider": 102.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 24,
+        "workingInstalls": 18,
+        "brokenInstalls": 6,
+        "voloSortedInstalls": 13
+      }
     },
     {
       "name": "BW Extra Shields",
@@ -8227,21 +8242,6 @@
       "absence": {
         "held": 11,
         "witnesses": 11
-      }
-    },
-    {
-      "name": "Better Hag Hair",
-      "uuid": "7c345e8f-a290-e2ce-3757-b2dc4fd9870f",
-      "group": "Bug Fixes",
-      "folder": "BetterHagHair_7c345e8f-a290-e2ce-3757-b2dc4fd9870f",
-      "version": "36028799166447619",
-      "divider": 102.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 23,
-        "workingInstalls": 17,
-        "brokenInstalls": 6,
-        "voloSortedInstalls": 12
       }
     },
     {
@@ -9090,6 +9090,21 @@
       }
     },
     {
+      "name": "LaezelShadowheartFightBugFix",
+      "uuid": "f8c85580-def1-809f-c78e-1474b1a36f4b",
+      "group": "Bug Fixes",
+      "folder": "LaezelShadowheartFightBugFix_f8c85580-def1-809f-c78e-1474b1a36f4b",
+      "version": "36028797018963969",
+      "divider": 102.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 22,
+        "workingInstalls": 19,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 9
+      }
+    },
+    {
       "name": "Lydia's Heads",
       "uuid": "468e4135-72b3-44ff-a15b-3374b502b46d",
       "group": "Heads",
@@ -9798,14 +9813,14 @@
       "usesScriptExtender": true
     },
     {
-      "name": "LaezelShadowheartFightBugFix",
-      "uuid": "f8c85580-def1-809f-c78e-1474b1a36f4b",
-      "group": "Bug Fixes",
-      "folder": "LaezelShadowheartFightBugFix_f8c85580-def1-809f-c78e-1474b1a36f4b",
-      "version": "36028797018963969",
-      "divider": 102.5,
+      "name": "LaezelKissDialog",
+      "uuid": "786860ca-8f1f-454e-5264-70c0a57f34f8",
+      "group": "NPC",
+      "folder": "LaezelKissDialog_786860ca-8f1f-454e-5264-70c0a57f34f8",
+      "version": "36028797018963972",
+      "divider": 91,
       "evidence": {
-        "source": "section-majority",
+        "source": "section",
         "installs": 21,
         "workingInstalls": 18,
         "brokenInstalls": 3,
@@ -10501,21 +10516,6 @@
         "workingInstalls": 19,
         "brokenInstalls": 1,
         "voloSortedInstalls": 6
-      }
-    },
-    {
-      "name": "LaezelKissDialog",
-      "uuid": "786860ca-8f1f-454e-5264-70c0a57f34f8",
-      "group": "NPC",
-      "folder": "LaezelKissDialog_786860ca-8f1f-454e-5264-70c0a57f34f8",
-      "version": "36028797018963972",
-      "divider": 91,
-      "evidence": {
-        "source": "section",
-        "installs": 20,
-        "workingInstalls": 17,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 7
       }
     },
     {
@@ -11534,6 +11534,20 @@
         "workingInstalls": 17,
         "brokenInstalls": 1,
         "voloSortedInstalls": 8
+      }
+    },
+    {
+      "name": "More Amnesia for Dark Urge",
+      "uuid": "f3738ce0-dd1a-4223-9e86-34d830767c7e",
+      "group": "Quests",
+      "folder": "more_amnesia_f3738ce0-dd1a-4223-9e86-34d830767c7e",
+      "divider": 22,
+      "evidence": {
+        "source": "section",
+        "installs": 19,
+        "workingInstalls": 17,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 6
       }
     },
     {
@@ -12616,6 +12630,21 @@
       }
     },
     {
+      "name": "Improved Equip Menu",
+      "uuid": "c953c1b3-cf57-4688-9950-9fc6fdc23415",
+      "group": "User Interface",
+      "folder": "ImprovedEquipMenu",
+      "author": "sowww",
+      "divider": 5,
+      "evidence": {
+        "source": "section",
+        "installs": 18,
+        "workingInstalls": 15,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 9
+      }
+    },
+    {
       "name": "Jerinski_Piercing-Edits_Trips",
       "uuid": "24a79080-22cd-4f70-9924-5179d44b638d",
       "group": "Character Customization",
@@ -12688,20 +12717,6 @@
         "installs": 18,
         "workingInstalls": 13,
         "brokenInstalls": 4,
-        "voloSortedInstalls": 5
-      }
-    },
-    {
-      "name": "More Amnesia for Dark Urge",
-      "uuid": "f3738ce0-dd1a-4223-9e86-34d830767c7e",
-      "group": "Quests",
-      "folder": "more_amnesia_f3738ce0-dd1a-4223-9e86-34d830767c7e",
-      "divider": 22,
-      "evidence": {
-        "source": "section",
-        "installs": 18,
-        "workingInstalls": 16,
-        "brokenInstalls": 2,
         "voloSortedInstalls": 5
       }
     },
@@ -13898,21 +13913,6 @@
       }
     },
     {
-      "name": "Improved Equip Menu",
-      "uuid": "c953c1b3-cf57-4688-9950-9fc6fdc23415",
-      "group": "User Interface",
-      "folder": "ImprovedEquipMenu",
-      "author": "sowww",
-      "divider": 5,
-      "evidence": {
-        "source": "section",
-        "installs": 17,
-        "workingInstalls": 14,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 8
-      }
-    },
-    {
       "name": "Jerinski's Heads for Short Lads",
       "uuid": "5a82464f-4189-423a-a690-37463992f276",
       "group": "Heads",
@@ -14021,6 +14021,20 @@
         "workingInstalls": 11,
         "brokenInstalls": 6,
         "voloSortedInstalls": 8
+      }
+    },
+    {
+      "name": "MintharaOathbreakerDialog",
+      "uuid": "d67b357e-f7d3-bac8-aadc-42044dba9ce5",
+      "group": "Companions",
+      "folder": "MintharaOathbreakerDialog_d67b357e-f7d3-bac8-aadc-42044dba9ce5",
+      "divider": 24,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 17,
+        "workingInstalls": 15,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 5
       }
     },
     {
@@ -15274,6 +15288,21 @@
       }
     },
     {
+      "name": "Gnome More Clipping",
+      "uuid": "6367e1d7-3609-8cea-a3f8-552d801f5277",
+      "group": "Bug Fixes",
+      "folder": "GnomeMoreClipping_6367e1d7-3609-8cea-a3f8-552d801f5277",
+      "version": "36028797018963983",
+      "divider": 63,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 16,
+        "workingInstalls": 14,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 7
+      }
+    },
+    {
       "name": "Goon's Barbarian Overhaul",
       "uuid": "55ff4fda-2514-4ae9-943e-ca60e51395f5",
       "group": "Classes",
@@ -15599,20 +15628,6 @@
           "name": "Mind Weaver Class"
         }
       ]
-    },
-    {
-      "name": "MintharaOathbreakerDialog",
-      "uuid": "d67b357e-f7d3-bac8-aadc-42044dba9ce5",
-      "group": "Companions",
-      "folder": "MintharaOathbreakerDialog_d67b357e-f7d3-bac8-aadc-42044dba9ce5",
-      "divider": 24,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 16,
-        "workingInstalls": 14,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 4
-      }
     },
     {
       "name": "Misfortune Bringer Rogue",
@@ -16921,21 +16936,6 @@
         "workingInstalls": 12,
         "brokenInstalls": 3,
         "voloSortedInstalls": 11
-      }
-    },
-    {
-      "name": "Gnome More Clipping",
-      "uuid": "6367e1d7-3609-8cea-a3f8-552d801f5277",
-      "group": "Bug Fixes",
-      "folder": "GnomeMoreClipping_6367e1d7-3609-8cea-a3f8-552d801f5277",
-      "version": "36028797018963983",
-      "divider": 63,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 15,
-        "workingInstalls": 13,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 6
       }
     },
     {
@@ -18397,6 +18397,20 @@
       ]
     },
     {
+      "name": "HallowleafsInCamp",
+      "uuid": "b794e11a-5a84-6d18-be4d-d7d048071ed6",
+      "group": "Miscellaneous",
+      "folder": "HallowleafsInCamp_b794e11a-5a84-6d18-be4d-d7d048071ed6",
+      "divider": 89.5,
+      "evidence": {
+        "source": "section",
+        "installs": 14,
+        "workingInstalls": 10,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 6
+      }
+    },
+    {
       "name": "Hand Cannon - Gunslinger Pistol",
       "uuid": "45c3014d-502b-0072-e9d0-a65c63e0ab4a",
       "group": "Equipment",
@@ -18830,6 +18844,21 @@
       }
     },
     {
+      "name": "Reactions while Invisible BUGFIX",
+      "uuid": "977deff3-e6ee-55b1-9ad7-87ac873d180f",
+      "group": "Spells",
+      "folder": "ReactionsWhileInvisibleBUGFIXv2_977deff3-e6ee-55b1-9ad7-87ac873d180f",
+      "author": "ChizFreak",
+      "divider": 46,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 14,
+        "workingInstalls": 12,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 6
+      }
+    },
+    {
       "name": "Reforged Assets DMH - Dark Urge Dragonborn CC",
       "uuid": "ad0455a0-72e3-c994-c0ec-2fcdb1778b22",
       "group": "Heads",
@@ -19105,6 +19134,20 @@
       }
     },
     {
+      "name": "WyllKissDialog",
+      "uuid": "b61bcb1a-0a6a-24db-2738-4041ad72b72e",
+      "group": "Quests",
+      "folder": "WyllKissDialog_b61bcb1a-0a6a-24db-2738-4041ad72b72e",
+      "divider": 22,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 14,
+        "workingInstalls": 12,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      }
+    },
+    {
       "name": "Yogurt's Noble Couture",
       "uuid": "a7c860c0-67ce-4b4a-8bb6-7476a82f766f",
       "group": "Armor",
@@ -19238,6 +19281,20 @@
       "usesScriptExtender": true
     },
     {
+      "name": "AlwaysShowApprovals",
+      "uuid": "18bf42ec-8d4a-9802-4d82-287c8f94f2de",
+      "group": "Utilities",
+      "folder": "AlwaysShowApprovals_18bf42ec-8d4a-9802-4d82-287c8f94f2de",
+      "divider": 19,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 13,
+        "workingInstalls": 11,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 7
+      }
+    },
+    {
       "name": "Angel Themed Race and Class",
       "uuid": "37d61634-4807-9624-132b-0c5d46cdef1f",
       "group": "Races",
@@ -19341,6 +19398,24 @@
         "workingInstalls": 12,
         "brokenInstalls": 1,
         "voloSortedInstalls": 6
+      }
+    },
+    {
+      "name": "Beasts and Familiars Reworked - Core",
+      "uuid": "a6506db8-b04f-5a48-9cf9-6e6798daad84",
+      "group": "Spells",
+      "folder": "LIX_BFR_Core_a6506db8-b04f-5a48-9cf9-6e6798daad84",
+      "divider": 46,
+      "evidence": {
+        "source": "section",
+        "installs": 13,
+        "workingInstalls": 8,
+        "brokenInstalls": 5,
+        "voloSortedInstalls": 5
+      },
+      "absence": {
+        "held": 4,
+        "witnesses": 4
       }
     },
     {
@@ -19854,20 +19929,6 @@
         "workingInstalls": 12,
         "brokenInstalls": 1,
         "voloSortedInstalls": 6
-      }
-    },
-    {
-      "name": "HallowleafsInCamp",
-      "uuid": "b794e11a-5a84-6d18-be4d-d7d048071ed6",
-      "group": "Miscellaneous",
-      "folder": "HallowleafsInCamp_b794e11a-5a84-6d18-be4d-d7d048071ed6",
-      "divider": 89.5,
-      "evidence": {
-        "source": "section",
-        "installs": 13,
-        "workingInstalls": 9,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 5
       }
     },
     {
@@ -20446,21 +20507,6 @@
       }
     },
     {
-      "name": "Reactions while Invisible BUGFIX",
-      "uuid": "977deff3-e6ee-55b1-9ad7-87ac873d180f",
-      "group": "Spells",
-      "folder": "ReactionsWhileInvisibleBUGFIXv2_977deff3-e6ee-55b1-9ad7-87ac873d180f",
-      "author": "ChizFreak",
-      "divider": 46,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 13,
-        "workingInstalls": 11,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 5
-      }
-    },
-    {
       "name": "Rebalance_Feats",
       "uuid": "14132dd7-c606-42d7-8e3f-816a63bd7a14",
       "group": "Classes",
@@ -20556,6 +20602,21 @@
         "workingInstalls": 11,
         "brokenInstalls": 2,
         "voloSortedInstalls": 5
+      }
+    },
+    {
+      "name": "ShadMirrorBuff",
+      "uuid": "dcf86ff3-0d21-d025-f451-e2fa7e86cefd",
+      "group": "Gameplay",
+      "folder": "ShadMirrorBuff_dcf86ff3-0d21-d025-f451-e2fa7e86cefd",
+      "version": "36028797018963969",
+      "divider": 18.5,
+      "evidence": {
+        "source": "section",
+        "installs": 13,
+        "workingInstalls": 10,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 7
       }
     },
     {
@@ -20853,20 +20914,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "WyllKissDialog",
-      "uuid": "b61bcb1a-0a6a-24db-2738-4041ad72b72e",
-      "group": "Quests",
-      "folder": "WyllKissDialog_b61bcb1a-0a6a-24db-2738-4041ad72b72e",
-      "divider": 22,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 13,
-        "workingInstalls": 11,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
-      }
-    },
-    {
       "name": "Xara's Spellbook",
       "uuid": "815338cf-57a3-42d9-89f2-4d12ab077271",
       "group": "Spells",
@@ -20928,20 +20975,6 @@
         "workingInstalls": 8,
         "brokenInstalls": 4,
         "voloSortedInstalls": 4
-      }
-    },
-    {
-      "name": "AlwaysShowApprovals",
-      "uuid": "18bf42ec-8d4a-9802-4d82-287c8f94f2de",
-      "group": "Utilities",
-      "folder": "AlwaysShowApprovals_18bf42ec-8d4a-9802-4d82-287c8f94f2de",
-      "divider": 19,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 12,
-        "workingInstalls": 10,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 6
       }
     },
     {
@@ -21074,24 +21107,6 @@
       }
     },
     {
-      "name": "Beasts and Familiars Reworked - Core",
-      "uuid": "a6506db8-b04f-5a48-9cf9-6e6798daad84",
-      "group": "Spells",
-      "folder": "LIX_BFR_Core_a6506db8-b04f-5a48-9cf9-6e6798daad84",
-      "divider": 46,
-      "evidence": {
-        "source": "section",
-        "installs": 12,
-        "workingInstalls": 7,
-        "brokenInstalls": 5,
-        "voloSortedInstalls": 4
-      },
-      "absence": {
-        "held": 4,
-        "witnesses": 4
-      }
-    },
-    {
       "name": "BetterDualWielding",
       "uuid": "c4b61fcc-5450-49da-a2c1-6b24acdd4dd9",
       "group": "Bug Fixes",
@@ -21179,6 +21194,20 @@
         "workingInstalls": 8,
         "brokenInstalls": 3,
         "voloSortedInstalls": 4
+      }
+    },
+    {
+      "name": "Burning-ImmuneKarlach",
+      "uuid": "76674646-2eb4-6f8b-3ac9-7b46c7c1187c",
+      "group": "Companions",
+      "folder": "Burning-ImmuneKarlach_76674646-2eb4-6f8b-3ac9-7b46c7c1187c",
+      "divider": 75,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 12,
+        "workingInstalls": 8,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 9
       }
     },
     {
@@ -21813,6 +21842,20 @@
       }
     },
     {
+      "name": "Idol of Silvanus Combat Log Cleanup",
+      "uuid": "e4e9429e-9585-456e-fb94-24505b38588b",
+      "group": "Bug Fixes",
+      "folder": "Idol_Dryad_Cleanup_e4e9429e-9585-456e-fb94-24505b38588b",
+      "divider": 102.5,
+      "evidence": {
+        "source": "section",
+        "installs": 12,
+        "workingInstalls": 9,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 8
+      }
+    },
+    {
       "name": "Illithid Powers Consolidated",
       "uuid": "98e63500-487d-417c-bc95-165ba4b39540",
       "group": "Spells",
@@ -21944,6 +21987,20 @@
         "workingInstalls": 10,
         "brokenInstalls": 2,
         "voloSortedInstalls": 4
+      }
+    },
+    {
+      "name": "LaezelhasGithEgg",
+      "uuid": "f71ec5a7-0000-a271-befa-26a1682ac745",
+      "group": "Gameplay",
+      "folder": "LaezelhasGithEgg_f71ec5a7-0000-a271-befa-26a1682ac745",
+      "divider": 19,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 12,
+        "workingInstalls": 9,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 5
       }
     },
     {
@@ -22578,21 +22635,6 @@
       }
     },
     {
-      "name": "ShadMirrorBuff",
-      "uuid": "dcf86ff3-0d21-d025-f451-e2fa7e86cefd",
-      "group": "Gameplay",
-      "folder": "ShadMirrorBuff_dcf86ff3-0d21-d025-f451-e2fa7e86cefd",
-      "version": "36028797018963969",
-      "divider": 18.5,
-      "evidence": {
-        "source": "section",
-        "installs": 12,
-        "workingInstalls": 9,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 6
-      }
-    },
-    {
       "name": "Shadowheart's Orchid",
       "uuid": "fe45a3bf-bdda-462a-adfc-8d8abe74077b",
       "group": "Equipment",
@@ -23151,6 +23193,30 @@
       }
     },
     {
+      "name": "BetterHotbarXR",
+      "uuid": "4c254292-cf25-0502-66f5-0b51dfab56ad",
+      "group": "User Interface",
+      "folder": "BetterHotbarXR_4c254292-cf25-0502-66f5-0b51dfab56ad",
+      "divider": 2,
+      "evidence": {
+        "source": "section",
+        "installs": 11,
+        "workingInstalls": 9,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 8
+      },
+      "dependencies": [
+        {
+          "uuid": "191c52f3-07bb-f83e-e1db-bb06ea262000",
+          "name": "Better Hotbar [Vova's Edition]"
+        },
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
+    },
+    {
       "name": "Black Accented Dyes",
       "uuid": "2657d808-c6e1-2c29-788f-aec43de50295",
       "group": "Dyes",
@@ -23189,20 +23255,6 @@
         "workingInstalls": 9,
         "brokenInstalls": 1,
         "voloSortedInstalls": 4
-      }
-    },
-    {
-      "name": "Burning-ImmuneKarlach",
-      "uuid": "76674646-2eb4-6f8b-3ac9-7b46c7c1187c",
-      "group": "Companions",
-      "folder": "Burning-ImmuneKarlach_76674646-2eb4-6f8b-3ac9-7b46c7c1187c",
-      "divider": 75,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 11,
-        "workingInstalls": 7,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 8
       }
     },
     {
@@ -24102,20 +24154,6 @@
       }
     },
     {
-      "name": "Idol of Silvanus Combat Log Cleanup",
-      "uuid": "e4e9429e-9585-456e-fb94-24505b38588b",
-      "group": "Bug Fixes",
-      "folder": "Idol_Dryad_Cleanup_e4e9429e-9585-456e-fb94-24505b38588b",
-      "divider": 102.5,
-      "evidence": {
-        "source": "section",
-        "installs": 11,
-        "workingInstalls": 8,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 7
-      }
-    },
-    {
       "name": "Improved Reaper Death Domain Feature",
       "uuid": "892b7c00-e530-4976-ab8b-2c887d926cda",
       "group": "Spells",
@@ -24196,20 +24234,6 @@
       "version": "36451009484029952",
       "lastSeenGameBuild": "4.8.700.7143220",
       "divider": 64,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 11,
-        "workingInstalls": 8,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 4
-      }
-    },
-    {
-      "name": "LaezelhasGithEgg",
-      "uuid": "f71ec5a7-0000-a271-befa-26a1682ac745",
-      "group": "Gameplay",
-      "folder": "LaezelhasGithEgg_f71ec5a7-0000-a271-befa-26a1682ac745",
-      "divider": 19,
       "evidence": {
         "source": "section-majority",
         "installs": 11,
@@ -26048,6 +26072,19 @@
       }
     },
     {
+      "name": "Be My Bhaalentine - Romance parner can be abducted",
+      "uuid": "a775e394-3432-0f60-adc5-4b301490665e",
+      "group": "unsorted",
+      "folder": "BeMyBhaalentine_a775e394-3432-0f60-adc5-4b301490665e",
+      "evidence": {
+        "source": "none",
+        "installs": 10,
+        "workingInstalls": 8,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 5
+      }
+    },
+    {
       "name": "Better Map 85 scale AutoHide On",
       "uuid": "54cd830f-6428-dec2-76ee-24cfcd26ace6",
       "group": "User Interface",
@@ -26075,30 +26112,6 @@
         "brokenInstalls": 1,
         "voloSortedInstalls": 6
       }
-    },
-    {
-      "name": "BetterHotbarXR",
-      "uuid": "4c254292-cf25-0502-66f5-0b51dfab56ad",
-      "group": "User Interface",
-      "folder": "BetterHotbarXR_4c254292-cf25-0502-66f5-0b51dfab56ad",
-      "divider": 2,
-      "evidence": {
-        "source": "section",
-        "installs": 10,
-        "workingInstalls": 8,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 7
-      },
-      "dependencies": [
-        {
-          "uuid": "191c52f3-07bb-f83e-e1db-bb06ea262000",
-          "name": "Better Hotbar [Vova's Edition]"
-        },
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
     },
     {
       "name": "BG3P BT1 Heads",
@@ -28958,6 +28971,20 @@
       }
     },
     {
+      "name": "Single Color Dyes",
+      "uuid": "76296b80-eb41-1bda-8fea-b36849e8b438",
+      "group": "Dyes",
+      "folder": "SingleColorDyes_76296b80-eb41-1bda-8fea-b36849e8b438",
+      "divider": 38,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 10,
+        "workingInstalls": 6,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 7
+      }
+    },
+    {
       "name": "Sorcerer Unleashed",
       "uuid": "27e0fdce-353b-4e0b-b941-e6946c445b8c",
       "group": "Classes",
@@ -29713,19 +29740,6 @@
         "workingInstalls": 8,
         "brokenInstalls": 1,
         "voloSortedInstalls": 2
-      }
-    },
-    {
-      "name": "Be My Bhaalentine - Romance parner can be abducted",
-      "uuid": "a775e394-3432-0f60-adc5-4b301490665e",
-      "group": "unsorted",
-      "folder": "BeMyBhaalentine_a775e394-3432-0f60-adc5-4b301490665e",
-      "evidence": {
-        "source": "none",
-        "installs": 9,
-        "workingInstalls": 7,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 4
       }
     },
     {
@@ -31838,6 +31852,20 @@
       }
     },
     {
+      "name": "Permanent Loviatars Love",
+      "uuid": "143af9de-1927-1259-96c9-4a1af79484dd",
+      "group": "User Interface",
+      "folder": "PermanentLoviatarsLove_143af9de-1927-1259-96c9-4a1af79484dd",
+      "divider": 5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 9,
+        "workingInstalls": 6,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 4
+      }
+    },
+    {
       "name": "PK [AIO2] Howling Dragon [NonVT]",
       "uuid": "ef508807-28f8-86ee-9437-96b6f5dd93e0",
       "group": "Clothing",
@@ -32218,20 +32246,6 @@
         "workingInstalls": 7,
         "brokenInstalls": 1,
         "voloSortedInstalls": 5
-      }
-    },
-    {
-      "name": "Single Color Dyes",
-      "uuid": "76296b80-eb41-1bda-8fea-b36849e8b438",
-      "group": "Dyes",
-      "folder": "SingleColorDyes_76296b80-eb41-1bda-8fea-b36849e8b438",
-      "divider": 38,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 9,
-        "workingInstalls": 5,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 6
       }
     },
     {
@@ -33416,6 +33430,20 @@
       }
     },
     {
+      "name": "Astarion's Default Cantrip: Minor Illusion",
+      "uuid": "5f6bb9ed-2870-5d40-aa5e-ce88d350f9cc",
+      "group": "Spells",
+      "folder": "AstarionMinorIllusion_5f6bb9ed-2870-5d40-aa5e-ce88d350f9cc",
+      "divider": 47,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 8,
+        "workingInstalls": 6,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 5
+      }
+    },
+    {
       "name": "ASTRL Elven Anthology - Unique Tav",
       "uuid": "62214ecc-98c9-43df-80c0-5e8e64bf457d",
       "group": "Bug Fixes",
@@ -33502,6 +33530,20 @@
           "name": "Mod Configuration Menu"
         }
       ]
+    },
+    {
+      "name": "Autosave Interval - Save Timer - 10min",
+      "uuid": "44418044-ab63-eac6-b1d4-23bfe72da074",
+      "group": "Gameplay",
+      "folder": "autosave-interval_44418044-ab63-eac6-b1d4-23bfe72da074",
+      "divider": 13,
+      "evidence": {
+        "source": "section",
+        "installs": 8,
+        "workingInstalls": 6,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      }
     },
     {
       "name": "Aylin - Camp Clothes",
@@ -34564,6 +34606,20 @@
       }
     },
     {
+      "name": "Druid PHB2024 Speak With Animals Always-Prepared",
+      "uuid": "cfd553fb-8a02-27f1-6aee-f55f3cb62add",
+      "group": "Classes",
+      "folder": "DruidPHB2024-SpeakAnimals_cfd553fb-8a02-27f1-6aee-f55f3cb62add",
+      "divider": 60,
+      "evidence": {
+        "source": "section",
+        "installs": 8,
+        "workingInstalls": 6,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 5
+      }
+    },
+    {
       "name": "DruidsRedone",
       "uuid": "1aafa4f3-820c-43dc-9887-2d7f7f007673",
       "group": "NPC",
@@ -34702,6 +34758,20 @@
         "workingInstalls": 4,
         "brokenInstalls": 4,
         "voloSortedInstalls": 6
+      }
+    },
+    {
+      "name": "Eldritch Knight - Spellcasting Modifier UI BUGFIX",
+      "uuid": "12a691c9-2c4e-225f-6709-91029bb58ce6",
+      "group": "Classes",
+      "folder": "EldritchKnightCastingUIBugFix_12a691c9-2c4e-225f-6709-91029bb58ce6",
+      "divider": 59,
+      "evidence": {
+        "source": "section",
+        "installs": 8,
+        "workingInstalls": 6,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 5
       }
     },
     {
@@ -35024,6 +35094,20 @@
         "voloSortedInstalls": 4
       },
       "usesScriptExtender": true
+    },
+    {
+      "name": "FullPartyStatueBuff",
+      "uuid": "e862d5ce-8998-bca0-99e3-32d6cb5cdb69",
+      "group": "Miscellaneous",
+      "folder": "FullPartyStatueBuff_e862d5ce-8998-bca0-99e3-32d6cb5cdb69",
+      "divider": 89.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 8,
+        "workingInstalls": 5,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 5
+      }
     },
     {
       "name": "Gale and His Netherese Orb - A Magical Appetite",
@@ -36359,20 +36443,6 @@
         "workingInstalls": 8,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
-    },
-    {
-      "name": "Permanent Loviatars Love",
-      "uuid": "143af9de-1927-1259-96c9-4a1af79484dd",
-      "group": "User Interface",
-      "folder": "PermanentLoviatarsLove_143af9de-1927-1259-96c9-4a1af79484dd",
-      "divider": 5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 8,
-        "workingInstalls": 5,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 3
       }
     },
     {
@@ -38082,6 +38152,21 @@
       }
     },
     {
+      "name": "All Players In Dialogue - Improved",
+      "uuid": "c0ec6523-a188-46ae-ad7f-56e6eecdf63f",
+      "group": "Quests",
+      "folder": "All-Players-In-Dialogue-OriginFix_c0ec6523-a188-46ae-ad7f-56e6eecdf63f",
+      "author": "Nyoshizora",
+      "divider": 22,
+      "evidence": {
+        "source": "section",
+        "installs": 7,
+        "workingInstalls": 5,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      }
+    },
+    {
       "name": "Alternate Accessories (Gold Piercings)",
       "uuid": "bc70bda9-0b93-4af0-84e3-a897e45fa6b3",
       "group": "Accessories",
@@ -38251,20 +38336,6 @@
       }
     },
     {
-      "name": "Astarion's Default Cantrip: Minor Illusion",
-      "uuid": "5f6bb9ed-2870-5d40-aa5e-ce88d350f9cc",
-      "group": "Spells",
-      "folder": "AstarionMinorIllusion_5f6bb9ed-2870-5d40-aa5e-ce88d350f9cc",
-      "divider": 47,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 7,
-        "workingInstalls": 5,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 4
-      }
-    },
-    {
       "name": "Astarion's Sunlight Sensitivity",
       "uuid": "ff1e92e3-6273-4f48-9897-519dcc4c4334",
       "group": "Companions",
@@ -38370,20 +38441,6 @@
         "workingInstalls": 6,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      }
-    },
-    {
-      "name": "Autosave Interval - Save Timer - 10min",
-      "uuid": "44418044-ab63-eac6-b1d4-23bfe72da074",
-      "group": "Gameplay",
-      "folder": "autosave-interval_44418044-ab63-eac6-b1d4-23bfe72da074",
-      "divider": 13,
-      "evidence": {
-        "source": "section",
-        "installs": 7,
-        "workingInstalls": 5,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
       }
     },
     {
@@ -38566,6 +38623,20 @@
         "workingInstalls": 4,
         "brokenInstalls": 2,
         "voloSortedInstalls": 0
+      }
+    },
+    {
+      "name": "Be Nice To Wyll - IGMM Version",
+      "uuid": "2093abe6-3173-2914-88d6-8e270f45249c",
+      "group": "Companions",
+      "folder": "MGNTN_BeNiceToWyll_2093abe6-3173-2914-88d6-8e270f45249c",
+      "divider": 80,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 7,
+        "workingInstalls": 5,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
       }
     },
     {
@@ -39532,20 +39603,6 @@
       }
     },
     {
-      "name": "Druid PHB2024 Speak With Animals Always-Prepared",
-      "uuid": "cfd553fb-8a02-27f1-6aee-f55f3cb62add",
-      "group": "Classes",
-      "folder": "DruidPHB2024-SpeakAnimals_cfd553fb-8a02-27f1-6aee-f55f3cb62add",
-      "divider": 60,
-      "evidence": {
-        "source": "section",
-        "installs": 7,
-        "workingInstalls": 5,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 4
-      }
-    },
-    {
       "name": "Dwarven_Weaponry_Axes",
       "uuid": "a8ff742b-5bcc-4fab-9385-c77246367cee",
       "group": "Equipment",
@@ -39658,20 +39715,6 @@
       }
     },
     {
-      "name": "Eldritch Knight - Spellcasting Modifier UI BUGFIX",
-      "uuid": "12a691c9-2c4e-225f-6709-91029bb58ce6",
-      "group": "Classes",
-      "folder": "EldritchKnightCastingUIBugFix_12a691c9-2c4e-225f-6709-91029bb58ce6",
-      "divider": 59,
-      "evidence": {
-        "source": "section",
-        "installs": 7,
-        "workingInstalls": 5,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 4
-      }
-    },
-    {
       "name": "Eldritch Knight Plus - New Passives and Rebalance",
       "uuid": "16395b03-30c0-725e-690b-8e33b6bf2ccf",
       "group": "Classes",
@@ -39744,6 +39787,20 @@
       "absence": {
         "held": 1,
         "witnesses": 1
+      }
+    },
+    {
+      "name": "Encrusted With Frost Spell Save DC Scaling",
+      "uuid": "f543c3a8-990c-4b8b-52ea-36353329def2",
+      "group": "Spells",
+      "folder": "EncrustedWithFrostSpellSaveDCScaling_f543c3a8-990c-4b8b-52ea-36353329def2",
+      "divider": 47,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 7,
+        "workingInstalls": 5,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 5
       }
     },
     {
@@ -40039,20 +40096,6 @@
           "name": "AnimationUnlocker"
         }
       ]
-    },
-    {
-      "name": "FullPartyStatueBuff",
-      "uuid": "e862d5ce-8998-bca0-99e3-32d6cb5cdb69",
-      "group": "Miscellaneous",
-      "folder": "FullPartyStatueBuff_e862d5ce-8998-bca0-99e3-32d6cb5cdb69",
-      "divider": 89.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 7,
-        "workingInstalls": 4,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 4
-      }
     },
     {
       "name": "Gale's Beard Fix NPC Patch",
@@ -41311,6 +41354,20 @@
       "usesScriptExtender": true
     },
     {
+      "name": "Monks - Bonus Unarmed Strike",
+      "uuid": "64d235c5-7ef4-699a-b58f-a4473480def0",
+      "group": "Gameplay",
+      "folder": "MonkBonusUnarmedStrike_64d235c5-7ef4-699a-b58f-a4473480def0",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 7,
+        "workingInstalls": 4,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 5
+      }
+    },
+    {
       "name": "Moonlilia's Radiant Retribution",
       "uuid": "5b0d1d44-d723-4092-877d-40dc84f32e4c",
       "group": "Dice",
@@ -42541,6 +42598,20 @@
       }
     },
     {
+      "name": "Throwing with DEX (Rogue, Ranger)",
+      "uuid": "2d5ee681-b833-bfa8-cc7f-380ff3533670",
+      "group": "Weapons",
+      "folder": "dex_final_2d5ee681-b833-bfa8-cc7f-380ff3533670",
+      "divider": 42,
+      "evidence": {
+        "source": "external-category",
+        "installs": 7,
+        "workingInstalls": 4,
+        "brokenInstalls": 3,
+        "voloSortedInstalls": 5
+      }
+    },
+    {
       "name": "TieflingsRedone",
       "uuid": "e1731aa5-1196-2534-2718-a08095a2e23e",
       "group": "NPC",
@@ -43339,21 +43410,6 @@
       }
     },
     {
-      "name": "All Players In Dialogue - Improved",
-      "uuid": "c0ec6523-a188-46ae-ad7f-56e6eecdf63f",
-      "group": "Quests",
-      "folder": "All-Players-In-Dialogue-OriginFix_c0ec6523-a188-46ae-ad7f-56e6eecdf63f",
-      "author": "Nyoshizora",
-      "divider": 22,
-      "evidence": {
-        "source": "section",
-        "installs": 6,
-        "workingInstalls": 4,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
-      }
-    },
-    {
       "name": "Alt Lae'zel Hair 4 Tav",
       "uuid": "996ad858-0724-484c-9713-83d9244dd46a",
       "group": "Character Customization",
@@ -43828,20 +43884,6 @@
         "voloSortedInstalls": 2
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "Be Nice To Wyll - IGMM Version",
-      "uuid": "2093abe6-3173-2914-88d6-8e270f45249c",
-      "group": "Companions",
-      "folder": "MGNTN_BeNiceToWyll_2093abe6-3173-2914-88d6-8e270f45249c",
-      "divider": 80,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 6,
-        "workingInstalls": 4,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
-      }
     },
     {
       "name": "Berserk Griffith Armor + Weapon Set",
@@ -44577,6 +44619,20 @@
       "usesScriptExtender": true
     },
     {
+      "name": "Conform All - Align Mods Instantly",
+      "uuid": "0a69ed65-9a8b-ccde-56f6-ee7709ca39dd",
+      "group": "Gameplay",
+      "folder": "ConformAll_0a69ed65-9a8b-ccde-56f6-ee7709ca39dd",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      }
+    },
+    {
       "name": "Confused Merchant Regis",
       "uuid": "a59de829-0eed-bdfb-8d66-f74be9c46eaa",
       "group": "NPC",
@@ -44718,6 +44774,20 @@
           "name": "Life Drain Spell (Larloch's Minor Drain)"
         }
       ]
+    },
+    {
+      "name": "Dark_Warrior9090's Dice Pack",
+      "uuid": "0561ca95-52ec-ef89-d545-2fd7adc9a58b",
+      "group": "Dice",
+      "folder": "Dark_Warriors_Dice_Pack_1_0561ca95-52ec-ef89-d545-2fd7adc9a58b",
+      "divider": 90,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      }
     },
     {
       "name": "Darkborne Vow",
@@ -45222,20 +45292,6 @@
       }
     },
     {
-      "name": "Encrusted With Frost Spell Save DC Scaling",
-      "uuid": "f543c3a8-990c-4b8b-52ea-36353329def2",
-      "group": "Spells",
-      "folder": "EncrustedWithFrostSpellSaveDCScaling_f543c3a8-990c-4b8b-52ea-36353329def2",
-      "divider": 47,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 6,
-        "workingInstalls": 4,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 4
-      }
-    },
-    {
       "name": "Enmity - Dark Glass Dice - V1",
       "uuid": "5ac3ce77-ed2e-4060-b2ca-9e202c92586c",
       "group": "Dice",
@@ -45331,6 +45387,20 @@
         "installs": 6,
         "workingInstalls": 3,
         "brokenInstalls": 3,
+        "voloSortedInstalls": 4
+      }
+    },
+    {
+      "name": "Everburn Blade Visible in Cutscenes",
+      "uuid": "f925dcc4-898c-bc0a-556a-22ebaab266c4",
+      "group": "Weapons",
+      "folder": "everburn_blade_visible_in_cutscenes_f925dcc4-898c-bc0a-556a-22ebaab266c4",
+      "divider": 42,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 2,
         "voloSortedInstalls": 4
       }
     },
@@ -45501,6 +45571,20 @@
         "workingInstalls": 6,
         "brokenInstalls": 0,
         "voloSortedInstalls": 3
+      }
+    },
+    {
+      "name": "Faster Produce Flame",
+      "uuid": "7886eefa-11f0-1892-d30a-09f4987a6523",
+      "group": "Spells",
+      "folder": "Faster_Produce_Flame_7886eefa-11f0-1892-d30a-09f4987a6523",
+      "divider": 47,
+      "evidence": {
+        "source": "external-category",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
       }
     },
     {
@@ -46138,6 +46222,20 @@
       }
     },
     {
+      "name": "Heavy armor master fix",
+      "uuid": "cd67fee1-0618-a4c6-a446-bbde93874135",
+      "group": "Armor",
+      "folder": "Heavy_armor_master_fix_cd67fee1-0618-a4c6-a446-bbde93874135",
+      "divider": 36,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      }
+    },
+    {
       "name": "HeavyArmorMoveSpeed_SE",
       "uuid": "b91c94d2-43a6-4764-9518-3fe63cf55b95",
       "group": "Equipment",
@@ -46492,6 +46590,20 @@
         "workingInstalls": 6,
         "brokenInstalls": 0,
         "voloSortedInstalls": 3
+      }
+    },
+    {
+      "name": "Jaheira Booming Blade",
+      "uuid": "58329b59-052f-821a-fe38-b234e1a26422",
+      "group": "Weapons",
+      "folder": "Jaheira_BoomingBlade_58329b59-052f-821a-fe38-b234e1a26422",
+      "divider": 42,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
       }
     },
     {
@@ -47204,20 +47316,6 @@
         "workingInstalls": 5,
         "brokenInstalls": 1,
         "voloSortedInstalls": 2
-      }
-    },
-    {
-      "name": "Monks - Bonus Unarmed Strike",
-      "uuid": "64d235c5-7ef4-699a-b58f-a4473480def0",
-      "group": "Gameplay",
-      "folder": "MonkBonusUnarmedStrike_64d235c5-7ef4-699a-b58f-a4473480def0",
-      "divider": 18.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 6,
-        "workingInstalls": 3,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 4
       }
     },
     {
@@ -48119,6 +48217,20 @@
       }
     },
     {
+      "name": "Permanent Githzerai Mind Barrier",
+      "uuid": "bc98e39e-d60b-597d-7708-4cb9ec0e8979",
+      "group": "User Interface",
+      "folder": "PermanentGithzeraiMindBarrier_bc98e39e-d60b-597d-7708-4cb9ec0e8979",
+      "divider": 5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      }
+    },
+    {
       "name": "Photobooth",
       "uuid": "07a42bde-6934-b4de-d2b3-f8427c33f845",
       "group": "Companions",
@@ -48450,6 +48562,20 @@
           "name": "ImpUI (ImprovedUI)"
         }
       ]
+    },
+    {
+      "name": "Ranged_Pact_Weapon",
+      "uuid": "50a3394f-0598-f952-df30-92f26fa6c18a",
+      "group": "Weapons",
+      "folder": "Ranged_Pact_Weapon_50a3394f-0598-f952-df30-92f26fa6c18a",
+      "divider": 42,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      }
     },
     {
       "name": "RangeFinder",
@@ -49010,6 +49136,20 @@
       ]
     },
     {
+      "name": "ShadowheartMinorIllusion",
+      "uuid": "0d26b78d-ebfb-cc03-e369-43b5c5f372ac",
+      "group": "Companions",
+      "folder": "ShadowheartMinorIllusion_0d26b78d-ebfb-cc03-e369-43b5c5f372ac",
+      "divider": 79,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 6,
+        "workingInstalls": 4,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 4
+      }
+    },
+    {
       "name": "SharessHarnessNightsong",
       "uuid": "12b8bb21-3af9-4105-9581-944afbf0e1d4",
       "group": "unsorted",
@@ -49549,20 +49689,6 @@
         "workingInstalls": 4,
         "brokenInstalls": 2,
         "voloSortedInstalls": 3
-      }
-    },
-    {
-      "name": "Throwing with DEX (Rogue, Ranger)",
-      "uuid": "2d5ee681-b833-bfa8-cc7f-380ff3533670",
-      "group": "Weapons",
-      "folder": "dex_final_2d5ee681-b833-bfa8-cc7f-380ff3533670",
-      "divider": 42,
-      "evidence": {
-        "source": "external-category",
-        "installs": 6,
-        "workingInstalls": 3,
-        "brokenInstalls": 3,
-        "voloSortedInstalls": 4
       }
     },
     {
@@ -51934,20 +52060,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "Conform All - Align Mods Instantly",
-      "uuid": "0a69ed65-9a8b-ccde-56f6-ee7709ca39dd",
-      "group": "Gameplay",
-      "folder": "ConformAll_0a69ed65-9a8b-ccde-56f6-ee7709ca39dd",
-      "divider": 18.5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 5,
-        "workingInstalls": 3,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
-      }
-    },
-    {
       "name": "ContainersExtendedForceSort",
       "uuid": "f21bb47f-6e30-4fdb-82eb-ff57b4eb19af",
       "group": "Equipment",
@@ -52110,20 +52222,6 @@
         "workingInstalls": 5,
         "brokenInstalls": 0,
         "voloSortedInstalls": 2
-      }
-    },
-    {
-      "name": "Dark_Warrior9090's Dice Pack",
-      "uuid": "0561ca95-52ec-ef89-d545-2fd7adc9a58b",
-      "group": "Dice",
-      "folder": "Dark_Warriors_Dice_Pack_1_0561ca95-52ec-ef89-d545-2fd7adc9a58b",
-      "divider": 90,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 5,
-        "workingInstalls": 3,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
       }
     },
     {
@@ -52729,20 +52827,6 @@
       }
     },
     {
-      "name": "Everburn Blade Visible in Cutscenes",
-      "uuid": "f925dcc4-898c-bc0a-556a-22ebaab266c4",
-      "group": "Weapons",
-      "folder": "everburn_blade_visible_in_cutscenes_f925dcc4-898c-bc0a-556a-22ebaab266c4",
-      "divider": 42,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 5,
-        "workingInstalls": 3,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
-      }
-    },
-    {
       "name": "EW_Proficiency_Potion",
       "uuid": "76566d47-a265-4c9e-ae89-ea1b1917f74a",
       "group": "unsorted",
@@ -52950,20 +53034,6 @@
         "workingInstalls": 5,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
-    },
-    {
-      "name": "Faster Produce Flame",
-      "uuid": "7886eefa-11f0-1892-d30a-09f4987a6523",
-      "group": "Spells",
-      "folder": "Faster_Produce_Flame_7886eefa-11f0-1892-d30a-09f4987a6523",
-      "divider": 47,
-      "evidence": {
-        "source": "external-category",
-        "installs": 5,
-        "workingInstalls": 3,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
       }
     },
     {
@@ -53596,20 +53666,6 @@
       }
     },
     {
-      "name": "Heavy armor master fix",
-      "uuid": "cd67fee1-0618-a4c6-a446-bbde93874135",
-      "group": "Armor",
-      "folder": "Heavy_armor_master_fix_cd67fee1-0618-a4c6-a446-bbde93874135",
-      "divider": 36,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 5,
-        "workingInstalls": 3,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
-      }
-    },
-    {
       "name": "Heavy Weapons RAW 5.5e",
       "uuid": "c2280d10-1be4-420c-9cf6-285d1e5d27a4",
       "group": "Equipment",
@@ -54119,20 +54175,6 @@
         "installs": 5,
         "workingInstalls": 4,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 3
-      }
-    },
-    {
-      "name": "Jaheira Booming Blade",
-      "uuid": "58329b59-052f-821a-fe38-b234e1a26422",
-      "group": "Weapons",
-      "folder": "Jaheira_BoomingBlade_58329b59-052f-821a-fe38-b234e1a26422",
-      "divider": 42,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 5,
-        "workingInstalls": 3,
-        "brokenInstalls": 2,
         "voloSortedInstalls": 3
       }
     },
@@ -55666,20 +55708,6 @@
       }
     },
     {
-      "name": "Permanent Githzerai Mind Barrier",
-      "uuid": "bc98e39e-d60b-597d-7708-4cb9ec0e8979",
-      "group": "User Interface",
-      "folder": "PermanentGithzeraiMindBarrier_bc98e39e-d60b-597d-7708-4cb9ec0e8979",
-      "divider": 5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 5,
-        "workingInstalls": 3,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
-      }
-    },
-    {
       "name": "Permanent Summons",
       "uuid": "ed24957e-ce48-8f9b-2679-314312da455e",
       "group": "Spells",
@@ -56060,20 +56088,6 @@
         "workingInstalls": 5,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
-    },
-    {
-      "name": "Ranged_Pact_Weapon",
-      "uuid": "50a3394f-0598-f952-df30-92f26fa6c18a",
-      "group": "Weapons",
-      "folder": "Ranged_Pact_Weapon_50a3394f-0598-f952-df30-92f26fa6c18a",
-      "divider": 42,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 5,
-        "workingInstalls": 3,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
       }
     },
     {
@@ -56517,20 +56531,6 @@
         "workingInstalls": 2,
         "brokenInstalls": 2,
         "voloSortedInstalls": 2
-      }
-    },
-    {
-      "name": "ShadowheartMinorIllusion",
-      "uuid": "0d26b78d-ebfb-cc03-e369-43b5c5f372ac",
-      "group": "Companions",
-      "folder": "ShadowheartMinorIllusion_0d26b78d-ebfb-cc03-e369-43b5c5f372ac",
-      "divider": 79,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 5,
-        "workingInstalls": 3,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
       }
     },
     {
@@ -70806,6 +70806,35 @@
         "workingInstalls": 4,
         "brokenInstalls": 0,
         "voloSortedInstalls": 3
+      }
+    },
+    {
+      "name": "Waypoint Inside Emerald Grove",
+      "uuid": "c05d3d9a-ae0d-4893-140b-65efcb9c4302",
+      "group": "Utilities",
+      "folder": "TPtoEmeraldGrove_c05d3d9a-ae0d-4893-140b-65efcb9c4302",
+      "divider": 18,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 4,
+        "workingInstalls": 4,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 1
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+          "name": "Mod Configuration Menu"
+        },
+        {
+          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+          "name": "VolitionCabinet"
+        }
+      ],
+      "absence": {
+        "held": 0,
+        "witnesses": 1
       }
     },
     {
@@ -86454,6 +86483,20 @@
       }
     },
     {
+      "name": "Warlock Multiclass Spell Slots Fix",
+      "uuid": "0921a7fa-6c21-3508-ae06-06d373343329",
+      "group": "Spells",
+      "folder": "WarlockSlots_0921a7fa-6c21-3508-ae06-06d373343329",
+      "divider": 47,
+      "evidence": {
+        "source": "name-pattern",
+        "installs": 3,
+        "workingInstalls": 3,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 3
+      }
+    },
+    {
       "name": "Warlock Unleashed",
       "uuid": "2678512e-1f1d-40a3-8baf-98c6e52b45fb",
       "group": "unsorted",
@@ -86594,35 +86637,6 @@
         "workingInstalls": 2,
         "brokenInstalls": 1,
         "voloSortedInstalls": 3
-      }
-    },
-    {
-      "name": "Waypoint Inside Emerald Grove",
-      "uuid": "c05d3d9a-ae0d-4893-140b-65efcb9c4302",
-      "group": "Utilities",
-      "folder": "TPtoEmeraldGrove_c05d3d9a-ae0d-4893-140b-65efcb9c4302",
-      "divider": 18,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 3,
-        "workingInstalls": 3,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 0
-      },
-      "usesScriptExtender": true,
-      "dependencies": [
-        {
-          "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-          "name": "Mod Configuration Menu"
-        },
-        {
-          "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-          "name": "VolitionCabinet"
-        }
-      ],
-      "absence": {
-        "held": 0,
-        "witnesses": 1
       }
     },
     {
@@ -114856,19 +114870,6 @@
       }
     },
     {
-      "name": "Warlock Multiclass Spell Slots Fix",
-      "uuid": "0921a7fa-6c21-3508-ae06-06d373343329",
-      "group": "Spells",
-      "divider": 47,
-      "evidence": {
-        "source": "name-pattern",
-        "installs": 2,
-        "workingInstalls": 2,
-        "brokenInstalls": 0,
-        "voloSortedInstalls": 2
-      }
-    },
-    {
       "name": "Warlock Unleashed - Patron - Fiend",
       "uuid": "3678512e-1f1d-40a3-8baf-98c6e52b45fb",
       "group": "unsorted",
@@ -124966,6 +124967,20 @@
         "confidence": 0.96
       },
       "divider": 60
+    },
+    {
+      "name": "Combat Lottery 2",
+      "uuid": "87ac7b92-b36f-c190-f587-cbfb40feb304",
+      "group": "Gameplay",
+      "folder": "CombatLottery88_87ac7b92-b36f-c190-f587-cbfb40feb304",
+      "divider": 18.5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 1,
+        "workingInstalls": 1,
+        "brokenInstalls": 0,
+        "voloSortedInstalls": 1
+      }
     },
     {
       "name": "CombatSexMod",
