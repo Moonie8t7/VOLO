@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11092 |
-| Matched exactly by name | 2573 |
-| Matched fuzzily (>= 0.9) | 631 |
-| Unmatched | 7888 |
+| Masterlist mods | 11128 |
+| Matched exactly by name | 2586 |
+| Matched fuzzily (>= 0.9) | 633 |
+| Unmatched | 7909 |
 
 ## What the match would add
 
-- 34 currently unsorted mods would receive a category from their
+- 35 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1070 mods have a Nexus category that disagrees with the
+- 1073 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1803 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 817 of them resolved to a uuid on both
+- 1808 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 818 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -27,10 +27,10 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
 - Grit and Glory - Injuries, Exhaustion and Madness: Gameplay (fuzzy match)
 - Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
+- Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
 - Automatic_Inventory_Manager: Gameplay (fuzzy match)
 - EW_Proficiency_Potion: Utilities (fuzzy match)
 - Exhaustion: User Interface (fuzzy match)
-- Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
 - Guilt-Free Slayer Form: Quests (fuzzy match)
 - Initiative Variants - D20: Gameplay (fuzzy match)
 - AskewShaders: Utilities (fuzzy match)
