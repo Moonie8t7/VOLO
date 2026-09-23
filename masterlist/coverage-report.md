@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-09-23T09:47:16.282Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-23T12:01:29.584Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 180 |
-| labelled working | 146 |
+| Load orders analysed | 181 |
+| labelled working | 147 |
 | labelled broken | 32 |
 | load-after edges promoted from catalogues | 802 |
 | unlabelled | 2 |
 | Separator headers parsed | 4322 |
-| **Unique mods indexed** | **11158** |
-| Seen in more than one order | 7897 |
+| **Unique mods indexed** | **11161** |
+| Seen in more than one order | 7921 |
 | With declared dependencies | 772 |
 | With Script Extender flags | 176 |
 | With author metadata | 1162 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 3 of 180 orders carry it, because the short
+this comes from. Only 3 of 181 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -39,8 +39,8 @@ Builds observed across the corpus, newest first:
 |---|---|---|
 | Curated override | 43 | highest, hand-verified infrastructure |
 | Human-authored section header | 6951 | high, a modder put it there |
-| Name pattern fallback | 1936 | medium, needs review |
-| Nexus or mod.io listing category | 1159 | medium, the author's own words about what the mod is |
+| Name pattern fallback | 1938 | medium, needs review |
+| Nexus or mod.io listing category | 1160 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 17 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 99 | high, measured 97 percent accurate at this band |
 | Neighbour inference, 0.70 to 0.85 | 89 | medium, roughly 75 percent accurate, carries a confidence score |
@@ -66,7 +66,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Dyes`: 80
 - `Armor`: 406
 - `Weapons`: 533
-- `Gameplay`: 564
+- `Gameplay`: 565
 - `Races`: 284
 - `Classes`: 1321
 - `Character Customization`: 414
@@ -78,7 +78,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Heads`: 638
 - `Hair`: 323
 - `Companions`: 447
-- `NPC`: 270
+- `NPC`: 272
 - `Bodies`: 33
 - `Dice`: 473
 - `Bottom of Load Order`: 6
@@ -93,11 +93,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 18.3% | 20.8% | no, and it points the other way |
+| Category pairs against the working consensus | 18.1% | 20.5% | no, and it points the other way |
 | Mods in no working order anywhere | 7% | 0% | yes |
 | Declared dependencies not installed | 0.0 | 0.0 | no |
 
-Measured over 32 broken and 146 working orders, against 144 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 32 broken and 147 working orders, against 143 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -144,7 +144,7 @@ Framework are present in every working order that needs them.
 | `Character Creation Overhaul` | 6 | 6 | 2 |
 | `ContainersExtended` | 10 | 10 | 5 |
 | `Ornamental Body Jewellery` | 8 | 7 | 2 |
-| `HybridUI` | 19 | 16 | 1 |
+| `HybridUI` | 20 | 16 | 1 |
 | `ZipsHeads` | 9 | 7 | 1 |
 | `Calimshan Pirate Outfit` | 4 | 3 | 1 |
 | `Camp Robes` | 4 | 3 | 1 |
@@ -163,7 +163,7 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 146
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 147
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
