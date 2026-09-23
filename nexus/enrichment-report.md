@@ -6,19 +6,19 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11128 |
-| Matched exactly by name | 2586 |
-| Matched fuzzily (>= 0.9) | 633 |
-| Unmatched | 7909 |
+| Masterlist mods | 11158 |
+| Matched exactly by name | 2593 |
+| Matched fuzzily (>= 0.9) | 635 |
+| Unmatched | 7930 |
 
 ## What the match would add
 
 - 35 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1073 mods have a Nexus category that disagrees with the
+- 1076 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1808 dependency edges from author-maintained Requirements tables land
+- 1811 dependency edges from author-maintained Requirements tables land
   on matched masterlist mods, 818 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
@@ -37,13 +37,13 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - BetterDualWieldingAlt: Gameplay (fuzzy match)
 - BG3CraftingUpdate: Gameplay (fuzzy match)
 - DuplicationSE: User Interface (fuzzy match)
+- Durge Noblestalk Memory Swap: Gameplay (fuzzy match)
 - IllithidPowersOverhaul: Gameplay (fuzzy match)
 - Lay on Hands Enhanced - DND 5R: Classes (fuzzy match)
 - AbjurationWizardShield: Gameplay (fuzzy match)
 - ArcaneArcher: Classes (fuzzy match)
 - Ase Glamping - Player Housing for Camp: Character Customization (fuzzy match)
 - AstralElves: Races (fuzzy match)
-- Block-Miss-Differentiation-CHS: User Interface (fuzzy match)
 
 ### Sample disagreements
 
@@ -61,7 +61,7 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - Essential_Feats: ours Classes (section), Nexus says Gameplay
-- HairUnlocked: ours Hair (section-majority), Nexus says Character Customization
+- [BS] Dye Support For Shields: ours Equipment (section-majority), Nexus says Character Customization
 
 ## Unmapped Nexus categories
 
