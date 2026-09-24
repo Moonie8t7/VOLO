@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-09-24T08:51:04.148Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-24T09:48:52.376Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,7 +9,7 @@ Generated 2026-09-24T08:51:04.148Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 183 |
 | labelled working | 149 |
 | labelled broken | 32 |
-| load-after edges promoted from catalogues | 804 |
+| load-after edges promoted from catalogues | 805 |
 | unlabelled | 2 |
 | Separator headers parsed | 4415 |
 | **Unique mods indexed** | **11239** |
@@ -149,6 +149,7 @@ Framework are present in every working order that needs them.
 | `Calimshan Pirate Outfit` | 4 | 3 | 1 |
 | `Camp Robes` | 4 | 3 | 1 |
 | `Celestial Threads` | 4 | 3 | 1 |
+| `Highmost Spell Foci` | 4 | 3 | 1 |
 | `Snapshots` | 8 | 6 | 2 |
 | `HomeBrew - Comprehensive Reworks` | 5 | 3 | 1 |
 | `TutorialChestSummoning` | 50 | 30 | 29 |

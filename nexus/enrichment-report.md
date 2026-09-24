@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11158 |
-| Matched exactly by name | 2593 |
-| Matched fuzzily (>= 0.9) | 635 |
-| Unmatched | 7930 |
+| Masterlist mods | 11239 |
+| Matched exactly by name | 2600 |
+| Matched fuzzily (>= 0.9) | 641 |
+| Unmatched | 7998 |
 
 ## What the match would add
 
 - 35 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1076 mods have a Nexus category that disagrees with the
+- 1082 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1811 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 818 of them resolved to a uuid on both
+- 1815 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 823 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -50,10 +50,10 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
 - Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Miscellaneous (section-majority), Nexus says Gameplay
-- Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
-- PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
+- Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
+- PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
 - Auto Send Food To Camp: ours Utilities (section-majority), Nexus says Gameplay
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Myky's Heads: ours Heads (section-majority), Nexus says Character Customization

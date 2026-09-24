@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-24T08:51:04.148Z",
+  "generated": "2026-09-24T09:48:52.376Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -44,7 +44,7 @@
     "working": 149,
     "broken": 32,
     "unlabelled": 2,
-    "externalDependencyEdges": 804,
+    "externalDependencyEdges": 805,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -10260,13 +10260,7 @@
         "workingInstalls": 17,
         "brokenInstalls": 3,
         "voloSortedInstalls": 9
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
+      }
     },
     {
       "name": "Honey's Hair Kitchen",
@@ -55858,6 +55852,10 @@
         "voloSortedInstalls": 2
       },
       "dependencies": [
+        {
+          "uuid": "151bdd32-79e3-4dc5-ad12-46f508bbcdb3",
+          "name": "Highmost Spell Foci"
+        },
         {
           "uuid": "788ef8b5-7ac4-4290-8e19-df7f13825950",
           "name": "Highmost Scripts"
@@ -101489,17 +101487,7 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      },
-      "dependencies": [
-        {
-          "uuid": "396c5966-09b0-40a1-af3f-93a5e9ce71c0",
-          "name": "CommunityLibrary"
-        },
-        {
-          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
-          "name": "CompatibilityFramework"
-        }
-      ]
+      }
     },
     {
       "name": "Harness Outfit",
@@ -125355,7 +125343,17 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "396c5966-09b0-40a1-af3f-93a5e9ce71c0",
+          "name": "CommunityLibrary"
+        },
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "CeraSumat",
@@ -132943,7 +132941,14 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "usesScriptExtender": true,
+      "dependencies": [
+        {
+          "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9",
+          "name": "CompatibilityFramework"
+        }
+      ]
     },
     {
       "name": "FeatEveryLevelFighter",
@@ -136714,7 +136719,12 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1
-      }
+      },
+      "absence": {
+        "held": 1,
+        "witnesses": 4
+      },
+      "oftenAbsent": true
     },
     {
       "name": "Highmost Spell Foci - None",
