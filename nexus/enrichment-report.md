@@ -6,16 +6,16 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11239 |
-| Matched exactly by name | 2600 |
-| Matched fuzzily (>= 0.9) | 641 |
-| Unmatched | 7998 |
+| Masterlist mods | 11245 |
+| Matched exactly by name | 2602 |
+| Matched fuzzily (>= 0.9) | 642 |
+| Unmatched | 8001 |
 
 ## What the match would add
 
 - 35 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1082 mods have a Nexus category that disagrees with the
+- 1083 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
 - 1815 dependency edges from author-maintained Requirements tables land
@@ -52,8 +52,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Transmog Enhanced Revamped: ours Miscellaneous (section-majority), Nexus says Gameplay
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
-- Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
+- Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - Auto Send Food To Camp: ours Utilities (section-majority), Nexus says Gameplay
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
