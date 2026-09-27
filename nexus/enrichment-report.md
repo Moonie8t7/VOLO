@@ -6,10 +6,10 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11245 |
+| Masterlist mods | 11246 |
 | Matched exactly by name | 2602 |
 | Matched fuzzily (>= 0.9) | 642 |
-| Unmatched | 8001 |
+| Unmatched | 8002 |
 
 ## What the match would add
 
@@ -50,8 +50,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
 - Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Miscellaneous (section-majority), Nexus says Gameplay
-- AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
+- AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - Auto Send Food To Camp: ours Utilities (section-majority), Nexus says Gameplay
