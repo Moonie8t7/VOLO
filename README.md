@@ -21,7 +21,7 @@ nothing reaches it unless you choose to submit an order from the Submit page.
 Mods from Nexus Mods and from mod.io, the platform behind the official in-game
 mod manager, are both supported.
 
-Measured on orders it has never seen, VOLO agrees with them **67.7 percent** of
+Measured on orders it has never seen, VOLO agrees with them **67.6 percent** of
 the time against **50.8 percent** for a random shuffle. That figure averages
 orders rather than mods, so a 41-mod order weighs as much as a 999-mod one,
 though weighting by mods barely moves it. It is a sorting aid with evidence
@@ -83,10 +83,10 @@ Full detail in [docs/architecture.md](docs/architecture.md).
 
 ## The masterlist
 
-`masterlist/bg3-masterlist.json` covers 11,351 mods. 6,976 were
+`masterlist/bg3-masterlist.json` covers 11,351 mods. 6,982 were
 categorised from section headers modders wrote in their own orders,
-2,020 from name patterns, 1,203 from a Nexus or mod.io listing,
-17 from where their author's other catalogued mods sit, 196 inferred
+2,019 from name patterns, 1,201 from a Nexus or mod.io listing,
+17 from where their author's other catalogued mods sit, 193 inferred
 from their neighbours, 45 from curated overrides, and 894 are not
 categorised at all. 10,446 of the 11,351 sit on a divider position.
 
