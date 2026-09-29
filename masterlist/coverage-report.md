@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-09-29T10:12:35.988Z by `scripts/mine-corpus.mjs`.
+Generated 2026-09-29T11:12:48.694Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -40,11 +40,11 @@ Builds observed across the corpus, newest first:
 | Curated override | 45 | highest, hand-verified infrastructure |
 | Human-authored section header | 6976 | high, a modder put it there |
 | Name pattern fallback | 1989 | medium, needs review |
-| Nexus or mod.io listing category | 1164 | medium, the author's own words about what the mod is |
+| Nexus or mod.io listing category | 1165 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 17 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 104 | high, measured 97 percent accurate at this band |
 | Neighbour inference, 0.70 to 0.85 | 91 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 887 | none, needs community input |
+| Uncategorised | 886 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -60,7 +60,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Animations`: 160
 - `User Interface`: 203
 - `Clothing`: 127
-- `Equipment`: 1683
+- `Equipment`: 1684
 - `Miscellaneous`: 223
 - `Spells`: 803
 - `Dyes`: 81
@@ -82,7 +82,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Bodies`: 35
 - `Dice`: 473
 - `Bottom of Load Order`: 7
-- `unsorted`: 887
+- `unsorted`: 886
 
 ## What the broken orders do differently
 
@@ -167,7 +167,7 @@ _none: every stated requirement names a mod this masterlist knows_
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **887 mods are `unsorted`.** These need community categorisation.
+- **886 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 
