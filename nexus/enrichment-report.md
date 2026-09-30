@@ -6,27 +6,27 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11273 |
-| Matched exactly by name | 2608 |
-| Matched fuzzily (>= 0.9) | 642 |
-| Unmatched | 8023 |
+| Masterlist mods | 11358 |
+| Matched exactly by name | 2619 |
+| Matched fuzzily (>= 0.9) | 644 |
+| Unmatched | 8095 |
 
 ## What the match would add
 
-- 35 currently unsorted mods would receive a category from their
+- 36 currently unsorted mods would receive a category from their
   Nexus listing.
 - 1085 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1817 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 823 of them resolved to a uuid on both
+- 1819 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 824 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
 
 - Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
-- Grit and Glory - Injuries, Exhaustion and Madness: Gameplay (fuzzy match)
 - Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
+- Grit and Glory - Injuries, Exhaustion and Madness: Gameplay (fuzzy match)
 - Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
 - Automatic_Inventory_Manager: Gameplay (fuzzy match)
 - EW_Proficiency_Potion: Utilities (fuzzy match)
@@ -61,7 +61,7 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - Essential_Feats: ours Classes (section), Nexus says Gameplay
-- [BS] Dye Support For Shields: ours Equipment (section-majority), Nexus says Character Customization
+- Aardi's Chest of Presents: ours Equipment (section-majority), Nexus says Utilities
 
 ## Unmapped Nexus categories
 

@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-09-29T23:55:18.236Z",
+  "generated": "2026-09-30T11:00:49.020Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -44,7 +44,7 @@
     "working": 154,
     "broken": 34,
     "unlabelled": 2,
-    "externalDependencyEdges": 810,
+    "externalDependencyEdges": 811,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -90084,16 +90084,22 @@
     {
       "name": "Warriors Of Faerun",
       "uuid": "4793dbbb-cc37-3ede-6330-134e972db7e9",
-      "group": "Classes",
+      "group": "Gameplay",
       "folder": "WarriorsOfFaerun_4793dbbb-cc37-3ede-6330-134e972db7e9",
-      "divider": 60,
+      "divider": 18.5,
       "evidence": {
         "source": "external-category",
         "installs": 3,
         "workingInstalls": 2,
         "brokenInstalls": 1,
         "voloSortedInstalls": 3
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Wavy Pink Checkered Dice",
@@ -158090,9 +158096,10 @@
     {
       "name": "The Leper King's Courtwear",
       "uuid": "88aa876a-9c78-4802-aa5d-35175e1262ab",
-      "group": "unsorted",
+      "group": "Clothing",
+      "divider": 37,
       "evidence": {
-        "source": "none",
+        "source": "external-category",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
