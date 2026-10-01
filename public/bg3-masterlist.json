@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-10-01T02:59:24.869Z",
+  "generated": "2026-10-01T11:35:58.474Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -44,7 +44,7 @@
     "working": 155,
     "broken": 34,
     "unlabelled": 2,
-    "externalDependencyEdges": 812,
+    "externalDependencyEdges": 813,
     "ordersWithKnownBuild": 3
   },
   "groups": [
@@ -78227,8 +78227,8 @@
     {
       "name": "Dark Urge Isobel Reward Fixed",
       "uuid": "c5dcb8f5-6767-6c50-82a1-c2efdfeca7e6",
-      "group": "Gameplay",
-      "divider": 18.5,
+      "group": "Quests",
+      "divider": 25,
       "evidence": {
         "source": "external-category",
         "installs": 3,
@@ -98824,13 +98824,7 @@
         "workingInstalls": 1,
         "brokenInstalls": 1,
         "voloSortedInstalls": 1
-      },
-      "dependencies": [
-        {
-          "uuid": "7131033f-821a-3993-dad4-5bc235cbeb3b",
-          "name": "AnimationUnlocker"
-        }
-      ]
+      }
     },
     {
       "name": "dragon_katana",
@@ -118152,7 +118146,8 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 2
-      }
+      },
+      "usesScriptExtender": true
     },
     {
       "name": "WarlockHomebrew",
@@ -129428,7 +129423,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "Dame Aylin's New Look: Revamped",
@@ -137901,7 +137902,13 @@
         "workingInstalls": 1,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
     },
     {
       "name": "Hakama",

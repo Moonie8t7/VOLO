@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-10-01T02:59:24.869Z by `scripts/mine-corpus.mjs`.
+Generated 2026-10-01T11:35:58.474Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-10-01T02:59:24.869Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 191 |
 | labelled working | 155 |
 | labelled broken | 34 |
-| load-after edges promoted from catalogues | 812 |
+| load-after edges promoted from catalogues | 813 |
 | unlabelled | 2 |
 | Separator headers parsed | 4697 |
 | **Unique mods indexed** | **11387** |
 | Seen in more than one order | 8071 |
-| With declared dependencies | 778 |
+| With declared dependencies | 779 |
 | With Script Extender flags | 176 |
 | With author metadata | 1161 |
 
@@ -66,13 +66,13 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Dyes`: 82
 - `Armor`: 420
 - `Weapons`: 536
-- `Gameplay`: 582
+- `Gameplay`: 581
 - `Races`: 302
 - `Classes`: 1351
 - `Character Customization`: 419
 - `Bug Fixes`: 545
 - `Accessories`: 117
-- `Quests`: 44
+- `Quests`: 45
 - `Environment`: 69
 - `Audio`: 30
 - `Heads`: 652

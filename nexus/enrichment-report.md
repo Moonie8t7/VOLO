@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11358 |
-| Matched exactly by name | 2619 |
-| Matched fuzzily (>= 0.9) | 644 |
-| Unmatched | 8095 |
+| Masterlist mods | 11387 |
+| Matched exactly by name | 2630 |
+| Matched fuzzily (>= 0.9) | 651 |
+| Unmatched | 8106 |
 
 ## What the match would add
 
-- 36 currently unsorted mods would receive a category from their
+- 35 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1085 mods have a Nexus category that disagrees with the
+- 1100 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1819 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 824 of them resolved to a uuid on both
+- 1828 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 826 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -61,7 +61,7 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
 - Essential_Feats: ours Classes (section), Nexus says Gameplay
-- Aardi's Chest of Presents: ours Equipment (section-majority), Nexus says Utilities
+- Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
 
 ## Unmapped Nexus categories
 
