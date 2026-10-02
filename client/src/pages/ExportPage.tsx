@@ -142,6 +142,21 @@ export default function ExportPage() {
           </AlertDescription>
         </Alert>
 
+        {/*
+          Said here because a player reported it the hard way: the game writes
+          the mod order into each save, so a new order applied under a
+          playthrough in progress leaves items that cannot be equipped and
+          areas that never finish loading, and a new game is fine. No sorter
+          avoids that, and the page had never said so.
+        */}
+        <Alert className="border-primary/30 bg-primary/5">
+          <AlertDescription className="font-body">
+            <strong>Start a new game on the new order.</strong> The game writes the mod
+            order into each save, and changing it under a playthrough in progress is what
+            makes items unequippable and areas fail to load.
+          </AlertDescription>
+        </Alert>
+
         <Card className="border-ornate shadow-bg3">
           <CardHeader>
             <CardTitle className="font-display">Format</CardTitle>
