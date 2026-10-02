@@ -889,6 +889,13 @@ GitHub runs it six or seven times a day, which is exactly what it did on the
 hourly schedule before; the cron line states an intent the scheduler does not
 keep, so the delay a dropped submission can wait is hours, not minutes.
 
+Two guards ride with it. A Mod Organizer list is refused by the parser, on the
+site and at intake alike, with a pointer to the export that is wanted. And an
+order contained in one the same person sent in the last fortnight is refused
+as a fragment of it; the reverse case, a full order arriving after its
+fragment, is named in the acceptance report for a person to tidy, because the
+landing step replays only the new file as a patch and cannot carry a deletion.
+
 The checkout fix had a twin. One submission starts two runs, `opened` and
 `labeled`, and the second had always validated against the stale tree, landed
 nothing because the first had, and posted nothing because its report matched
@@ -897,10 +904,27 @@ first's file and rejected the order as a duplicate of itself, twenty seconds
 under the acceptance. Six submissions read that way before it was noticed, all
 from the maintainer's own account. Intake now recognises a duplicate that
 carries its own issue number as this submission already landed, and hands the
-workflow a silent gate that posts nothing. Two guards ride with it. A Mod
-Organizer list is refused by the parser, on the site and at intake alike,
-with a pointer to the export that is wanted. And an order contained in one the
-same person sent in the last fortnight is refused as a fragment of it; the
-reverse case, a full order arriving after its fragment, is named in the
-acceptance report for a person to tidy, because the landing step replays only
-the new file as a patch and cannot carry a deletion.
+workflow a silent gate that posts nothing.
+
+### replay-net-could-not-dispatch-2026-09-16
+
+**The replay net failed on every run for fifteen days, 16 September to 2
+October 2026.** It dispatches intake with `gh workflow run`, which needs the
+`actions: write` permission, and its permissions block never granted it. The
+sweep it was folded from two days earlier had the grant; the fold dropped it.
+Nothing noticed, because the net had nothing to dispatch until a burst of five
+submissions on the evening of 16 September lost #209, at which point every run
+tried to replay #209, was refused with a 403, and failed before its other two
+passes could run. Ninety runs, ninety failures, and no reader of the Actions
+tab in that fortnight. A second burst on 29 September then lost #233 and #234
+the same way and left #235 accepted but unlanded, which the dead net would
+have caught within hours.
+
+The grant is in place, and the four were replayed by hand. The landing of the
+fourth, #235, had failed for a separate reason, recorded in the commit that
+fixed it: the corpus test counted a declared dependency on Compatibility
+Framework as a violation while the sort was honouring the framework's
+late-loader flag, and that order was the first full export to declare one.
+
+What was missing was not a check but a reader: a scheduled workflow that fails
+quietly looks, from the issue list, exactly like one that has nothing to do.
