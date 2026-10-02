@@ -354,9 +354,13 @@ export default function SubmitPage() {
                 <div className="space-y-1">
                   <label htmlFor="submit-patch" className="text-sm font-medium font-subheader">
                     BG3 patch this order was played on
-                    <span className="block text-xs font-normal text-muted-foreground mt-1">
-                      Leave it blank if you are not sure. The grey text is only
-                      an example.
+                    {/*
+                      The helper sits inside the label and would inherit its
+                      spaced capitals, which read as a heading rather than a
+                      hint. Body face, normal case.
+                    */}
+                    <span className="block text-xs font-normal font-body normal-case tracking-normal text-muted-foreground mt-1">
+                      Optional. Leave it blank if you are not sure.
                     </span>
                   </label>
                   <Input
@@ -371,7 +375,7 @@ export default function SubmitPage() {
                 <div className="space-y-1">
                   <label htmlFor="submit-notes" className="text-sm font-medium font-subheader">
                     Anything worth knowing
-                    <span className="block text-xs font-normal text-muted-foreground mt-1">
+                    <span className="block text-xs font-normal font-body normal-case tracking-normal text-muted-foreground mt-1">
                       Optional. {verdict === 'broken' ? 'What went wrong is the most valuable part.' : 'Anything the order does not say for itself.'}
                     </span>
                   </label>
