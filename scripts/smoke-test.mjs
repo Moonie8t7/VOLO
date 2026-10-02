@@ -66,6 +66,14 @@ for (const p of masterlist.plugins) {
   rowsByName.get(key).push(p);
 }
 const knownUuids = new Set(masterlist.plugins.map(p => p.uuid).filter(Boolean));
+/*
+ * Required mods the working orders load after what requires them. The miner
+ * flags them and the sorter keeps them late, so a declared dependency on one
+ * is a requirement without being an ordering edge. The first full export to
+ * carry such a declaration, issue #235 naming Compatibility Framework, failed
+ * its landing here while the sort was doing exactly what the flag asks.
+ */
+const lateLoaders = new Set(masterlist.plugins.filter(p => p.loadsAfterDependents).map(p => p.uuid));
 const ambiguousNames = new Set(
   [...rowsByName.entries()]
     .filter(([, rows]) => rows.length > 1 && new Set(rows.map(r => r.group)).size > 1)
@@ -106,6 +114,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   let violations = 0;
   for (const mod of result.mods) {
     for (const dep of mod.dependencies ?? []) {
+      if (lateLoaders.has(dep.uuid)) continue;
       const depPos = position.get(dep.uuid);
       if (depPos !== undefined && depPos > position.get(mod.uuid)) violations++;
     }
