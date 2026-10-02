@@ -40,6 +40,11 @@ on:
 permissions:
   issues: write
   contents: read
+  # To dispatch intake. Without it every dispatch is refused with a 403, and
+  # that is exactly what happened: the first time this net had an issue to
+  # replay, 16 September 2026, it failed, and it failed on every run for the
+  # next fifteen days while four submissions sat unanswered.
+  actions: write
 
 concurrency:
   group: replay-stranded
