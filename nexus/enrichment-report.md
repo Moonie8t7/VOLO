@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11387 |
-| Matched exactly by name | 2630 |
-| Matched fuzzily (>= 0.9) | 651 |
-| Unmatched | 8106 |
+| Masterlist mods | 11484 |
+| Matched exactly by name | 2640 |
+| Matched fuzzily (>= 0.9) | 652 |
+| Unmatched | 8192 |
 
 ## What the match would add
 
-- 35 currently unsorted mods would receive a category from their
+- 34 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1100 mods have a Nexus category that disagrees with the
+- 1083 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1828 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 826 of them resolved to a uuid on both
+- 1830 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 828 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -58,8 +58,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
-- HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
+- HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Essential_Feats: ours Classes (section), Nexus says Gameplay
 - Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
 
