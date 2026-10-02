@@ -182,6 +182,69 @@
       "examples": [
         "ContainersExtended"
       ]
+    },
+    {
+      "pattern": "^(Bard|Barbarian|Cleric|Druid|Fighter|Monk|Paladin|Ranger|Rogue|Sorcerer|Warlock|Wizard) Unleashed(?!.*\\b(Feat|Summon)\\b)",
+      "group": "Classes",
+      "divider": 60,
+      "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/648",
+      "examples": [
+        "Bard Unleashed",
+        "Paladin Unleashed - Standalone - Level 2",
+        "Warlock Unleashed - Ultimate Warlock - Standalone - Level 4",
+        "Cleric Unleashed - Standalone - L5"
+      ]
+    },
+    {
+      "pattern": "^Enchanter's Legacy\\b",
+      "group": "Gameplay",
+      "why": "Reported in issue #215 as belonging in Equipment. Nexus 25061 by luiznunes files it under Gameplay, and the published category is the author's own statement of what the mod is, which this project ranks above a reading of it; an enchanting system changes what equipment does rather than being equipment. It sat unsorted because the pak name carries \"& Disenchanting\" and the listing title does not, so the exact match against the catalogue failed. One order carries it, under no divider.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/25061",
+      "examples": [
+        "Enchanter's Legacy - Enchanting & Disenchanting System",
+        "Enchanter's Legacy - Enchanting System"
+      ]
+    },
+    {
+      "pattern": "^ActTwoExpansion$|^Act Two Expansion\\b",
+      "group": "Quests",
+      "why": "Reported in issue #216 as belonging in Quests, and Nexus 24689 by SquallyDaBeanz files it there too. The seven orders carrying it put it under headers that map to Miscellaneous, which is where a custom campaign lands when a player has no better heading for it; the author and the reporter agree against that, so the rule states it.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/24689",
+      "examples": [
+        "ActTwoExpansion",
+        "Act Two Expansion - Custom Campaign"
+      ]
+    },
+    {
+      "pattern": "^No Mind ?Flayer Ending$",
+      "group": "Quests",
+      "why": "Reported in issue #217 as quality of life, which is not a category here. Nexus 3118, published as \"No MindFlayers Needed to Defeat the Absolute\" by SetFiresUP, is filed under Quests, and a mod that changes how the game ends is story. Five orders carry it and none under a divider, so nothing else could place it.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/3118",
+      "examples": [
+        "No MindFlayer Ending"
+      ]
+    },
+    {
+      "pattern": "^Path of Undeath$",
+      "group": "Bottom of Load Order",
+      "divider": 103,
+      "why": "Reported on Nexus on 29 September 2026, with the page as the source: Siael writes that Path of Undeath should be loaded very late in the load order. The orders agree with the author and not with the row: the ten independent working orders carrying it put it at a median of 94 percent of the way down, never under a divider pak. It was filed as a library because the hand-written headers above it in three orders are Late Loader Exceptions and Compatibility Framework, and the header reader took the word framework for a library. Pinned to the first Late Loaders slot, where the corpus has it.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/21304",
+      "examples": [
+        "Path of Undeath"
+      ]
+    },
+    {
+      "pattern": "^Path of Undeath - Bloodtrail$|^Bloodtrail - Path of Undeath\\b",
+      "group": "Bottom of Load Order",
+      "divider": 103,
+      "why": "Same report and same page: Bloodtrail should load after Path of Undeath, and the five independent working orders carrying it put it at a median of 98 percent of the way down, directly behind Path of Undeath. It had been filed as a library at the top for the same reason. The sequence rule keeps it behind Path of Undeath within the slot.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/21304",
+      "examples": [
+        "Path of Undeath - Bloodtrail",
+        "Bloodtrail - Path of Undeath Chapter 2 - Vampire"
+      ]
     }
   ],
   "requirementAliases": [
@@ -292,6 +355,17 @@
         "Valkrana's Necrobroker",
         "Trials of Tav",
         "Path of Undeath"
+      ]
+    },
+    {
+      "why": "Published by Siael on the Bloodtrail page: Path of Undeath loads very late, Bloodtrail loads after it, and three named mods load after both. An author stating the sequence for their own work is the strongest ordering evidence there is. Reported on Nexus on 29 September 2026 by a player VOLO had been telling to move the first two much higher; the independent working orders already had them in the last few percent of the list.",
+      "source": "https://www.nexusmods.com/baldursgate3/mods/21304",
+      "order": [
+        "Path of Undeath",
+        "Path of Undeath - Bloodtrail",
+        "Illithid Dominion",
+        "Spells Enhanced - Crusader's Mantle",
+        "Smart Ability Override"
       ]
     }
   ]

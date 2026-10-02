@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-10-02T02:02:14.278Z by `scripts/mine-corpus.mjs`.
+Generated 2026-10-02T02:04:04.617Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -37,14 +37,14 @@ Builds observed across the corpus, newest first:
 
 | Source | Count | Trust |
 |---|---|---|
-| Curated override | 45 | highest, hand-verified infrastructure |
-| Human-authored section header | 7190 | high, a modder put it there |
+| Curated override | 94 | highest, hand-verified infrastructure |
+| Human-authored section header | 7183 | high, a modder put it there |
 | Name pattern fallback | 1960 | medium, needs review |
-| Nexus or mod.io listing category | 1193 | medium, the author's own words about what the mod is |
+| Nexus or mod.io listing category | 1192 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 17 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
-| Neighbour inference, 0.85 agreement or better | 97 | high, measured 97 percent accurate at this band |
-| Neighbour inference, 0.70 to 0.85 | 89 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 879 | none, needs community input |
+| Neighbour inference, 0.85 agreement or better | 95 | high, measured 97 percent accurate at this band |
+| Neighbour inference, 0.70 to 0.85 | 81 | medium, roughly 75 percent accurate, carries a confidence score |
+| Uncategorised | 848 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -54,25 +54,25 @@ inferred entry stores its agreement score as `evidence.confidence`.
 ## Group distribution
 
 - `Top of Load Order`: 10
-- `Resources`: 297
+- `Resources`: 295
 - `Utilities`: 120
 - `Visuals`: 134
 - `Animations`: 154
 - `User Interface`: 201
 - `Clothing`: 121
 - `Equipment`: 1694
-- `Miscellaneous`: 217
+- `Miscellaneous`: 216
 - `Spells`: 839
 - `Dyes`: 82
 - `Armor`: 412
 - `Weapons`: 533
-- `Gameplay`: 577
+- `Gameplay`: 578
 - `Races`: 301
-- `Classes`: 1360
+- `Classes`: 1390
 - `Character Customization`: 489
-- `Bug Fixes`: 542
+- `Bug Fixes`: 541
 - `Accessories`: 116
-- `Quests`: 44
+- `Quests`: 46
 - `Environment`: 70
 - `Audio`: 30
 - `Heads`: 638
@@ -81,8 +81,8 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `NPC`: 319
 - `Bodies`: 33
 - `Dice`: 480
-- `Bottom of Load Order`: 7
-- `unsorted`: 879
+- `Bottom of Load Order`: 9
+- `unsorted`: 848
 
 ## What the broken orders do differently
 
@@ -93,11 +93,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 19.2% | 20.9% | no, and it points the other way |
+| Category pairs against the working consensus | 19.3% | 20.9% | no, and it points the other way |
 | Mods in no working order anywhere | 7% | 0% | yes |
 | Declared dependencies not installed | 0.0 | 0.0 | no |
 
-Measured over 34 broken and 157 working orders, against 146 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 34 broken and 157 working orders, against 144 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -167,7 +167,7 @@ _none: every stated requirement names a mod this masterlist knows_
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **879 mods are `unsorted`.** These need community categorisation.
+- **848 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 

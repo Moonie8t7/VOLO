@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-10-02T02:02:14.278Z",
+  "generated": "2026-10-02T02:04:04.617Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -11833,15 +11833,19 @@
     {
       "name": "Path of Undeath",
       "uuid": "fe04695e-d206-4a88-b3f9-b2a65855ac4c",
-      "group": "Resources",
+      "group": "Bottom of Load Order",
       "alternateNames": [
         "PathOfUndeath"
       ],
       "folder": "PathOfUndeath",
       "version": "72057596185411584",
-      "divider": 9.5,
+      "divider": 103,
+      "placement": {
+        "why": "Reported on Nexus on 29 September 2026, with the page as the source: Siael writes that Path of Undeath should be loaded very late in the load order. The orders agree with the author and not with the row: the ten independent working orders carrying it put it at a median of 94 percent of the way down, never under a divider pak. It was filed as a library because the hand-written headers above it in three orders are Late Loader Exceptions and Compatibility Framework, and the header reader took the word framework for a library. Pinned to the first Late Loaders slot, where the corpus has it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/21304"
+      },
       "evidence": {
-        "source": "section-majority",
+        "source": "curated",
         "installs": 21,
         "workingInstalls": 18,
         "brokenInstalls": 3,
@@ -21276,17 +21280,28 @@
     {
       "name": "Path of Undeath - Bloodtrail",
       "uuid": "57b41349-6574-4015-87dc-aea3fd1e4618",
-      "group": "Resources",
+      "group": "Bottom of Load Order",
       "folder": "Bloodtrail",
       "version": "36451011631513600",
-      "divider": 9.5,
+      "divider": 103,
+      "placement": {
+        "why": "Same report and same page: Bloodtrail should load after Path of Undeath, and the five independent working orders carrying it put it at a median of 98 percent of the way down, directly behind Path of Undeath. It had been filed as a library at the top for the same reason. The sequence rule keeps it behind Path of Undeath within the slot.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/21304"
+      },
       "evidence": {
-        "source": "section",
+        "source": "curated",
         "installs": 14,
         "workingInstalls": 11,
         "brokenInstalls": 3,
         "voloSortedInstalls": 8
-      }
+      },
+      "loadAfter": [
+        {
+          "uuid": "fe04695e-d206-4a88-b3f9-b2a65855ac4c",
+          "name": "Path of Undeath",
+          "why": "Published by Siael on the Bloodtrail page: Path of Undeath loads very late, Bloodtrail loads after it, and three named mods load after both. An author stating the sequence for their own work is the strongest ordering evidence there is. Reported on Nexus on 29 September 2026 by a player VOLO had been telling to move the first two much higher; the independent working orders already had them in the last few percent of the list."
+        }
+      ]
     },
     {
       "name": "PK [LM] Faded Memory Set",
@@ -31676,7 +31691,14 @@
         "brokenInstalls": 3,
         "voloSortedInstalls": 5
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "loadAfter": [
+        {
+          "uuid": "57b41349-6574-4015-87dc-aea3fd1e4618",
+          "name": "Path of Undeath - Bloodtrail",
+          "why": "Published by Siael on the Bloodtrail page: Path of Undeath loads very late, Bloodtrail loads after it, and three named mods load after both. An author stating the sequence for their own work is the strongest ordering evidence there is. Reported on Nexus on 29 September 2026 by a player VOLO had been telling to move the first two much higher; the independent working orders already had them in the last few percent of the list."
+        }
+      ]
     },
     {
       "name": "ImmortalScratch",
@@ -32872,8 +32894,12 @@
       "group": "Classes",
       "author": "Mharius",
       "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "section",
+        "source": "curated",
         "installs": 10,
         "workingInstalls": 6,
         "brokenInstalls": 4,
@@ -34440,8 +34466,12 @@
       "group": "Classes",
       "author": "Mharius",
       "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "section",
+        "source": "curated",
         "installs": 9,
         "workingInstalls": 6,
         "brokenInstalls": 3,
@@ -39684,8 +39714,12 @@
       "group": "Classes",
       "author": "Mharius",
       "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "section",
+        "source": "curated",
         "installs": 8,
         "workingInstalls": 6,
         "brokenInstalls": 2,
@@ -42861,10 +42895,14 @@
     {
       "name": "ActTwoExpansion",
       "uuid": "41ec643a-e2ad-e69d-52c2-920a6f4a98ad",
-      "group": "Miscellaneous",
-      "divider": 89.5,
+      "group": "Quests",
+      "divider": 25,
+      "placement": {
+        "why": "Reported in issue #216 as belonging in Quests, and Nexus 24689 by SquallyDaBeanz files it there too. The seven orders carrying it put it under headers that map to Miscellaneous, which is where a custom campaign lands when a player has no better heading for it; the author and the reporter agree against that, so the rule states it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/24689"
+      },
       "evidence": {
-        "source": "section",
+        "source": "curated",
         "installs": 7,
         "workingInstalls": 6,
         "brokenInstalls": 1,
@@ -43392,8 +43430,12 @@
       "group": "Classes",
       "author": "Mharius",
       "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "external-category",
+        "source": "curated",
         "installs": 7,
         "workingInstalls": 5,
         "brokenInstalls": 2,
@@ -54232,9 +54274,14 @@
     {
       "name": "Ranger Unleashed",
       "uuid": "85202a71-cdf6-4309-b834-3c6c65f31d57",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 6,
         "workingInstalls": 5,
         "brokenInstalls": 1,
@@ -54479,10 +54526,15 @@
     {
       "name": "Rogue Unleashed",
       "uuid": "c3df2c54-8c3e-4ad2-8a47-c7c0c06c0639",
-      "group": "unsorted",
+      "group": "Classes",
       "author": "Mharius",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 6,
         "workingInstalls": 3,
         "brokenInstalls": 3,
@@ -55904,8 +55956,12 @@
       "group": "Classes",
       "author": "Mharius",
       "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "section",
+        "source": "curated",
         "installs": 6,
         "workingInstalls": 4,
         "brokenInstalls": 2,
@@ -56943,10 +56999,15 @@
     {
       "name": "Bard Unleashed",
       "uuid": "aa32769a-6c61-4824-953f-883405e917f0",
-      "group": "unsorted",
+      "group": "Classes",
       "author": "Mharius",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 5,
         "workingInstalls": 3,
         "brokenInstalls": 2,
@@ -58500,10 +58561,15 @@
     {
       "name": "Druid Unleashed",
       "uuid": "182753df-7d57-4a35-bbd9-9e996f185236",
-      "group": "unsorted",
+      "group": "Classes",
       "author": "Mharius",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 5,
         "workingInstalls": 3,
         "brokenInstalls": 2,
@@ -60878,15 +60944,18 @@
       "name": "Monk Unleashed",
       "uuid": "6079887a-0e58-4afd-a56d-56ef7060c131",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 3,
-        "confidence": 0.8
-      },
-      "divider": 60
+        "voloSortedInstalls": 3
+      }
     },
     {
       "name": "Monk's Sticks",
@@ -61217,9 +61286,14 @@
     {
       "name": "No MindFlayer Ending",
       "uuid": "f1de7ada-2266-4357-a8a9-44c705ae626d",
-      "group": "unsorted",
+      "group": "Quests",
+      "divider": 25,
+      "placement": {
+        "why": "Reported in issue #217 as quality of life, which is not a category here. Nexus 3118, published as \"No MindFlayers Needed to Defeat the Absolute\" by SetFiresUP, is filed under Quests, and a mod that changes how the game ends is story. Five orders carry it and none under a divider, so nothing else could place it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/3118"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 5,
         "workingInstalls": 4,
         "brokenInstalls": 1,
@@ -61621,9 +61695,14 @@
     {
       "name": "Paladin Unleashed",
       "uuid": "7b1e3a28-e446-4359-b0b7-23af26dab106",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 5,
         "workingInstalls": 3,
         "brokenInstalls": 2,
@@ -62776,7 +62855,14 @@
         "workingInstalls": 4,
         "brokenInstalls": 1,
         "voloSortedInstalls": 4
-      }
+      },
+      "loadAfter": [
+        {
+          "uuid": "1f666801-df81-4cad-8a01-39d547291bba",
+          "name": "Illithid Dominion",
+          "why": "Published by Siael on the Bloodtrail page: Path of Undeath loads very late, Bloodtrail loads after it, and three named mods load after both. An author stating the sequence for their own work is the strongest ordering evidence there is. Reported on Nexus on 29 September 2026 by a player VOLO had been telling to move the first two much higher; the independent working orders already had them in the last few percent of the list."
+        }
+      ]
     },
     {
       "name": "Sniper Class Extra Feats",
@@ -64026,10 +64112,15 @@
     {
       "name": "Warlock Unleashed - Ultimate Warlock",
       "uuid": "975a225c-bce0-4e4c-85c9-ea17bc24e0bb",
-      "group": "unsorted",
+      "group": "Classes",
       "author": "Mharius",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 5,
         "workingInstalls": 3,
         "brokenInstalls": 2,
@@ -77407,9 +77498,14 @@
     {
       "name": "Wizard Unleashed - Standalone - L6",
       "uuid": "e7d78344-0cb3-4dd0-922e-cffe6744214b",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 4,
         "workingInstalls": 3,
         "brokenInstalls": 1,
@@ -87327,9 +87423,14 @@
     {
       "name": "Monk Unleashed - Standalone - L2",
       "uuid": "394b8ceb-f931-41c0-b13a-b24024cad00e",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 3,
         "workingInstalls": 2,
         "brokenInstalls": 1,
@@ -89150,9 +89251,14 @@
     {
       "name": "Paladin Unleashed - Enhanced Paladin Auras",
       "uuid": "447c6dad-64e7-4d00-a665-84fe4a81cf34",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 3,
         "workingInstalls": 2,
         "brokenInstalls": 1,
@@ -93336,9 +93442,14 @@
     {
       "name": "Warlock Unleashed",
       "uuid": "2678512e-1f1d-40a3-8baf-98c6e52b45fb",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0,
@@ -93349,15 +93460,18 @@
       "name": "Warlock Unleashed - Ultimate Warlock - Standalone - Level 4",
       "uuid": "975a225c-bce0-4e4c-85c9-ea17bc24e0bc",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 3,
         "workingInstalls": 3,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 2,
-        "confidence": 1
-      },
-      "divider": 60
+        "voloSortedInstalls": 2
+      }
     },
     {
       "name": "Warlock: The Fathomless",
@@ -95042,7 +95156,7 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 1,
-        "confidence": 0.77
+        "confidence": 0.78
       },
       "divider": 60
     },
@@ -101786,7 +101900,7 @@
         "workingInstalls": 2,
         "brokenInstalls": 0,
         "voloSortedInstalls": 0,
-        "confidence": 0.78
+        "confidence": 0.91
       },
       "divider": 60
     },
@@ -103165,15 +103279,18 @@
       "name": "Fighter Unleashed - Standalone - Level 2",
       "uuid": "d883c6cc-1383-4e06-ba73-b666917a0663",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1,
-        "voloSortedInstalls": 1,
-        "confidence": 0.73
-      },
-      "divider": 60
+        "voloSortedInstalls": 1
+      }
     },
     {
       "name": "FighterWizard",
@@ -109007,9 +109124,14 @@
     {
       "name": "Monk Unleashed - Standalone - L4",
       "uuid": "394b8ceb-f931-41c0-b13a-b24024cad004",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0,
@@ -115886,9 +116008,14 @@
     {
       "name": "Sorcerer Unleashed - Draconic - L3",
       "uuid": "c5e6030e-39a0-4748-87a3-1830858f6f0e",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 2,
         "workingInstalls": 1,
         "brokenInstalls": 1,
@@ -119419,29 +119546,35 @@
       "name": "Warlock Unleashed - Patron - Fiend",
       "uuid": "3678512e-1f1d-40a3-8baf-98c6e52b45fb",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 0.71
-      },
-      "divider": 60
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "Warlock Unleashed - Patron - GOO",
       "uuid": "56986c95-2edb-4654-abab-393c4fb1ca6d",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 2,
         "workingInstalls": 2,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 0.8
-      },
-      "divider": 60
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "WarlockEnhanced",
@@ -125357,22 +125490,30 @@
       "name": "Barbarian Unleashed - L11",
       "uuid": "0031e82a-119c-4745-aaca-8000636c17e0",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 0.82
-      },
-      "divider": 60
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "Barbarian Unleashed - L6 - WH",
       "uuid": "6059125c-4618-49c8-b2fd-dd97be700519",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 1,
@@ -125493,43 +125634,52 @@
       "name": "Bard Unleashed L10",
       "uuid": "0be480b0-dffc-4d66-8ca4-0dbcbefe842e",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 0.89
-      },
-      "divider": 60
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "Bard Unleashed L2",
       "uuid": "6349d495-b708-4c3f-9503-725a3ba081ca",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 0.77
-      },
-      "divider": 60
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "Bard Unleashed L5",
       "uuid": "6349d495-b708-4c3f-9503-725a3ba081c5",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 0.85
-      },
-      "divider": 60
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "Bardic Gear Set: Steel Serenade",
@@ -129470,9 +129620,14 @@
     {
       "name": "Cleric Unleashed - Standalone - L2",
       "uuid": "628077bb-d047-4297-8c36-e9e7de57742e",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -129482,9 +129637,14 @@
     {
       "name": "Cleric Unleashed - Standalone - L4",
       "uuid": "befe8373-0a08-48d1-bac3-4a29d6d98b97",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -129494,9 +129654,14 @@
     {
       "name": "Cleric Unleashed - Standalone - L5",
       "uuid": "a2f28006-1d30-4c0e-95f3-469277b1d9fa",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -133157,9 +133322,14 @@
     {
       "name": "Druid Unleashed - Standalone - L10",
       "uuid": "e3a7a6cc-4957-4b33-b2cc-7f07f16a2a10",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -133169,9 +133339,14 @@
     {
       "name": "Druid Unleashed - Standalone - L5",
       "uuid": "e3a7a6cc-4957-4b33-b2cc-7f07f16a2a75",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -134464,9 +134639,14 @@
     {
       "name": "Enchanter's Legacy - Enchanting & Disenchanting System",
       "uuid": "f08fd07b-1f3d-3800-99dc-824246de8fad",
-      "group": "unsorted",
+      "group": "Gameplay",
+      "divider": 18.5,
+      "placement": {
+        "why": "Reported in issue #215 as belonging in Equipment. Nexus 25061 by luiznunes files it under Gameplay, and the published category is the author's own statement of what the mod is, which this project ranks above a reading of it; an enchanting system changes what equipment does rather than being equipment. It sat unsorted because the pak name carries \"& Disenchanting\" and the listing title does not, so the exact match against the catalogue failed. One order carries it, under no divider.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/25061"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -136765,9 +136945,14 @@
     {
       "name": "Fighter Unleashed - Standalone - Level 8",
       "uuid": "beb82b0e-cce5-4c7a-b551-37fe7f308fea",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -143169,14 +143354,16 @@
     {
       "name": "Lay On Hands Restored",
       "uuid": "7b1e3a28-e446-4359-b0b7-23af26dab107",
-      "group": "unsorted",
+      "group": "Classes",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0
-      }
+        "voloSortedInstalls": 0,
+        "confidence": 0.97
+      },
+      "divider": 60
     },
     {
       "name": "LayOnHandsBuff",
@@ -150140,9 +150327,14 @@
     {
       "name": "Paladin Unleashed - Standalone - Level 11",
       "uuid": "7b1e3a28-e446-4359-b0b7-23af26dab111",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -150152,9 +150344,14 @@
     {
       "name": "Paladin Unleashed - Standalone - Level 2",
       "uuid": "7b1e3a28-e446-4359-b0b7-23af26dab108",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -150164,9 +150361,14 @@
     {
       "name": "Paladin Unleashed - Standalone - Level 3",
       "uuid": "51a4f280-918e-4f10-a047-17c6610d78d7",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -152402,9 +152604,14 @@
     {
       "name": "Ranger Unleashed - Standalone - L11",
       "uuid": "923bdbd5-f114-46bb-b307-7a7242875940",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -152414,9 +152621,14 @@
     {
       "name": "Ranger Unleashed - Standalone - L2",
       "uuid": "85202a71-cdf6-4309-b834-3c6c65f31d58",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -152426,9 +152638,14 @@
     {
       "name": "Ranger Unleashed - Standalone - L3",
       "uuid": "48a259c5-632d-4a17-ab91-3154ca9d5c97",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 1,
@@ -152438,9 +152655,14 @@
     {
       "name": "Ranger Unleashed - Standalone - L6",
       "uuid": "b4496272-2a56-4995-acb4-1076fba9b99c",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
@@ -153607,15 +153829,18 @@
       "name": "Rogue Unleashed - Standalone L2",
       "uuid": "c3df2c54-8c3e-4ad2-8a47-c7c0c06c0630",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 0.8
-      },
-      "divider": 60
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "RogueMistress",
@@ -157043,15 +157268,18 @@
       "name": "Sorcerer Unleashed - Standalone - Storm Sorcery - L1",
       "uuid": "d00fa05d-db84-4e00-9696-5287589d7c3c",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 0.91
-      },
-      "divider": 60
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "Sorcerer-KnightFeatEvery2Levels",
@@ -158375,14 +158603,16 @@
     {
       "name": "SU - Speak with Animals",
       "uuid": "1313a00e-7085-43c6-94ed-101ad42c7e76",
-      "group": "unsorted",
+      "group": "Classes",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0
-      }
+        "voloSortedInstalls": 0,
+        "confidence": 0.8
+      },
+      "divider": 60
     },
     {
       "name": "Subclass-DivineSoul",
@@ -161075,16 +161305,14 @@
     {
       "name": "Tser_Encampment",
       "uuid": "88cfb0a0-a477-d362-8ca2-7aee3fb93a86",
-      "group": "Bug Fixes",
+      "group": "unsorted",
       "evidence": {
-        "source": "inferred",
+        "source": "none",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 0.7
-      },
-      "divider": 102.5
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "TurnBasedOnTrapDetection",
@@ -161379,14 +161607,16 @@
     {
       "name": "Ultimate Sharpshooter",
       "uuid": "77cfc1e2-2242-4d75-a493-9aa140c90d4f",
-      "group": "unsorted",
+      "group": "Classes",
       "evidence": {
-        "source": "none",
+        "source": "inferred",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0
-      }
+        "voloSortedInstalls": 0,
+        "confidence": 0.76
+      },
+      "divider": 60
     },
     {
       "name": "Umberlee_Skirt_All",
@@ -162848,15 +163078,18 @@
       "name": "Warlock Unleashed - Ultimate Warlock - Standalone - Level 5",
       "uuid": "975a225c-bce0-4e4c-85c9-ea17bc24e0b5",
       "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "inferred",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 0,
-        "confidence": 1
-      },
-      "divider": 60
+        "voloSortedInstalls": 0
+      }
     },
     {
       "name": "Warlock-PlanarAlly",
@@ -163523,9 +163756,14 @@
     {
       "name": "Wizard Unleashed - Standalone - L2",
       "uuid": "3164ade6-e190-4354-a0d2-09f1b744750e",
-      "group": "unsorted",
+      "group": "Classes",
+      "divider": 60,
+      "placement": {
+        "why": "Reported in issue #213: fifteen of Mharius's Unleashed class mods, mostly the standalone level variants, sorted as unsorted and sent to the end of the order. The base mods were already filed under Classes on section evidence, Sorcerer on ten orders and Cleric on nine, but each standalone variant is seen in one to six orders and never under a divider, so each sat unsorted on its own. Eleven of the thirteen Unleashed class listings on Nexus are filed by their author under Classes, and the reporter plays all fifteen under Class. The feat and summon add-ons are left out: the name tier files those at Feats and Summons on their own evidence and nothing argues with it.",
+        "source": "https://www.nexusmods.com/baldursgate3/mods/648"
+      },
       "evidence": {
-        "source": "none",
+        "source": "curated",
         "installs": 1,
         "workingInstalls": 1,
         "brokenInstalls": 0,
