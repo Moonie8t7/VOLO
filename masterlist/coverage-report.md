@@ -1,14 +1,14 @@
 # Masterlist coverage report
 
-Generated 2026-10-02T02:04:04.617Z by `scripts/mine-corpus.mjs`.
+Generated 2026-10-02T02:32:35.851Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 193 |
+| Load orders analysed | 194 |
 | labelled working | 157 |
-| labelled broken | 34 |
+| labelled broken | 35 |
 | load-after edges promoted from catalogues | 808 |
 | unlabelled | 2 |
 | Separator headers parsed | 4849 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 3 of 193 orders carry it, because the short
+this comes from. Only 3 of 194 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -93,11 +93,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 19.3% | 20.9% | no, and it points the other way |
+| Category pairs against the working consensus | 20.0% | 20.9% | no, and it points the other way |
 | Mods in no working order anywhere | 7% | 0% | yes |
 | Declared dependencies not installed | 0.0 | 0.0 | no |
 
-Measured over 34 broken and 157 working orders, against 144 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 35 broken and 157 working orders, against 144 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
