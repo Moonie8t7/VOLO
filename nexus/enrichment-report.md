@@ -8,8 +8,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 |---|---|
 | Masterlist mods | 11589 |
 | Matched exactly by name | 2654 |
-| Matched fuzzily (>= 0.9) | 667 |
-| Unmatched | 8268 |
+| Matched fuzzily (>= 0.9) | 669 |
+| Unmatched | 8266 |
 
 ## What the match would add
 
