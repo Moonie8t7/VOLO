@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-10-12T09:52:37.489Z by `scripts/mine-corpus.mjs`.
+Generated 2026-10-12T12:41:54.699Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -9,12 +9,12 @@ Generated 2026-10-12T09:52:37.489Z by `scripts/mine-corpus.mjs`.
 | Load orders analysed | 201 |
 | labelled working | 163 |
 | labelled broken | 36 |
-| load-after edges promoted from catalogues | 808 |
+| load-after edges promoted from catalogues | 809 |
 | unlabelled | 2 |
 | Separator headers parsed | 5088 |
 | **Unique mods indexed** | **11639** |
 | Seen in more than one order | 8317 |
-| With declared dependencies | 806 |
+| With declared dependencies | 807 |
 | With Script Extender flags | 237 |
 | With author metadata | 1311 |
 
@@ -149,7 +149,7 @@ Framework are present in every working order that needs them.
 | `Celestial Threads` | 4 | 3 | 1 |
 | `Ornamental Body Jewellery` | 12 | 9 | 2 |
 | `Bleeding Overhaul` | 16 | 10 | 1 |
-| `TutorialChestSummoning` | 53 | 32 | 29 |
+| `TutorialChestSummoning` | 53 | 32 | 30 |
 | `HomeBrew - Comprehensive Reworks` | 5 | 3 | 1 |
 
 ## Requirements naming something unknown
