@@ -2657,6 +2657,14 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
  *
  * Fed in reversed, so passing cannot be an accident of the input already being
  * right.
+ *
+ * Honoured where the masterlist still carries the edge. The miner drops a
+ * published pair that working orders contradict, two witnesses or more, and
+ * that is a decision this test must read rather than overrule: the first time
+ * a submission tipped a pair the other way, Bloodtrail against Illithid
+ * Dominion three orders to two, this check failed the landing of every order
+ * after it, because it asserted the rule while the masterlist followed the
+ * players. A dropped pair is reported, not failed.
  */
 {
   console.log('');
@@ -2676,7 +2684,7 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     }
   }
 
-  let checked = 0, violations = 0, cycles = 0;
+  let checked = 0, violations = 0, cycles = 0, overruled = 0;
   for (const seq of rules.sequences ?? []) {
     const rows = seq.order.map(n => byAnyName.get(norm(n))).filter(Boolean);
     if (rows.length < 2) continue;
@@ -2688,6 +2696,12 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
     cycles += out.issues.filter(i => i.kind === 'cycle').length;
 
     for (let i = 0; i < rows.length - 1; i++) {
+      const carried = (rows[i + 1].loadAfter ?? []).some(e => e.uuid === rows[i].uuid);
+      if (!carried) {
+        overruled++;
+        console.log(`  note  ${rows[i].name} before ${rows[i + 1].name}: the masterlist does not carry it, working orders load them the other way`);
+        continue;
+      }
       const a = at.get(rows[i].uuid); const b = at.get(rows[i + 1].uuid);
       if (a === undefined || b === undefined) continue;
       if (a > b) {
@@ -2700,7 +2714,8 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   if (!checked) {
     console.log('  ok    no published orderings to check');
   } else if (!violations && !cycles) {
-    console.log(`  ok    ${checked} published ordering(s) honoured exactly, no cycles`);
+    console.log(`  ok    ${checked} published ordering(s) honoured where the masterlist carries them, no cycles`
+      + (overruled ? `, ${overruled} pair(s) left to the players` : ''));
   } else {
     failures++;
     if (cycles) console.log(`  FAIL  ${cycles} cycle(s) introduced by a published ordering`);

@@ -928,3 +928,28 @@ late-loader flag, and that order was the first full export to declare one.
 
 What was missing was not a check but a reader: a scheduled workflow that fails
 quietly looks, from the issue list, exactly like one that has nothing to do.
+
+### sequence-check-failed-every-landing-2026-10-12
+
+**Intake could not land anything from 15:30 on 12 October 2026 until the
+smoke test was corrected.** Submission #248, a 127-mod order arranged by the
+game's own manager, loads Illithid Dominion before Path of Undeath - Bloodtrail.
+That made three independent working orders against two, which is enough for
+the miner's guard: a published pair that working orders contradict is dropped
+from the masterlist, and the edge from Siael's page went. The smoke test then
+sorted the same sequence and failed on the pair it had just lost, because it
+asserted the rule as written rather than the masterlist as built. Both twin
+runs failed at the landing step, the acceptance report had already been
+posted, and the replay net failed the same way three hours later and would
+have gone on failing every few hours.
+
+The guard is the design and the test was behind it: the players win over a
+document, whoever wrote it, and a test that re-litigates that is testing the
+rules file, not the product. The sequence check now reads each pair off the
+masterlist, reports a dropped pair as a note, and fails only where an edge
+the masterlist carries is not honoured by the sort.
+
+Worth knowing: two witnesses is a deliberately low bar, and this pair fell on
+three against two. Siael's page is a stated order for the author's own mods.
+If that bar is ever raised for author sequences, it is a change to the miner
+and nothing else, and the test will follow it without edits.
