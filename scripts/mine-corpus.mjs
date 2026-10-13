@@ -28,7 +28,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { readProvenance, isVoloSorted } from './corpus-provenance.mjs';
-import { loadCuratedRules } from './curated-rules.mjs';
+import { loadCuratedRules, indexRuleNames, resolveSequence } from './curated-rules.mjs';
 import { measureBreakage } from './learn-breakage.mjs';
 
 const provenance = readProvenance();
@@ -1542,22 +1542,14 @@ const sequenceEdges = [];
  * which parts it could not reach.
  */
 {
-  const byNormName = new Map();
-  for (const p of plugins) {
-    const k = externalKey(p.name);
-    if (k && !byNormName.has(k)) byNormName.set(k, p);
-    for (const alt of p.alternateNames ?? []) {
-      const a = externalKey(alt);
-      if (a && !byNormName.has(a)) byNormName.set(a, p);
-    }
-  }
+  const ruleNames = indexRuleNames(plugins);
 
   const unreachable = [];
   for (const seq of curated.sequences ?? []) {
+    const resolved = resolveSequence(seq, ruleNames);
+    unreachable.push(...resolved.unreachable);
     let previous = null;
-    for (const name of seq.order) {
-      const row = byNormName.get(externalKey(name));
-      if (!row) { unreachable.push(name); continue; }
+    for (const row of resolved.rows) {
       if (previous) sequenceEdges.push({ row, before: previous, why: seq.why });
       previous = row;
     }

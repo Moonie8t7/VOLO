@@ -2646,6 +2646,38 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * A rule may name a mod by any of its names, including the pak folder.
+ *
+ * An author's published order is written in folder names as often as page
+ * titles. The miner and this file used to resolve rule names separately and
+ * both left the folder out, so DreadOverlord in Sailor Cat's list was reported
+ * as a mod the corpus had never seen while the corpus held it as Dread
+ * Overlord (Nexus Version), folder DreadOverlord. One shared lookup now, and
+ * this fixture is what keeps the folder in it.
+ */
+{
+  console.log('');
+  console.log('rule names resolve by name, alternate name and folder');
+  const { indexRuleNames, resolveSequence } = await import('./curated-rules.mjs');
+  const plugins = [
+    { uuid: 'a', name: 'Dread Overlord (Nexus Version)', folder: 'DreadOverlord' },
+    { uuid: 'b', name: "Valkrana's Necrobroker Wizard Subclass", folder: "Valkrana's Necrobroker" },
+    { uuid: 'c', name: 'Animate Dead++', alternateNames: ['Animate Dead Plus Plus'] },
+  ];
+  const index = indexRuleNames(plugins);
+  const { rows, unreachable } = resolveSequence(
+    { order: ['DreadOverlord', 'animate dead plus plus', "Valkrana's Necrobroker", 'Trials of Tav'] },
+    index,
+  );
+  const got = rows.map(r => r.uuid).join('');
+  if (got === 'acb' && unreachable.length === 1 && unreachable[0] === 'Trials of Tav') {
+    ok('folder, alternate name and published name all resolve; an unknown name is reported, not dropped');
+  } else {
+    fail(`resolved ${JSON.stringify(rows.map(r => r.name))}, unreachable ${JSON.stringify(unreachable)}`);
+  }
+}
+
+/**
  * A load order an author published for their own mods is honoured exactly.
  *
  * This is the only ordering evidence in the project that somebody stated rather
@@ -2671,22 +2703,12 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   console.log('Published load orders');
 
   const rules = JSON.parse(fs.readFileSync('masterlist/curated-rules.json', 'utf8'));
-  const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
-  const byAnyName = new Map();
-  for (const p of masterlist.plugins) {
-    const k = norm(p.name);
-    if (k && !byAnyName.has(k)) byAnyName.set(k, p);
-  }
-  for (const p of masterlist.plugins) {
-    for (const a of p.alternateNames ?? []) {
-      const k = norm(a);
-      if (k && !byAnyName.has(k)) byAnyName.set(k, p);
-    }
-  }
+  const { indexRuleNames, resolveSequence } = await import('./curated-rules.mjs');
+  const ruleNames = indexRuleNames(masterlist.plugins);
 
   let checked = 0, violations = 0, cycles = 0, overruled = 0;
   for (const seq of rules.sequences ?? []) {
-    const rows = seq.order.map(n => byAnyName.get(norm(n))).filter(Boolean);
+    const { rows } = resolveSequence(seq, ruleNames);
     if (rows.length < 2) continue;
     checked++;
 

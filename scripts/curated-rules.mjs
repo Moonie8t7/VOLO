@@ -188,3 +188,45 @@ export function loadCuratedRules() {
 
 /** The one normalisation every name lookup in the project agrees on. */
 export const normaliseName = s => String(s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+/**
+ * Every name a rule may use for a mod, keyed by normaliseName: the published
+ * name, each alternate name, and the pak folder.
+ *
+ * The folder is there because that is what an author writes. Sailor Cat's
+ * published order for the Valkrana set says DreadOverlord, which is the pak
+ * folder, while the corpus knows the mod by the name on its page, Dread
+ * Overlord (Nexus Version). Without the folder the miner reported that name
+ * as one the corpus had never seen and the author's edge for it never
+ * attached, and the same went for Valkrana's Necrobroker, folder name of the
+ * Wizard Subclass. The miner and the smoke test resolved rule names each in
+ * their own way, with the folder missing from both; this is the one place
+ * either of them looks now.
+ *
+ * First claim wins on a collision, in plugin order, the same tie-break the
+ * miner has always used for names.
+ */
+export function indexRuleNames(plugins) {
+  const index = new Map();
+  for (const p of plugins) {
+    for (const n of [p.name, ...(p.alternateNames ?? []), p.folder]) {
+      const k = normaliseName(n);
+      if (k && !index.has(k)) index.set(k, p);
+    }
+  }
+  return index;
+}
+
+/**
+ * A sequence rule's entries resolved against the masterlist, in order, with
+ * the names nothing matched kept aside so they can be reported rather than
+ * dropped silently.
+ */
+export function resolveSequence(rule, index) {
+  const rows = [], unreachable = [];
+  for (const name of rule.order) {
+    const row = index.get(normaliseName(name));
+    if (row) rows.push(row); else unreachable.push(name);
+  }
+  return { rows, unreachable };
+}

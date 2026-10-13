@@ -329,6 +329,30 @@ transform and opacity, one IntersectionObserver, no animation library. The
 fonts are self-hosted to save 601ms and a scroll-motion dependency would have
 given that back several times over for one effect on one section.
 
+### rule-names-resolve-by-folder
+
+**A curated rule can name a mod by its pak folder, and the miner and the
+smoke test use the same lookup to resolve it.** Authors write their load
+orders in whatever name they see, and that is the pak folder as often as the
+page title. Sailor Cat's order says DreadOverlord and Valkrana's Necrobroker.
+The corpus has both, as Dread Overlord (Nexus Version) and Valkrana's
+Necrobroker Wizard Subclass, with the author's spellings as their folders.
+The miner only looked at name and alternate name, so it reported both as mods
+nobody had ever submitted and the author's edges for them never attached
+(which is why Dread Overlord was being filed after a mod the author loads it
+before). The smoke test had its own copy of the lookup with the same hole, so
+neither could catch the other.
+
+One lookup now, in scripts/curated-rules.mjs next to the loader: name, then
+alternate names, then folder. Of the five names in the Valkrana and Siael
+rules that did not resolve, three now do. The Animate Dead add-on had to be
+renamed in the rule to what the corpus calls it, because its folder and its
+title both put the words in a different order from the author's list. Trials
+of Tav still does not resolve and will not until someone submits an order
+with the original rather than the Reloaded version. Author edges went from
+thirteen to sixteen. There is a fixture in the smoke test that resolves a
+folder, an alternate name and a published name and reports an unknown one,
+so the folder cannot quietly drop out of the lookup again.
 ## Rejected
 
 Each experiment below quotes the figure it was measured against at the time,
