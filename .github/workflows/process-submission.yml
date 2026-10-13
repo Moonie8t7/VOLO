@@ -147,6 +147,10 @@ jobs:
 
       - name: Process the submission
         id: process
+        env:
+          # Where the numbered scheme's shadow score for this order is left for
+          # the landing step, which records it once the landing is real.
+          NUMBERED_SCHEME_ENTRY: /tmp/numbered-scheme-entry.json
         run: |
           set +e
           # Labels come from the file the step above wrote, never interpolated
@@ -268,6 +272,19 @@ jobs:
             node -e "require('fs').copyFileSync('masterlist/bg3-masterlist.json','public/bg3-masterlist.json')"
             node scripts/verify-holdout.mjs | tail -8 >> "$GITHUB_STEP_SUMMARY"
             node scripts/sync-figures.mjs
+
+            # The numbered scheme's shadow score for this order, recorded with
+            # the landing so the log and the corpus move together. Scored in
+            # the process step; scored afresh here if that file is missing.
+            # A measure that fails must not stop a landing, so this cannot
+            # fail the step.
+            if [ -f /tmp/numbered-scheme-entry.json ]; then
+              node scripts/numbered-scheme.mjs record /tmp/numbered-scheme-entry.json >> "$GITHUB_STEP_SUMMARY" \
+                || echo "numbered scheme: not recorded for this landing" >> "$GITHUB_STEP_SUMMARY"
+            else
+              node scripts/numbered-scheme.mjs record "$order" "${{ steps.subject.outputs.number }}" >> "$GITHUB_STEP_SUMMARY" \
+                || echo "numbered scheme: not recorded for this landing" >> "$GITHUB_STEP_SUMMARY"
+            fi
 
             # Pushes made with the workflow token do not trigger the checks
             # workflow, so this would otherwise land unverified.

@@ -353,6 +353,7 @@ with the original rather than the Reloaded version. Author edges went from
 thirteen to sixteen. There is a fixture in the smoke test that resolves a
 folder, an alternate name and a published name and reports an unknown one,
 so the folder cannot quietly drop out of the lookup again.
+
 ### author-sequences-outrank-small-counts
 
 **A mod author's published order only gets set aside on a real contradiction.
@@ -384,6 +385,47 @@ heavily. The point is that it should take more than a coin flip. Every pair
 set aside is recorded in the masterlist's provenance with the count each way,
 and the landing report names any pair the order being landed tipped, so the
 next one gets read in the report and not out of a failed run.
+
+### numbered-scheme-measured-not-adopted
+
+**A numbered load order scheme is scored against every landed order and used
+for nothing else, until the log says otherwise.** The idea came from a
+community suggestion for a Dewey style divider pack, hundreds for families
+and tens inside them. What is measured here is not that pack and not its
+numbering. The suggestion raised a question, what such a scheme would look
+like if the numbers came from the corpus and the catalogues instead of from
+taste, and this is the answer. Built from 160 independent working orders
+and run through VOLO's own pairwise measure, a ten-hundred scheme comes out
+level with the 26 learned groups in-sample (73.8 against 72.8) and two
+points ahead on the pairs both have an opinion on (74.8 against 72.9). All
+of that gain is from splitting Gameplay, Visuals and Bug Fixes into the
+early and late populations the corpus shows they actually are. Held out over
+ten random halves it keeps 72.5. The tens inside a hundred are mostly
+filing (56 percent).
+
+Not enough to replace the sort. It is one corpus, one afternoon's work, and
+a regex standing in for a person deciding what a mod is. It is enough to
+keep measuring, so that is what happens: the scheme lives in
+`masterlist/numbered-scheme.json`, every landing scores the order under it
+next to VOLO's groups on the same pairs, the submitter sees both figures in
+the report, and the pair goes into `masterlist/numbered-scheme-log.json`.
+One thing to know when reading the log: its running figure is a mean per
+order, not per pair, so it sits lower than the numbers above (69.8 against
+68.6 on the corpus as of 13 October). Watch the gap between the two columns,
+not either column on its own. The browser does not read any of this, and
+the smoke test fails if it ever starts to.
+
+What would change the decision: a few months of the log with the scheme
+still ahead by the same margin on orders it never saw. Or, more likely, the
+split of the three mixed families going into the miner on its own, which
+needs no numbering at all and is the part actually worth having.
+
+Named for what it is rather than for Dewey or for the suggestion that
+prompted it. The notation is Dewey's. The idea that the top-level order is
+arbitrary is not, because shelf order means nothing and load order does.
+Where the suggestion and the data disagree, the data won, so this is a
+cousin of that pack and not a version of it.
+
 ## Rejected
 
 Each experiment below quotes the figure it was measured against at the time,
@@ -998,13 +1040,15 @@ runs failed at the landing step, the acceptance report had already been
 posted, and the replay net failed the same way three hours later and would
 have gone on failing every few hours.
 
-The guard is the design and the test was behind it: the players win over a
-document, whoever wrote it, and a test that re-litigates that is testing the
-rules file, not the product. The sequence check now reads each pair off the
-masterlist, reports a dropped pair as a note, and fails only where an edge
-the masterlist carries is not honoured by the sort.
+The guard was doing what it was built to do and the test had not caught up
+with it. Players win over a document, whoever wrote it, and a test that
+argues with that is testing the rules file rather than the product. The
+sequence check now reads each pair off the masterlist, notes a dropped pair,
+and only fails where an edge the masterlist does carry is not honoured by
+the sort.
 
-Worth knowing: two witnesses is a deliberately low bar, and this pair fell on
-three against two. Siael's page is a stated order for the author's own mods.
-If that bar is ever raised for author sequences, it is a change to the miner
-and nothing else, and the test will follow it without edits.
+Worth knowing: two witnesses is a deliberately low bar and this pair fell on
+three against two, on a page where the author states the order for their own
+mods. If that bar is ever raised for author sequences (it was, the next day,
+see author-sequences-outrank-small-counts) it is a miner change and nothing
+else. The test follows whatever the miner decides.

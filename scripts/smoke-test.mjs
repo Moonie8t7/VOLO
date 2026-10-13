@@ -2646,6 +2646,58 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
 }
 
 /**
+ * The numbered scheme is measured and never sorted by.
+ *
+ * Every landing scores the order under masterlist/numbered-scheme.json beside
+ * VOLO's groups and logs both. For that to mean anything the scheme has to
+ * load, every number in it has to have a name, a mod has to get the number
+ * the scheme says, and the browser must not have quietly started reading it.
+ * The last is the one that matters: if the sort starts reading the scheme,
+ * it has been adopted without anyone deciding to adopt it.
+ */
+{
+  console.log('');
+  console.log('numbered scheme, shadow only');
+  const { loadScheme, numberFor, scoreOrder } = await import('./numbered-scheme.mjs');
+  let scheme = null;
+  try {
+    scheme = loadScheme();
+    ok(`scheme loads: ${Object.keys(scheme.tens).length} numbered groups, every reference named`);
+  } catch (e) {
+    fail(`numbered scheme: ${e.message.split('\n').join(' ')}`);
+  }
+  if (scheme) {
+    const plugins = [
+      { uuid: 'n1', name: 'Better Inventory UI', group: 'User Interface' },
+      { uuid: 'n2', name: "Mystra's Spells", group: 'Spells' },
+      { uuid: 'n3', name: "Valkrana's Skeleton Crew Feat", group: 'Classes' },
+      { uuid: 'n4', name: 'Compatibility Framework', group: 'Bottom of Load Order' },
+      { uuid: 'n5', name: 'Some Mod Nobody Listed', group: 'unsorted' },
+    ];
+    const got = plugins.map(p => numberFor(p, scheme));
+    const want = [10, 320, 410, 960, null];
+    if (JSON.stringify(got) === JSON.stringify(want)) {
+      ok('a group picks the hundred, a name picks the ten, a feat is 410, a framework is 960, an unlisted unsorted mod gets nothing');
+    } else {
+      fail(`numbers came out as ${JSON.stringify(got)}, wanted ${JSON.stringify(want)}`);
+    }
+    const ml = { groups: masterlist.groups, plugins };
+    const forward = scoreOrder(plugins.map(p => ({ uuid: p.uuid, name: p.name })), ml, scheme);
+    const backward = scoreOrder([...plugins].reverse().map(p => ({ uuid: p.uuid, name: p.name })), ml, scheme);
+    if (forward.scheme.pct === 100 && backward.scheme.pct === 0 && forward.numbered === 4 && forward.shared.total === forward.scheme.total) {
+      ok('an order in scheme order scores 100, reversed scores 0, and the shared pairs are the same pairs');
+    } else {
+      fail(`scoring: forward ${JSON.stringify(forward)}, backward ${backward.scheme.pct}`);
+    }
+  }
+  const leaks = [];
+  const walk = dir => { for (const f of fs.readdirSync(dir)) { const p = path.join(dir, f); if (fs.statSync(p).isDirectory()) walk(p); else if (/\.(ts|tsx|js|json)$/.test(f) && fs.readFileSync(p, 'utf8').includes('numbered-scheme')) leaks.push(p); } };
+  walk('client/src');
+  if (!leaks.length) ok('nothing in the browser reads the scheme');
+  else fail(`the scheme is read by ${leaks.join(', ')}; it is a measure, not a sort`);
+}
+
+/**
  * A rule may name a mod by any of its names, including the pak folder.
  *
  * An author's published order is written in folder names as often as page

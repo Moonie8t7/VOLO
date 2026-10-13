@@ -85,6 +85,7 @@ production, and this is the only check that runs against the real host.
 | `crawl-summary.mjs` | One readable summary of catalogue and masterlist state. |
 | `verify-deploy.mjs` | Verifies and repairs a deployment, and checks every route. |
 | `sync-figures.mjs` | Rewrites the figures quoted in README and decisions from the data. |
+| `numbered-scheme.mjs` | Scores every landed order under the numbered load order scheme beside VOLO's groups and appends the result to `masterlist/numbered-scheme-log.json`. The sort never reads it; `summary` shows what the log says so far. |
 
 The rest are run by hand rather than by any pipeline, and exist for when the
 question comes up again:

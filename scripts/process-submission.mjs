@@ -27,6 +27,7 @@ import crypto from 'crypto';
 import {
   writeProvenance, judge, readProvenance, noteFromIssueBody, patchFromIssueBody,
 } from './corpus-provenance.mjs';
+import { loadScheme, indexNexus, scoreOrder } from './numbered-scheme.mjs';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -787,6 +788,45 @@ const droppedBefore = new Set((before.provenance?.sequencePairsSetAside ?? []).m
 const newlySetAside = (afterList.provenance?.sequencePairsSetAside ?? [])
   .filter(d => !droppedBefore.has(`${d.first}>${d.second}`));
 
+/*
+ * The numbered scheme, scored against this order and used for nothing else.
+ *
+ * VOLO sorts by its learned groups and nothing here changes that. The scheme
+ * in masterlist/numbered-scheme.json is scored against the same order on the
+ * same pairs, the result goes into the report so the submitter can see it,
+ * and the landing step records it in the scheme's log. Whether the scheme is
+ * ever adopted is a question that log answers over months, which is why it is
+ * measured at every landing rather than once. A failure here is reported in
+ * the same place and never stops a landing.
+ */
+let numberedLines = [];
+try {
+  const scheme = loadScheme();
+  const nexusByKey = indexNexus(JSON.parse(fs.readFileSync('nexus/catalog.json', 'utf8')));
+  const shadow = scoreOrder(parsed.mods, afterList, scheme, nexusByKey);
+  const entry = {
+    date: new Date().toISOString().slice(0, 10), file: filename, issue: Number(issueNumber), working,
+    mods: shadow.mods, numbered: shadow.numbered, pairs: shadow.shared.total,
+    scheme: shadow.shared.schemePct, volo: shadow.shared.voloPct,
+  };
+  fs.writeFileSync(process.env.NUMBERED_SCHEME_ENTRY || path.join(os.tmpdir(), 'numbered-scheme-entry.json'), JSON.stringify(entry));
+  /*
+   * The submitter is told that the measurement happens and that it changes
+   * nothing for them. The two percentages are not put in front of them: two
+   * agreement figures next to the metric above, with no way to tell which
+   * matters, is a question the submitter should not have to ask. The figures
+   * go to the log and to the run summary, which is where the comparison is
+   * read.
+   */
+  numberedLines = [
+    '- VOLO is also trying out a numbered category scheme alongside its current categories. '
+    + 'Your order was scored under both so the two can be compared over time. '
+    + 'It does not change your sort or anything else; the result is recorded in the masterlist for maintainers to read.',
+  ];
+} catch (e) {
+  numberedLines = [`- The numbered scheme could not be scored on this order: ${e.message.split('\n')[0]}`];
+}
+
 /**
  * How much of this order arrived with a stable identity on it.
  *
@@ -846,6 +886,8 @@ finish(true, [
     : autoMerge
       ? 'Within tolerance, so this lands automatically.'
       : `Held for review: ${gate.heldBecause}.`}`,
+  '',
+  ...numberedLines,
   '',
   '### Verification after this submission',
   '',
