@@ -28,7 +28,7 @@ Two scripts report it, and the difference matters.
 The in-sample figure runs about four points high because the masterlist has
 already read the answer. **Quote the held-out number.**
 
-Current: **67.8 percent held out**, against a 50.8 percent random baseline,
+Current: **67.9 percent held out**, against a 50.8 percent random baseline,
 over 117 distinct working orders.
 
 Two caveats on the held-out figure itself. The group sequence is fixed across
@@ -353,6 +353,37 @@ with the original rather than the Reloaded version. Author edges went from
 thirteen to sixteen. There is a fixture in the smoke test that resolves a
 folder, an alternate name and a published name and reports an unknown one,
 so the folder cannot quietly drop out of the lookup again.
+### author-sequences-outrank-small-counts
+
+**A mod author's published order only gets set aside on a real contradiction.
+A community convention still goes on two witnesses.** The guard that lets
+working orders overrule a published sequence was written for the wiki's
+general load order and then applied to author sequences as well, on the
+grounds that it barely touched them. On 12 October it did: #248 made it three
+independent working orders against two on Siael's pair (Bloodtrail before
+Illithid Dominion), the third of the three arranged by the game's own mod
+manager, and the pair went. The incident below is what that did to intake.
+
+The problem is what a working order actually tells you. It says that
+playthrough did not break. It does not say the pair is safe; nobody may have
+reached the content where it matters. An author saying their mod has to load
+after another one is telling you how the mod is built. Those are not the same
+weight of evidence and the guard was treating them as if they were.
+
+So each sequence rule now says what kind of document it is. A `convention`
+pair is set aside when two or more independent working orders have it and a
+majority load it the other way, which is the bar the guard always had. An
+`author` pair is set aside only when five or more have it and the other way
+outnumbers the author's two to one. On the corpus as of 13 October that keeps
+Siael's pair (three against two) and would still drop the Valkrana edge the
+guard was originally measured on, if those counts came back.
+
+Authors are not exempt, and should not be. Pages go stale, mods get
+rewritten, and the Valkrana guard did find an edge players contradict
+heavily. The point is that it should take more than a coin flip. Every pair
+set aside is recorded in the masterlist's provenance with the count each way,
+and the landing report names any pair the order being landed tipped, so the
+next one gets read in the report and not out of a failed run.
 ## Rejected
 
 Each experiment below quotes the figure it was measured against at the time,

@@ -55,6 +55,15 @@ that. Incompatibilities are checked for shape, a `why` and at least two mods;
 whether the claim is true is on you. State only what you know, not what you
 infer from a crash: the file is public and it names other people's work.
 
+A sequence rule is a load order somebody published, with a `source` and a
+`kind`: `author` when the mod's own author stated it, `convention` when it is
+a community list. The names in it may be page titles, alternate names or pak
+folders, whichever the author wrote. Working orders can still overrule a pair
+of it, and the kind sets how many it takes: a convention goes on two witnesses
+and a majority, an author's statement only on five and two to one. A pair that
+goes is listed in the masterlist's provenance and named in the landing report
+of the order that tipped it.
+
 ### A rule, from symptom to merged
 
 Suppose a framework keeps sorting as ordinary gameplay when other mods need

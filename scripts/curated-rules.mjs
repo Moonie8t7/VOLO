@@ -20,6 +20,9 @@ import path from 'path';
 
 const FILE = path.join('masterlist', 'curated-rules.json');
 
+/** A sequence is either the mod author's own statement or a community convention. */
+export const SEQUENCE_KINDS = ['author', 'convention'];
+
 /**
  * A missing file means no rules yet, and the build proceeds empty. A file that
  * exists but does not parse means somebody's rules are about to be silently
@@ -177,6 +180,15 @@ export function loadCuratedRules() {
       if (typeof rule[field] !== 'string' || !rule[field].trim()) {
         problems.push(`${label}: needs a ${field}`);
       }
+    }
+    /*
+     * What kind of document the sequence is decides how many working orders
+     * it takes to set a pair of it aside. An author stating the order for
+     * their own mods is held to a higher count than a community list, and the
+     * miner cannot tell them apart from the names, so the rule has to say.
+     */
+    if (!SEQUENCE_KINDS.includes(rule.kind)) {
+      problems.push(`${label}: kind must be one of ${SEQUENCE_KINDS.join(', ')}`);
     }
     return rule;
   });

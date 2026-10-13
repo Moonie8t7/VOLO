@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-10-13T09:21:45.002Z",
+  "generated": "2026-10-13T09:47:49.414Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -46,7 +46,8 @@
     "broken": 36,
     "unlabelled": 2,
     "externalDependencyEdges": 811,
-    "ordersWithKnownBuild": 5
+    "ordersWithKnownBuild": 5,
+    "sequencePairsSetAside": []
   },
   "groups": [
     {
@@ -27199,7 +27200,14 @@
         "brokenInstalls": 3,
         "voloSortedInstalls": 5
       },
-      "usesScriptExtender": true
+      "usesScriptExtender": true,
+      "loadAfter": [
+        {
+          "uuid": "57b41349-6574-4015-87dc-aea3fd1e4618",
+          "name": "Path of Undeath - Bloodtrail",
+          "why": "Published by Siael on the Bloodtrail page: Path of Undeath loads very late, Bloodtrail loads after it, and three named mods load after both. An author stating the sequence for their own work is the strongest ordering evidence there is. Reported on Nexus on 29 September 2026 by a player VOLO had been telling to move the first two much higher; the independent working orders already had them in the last few percent of the list."
+        }
+      ]
     },
     {
       "name": "ImmortalScratch",

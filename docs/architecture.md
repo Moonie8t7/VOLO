@@ -76,6 +76,21 @@ without the acronym, a near miss the crawler rightly refuses to call exact,
 and four libraries were reported missing from every order until their listings
 were pinned this way.
 
+A sequence rule is a load order somebody published, turned into edges between
+consecutive members the masterlist knows. Names resolve by published name,
+alternate name or pak folder, because an author writes in whichever they see.
+Each rule says what kind of document it is. An `author` sequence is a mod
+author stating the order for their own work; a `convention` is a community
+list, like a wiki's general load order. Working orders can still overrule
+either, but not on the same count. A convention pair goes when two or more
+independent working orders have it and a majority load it the other way. An
+author pair goes only when five or more have it and the other way outnumbers
+the author's by two to one. An order marked working only says that
+playthrough did not break, which is weaker evidence than the author's own
+statement about how the mod is built, so it takes more of them. The pairs set
+aside are listed in the masterlist's provenance and named in the landing
+report of the order that tipped them.
+
 Requirements that resolve to no mod, no folder and no alias are counted and
 reported by every mine. That number is currently zero and is printed either
 way, so it stays visible when it stops being: a name appearing repeatedly is

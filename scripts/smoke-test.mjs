@@ -2690,9 +2690,9 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
  * Fed in reversed, so passing cannot be an accident of the input already being
  * right.
  *
- * Honoured where the masterlist still carries the edge. The miner drops a
- * published pair that working orders contradict, two witnesses or more, and
- * that is a decision this test must read rather than overrule: the first time
+ * Honoured where the masterlist still carries the edge. The miner sets aside a
+ * published pair that working orders contradict, on the bar for the rule's
+ * kind, and that is a decision this test must read rather than overrule: the first time
  * a submission tipped a pair the other way, Bloodtrail against Illithid
  * Dominion three orders to two, this check failed the landing of every order
  * after it, because it asserted the rule while the masterlist followed the

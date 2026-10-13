@@ -773,6 +773,20 @@ const cautionMods = afterList.plugins.filter(
     && !verifiedNames.has(nameKey(p.name)),
 );
 
+/*
+ * A published ordering this order tipped the corpus against.
+ *
+ * The miner sets a sequence pair aside when enough working orders load it the
+ * other way, and records which in the masterlist's provenance. The first time
+ * that happened nobody saw it: the pair went quietly, the smoke test failed on
+ * it, and the failure was read out of a run log. A pair that goes because of
+ * the order being landed is named here, with the count, so the person who sent
+ * the order and the person who wrote the rule can both see it.
+ */
+const droppedBefore = new Set((before.provenance?.sequencePairsSetAside ?? []).map(d => `${d.first}>${d.second}`));
+const newlySetAside = (afterList.provenance?.sequencePairsSetAside ?? [])
+  .filter(d => !droppedBefore.has(`${d.first}>${d.second}`));
+
 /**
  * How much of this order arrived with a stable identity on it.
  *
@@ -817,6 +831,9 @@ finish(true, [
   `- New mods still uncategorised: ${newUnsorted.length}`,
   `- Mods now cautioned as never verified: ${cautionMods.length} `
   + `(seen in ${CAUTION_MIN_BROKEN_ORDERS} or more broken orders and no working one)`,
+  ...newlySetAside.map(d => `- A published ordering set aside by this order: ${d.first} before ${d.second} `
+    + `(${d.kind === 'author' ? 'stated by the mod author' : 'a documented convention'}). `
+    + `Working orders now load them the other way ${d.otherWay} to ${d.sameWay}, so the sort follows the players.`),
   '',
   '### Effect on the metric',
   '',

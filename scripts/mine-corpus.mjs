@@ -1550,7 +1550,7 @@ const sequenceEdges = [];
     unreachable.push(...resolved.unreachable);
     let previous = null;
     for (const row of resolved.rows) {
-      if (previous) sequenceEdges.push({ row, before: previous, why: seq.why });
+      if (previous) sequenceEdges.push({ row, before: previous, why: seq.why, kind: seq.kind });
       previous = row;
     }
   }
@@ -1823,12 +1823,28 @@ function orderWitness(dependent, dependency) {
  *
  * Two witnesses is a low bar and deliberately so: this only ever removes a
  * constraint, never adds one, so being wrong costs a claim rather than imposing
- * a false one. Used for catalogue requirements and for curated sequences alike,
- * because a document is a document whoever wrote it.
+ * a false one. Used for catalogue requirements and for convention sequences
+ * alike, because a document is a document. An author's statement about their
+ * own mod is held to the higher bar below.
  */
 const corpusOverrules = (dependent, dependency) => {
   const { before, after, witnesses } = orderWitness(dependent, dependency);
   return witnesses >= 2 && after > before;
+};
+
+/**
+ * Whether the corpus contradicts a mod author's own ordering. Takes more
+ * than the bar above, because an order marked working only tells you that
+ * playthrough did not break, not that the pair is safe (nobody may have got
+ * to the content). The lower bar dropped Siael's Bloodtrail edge on three
+ * orders against two and every landing after that failed on it until the
+ * test was fixed. Five witnesses and two to one the other way, or the
+ * author's page stands. Reasoning in docs/decisions.md under
+ * author-sequences-outrank-small-counts.
+ */
+const corpusOverrulesAuthor = (dependent, dependency) => {
+  const { before, after, witnesses } = orderWitness(dependent, dependency);
+  return witnesses >= 5 && after >= 2 * before;
 };
 
 /*
@@ -1844,21 +1860,34 @@ const corpusOverrules = (dependent, dependency) => {
  * put Better Tooltips ahead of Dynamic Sidebar twenty times against nine. A
  * documented convention is still a document, and this one is from October 2024.
  *
- * The same guard leaves an author's own sequence almost untouched, which is the
- * result that makes it safe to apply: nine of the ten Valkrana edges are either
- * corroborated or have too few witnesses to judge, and the one it drops rests on
- * two orders against three.
+ * Which bar applies is the rule's kind, stated in the rules file, because the
+ * miner cannot tell an author's page from a wiki page by the names in it. A
+ * pair set aside is recorded in the masterlist's provenance with the count
+ * behind it, so the landing report can name it; the first one went unseen
+ * until a run log was read.
  */
+const sequencePairsSetAside = [];
 {
-  let applied = 0, overruled = 0;
-  for (const { row, before, why } of sequenceEdges) {
-    if (corpusOverrules(row.uuid, before.uuid)) { overruled++; continue; }
+  let applied = 0;
+  for (const { row, before, why, kind } of sequenceEdges) {
+    const overruled = kind === 'author'
+      ? corpusOverrulesAuthor(row.uuid, before.uuid)
+      : corpusOverrules(row.uuid, before.uuid);
+    if (overruled) {
+      const w = orderWitness(row.uuid, before.uuid);
+      sequencePairsSetAside.push({
+        first: before.name, second: row.name, kind, sameWay: w.before, otherWay: w.after,
+      });
+      console.log(`curated sequences: set aside ${before.name} before ${row.name} (${kind}), `
+        + `working orders load them the other way ${w.after} to ${w.before}`);
+      continue;
+    }
     (row.loadAfter ??= []).push({ uuid: before.uuid, name: before.name, why });
     applied++;
   }
   console.log(
     `curated sequences: ${applied} ordering edge(s)`
-    + (overruled ? `, ${overruled} overruled by the corpus` : ''),
+    + (sequencePairsSetAside.length ? `, ${sequencePairsSetAside.length} set aside by the corpus` : ''),
   );
 }
 
@@ -2411,6 +2440,12 @@ const masterlist = {
     unlabelled: orders.filter(o => o.label === 'unlabelled').length,
     externalDependencyEdges: externalDependencyStats.added,
     ordersWithKnownBuild: orders.filter(o => o.gameBuild).length,
+    /*
+     * Published ordering pairs the working orders overruled, with the count
+     * each way, so a report can say which order tipped one and a reader can
+     * see the bar it fell on.
+     */
+    sequencePairsSetAside,
   },
   groups: GROUPS,
   plugins,

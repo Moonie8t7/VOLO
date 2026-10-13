@@ -134,6 +134,21 @@
         },
         "ordersWithKnownBuild": {
           "type": "integer"
+        },
+        "sequencePairsSetAside": {
+          "type": "array",
+          "description": "Pairs from published load orders that working orders overruled: the rule says first before second, and sameWay and otherWay count the independent working orders each way.",
+          "items": {
+            "type": "object",
+            "required": ["first", "second", "kind", "sameWay", "otherWay"],
+            "properties": {
+              "first": { "type": "string" },
+              "second": { "type": "string" },
+              "kind": { "type": "string", "enum": ["author", "convention"] },
+              "sameWay": { "type": "integer" },
+              "otherWay": { "type": "integer" }
+            }
+          }
         }
       }
     },
