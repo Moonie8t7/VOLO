@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11639 |
-| Matched exactly by name | 2663 |
-| Matched fuzzily (>= 0.9) | 671 |
-| Unmatched | 8305 |
+| Masterlist mods | 11673 |
+| Matched exactly by name | 2672 |
+| Matched fuzzily (>= 0.9) | 673 |
+| Unmatched | 8328 |
 
 ## What the match would add
 
 - 34 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1098 mods have a Nexus category that disagrees with the
+- 1100 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1838 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 833 of them resolved to a uuid on both
+- 1840 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 834 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -53,8 +53,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
-- Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
+- Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - Auto Send Food To Camp: ours Utilities (section-majority), Nexus says Gameplay
 - Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
