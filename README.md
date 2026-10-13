@@ -87,8 +87,8 @@ Full detail in [docs/architecture.md](docs/architecture.md).
 categorised from section headers modders wrote in their own orders,
 1,966 from name patterns, 1,169 from a Nexus or mod.io listing,
 17 from where their author's other catalogued mods sit, 193 inferred
-from their neighbours, 94 from curated overrides, and 817 are not
-categorised at all. 10,845 of the 11,673 sit on a divider position.
+from their neighbours, 96 from curated overrides, and 815 are not
+categorised at all. 10,847 of the 11,673 sit on a divider position.
 
 These move as the corpus grows.
 [masterlist/coverage-report.md](masterlist/coverage-report.md) is regenerated on
@@ -109,7 +109,7 @@ nothing scores well; a mod left at the end because nothing is known about it is
 rewarded precisely because unplaced mods cluster there. Read it alongside the
 per-order and mod-weighted splits rather than on its own.
 
-817 mods have no category from any source. Almost all appeared in exactly one
+815 mods have no category from any source. Almost all appeared in exactly one
 submitted order, so there is nothing to infer from.
 
 The automated checks parse VOLO's own output with VOLO's own parser, which is
