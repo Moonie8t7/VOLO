@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>A numbered load order, from the data | VOLO</title>
+<style>
+  /* Faces, served from this origin as the site serves them. */
+  @font-face { font-family: 'EB Garamond'; font-style: normal; font-weight: 400 800; font-display: swap; src: url('/assets/fonts/eb-garamond-latin-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'EB Garamond'; font-style: italic; font-weight: 400 800; font-display: swap; src: url('/assets/fonts/eb-garamond-latin-italic.woff2') format('woff2'); }
+  @font-face { font-family: 'Gothic A1'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/gothic-a1-latin-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Gothic A1'; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/gothic-a1-latin-600.woff2') format('woff2'); }
+
+  /* The site's palette, by its own names. */
+  :root {
+    --background: 30 20% 8%;
+    --foreground: 35 50% 91%;
+    --card: 30 24% 4%;
+    --bg3-header: 35 50% 91%;
+    --bg3-border: 35 30% 56%;
+    --bg3-main: 0 0% 81%;
+    --bg3-small: 34 53% 79%;
+    --bg3-gold: 37 42% 66%;
+    --bg3-sienna: 19 45% 61%;
+    --bg3-clay: 10 40% 50%;
+    --bg3-panel: 30 12% 15%;
+    --bg3-bevel-light: 30 26% 43%;
+    --bg3-bevel-dark: 30 43% 23%;
+    --bg3-green: 154 100% 27%;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { background: hsl(var(--background)); }
+  body {
+    margin: 0;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Gothic A1', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    position: relative;
+    min-height: 100dvh;
+  }
+  /* The ground: the site's smoke, fixed behind the page, dimmed over the charcoal. */
+  body::before {
+    content: ''; position: fixed; inset: -6px; pointer-events: none; z-index: 0;
+    background: url('/assets/bg3/jpg/smoke.jpg') center / cover no-repeat;
+    filter: blur(2px);
+    mask-image: linear-gradient(180deg, #000 0, #000 84%, rgb(0 0 0 / 0.5) 94%, transparent);
+    opacity: .55;
+  }
+  .page { position: relative; z-index: 1; max-width: 48rem; margin: 0 auto; padding-inline: 16px; padding-block: 2.5rem 5rem; }
+  @media (min-width: 640px) { .page { padding-inline: 2rem; } }
+
+  /* Type scale, the site's. */
+  h1, h2, h3, h4 { font-family: 'EB Garamond', serif; font-weight: 600; color: hsl(var(--bg3-header)); margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(40px, 3rem + 12 * (100vw - 970px) / 950, 56px); line-height: 1.08; }
+  h2 { font-size: clamp(32px, 2.25rem + 12 * (100vw - 970px) / 950, 44px); line-height: 1.12; }
+  h3 { font-size: clamp(24px, 1.5rem + 6 * (100vw - 970px) / 950, 30px); line-height: 1.2; }
+  p, li, dd, dt, td, th { font-size: 15px; }
+  p { margin: 0 0 1rem; }
+  .body { color: hsl(var(--bg3-main)); }
+  .muted { color: hsl(var(--bg3-main) / 0.7); }
+  .gold { color: hsl(var(--bg3-gold)); }
+  a { color: hsl(var(--bg3-gold)); text-decoration: underline; text-decoration-color: hsl(var(--bg3-gold) / 0.45); text-underline-offset: 3px; }
+  a:hover { color: hsl(var(--foreground)); }
+  a:focus-visible { outline: 2px solid hsl(var(--bg3-gold)); outline-offset: 2px; }
+  strong { font-weight: 600; color: hsl(var(--foreground)); }
+  em { font-family: 'EB Garamond', serif; font-weight: 500; font-size: 1.05em; }
+  code { font-family: 'Gothic A1', system-ui, sans-serif; font-variant-numeric: tabular-nums; color: hsl(var(--bg3-small)); }
+
+  /* Section labels: uppercase gold, the site's H4 treatment. */
+  .subheader { font-family: 'EB Garamond', serif; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: hsl(var(--bg3-small)); font-size: 13px; display: block; }
+
+  /* The rule under a heading: lit at the left, darkening right, a hollow diamond at its head, a point at its tail. */
+  .ruled::after {
+    content: ''; display: block; width: 100%; height: 7px; margin-top: 14px;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7'%3E%3Cpath d='M3.5 0.6L6.4 3.5L3.5 6.4L0.6 3.5Z' fill='none' stroke='%23DDC9A7' stroke-width='1'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 3'%3E%3Cpath d='M0 0L3 1.5L0 3Z' fill='%23B78F6D'/%3E%3C/svg%3E"),
+      linear-gradient(90deg, #e0ccb1, #b78f6d);
+    background-repeat: no-repeat;
+    background-size: 7px 7px, 3px 3px, calc(100% - 10px) 1px;
+    background-position: left center, right center, 7px center;
+  }
+
+  /* The section divider, drawn with the site's own files. */
+  .rule-bg3 {
+    position: relative; height: 6px; border: 0; margin: 3rem 0 2.5rem;
+    background-image: url('/assets/bg3/svg/divider-deco.svg'), url('/assets/bg3/svg/divider-deco-right.svg'),
+      linear-gradient(to bottom, #896d51 0 1px, transparent 1px 5px, rgb(85 60 34 / 0.55) 5px 6px);
+    background-repeat: no-repeat;
+    background-size: 30px 6px, 30px 6px, calc(100% - 60px) 6px;
+    background-position: left top, right top, center;
+  }
+
+  /* The ornate frame: corner marks from the site's files, lines between them. */
+  .panel-bg3 { position: relative; isolation: isolate; padding: 10px; margin: 1.5rem 0; }
+  .panel-bg3::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-color: rgb(0 0 0 / 0.35); backdrop-filter: blur(10px); mask: radial-gradient(16px at 16px 16px, transparent 98%, #000) -16px -16px; }
+  .frame-bg3 { position: relative; isolation: isolate; padding: 2rem 1.5rem; }
+  @media (min-width: 640px) { .frame-bg3 { padding: 2.5rem; } }
+  .frame-bg3::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    --line-x: linear-gradient(90deg, #bf9875, #604b38 50%, #bf9875);
+    background-image: url('/assets/bg3/svg/corner-tl.svg'), url('/assets/bg3/svg/corner-tr.svg'), url('/assets/bg3/svg/corner-bl.svg'), url('/assets/bg3/svg/corner-br.svg'), var(--line-x), var(--line-x), linear-gradient(#bf9875, #bf9875), linear-gradient(#bf9875, #bf9875);
+    background-repeat: no-repeat;
+    background-size: 21px 21px, 21px 21px, 21px 21px, 21px 21px, calc(100% - 22px) 1px, calc(100% - 22px) 1px, 1px calc(100% - 22px), 1px calc(100% - 22px);
+    background-position: left top, right top, left bottom, right bottom, center top, center bottom, left center, right center;
+  }
+
+  /* Figures, as the masterlist's In numbers panel sets them. */
+  dl.figures { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem 2rem; margin: 0; }
+  @media (min-width: 640px) { dl.figures { grid-template-columns: repeat(3, 1fr); } }
+  dl.figures > div { display: flex; flex-direction: column; min-width: 0; }
+  dl.figures dd { margin: 0; font-family: 'EB Garamond', serif; font-weight: 600; font-size: clamp(30px, 1.875rem + 6 * (100vw - 970px) / 950, 36px); line-height: 1.1; color: hsl(var(--bg3-header)); font-variant-numeric: tabular-nums; }
+  dl.figures dd.gold { color: hsl(var(--bg3-gold)); }
+  dl.figures dt { font-size: 13px; line-height: 1.4; color: rgb(255 255 255 / 0.65); margin-top: .3rem; }
+  dl.figures .note { font-size: 13px; line-height: 1.4; color: rgb(255 255 255 / 0.5); margin-top: .15rem; }
+
+  /* Tables sit in a well: dark hairline above, lit below, the bevel reversed. */
+  .well { background: hsl(var(--card)); box-shadow: inset 0 1px 0 0 hsl(var(--bg3-bevel-dark) / 0.9), inset 0 -1px 0 0 hsl(var(--bg3-bevel-light) / 0.4), inset 1px 0 0 0 hsl(var(--bg3-bevel-dark) / 0.5), inset -1px 0 0 0 hsl(var(--bg3-bevel-dark) / 0.5); overflow-x: auto; margin: 1rem 0 1.5rem; }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; vertical-align: top; padding: .55rem .8rem; border-bottom: 1px solid hsl(var(--bg3-bevel-dark) / 0.7); font-size: 14px; }
+  tr:last-child td { border-bottom: 0; }
+  th { font-family: 'EB Garamond', serif; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; font-size: 12px; color: hsl(var(--bg3-small)); }
+  td { color: hsl(var(--bg3-main)); }
+  td.num { color: hsl(var(--bg3-gold)); font-weight: 600; white-space: nowrap; width: 3.4rem; }
+  td.name { color: hsl(var(--foreground)); white-space: nowrap; }
+  td.r, th.r { text-align: right; white-space: nowrap; }
+  td.theme { color: hsl(var(--bg3-main) / 0.6); }
+
+  ol, ul { margin: 0 0 1rem; padding-left: 1.3rem; color: hsl(var(--bg3-main)); }
+  li { margin-bottom: .45rem; }
+  li::marker { color: hsl(var(--bg3-gold)); }
+  .lede { font-family: 'EB Garamond', serif; font-weight: 400; font-size: 1.3rem; line-height: 1.45; color: hsl(var(--bg3-main)); margin: 1rem 0 0; }
+  .byline { font-size: 13px; color: hsl(var(--bg3-main) / 0.7); margin-top: 1.2rem; }
+  section { margin-top: 2.2rem; }
+  .wordmark { font-family: 'EB Garamond', serif; font-weight: 700; font-size: 1.4rem; letter-spacing: 0.08em; color: hsl(var(--bg3-header)); text-decoration: none; }
+  header.site { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2.5rem; }
+  header.site span { font-size: 13px; color: hsl(var(--bg3-main) / 0.6); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="site">
+    <a class="wordmark" href="https://volobg3.com">VOLO</a>
+    <span>Verified Order and Load Optimisation</span>
+  </header>
+
+  <span class="subheader">For Caranud</span>
+  <h1 class="ruled">A numbered load order, from the data</h1>
+  <p class="lede">You asked what I thought of a Dewey style divider pack. I thought the honest way to answer was to build one from what people actually do, test it, and show you the working. This is that, with the findings, what VOLO now does with it, and what I would change in your draft.</p>
+  <p class="byline">Moonie, October 2026. Built from 160 submitted load orders and the Nexus and mod.io catalogues. Not a pack, and not something VOLO sorts by.</p>
+
+  <section>
+    <span class="subheader">The short version</span>
+    <h2 class="ruled">What came out of it</h2>
+    <div class="panel-bg3"><div class="frame-bg3">
+      <dl class="figures">
+        <div><dd class="gold">74.8</dd><dt>Scheme, pairwise agreement with players</dt><div class="note">on 18.9M pairs both can judge</div></div>
+        <div><dd>72.9</dd><dt>VOLO's own categories, same pairs</dt><div class="note">random would be 50</div></div>
+        <div><dd>72.5</dd><dt>Scheme, held out</dt><div class="note">scored on orders it was not read from</div></div>
+        <div><dd>56.4</dd><dt>The tens, inside a hundred</dt><div class="note">barely above random</div></div>
+        <div><dd>97.4%</dd><dt>Placements given a number</dt><div class="note">61,561 placements, 160 orders</div></div>
+        <div><dd>2</dd><dt>Hundreds my first draft had wrong</dt><div class="note">the test caught both</div></div>
+      </dl>
+    </div></div>
+    <ol class="body">
+      <li><strong>The numbering idea is right.</strong> Hundreds for families, tens inside, gaps so you can add without renumbering. Keep it exactly as you drew it.</li>
+      <li><strong>The hundreds have to be a load order.</strong> Dewey can put History after Literature because shelf order means nothing. A load order cannot. Ordered from the data, the hundreds hold at 72 to 87 percent on every adjacent pair, with one exact tie.</li>
+      <li><strong>The tens are filing, not ordering.</strong> Inside a hundred the corpus barely cares. Your instinct that the middle is forgiving was right, just one level down from where you put it.</li>
+      <li><strong>All of the gain over VOLO comes from one thing.</strong> Gameplay, Visuals and Bug Fixes are each two or three populations hiding under one Nexus category. Split them by what the mod does and you beat VOLO's categories. Lump them and you do not.</li>
+      <li><strong>VOLO is measuring it, not sorting by it.</strong> Every submitted order is now scored under this scheme next to VOLO's own categories, and logged. In a few months the log says whether the gap is real.</li>
+    </ol>
+  </section>
+
+  <hr class="rule-bg3">
+
+  <section>
+    <span class="subheader">What I did</span>
+    <h2 class="ruled">Building it from the orders</h2>
+    <p class="body">Two sources, for two different jobs. Where things go came from VOLO's corpus: 160 load orders that people arranged themselves (not VOLO) and reported as played on, 61,561 mod placements, and the section headers those people wrote by hand. For each family I took the median position in the order as a fraction (0 top, 1 bottom), the spread, and how often one family sits before another when both are present. How big things are came from the whole library rather than the corpus: 19,991 Nexus listings in 22 categories with download counts, 8,997 mod.io listings with tags. The corpus covers 11,673 mods; the library is about two and a half times that, so sizing from the corpus alone would mean sizing from the popular half.</p>
+    <p class="body">Then the rule: hundreds in the order working orders put them, tens inside each hundred in corpus order where the corpus has a view (a pair holding at 60 percent or better on a thousand or more observations) and by theme where it does not, with each ten saying which it is.</p>
+    <p class="body">Testing was the same measure VOLO is judged on. Every mod in every order gets a number. For every pair of mods with different numbers, did the player have them that way round? Random is 50. VOLO's own learned categories score about 73 on this. Then, because the hundreds were read off the same orders the test scores them on, I re-derived the whole order from half the corpus and scored the other half, ten times on random splits, to make sure I was not reading my own data back to myself.</p>
+  </section>
+
+  <section>
+    <span class="subheader">What the test found</span>
+    <h2 class="ruled">Where I was wrong, and where you were</h2>
+    <p class="body">My first draft scored exactly level with VOLO, which was mildly disappointing until I looked at why. Two hundreds were misplaced. Items against Gameplay turned out to be a dead heat, 50.1 percent on 711,331 pairs, so your Gameplay-first order stands and I had it backwards. And I had Story and World at 600, like you, and the data said no quite firmly: quests sit mid-order level with classes, dialogue edits sit near the bottom with companions, camp and environment edits sit right at the end. Three different places. Dissolving 600 and moving them where they go took the scheme two points past VOLO on the pairs both can judge, and it held when re-derived from half the corpus.</p>
+    <p class="body">The finding that actually matters is that all of that gain comes from one thing. Gameplay, Visuals and Bug Fixes are each two or three completely different populations under one Nexus label. Cheats, difficulty and rules tweaks sit early; dialogue edits and "overhauls" sit at the bottom. Texture and lighting foundations sit near the top; character visuals sit mid to late; camp edits sit last. Plain fixes sit mid-order; patches and compatibility frameworks sit last. That is directly relevant to your 700 Visual / Audio, which has textures, animations, character customisation, photo mode and dice in one hundred, and the data says those live at opposite ends of the list.</p>
+    <p class="body">The less flattering finding, for both of us: inside a hundred the order of the tens barely registers. 54 to 56 percent, where 50 is random. The exceptions are real and worth knowing (heads before hair is 78 percent on 218,706 pairs, feats before classes 77 percent on 33,677, compatibility frameworks last in every pair they appear in) but they are exceptions. Say in the pack that the tens are filing, and only order them where the data orders them.</p>
+  </section>
+
+  <hr class="rule-bg3">
+
+  <section>
+    <span class="subheader">The scheme</span>
+    <h2 class="ruled">Hundreds in load order, tens inside</h2>
+    <p class="body">Each number carries its evidence. "Before X 70 percent" means that of every pair of mods with one in each family, the player had them that way round 70 percent of the time. A ten marked as theme has no corpus header behind it and sits where it does by judgement.</p>
+
+    <h3>000 Foundations</h3>
+    <p class="body">Things other mods need and things that have to be first. Corpus 0.00 to 0.15. Before every other hundred at 74 to 83 percent.</p>
+    <div class="well"><table>
+      <tr><th>No.</th><th>Name</th><th>Evidence</th></tr>
+      <tr><td class="num">010</td><td class="name">User interface</td><td>UI headers at 0.00 to 0.09, 455 mods. The earliest family in the corpus.</td></tr>
+      <tr><td class="num">020</td><td class="name">Libraries and dependency frameworks</td><td>libraries 0.03 to 0.07, frameworks 0.11, MCM 0.05. Not patch frameworks, those are 960.</td></tr>
+      <tr><td class="num">030</td><td class="name">Script Extender and Osiris mods</td><td>0.07 to 0.14 across 916 mods. The biggest early family and the one most packs do not name.</td></tr>
+      <tr><td class="num">040</td><td class="name">Utilities and tools</td><td>0.15. In-game tools, config, automation.</td></tr>
+      <tr><td class="num">050</td><td class="name">Textures and visual foundations</td><td>textures 0.08. The early third of what Nexus files as Visuals.</td></tr>
+      <tr><td class="num">090</td><td class="name">Other early loaders</td><td class="theme">Anything that has to be first for a reason of its own.</td></tr>
+    </table></div>
+
+    <h3>100 Gameplay and rules</h3>
+    <p class="body">The early half of what Nexus calls Gameplay. Cheats, difficulty and tweaks all at 0.29. Against Items it is a dead heat, so your Gameplay-first order stands; swap the two and the test would not notice. Library: Gameplay 3,725 listings, 88M downloads; mod.io Quality of Life 1,906, Cheats 1,206.</p>
+    <div class="well"><table>
+      <tr><th>No.</th><th>Name</th><th>Evidence</th></tr>
+      <tr><td class="num">110</td><td class="name">Quality of life</td><td>Measured first: before rules tweaks 63 percent, economy 65, expanded content 62, quests 66.</td></tr>
+      <tr><td class="num">120</td><td class="name">Cheats</td><td>0.29, 15 orders. Before AI and combat 69 percent.</td></tr>
+      <tr><td class="num">130</td><td class="name">Difficulty and rebalance</td><td>0.29, 10 orders.</td></tr>
+      <tr><td class="num">140</td><td class="name">Camp and rest</td><td>Before rules tweaks 61 percent, economy 79. Small: 57 placements.</td></tr>
+      <tr><td class="num">150</td><td class="name">Rules tweaks</td><td>0.29. Rests, carry weight, reactions, proficiency. Before AI and combat 67 percent.</td></tr>
+      <tr><td class="num">160</td><td class="name">AI and combat</td><td class="theme">No corpus header. The unsorted pile is full of these. Theme.</td></tr>
+      <tr><td class="num">170</td><td class="name">Economy, trade and loot</td><td class="theme">No header. Theme.</td></tr>
+      <tr><td class="num">180</td><td class="name">Expanded content and other systems</td><td>0.33 to 0.50, 558 mods. The catch-all for this hundred.</td></tr>
+      <tr><td class="num">190</td><td class="name">Quests and cut content</td><td>Quests 0.33; after economy 60 percent, camp 64. Your 400 Story lives here.</td></tr>
+    </table></div>
+
+    <h3>200 Items and equipment</h3>
+    <p class="body">Median 0.33 on 13,631 placements, the biggest hundred. Before Spells 72 percent, before Build 90. The tens are in measured order and it is not the obvious one: consumables and containers first, weapons last.</p>
+    <div class="well"><table>
+      <tr><th>No.</th><th>Name</th><th>Evidence</th></tr>
+      <tr><td class="num">210</td><td class="name">Consumables</td><td>Before armour 78 percent, accessories 79, weapons 74.</td></tr>
+      <tr><td class="num">220</td><td class="name">Containers and inventory</td><td>Before weapons 64 percent, clothing 62.</td></tr>
+      <tr><td class="num">230</td><td class="name">Item packs and multi-item mods</td><td>Headers at 0.14 to 0.16; before dyes 69 percent, accessories 61. Mega packs go here, the gap you found in Astra.</td></tr>
+      <tr><td class="num">240</td><td class="name">Armour</td><td>0.31; before clothing 63 percent, accessories 59, weapons 59.</td></tr>
+      <tr><td class="num">250</td><td class="name">Accessories</td><td>0.43; before weapons 69 percent. Piercings are 580.</td></tr>
+      <tr><td class="num">260</td><td class="name">Clothing</td><td>0.30; before dyes 67 percent.</td></tr>
+      <tr><td class="num">270</td><td class="name">Dyes</td><td>14 orders; after clothing and armour in pairs.</td></tr>
+      <tr><td class="num">280</td><td class="name">Weapons</td><td>After armour, accessories and consumables in 59 to 74 percent of pairs. Last on purpose.</td></tr>
+      <tr><td class="num">290</td><td class="name">Other items</td><td class="theme">The catch-all.</td></tr>
+    </table></div>
+
+    <h3>300 Spells and abilities</h3>
+    <p class="body">spells 0.35, scrolls 0.22, median 0.45 on 3,694 placements. Before Build 72 percent, before Appearance 88.</p>
+    <div class="well"><table>
+      <tr><th>No.</th><th>Name</th><th>Evidence</th></tr>
+      <tr><td class="num">310</td><td class="name">Scrolls and spell items</td><td>0.22; before spell changes 62 percent, summons 64.</td></tr>
+      <tr><td class="num">320</td><td class="name">Spell packs</td><td>0.35, 24 orders.</td></tr>
+      <tr><td class="num">330</td><td class="name">Summons</td><td>After scrolls 64 percent. Your 640; the corpus puts them with the spell packs.</td></tr>
+      <tr><td class="num">340</td><td class="name">Cantrips and actions</td><td>Before spell changes 59 percent on 536 pairs. Thin.</td></tr>
+      <tr><td class="num">350</td><td class="name">Spell changes and rebalances</td><td>0.62; the late end of the hundred.</td></tr>
+      <tr><td class="num">360</td><td class="name">Illithid and special powers</td><td class="theme">No corpus header. Theme.</td></tr>
+      <tr><td class="num">390</td><td class="name">Other magic</td><td></td></tr>
+    </table></div>
+
+    <h3>400 Character build</h3>
+    <p class="body">The best-measured hundred by a distance. Before Appearance 87 percent. Every adjacent ten holds at 61 percent or better, most above 75.</p>
+    <div class="well"><table>
+      <tr><th>No.</th><th>Name</th><th>Evidence</th></tr>
+      <tr><td class="num">410</td><td class="name">Feats</td><td>Before backgrounds 66 percent, races 69, classes 77, subclasses 82. First, the reverse of your 250 then 260.</td></tr>
+      <tr><td class="num">420</td><td class="name">Backgrounds and deities</td><td>Before classes 74 percent, subclasses 80.</td></tr>
+      <tr><td class="num">430</td><td class="name">Races</td><td>0.50, 30 orders; before subraces 61 percent, classes 80, subclasses 86. Units for the race.</td></tr>
+      <tr><td class="num">440</td><td class="name">Subraces</td><td>Before classes 82 percent, subclasses 92.</td></tr>
+      <tr><td class="num">450</td><td class="name">Classes</td><td>0.56, 25 orders; before progression 64 percent. Units for the class, 451 Barbarian through 462 Wizard.</td></tr>
+      <tr><td class="num">460</td><td class="name">Subclasses</td><td>0.63, 18 orders; before progression 66 percent.</td></tr>
+      <tr><td class="num">470</td><td class="name">Multiclass and progression</td><td>Level caps, XP curves, milestones. Measured last.</td></tr>
+      <tr><td class="num">490</td><td class="name">Other build</td><td></td></tr>
+    </table></div>
+
+    <h3>500 Appearance</h3>
+    <p class="body">Heads before Hair holds at 78 percent on 218,706 pairs, the single strongest ten pair in the scheme. Character Customisation is the biggest family in the game by downloads (132M), so it gets the most tens.</p>
+    <div class="well"><table>
+      <tr><th>No.</th><th>Name</th><th>Evidence</th></tr>
+      <tr><td class="num">510</td><td class="name">Eyes</td><td>Before beards 61 percent (304 pairs, thin).</td></tr>
+      <tr><td class="num">520</td><td class="name">Beards and facial hair</td><td>Before the CC frameworks 63 percent, heads 78, hair 72. Only 34 placements: a loud signal from a small crowd.</td></tr>
+      <tr><td class="num">530</td><td class="name">Character creation frameworks and colours</td><td>Character creator 0.47, skin and hair colours 0.60 to 0.71.</td></tr>
+      <tr><td class="num">540</td><td class="name">Poses, animations and photo mode</td><td>Before horns 60 percent, piercings 70. Against heads a coin flip. Your 710 and 750; the corpus puts them with appearance.</td></tr>
+      <tr><td class="num">550</td><td class="name">Heads</td><td>0.68, 22 orders, 887 mods; before hair 78 percent, horns 69, piercings 70.</td></tr>
+      <tr><td class="num">560</td><td class="name">Hair</td><td>0.71, 18 orders, 610 mods; before horns 64 percent, piercings 67, bodies 63.</td></tr>
+      <tr><td class="num">570</td><td class="name">Horns, tails, ears and racial features</td><td>0.79, 14 orders; before piercings 82 percent.</td></tr>
+      <tr><td class="num">580</td><td class="name">Piercings and face accessories</td><td>After horns as mods.</td></tr>
+      <tr><td class="num">590</td><td class="name">Bodies</td><td>0.87, 10 orders; after hair and horns in 61 to 63 percent of pairs.</td></tr>
+    </table></div>
+
+    <h3>600 Reserved</h3>
+    <p class="body">Empty on purpose. My first draft put Story and World here, like yours, and the test said no. An empty hundred is the point of numbering with gaps; the next family that earns one takes it.</p>
+
+    <h3>700 Companions, NPCs and dialogue</h3>
+    <p class="body">companions 0.75 to 0.88, companion visuals 0.82, NPC visuals 0.75, dialogue edits 0.86. Before Extras 76 percent.</p>
+    <div class="well"><table>
+      <tr><th>No.</th><th>Name</th><th>Evidence</th></tr>
+      <tr><td class="num">710</td><td class="name">Companion changes</td><td>0.88, 11 orders, 383 mods; before NPC appearance 59 percent.</td></tr>
+      <tr><td class="num">720</td><td class="name">Companion appearance</td><td>0.82; before NPC appearance 67 percent.</td></tr>
+      <tr><td class="num">730</td><td class="name">Origin characters and Tav</td><td class="theme">Theme (your 610 and 620).</td></tr>
+      <tr><td class="num">740</td><td class="name">NPC appearance</td><td>0.75, 374 mods.</td></tr>
+      <tr><td class="num">750</td><td class="name">Allies, enemies and encounters</td><td class="theme">Theme.</td></tr>
+      <tr><td class="num">760</td><td class="name">Dialogue edits</td><td>0.86, 6 orders, 298 mods. Your 420.</td></tr>
+      <tr><td class="num">790</td><td class="name">Other characters</td><td></td></tr>
+    </table></div>
+
+    <h3>800 Extras</h3>
+    <p class="body">Late families that do not patch anything. Before Patches 74 percent.</p>
+    <div class="well"><table>
+      <tr><th>No.</th><th>Name</th><th>Evidence</th></tr>
+      <tr><td class="num">810</td><td class="name">Environment, lighting and weather</td><td>The late third of Visuals; before dice 60 percent.</td></tr>
+      <tr><td class="num">820</td><td class="name">Audio and music</td><td>0.63, spread 0.13 to 0.94; before dice 59 percent. Goes wherever the pack author likes.</td></tr>
+      <tr><td class="num">830</td><td class="name">Cosmetic extras and vanity</td><td>0.65; your 380. Nine placements.</td></tr>
+      <tr><td class="num">840</td><td class="name">Dice</td><td>0.84, 22 orders, 989 mods; before camp edits 63 percent.</td></tr>
+      <tr><td class="num">850</td><td class="name">Camp and locations</td><td>Camp edits 0.97. Measured last.</td></tr>
+      <tr><td class="num">860</td><td class="name">Maps and waypoints</td><td class="theme">104 listings, median 0.39 but wide. Theme.</td></tr>
+    </table></div>
+
+    <h3>900 Patches and late loaders</h3>
+    <p class="body">fixes 0.54, overhauls 0.93, patches 0.95, compatibility patches 0.97, late loaders 0.98, compatibility framework 0.995.</p>
+    <div class="well"><table>
+      <tr><th>No.</th><th>Name</th><th>Evidence</th></tr>
+      <tr><td class="num">910</td><td class="name">Fixes</td><td>0.54, 8 orders; before mod patches 60 percent, compatibility frameworks 79.</td></tr>
+      <tr><td class="num">920</td><td class="name">Overhauls that must load late</td><td>0.93, 12 orders; before section patches 80 percent, compatibility frameworks 82.</td></tr>
+      <tr><td class="num">930</td><td class="name">Author-declared late loaders</td><td>Path of Undeath and Bloodtrail, anything whose page says load last; before section patches 63 percent.</td></tr>
+      <tr><td class="num">940</td><td class="name">Patches for the sections above</td><td>0.95, 600 odd mods; before compatibility frameworks 78 percent.</td></tr>
+      <tr><td class="num">950</td><td class="name">Patches for specific mods</td><td>Unique Tav patches 0.94, EOTB patches 0.92.</td></tr>
+      <tr><td class="num">960</td><td class="name">Compatibility frameworks</td><td>0.995. Last in every pair it appears in, 78 to 82 percent.</td></tr>
+      <tr><td class="num">990</td><td class="name">Temporary and testing</td><td class="theme">Theme (your 990).</td></tr>
+      <tr><td class="num">999</td><td class="name">Unsorted</td><td class="theme">For the pack. VOLO's unsorted is a lack of evidence, not a place.</td></tr>
+    </table></div>
+  </section>
+
+  <hr class="rule-bg3">
+
+  <section>
+    <span class="subheader">Filing rules</span>
+    <h2 class="ruled">The three families Nexus lumps together</h2>
+    <p class="body">Whoever files a mod needs a rule they can apply without the spreadsheet.</p>
+    <p class="body"><strong>Gameplay.</strong> Changes a rule, a number or a system you meet in play (rests, carry weight, difficulty, cheats, AI, trade, camp): 100. Adds a quest or restores cut content: 190. Edits dialogue, romance or banter: 760. Called an overhaul and its page says load it late: 920. Called a fix: 910.</p>
+    <p class="body"><strong>Visuals.</strong> Textures, upscales, reshades and lighting foundations other visual mods build on: 050. Changes how a character, companion or NPC looks: 500 for your own character, 720 or 740 for theirs. World lighting, weather, environment and camp scenery: 810 or 850. Spell and effect visuals: 830.</p>
+    <p class="body"><strong>Bug Fixes.</strong> A fix for the base game: 910. A patch that makes two mods work together: 940 if it patches a whole family, 950 if it patches one named mod. Anything with "compatibility framework" in its name or requirements: 960, and nothing after it except what its own page says.</p>
+  </section>
+
+  <section>
+    <span class="subheader">Your draft against the data</span>
+    <h2 class="ruled">What I would change, and what I would not</h2>
+    <div class="well"><table>
+      <tr><th>Yours</th><th>Here</th><th>Why</th></tr>
+      <tr><td>100 Gameplay, 200 Build, 300 Items</td><td>100 Gameplay, 200 Items, 300 Spells, 400 Build</td><td>Items before Classes 90 percent of the time; Spells before Classes 72. Gameplay against Items is a tie, so your order stands.</td></tr>
+      <tr><td>700 Visual / Audio, one hundred</td><td>050, 500, 540, 810, 820, 840</td><td>Three populations at 0.08, 0.65 and 0.97. One hundred puts textures at the bottom or camp edits at the top.</td></tr>
+      <tr><td>810 Resources under Misc</td><td>020 Libraries</td><td>Resources sit at 0.06 to 0.10. They are dependencies.</td></tr>
+      <tr><td>020 Libraries as one thing</td><td>020 and 960</td><td>Compatibility Framework sits at 0.995 and has to. Two bug reports came from it being early.</td></tr>
+      <tr><td>250 Classes then 260 Feats</td><td>410 Feats then 450 Classes</td><td>Feats before classes 77 percent on 33,677 pairs.</td></tr>
+      <tr><td>640 Summons under Characters</td><td>330 under Spells</td><td>Summon mods sit with the spell packs.</td></tr>
+      <tr><td>400 Story, 500 World, 600 Characters</td><td>190, 700, 810 to 860</td><td>Quests mid-order with Build; companions and dialogue late; camp scenery last.</td></tr>
+      <tr><td>160 In-game utilities under Gameplay</td><td>040 under Foundations</td><td>Utilities 0.15.</td></tr>
+    </table></div>
+    <p class="body">What survives unchanged: the numbering idea, the gaps, 000 and 900 as the ends, Gameplay before Items, cheats and difficulty as early gameplay, a separate multi-item bucket, Cut Content, Temporary mods.</p>
+  </section>
+
+  <section>
+    <span class="subheader">Not settled</span>
+    <h2 class="ruled">What the data cannot decide</h2>
+    <ol class="body">
+      <li><strong>100 against 200.</strong> A tie on every measure. Your order is used.</li>
+      <li><strong>160 to 180.</strong> AI, economy and expanded content are theme; the corpus never filed them under a header.</li>
+      <li><strong>540 against 550.</strong> Poses against heads is a coin flip. Either order.</li>
+      <li><strong>520 Beards.</strong> Thirty-four placements say first in 500 at 72 to 78 percent. Loud, but small.</li>
+      <li><strong>820 Audio.</strong> Spread from 0.13 to 0.94. 820 is where it does least harm.</li>
+    </ol>
+  </section>
+
+  <hr class="rule-bg3">
+
+  <section>
+    <span class="subheader">VOLO</span>
+    <h2 class="ruled">What it does with this now</h2>
+    <p class="body">VOLO is not sorting by it. Two points on one corpus, from a regex standing in for a human filing mods, is not enough to replace categories that learn from the data as it comes in. What it is doing, as of this week, is scoring every submitted order under this scheme alongside its own categories, on the same pairs, and logging both. Submitters see one line in their report saying it happened and that nothing about their sort changed. In a few months the log will say whether the gap is real on orders the scheme never saw. If it is, the likely outcome is not that VOLO adopts the numbering but that it takes the three-way split into its own categories, because that is where the gain lives and it needs no numbering at all.</p>
+    <h3>And with your pack</h3>
+    <p class="body">Yes, and it is less work than you might think, because VOLO does not use Astra's categories internally either. It recognises Astra's divider paks by UUID and uses them as the skeleton when someone exports with dividers turned on (off by default), and it treats the headers from any pack as evidence of where a mod goes. Yours would work the same way. What I would need:</p>
+    <ul class="body">
+      <li>The UUID of every divider pak in the pack.</li>
+      <li>A handful of real orders built on it, submitted through VOLO, so the headers get seen. Words VOLO already knows (Classes, Races, Armour, Quests, Companions, Dice) work immediately; new ones (Looting, Vanity, Act 2) get learned from the first few submissions.</li>
+      <li>Never reuse a number for a different meaning. The moment that happens the numbers stop being identifiers and we are back where Astra is.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="subheader">Advice</span>
+    <h2 class="ruled">If I were building it</h2>
+    <ol class="body">
+      <li>Keep your hundreds order except for the three moves above: Resources into 000, patch frameworks out of 020 into 900, and Story, World and Characters redistributed.</li>
+      <li>Split Visuals and Gameplay by what the mod does, not by Nexus category. Write the filing rule on the pack page so users file the same way you do.</li>
+      <li>Order the tens only where the data orders them, and say the rest are filing. Nobody should move a mod because of a ten.</li>
+      <li>Give every divider a UUID and never reuse a number. That is what makes the pack readable by tools, VOLO included.</li>
+      <li>Send me the UUIDs and a couple of orders when it exists, and VOLO will read it from day one.</li>
+    </ol>
+    <p class="body">Everything here is yours to use, argue with or ignore. Some of the calls are close and some are not, and knowing which is the useful part.</p>
+  </section>
+</div>
+</body>
+</html>
