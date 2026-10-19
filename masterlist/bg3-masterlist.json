@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-10-18T23:07:56.128Z",
+  "generated": "2026-10-19T10:34:48.160Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -45,7 +45,7 @@
     "working": 167,
     "broken": 39,
     "unlabelled": 2,
-    "externalDependencyEdges": 817,
+    "externalDependencyEdges": 820,
     "ordersWithKnownBuild": 5,
     "sequencePairsSetAside": []
   },
@@ -144051,7 +144051,13 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "239127c3-1efe-493d-85d3-8518c8d8819b",
+          "name": "Dr. Kekyll's Grappling Framework"
+        }
+      ]
     },
     {
       "name": "Grasping Vine PHB2024",
@@ -148550,9 +148556,10 @@
     {
       "name": "LessPotions",
       "uuid": "bc60fcb1-ed24-a41e-ea71-447ce662611e",
-      "group": "unsorted",
+      "group": "Equipment",
+      "divider": 34.5,
       "evidence": {
-        "source": "none",
+        "source": "external-category",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 1,
@@ -164278,7 +164285,17 @@
         "workingInstalls": 0,
         "brokenInstalls": 1,
         "voloSortedInstalls": 0
-      }
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        },
+        {
+          "uuid": "fb5f528d-4d48-4bf2-a668-2274d3cfba96",
+          "name": "5eSpells"
+        }
+      ]
     },
     {
       "name": "Sussur Antimagic Immunity",
@@ -169097,9 +169114,10 @@
     {
       "name": "WithersMod",
       "uuid": "d805395f-afa5-d9ac-8f09-7696817498f9",
-      "group": "unsorted",
+      "group": "Visuals",
+      "divider": 10,
       "evidence": {
-        "source": "none",
+        "source": "external-category",
         "installs": 1,
         "workingInstalls": 0,
         "brokenInstalls": 1,

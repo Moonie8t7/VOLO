@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11729 |
-| Matched exactly by name | 2692 |
-| Matched fuzzily (>= 0.9) | 674 |
-| Unmatched | 8363 |
+| Masterlist mods | 11779 |
+| Matched exactly by name | 2700 |
+| Matched fuzzily (>= 0.9) | 677 |
+| Unmatched | 8402 |
 
 ## What the match would add
 
-- 34 currently unsorted mods would receive a category from their
+- 35 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1104 mods have a Nexus category that disagrees with the
+- 1106 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1844 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 834 of them resolved to a uuid on both
+- 1852 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 837 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -50,8 +50,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
 - Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Miscellaneous (section-majority), Nexus says Gameplay
-- Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
+- Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
