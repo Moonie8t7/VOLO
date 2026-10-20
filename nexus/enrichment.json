@@ -29,6 +29,22 @@
   "adult": false,
   "endorsements": 8791
  },
+ "396c5966-09b0-40a1-af3f-93a5e9ce71c0": {
+  "nexusId": 17615,
+  "nexusName": "CommunityLibrary-KR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.94,
+  "nexusCategory": "Resources",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 18,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Community Library",
+    "nexusId": 1333
+   }
+  ]
+ },
  "6b585be8-ed73-7347-2c58-73146e22b7d4": {
   "nexusId": 4597,
   "nexusName": "Better Inventory UI",
@@ -44,22 +60,6 @@
     "nexusId": 366,
     "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
     "notes": "ImpUI Patch 8 Slim"
-   }
-  ]
- },
- "396c5966-09b0-40a1-af3f-93a5e9ce71c0": {
-  "nexusId": 17615,
-  "nexusName": "CommunityLibrary-KR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.94,
-  "nexusCategory": "Resources",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 18,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Community Library",
-    "nexusId": 1333
    }
   ]
  },
@@ -152,6 +152,16 @@
    }
   ]
  },
+ "da0b99ca-4406-49c1-bef9-3a08621280a2": {
+  "nexusId": 213,
+  "nexusName": "Tav's Hair Salon",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 62188
+ },
  "03b0b84a-2689-77c2-5ef6-ebcf88b88037": {
   "nexusId": 5673,
   "nexusName": "Better Dyeing",
@@ -168,16 +178,6 @@
     "uuid": "6b585be8-ed73-7347-2c58-73146e22b7d4"
    }
   ]
- },
- "da0b99ca-4406-49c1-bef9-3a08621280a2": {
-  "nexusId": 213,
-  "nexusName": "Tav's Hair Salon",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 62188
  },
  "680b2b14-1663-0701-506a-c5c23c68247e": {
   "nexusId": 16198,
@@ -209,16 +209,6 @@
   "adult": false,
   "endorsements": 25986
  },
- "f9dd909a-3607-f8e1-da13-b795884f68b5": {
-  "nexusId": 3617,
-  "nexusName": "Better Context Menu",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "User Interface",
-  "suggestedGroup": "User Interface",
-  "adult": false,
-  "endorsements": 5438
- },
  "af330e86-7335-b20c-ce70-6df8539d4597": {
   "nexusId": 16328,
   "nexusName": "Fade's Equipment Distribution AIO",
@@ -228,6 +218,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 947
+ },
+ "f9dd909a-3607-f8e1-da13-b795884f68b5": {
+  "nexusId": 3617,
+  "nexusName": "Better Context Menu",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 5438
  },
  "d756bfd1-e403-8ce1-9f81-c6c988a60837": {
   "nexusId": 17753,
@@ -322,16 +322,6 @@
   "adult": false,
   "endorsements": 8
  },
- "33c1de88-dfd0-351d-8904-a5ee730880c6": {
-  "nexusId": 11939,
-  "nexusName": "PixellBytes' Adjustable Party Limit",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 1528
- },
  "310ba0c7-374e-4e56-8c42-b7c7ad3a38b0": {
   "nexusId": 10795,
   "nexusName": "Fix Stragglers",
@@ -356,6 +346,16 @@
    }
   ]
  },
+ "33c1de88-dfd0-351d-8904-a5ee730880c6": {
+  "nexusId": 11939,
+  "nexusName": "PixellBytes' Adjustable Party Limit",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 1528
+ },
  "e6333436-9cf0-4464-aaf2-39246292575e": {
   "nexusId": 8838,
   "nexusName": "AV Item Shipment Framework ITA",
@@ -379,16 +379,6 @@
    }
   ]
  },
- "2653082c-88d7-62dd-da48-b32be67c033b": {
-  "nexusId": 15125,
-  "nexusName": "Lesser Restoration - Assorted Bug Fixes",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.97,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 1516
- },
  "fef3fbd7-4a38-01e2-d37c-14c217c4b31e": {
   "nexusId": 24074,
   "nexusName": "Fade's Assorted Treasure Expansion RUS",
@@ -405,6 +395,16 @@
     "notes": "Обязательно"
    }
   ]
+ },
+ "2653082c-88d7-62dd-da48-b32be67c033b": {
+  "nexusId": 15125,
+  "nexusName": "Lesser Restoration - Assorted Bug Fixes",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.97,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1516
  },
  "1c132ec4-4cd2-4c40-aeb9-ff6ee0467da8": {
   "nexusId": 6086,
@@ -457,16 +457,6 @@
    }
   ]
  },
- "505c630c-79fa-49b6-9f21-29a5f2322c2d": {
-  "nexusId": 457,
-  "nexusName": "Tutorial Chest Summoning",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 30930
- },
  "4cb0fd40-7212-4fe9-8733-9a8dbc6637ae": {
   "nexusId": 16325,
   "nexusName": "KAVT - Kazstra's Virtual Tav x Tattoo Makeup and Scar Extender",
@@ -476,6 +466,16 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 2142
+ },
+ "505c630c-79fa-49b6-9f21-29a5f2322c2d": {
+  "nexusId": 457,
+  "nexusName": "Tutorial Chest Summoning",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 30930
  },
  "65e55feb-aada-4fec-821f-7d913e9b4d82": {
   "nexusId": 17561,
@@ -544,26 +544,6 @@
   "adult": false,
   "endorsements": 1402
  },
- "08e267cf-bf28-4e29-8711-8282ed017fcb": {
-  "nexusId": 5612,
-  "nexusName": "Database Cleaner",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 2658
- },
- "57b22f40-4886-91a0-7f70-8fec6275e773": {
-  "nexusId": 7156,
-  "nexusName": "Tepkunset Hair Collection",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 1932
- },
  "3b8967db-864f-8995-3a2d-23ea140a18a3": {
   "nexusId": 15141,
   "nexusName": "5e Barbarian Subclasses Combined",
@@ -587,15 +567,25 @@
    }
   ]
  },
- "3a0b775f-bdc1-1bf2-8b95-df894d25bc3f": {
-  "nexusId": 18260,
-  "nexusName": "Scratch Evolved",
+ "08e267cf-bf28-4e29-8711-8282ed017fcb": {
+  "nexusId": 5612,
+  "nexusName": "Database Cleaner",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
   "adult": false,
-  "endorsements": 333
+  "endorsements": 2658
+ },
+ "57b22f40-4886-91a0-7f70-8fec6275e773": {
+  "nexusId": 7156,
+  "nexusName": "Tepkunset Hair Collection",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1932
  },
  "1f9ea699-6bd7-9cbc-30f2-522a94c78baf": {
   "nexusId": 15907,
@@ -620,6 +610,16 @@
    }
   ]
  },
+ "3a0b775f-bdc1-1bf2-8b95-df894d25bc3f": {
+  "nexusId": 18260,
+  "nexusName": "Scratch Evolved",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 333
+ },
  "fa49db03-caa7-49c8-7c76-e6c38b60267a": {
   "nexusId": 14581,
   "nexusName": "AdvancedTTSpells_CHS",
@@ -634,23 +634,6 @@
     "name": "Advanced Tabletop Spells",
     "nexusId": 14429,
     "notes": "排序放在该文件之后"
-   }
-  ]
- },
- "192f57e4-a961-47be-ab94-e70042f9d211": {
-  "nexusId": 466,
-  "nexusName": "Horns of Faerun",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 19909,
-  "requires": [
-   {
-    "name": "P4 Horn Makeup Lip and Tattoo Colours (Custom and Vanilla)",
-    "nexusId": 340,
-    "notes": "Recommended to get more horn colors"
    }
   ]
  },
@@ -683,6 +666,33 @@
    }
   ]
  },
+ "192f57e4-a961-47be-ab94-e70042f9d211": {
+  "nexusId": 466,
+  "nexusName": "Horns of Faerun",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 19909,
+  "requires": [
+   {
+    "name": "P4 Horn Makeup Lip and Tattoo Colours (Custom and Vanilla)",
+    "nexusId": 340,
+    "notes": "Recommended to get more horn colors"
+   }
+  ]
+ },
+ "6f8c201d-27b1-417c-34d8-e2c155b6b39c": {
+  "nexusId": 14626,
+  "nexusName": "Epilogue bug fixes",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.94,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 997
+ },
  "163484d1-8511-4a95-8061-1ede8838b28b": {
   "nexusId": 9701,
   "nexusName": "Mod Uninstaller",
@@ -706,16 +716,6 @@
     "notes": "1.15+"
    }
   ]
- },
- "6f8c201d-27b1-417c-34d8-e2c155b6b39c": {
-  "nexusId": 14626,
-  "nexusName": "Epilogue bug fixes",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.94,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 997
  },
  "c56b9bae-fddc-083d-0862-95d73646c304": {
   "nexusId": 14242,
@@ -754,16 +754,6 @@
   "adult": false,
   "endorsements": 424
  },
- "ca3df55b-c576-41a1-87c4-3cf5f01922e4": {
-  "nexusId": 5623,
-  "nexusName": "Essential Feats",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 3341
- },
  "5d1bd6cb-6361-45ef-b20c-d997acfba822": {
   "nexusId": 9832,
   "nexusName": "AahzLib",
@@ -774,25 +764,15 @@
   "adult": false,
   "endorsements": 1990
  },
- "01d87964-fc46-7140-b29e-3956de333929": {
-  "nexusId": 12868,
-  "nexusName": "Crazy Color pack",
+ "ca3df55b-c576-41a1-87c4-3cf5f01922e4": {
+  "nexusId": 5623,
+  "nexusName": "Essential Feats",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 705
- },
- "896aa172-c026-9e72-7c91-9d67e17595e6": {
-  "nexusId": 16222,
-  "nexusName": "Kay's Material Library",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Resources",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 853
+  "endorsements": 3341
  },
  "9deeb371-f01e-41b4-b20e-c5eee0751b12": {
   "nexusId": 17477,
@@ -833,22 +813,25 @@
    }
   ]
  },
- "0f86b73c-928c-033f-6d2d-abf4f06f462f": {
-  "nexusId": 4163,
-  "nexusName": "Jerinski's Alt Hairs",
+ "01d87964-fc46-7140-b29e-3956de333929": {
+  "nexusId": 12868,
+  "nexusName": "Crazy Color pack",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Character Customisation",
   "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 3490,
-  "requires": [
-   {
-    "name": "P4 Horn Makeup Lip and Tattoo Colours (Custom and Vanilla)",
-    "nexusId": 340,
-    "notes": "ONLY needed if you want the mighty booyahg accessories tintable"
-   }
-  ]
+  "endorsements": 705
+ },
+ "896aa172-c026-9e72-7c91-9d67e17595e6": {
+  "nexusId": 16222,
+  "nexusName": "Kay's Material Library",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Resources",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 853
  },
  "3e318204-5535-bb0a-2157-494b71fba26f": {
   "nexusId": 14583,
@@ -859,24 +842,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 800
- },
- "0e6b886d-c51f-75fb-f9bd-cf9c0c363c5b": {
-  "nexusId": 4137,
-  "nexusName": "Damage Preview 2",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.96,
-  "nexusCategory": "User Interface",
-  "suggestedGroup": "User Interface",
-  "adult": false,
-  "endorsements": 4638,
-  "requires": [
-   {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-    "notes": "ImpUI Patch 8 Slim"
-   }
-  ]
  },
  "f9fdd8af-7637-a542-ee3e-f7e182a41ca3": {
   "nexusId": 15598,
@@ -897,6 +862,41 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 376
+ },
+ "0f86b73c-928c-033f-6d2d-abf4f06f462f": {
+  "nexusId": 4163,
+  "nexusName": "Jerinski's Alt Hairs",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 3490,
+  "requires": [
+   {
+    "name": "P4 Horn Makeup Lip and Tattoo Colours (Custom and Vanilla)",
+    "nexusId": 340,
+    "notes": "ONLY needed if you want the mighty booyahg accessories tintable"
+   }
+  ]
+ },
+ "0e6b886d-c51f-75fb-f9bd-cf9c0c363c5b": {
+  "nexusId": 4137,
+  "nexusName": "Damage Preview 2",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.96,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 4638,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "ImpUI Patch 8 Slim"
+   }
+  ]
  },
  "9216e4a7-0ef1-d5c1-67ca-2857703d06ee": {
   "nexusId": 14521,
@@ -986,16 +986,6 @@
    }
   ]
  },
- "ec242417-f146-78b8-05f9-fd065380ad91": {
-  "nexusId": 6126,
-  "nexusName": "Myshka Comes To Camp",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 1264
- },
  "1fd44eaf-a4d2-4de4-9560-51a0c8a63987": {
   "nexusId": 5743,
   "nexusName": "Silver's Hair Pack",
@@ -1010,22 +1000,6 @@
     "name": "ImpUI (ImprovedUI)",
     "nexusId": 366,
     "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
-   }
-  ]
- },
- "4f905004-5213-ed88-ce0e-35755fa09d17": {
-  "nexusId": 18668,
-  "nexusName": "Book of Wizards - 5e Wizard Subclasses_KOR",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Accessories",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 3,
-  "requires": [
-   {
-    "name": "Book of Wizards - 5e Wizard Subclasses (Nexus Version)",
-    "nexusId": 18653
    }
   ]
  },
@@ -1074,6 +1048,16 @@
   "adult": false,
   "endorsements": 244
  },
+ "ec242417-f146-78b8-05f9-fd065380ad91": {
+  "nexusId": 6126,
+  "nexusName": "Myshka Comes To Camp",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1264
+ },
  "8d23b363-3880-46c1-a378-373223569100": {
   "nexusId": 20629,
   "nexusName": "UT - KAVT - Universal Automatic Patcher (UAP)",
@@ -1099,6 +1083,50 @@
     "name": "Baldur's Gate 3 Script Extender (BG3SE)",
     "nexusId": 2172,
     "notes": "v29+"
+   }
+  ]
+ },
+ "4f905004-5213-ed88-ce0e-35755fa09d17": {
+  "nexusId": 18668,
+  "nexusName": "Book of Wizards - 5e Wizard Subclasses_KOR",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 3,
+  "requires": [
+   {
+    "name": "Book of Wizards - 5e Wizard Subclasses (Nexus Version)",
+    "nexusId": 18653
+   }
+  ]
+ },
+ "33eec47a-b349-c938-3af3-c07e7352abc7": {
+  "nexusId": 20418,
+  "nexusName": "Homebrew Blade Cantrips",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 183
+ },
+ "96bc14a7-733e-4bea-859d-3695d745efc1": {
+  "nexusId": 18231,
+  "nexusName": "MazzleLib",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 269,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+    "notes": "1.35+ recommended"
    }
   ]
  },
@@ -1145,33 +1173,15 @@
   "adult": false,
   "endorsements": 820
  },
- "33eec47a-b349-c938-3af3-c07e7352abc7": {
-  "nexusId": 20418,
-  "nexusName": "Homebrew Blade Cantrips",
+ "1b215646-6200-451a-9c4a-b21406f69edd": {
+  "nexusId": 11639,
+  "nexusName": "Many More Monsters",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 183
- },
- "96bc14a7-733e-4bea-859d-3695d745efc1": {
-  "nexusId": 18231,
-  "nexusName": "MazzleLib",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 269,
-  "requires": [
-   {
-    "name": "Mod Configuration Menu (MCM)",
-    "nexusId": 9162,
-    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-    "notes": "1.35+ recommended"
-   }
-  ]
+  "endorsements": 1517
  },
  "c6d0164d-6ae7-ff37-492c-26b0482b2475": {
   "nexusId": 12026,
@@ -1250,15 +1260,22 @@
   "adult": false,
   "endorsements": 410
  },
- "1b215646-6200-451a-9c4a-b21406f69edd": {
-  "nexusId": 11639,
-  "nexusName": "Many More Monsters",
+ "c56e4b79-3bf3-446b-b06b-27dc86337663": {
+  "nexusId": 7160,
+  "nexusName": "Silver's Hair Pack 2",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
   "adult": false,
-  "endorsements": 1517
+  "endorsements": 6787,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
  },
  "0c8bb2e9-aa96-4de7-b793-a733d68ee6f0": {
   "nexusId": 5899,
@@ -1304,23 +1321,6 @@
   "adult": false,
   "endorsements": 658
  },
- "c56e4b79-3bf3-446b-b06b-27dc86337663": {
-  "nexusId": 7160,
-  "nexusName": "Silver's Hair Pack 2",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 6787,
-  "requires": [
-   {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
-   }
-  ]
- },
  "e342ee75-f7c9-4aeb-b6de-403991578337": {
   "nexusId": 6995,
   "nexusName": "Waypoint Inside Emerald Grove",
@@ -1354,6 +1354,23 @@
   "suggestedGroup": "Companions",
   "adult": false,
   "endorsements": 394
+ },
+ "f323b958-b845-4c79-b139-d39570658fbb": {
+  "nexusId": 11521,
+  "nexusName": "Necromancy Reanimated CH",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 18,
+  "requires": [
+   {
+    "name": "Necromancy Reanimated (Formerly Animate Dead Plus Plus)",
+    "nexusId": 642,
+    "notes": "简繁中文"
+   }
+  ]
  },
  "15230bba-a3ab-4352-92f6-1c4c86d2a1e3": {
   "nexusId": 6313,
@@ -1444,23 +1461,6 @@
    }
   ]
  },
- "f323b958-b845-4c79-b139-d39570658fbb": {
-  "nexusId": 11521,
-  "nexusName": "Necromancy Reanimated CH",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 18,
-  "requires": [
-   {
-    "name": "Necromancy Reanimated (Formerly Animate Dead Plus Plus)",
-    "nexusId": 642,
-    "notes": "简繁中文"
-   }
-  ]
- },
  "8cf3e67f-3f3a-a787-6ceb-ad5fab9ce0e1": {
   "nexusId": 18040,
   "nexusName": "Tara Evolved",
@@ -1470,6 +1470,22 @@
   "suggestedGroup": "Companions",
   "adult": false,
   "endorsements": 363
+ },
+ "4b83dd7a-0d18-4d6b-a6d3-e540a17c43de": {
+  "nexusId": 9660,
+  "nexusName": "Valkrana's Undead Encounters RU",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.96,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 16,
+  "requires": [
+   {
+    "name": "Valkrana's Undead Encounters - New Bosses Fights Items and Allies - Including Act 3",
+    "nexusId": 9024
+   }
+  ]
  },
  "d07015de-33a8-6ee9-cda2-571c7bf39008": {
   "nexusId": 15257,
@@ -1529,21 +1545,15 @@
   "adult": false,
   "endorsements": 579
  },
- "4b83dd7a-0d18-4d6b-a6d3-e540a17c43de": {
-  "nexusId": 9660,
-  "nexusName": "Valkrana's Undead Encounters RU",
+ "664c4105-4125-d780-8617-b9731f6f44f5": {
+  "nexusId": 15282,
+  "nexusName": "Firestarter - Karlach Romance Overhaul",
   "matchKind": "fuzzy",
-  "matchConfidence": 0.96,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
+  "matchConfidence": 0.97,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
   "adult": false,
-  "endorsements": 16,
-  "requires": [
-   {
-    "name": "Valkrana's Undead Encounters - New Bosses Fights Items and Allies - Including Act 3",
-    "nexusId": 9024
-   }
-  ]
+  "endorsements": 483
  },
  "0d3c8e22-0376-d0a9-41ec-2d4a6f9bceec": {
   "nexusId": 15597,
@@ -1554,6 +1564,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 371
+ },
+ "a33f6ead-093c-5f68-89ef-1722b980547e": {
+  "nexusId": 24430,
+  "nexusName": "More_enemies_in_basic_fight CHS",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.92,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 0
  },
  "2be84b2b-8661-6596-b3af-c236589a7dce": {
   "nexusId": 17679,
@@ -1595,64 +1615,6 @@
   "adult": false,
   "endorsements": 1141
  },
- "334ba284-8488-c63b-368e-82e514346958": {
-  "nexusId": 19081,
-  "nexusName": "Ember's Wardrobe",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 331
- },
- "664c4105-4125-d780-8617-b9731f6f44f5": {
-  "nexusId": 15282,
-  "nexusName": "Firestarter - Karlach Romance Overhaul",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.97,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 483
- },
- "a952bb44-2cb5-4e6a-ad7b-b431a2249129": {
-  "nexusId": 8681,
-  "nexusName": "Kylin's Horns",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 2664
- },
- "a33f6ead-093c-5f68-89ef-1722b980547e": {
-  "nexusId": 24430,
-  "nexusName": "More_enemies_in_basic_fight CHS",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.92,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 0
- },
- "b5377116-0017-69b4-059e-79c488f86889": {
-  "nexusId": 11941,
-  "nexusName": "Myky's Tintable Piercings",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.93,
-  "nexusCategory": "Accessories",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 2013,
-  "requires": [
-   {
-    "name": "Myky's CC Color Collection",
-    "nexusId": 14167,
-    "uuid": "96e19744-cf28-5223-b445-06471230386a",
-    "notes": "While it's not required, I recommend it as it adds a lot of colors for tinting."
-   }
-  ]
- },
  "1d582ce5-a2e3-9938-d44d-e5f7256e9bbe": {
   "nexusId": 9025,
   "nexusName": "Weightless Consumables",
@@ -1672,6 +1634,82 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 168
+ },
+ "334ba284-8488-c63b-368e-82e514346958": {
+  "nexusId": 19081,
+  "nexusName": "Ember's Wardrobe",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 331
+ },
+ "a952bb44-2cb5-4e6a-ad7b-b431a2249129": {
+  "nexusId": 8681,
+  "nexusName": "Kylin's Horns",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 2664
+ },
+ "b5377116-0017-69b4-059e-79c488f86889": {
+  "nexusId": 11941,
+  "nexusName": "Myky's Tintable Piercings",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 2013,
+  "requires": [
+   {
+    "name": "Myky's CC Color Collection",
+    "nexusId": 14167,
+    "uuid": "96e19744-cf28-5223-b445-06471230386a",
+    "notes": "While it's not required, I recommend it as it adds a lot of colors for tinting."
+   }
+  ]
+ },
+ "a2ffd0e4-c407-8642-2611-c934ea0b0a77": {
+  "nexusId": 377,
+  "nexusName": "UnlockLevelCurve - Level 13-20 I PATCH 8",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 24355,
+  "requires": [
+   {
+    "name": "5e Spells",
+    "nexusId": 125,
+    "uuid": "33b799a4-c2ad-ad84-bc01-4ed5496fb410",
+    "notes": "OPTIONAL MOD - Load Order: 1. 5eSpells,  2. UnlockLevelCurve,  3. UnlockLevelCurve_Patch_5eSpells"
+   }
+  ]
+ },
+ "84199668-9978-4142-86b7-efba18e9b557": {
+  "nexusId": 15934,
+  "nexusName": "LIFELIKE - Skin Tone Expansion",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 632
+ },
+ "20c00910-53ee-907c-6ece-957441bf8ce3": {
+  "nexusId": 20346,
+  "nexusName": "Dawnstar's Arcane Spells",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 261
  },
  "17ed9aa5-40e7-4c49-ac10-a0feb1ffeaa9": {
   "nexusId": 9678,
@@ -1702,6 +1740,24 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 1100
+ },
+ "0c036a05-f3e4-4422-87bd-eadadf96c161": {
+  "nexusId": 167,
+  "nexusName": "Feats Extra",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 9473,
+  "requires": [
+   {
+    "name": "5e Spells",
+    "nexusId": 125,
+    "uuid": "33b799a4-c2ad-ad84-bc01-4ed5496fb410",
+    "notes": "Only needed for some fey/ shadow touched spells"
+   }
+  ]
  },
  "c6970cf1-0b51-6f7a-44ab-7f4a3ee100c0": {
   "nexusId": 21645,
@@ -1743,34 +1799,6 @@
   "adult": false,
   "endorsements": 349
  },
- "a2ffd0e4-c407-8642-2611-c934ea0b0a77": {
-  "nexusId": 377,
-  "nexusName": "UnlockLevelCurve - Level 13-20 I PATCH 8",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 24355,
-  "requires": [
-   {
-    "name": "5e Spells",
-    "nexusId": 125,
-    "uuid": "33b799a4-c2ad-ad84-bc01-4ed5496fb410",
-    "notes": "OPTIONAL MOD - Load Order: 1. 5eSpells,  2. UnlockLevelCurve,  3. UnlockLevelCurve_Patch_5eSpells"
-   }
-  ]
- },
- "84199668-9978-4142-86b7-efba18e9b557": {
-  "nexusId": 15934,
-  "nexusName": "LIFELIKE - Skin Tone Expansion",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.91,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 632
- },
  "621674a3-2366-a411-a746-0ff51b931d90": {
   "nexusId": 1416,
   "nexusName": "Better Containers",
@@ -1790,34 +1818,6 @@
   "suggestedGroup": "Companions",
   "adult": false,
   "endorsements": 161
- },
- "20c00910-53ee-907c-6ece-957441bf8ce3": {
-  "nexusId": 20346,
-  "nexusName": "Dawnstar's Arcane Spells",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 261
- },
- "0c036a05-f3e4-4422-87bd-eadadf96c161": {
-  "nexusId": 167,
-  "nexusName": "Feats Extra",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 9473,
-  "requires": [
-   {
-    "name": "5e Spells",
-    "nexusId": 125,
-    "uuid": "33b799a4-c2ad-ad84-bc01-4ed5496fb410",
-    "notes": "Only needed for some fey/ shadow touched spells"
-   }
-  ]
  },
  "ed216cc2-6643-837c-3731-5665e88af13e": {
   "nexusId": 8642,
@@ -1839,6 +1839,16 @@
   "adult": false,
   "endorsements": 1830
  },
+ "9c09be69-50e8-cfcf-cea9-1576947a6a2d": {
+  "nexusId": 22614,
+  "nexusName": "No Wound Flares During Party Banter",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.97,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 225
+ },
  "d903677e-f24b-48ec-ab20-98dcc116a371": {
   "nexusId": 2295,
   "nexusName": "UnlockLevelCurve-CHS",
@@ -1855,6 +1865,16 @@
     "uuid": "a2ffd0e4-c407-8642-2611-c934ea0b0a77"
    }
   ]
+ },
+ "344c8115-2630-4934-31a1-33adf8f4d58e": {
+  "nexusId": 18685,
+  "nexusName": "A Beautiful Webbing - Minthara's Romance Scene Unlocked",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.94,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 616
  },
  "44130117-79be-3617-9e97-4319190cc29b": {
   "nexusId": 13219,
@@ -1903,16 +1923,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 951
- },
- "9c09be69-50e8-cfcf-cea9-1576947a6a2d": {
-  "nexusId": 22614,
-  "nexusName": "No Wound Flares During Party Banter",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.97,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 225
  },
  "46818a22-079d-4346-8b3f-3f47dbeeecf9": {
   "nexusId": 8636,
@@ -1980,15 +1990,15 @@
    }
   ]
  },
- "344c8115-2630-4934-31a1-33adf8f4d58e": {
-  "nexusId": 18685,
-  "nexusName": "A Beautiful Webbing - Minthara's Romance Scene Unlocked",
+ "9e30653e-f1f4-42ea-893a-fa812405862b": {
+  "nexusId": 13832,
+  "nexusName": "Awakened Spear of Selune",
   "matchKind": "fuzzy",
-  "matchConfidence": 0.94,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
+  "matchConfidence": 0.92,
+  "nexusCategory": "Weapons",
+  "suggestedGroup": "Weapons",
   "adult": false,
-  "endorsements": 616
+  "endorsements": 552
  },
  "2d1ca631-35dd-3afa-8ca9-34f0f3e084e4": {
   "nexusId": 12023,
@@ -2083,26 +2093,6 @@
   "adult": false,
   "endorsements": 387
  },
- "9e30653e-f1f4-42ea-893a-fa812405862b": {
-  "nexusId": 13832,
-  "nexusName": "Awakened Spear of Selune",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.92,
-  "nexusCategory": "Weapons",
-  "suggestedGroup": "Weapons",
-  "adult": false,
-  "endorsements": 552
- },
- "a87fe076-1873-4237-8cd7-e4febefd97c7": {
-  "nexusId": 23834,
-  "nexusName": "Never Dark Again - Give Arabella Komira's Locket (And Other Act 2 Tweaks)",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 187
- },
  "2cd6c65a-71cc-4db6-bfb2-70116ccd2b94": {
   "nexusId": 3483,
   "nexusName": "Extra Gear",
@@ -2130,16 +2120,6 @@
   "adult": false,
   "endorsements": 586
  },
- "ec1b65ea-36e9-4469-b01c-07b346a36500": {
-  "nexusId": 9607,
-  "nexusName": "Kylin's Piercings",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Accessories",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 2283
- },
  "2c92a4e4-a565-a60d-df27-120fbe28dce4": {
   "nexusId": 24088,
   "nexusName": "Level 9 Hotbar Slots",
@@ -2149,6 +2129,72 @@
   "suggestedGroup": "User Interface",
   "adult": false,
   "endorsements": 116
+ },
+ "a87fe076-1873-4237-8cd7-e4febefd97c7": {
+  "nexusId": 23834,
+  "nexusName": "Never Dark Again - Give Arabella Komira's Locket (And Other Act 2 Tweaks)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 187
+ },
+ "3e303d29-c44c-4355-b4da-35edb432ad08": {
+  "nexusId": 17919,
+  "nexusName": "Valkrana's Necrobroker - Wizard Subclass",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 234,
+  "requires": [
+   {
+    "name": "Command Undead - Necromancy Subclass Feature",
+    "nexusId": 6291,
+    "notes": "Required for level 14 feature. Load before Necrobroker."
+   },
+   {
+    "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
+    "nexusId": 1258,
+    "notes": "Required"
+   }
+  ]
+ },
+ "cabed99e-5db6-4f0d-a69f-d49e8a20e663": {
+  "nexusId": 6880,
+  "nexusName": "Auto Use Soap",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1105,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
+    "notes": "1.0.0+"
+   },
+   {
+    "name": "Volition Cabinet",
+    "nexusId": 7676,
+    "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
+    "notes": "1.0.1+"
+   }
+  ]
+ },
+ "ec1b65ea-36e9-4469-b01c-07b346a36500": {
+  "nexusId": 9607,
+  "nexusName": "Kylin's Piercings",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 2283
  },
  "4253e2c0-a1e2-f8ce-92ce-f5365e8f4c61": {
   "nexusId": 11456,
@@ -2236,25 +2282,20 @@
   "adult": false,
   "endorsements": 430
  },
- "3e303d29-c44c-4355-b4da-35edb432ad08": {
-  "nexusId": 17919,
-  "nexusName": "Valkrana's Necrobroker - Wizard Subclass",
+ "9010c099-c1e7-4ea8-8990-a883d6814975": {
+  "nexusId": 5552,
+  "nexusName": "Absolute Wrath",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 234,
+  "endorsements": 1464,
   "requires": [
    {
-    "name": "Command Undead - Necromancy Subclass Feature",
-    "nexusId": 6291,
-    "notes": "Required for level 14 feature. Load before Necrobroker."
-   },
-   {
-    "name": "Valkrana's Spellbook - 17 New Necromancy Spells",
-    "nexusId": 1258,
-    "notes": "Required"
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "Only required if issues occur while loading, shouldn't be needed in general. "
    }
   ]
  },
@@ -2267,30 +2308,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 860
- },
- "cabed99e-5db6-4f0d-a69f-d49e8a20e663": {
-  "nexusId": 6880,
-  "nexusName": "Auto Use Soap",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 1105,
-  "requires": [
-   {
-    "name": "Mod Configuration Menu (MCM)",
-    "nexusId": 9162,
-    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d",
-    "notes": "1.0.0+"
-   },
-   {
-    "name": "Volition Cabinet",
-    "nexusId": 7676,
-    "uuid": "f97b43be-7398-4ea5-8fe2-be7eb3d4b5ca",
-    "notes": "1.0.1+"
-   }
-  ]
  },
  "3060ca1e-6a6a-079e-e999-7398f55bee4b": {
   "nexusId": 9702,
@@ -2383,6 +2400,26 @@
   "adult": false,
   "endorsements": 413
  },
+ "73928ffc-07c0-46ac-8cf4-86a693b0cd92": {
+  "nexusId": 2617,
+  "nexusName": "Scantily Camp Outfit",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Clothing",
+  "suggestedGroup": "Clothing",
+  "adult": true,
+  "endorsements": 12669
+ },
+ "4176096c-ea85-4c61-a162-0f84409bd8db": {
+  "nexusId": 4718,
+  "nexusName": "Vestments of the Faithful",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 1752
+ },
  "3f94216f-8cce-46f2-b358-46573518acfc": {
   "nexusId": 19832,
   "nexusName": "Wyll - Theo Solomon Banter",
@@ -2403,23 +2440,6 @@
   "adult": false,
   "endorsements": 0
  },
- "9010c099-c1e7-4ea8-8990-a883d6814975": {
-  "nexusId": 5552,
-  "nexusName": "Absolute Wrath",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 1464,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Mod Fixer",
-    "nexusId": 141,
-    "notes": "Only required if issues occur while loading, shouldn't be needed in general. "
-   }
-  ]
- },
  "961fedca-3e74-0d1c-17d5-bf673534c458": {
   "nexusId": 20254,
   "nexusName": "Alchemy Better Descriptions",
@@ -2429,6 +2449,23 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 193
+ },
+ "76307fbd-505d-4247-b263-0392f291e885": {
+  "nexusId": 12628,
+  "nexusName": "Awakened Blood of Lathander",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 468,
+  "requires": [
+   {
+    "name": "Vlad's Grimoire - Spell VFX Library",
+    "nexusId": 1820,
+    "notes": "(required for Bloodcursed Scorchray)"
+   }
+  ]
  },
  "a43f8334-d0cd-b6b9-4c9f-3914e868e6fa": {
   "nexusId": 2417,
@@ -2538,15 +2575,15 @@
   "adult": false,
   "endorsements": 403
  },
- "73928ffc-07c0-46ac-8cf4-86a693b0cd92": {
-  "nexusId": 2617,
-  "nexusName": "Scantily Camp Outfit",
+ "142323a2-cd9e-68bd-6023-4ccdb28683b4": {
+  "nexusId": 12709,
+  "nexusName": "Save Alfira",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Clothing",
-  "suggestedGroup": "Clothing",
-  "adult": true,
-  "endorsements": 12669
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 556
  },
  "4023c256-4242-4cd0-9afa-9026aaedf2d4": {
   "nexusId": 416,
@@ -2581,6 +2618,16 @@
    }
   ]
  },
+ "e285bbbb-f352-f08e-e3cf-a0a1740dcb6b": {
+  "nexusId": 25772,
+  "nexusName": "Tasha's Feats - UA",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 0
+ },
  "6e84559a-1b7a-4441-bfc6-c2bae5538491": {
   "nexusId": 23959,
   "nexusName": "True Third-Person Camera",
@@ -2603,32 +2650,15 @@
    }
   ]
  },
- "4176096c-ea85-4c61-a162-0f84409bd8db": {
-  "nexusId": 4718,
-  "nexusName": "Vestments of the Faithful",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 1752
- },
- "76307fbd-505d-4247-b263-0392f291e885": {
-  "nexusId": 12628,
-  "nexusName": "Awakened Blood of Lathander",
+ "65198f82-4248-48b4-aae6-992995b14074": {
+  "nexusId": 15033,
+  "nexusName": "Undead Thralls Fix",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 468,
-  "requires": [
-   {
-    "name": "Vlad's Grimoire - Spell VFX Library",
-    "nexusId": 1820,
-    "notes": "(required for Bloodcursed Scorchray)"
-   }
-  ]
+  "endorsements": 647
  },
  "7c345e8f-a290-e2ce-3757-b2dc4fd9870f": {
   "nexusId": 16330,
@@ -2677,6 +2707,16 @@
   "adult": false,
   "endorsements": 307
  },
+ "c7204c46-3ce4-3c36-c262-c65bd5001b65": {
+  "nexusId": 16493,
+  "nexusName": "Iron Throne Rescue Extended",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 244
+ },
  "afface23-2d71-4614-88f9-bdbabdd61e03": {
   "nexusId": 6148,
   "nexusName": "Kylin's Heads",
@@ -2714,16 +2754,6 @@
   "adult": false,
   "endorsements": 2021
  },
- "142323a2-cd9e-68bd-6023-4ccdb28683b4": {
-  "nexusId": 12709,
-  "nexusName": "Save Alfira",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 556
- },
  "ccfff6aa-9e2d-dd90-b49a-53b30e6255c7": {
   "nexusId": 13324,
   "nexusName": "Seadragon Assets - Dragonborn CC",
@@ -2748,16 +2778,6 @@
    }
   ]
  },
- "e285bbbb-f352-f08e-e3cf-a0a1740dcb6b": {
-  "nexusId": 25772,
-  "nexusName": "Tasha's Feats - UA",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.91,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 0
- },
  "296545d8-50a9-4e5f-83f2-d5e5ba52ee4b": {
   "nexusId": 20353,
   "nexusName": "Ultimate Cut Content Restoration Mod",
@@ -2781,15 +2801,15 @@
    }
   ]
  },
- "65198f82-4248-48b4-aae6-992995b14074": {
-  "nexusId": 15033,
-  "nexusName": "Undead Thralls Fix",
-  "matchKind": "exact",
-  "matchConfidence": 1,
+ "7b5ed0e6-94fe-40e8-842d-f65f4ed25f05": {
+  "nexusId": 10922,
+  "nexusName": "Automated Summons",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.94,
   "nexusCategory": "Gameplay",
   "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 647
+  "endorsements": 438
  },
  "63d49a75-99e4-4163-8e43-16fd7e1fbb02": {
   "nexusId": 18904,
@@ -2870,16 +2890,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 622
- },
- "c7204c46-3ce4-3c36-c262-c65bd5001b65": {
-  "nexusId": 16493,
-  "nexusName": "Iron Throne Rescue Extended",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 244
  },
  "b162762e-a791-4a4a-a894-7772ada387dd": {
   "nexusId": 7034,
@@ -3006,16 +3016,6 @@
    }
   ]
  },
- "7b5ed0e6-94fe-40e8-842d-f65f4ed25f05": {
-  "nexusId": 10922,
-  "nexusName": "Automated Summons",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.94,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 438
- },
  "dc4702de-e7e8-4c2e-8c9d-9fd67139988e": {
   "nexusId": 20247,
   "nexusName": "Automatic Magical Secrets Extender",
@@ -3052,6 +3052,23 @@
   "suggestedGroup": "Companions",
   "adult": false,
   "endorsements": 111
+ },
+ "c635ec91-b4da-449d-ba6a-6799eeba769f": {
+  "nexusId": 9359,
+  "nexusName": "Interesting Origins",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 945,
+  "requires": [
+   {
+    "name": "Legacy of Death - True Dark Urge Experience",
+    "nexusId": 7030,
+    "notes": "Not required, but supported"
+   }
+  ]
  },
  "76ff2472-bd2d-f645-cd23-3cef07559f6f": {
   "nexusId": 4706,
@@ -3093,6 +3110,16 @@
    }
   ]
  },
+ "1b3bfa62-7d40-7091-02a9-ad66ad5d69c6": {
+  "nexusId": 18255,
+  "nexusName": "Recruit Karlach Earlier",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 616
+ },
  "67933c1b-4a1c-8c30-74c7-03638ceb5d65": {
   "nexusId": 22287,
   "nexusName": "Sazza Evolved",
@@ -3102,6 +3129,23 @@
   "suggestedGroup": "Companions",
   "adult": false,
   "endorsements": 114
+ },
+ "5d1585fa-973a-5721-8bce-4bfbbc84072a": {
+  "nexusId": 17598,
+  "nexusName": "Use 5e Spells with Mystra's Spells",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 201,
+  "requires": [
+   {
+    "name": "5e Spells",
+    "nexusId": 125,
+    "uuid": "33b799a4-c2ad-ad84-bc01-4ed5496fb410"
+   }
+  ]
  },
  "806f0d7a-071c-4855-b1c6-7dd2c629b575": {
   "nexusId": 20752,
@@ -3202,20 +3246,21 @@
   "adult": false,
   "endorsements": 297
  },
- "c635ec91-b4da-449d-ba6a-6799eeba769f": {
-  "nexusId": 9359,
-  "nexusName": "Interesting Origins",
+ "a7230f48-7bce-a20f-15e1-a7119ed62329": {
+  "nexusId": 11487,
+  "nexusName": "Gifts of the Absolute - Branded Equipment",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
   "adult": false,
-  "endorsements": 945,
+  "endorsements": 498,
   "requires": [
    {
-    "name": "Legacy of Death - True Dark Urge Experience",
-    "nexusId": 7030,
-    "notes": "Not required, but supported"
+    "name": "Fade's Equipment Distribution (FED)",
+    "nexusId": 13824,
+    "uuid": "3baef2b9-80d3-777b-a256-394f7f7be0d8",
+    "notes": "REQUIRED"
    }
   ]
  },
@@ -3254,30 +3299,19 @@
   "adult": false,
   "endorsements": 235
  },
- "1b3bfa62-7d40-7091-02a9-ad66ad5d69c6": {
-  "nexusId": 18255,
-  "nexusName": "Recruit Karlach Earlier",
+ "972dab31-891d-4ca6-ab84-bcdbf21b3634": {
+  "nexusId": 22412,
+  "nexusName": "Speak With Dead Always Highlights Corpses",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 616
- },
- "5d1585fa-973a-5721-8bce-4bfbbc84072a": {
-  "nexusId": 17598,
-  "nexusName": "Use 5e Spells with Mystra's Spells",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 201,
+  "endorsements": 203,
   "requires": [
    {
-    "name": "5e Spells",
-    "nexusId": 125,
-    "uuid": "33b799a4-c2ad-ad84-bc01-4ed5496fb410"
+    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
+    "nexusId": 2172
    }
   ]
  },
@@ -3455,24 +3489,6 @@
   "adult": false,
   "endorsements": 3363
  },
- "a7230f48-7bce-a20f-15e1-a7119ed62329": {
-  "nexusId": 11487,
-  "nexusName": "Gifts of the Absolute - Branded Equipment",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 498,
-  "requires": [
-   {
-    "name": "Fade's Equipment Distribution (FED)",
-    "nexusId": 13824,
-    "uuid": "3baef2b9-80d3-777b-a256-394f7f7be0d8",
-    "notes": "REQUIRED"
-   }
-  ]
- },
  "6dff611f-9f2e-45b1-b43e-06b62753cff9": {
   "nexusId": 3444,
   "nexusName": "Boring Dyes",
@@ -3499,6 +3515,28 @@
   "suggestedGroup": "Companions",
   "adult": false,
   "endorsements": 370
+ },
+ "468e4135-72b3-44ff-a15b-3374b502b46d": {
+  "nexusId": 5706,
+  "nexusName": "Lydia's Heads",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 1604,
+  "requires": [
+   {
+    "name": "Eyes of the Beholder",
+    "nexusId": 315,
+    "notes": "Optional"
+   },
+   {
+    "name": "Unique Tav Custom Appearance",
+    "nexusId": 2754,
+    "notes": "Optional"
+   }
+  ]
  },
  "415363fd-bef0-5376-658c-2540fd8e37b7": {
   "nexusId": 10761,
@@ -3544,22 +3582,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 395
- },
- "972dab31-891d-4ca6-ab84-bcdbf21b3634": {
-  "nexusId": 22412,
-  "nexusName": "Speak With Dead Always Highlights Corpses",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 203,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
-    "nexusId": 2172
-   }
-  ]
  },
  "cef3bd38-43eb-4e9e-b3ba-8a96ddcb0e38": {
   "nexusId": 2657,
@@ -3706,28 +3728,6 @@
    }
   ]
  },
- "468e4135-72b3-44ff-a15b-3374b502b46d": {
-  "nexusId": 5706,
-  "nexusName": "Lydia's Heads",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 1604,
-  "requires": [
-   {
-    "name": "Eyes of the Beholder",
-    "nexusId": 315,
-    "notes": "Optional"
-   },
-   {
-    "name": "Unique Tav Custom Appearance",
-    "nexusId": 2754,
-    "notes": "Optional"
-   }
-  ]
- },
  "4cd3ad72-b261-9f3d-6191-f4af18d069ca": {
   "nexusId": 11456,
   "nexusName": "Mantis' Face Preset Collections",
@@ -3766,6 +3766,23 @@
    }
   ]
  },
+ "fe04695e-d206-4a88-b3f9-b2a65855ac4c": {
+  "nexusId": 9164,
+  "nexusName": "Path Of Undeath",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 834,
+  "requires": [
+   {
+    "name": "WotD Aasimar - Script Extender Edition",
+    "nexusId": 8932,
+    "notes": "Required unless using the optionnal file (Definitive Edition should work too)"
+   }
+  ]
+ },
  "ee953702-9f2a-ea1f-5618-e90d6f1dd2c4": {
   "nexusId": 21343,
   "nexusName": "Pooldripp Evolved",
@@ -3775,6 +3792,16 @@
   "suggestedGroup": "Companions",
   "adult": false,
   "endorsements": 63
+ },
+ "75d0f89f-c212-4433-83fc-1d63bf7efb10": {
+  "nexusId": 14505,
+  "nexusName": "Armouries of the Allegiant",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 411
  },
  "cb93bf8a-cebc-cd54-7705-01d531e2341b": {
   "nexusId": 20056,
@@ -3850,6 +3877,29 @@
     "name": "ImpUI (ImprovedUI)",
     "nexusId": 366,
     "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
+ "4511f6b4-7422-efd2-8db1-31f6352c8a9a": {
+  "nexusId": 13195,
+  "nexusName": "Features from DnD 5E Spelljammer",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Maps",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 391,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
+    "nexusId": 2172,
+    "notes": "Soft Requirement/Optional - Required by DART to properly display background dialogs"
+   },
+   {
+    "name": "Dialogue and Reactivity Tags (DART) Framework",
+    "nexusId": 17561,
+    "uuid": "65e55feb-aada-4fec-821f-7d913e9b4d82",
+    "notes": "Soft Requirement/Optional - To properly display background dialogs"
    }
   ]
  },
@@ -3942,23 +3992,6 @@
    }
   ]
  },
- "fe04695e-d206-4a88-b3f9-b2a65855ac4c": {
-  "nexusId": 9164,
-  "nexusName": "Path Of Undeath",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 834,
-  "requires": [
-   {
-    "name": "WotD Aasimar - Script Extender Edition",
-    "nexusId": 8932,
-    "notes": "Required unless using the optionnal file (Definitive Edition should work too)"
-   }
-  ]
- },
  "7072652d-7832-8125-88ce-95d00d9a8a66": {
   "nexusId": 11708,
   "nexusName": "Rox's Heads",
@@ -4042,16 +4075,6 @@
   "adult": false,
   "endorsements": 410
  },
- "75d0f89f-c212-4433-83fc-1d63bf7efb10": {
-  "nexusId": 14505,
-  "nexusName": "Armouries of the Allegiant",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 411
- },
  "b6f2e133-0c60-4bb0-be23-803d4e0d2363": {
   "nexusId": 12683,
   "nexusName": "Dark Urge Banter Dialogue Fixes",
@@ -4123,29 +4146,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 143
- },
- "4511f6b4-7422-efd2-8db1-31f6352c8a9a": {
-  "nexusId": 13195,
-  "nexusName": "Features from DnD 5E Spelljammer",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Maps",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 391,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
-    "nexusId": 2172,
-    "notes": "Soft Requirement/Optional - Required by DART to properly display background dialogs"
-   },
-   {
-    "name": "Dialogue and Reactivity Tags (DART) Framework",
-    "nexusId": 17561,
-    "uuid": "65e55feb-aada-4fec-821f-7d913e9b4d82",
-    "notes": "Soft Requirement/Optional - To properly display background dialogs"
-   }
-  ]
  },
  "216acb8e-6d72-4ba0-ad02-89125d4fcc30": {
   "nexusId": 17844,
@@ -4618,6 +4618,23 @@
   "adult": false,
   "endorsements": 374
  },
+ "adbc4f0e-4e88-4fe4-9030-5021d533823b": {
+  "nexusId": 4239,
+  "nexusName": "Yves Hair Gallery",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 5804,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
+   }
+  ]
+ },
  "e8fba8b7-3ea5-48a9-9cac-697bbb576e4e": {
   "nexusId": 17212,
   "nexusName": "Mantis' Resident Evil Preset Collection",
@@ -4705,6 +4722,24 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 256
+ },
+ "897914ef-5c96-053c-44af-0be823f895fe": {
+  "nexusId": 12727,
+  "nexusName": "DnD 5.5e All-in-One BEYOND",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 584,
+  "requires": [
+   {
+    "name": "ImpUI (ImprovedUI)",
+    "nexusId": 366,
+    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+    "notes": "Optional (Backgrounds Icons at CC Screen)"
+   }
+  ]
  },
  "239127c3-1efe-493d-85d3-8518c8d8819b": {
   "nexusId": 3382,
@@ -4953,23 +4988,6 @@
   "adult": false,
   "endorsements": 331
  },
- "adbc4f0e-4e88-4fe4-9030-5021d533823b": {
-  "nexusId": 4239,
-  "nexusName": "Yves Hair Gallery",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 5804,
-  "requires": [
-   {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879"
-   }
-  ]
- },
  "10a48e15-e1f3-48a4-91a5-f18dfbc47f3a": {
   "nexusId": 14698,
   "nexusName": "Mantis' Arcane Inspired Preset Collection",
@@ -5044,21 +5062,30 @@
   "adult": false,
   "endorsements": 1929
  },
- "897914ef-5c96-053c-44af-0be823f895fe": {
-  "nexusId": 12727,
-  "nexusName": "DnD 5.5e All-in-One BEYOND",
+ "ebf8dfd0-e466-3b00-7868-ffea2ab8a4d8": {
+  "nexusId": 23539,
+  "nexusName": "Consort's Ensemble",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
+  "nexusCategory": "Clothing",
+  "suggestedGroup": "Clothing",
   "adult": false,
-  "endorsements": 584,
+  "endorsements": 144
+ },
+ "621b50e9-9ffb-382a-6623-72819c260551": {
+  "nexusId": 1339,
+  "nexusName": "Diamond Dice",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Dice",
+  "suggestedGroup": "Dice",
+  "adult": false,
+  "endorsements": 3248,
   "requires": [
    {
-    "name": "ImpUI (ImprovedUI)",
-    "nexusId": 366,
-    "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-    "notes": "Optional (Backgrounds Icons at CC Screen)"
+    "name": "Baldur's Gate 3 Mod Fixer",
+    "nexusId": 141,
+    "notes": "As of recent patches this is needed"
    }
   ]
  },
@@ -5130,6 +5157,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 845
+ },
+ "1d6c4030-67b9-4b0a-b3ab-caf6dd73d1af": {
+  "nexusId": 327,
+  "nexusName": "Party Limit Begone",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 42924
  },
  "0af8a272-88aa-c345-e4f6-8b60194c76e5": {
   "nexusId": 24281,
@@ -5349,16 +5386,6 @@
    }
   ]
  },
- "ebf8dfd0-e466-3b00-7868-ffea2ab8a4d8": {
-  "nexusId": 23539,
-  "nexusName": "Consort's Ensemble",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Clothing",
-  "suggestedGroup": "Clothing",
-  "adult": false,
-  "endorsements": 144
- },
  "2856e13e-78ea-04ce-19b1-698da0a5b7d1": {
   "nexusId": 19432,
   "nexusName": "Cuddle Astarion",
@@ -5368,23 +5395,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 400
- },
- "621b50e9-9ffb-382a-6623-72819c260551": {
-  "nexusId": 1339,
-  "nexusName": "Diamond Dice",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Dice",
-  "suggestedGroup": "Dice",
-  "adult": false,
-  "endorsements": 3248,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Mod Fixer",
-    "nexusId": 141,
-    "notes": "As of recent patches this is needed"
-   }
-  ]
  },
  "93661131-47d9-415a-996f-a590f3d3397d": {
   "nexusId": 5061,
@@ -5526,16 +5536,6 @@
    }
   ]
  },
- "1d6c4030-67b9-4b0a-b3ab-caf6dd73d1af": {
-  "nexusId": 327,
-  "nexusName": "Party Limit Begone",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Utilities",
-  "suggestedGroup": "Utilities",
-  "adult": false,
-  "endorsements": 42924
- },
  "8cd61375-e769-1657-2951-210561320d75": {
   "nexusId": 10239,
   "nexusName": "RS Strong Head",
@@ -5545,6 +5545,24 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 148
+ },
+ "b760d78d-c6b9-49b2-a2ea-554021c2f5b9": {
+  "nexusId": 9714,
+  "nexusName": "Slutty Closet",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 2600,
+  "requires": [
+   {
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "heavily Recommended, not neccessary though (grove vendor has the armors)"
+   }
+  ]
  },
  "5e6b6d6f-b866-513d-b564-d61c99d3af6b": {
   "nexusId": 18175,
@@ -5601,6 +5619,16 @@
     "notes": "REQUIRED"
    }
   ]
+ },
+ "96adc25a-d44c-4f0e-8fb8-c809de031440": {
+  "nexusId": 16877,
+  "nexusName": "Companion Gale Can Consume Shadow Weave",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 292
  },
  "cecb3423-daf3-19e7-e5ae-3c005c531214": {
   "nexusId": 11378,
@@ -5806,6 +5834,16 @@
    }
   ]
  },
+ "0fc7d460-56fc-4208-9f40-da66d96e9ade": {
+  "nexusId": 8941,
+  "nexusName": "Impactful Backgrounds",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 610
+ },
  "c953c1b3-cf57-4688-9950-9fc6fdc23415": {
   "nexusId": 23686,
   "nexusName": "Improved Equip Menu",
@@ -5815,6 +5853,16 @@
   "suggestedGroup": "User Interface",
   "adult": false,
   "endorsements": 69
+ },
+ "732311a6-4443-400f-b102-dcab208e0b72": {
+  "nexusId": 9357,
+  "nexusName": "Interesting Body Types",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 395
  },
  "e146fb3b-e8ea-146b-e7b3-e813d9a66ed3": {
   "nexusId": 14894,
@@ -5928,24 +5976,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 10
- },
- "b760d78d-c6b9-49b2-a2ea-554021c2f5b9": {
-  "nexusId": 9714,
-  "nexusName": "Slutty Closet",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 2600,
-  "requires": [
-   {
-    "name": "Tutorial Chest Summoning",
-    "nexusId": 457,
-    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
-    "notes": "heavily Recommended, not neccessary though (grove vendor has the armors)"
-   }
-  ]
  },
  "742aafba-180a-ee14-8aec-48fc007a7a7e": {
   "nexusId": 2214,
@@ -6104,16 +6134,6 @@
   "adult": false,
   "endorsements": 0
  },
- "96adc25a-d44c-4f0e-8fb8-c809de031440": {
-  "nexusId": 16877,
-  "nexusName": "Companion Gale Can Consume Shadow Weave",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Companions",
-  "suggestedGroup": "Companions",
-  "adult": false,
-  "endorsements": 292
- },
  "b77a6f3e-3c7a-405f-a6bf-6ccf8e549a8c": {
   "nexusId": 7980,
   "nexusName": "Containers Extended",
@@ -6225,16 +6245,6 @@
   "adult": false,
   "endorsements": 501
  },
- "0fc7d460-56fc-4208-9f40-da66d96e9ade": {
-  "nexusId": 8941,
-  "nexusName": "Impactful Backgrounds",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 610
- },
  "a4632918-29e9-4a21-9f10-2e02e77a39fa": {
   "nexusId": 5907,
   "nexusName": "Indoct's Subtler Piercings",
@@ -6244,16 +6254,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 641
- },
- "732311a6-4443-400f-b102-dcab208e0b72": {
-  "nexusId": 9357,
-  "nexusName": "Interesting Body Types",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 395
  },
  "4270d77d-5448-d88d-4d2b-dd1649b9f9f4": {
   "nexusId": 2218,
@@ -6398,6 +6398,23 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 4
+ },
+ "a27fdbe3-4d1a-641d-d05f-1ba4ee529da8": {
+  "nexusId": 18441,
+  "nexusName": "Spells of Exandria",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 265,
+  "requires": [
+   {
+    "name": "Advanced Tabletop Spells",
+    "nexusId": 14429,
+    "notes": "Version 1.1.9.1. AdvancedTabletopSpells is a required dependency for SpellsOfExandria."
+   }
+  ]
  },
  "a7ac15bd-bc68-cbd3-ab00-086e92b5399f": {
   "nexusId": 14149,
@@ -6549,6 +6566,16 @@
     "nexusId": 3584
    }
   ]
+ },
+ "23b14491-69f0-4a9c-99f2-345a636eb220": {
+  "nexusId": 12077,
+  "nexusName": "Do Not Eat Owlbear Egg",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 498
  },
  "d319af2e-34e0-cfae-5d11-92dca7c30b9d": {
   "nexusId": 13315,
@@ -7024,23 +7051,6 @@
    }
   ]
  },
- "a27fdbe3-4d1a-641d-d05f-1ba4ee529da8": {
-  "nexusId": 18441,
-  "nexusName": "Spells of Exandria",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 265,
-  "requires": [
-   {
-    "name": "Advanced Tabletop Spells",
-    "nexusId": 14429,
-    "notes": "Version 1.1.9.1. AdvancedTabletopSpells is a required dependency for SpellsOfExandria."
-   }
-  ]
- },
  "ada71997-5d8a-4614-8188-efd71d6037fb": {
   "nexusId": 1582,
   "nexusName": "Wyll's Devil Form",
@@ -7144,6 +7154,16 @@
   "adult": false,
   "endorsements": 266
  },
+ "93e94a5e-ccc0-1354-e22c-e83f1d0c43e4": {
+  "nexusId": 16055,
+  "nexusName": "Aylin and Isobel Epilogue Letters",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 139
+ },
  "72650dad-72f9-4b57-aa8a-5916d4953037": {
   "nexusId": 9646,
   "nexusName": "BlocknMiss Differentiation",
@@ -7244,16 +7264,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 338
- },
- "23b14491-69f0-4a9c-99f2-345a636eb220": {
-  "nexusId": 12077,
-  "nexusName": "Do Not Eat Owlbear Egg",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 498
  },
  "c714f127-6475-4e82-1816-3922fc220bee": {
   "nexusId": 24407,
@@ -7544,6 +7554,16 @@
    }
   ]
  },
+ "ba772644-2480-97f4-241f-505f35454ef8": {
+  "nexusId": 14695,
+  "nexusName": "Raphael Bed Story",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 285
+ },
  "ad0455a0-72e3-c994-c0ec-2fcdb1778b22": {
   "nexusId": 13314,
   "nexusName": "Reforged Assets DMH- Dark Urge Dragonborn CC",
@@ -7761,16 +7781,6 @@
   "adult": false,
   "endorsements": 5
  },
- "93e94a5e-ccc0-1354-e22c-e83f1d0c43e4": {
-  "nexusId": 16055,
-  "nexusName": "Aylin and Isobel Epilogue Letters",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 139
- },
  "a6508a2d-1bac-3904-933f-d34eb0faea3a": {
   "nexusId": 16628,
   "nexusName": "Aylin Takes off Her Helmet in Camp",
@@ -7780,6 +7790,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 243
+ },
+ "ed6b20cb-e078-d0ce-2951-6b8c529ecff2": {
+  "nexusId": 17157,
+  "nexusName": "Bath Before Bed (Clean Camp Nights)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 301
  },
  "a7e5f088-a595-da9a-7c7d-a8451bed66f0": {
   "nexusId": 20626,
@@ -8146,6 +8166,16 @@
   "adult": false,
   "endorsements": 103
  },
+ "0ef0046c-46c1-a8dd-011d-099d58656ea0": {
+  "nexusId": 14668,
+  "nexusName": "Infinite Illithid Wisdom Check",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 131
+ },
  "021a277f-a31c-4047-bcdc-c7a753d1473e": {
   "nexusId": 8083,
   "nexusName": "Kekyll's Lab (Core Library)",
@@ -8196,6 +8226,16 @@
    }
   ]
  },
+ "ed1cdad2-a46b-44a9-8fa3-acf9a88997ed": {
+  "nexusId": 19040,
+  "nexusName": "Lydia's Other Heads",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 172
+ },
  "e762888a-149c-45ac-8621-2e18f13b777c": {
   "nexusId": 17510,
   "nexusName": "Moonlight Armor-KR",
@@ -8221,6 +8261,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 195
+ },
+ "60b7b37b-c006-4775-bda2-6ebb726acc12": {
+  "nexusId": 16597,
+  "nexusName": "Path of the Righteous",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 229
  },
  "cc3a975d-b456-446b-88da-70f704c05c61": {
   "nexusId": 10897,
@@ -8258,16 +8308,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 1722
- },
- "ba772644-2480-97f4-241f-505f35454ef8": {
-  "nexusId": 14695,
-  "nexusName": "Raphael Bed Story",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 285
  },
  "e49a2415-9dda-48ad-84c9-0abd35686529": {
   "nexusId": 14911,
@@ -8397,16 +8437,6 @@
     "nexusId": 2172
    }
   ]
- },
- "ed6b20cb-e078-d0ce-2951-6b8c529ecff2": {
-  "nexusId": 17157,
-  "nexusName": "Bath Before Bed (Clean Camp Nights)",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 301
  },
  "3cd15211-82c7-684e-ab11-ea39898ca44e": {
   "nexusId": 18767,
@@ -8650,6 +8680,16 @@
   "adult": false,
   "endorsements": 241
  },
+ "9c930d25-27b9-4c91-9aeb-e0452c3a52ea": {
+  "nexusId": 22999,
+  "nexusName": "Fallen Midas Outfit",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 81
+ },
  "aa864294-b4f7-4068-1793-ba72283683f1": {
   "nexusId": 12582,
   "nexusName": "FearTaylor's Dye",
@@ -8704,16 +8744,6 @@
    }
   ]
  },
- "0ef0046c-46c1-a8dd-011d-099d58656ea0": {
-  "nexusId": 14668,
-  "nexusName": "Infinite Illithid Wisdom Check",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 131
- },
  "a78e620f-1192-079d-2ccc-be5ff556fd8e": {
   "nexusId": 12654,
   "nexusName": "Karlach Burning Immune and Attacks Have Fire Damage",
@@ -8744,15 +8774,15 @@
   "adult": false,
   "endorsements": 585
  },
- "ed1cdad2-a46b-44a9-8fa3-acf9a88997ed": {
-  "nexusId": 19040,
-  "nexusName": "Lydia's Other Heads",
+ "00a612fe-4676-4535-a6e3-79cacee74e44": {
+  "nexusId": 13540,
+  "nexusName": "Lich Feats",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 172
+  "endorsements": 330
  },
  "8849a1cb-4a14-ab39-0e74-afa1c42d8754": {
   "nexusId": 15790,
@@ -8800,16 +8830,6 @@
    }
   ]
  },
- "60b7b37b-c006-4775-bda2-6ebb726acc12": {
-  "nexusId": 16597,
-  "nexusName": "Path of the Righteous",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 229
- },
  "977deff3-e6ee-55b1-9ad7-87ac873d180f": {
   "nexusId": 19493,
   "nexusName": "Reactions while Invisible BUGFIX",
@@ -8829,6 +8849,38 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 124
+ },
+ "bea74574-57da-e902-25ed-e5875d88679f": {
+  "nexusId": 20379,
+  "nexusName": "Scion Of The Three - Rogue Subclass (ENG-KOR)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 41,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Community Library",
+    "nexusId": 1333
+   },
+   {
+    "name": "Compatibility Framework",
+    "nexusId": 1933,
+    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"
+   },
+   {
+    "name": "Expansion Level 13-20 (Configurable)",
+    "nexusId": 279,
+    "notes": "Install only one of this mod and the mod above."
+   },
+   {
+    "name": "UnlockLevelCurve - Level 13-20 I PATCH 8",
+    "nexusId": 377,
+    "uuid": "a2ffd0e4-c407-8642-2611-c934ea0b0a77",
+    "notes": "Install only one of this mod and the mod below."
+   }
+  ]
  },
  "9f128411-7ff6-51b8-f119-cd9d80ea1291": {
   "nexusId": 13661,
@@ -9185,15 +9237,22 @@
   "adult": false,
   "endorsements": 1324
  },
- "9c930d25-27b9-4c91-9aeb-e0452c3a52ea": {
-  "nexusId": 22999,
-  "nexusName": "Fallen Midas Outfit",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
+ "22b848d1-5fff-4f76-a4f8-8461721e6112": {
+  "nexusId": 10569,
+  "nexusName": "EldertideArmamentCHS",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Miscellaneous",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 81
+  "endorsements": 17,
+  "requires": [
+   {
+    "name": "Eldertide Armaments (Rings and Amulets)",
+    "nexusId": 3596,
+    "notes": "必须mod"
+   }
+  ]
  },
  "a1e0e7e7-47db-41c6-823b-ae05b3d83b9b": {
   "nexusId": 14858,
@@ -9324,16 +9383,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 4527
- },
- "00a612fe-4676-4535-a6e3-79cacee74e44": {
-  "nexusId": 13540,
-  "nexusName": "Lich Feats",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 330
  },
  "cf9f520e-a609-4efc-80b8-8239e6dc71bc": {
   "nexusId": 4120,
@@ -9505,37 +9554,15 @@
    }
   ]
  },
- "bea74574-57da-e902-25ed-e5875d88679f": {
-  "nexusId": 20379,
-  "nexusName": "Scion Of The Three - Rogue Subclass (ENG-KOR)",
+ "df8ed7d1-c924-e40b-fa4e-4dd8146075b9": {
+  "nexusId": 20082,
+  "nexusName": "Sanguine Weave - Blood-Woven Outfit Set",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
+  "nexusCategory": "Clothing",
+  "suggestedGroup": "Clothing",
   "adult": false,
-  "endorsements": 41,
-  "requires": [
-   {
-    "name": "Baldur's Gate 3 Community Library",
-    "nexusId": 1333
-   },
-   {
-    "name": "Compatibility Framework",
-    "nexusId": 1933,
-    "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"
-   },
-   {
-    "name": "Expansion Level 13-20 (Configurable)",
-    "nexusId": 279,
-    "notes": "Install only one of this mod and the mod above."
-   },
-   {
-    "name": "UnlockLevelCurve - Level 13-20 I PATCH 8",
-    "nexusId": 377,
-    "uuid": "a2ffd0e4-c407-8642-2611-c934ea0b0a77",
-    "notes": "Install only one of this mod and the mod below."
-   }
-  ]
+  "endorsements": 216
  },
  "f9bb9f98-414f-2781-87be-84516450facd": {
   "nexusId": 13660,
@@ -9663,6 +9690,23 @@
    {
     "name": "Noble Couture - Armor and Robes",
     "nexusId": 11864
+   }
+  ]
+ },
+ "c30d2406-607d-4c25-b96d-39f9d5d48c49": {
+  "nexusId": 25137,
+  "nexusName": "A Soul By The Stormshore - CHS",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Quests",
+  "suggestedGroup": "Quests",
+  "adult": false,
+  "endorsements": 1,
+  "requires": [
+   {
+    "name": "A Soul By The Stormshore (Mini Sidequest Mod)",
+    "nexusId": 23647,
+    "notes": "排序在原MOD下方"
    }
   ]
  },
@@ -9881,23 +9925,6 @@
    }
   ]
  },
- "22b848d1-5fff-4f76-a4f8-8461721e6112": {
-  "nexusId": 10569,
-  "nexusName": "EldertideArmamentCHS",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.91,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 17,
-  "requires": [
-   {
-    "name": "Eldertide Armaments (Rings and Amulets)",
-    "nexusId": 3596,
-    "notes": "必须mod"
-   }
-  ]
- },
  "bed06308-b5e8-c9ea-2eae-a5d0dea7b6bd": {
   "nexusId": 21635,
   "nexusName": "Ember's Enchanted Instruments - Drums",
@@ -9964,6 +9991,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 629
+ },
+ "a9dfb592-e26e-509d-7ed8-3b7502b7c803": {
+  "nexusId": 24318,
+  "nexusName": "Fourteenth of the Hill - Triss Merigold's outfit",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 140
  },
  "c6167c45-fa70-47da-a389-653746dd151f": {
   "nexusId": 12083,
@@ -10177,16 +10214,6 @@
   "adult": true,
   "endorsements": 92
  },
- "df8ed7d1-c924-e40b-fa4e-4dd8146075b9": {
-  "nexusId": 20082,
-  "nexusName": "Sanguine Weave - Blood-Woven Outfit Set",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Clothing",
-  "suggestedGroup": "Clothing",
-  "adult": false,
-  "endorsements": 216
- },
  "347dbaa9-379c-ad6c-c05d-7674179819be": {
   "nexusId": 13659,
   "nexusName": "Seadragon Assets Vexa - Dragonborn CC",
@@ -10222,6 +10249,16 @@
     "notes": "The Heads"
    }
   ]
+ },
+ "109503d1-750a-378f-febb-3145eac4f9df": {
+  "nexusId": 24683,
+  "nexusName": "Taste of Poison - Minthara Edit",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.94,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 113
  },
  "a83a5961-4a09-43dd-b18e-3f79a286d316": {
   "nexusId": 9420,
@@ -10382,6 +10419,16 @@
    }
   ]
  },
+ "441b39cb-b4d0-4cd9-6bfe-9cdc1d111456": {
+  "nexusId": 22324,
+  "nexusName": "The Frozen Shadow - Warlock Subclass",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 82
+ },
  "d5b21c42-fb77-493b-8502-a8491bc9a34c": {
   "nexusId": 14712,
   "nexusName": "Raven Queen Outfit by REN",
@@ -10447,6 +10494,16 @@
    }
   ]
  },
+ "474899fa-02b2-4a9d-acd7-96c4e900903e": {
+  "nexusId": 23138,
+  "nexusName": "Vampiric Head Pack",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 169
+ },
  "81719022-3f9b-1718-37fb-3022c2516e5b": {
   "nexusId": 18787,
   "nexusName": "Viper Carbine - Steampunk Rifle Gun_KOR",
@@ -10456,23 +10513,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 3
- },
- "c30d2406-607d-4c25-b96d-39f9d5d48c49": {
-  "nexusId": 25137,
-  "nexusName": "A Soul By The Stormshore - CHS",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.93,
-  "nexusCategory": "Quests",
-  "suggestedGroup": "Quests",
-  "adult": false,
-  "endorsements": 1,
-  "requires": [
-   {
-    "name": "A Soul By The Stormshore (Mini Sidequest Mod)",
-    "nexusId": 23647,
-    "notes": "排序在原MOD下方"
-   }
-  ]
  },
  "aafb6d77-4521-3a9f-c6e4-a559101fc73d": {
   "nexusId": 16261,
@@ -10836,16 +10876,6 @@
   "adult": false,
   "endorsements": 250
  },
- "a9dfb592-e26e-509d-7ed8-3b7502b7c803": {
-  "nexusId": 24318,
-  "nexusName": "Fourteenth of the Hill - Triss Merigold's outfit",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 140
- },
  "1ac15aa7-a1bd-4906-aa5c-04ad1cafd75c": {
   "nexusId": 15218,
   "nexusName": "Goggles and Glasses Collection",
@@ -10856,6 +10886,16 @@
   "adult": false,
   "endorsements": 372
  },
+ "1584153f-01fb-7f45-aee2-aee3e6cd8876": {
+  "nexusId": 19326,
+  "nexusName": "Granny Rings Immersive",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 66
+ },
  "02ac8f25-7e89-f18b-bcf8-fc2cb5f7fb03": {
   "nexusId": 18561,
   "nexusName": "Gale's Betrayal - Restored From Early Access",
@@ -10865,6 +10905,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 46
+ },
+ "1f00c671-be0b-40e6-b284-83fd99fa7ed2": {
+  "nexusId": 15522,
+  "nexusName": "Minthara's Alurlssrin",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.95,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 482
  },
  "410dabcc-2249-4e9c-b305-6fd50864494a": {
   "nexusId": 2493,
@@ -10905,6 +10955,16 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 896
+ },
+ "b08907e2-38e3-49e4-86d9-4a1297322fe4": {
+  "nexusId": 10692,
+  "nexusName": "Lydia's Heads - Dark Seldarine",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 665
  },
  "b2f03c64-da67-4ea3-9df0-97c54359d36b": {
   "nexusId": 11364,
@@ -11077,15 +11137,15 @@
   "adult": false,
   "endorsements": 33
  },
- "109503d1-750a-378f-febb-3145eac4f9df": {
-  "nexusId": 24683,
-  "nexusName": "Taste of Poison - Minthara Edit",
+ "801d16be-dca8-cdcb-72d3-6c41c312f62e": {
+  "nexusId": 24030,
+  "nexusName": "The Oaken Maiden - Jaheira Edit",
   "matchKind": "fuzzy",
   "matchConfidence": 0.94,
   "nexusCategory": "Visuals",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 113
+  "endorsements": 111
  },
  "e2fa9b96-80e4-4c25-a76d-742a4f4117e9": {
   "nexusId": 13288,
@@ -11139,6 +11199,16 @@
    }
   ]
  },
+ "36a5445b-3388-4042-b066-932c72cf5e66": {
+  "nexusId": 6139,
+  "nexusName": "Spiritmender - Healing Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 233
+ },
  "3102fb42-4e02-134c-b6ac-d200b8ca3e3b": {
   "nexusId": 9923,
   "nexusName": "Tasha's Cauldron of Outfits",
@@ -11155,15 +11225,22 @@
    }
   ]
  },
- "441b39cb-b4d0-4cd9-6bfe-9cdc1d111456": {
-  "nexusId": 22324,
-  "nexusName": "The Frozen Shadow - Warlock Subclass",
+ "83743a2a-a284-4fd1-9b8e-848a8054f220": {
+  "nexusId": 24107,
+  "nexusName": "Ultimate Cheat Tool",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
   "adult": false,
-  "endorsements": 82
+  "endorsements": 61,
+  "requires": [
+   {
+    "name": "Mod Configuration Menu (MCM)",
+    "nexusId": 9162,
+    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d"
+   }
+  ]
  },
  "cc148882-219a-b4e7-d3e9-6f88c5eb0da1": {
   "nexusId": 16268,
@@ -11174,16 +11251,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 125
- },
- "474899fa-02b2-4a9d-acd7-96c4e900903e": {
-  "nexusId": 23138,
-  "nexusName": "Vampiric Head Pack",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 169
  },
  "a6e4d4d2-c306-49ff-b787-adad64b00a6d": {
   "nexusId": 21854,
@@ -11664,16 +11731,6 @@
   "adult": false,
   "endorsements": 145
  },
- "1584153f-01fb-7f45-aee2-aee3e6cd8876": {
-  "nexusId": 19326,
-  "nexusName": "Granny Rings Immersive",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Accessories",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 66
- },
  "f2f87784-06ab-4700-bbcf-11cb4c1751a7": {
   "nexusId": 17704,
   "nexusName": "Grimoire Familiar",
@@ -11748,16 +11805,6 @@
     "notes": "For EOTB and UTav+EOTB"
    }
   ]
- },
- "1f00c671-be0b-40e6-b284-83fd99fa7ed2": {
-  "nexusId": 15522,
-  "nexusName": "Minthara's Alurlssrin",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.95,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 482
  },
  "861f4e0f-613e-f935-9934-483fe0d4c82f": {
   "nexusId": 18464,
@@ -11860,16 +11907,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 129
- },
- "b08907e2-38e3-49e4-86d9-4a1297322fe4": {
-  "nexusId": 10692,
-  "nexusName": "Lydia's Heads - Dark Seldarine",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 665
  },
  "49ae2e76-4497-a8c9-c156-b67ad4fea463": {
   "nexusId": 12813,
@@ -12141,16 +12178,6 @@
   "adult": true,
   "endorsements": 1125
  },
- "801d16be-dca8-cdcb-72d3-6c41c312f62e": {
-  "nexusId": 24030,
-  "nexusName": "The Oaken Maiden - Jaheira Edit",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.94,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 111
- },
  "b350f68c-96b9-4263-b964-1ed5f91213ab": {
   "nexusId": 18433,
   "nexusName": "Shovel Fix",
@@ -12207,16 +12234,6 @@
    }
   ]
  },
- "36a5445b-3388-4042-b066-932c72cf5e66": {
-  "nexusId": 6139,
-  "nexusName": "Spiritmender - Healing Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 233
- },
  "a0bedb42-5292-4b9a-98d4-39267eab7be7": {
   "nexusId": 20786,
   "nexusName": "Stargazer Ranger CHS",
@@ -12232,6 +12249,16 @@
     "nexusId": 20251
    }
   ]
+ },
+ "a347f848-222b-4cdc-8cba-754ee581d6d9": {
+  "nexusId": 23676,
+  "nexusName": "STAV - Universal Automatic Patcher (UAP)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Utilities",
+  "suggestedGroup": "Utilities",
+  "adult": false,
+  "endorsements": 79
  },
  "330a99e7-e8c5-428b-bbe4-a274a290bad5": {
   "nexusId": 15216,
@@ -12252,23 +12279,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 439
- },
- "83743a2a-a284-4fd1-9b8e-848a8054f220": {
-  "nexusId": 24107,
-  "nexusName": "Ultimate Cheat Tool",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 61,
-  "requires": [
-   {
-    "name": "Mod Configuration Menu (MCM)",
-    "nexusId": 9162,
-    "uuid": "755a8a72-407f-4f0d-9a33-274ac0f0b53d"
-   }
-  ]
  },
  "5f69f66a-142b-4875-91a0-38c385d7aee3": {
   "nexusId": 5660,
@@ -12302,6 +12312,16 @@
     "notes": "Put in overrides"
    }
   ]
+ },
+ "dd65cc77-a407-792c-47b4-708138377ad0": {
+  "nexusId": 15768,
+  "nexusName": "Wrongway's Elemental Feats",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.9,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 25
  },
  "871f6038-467d-4388-ad77-1b21e2ae3748": {
   "nexusId": 11442,
@@ -12658,6 +12678,16 @@
   "adult": false,
   "endorsements": 9
  },
+ "dc8d447d-4977-4ecf-9fea-d614ec4a6e5a": {
+  "nexusId": 16876,
+  "nexusName": "Gale's Ring of Evasion",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 137
+ },
  "a6c4db37-e77f-2acc-5ddc-5a9016459678": {
   "nexusId": 17522,
   "nexusName": "Halsin Stat Fix",
@@ -12901,6 +12931,16 @@
    }
   ]
  },
+ "f953a920-637b-4a57-91bf-7d5a0143cc8d": {
+  "nexusId": 22730,
+  "nexusName": "No Persistent Sold Items",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 63
+ },
  "fa00f249-ec4e-c552-9567-1ce7bcdd4255": {
   "nexusId": 13410,
   "nexusName": "Order Domain Cleric Subclass",
@@ -12966,6 +13006,26 @@
    }
   ]
  },
+ "ae46be95-b478-7487-f6a8-a878448cf088": {
+  "nexusId": 24409,
+  "nexusName": "Astral Fury - Lae'zel Edit",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 105
+ },
+ "ad691c90-093a-33fe-81d4-3d33cb3b06e2": {
+  "nexusId": 23892,
+  "nexusName": "Hot Thing - Karlach Edits",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.9,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 179
+ },
  "f4efea40-f890-b00d-4eaa-8f8d587f3a5a": {
   "nexusId": 23241,
   "nexusName": "Shadowdancer - Prestige Class",
@@ -12975,6 +13035,16 @@
   "suggestedGroup": "Classes",
   "adult": false,
   "endorsements": 24
+ },
+ "3615c00d-cdeb-3378-6d25-5fd457c87e50": {
+  "nexusId": 19329,
+  "nexusName": "Sharraith Outfit - Shadowforged Armour Set",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 150
  },
  "0bbda4ce-fe56-4ade-b5de-412238d28079": {
   "nexusId": 15638,
@@ -13053,16 +13123,6 @@
   "suggestedGroup": "Races",
   "adult": false,
   "endorsements": 1217
- },
- "a347f848-222b-4cdc-8cba-754ee581d6d9": {
-  "nexusId": 23676,
-  "nexusName": "STAV - Universal Automatic Patcher (UAP)",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Utilities",
-  "suggestedGroup": "Utilities",
-  "adult": false,
-  "endorsements": 79
  },
  "8e848a53-b78e-479d-82cd-4c4215b726aa": {
   "nexusId": 25067,
@@ -13202,16 +13262,6 @@
   "adult": false,
   "endorsements": 294
  },
- "dd65cc77-a407-792c-47b4-708138377ad0": {
-  "nexusId": 15768,
-  "nexusName": "Wrongway's Elemental Feats",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.9,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 25
- },
  "b268c2e5-8260-46a5-ae25-1d9e6031fa09": {
   "nexusId": 19614,
   "nexusName": "Wyll Devil Form Portrait Fix",
@@ -13347,6 +13397,16 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 178
+ },
+ "ab7c04fb-cc8b-bf64-ad23-496e2144839b": {
+  "nexusId": 24221,
+  "nexusName": "Berry's Head - Jekyll",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 58
  },
  "dcb3e0d7-f86a-421f-8fe2-426913e9e367": {
   "nexusId": 18012,
@@ -13594,6 +13654,16 @@
   "adult": false,
   "endorsements": 166
  },
+ "7811817b-fd5b-7e86-0658-0a79f12a3a8f": {
+  "nexusId": 24254,
+  "nexusName": "Eilistraee's Moonsword",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 29
+ },
  "07207a23-ec13-1077-7872-c03de60e6c51": {
   "nexusId": 1498,
   "nexusName": "Eldritch Blast (Enhanced)",
@@ -13773,16 +13843,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 82
- },
- "dc8d447d-4977-4ecf-9fea-d614ec4a6e5a": {
-  "nexusId": 16876,
-  "nexusName": "Gale's Ring of Evasion",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 137
  },
  "30cfb3c7-89d6-8cee-e9d7-4c365c20401f": {
   "nexusId": 22448,
@@ -14103,6 +14163,23 @@
   "adult": false,
   "endorsements": 40
  },
+ "ee7382f0-7a17-4156-8841-7a0659d68f86": {
+  "nexusId": 3917,
+  "nexusName": "MJK HEADS",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 921,
+  "requires": [
+   {
+    "name": "P4 Patches",
+    "nexusId": 353,
+    "notes": "'Patches_for_VFX_Heads' in main files if you want visual effects to work correctly."
+   }
+  ]
+ },
  "6ad2c561-cf83-7f81-41c0-f1aafaf38a0f": {
   "nexusId": 15,
   "nexusName": "More Short Rests",
@@ -14166,16 +14243,6 @@
     "nexusId": 2754
    }
   ]
- },
- "f953a920-637b-4a57-91bf-7d5a0143cc8d": {
-  "nexusId": 22730,
-  "nexusName": "No Persistent Sold Items",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 63
  },
  "36733427-1c16-c58c-9cce-7852dea64fd3": {
   "nexusId": 19777,
@@ -14298,26 +14365,6 @@
   "adult": false,
   "endorsements": 259
  },
- "ae46be95-b478-7487-f6a8-a878448cf088": {
-  "nexusId": 24409,
-  "nexusName": "Astral Fury - Lae'zel Edit",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.93,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 105
- },
- "ad691c90-093a-33fe-81d4-3d33cb3b06e2": {
-  "nexusId": 23892,
-  "nexusName": "Hot Thing - Karlach Edits",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.9,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 179
- },
  "856e2177-8087-49c1-a778-820d07033984": {
   "nexusId": 19592,
   "nexusName": "Shar deity",
@@ -14327,16 +14374,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 4
- },
- "3615c00d-cdeb-3378-6d25-5fd457c87e50": {
-  "nexusId": 19329,
-  "nexusName": "Sharraith Outfit - Shadowforged Armour Set",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 150
  },
  "edc69df4-737e-4784-9a37-59c3afb0df23": {
   "nexusId": 6591,
@@ -14592,6 +14629,16 @@
    }
   ]
  },
+ "87cd2a86-b8b5-42f1-a328-8578755bb766": {
+  "nexusId": 24553,
+  "nexusName": "Wavemother's Gift Outfit",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Clothing",
+  "suggestedGroup": "Clothing",
+  "adult": false,
+  "endorsements": 89
+ },
  "9dcb481a-d1ed-e866-d422-9ce49d28a58a": {
   "nexusId": 20753,
   "nexusName": "Way of the Pizza Chef Monk subclass",
@@ -14830,16 +14877,6 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 192
- },
- "ab7c04fb-cc8b-bf64-ad23-496e2144839b": {
-  "nexusId": 24221,
-  "nexusName": "Berry's Head - Jekyll",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 58
  },
  "d638d904-3ede-04e9-4a2b-60a75874a7d6": {
   "nexusId": 12413,
@@ -15090,16 +15127,6 @@
    }
   ]
  },
- "7811817b-fd5b-7e86-0658-0a79f12a3a8f": {
-  "nexusId": 24254,
-  "nexusName": "Eilistraee's Moonsword",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 29
- },
  "69b8b0f2-8655-0199-0798-450187e019b8": {
   "nexusId": 18895,
   "nexusName": "Eldritch Lore - A Wizard Subclass",
@@ -15285,6 +15312,16 @@
     "notes": "Facial Hair tab"
    }
   ]
+ },
+ "08511111-87c1-b86c-7879-b79ea94f86cc": {
+  "nexusId": 19558,
+  "nexusName": "Granny Elixirs",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 22
  },
  "3dc2051b-ec61-4314-61c5-edec286ff536": {
   "nexusId": 13653,
@@ -15517,6 +15554,16 @@
   "adult": false,
   "endorsements": 225
  },
+ "cc6e60f6-3eeb-68e5-42fe-203296f97111": {
+  "nexusId": 24411,
+  "nexusName": "Merigold the Fearless - Triss Merigold's alternative outfit",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 97
+ },
  "62ab7fb0-715d-753f-6a72-a98fabce4e78": {
   "nexusId": 23038,
   "nexusName": "Miam's Best Enemies Pose Pack",
@@ -15551,23 +15598,6 @@
     "name": "Eyes of the Beholder",
     "nexusId": 315,
     "notes": "FOR EYES OF THE BEHOLDER VERSIONS"
-   }
-  ]
- },
- "ee7382f0-7a17-4156-8841-7a0659d68f86": {
-  "nexusId": 3917,
-  "nexusName": "MJK HEADS",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 921,
-  "requires": [
-   {
-    "name": "P4 Patches",
-    "nexusId": 353,
-    "notes": "'Patches_for_VFX_Heads' in main files if you want visual effects to work correctly."
    }
   ]
  },
@@ -15953,6 +15983,16 @@
   "adult": false,
   "endorsements": 34
  },
+ "75d2d721-1e37-d98f-9e4e-dc330c33ee10": {
+  "nexusId": 24685,
+  "nexusName": "Symphony of a Vampire - Vampirism Overhaul",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 49
+ },
  "69979892-c180-73fd-83f7-d78706663238": {
   "nexusId": 22172,
   "nexusName": "The Best Hair Pack Ever",
@@ -16037,6 +16077,16 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 139
+ },
+ "010386cb-5489-2fca-a8e3-dd1f170042dd": {
+  "nexusId": 16472,
+  "nexusName": "Timeless Helm Fight",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 57
  },
  "27fc9af0-260c-2a24-872f-b9a20edb3099": {
   "nexusId": 23574,
@@ -16173,16 +16223,6 @@
     "notes": "Required for subclass framework"
    }
   ]
- },
- "87cd2a86-b8b5-42f1-a328-8578755bb766": {
-  "nexusId": 24553,
-  "nexusName": "Wavemother's Gift Outfit",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Clothing",
-  "suggestedGroup": "Clothing",
-  "adult": false,
-  "endorsements": 89
  },
  "29d47970-757b-0c39-5e93-3e6a5e89684b": {
   "nexusId": 17398,
@@ -16686,6 +16726,16 @@
   "adult": false,
   "endorsements": 2
  },
+ "49480de6-8296-974e-ed7c-c19df7f76d8f": {
+  "nexusId": 23925,
+  "nexusName": "Deities Dice Pack",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Dice",
+  "suggestedGroup": "Dice",
+  "adult": false,
+  "endorsements": 50
+ },
  "032adbeb-3152-4b1e-a21b-605d258aab78": {
   "nexusId": 20857,
   "nexusName": "Dice Roulette",
@@ -16723,6 +16773,16 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 349
+ },
+ "ea4f9a80-f8ac-c04a-4c09-bb2c4b463e80": {
+  "nexusId": 23645,
+  "nexusName": "Duke Ravengard's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 28
  },
  "590a9f09-c640-6b07-56d6-a156b3ff8fb6": {
   "nexusId": 16670,
@@ -16782,6 +16842,16 @@
   "suggestedGroup": "Races",
   "adult": false,
   "endorsements": 2110
+ },
+ "5df7c17e-2bc9-f9bb-b40c-c5dcdda036c0": {
+  "nexusId": 23654,
+  "nexusName": "Elven Head Pack",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 204
  },
  "f925dcc4-898c-bc0a-556a-22ebaab266c4": {
   "nexusId": 263,
@@ -16859,6 +16929,16 @@
   "adult": true,
   "endorsements": 43
  },
+ "47a9b306-2755-4c05-be77-cb3bd7c49cd5": {
+  "nexusId": 21233,
+  "nexusName": "Ferrety's Feats - The Dead Three",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 31
+ },
  "acbc4ff8-633a-221d-1ad6-a132fdbb7eb6": {
   "nexusId": 21113,
   "nexusName": "Full Moon - Sailor Moon Inspired Dress",
@@ -16913,16 +16993,6 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 1066
- },
- "08511111-87c1-b86c-7879-b79ea94f86cc": {
-  "nexusId": 19558,
-  "nexusName": "Granny Elixirs",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 22
  },
  "5c810a96-7748-4ce5-9a18-f8168a80f407": {
   "nexusId": 3455,
@@ -17216,16 +17286,6 @@
   "adult": false,
   "endorsements": 190
  },
- "cc6e60f6-3eeb-68e5-42fe-203296f97111": {
-  "nexusId": 24411,
-  "nexusName": "Merigold the Fearless - Triss Merigold's alternative outfit",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 97
- },
  "05fd3e95-cbce-710b-16b5-ac112e3875c5": {
   "nexusId": 12256,
   "nexusName": "Miseria Greatsword",
@@ -17240,6 +17300,23 @@
     "name": "Tutorial Chest Summoning",
     "nexusId": 457,
     "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d"
+   }
+  ]
+ },
+ "4037a3b3-3130-34e8-02ab-dda65925f7f0": {
+  "nexusId": 21521,
+  "nexusName": "Mizora's New Look Revamped",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 33,
+  "requires": [
+   {
+    "name": "Mizora's Human Form Restored",
+    "nexusId": 16825,
+    "notes": "Optional file for the Sleeveless Dress and Dragon Suit, mandatory file to have a complete immersion with the Lore-friendly file (it is advised to either install Complete Immersion or Wyrm's Crossing Only by PoisonValentineXIII)."
    }
   ]
  },
@@ -17767,16 +17844,6 @@
    }
   ]
  },
- "75d2d721-1e37-d98f-9e4e-dc330c33ee10": {
-  "nexusId": 24685,
-  "nexusName": "Symphony of a Vampire - Vampirism Overhaul",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 49
- },
  "4d7bfe95-4c03-408a-80b4-d79729ef98d8": {
   "nexusId": 21259,
   "nexusName": "Tav's Nightly Hairdo",
@@ -17884,16 +17951,6 @@
     "notes": "Not a hard requirement, but fixes a base-game bug where different modded subclasses will override each other when multiclassing into Barbarian. Highly recommended if installing multiple Barbarian subclasses."
    }
   ]
- },
- "010386cb-5489-2fca-a8e3-dd1f170042dd": {
-  "nexusId": 16472,
-  "nexusName": "Timeless Helm Fight",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 57
  },
  "e9515cd4-6a2e-43a9-84a8-f3dfa836965a": {
   "nexusId": 11912,
@@ -18265,6 +18322,16 @@
    }
   ]
  },
+ "2f02f435-e1fe-1cac-86ae-6108cd15a5d7": {
+  "nexusId": 20979,
+  "nexusName": "Balthazar's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 29
+ },
  "42c444c1-a6a4-40c4-beee-8926dd361a33": {
   "nexusId": 16879,
   "nexusName": "Battle Master Manoeuvres Consolidated",
@@ -18332,6 +18399,29 @@
     "nexusId": 366,
     "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
     "notes": "ImpUI Patch 8 Slim"
+   }
+  ]
+ },
+ "ab0ff867-a750-f01e-beb8-4f005cbb6d53": {
+  "nexusId": 21198,
+  "nexusName": "Bhaal's Gift",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 50,
+  "requires": [
+   {
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "Only if you have already start a game."
+   },
+   {
+    "name": "Transmog Enhanced",
+    "nexusId": 2922,
+    "notes": "If you find the stats too strong"
    }
   ]
  },
@@ -18443,6 +18533,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 192
+ },
+ "97579df7-1352-8aa6-9b0d-a2600ced1142": {
+  "nexusId": 19466,
+  "nexusName": "Church of Bane's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 62
  },
  "6a76067b-b340-9a71-60fd-c37ed5e624e6": {
   "nexusId": 22331,
@@ -18588,16 +18688,6 @@
    }
   ]
  },
- "49480de6-8296-974e-ed7c-c19df7f76d8f": {
-  "nexusId": 23925,
-  "nexusName": "Deities Dice Pack",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Dice",
-  "suggestedGroup": "Dice",
-  "adult": false,
-  "endorsements": 50
- },
  "28d085ef-620b-a5bd-2602-d40a5b6435a7": {
   "nexusId": 14154,
   "nexusName": "Demon Hunter class -  FR",
@@ -18695,16 +18785,6 @@
   "adult": true,
   "endorsements": 111
  },
- "ea4f9a80-f8ac-c04a-4c09-bb2c4b463e80": {
-  "nexusId": 23645,
-  "nexusName": "Duke Ravengard's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 28
- },
  "3b12f132-4c9f-448b-8f88-f6e6ba0bad77": {
   "nexusId": 11114,
   "nexusName": "Dwarven Weaponry - Kingsguard",
@@ -18763,15 +18843,15 @@
    }
   ]
  },
- "5df7c17e-2bc9-f9bb-b40c-c5dcdda036c0": {
-  "nexusId": 23654,
-  "nexusName": "Elven Head Pack",
+ "d79d9299-3970-20c3-0b8a-e97dc19269d7": {
+  "nexusId": 22912,
+  "nexusName": "Empress of the Isles - Emily Kaldwin's outfit",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
   "adult": false,
-  "endorsements": 204
+  "endorsements": 163
  },
  "168b4f75-d3dc-6e76-6307-5ce86d0f6da0": {
   "nexusId": 19402,
@@ -18905,16 +18985,6 @@
   "adult": true,
   "endorsements": 36
  },
- "47a9b306-2755-4c05-be77-cb3bd7c49cd5": {
-  "nexusId": 21233,
-  "nexusName": "Ferrety's Feats - The Dead Three",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Spells",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 31
- },
  "f7167032-fc15-4ae7-83ab-b60b94d6e0ca": {
   "nexusId": 21653,
   "nexusName": "Ferrety's Features - Vampirism",
@@ -19011,6 +19081,16 @@
   "adult": false,
   "endorsements": 129
  },
+ "890baefa-6732-f9c3-b068-cb8e376c269b": {
+  "nexusId": 20463,
+  "nexusName": "Garments of the Supreme Necromancer",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 39
+ },
  "51d973dc-2e1e-e2c6-66e4-09f3494f4f2d": {
   "nexusId": 6679,
   "nexusName": "Ghouls Simple Braid and Ponytail Hairstyle",
@@ -19061,6 +19141,16 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 210
+ },
+ "806f3caa-83dc-41a1-b26b-5398ea56a711": {
+  "nexusId": 5991,
+  "nexusName": "Gregarious Caster - Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 211
  },
  "7f168cee-2efb-a1ac-1eb0-49487309cb14": {
   "nexusId": 24970,
@@ -19288,23 +19378,6 @@
   "adult": false,
   "endorsements": 646
  },
- "4037a3b3-3130-34e8-02ab-dda65925f7f0": {
-  "nexusId": 21521,
-  "nexusName": "Mizora's New Look Revamped",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 33,
-  "requires": [
-   {
-    "name": "Mizora's Human Form Restored",
-    "nexusId": 16825,
-    "notes": "Optional file for the Sleeveless Dress and Dragon Suit, mandatory file to have a complete immersion with the Lore-friendly file (it is advised to either install Complete Immersion or Wyrm's Crossing Only by PoisonValentineXIII)."
-   }
-  ]
- },
  "83f0ea9e-5ec2-491a-96fa-1f3f4ca4e6a8": {
   "nexusId": 7358,
   "nexusName": "Monk - Wisdom Ki Scaling",
@@ -19322,6 +19395,16 @@
     "notes": "Required for compatibility with certain monk mods"
    }
   ]
+ },
+ "b2525507-ead1-5d98-00f1-116f6488a148": {
+  "nexusId": 18961,
+  "nexusName": "Moonrise Towers' New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 114
  },
  "a84a8a2c-af0b-4821-b67e-21b6ed88698d": {
   "nexusId": 25062,
@@ -19411,6 +19494,16 @@
   "adult": false,
   "endorsements": 62
  },
+ "df095d6f-6225-4fbc-91da-6689710ec4f7": {
+  "nexusId": 23626,
+  "nexusName": "Poison archer equipment",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 17
+ },
  "d2481ff8-5c74-cd1c-8709-6d8314bd1c30": {
   "nexusId": 14722,
   "nexusName": "PPMeter damage meter and combat statistics",
@@ -19490,6 +19583,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 31
+ },
+ "b65899da-47ef-fa5c-abc2-4fb97915974f": {
+  "nexusId": 24011,
+  "nexusName": "Sharess' Caress' New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": true,
+  "endorsements": 32
  },
  "d240b4c0-1d1c-4d15-b99b-a9b83924159d": {
   "nexusId": 23318,
@@ -19876,6 +19979,16 @@
   "adult": false,
   "endorsements": 169
  },
+ "e2fa05a5-4084-9442-47b4-bb6bc88685bb": {
+  "nexusId": 21321,
+  "nexusName": "Veiled Votary - A Divine Themed Rogue Subclass",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 36
+ },
  "06ddb0cf-4d14-4c5d-ae09-6e7c69730cc2": {
   "nexusId": 16960,
   "nexusName": "Viconia Drops Her Outfit",
@@ -19964,6 +20077,16 @@
   "adult": false,
   "endorsements": 17
  },
+ "fe201cd3-52f7-c757-5ba5-758167d3f577": {
+  "nexusId": 19901,
+  "nexusName": "Z'rell's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 38
+ },
  "21aa0c53-da44-f446-5f2b-e356f3c642e6": {
   "nexusId": 15407,
   "nexusName": "Ziphop - Teleport My Characters",
@@ -20003,6 +20126,16 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 134
+ },
+ "d9733f1b-fc44-4bce-81ee-b30acbbc3389": {
+  "nexusId": 21091,
+  "nexusName": "Acid equipment",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 16
  },
  "500363fd-f696-4288-affb-bff7b49cb06e": {
   "nexusId": 5351,
@@ -20160,16 +20293,6 @@
   "adult": false,
   "endorsements": 43
  },
- "2f02f435-e1fe-1cac-86ae-6108cd15a5d7": {
-  "nexusId": 20979,
-  "nexusName": "Balthazar's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 29
- },
  "e49ec07a-1209-462e-96ed-fe99db6f01ee": {
   "nexusId": 6556,
   "nexusName": "Basic Hair",
@@ -20211,29 +20334,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 26
- },
- "ab0ff867-a750-f01e-beb8-4f005cbb6d53": {
-  "nexusId": 21198,
-  "nexusName": "Bhaal's Gift",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 50,
-  "requires": [
-   {
-    "name": "Tutorial Chest Summoning",
-    "nexusId": 457,
-    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
-    "notes": "Only if you have already start a game."
-   },
-   {
-    "name": "Transmog Enhanced",
-    "nexusId": 2922,
-    "notes": "If you find the stats too strong"
-   }
-  ]
  },
  "f991766a-330c-fdf6-cf64-20e3bb21c4ba": {
   "nexusId": 11271,
@@ -20345,16 +20445,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 40
- },
- "97579df7-1352-8aa6-9b0d-a2600ced1142": {
-  "nexusId": 19466,
-  "nexusName": "Church of Bane's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 62
  },
  "c964c3df-21eb-45db-849d-41b5e76baebe": {
   "nexusId": 20363,
@@ -20549,6 +20639,16 @@
   "adult": false,
   "endorsements": 422
  },
+ "46794224-393b-455e-8f98-a3324ca36e23": {
+  "nexusId": 24633,
+  "nexusName": "Dynamic Inspiration",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 11
+ },
  "fb9b4b8f-3a71-4974-a1de-a4e27e9483a8": {
   "nexusId": 8868,
   "nexusName": "Eilistraee Cleric and Paladin Gear",
@@ -20558,6 +20658,16 @@
   "suggestedGroup": null,
   "adult": true,
   "endorsements": 662
+ },
+ "805a7fb6-cad3-3d60-23b7-cf1f0e832aad": {
+  "nexusId": 24852,
+  "nexusName": "Elegy of the Beast - Werewolf Overhaul",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 30
  },
  "430eb583-84b3-4a45-9f78-303a731b3ff8": {
   "nexusId": 813,
@@ -20588,16 +20698,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 194
- },
- "d79d9299-3970-20c3-0b8a-e97dc19269d7": {
-  "nexusId": 22912,
-  "nexusName": "Empress of the Isles - Emily Kaldwin's outfit",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 163
  },
  "7deea48e-8b9d-45e4-8685-5acfd0ce39ad": {
   "nexusId": 2166,
@@ -20712,6 +20812,34 @@
    }
   ]
  },
+ "a8acea63-7cbb-46de-abfe-597baf9be9ea": {
+  "nexusId": 15459,
+  "nexusName": "Fast Hands Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 30
+ },
+ "ffdb1eb8-4a90-d930-3582-b4d0d8d13ac6": {
+  "nexusId": 17565,
+  "nexusName": "Fate Between Us - Wedding Rings",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.92,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 95,
+  "requires": [
+   {
+    "name": "Tutorial Chest Summoning",
+    "nexusId": 457,
+    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+    "notes": "Required to get more chests! (main option)"
+   }
+  ]
+ },
  "5935aee7-8e5d-4a1d-ab45-629ef5b41beb": {
   "nexusId": 2446,
   "nexusName": "Femstarion",
@@ -20741,16 +20869,6 @@
   "suggestedGroup": "User Interface",
   "adult": false,
   "endorsements": 1
- },
- "890baefa-6732-f9c3-b068-cb8e376c269b": {
-  "nexusId": 20463,
-  "nexusName": "Garments of the Supreme Necromancer",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 39
  },
  "d2a5ac00-7a04-905d-c7b7-a3274d363e2a": {
   "nexusId": 14883,
@@ -20846,16 +20964,6 @@
   "adult": false,
   "endorsements": 37
  },
- "806f3caa-83dc-41a1-b26b-5398ea56a711": {
-  "nexusId": 5991,
-  "nexusName": "Gregarious Caster - Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 211
- },
  "ef01b0e3-a4e1-1672-84b3-bc63168888af": {
   "nexusId": 2602,
   "nexusName": "Heads (not only) for Tieflings",
@@ -20899,6 +21007,16 @@
     "notes": "Main Mod"
    }
   ]
+ },
+ "20d539e6-3e8b-c172-38db-c8c789bebade": {
+  "nexusId": 19521,
+  "nexusName": "House of Grief's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 50
  },
  "cdd358fc-54af-4445-89cc-9f66e9bf4976": {
   "nexusId": 19112,
@@ -20961,6 +21079,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 10
+ },
+ "e330b4f3-d1e1-441a-be58-9ed7d3133b3e": {
+  "nexusId": 6216,
+  "nexusName": "Infernal Heart - Burning Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 167
  },
  "22308960-d1cd-49ae-ac9c-d7336de7a586": {
   "nexusId": 14444,
@@ -21096,6 +21224,26 @@
   "adult": false,
   "endorsements": 58
  },
+ "656c71ee-e7a1-a922-a701-5bacf3da3f86": {
+  "nexusId": 24950,
+  "nexusName": "Krynnspace - Deities and Passives",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 4
+ },
+ "d1b9e7a3-3e13-4a52-2369-fa81c6737b86": {
+  "nexusId": 24951,
+  "nexusName": "Krynnspace - Core Library",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 2
+ },
  "a055ea1c-2cc2-4185-9507-2cd255fe01af": {
   "nexusId": 1301,
   "nexusName": "Kyra's head and hair",
@@ -21176,6 +21324,16 @@
   "adult": false,
   "endorsements": 184
  },
+ "b6d3e5e5-ac09-5eea-702d-33806831feb6": {
+  "nexusId": 21112,
+  "nexusName": "Lorroakan's New Look Revamped",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 21
+ },
  "448734c2-a462-70e7-34d2-a80d7c2b6cd8": {
   "nexusId": 16609,
   "nexusName": "Malice HR",
@@ -21215,6 +21373,26 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 435
+ },
+ "b8ef47d1-6900-47b8-b3f7-e8cde7402086": {
+  "nexusId": 6133,
+  "nexusName": "Merciful One - Necrotic Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 202
+ },
+ "b8e9dd4f-584d-4a49-ab0b-b5961f3097d7": {
+  "nexusId": 6128,
+  "nexusName": "Mindhunter - Psychic Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 216
  },
  "78f51467-d9aa-4d13-90a7-0fda8a54ba20": {
   "nexusId": 18137,
@@ -21277,16 +21455,6 @@
     "uuid": "390fe96d-d38a-49ef-a522-9335d0a948d6"
    }
   ]
- },
- "b2525507-ead1-5d98-00f1-116f6488a148": {
-  "nexusId": 18961,
-  "nexusName": "Moonrise Towers' New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 114
  },
  "e57d8475-47cd-7038-a66c-f3f4b64e9f4a": {
   "nexusId": 24063,
@@ -21590,16 +21758,6 @@
     "notes": "Required"
    }
   ]
- },
- "df095d6f-6225-4fbc-91da-6689710ec4f7": {
-  "nexusId": 23626,
-  "nexusName": "Poison archer equipment",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 17
  },
  "0f87e799-4a97-cbc8-daba-db4cd03be887": {
   "nexusId": 21035,
@@ -21931,16 +22089,6 @@
   "adult": false,
   "endorsements": 34
  },
- "b65899da-47ef-fa5c-abc2-4fb97915974f": {
-  "nexusId": 24011,
-  "nexusName": "Sharess' Caress' New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": true,
-  "endorsements": 32
- },
  "e550e525-99ad-4184-944d-d804f19e3743": {
   "nexusId": 5926,
   "nexusName": "Short Flowery Hair",
@@ -21967,6 +22115,16 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 515
+ },
+ "6107cc68-146b-42c7-9c7e-f5ac1f5e8cc1": {
+  "nexusId": 6162,
+  "nexusName": "Sithborn - Force Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 193
  },
  "c089f5da-2d2e-087b-0d70-7b9aff41a232": {
   "nexusId": 12674,
@@ -22173,6 +22331,26 @@
   "adult": false,
   "endorsements": 99
  },
+ "5e2c92b4-1b5f-2bd7-84d8-88fbeac7b514": {
+  "nexusId": 22860,
+  "nexusName": "The Brigmore Witch - Delilah Copperspoon's outfit",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Armor",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 118
+ },
+ "5ee93667-6fb7-45fc-a743-77c4b7dc4107": {
+  "nexusId": 19842,
+  "nexusName": "The Duergars' New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 62
+ },
  "16e6180f-07dd-41c5-bcd0-92d4fca0a0c6": {
   "nexusId": 10084,
   "nexusName": "The Lads Head Presets",
@@ -22324,16 +22502,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 254
- },
- "e2fa05a5-4084-9442-47b4-bb6bc88685bb": {
-  "nexusId": 21321,
-  "nexusName": "Veiled Votary - A Divine Themed Rogue Subclass",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 36
  },
  "cf6336a1-b647-8c5e-bf26-4d2d59d71f4c": {
   "nexusId": 18477,
@@ -22488,16 +22656,6 @@
   "adult": false,
   "endorsements": 117
  },
- "fe201cd3-52f7-c757-5ba5-758167d3f577": {
-  "nexusId": 19901,
-  "nexusName": "Z'rell's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 38
- },
  "e17960dd-3f70-a6d0-3ee8-b0fa8d1b539a": {
   "nexusId": 15363,
   "nexusName": "Ziva Stockings and Boots",
@@ -22545,16 +22703,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 48
- },
- "d9733f1b-fc44-4bce-81ee-b30acbbc3389": {
-  "nexusId": 21091,
-  "nexusName": "Acid equipment",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 16
  },
  "0e0419f8-1f3b-7daa-1d0e-8ebdaaefa31f": {
   "nexusId": 23176,
@@ -23170,6 +23318,16 @@
   "adult": false,
   "endorsements": 44
  },
+ "a84a37c6-72f4-7c98-cbd3-f38c6bd16af3": {
+  "nexusId": 19449,
+  "nexusName": "Church of Bhaal's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 59
+ },
  "81e768b1-d3d1-808e-3b6c-0d3206990503": {
   "nexusId": 1844,
   "nexusName": "Circle of Dreams (Druid Subclass)",
@@ -23600,6 +23758,16 @@
   "adult": false,
   "endorsements": 820
  },
+ "6c4654c8-e2c2-4929-becc-77a26f1cbf57": {
+  "nexusId": 15452,
+  "nexusName": "Dread Ambusher Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 13
+ },
  "2922cbec-b338-bae1-fd91-ce2a8f582689": {
   "nexusId": 12347,
   "nexusName": "Druid - Actually GOODberry",
@@ -23610,6 +23778,16 @@
   "adult": false,
   "endorsements": 26
  },
+ "1046f7a1-998e-43ff-a1d3-8af8f0ea5e22": {
+  "nexusId": 6170,
+  "nexusName": "Drunken Master - Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 94
+ },
  "1227b478-160e-4bd9-ba35-4a659a430578": {
   "nexusId": 16925,
   "nexusName": "Dyes For Days",
@@ -23619,16 +23797,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 43
- },
- "46794224-393b-455e-8f98-a3324ca36e23": {
-  "nexusId": 24633,
-  "nexusName": "Dynamic Inspiration",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 11
  },
  "058bbf34-d867-539c-fa4d-8540dc810da0": {
   "nexusId": 23007,
@@ -23649,16 +23817,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 19
- },
- "805a7fb6-cad3-3d60-23b7-cf1f0e832aad": {
-  "nexusId": 24852,
-  "nexusName": "Elegy of the Beast - Werewolf Overhaul",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 30
  },
  "6625aea2-e4de-46f2-bb0f-81cf26009e13": {
   "nexusId": 9037,
@@ -23736,34 +23894,6 @@
   "suggestedGroup": "Utilities",
   "adult": false,
   "endorsements": 1372
- },
- "a8acea63-7cbb-46de-abfe-597baf9be9ea": {
-  "nexusId": 15459,
-  "nexusName": "Fast Hands Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 30
- },
- "ffdb1eb8-4a90-d930-3582-b4d0d8d13ac6": {
-  "nexusId": 17565,
-  "nexusName": "Fate Between Us - Wedding Rings",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.92,
-  "nexusCategory": "Accessories",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 95,
-  "requires": [
-   {
-    "name": "Tutorial Chest Summoning",
-    "nexusId": 457,
-    "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
-    "notes": "Required to get more chests! (main option)"
-   }
-  ]
  },
  "6161ea1b-ea2c-41d8-9a58-4231a0daac2f": {
   "nexusId": 21134,
@@ -24080,6 +24210,16 @@
   "adult": false,
   "endorsements": 441
  },
+ "f179ff05-3726-b9e9-91fd-bc06df60e3a0": {
+  "nexusId": 13148,
+  "nexusName": "Hellcleaver - Barbarian Subclass",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 99
+ },
  "e5d603f3-247c-4114-8b96-c26c300f1655": {
   "nexusId": 24329,
   "nexusName": "Hellfire Greataxe Fix",
@@ -24116,6 +24256,24 @@
    }
   ]
  },
+ "aec6997c-56bd-733a-728d-500c70dba8d1": {
+  "nexusId": 24618,
+  "nexusName": "Homebrew Subclasses",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 21,
+  "requires": [
+   {
+    "name": "Water Spells",
+    "nexusId": 15328,
+    "uuid": "777d21b5-c6ad-80d6-96ac-2dd80c879fcc",
+    "notes": "Required for Sea Soul"
+   }
+  ]
+ },
  "1daab2c9-0471-4d9c-8331-cc4ef7ae265b": {
   "nexusId": 13610,
   "nexusName": "Horn Texture Edits",
@@ -24125,16 +24283,6 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 66
- },
- "20d539e6-3e8b-c172-38db-c8c789bebade": {
-  "nexusId": 19521,
-  "nexusName": "House of Grief's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 50
  },
  "84079021-4ecc-4316-9e2f-590866824be0": {
   "nexusId": 14775,
@@ -24249,16 +24397,6 @@
   "adult": false,
   "endorsements": 119
  },
- "e330b4f3-d1e1-441a-be58-9ed7d3133b3e": {
-  "nexusId": 6216,
-  "nexusName": "Infernal Heart - Burning Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 167
- },
  "701795b6-162e-6c8d-e463-64ae274f5303": {
   "nexusId": 12967,
   "nexusName": "Inspiration Cap",
@@ -24357,26 +24495,6 @@
     "nexusId": 2172
    }
   ]
- },
- "656c71ee-e7a1-a922-a701-5bacf3da3f86": {
-  "nexusId": 24950,
-  "nexusName": "Krynnspace - Deities and Passives",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 4
- },
- "d1b9e7a3-3e13-4a52-2369-fa81c6737b86": {
-  "nexusId": 24951,
-  "nexusName": "Krynnspace - Core Library",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 2
  },
  "d7f1f31d-204d-4014-aeeb-889de47d3347": {
   "nexusId": 18218,
@@ -24501,16 +24619,6 @@
    }
   ]
  },
- "b6d3e5e5-ac09-5eea-702d-33806831feb6": {
-  "nexusId": 21112,
-  "nexusName": "Lorroakan's New Look Revamped",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 21
- },
  "47015f72-5d4b-441b-916b-c2ab158d7e25": {
   "nexusId": 8084,
   "nexusName": "Luneo's Horns",
@@ -24537,6 +24645,16 @@
   "adult": false,
   "endorsements": 21
  },
+ "7df1ff88-ea4b-4325-b1cf-38900642d1a0": {
+  "nexusId": 6211,
+  "nexusName": "Malignant - Wrath Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 107
+ },
  "5ed100ba-e4d0-7b7f-07a2-69b6a9262e4f": {
   "nexusId": 18782,
   "nexusName": "Mayrina's Daughter - a hag outfit",
@@ -24562,16 +24680,6 @@
     "nexusId": 18883
    }
   ]
- },
- "b8ef47d1-6900-47b8-b3f7-e8cde7402086": {
-  "nexusId": 6133,
-  "nexusName": "Merciful One - Necrotic Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 202
  },
  "febca0da-483b-ab12-58ee-09c9e03a6193": {
   "nexusId": 1362,
@@ -24660,16 +24768,6 @@
     "uuid": "63d2a82d-84e1-05be-60a3-fffddbacfba8"
    }
   ]
- },
- "b8e9dd4f-584d-4a49-ab0b-b5961f3097d7": {
-  "nexusId": 6128,
-  "nexusName": "Mindhunter - Psychic Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 216
  },
  "46b87672-a8a8-bc9f-93fa-44fe66d608f9": {
   "nexusId": 19516,
@@ -24829,6 +24927,16 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 292
+ },
+ "066aeb88-8484-c5b7-d1d4-b1bc45db6b49": {
+  "nexusId": 19461,
+  "nexusName": "Murder Tribunal's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 46
  },
  "604f39ec-c9f2-420a-a276-4e6cadb662b9": {
   "nexusId": 7805,
@@ -25267,6 +25375,16 @@
   "adult": false,
   "endorsements": 12
  },
+ "21f6ba04-617c-4ed2-bcff-1b3f007b0bb5": {
+  "nexusId": 6184,
+  "nexusName": "Sanguine - Bleeding Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 137
+ },
  "19ea3076-d7dd-4897-bec8-eb3e7ba04839": {
   "nexusId": 4958,
   "nexusName": "Save Restore Stash",
@@ -25410,16 +25528,6 @@
   "adult": false,
   "endorsements": 40
  },
- "6107cc68-146b-42c7-9c7e-f5ac1f5e8cc1": {
-  "nexusId": 6162,
-  "nexusName": "Sithborn - Force Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 193
- },
  "80ed23c9-b2d5-b75f-f327-4b4f419e6c19": {
   "nexusId": 4990,
   "nexusName": "Slightly Deadlier Slayer",
@@ -25494,6 +25602,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 143
+ },
+ "5e059961-3d3d-4f07-aa4e-14a1ced32f92": {
+  "nexusId": 6205,
+  "nexusName": "Sprinter - Momentum Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 116
  },
  "682a7a11-5e8a-347c-8982-82ff98ea7139": {
   "nexusId": 19046,
@@ -25656,25 +25774,25 @@
   "adult": true,
   "endorsements": 321
  },
- "5e2c92b4-1b5f-2bd7-84d8-88fbeac7b514": {
-  "nexusId": 22860,
-  "nexusName": "The Brigmore Witch - Delilah Copperspoon's outfit",
+ "2618234a-1ba9-5ae6-af13-e17ae85a459f": {
+  "nexusId": 17786,
+  "nexusName": "The Conjurer",
   "matchKind": "exact",
   "matchConfidence": 1,
-  "nexusCategory": "Armor",
-  "suggestedGroup": null,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
   "adult": false,
-  "endorsements": 118
+  "endorsements": 32
  },
- "5ee93667-6fb7-45fc-a743-77c4b7dc4107": {
-  "nexusId": 19842,
-  "nexusName": "The Duergars' New Look",
+ "9aea552c-77e9-ee06-403e-2b4e4b63a3b5": {
+  "nexusId": 19383,
+  "nexusName": "The Guild's New Look",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Visuals",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 62
+  "endorsements": 67
  },
  "c3c4b8a2-4463-b6d7-f613-018e99bcd8a2": {
   "nexusId": 21641,
@@ -25768,6 +25886,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 288
+ },
+ "15506dd0-2dc2-4224-afa2-42e3400c7caa": {
+  "nexusId": 6189,
+  "nexusName": "True Soul - Branded Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 102
  },
  "cf481c97-1f9f-4129-80ee-23970bf3c1f1": {
   "nexusId": 1746,
@@ -26035,6 +26163,16 @@
   "suggestedGroup": "Character Customization",
   "adult": false,
   "endorsements": 87
+ },
+ "7f345cfa-d2c7-f5ba-e591-9ca7645fd363": {
+  "nexusId": 24644,
+  "nexusName": "Ziva Goddess Dress",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Clothing",
+  "suggestedGroup": "Clothing",
+  "adult": false,
+  "endorsements": 78
  },
  "44ca1c04-a084-2521-d2ea-bf82a0bc961b": {
   "nexusId": 22346,
@@ -26339,6 +26477,16 @@
   "adult": false,
   "endorsements": 89
  },
+ "7458831f-5edc-807c-c075-595ba2b75876": {
+  "nexusId": 25657,
+  "nexusName": "Baldur's Dyes",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 19
+ },
  "8377fea4-eb8e-4325-95d2-04e73a6146ad": {
   "nexusId": 19249,
   "nexusName": "Banite wretched armor",
@@ -26365,6 +26513,16 @@
     "notes": "Required."
    }
   ]
+ },
+ "f52b5cb6-2714-45a5-8961-221ddb62ad37": {
+  "nexusId": 19697,
+  "nexusName": "Bard archer equipment",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 31
  },
  "b79bb1f3-992f-4d3b-869f-0b0b4b0442d9": {
   "nexusId": 3008,
@@ -26578,6 +26736,16 @@
   "adult": false,
   "endorsements": 105
  },
+ "a610e8c8-9084-414a-7aa9-48dfa701e736": {
+  "nexusId": 15206,
+  "nexusName": "Broken Feats",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 22
+ },
  "61e1046e-db73-5fe8-eddf-978b8b4d543b": {
   "nexusId": 18336,
   "nexusName": "Calis Preset",
@@ -26652,16 +26820,6 @@
     "notes": "Required for UI elements"
    }
   ]
- },
- "a84a37c6-72f4-7c98-cbd3-f38c6bd16af3": {
-  "nexusId": 19449,
-  "nexusName": "Church of Bhaal's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 59
  },
  "234262d5-7bf8-4ecf-a0f9-0d5544fb40ed": {
   "nexusId": 2586,
@@ -27008,16 +27166,6 @@
   "adult": true,
   "endorsements": 40
  },
- "6c4654c8-e2c2-4929-becc-77a26f1cbf57": {
-  "nexusId": 15452,
-  "nexusName": "Dread Ambusher Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Miscellaneous",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 13
- },
  "d6ee0771-6084-8cf0-0132-d745e8db8ca9": {
   "nexusId": 1916,
   "nexusName": "Drow Leather Boots for Minthara",
@@ -27027,16 +27175,6 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 272
- },
- "1046f7a1-998e-43ff-a1d3-8af8f0ea5e22": {
-  "nexusId": 6170,
-  "nexusName": "Drunken Master - Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 94
  },
  "76c11f91-a186-47b9-bc90-3f96fc6933d7": {
   "nexusId": 16600,
@@ -27099,6 +27237,16 @@
    }
   ]
  },
+ "bb7c2e36-ca1d-4770-8923-9257a8bdf5e2": {
+  "nexusId": 24582,
+  "nexusName": "Elden Ring Talismans",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 10
+ },
  "a29f5967-4256-4833-9dbf-09b8cbbe14f2": {
   "nexusId": 11700,
   "nexusName": "Electric Guitar Mod",
@@ -27108,6 +27256,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 190
+ },
+ "d9b270ca-666b-54b0-ff51-61de0fb90fd3": {
+  "nexusId": 24353,
+  "nexusName": "Elfsong Ladies Head Pack",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 93
  },
  "402021c0-6510-9ee0-2a59-fdb54134897f": {
   "nexusId": 21421,
@@ -27436,6 +27594,23 @@
   "adult": false,
   "endorsements": 83
  },
+ "d9d6222a-adaa-8124-d8ff-e577446d2dac": {
+  "nexusId": 1374,
+  "nexusName": "Bags of Sorting",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.92,
+  "nexusCategory": "User Interface",
+  "suggestedGroup": "User Interface",
+  "adult": false,
+  "endorsements": 227,
+  "requires": [
+   {
+    "name": "Pouch of Wonders",
+    "nexusId": 1368,
+    "notes": "Optional, but recommended."
+   }
+  ]
+ },
  "31b62197-c3c3-d745-515b-e74c11f923c2": {
   "nexusId": 12670,
   "nexusName": "Funky Froge Skintones",
@@ -27598,6 +27773,16 @@
   "adult": false,
   "endorsements": 2409
  },
+ "eda2f910-f3aa-713b-4241-077a112c67e2": {
+  "nexusId": 18761,
+  "nexusName": "Gortash's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 58
+ },
  "20173329-1b3d-f1fd-25cd-0c29a29b70d0": {
   "nexusId": 19423,
   "nexusName": "Granny V Set",
@@ -27705,16 +27890,6 @@
   "adult": false,
   "endorsements": 50
  },
- "f179ff05-3726-b9e9-91fd-bc06df60e3a0": {
-  "nexusId": 13148,
-  "nexusName": "Hellcleaver - Barbarian Subclass",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 99
- },
  "d3fe0029-dfd1-8a14-b863-3822a13b6e1f": {
   "nexusId": 13750,
   "nexusName": "Holy-Avenger",
@@ -27724,24 +27899,6 @@
   "suggestedGroup": "Weapons",
   "adult": false,
   "endorsements": 19
- },
- "aec6997c-56bd-733a-728d-500c70dba8d1": {
-  "nexusId": 24618,
-  "nexusName": "Homebrew Subclasses",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 21,
-  "requires": [
-   {
-    "name": "Water Spells",
-    "nexusId": 15328,
-    "uuid": "777d21b5-c6ad-80d6-96ac-2dd80c879fcc",
-    "notes": "Required for Sea Soul"
-   }
-  ]
  },
  "ae2874ab-1067-4a9c-8664-1c8146f8b64e": {
   "nexusId": 24933,
@@ -27887,6 +28044,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 84
+ },
+ "a7543512-d1d7-24c0-6fc3-567b80b18e68": {
+  "nexusId": 18727,
+  "nexusName": "Ketheric Thorm's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 44
  },
  "8b5c8213-f7d5-43a1-bf48-fe6d183b5da8": {
   "nexusId": 17594,
@@ -28081,16 +28248,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 17
- },
- "7df1ff88-ea4b-4325-b1cf-38900642d1a0": {
-  "nexusId": 6211,
-  "nexusName": "Malignant - Wrath Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 107
  },
  "c70b2baa-831b-4ef6-bbbf-6b510c0f8b91": {
   "nexusId": 17212,
@@ -28399,16 +28556,6 @@
    }
   ]
  },
- "066aeb88-8484-c5b7-d1d4-b1bc45db6b49": {
-  "nexusId": 19461,
-  "nexusName": "Murder Tribunal's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 46
- },
  "58ced6d9-a484-cc6c-9a8f-6e2269f417b9": {
   "nexusId": 2869,
   "nexusName": "DevilSwordDante",
@@ -28462,6 +28609,16 @@
     "notes": "OPTIONAL - If you want the effect with the glow versions for all Races."
    }
   ]
+ },
+ "97980bb5-01f0-33f6-1ad6-f119df036d47": {
+  "nexusId": 19736,
+  "nexusName": "Nere's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 12
  },
  "a4941e02-3dbe-a982-dc38-2c7a7322f192": {
   "nexusId": 18445,
@@ -28529,6 +28686,36 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 24
+ },
+ "a1db6923-a5fb-41aa-8972-7775f0ad1c10": {
+  "nexusId": 22734,
+  "nexusName": "No Emperor Romance",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 92
+ },
+ "d58fd498-c1e2-e070-7a46-5f3b126919e4": {
+  "nexusId": 13681,
+  "nexusName": "NPC Revamp - Tieflings",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 345
+ },
+ "bb28b152-b75c-5429-961f-9ac32c4065a8": {
+  "nexusId": 14059,
+  "nexusName": "NPC Revamp - Druids",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Character Customisation",
+  "suggestedGroup": "Character Customization",
+  "adult": false,
+  "endorsements": 233
  },
  "a11b2ffd-3f17-5765-acdd-7b71439492f0": {
   "nexusId": 22761,
@@ -29032,16 +29219,6 @@
    }
   ]
  },
- "21f6ba04-617c-4ed2-bcff-1b3f007b0bb5": {
-  "nexusId": 6184,
-  "nexusName": "Sanguine - Bleeding Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 137
- },
  "883ef24c-7b6c-edde-4f48-64f5e1b15fce": {
   "nexusId": 22501,
   "nexusName": "Cosier Act 2 Riverside camp",
@@ -29267,16 +29444,6 @@
   "adult": false,
   "endorsements": 57
  },
- "5e059961-3d3d-4f07-aa4e-14a1ced32f92": {
-  "nexusId": 6205,
-  "nexusName": "Sprinter - Momentum Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 116
- },
  "b327742d-d9f2-febf-555c-ed6b71fda39d": {
   "nexusId": 15815,
   "nexusName": "Staggering Smite in Bard's Magical Secrets",
@@ -29296,6 +29463,16 @@
   "suggestedGroup": "Classes",
   "adult": false,
   "endorsements": 185
+ },
+ "f29e5858-3bde-487b-a215-9727d620de60": {
+  "nexusId": 2221,
+  "nexusName": "Instruments of Proficiencies",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 419
  },
  "24f84388-ce13-2428-e54a-ee93c37173a9": {
   "nexusId": 18579,
@@ -29367,6 +29544,16 @@
    }
   ]
  },
+ "ee28257d-8483-1d37-a478-4cf3c50830d1": {
+  "nexusId": 19657,
+  "nexusName": "Szarr Palace's New Look",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": true,
+  "endorsements": 32
+ },
  "1c95b2e6-9650-1461-a416-f303f220292c": {
   "nexusId": 6695,
   "nexusName": "Taulmaril",
@@ -29412,16 +29599,6 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 54
- },
- "2618234a-1ba9-5ae6-af13-e17ae85a459f": {
-  "nexusId": 17786,
-  "nexusName": "The Conjurer",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Classes",
-  "suggestedGroup": "Classes",
-  "adult": false,
-  "endorsements": 32
  },
  "c6eac404-324a-e103-31e4-fc3ce7187fe5": {
   "nexusId": 13323,
@@ -29475,16 +29652,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 19
- },
- "9aea552c-77e9-ee06-403e-2b4e4b63a3b5": {
-  "nexusId": 19383,
-  "nexusName": "The Guild's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 67
  },
  "c48bd830-1586-b19d-e4c2-ed4ce7ff8d54": {
   "nexusId": 19611,
@@ -29619,16 +29786,6 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 17
- },
- "15506dd0-2dc2-4224-afa2-42e3400c7caa": {
-  "nexusId": 6189,
-  "nexusName": "True Soul - Branded Feat",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 102
  },
  "055f2ce3-294b-d2f9-e53b-5d1a30f8c862": {
   "nexusId": 14649,
@@ -29960,6 +30117,16 @@
   "adult": false,
   "endorsements": 75
  },
+ "bc5874c3-b979-48d6-8ad4-7264af77fa15": {
+  "nexusId": 20350,
+  "nexusName": "Wizard equipment",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 41
+ },
  "3beb55e8-b363-0ea7-5d8f-f236cb791db0": {
   "nexusId": 18849,
   "nexusName": "Wyll's New Look",
@@ -29967,16 +30134,6 @@
   "matchConfidence": 1,
   "nexusCategory": "Visuals",
   "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 78
- },
- "7f345cfa-d2c7-f5ba-e591-9ca7645fd363": {
-  "nexusId": 24644,
-  "nexusName": "Ziva Goddess Dress",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Clothing",
-  "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 78
  },
@@ -30323,6 +30480,16 @@
   "adult": false,
   "endorsements": 10
  },
+ "ba2a54c3-3500-6766-0a1a-8bc8d5853d71": {
+  "nexusId": 22175,
+  "nexusName": "Apotheosis",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 7
+ },
  "c0956a88-a2bf-c1c5-b271-2d8286859b11": {
   "nexusId": 25653,
   "nexusName": "Arcana Unleashed Subclasses_CHS",
@@ -30592,16 +30759,6 @@
    }
   ]
  },
- "7458831f-5edc-807c-c075-595ba2b75876": {
-  "nexusId": 25657,
-  "nexusName": "Baldur's Dyes",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 19
- },
  "967f4f79-e2a3-4f99-a392-638e2da555ff": {
   "nexusId": 6680,
   "nexusName": "Balduran's Giantslayer - Ansur Soul",
@@ -30612,15 +30769,15 @@
   "adult": false,
   "endorsements": 32
  },
- "f52b5cb6-2714-45a5-8961-221ddb62ad37": {
-  "nexusId": 19697,
-  "nexusName": "Bard archer equipment",
+ "04fd8aac-9370-4f2e-9de8-0864a5b5dbfa": {
+  "nexusId": 21379,
+  "nexusName": "Barbarian melee equipment",
   "matchKind": "exact",
   "matchConfidence": 1,
   "nexusCategory": "Equipment",
   "suggestedGroup": null,
   "adult": false,
-  "endorsements": 31
+  "endorsements": 17
  },
  "861e9235-2afe-8178-3626-761eac089367": {
   "nexusId": 20278,
@@ -30943,16 +31100,6 @@
     "notes": "To get the dice mid-game"
    }
   ]
- },
- "a610e8c8-9084-414a-7aa9-48dfa701e736": {
-  "nexusId": 15206,
-  "nexusName": "Broken Feats",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 22
  },
  "b7ccaa28-9b55-4e30-86e7-bad1e28e1760": {
   "nexusId": 25040,
@@ -31693,16 +31840,6 @@
   "adult": false,
   "endorsements": 40
  },
- "bb7c2e36-ca1d-4770-8923-9257a8bdf5e2": {
-  "nexusId": 24582,
-  "nexusName": "Elden Ring Talismans",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 10
- },
  "3b5c7626-59df-49cd-af7c-59e7dcc19e9e": {
   "nexusId": 19852,
   "nexusName": "Elder Vampire Heart",
@@ -31737,16 +31874,6 @@
     "notes": "Required. Can be found Via Nexus or In-Game Mod Browser."
    }
   ]
- },
- "d9b270ca-666b-54b0-ff51-61de0fb90fd3": {
-  "nexusId": 24353,
-  "nexusName": "Elfsong Ladies Head Pack",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 93
  },
  "f6be69d1-8a2d-4d21-b5c9-cc3052c844b7": {
   "nexusId": 8539,
@@ -32066,23 +32193,6 @@
    }
   ]
  },
- "d9d6222a-adaa-8124-d8ff-e577446d2dac": {
-  "nexusId": 1374,
-  "nexusName": "Bags of Sorting",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.92,
-  "nexusCategory": "User Interface",
-  "suggestedGroup": "User Interface",
-  "adult": false,
-  "endorsements": 227,
-  "requires": [
-   {
-    "name": "Pouch of Wonders",
-    "nexusId": 1368,
-    "notes": "Optional, but recommended."
-   }
-  ]
- },
  "79ec4f7a-1e7f-40bb-8ea2-cdc19282572e": {
   "nexusId": 1365,
   "nexusName": "Full Movement for Short Races",
@@ -32248,16 +32358,6 @@
     "notes": "optionally, for the hairstyle"
    }
   ]
- },
- "eda2f910-f3aa-713b-4241-077a112c67e2": {
-  "nexusId": 18761,
-  "nexusName": "Gortash's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 58
  },
  "940af8ef-84f0-80f1-1ae1-4d33e3c49a50": {
   "nexusId": 19328,
@@ -32807,16 +32907,6 @@
   "adult": false,
   "endorsements": 16
  },
- "a7543512-d1d7-24c0-6fc3-567b80b18e68": {
-  "nexusId": 18727,
-  "nexusName": "Ketheric Thorm's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 44
- },
  "e2ea9e34-cad8-8277-7095-beccdb26ba0d": {
   "nexusId": 18749,
   "nexusName": "Kira's Kill Count",
@@ -33356,16 +33446,6 @@
   "adult": false,
   "endorsements": 83
  },
- "97980bb5-01f0-33f6-1ad6-f119df036d47": {
-  "nexusId": 19736,
-  "nexusName": "Nere's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 12
- },
  "91b3c8ed-1fd9-13a4-5a9f-031f7dd68f34": {
   "nexusId": 18841,
   "nexusName": "Nimbus HP Restored",
@@ -33430,16 +33510,6 @@
   "adult": false,
   "endorsements": 37
  },
- "a1db6923-a5fb-41aa-8972-7775f0ad1c10": {
-  "nexusId": 22734,
-  "nexusName": "No Emperor Romance",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 92
- },
  "594f564c-13ac-53d4-3cbf-5dd7d4df0214": {
   "nexusId": 22972,
   "nexusName": "Nomads of El Rahalat",
@@ -33470,16 +33540,6 @@
   "adult": false,
   "endorsements": 6
  },
- "d58fd498-c1e2-e070-7a46-5f3b126919e4": {
-  "nexusId": 13681,
-  "nexusName": "NPC Revamp - Tieflings",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 345
- },
  "32933063-8266-4fc8-8b90-14bc601eb964": {
   "nexusId": 11726,
   "nexusName": "NPC Scanner for Combat Extender",
@@ -33502,16 +33562,6 @@
     "notes": "Hard requirement."
    }
   ]
- },
- "bb28b152-b75c-5429-961f-9ac32c4065a8": {
-  "nexusId": 14059,
-  "nexusName": "NPC Revamp - Druids",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Character Customisation",
-  "suggestedGroup": "Character Customization",
-  "adult": false,
-  "endorsements": 233
  },
  "1edfa82a-6652-440a-b13b-569564cdd78e": {
   "nexusId": 7745,
@@ -33581,6 +33631,16 @@
     "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"
    }
   ]
+ },
+ "60c9bffe-b204-4e91-3f73-17fc295193b7": {
+  "nexusId": 21457,
+  "nexusName": "Orin's New Look Revamped",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 19
  },
  "8db8d1e6-e9ac-a9c9-59dc-9c1fe6f9f15e": {
   "nexusId": 17382,
@@ -34132,6 +34192,16 @@
   "adult": false,
   "endorsements": 26
  },
+ "5d684312-5c74-4c93-b030-ef83dd31ebcd": {
+  "nexusId": 3448,
+  "nexusName": "Sarevok Set",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 409
+ },
  "6a122309-efce-479a-9cde-bd9ac52de86c": {
   "nexusId": 15141,
   "nexusName": "5e Barbarian Subclasses Combined",
@@ -34279,6 +34349,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 59
+ },
+ "2b2df18b-ad91-79fb-882c-2c1813f0a313": {
+  "nexusId": 25235,
+  "nexusName": "Magus Selectus - Gale Edit",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.93,
+  "nexusCategory": "Visuals",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 30
  },
  "87ab0e06-6bde-ed07-06ea-5d11f6cd6b9c": {
   "nexusId": 21859,
@@ -34446,6 +34526,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 384
+ },
+ "7ed945fb-556e-d84f-1ab9-4b58ec8321a5": {
+  "nexusId": 25798,
+  "nexusName": "Sir Acalians Baldur's Gate 3 Feats",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 0
  },
  "c9327dea-fd58-4803-a201-27a678943ffc": {
   "nexusId": 2839,
@@ -34632,16 +34722,6 @@
    }
   ]
  },
- "f29e5858-3bde-487b-a215-9727d620de60": {
-  "nexusId": 2221,
-  "nexusName": "Instruments of Proficiencies",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.91,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 419
- },
  "d5a6a8bb-a319-4b1e-8cf4-847f78818e60": {
   "nexusId": 22402,
   "nexusName": "Steady Aim (2024)",
@@ -34728,16 +34808,6 @@
     "notes": "for VFX on sword."
    }
   ]
- },
- "ee28257d-8483-1d37-a478-4cf3c50830d1": {
-  "nexusId": 19657,
-  "nexusName": "Szarr Palace's New Look",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": true,
-  "endorsements": 32
  },
  "61ec1bc2-dd05-fdeb-1c61-cb7495a06b3e": {
   "nexusId": 21394,
@@ -34919,6 +34989,16 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 43
+ },
+ "88aa876a-9c78-4802-aa5d-35175e1262ab": {
+  "nexusId": 25185,
+  "nexusName": "The Leper King's Courtwear",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Clothing",
+  "suggestedGroup": "Clothing",
+  "adult": false,
+  "endorsements": 22
  },
  "be8801ef-19b4-404a-8acd-a7cd73aaaf64": {
   "nexusId": 12997,
@@ -35557,16 +35637,6 @@
     "notes": "Required Mods"
    }
   ]
- },
- "bc5874c3-b979-48d6-8ad4-7264af77fa15": {
-  "nexusId": 20350,
-  "nexusName": "Wizard equipment",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 41
  },
  "f614154d-9ff2-4703-9c7d-e7cd043a5448": {
   "nexusId": 4188,
@@ -36314,16 +36384,6 @@
   "adult": false,
   "endorsements": 38
  },
- "ba2a54c3-3500-6766-0a1a-8bc8d5853d71": {
-  "nexusId": 22175,
-  "nexusName": "Apotheosis",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Accessories",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 7
- },
  "fe952080-4cd5-43ca-8805-90e293144964": {
   "nexusId": 644,
   "nexusName": "Approval Tweaks",
@@ -36649,16 +36709,6 @@
   "suggestedGroup": "Classes",
   "adult": false,
   "endorsements": 2219
- },
- "04fd8aac-9370-4f2e-9de8-0864a5b5dbfa": {
-  "nexusId": 21379,
-  "nexusName": "Barbarian melee equipment",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 17
  },
  "7fbc13d9-6dc6-4b8d-bdb7-bd7d9b112424": {
   "nexusId": 15173,
@@ -37500,6 +37550,16 @@
    }
   ]
  },
+ "8b0e1262-41be-402d-bc2a-985118270a7d": {
+  "nexusId": 14020,
+  "nexusName": "Chameleon Cloak Feat",
+  "matchKind": "fuzzy",
+  "matchConfidence": 0.91,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 16
+ },
  "364544ed-f5f2-0a43-dab4-557db05752ae": {
   "nexusId": 24690,
   "nexusName": "CHAR's BloodThorn Daggers",
@@ -38107,6 +38167,16 @@
    }
   ]
  },
+ "2b6ce74d-67bd-4114-b273-2cd77ffe4b51": {
+  "nexusId": 20604,
+  "nexusName": "Deathlord equipment",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 22
+ },
  "e79fb484-8cab-408b-bdcc-e0effcbca8e7": {
   "nexusId": 23814,
   "nexusName": "Defensive Duelist Reaction Fix",
@@ -38305,6 +38375,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 1518
+ },
+ "4dbaf18c-631f-4c24-8510-37a8b16d84d9": {
+  "nexusId": 21541,
+  "nexusName": "Druid equipment",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 29
  },
  "46c7b44e-493b-4b67-b3ff-c57d471532c5": {
   "nexusId": 13887,
@@ -39143,6 +39223,16 @@
    }
   ]
  },
+ "0caf0cbc-4f70-4194-b0fd-8cc21977a282": {
+  "nexusId": 21540,
+  "nexusName": "Fire equipment",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 25
+ },
  "e1a9a842-98ec-4221-b1dc-299e5570d5c6": {
   "nexusId": 10795,
   "nexusName": "Fix Stragglers",
@@ -39303,6 +39393,16 @@
   "adult": false,
   "endorsements": 14
  },
+ "c4996547-c985-4826-84ec-8463c3abb05b": {
+  "nexusId": 19502,
+  "nexusName": "Frost equipment",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 36
+ },
  "c81bf695-9f6d-357f-d85a-5c829550d74a": {
   "nexusId": 19502,
   "nexusName": "Frost equipment",
@@ -39439,6 +39539,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 31
+ },
+ "73eb6b4f-6930-4d3e-b44d-ec2bef2ebdd4": {
+  "nexusId": 6768,
+  "nexusName": "Gemmaphile - Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 128
  },
  "name:ghastlycrownturnintoaghost": {
   "nexusId": 17567,
@@ -39604,6 +39714,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 34
+ },
+ "46fe308b-79e8-69e5-7f7c-8f8276ef74bd": {
+  "nexusId": 19345,
+  "nexusName": "Granny Class 6 Ring",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 9
  },
  "b61c4006-8fb9-e6a0-e5e0-6331c44d5a79": {
   "nexusId": 3455,
@@ -39859,6 +39979,16 @@
   "suggestedGroup": "Gameplay",
   "adult": false,
   "endorsements": 239
+ },
+ "01077070-3ffc-e0fc-ce07-018e8a8a88e7": {
+  "nexusId": 15185,
+  "nexusName": "Heroes of the Storm (HOTS Feats)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Spells",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 19
  },
  "9772bb83-087c-405e-bb64-5ea5c3bf49f2": {
   "nexusId": 12310,
@@ -40613,6 +40743,16 @@
   "adult": false,
   "endorsements": 8
  },
+ "7dd0afae-573c-486a-9368-190f38065fa2": {
+  "nexusId": 19811,
+  "nexusName": "LifeDomain equipment",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 33
+ },
  "name:lighterhalfillithid": {
   "nexusId": 12055,
   "nexusName": "Lighter Half Illithid",
@@ -41045,6 +41185,16 @@
   "suggestedGroup": "Weapons",
   "adult": false,
   "endorsements": 6
+ },
+ "9aff1dd3-4cb3-48a2-a83f-8fbeb344f9d4": {
+  "nexusId": 6658,
+  "nexusName": "Might or Magic - Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 65
  },
  "171431f1-47f5-a393-f46f-b063a8a5bf51": {
   "nexusId": 17333,
@@ -41504,6 +41654,16 @@
   "adult": false,
   "endorsements": 34
  },
+ "ec1278ae-f1ff-e4b8-30b3-5a47b53327ab": {
+  "nexusId": 13979,
+  "nexusName": "Muscular (Passive)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 40
+ },
  "0869c48a-daeb-4817-85d0-98eeb26fff85": {
   "nexusId": 5818,
   "nexusName": "Musket",
@@ -41877,6 +42037,33 @@
    }
   ]
  },
+ "56918848-40d0-453b-89b5-034c2374635e": {
+  "nexusId": 25720,
+  "nexusName": "Nyskaya's Honest Hands",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 1
+ },
+ "52b02b36-e154-43f3-b283-af385410b648": {
+  "nexusId": 25726,
+  "nexusName": "Nyskaya's Kindred Spirits",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Companions",
+  "suggestedGroup": "Companions",
+  "adult": false,
+  "endorsements": 0,
+  "requires": [
+   {
+    "name": "Baldur's Gate 3 Script Extender (BG3SE)",
+    "nexusId": 2172,
+    "notes": "Required for all features."
+   }
+  ]
+ },
  "455f780d-41f9-3cf9-7f46-42b5b3be8077": {
   "nexusId": 19730,
   "nexusName": "Oath of the Colossus - Paladin Subclass",
@@ -41893,6 +42080,16 @@
     "uuid": "7131033f-821a-3993-dad4-5bc235cbeb3b"
    }
   ]
+ },
+ "07bd11f1-fb48-96ad-56e3-2c0abe7da0b1": {
+  "nexusId": 24741,
+  "nexusName": "Oath of the Open Sea - Paladin Subclass (ENG-KOR)",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 12
  },
  "c868d952-2039-4b3f-b815-21964e63364b": {
   "nexusId": 15457,
@@ -41983,16 +42180,6 @@
   "suggestedGroup": "Clothing",
   "adult": false,
   "endorsements": 13
- },
- "60c9bffe-b204-4e91-3f73-17fc295193b7": {
-  "nexusId": 21457,
-  "nexusName": "Orin's New Look Revamped",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 19
  },
  "1e7b4acc-1078-d468-5c23-0ccd9a508dee": {
   "nexusId": 19724,
@@ -42447,6 +42634,16 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 64
+ },
+ "a1569527-4775-4108-ba5b-b685f4cb1ded": {
+  "nexusId": 15460,
+  "nexusName": "Portent Feat",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Miscellaneous",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 18
  },
  "2c4cce8d-2660-c4a7-0bf5-f328e24389c1": {
   "nexusId": 18023,
@@ -43090,16 +43287,6 @@
   "adult": false,
   "endorsements": 409
  },
- "5d684312-5c74-4c93-b030-ef83dd31ebcd": {
-  "nexusId": 3448,
-  "nexusName": "Sarevok Set",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Equipment",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 409
- },
  "571cae2c-af7d-fe79-0985-8fb2efbe3883": {
   "nexusId": 12814,
   "nexusName": "Satoru Gojo (Jujutsu Sorcerer Subclass)",
@@ -43203,16 +43390,6 @@
   "adult": false,
   "endorsements": 31
  },
- "2b2df18b-ad91-79fb-882c-2c1813f0a313": {
-  "nexusId": 25235,
-  "nexusName": "Magus Selectus - Gale Edit",
-  "matchKind": "fuzzy",
-  "matchConfidence": 0.93,
-  "nexusCategory": "Visuals",
-  "suggestedGroup": null,
-  "adult": false,
-  "endorsements": 30
- },
  "c2992ca5-9a85-4f44-b457-231bdea3cb5e": {
   "nexusId": 16158,
   "nexusName": "Shadar-Kai with Vemperen Heads",
@@ -43276,6 +43453,16 @@
     "uuid": "67fbbd53-7c7d-4cfa-9409-6d737b4d92a9"
    }
   ]
+ },
+ "27ed28c9-ac70-4ea8-bc48-deda57918592": {
+  "nexusId": 20497,
+  "nexusName": "ShadowBlade equipment",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Equipment",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 25
  },
  "7e600ab6-1c0c-4a49-bb7c-6e783e5bdc45": {
   "nexusId": 19843,
@@ -43566,6 +43753,16 @@
   "adult": false,
   "endorsements": 36
  },
+ "2063959c-7659-485e-8328-465f0c623c20": {
+  "nexusId": 3918,
+  "nexusName": "Simple Resistance Feats",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Gameplay",
+  "suggestedGroup": "Gameplay",
+  "adult": false,
+  "endorsements": 131
+ },
  "41d70f01-70b0-bdac-f8d2-1c5360d0c2be": {
   "nexusId": 19927,
   "nexusName": "Simple Sap",
@@ -43611,16 +43808,6 @@
     "nexusId": 2172
    }
   ]
- },
- "7ed945fb-556e-d84f-1ab9-4b58ec8321a5": {
-  "nexusId": 25798,
-  "nexusName": "Sir Acalians Baldur's Gate 3 Feats",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Gameplay",
-  "suggestedGroup": "Gameplay",
-  "adult": false,
-  "endorsements": 0
  },
  "b997039a-7927-4d22-a50a-6045a2db8da0": {
   "nexusId": 1025,
@@ -44441,16 +44628,6 @@
   "adult": false,
   "endorsements": 74
  },
- "88aa876a-9c78-4802-aa5d-35175e1262ab": {
-  "nexusId": 25185,
-  "nexusName": "The Leper King's Courtwear",
-  "matchKind": "exact",
-  "matchConfidence": 1,
-  "nexusCategory": "Clothing",
-  "suggestedGroup": "Clothing",
-  "adult": false,
-  "endorsements": 22
- },
  "49418ec6-0631-8142-2f0f-c38648c85574": {
   "nexusId": 24788,
   "nexusName": "The Sculptor's Dreamcache Modular Head - Yasmina",
@@ -45176,6 +45353,16 @@
   "adult": false,
   "endorsements": 189
  },
+ "a05d576c-2536-42ef-920f-d1f621cc6434": {
+  "nexusId": 24757,
+  "nexusName": "Warpblade",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Classes",
+  "suggestedGroup": "Classes",
+  "adult": false,
+  "endorsements": 12
+ },
  "a63972c9-5864-4a45-9c5a-9246cf7f1a80": {
   "nexusId": 11637,
   "nexusName": "Wasteland Weaponry - Barbarian Armory Patch (Body Type 3)",
@@ -45412,6 +45599,22 @@
   "suggestedGroup": null,
   "adult": false,
   "endorsements": 9
+ },
+ "3fe9e1d4-f583-4955-b6e9-dc94470562dd": {
+  "nexusId": 19899,
+  "nexusName": "Wundagore Blood crystal",
+  "matchKind": "exact",
+  "matchConfidence": 1,
+  "nexusCategory": "Accessories",
+  "suggestedGroup": null,
+  "adult": false,
+  "endorsements": 21,
+  "requires": [
+   {
+    "name": "Vlad's Grimoire - Spell VFX Library",
+    "nexusId": 1820
+   }
+  ]
  },
  "name:wyllbetterstartinggear": {
   "nexusId": 18289,
