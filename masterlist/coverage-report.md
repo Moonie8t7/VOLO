@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-10-21T09:58:38.737Z by `scripts/mine-corpus.mjs`.
+Generated 2026-10-22T10:03:07.813Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -67,9 +67,9 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Dyes`: 85
 - `Armor`: 403
 - `Weapons`: 527
-- `Gameplay`: 673
+- `Gameplay`: 674
 - `Races`: 326
-- `Classes`: 1457
+- `Classes`: 1456
 - `Character Customization`: 494
 - `Bug Fixes`: 544
 - `Accessories`: 115
