@@ -6,26 +6,25 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11831 |
-| Matched exactly by name | 2718 |
-| Matched fuzzily (>= 0.9) | 678 |
-| Unmatched | 8435 |
+| Masterlist mods | 11987 |
+| Matched exactly by name | 2738 |
+| Matched fuzzily (>= 0.9) | 683 |
+| Unmatched | 8566 |
 
 ## What the match would add
 
-- 35 currently unsorted mods would receive a category from their
+- 34 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1110 mods have a Nexus category that disagrees with the
+- 1133 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1854 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 837 of them resolved to a uuid on both
+- 1862 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 838 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
 
 - Be My Bhaalentine - Romance parner can be abducted: Gameplay (fuzzy match)
-- Haarlep Unleashed: BG3SX Edition: Gameplay (fuzzy match)
 - Grit and Glory - Injuries, Exhaustion and Madness: Gameplay (fuzzy match)
 - Auto Enable Reactions (+ Don't Ask): Gameplay (fuzzy match)
 - Automatic_Inventory_Manager: Gameplay (fuzzy match)
@@ -44,14 +43,15 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - ArcaneArcher: Classes (fuzzy match)
 - Ase Glamping - Player Housing for Camp: Character Customization (fuzzy match)
 - AstralElves: Races (fuzzy match)
+- Block-Miss-Differentiation-CHS: User Interface (fuzzy match)
 
 ### Sample disagreements
 
 - Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
 - Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Miscellaneous (section-majority), Nexus says Gameplay
-- AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
+- AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
