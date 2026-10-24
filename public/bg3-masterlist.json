@@ -1,7 +1,7 @@
 {
   "$schema": "./masterlist.schema.json",
   "version": "2.0.0",
-  "generated": "2026-10-24T00:13:08.499Z",
+  "generated": "2026-10-24T05:17:13.324Z",
   "generator": "scripts/mine-corpus.mjs",
   "license": "CC0-1.0",
   "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -41,8 +41,8 @@
     ]
   },
   "provenance": {
-    "ordersAnalysed": 213,
-    "working": 171,
+    "ordersAnalysed": 214,
+    "working": 172,
     "broken": 40,
     "unlabelled": 2,
     "externalDependencyEdges": 822,
@@ -277,14 +277,14 @@
       },
       "evidence": {
         "source": "curated",
-        "installs": 203,
-        "workingInstalls": 164,
+        "installs": 204,
+        "workingInstalls": 165,
         "brokenInstalls": 37,
         "voloSortedInstalls": 78
       },
       "absence": {
-        "held": 158,
-        "witnesses": 159
+        "held": 159,
+        "witnesses": 160
       }
     },
     {
@@ -303,15 +303,15 @@
       },
       "evidence": {
         "source": "curated",
-        "installs": 183,
-        "workingInstalls": 150,
+        "installs": 184,
+        "workingInstalls": 151,
         "brokenInstalls": 31,
         "voloSortedInstalls": 64
       },
       "usesScriptExtender": true,
       "absence": {
-        "held": 148,
-        "witnesses": 158
+        "held": 149,
+        "witnesses": 159
       }
     },
     {
@@ -341,6 +341,32 @@
       }
     },
     {
+      "name": "Better Inventory UI",
+      "uuid": "6b585be8-ed73-7347-2c58-73146e22b7d4",
+      "group": "User Interface",
+      "folder": "BetterInventoryUI_6b585be8-ed73-7347-2c58-73146e22b7d4",
+      "version": "36591755562319893",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 3,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 154,
+        "workingInstalls": 124,
+        "brokenInstalls": 29,
+        "voloSortedInstalls": 55
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ],
+      "absence": {
+        "held": 10,
+        "witnesses": 10
+      }
+    },
+    {
       "name": "CommunityLibrary",
       "uuid": "396c5966-09b0-40a1-af3f-93a5e9ce71c0",
       "group": "Resources",
@@ -364,32 +390,6 @@
       "absence": {
         "held": 119,
         "witnesses": 126
-      }
-    },
-    {
-      "name": "Better Inventory UI",
-      "uuid": "6b585be8-ed73-7347-2c58-73146e22b7d4",
-      "group": "User Interface",
-      "folder": "BetterInventoryUI_6b585be8-ed73-7347-2c58-73146e22b7d4",
-      "version": "36591755562319893",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 3,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 153,
-        "workingInstalls": 123,
-        "brokenInstalls": 29,
-        "voloSortedInstalls": 55
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ],
-      "absence": {
-        "held": 10,
-        "witnesses": 10
       }
     },
     {
@@ -519,6 +519,29 @@
       }
     },
     {
+      "name": "Tav's Hair Salon",
+      "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
+      "group": "Hair",
+      "alternateNames": [
+        "Tav's Hair Salon - Tav's Hairpack"
+      ],
+      "folder": "DFHairPack",
+      "version": "72057594037927936",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 64,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 126,
+        "workingInstalls": 96,
+        "brokenInstalls": 29,
+        "voloSortedInstalls": 52
+      },
+      "absence": {
+        "held": 64,
+        "witnesses": 64
+      }
+    },
+    {
       "name": "BetterTooltips",
       "uuid": "bc1081b4-e2a9-ce49-8b60-6f64b7eecce4",
       "group": "User Interface",
@@ -542,29 +565,6 @@
       "absence": {
         "held": 1,
         "witnesses": 2
-      }
-    },
-    {
-      "name": "Tav's Hair Salon",
-      "uuid": "da0b99ca-4406-49c1-bef9-3a08621280a2",
-      "group": "Hair",
-      "alternateNames": [
-        "Tav's Hair Salon - Tav's Hairpack"
-      ],
-      "folder": "DFHairPack",
-      "version": "72057594037927936",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 64,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 125,
-        "workingInstalls": 95,
-        "brokenInstalls": 29,
-        "voloSortedInstalls": 52
-      },
-      "absence": {
-        "held": 63,
-        "witnesses": 63
       }
     },
     {
@@ -645,8 +645,8 @@
       "divider": 101,
       "evidence": {
         "source": "section-majority",
-        "installs": 115,
-        "workingInstalls": 89,
+        "installs": 116,
+        "workingInstalls": 90,
         "brokenInstalls": 26,
         "voloSortedInstalls": 43
       },
@@ -662,8 +662,8 @@
       "divider": 3,
       "evidence": {
         "source": "section-majority",
-        "installs": 111,
-        "workingInstalls": 87,
+        "installs": 112,
+        "workingInstalls": 88,
         "brokenInstalls": 24,
         "voloSortedInstalls": 40
       }
@@ -923,13 +923,16 @@
       "name": "PixellBytes' Adjustable Party Limit",
       "uuid": "33c1de88-dfd0-351d-8904-a5ee730880c6",
       "group": "Miscellaneous",
+      "alternateNames": [
+        "Adjustable Party Limit"
+      ],
       "folder": "ConfigurablePartyLimit_33c1de88-dfd0-351d-8904-a5ee730880c6",
       "author": "PixellBytes",
       "divider": 19,
       "evidence": {
         "source": "section-majority",
-        "installs": 89,
-        "workingInstalls": 67,
+        "installs": 90,
+        "workingInstalls": 68,
         "brokenInstalls": 22,
         "voloSortedInstalls": 35
       },
@@ -998,21 +1001,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "VFX_Library_SHV",
-      "uuid": "dd19db12-96c0-4bca-9ef6-e8d733801d23",
-      "group": "Resources",
-      "version": "36591749119868928",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 11,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 86,
-        "workingInstalls": 69,
-        "brokenInstalls": 17,
-        "voloSortedInstalls": 32
-      }
-    },
-    {
       "name": "Mark Book As Read",
       "uuid": "c72d9f6a-a6e4-48b1-98c0-0ecdc7c31cf7",
       "group": "Gameplay",
@@ -1034,8 +1022,8 @@
       "divider": 19,
       "evidence": {
         "source": "section-majority",
-        "installs": 85,
-        "workingInstalls": 73,
+        "installs": 86,
+        "workingInstalls": 74,
         "brokenInstalls": 12,
         "voloSortedInstalls": 29
       },
@@ -1043,6 +1031,21 @@
       "absence": {
         "held": 42,
         "witnesses": 42
+      }
+    },
+    {
+      "name": "VFX_Library_SHV",
+      "uuid": "dd19db12-96c0-4bca-9ef6-e8d733801d23",
+      "group": "Resources",
+      "version": "36591749119868928",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 11,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 86,
+        "workingInstalls": 69,
+        "brokenInstalls": 17,
+        "voloSortedInstalls": 32
       }
     },
     {
@@ -1195,8 +1198,8 @@
       "divider": 64,
       "evidence": {
         "source": "section-majority",
-        "installs": 79,
-        "workingInstalls": 62,
+        "installs": 80,
+        "workingInstalls": 63,
         "brokenInstalls": 17,
         "voloSortedInstalls": 34
       }
@@ -1250,6 +1253,30 @@
       }
     },
     {
+      "name": "TutorialChestSummoning",
+      "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
+      "group": "Spells",
+      "author": "wesslen",
+      "version": "2.10.2.0",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 29,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 77,
+        "workingInstalls": 61,
+        "brokenInstalls": 15,
+        "voloSortedInstalls": 33
+      },
+      "usesScriptExtender": true,
+      "absence": {
+        "held": 22,
+        "witnesses": 54
+      }
+    },
+    {
       "name": "Race CC Universal Automatic Patcher (UAP)",
       "uuid": "390fe96d-d38a-49ef-a522-9335d0a948d6",
       "group": "Bug Fixes",
@@ -1274,30 +1301,6 @@
       "absence": {
         "held": 4,
         "witnesses": 4
-      }
-    },
-    {
-      "name": "TutorialChestSummoning",
-      "uuid": "505c630c-79fa-49b6-9f21-29a5f2322c2d",
-      "group": "Spells",
-      "author": "wesslen",
-      "version": "2.10.2.0",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 29,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 76,
-        "workingInstalls": 60,
-        "brokenInstalls": 15,
-        "voloSortedInstalls": 33
-      },
-      "usesScriptExtender": true,
-      "absence": {
-        "held": 22,
-        "witnesses": 54
       }
     },
     {
@@ -1594,6 +1597,25 @@
       }
     },
     {
+      "name": "MoreReactiveCompanions_Configurable",
+      "uuid": "2b1e81bb-d0aa-4617-b3e9-271c7b02f252",
+      "group": "Miscellaneous",
+      "version": "36028797018963978",
+      "featureFlags": [
+        "Lua"
+      ],
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 16,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 70,
+        "workingInstalls": 54,
+        "brokenInstalls": 16,
+        "voloSortedInstalls": 23
+      },
+      "usesScriptExtender": true
+    },
+    {
       "name": "Telekinetic Spells",
       "uuid": "19caa3a3-25c3-0c0d-9509-1ae390eaa972",
       "group": "Spells",
@@ -1647,25 +1669,6 @@
         "brokenInstalls": 17,
         "voloSortedInstalls": 29
       }
-    },
-    {
-      "name": "MoreReactiveCompanions_Configurable",
-      "uuid": "2b1e81bb-d0aa-4617-b3e9-271c7b02f252",
-      "group": "Miscellaneous",
-      "version": "36028797018963978",
-      "featureFlags": [
-        "Lua"
-      ],
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 16,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 69,
-        "workingInstalls": 53,
-        "brokenInstalls": 16,
-        "voloSortedInstalls": 23
-      },
-      "usesScriptExtender": true
     },
     {
       "name": "WrinkleMapeSmoothn",
@@ -2603,6 +2606,23 @@
       }
     },
     {
+      "name": "All Camp Clothes and Dyes",
+      "uuid": "045e745f-af5a-a04a-fe57-ebd61f264454",
+      "group": "Equipment",
+      "folder": "LIX_AllCampClothesAndDyesAct1_045e745f-af5a-a04a-fe57-ebd61f264454",
+      "author": "KatLix",
+      "version": "1.2.1.12",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 37,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 53,
+        "workingInstalls": 36,
+        "brokenInstalls": 16,
+        "voloSortedInstalls": 22
+      }
+    },
+    {
       "name": "BG3SX",
       "uuid": "df8b9877-5662-4411-9d08-9ee2ec4d8d9e",
       "group": "Resources",
@@ -2699,23 +2719,6 @@
         "voloSortedInstalls": 21
       },
       "usesScriptExtender": true
-    },
-    {
-      "name": "All Camp Clothes and Dyes",
-      "uuid": "045e745f-af5a-a04a-fe57-ebd61f264454",
-      "group": "Equipment",
-      "folder": "LIX_AllCampClothesAndDyesAct1_045e745f-af5a-a04a-fe57-ebd61f264454",
-      "author": "KatLix",
-      "version": "1.2.1.12",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 37,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 52,
-        "workingInstalls": 35,
-        "brokenInstalls": 16,
-        "voloSortedInstalls": 22
-      }
     },
     {
       "name": "Artificer",
@@ -4639,6 +4642,20 @@
       }
     },
     {
+      "name": "UnlockLevelCurve",
+      "uuid": "d903677e-f24b-48ec-ab20-98dcc116a371",
+      "group": "Resources",
+      "author": "Charis",
+      "divider": 8,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 41,
+        "workingInstalls": 30,
+        "brokenInstalls": 11,
+        "voloSortedInstalls": 14
+      }
+    },
+    {
       "name": "Wyll Meets His Hero Fix",
       "uuid": "43922268-70ef-47a6-83ca-20be247c3a34",
       "group": "Bug Fixes",
@@ -4860,20 +4877,6 @@
         "installs": 40,
         "workingInstalls": 34,
         "brokenInstalls": 5,
-        "voloSortedInstalls": 14
-      }
-    },
-    {
-      "name": "UnlockLevelCurve",
-      "uuid": "d903677e-f24b-48ec-ab20-98dcc116a371",
-      "group": "Resources",
-      "author": "Charis",
-      "divider": 8,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 40,
-        "workingInstalls": 29,
-        "brokenInstalls": 11,
         "voloSortedInstalls": 14
       }
     },
@@ -8430,6 +8433,21 @@
       }
     },
     {
+      "name": "a1_distinctive_dyes",
+      "uuid": "bf41067d-b809-499f-803e-47a62fbf5daf",
+      "group": "Equipment",
+      "version": "1",
+      "lastSeenGameBuild": "4.8.700.7143220",
+      "divider": 105,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 28,
+        "workingInstalls": 24,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 10
+      }
+    },
+    {
       "name": "AdvancedCharacterSheet",
       "uuid": "78f36b61-5c72-0eb4-0b7b-45f0adfd5999",
       "group": "User Interface",
@@ -8969,21 +8987,6 @@
         "workingInstalls": 21,
         "brokenInstalls": 5,
         "voloSortedInstalls": 7
-      }
-    },
-    {
-      "name": "a1_distinctive_dyes",
-      "uuid": "bf41067d-b809-499f-803e-47a62fbf5daf",
-      "group": "Equipment",
-      "version": "1",
-      "lastSeenGameBuild": "4.8.700.7143220",
-      "divider": 105,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 27,
-        "workingInstalls": 23,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 10
       }
     },
     {
@@ -22647,6 +22650,27 @@
       }
     },
     {
+      "name": "Stained Glass Dice",
+      "uuid": "370839b8-b9f1-4a8e-b646-d00fade45d56",
+      "group": "Dice",
+      "folder": "SainedGlassDice",
+      "version": "36028797018963968",
+      "divider": 90,
+      "evidence": {
+        "source": "section",
+        "installs": 15,
+        "workingInstalls": 12,
+        "brokenInstalls": 2,
+        "voloSortedInstalls": 3
+      },
+      "dependencies": [
+        {
+          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
+          "name": "ImpUI (ImprovedUI)"
+        }
+      ]
+    },
+    {
       "name": "Stomp that Tadpole",
       "uuid": "57f14548-1aed-731d-74bb-d5df68e9474f",
       "group": "Gameplay",
@@ -24278,27 +24302,6 @@
       }
     },
     {
-      "name": "Stained Glass Dice",
-      "uuid": "370839b8-b9f1-4a8e-b646-d00fade45d56",
-      "group": "Dice",
-      "folder": "SainedGlassDice",
-      "version": "36028797018963968",
-      "divider": 90,
-      "evidence": {
-        "source": "section",
-        "installs": 14,
-        "workingInstalls": 11,
-        "brokenInstalls": 2,
-        "voloSortedInstalls": 3
-      },
-      "dependencies": [
-        {
-          "uuid": "26922ba9-6018-5252-075d-7ff2ba6ed879",
-          "name": "ImpUI (ImprovedUI)"
-        }
-      ]
-    },
-    {
       "name": "Staves of the Forgotten",
       "uuid": "9c1eec7f-6550-b33c-5164-d81f71f1e8aa",
       "group": "Equipment",
@@ -24428,6 +24431,20 @@
         "workingInstalls": 14,
         "brokenInstalls": 0,
         "voloSortedInstalls": 4
+      }
+    },
+    {
+      "name": "UnlockLevelCurve_Patch_XP_NewScale",
+      "uuid": "fefc5f4b-2921-472f-ba0c-c380af9f7525",
+      "group": "Gameplay",
+      "author": "Charis",
+      "divider": 18.5,
+      "evidence": {
+        "source": "section-majority",
+        "installs": 14,
+        "workingInstalls": 10,
+        "brokenInstalls": 4,
+        "voloSortedInstalls": 1
       }
     },
     {
@@ -24655,6 +24672,19 @@
         "workingInstalls": 10,
         "brokenInstalls": 3,
         "voloSortedInstalls": 2
+      }
+    },
+    {
+      "name": "BagsBagsBags",
+      "uuid": "3e158fb8-686e-4153-9430-e27f4b9fb7f8",
+      "group": "Equipment",
+      "divider": 34.5,
+      "evidence": {
+        "source": "section",
+        "installs": 13,
+        "workingInstalls": 11,
+        "brokenInstalls": 1,
+        "voloSortedInstalls": 4
       }
     },
     {
@@ -27044,20 +27074,6 @@
       "usesScriptExtender": true
     },
     {
-      "name": "UnlockLevelCurve_Patch_XP_NewScale",
-      "uuid": "fefc5f4b-2921-472f-ba0c-c380af9f7525",
-      "group": "Gameplay",
-      "author": "Charis",
-      "divider": 18.5,
-      "evidence": {
-        "source": "section-majority",
-        "installs": 13,
-        "workingInstalls": 9,
-        "brokenInstalls": 4,
-        "voloSortedInstalls": 1
-      }
-    },
-    {
       "name": "Unsoiled",
       "uuid": "b1d32a88-1bfd-4714-b1d6-6bd55055d6bd",
       "group": "Companions",
@@ -27542,19 +27558,6 @@
         "workingInstalls": 8,
         "brokenInstalls": 3,
         "voloSortedInstalls": 5
-      }
-    },
-    {
-      "name": "BagsBagsBags",
-      "uuid": "3e158fb8-686e-4153-9430-e27f4b9fb7f8",
-      "group": "Equipment",
-      "divider": 34.5,
-      "evidence": {
-        "source": "section",
-        "installs": 12,
-        "workingInstalls": 10,
-        "brokenInstalls": 1,
-        "voloSortedInstalls": 4
       }
     },
     {
@@ -58220,6 +58223,19 @@
       }
     },
     {
+      "name": "OIONoDCs - Approvals and Flags in Dialogues",
+      "uuid": "1f531347-fdcd-f94e-fe92-8368716b9612",
+      "group": "User Interface",
+      "divider": 5,
+      "evidence": {
+        "source": "external-category",
+        "installs": 6,
+        "workingInstalls": 5,
+        "brokenInstalls": 1,
+        "voloSortedInstalls": 1
+      }
+    },
+    {
       "name": "OIOVerbose",
       "uuid": "8db5c70a-1794-aa4e-d499-2113acb6038c",
       "group": "User Interface",
@@ -66165,19 +66181,6 @@
         "installs": 5,
         "workingInstalls": 5,
         "brokenInstalls": 0,
-        "voloSortedInstalls": 1
-      }
-    },
-    {
-      "name": "OIONoDCs - Approvals and Flags in Dialogues",
-      "uuid": "1f531347-fdcd-f94e-fe92-8368716b9612",
-      "group": "User Interface",
-      "divider": 5,
-      "evidence": {
-        "source": "external-category",
-        "installs": 5,
-        "workingInstalls": 4,
-        "brokenInstalls": 1,
         "voloSortedInstalls": 1
       }
     },
