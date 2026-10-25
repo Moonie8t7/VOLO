@@ -83,12 +83,12 @@ Full detail in [docs/architecture.md](docs/architecture.md).
 
 ## The masterlist
 
-`masterlist/bg3-masterlist.json` covers 11,987 mods. 7,663 were
+`masterlist/bg3-masterlist.json` covers 11,991 mods. 7,663 were
 categorised from section headers modders wrote in their own orders,
-1,989 from name patterns, 1,207 from a Nexus or mod.io listing,
+1,992 from name patterns, 1,208 from a Nexus or mod.io listing,
 17 from where their author's other catalogued mods sit, 197 inferred
 from their neighbours, 96 from curated overrides, and 818 are not
-categorised at all. 11,152 of the 11,987 sit on a divider position.
+categorised at all. 11,156 of the 11,991 sit on a divider position.
 
 These move as the corpus grows.
 [masterlist/coverage-report.md](masterlist/coverage-report.md) is regenerated on
