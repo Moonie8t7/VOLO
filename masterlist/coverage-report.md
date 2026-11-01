@@ -1,19 +1,19 @@
 # Masterlist coverage report
 
-Generated 2026-10-30T23:27:34.108Z by `scripts/mine-corpus.mjs`.
+Generated 2026-11-01T14:55:00.896Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 222 |
-| labelled working | 174 |
+| Load orders analysed | 223 |
+| labelled working | 175 |
 | labelled broken | 46 |
 | load-after edges promoted from catalogues | 834 |
 | unlabelled | 2 |
 | Separator headers parsed | 5204 |
-| **Unique mods indexed** | **12176** |
-| Seen in more than one order | 8622 |
+| **Unique mods indexed** | **12177** |
+| Seen in more than one order | 8623 |
 | With declared dependencies | 829 |
 | With Script Extender flags | 237 |
 | With author metadata | 1311 |
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 5 of 222 orders carry it, because the short
+this comes from. Only 5 of 223 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -41,7 +41,7 @@ Builds observed across the corpus, newest first:
 | Curated override | 97 | highest, hand-verified infrastructure |
 | Human-authored section header | 7678 | high, a modder put it there |
 | Name pattern fallback | 2078 | medium, needs review |
-| Nexus or mod.io listing category | 1235 | medium, the author's own words about what the mod is |
+| Nexus or mod.io listing category | 1236 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 17 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 108 | high, measured 97 percent accurate at this band |
 | Neighbour inference, 0.70 to 0.85 | 96 | medium, roughly 75 percent accurate, carries a confidence score |
@@ -63,7 +63,7 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Clothing`: 152
 - `Equipment`: 1829
 - `Miscellaneous`: 236
-- `Spells`: 880
+- `Spells`: 881
 - `Dyes`: 86
 - `Armor`: 403
 - `Weapons`: 520
@@ -98,7 +98,7 @@ easier to lose.
 | Mods in no working order anywhere | 8% | 0% | yes |
 | Declared dependencies not installed | 0.0 | 0.0 | no |
 
-Measured over 46 broken and 174 working orders, against 146 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 46 broken and 175 working orders, against 146 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -162,7 +162,7 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 174
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 175
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
