@@ -382,6 +382,16 @@ for (const candidate of await orderCandidates()) {
 }
 
 if (!parsed) {
+  /*
+   * A placement report is admitted here for the order it might carry. One
+   * that carries none is still a perfectly good report; it just has nothing
+   * for intake to do, and telling the reporter their submission was rejected
+   * answers a question they never asked. Issue #251 got that reply and no
+   * other for three weeks.
+   */
+  if (body.includes('### Where VOLO put it')) {
+    finish(false, ['A placement report with no order attached. Nothing for intake to do.'], { final: true, silent: true });
+  }
   finish(false, [
     '## Submission rejected',
     '',
