@@ -1052,3 +1052,24 @@ three against two, on a page where the author states the order for their own
 mods. If that bar is ever raised for author sequences (it was, the next day,
 see author-sequences-outrank-small-counts) it is a miner change and nothing
 else. The test follows whatever the miner decides.
+
+### crawl-blocked-by-a-mod-name-2026-10-27
+
+**The catalogue crawl failed every day from 27 October to 2 November 2026,
+and the catalogues stood still at 26 October.** The crawl itself worked. It
+listed both catalogues, regenerated the masterlist, and then failed its own
+landing because the repository audit found three Korean characters in the
+regenerated coverage report: a mod with a Korean title had reached the
+report for the first time. The audit exempts files that repeat other
+people's text verbatim from the non-ascii rule, submitted orders and the
+catalogues and the masterlist among them, and nobody had told it the
+coverage report was one of those. Six runs, six identical failures, and no
+reader of the Actions tab for a week, which is the replay net incident's
+lesson not yet learned for the crawl.
+
+The report is on the list now. What the week cost: every mod published or
+renamed after 26 October was unknown to VOLO, and two placement reports in
+that week were for mods the catalogue would otherwise have placed. The
+intake landings kept working throughout, because a submission regenerates
+the masterlist from the catalogues it has rather than crawling, so the
+corpus grew while the catalogues did not.
