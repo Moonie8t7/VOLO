@@ -117,18 +117,24 @@ const escapeCsv = (v: string) => (/[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"
 
 /**
  * What inserting dividers will actually produce, so the page can say so
- * rather than promising the user their whole set back.
+ * rather than promising something the file will not contain.
  *
- * Not every header returns. Personal ones like "The Bone Zone" head mods that
- * scatter across several groups once sorted, and a divider that cannot be placed with confidence is left out.
+ * Every pak the order arrived with goes back. Most head the category their
+ * mods went to. A personal one like "The Bone Zone" heads mods that scatter
+ * across several groups once sorted, and that one stays above the first mod
+ * it was heading instead, because a pak missing from the export is a pak
+ * BG3MM lists as disabled on re-import.
  */
 export function dividerPlan(result: SortResult, sections: ImportedSection[] = []) {
   const carried = sections.filter(s => s.uuid && s.name).length;
+  const planned = plannedDividers(result.mods, result.placements, sections);
   return {
     /** Dividers the imported file carried as real paks. */
     carried,
-    /** How many of those can be put back where they belong. */
-    placeable: plannedDividers(result.mods, result.placements, sections).length,
+    /** How many dividers the export will contain. Every carried one, or Astra's set. */
+    placeable: planned.length,
+    /** How many of the user's own head the category their mods went to. */
+    byCategory: planned.filter(d => d.how === 'category').length,
     source: carried ? ('yours' as const) : ('astra' as const),
   };
 }
@@ -145,7 +151,7 @@ function plannedDividers(
   mods: Mod[],
   placements: Map<string, Placement>,
   sections: ImportedSection[],
-): { before: string; uuid: string; name: string }[] {
+): { before: string; uuid: string; name: string; how: 'category' | 'kept' }[] {
   const own = ownDividersByGroup(sections, mods, placements);
   const numbered = dividers.all as { num: number; uuid: string; name: string }[];
 
@@ -167,7 +173,7 @@ function plannedDividers(
   );
 
   const used = new Set<string>();
-  const planned: { before: string; uuid: string; name: string }[] = [];
+  const planned: { before: string; uuid: string; name: string; how: 'category' | 'kept' }[] = [];
 
   for (const m of mods) {
     const placement = placements.get(m.uuid);
@@ -192,7 +198,31 @@ function plannedDividers(
       // so the name is only what a person reads, and it should be the one they
       // will see in their manager rather than ours for the same pak.
       name: imported.get(divider.uuid.toLowerCase()) ?? divider.name,
+      how: 'category',
     });
+  }
+
+  /*
+   * Whatever is left of the user's own paks goes back too, above the first
+   * mod it was heading in the file it arrived in. These used to be dropped
+   * on the reasoning that a divider in the wrong place mislabels everything
+   * under it. True, and the cost of dropping one is worse: BG3MM shows every
+   * pak missing from an imported order as disabled, so a person with a
+   * hundred dividers re-imported VOLO's export and found half their list
+   * switched off. The export has to contain everything they gave it.
+   */
+  const outputIndex = new Map(mods.map((m, i) => [m.uuid, i]));
+  for (const section of sections) {
+    if (!section.uuid || !section.name || used.has(section.uuid)) continue;
+    used.add(section.uuid);
+    const next = sections.find(s => s.afterIndex > section.afterIndex);
+    const end = next ? next.afterIndex : Infinity;
+    // The mod it headed that now comes first in the sorted order, so the
+    // divider lands where a reader meets its section, not where the file had it.
+    const headed = mods
+      .filter(m => m.originalIndex >= section.afterIndex && m.originalIndex < end)
+      .sort((a, b) => outputIndex.get(a.uuid)! - outputIndex.get(b.uuid)!)[0];
+    planned.push({ before: headed?.uuid ?? '', uuid: section.uuid, name: section.name, how: 'kept' });
   }
   return planned;
 }
@@ -215,13 +245,21 @@ export function exportOrder(result: SortResult, format: ExportFormat, options: E
       const plan = options.insertDividers
         ? plannedDividers(mods, placements, options.sections ?? [])
         : [];
-      const above = new Map(plan.map(d => [d.before, d]));
+      // Several of the user's own dividers can sit above one mod, when the
+      // sections they headed emptied into it; all of them are written.
+      const above = new Map<string, typeof plan>();
+      for (const d of plan) {
+        if (!above.has(d.before)) above.set(d.before, []);
+        above.get(d.before)!.push(d);
+      }
 
       for (const m of mods) {
-        const divider = above.get(m.uuid);
-        if (divider) entries.push({ UUID: divider.uuid, Name: divider.name });
+        for (const divider of above.get(m.uuid) ?? []) entries.push({ UUID: divider.uuid, Name: divider.name });
         entries.push({ UUID: realUuid(m), Name: m.name });
       }
+      // A divider that headed nothing still in the list, an empty trailing
+      // section, goes last rather than nowhere.
+      for (const divider of above.get('') ?? []) entries.push({ UUID: divider.uuid, Name: divider.name });
       return JSON.stringify({ Order: entries }, null, 2);
     }
 

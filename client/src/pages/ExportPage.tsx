@@ -60,7 +60,14 @@ export default function ExportPage() {
     : false;
   const [format, setFormat] = useState<ExportFormat>('bg3mm');
   const [copied, setCopied] = useState(false);
-  const [insertDividers, setInsertDividers] = useState(false);
+  /*
+   * Null until the person touches the box. An order that arrived with its
+   * own divider paks keeps them unless told otherwise, because BG3MM lists a
+   * pak missing from an imported order as disabled, and somebody who did not
+   * notice the box got half their list switched off. Astra's set is still an
+   * opt-in, since those are paks the person may not have.
+   */
+  const [insertDividers, setInsertDividers] = useState<boolean | null>(null);
 
   if (!result) {
     return (
@@ -82,8 +89,9 @@ export default function ExportPage() {
 
   const spec = EXPORT_FORMATS.find(f => f.id === format)!;
   const plan = dividerPlan(result, sections);
+  const keepDividers = insertDividers ?? plan.carried > 0;
   const content = exportOrder(result, format, {
-    insertDividers: insertDividers && format === 'bg3mm',
+    insertDividers: keepDividers && format === 'bg3mm',
     sections,
   });
 
@@ -242,7 +250,7 @@ export default function ExportPage() {
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
                     type="checkbox"
-                    checked={insertDividers}
+                    checked={keepDividers}
                     onChange={e => setInsertDividers(e.target.checked)}
                     className="mt-1 h-4 w-4 accent-[#D7A869]"
                   />
@@ -252,23 +260,30 @@ export default function ExportPage() {
                       : 'Insert load order dividers at each category boundary, so the order arrives in BG3MM already sectioned.'}
                   </span>
                 </label>
-                {insertDividers && plan.carried > 0 && (
+                {keepDividers && plan.carried > 0 && (
                   <p className="text-xs text-muted-foreground pl-7">
                     Your own dividers, the ones that came in with this order, so
-                    BG3MM already has them.{' '}
-                    {plan.placeable < plan.carried ? (
+                    BG3MM already has them. All {countWordCap(plan.carried)} go back.{' '}
+                    {plan.byCategory < plan.carried ? (
                       <>
-                        {countWordCap(plan.placeable)} of your {countWordCap(plan.carried)} go
-                        back. The rest headed mods that ended up spread across
-                        several categories, and a divider in the wrong place
-                        mislabels everything under it, so those are left out.
+                        {countWordCap(plan.byCategory)} head the category their mods went to.
+                        The other {countWordCap(plan.carried - plan.byCategory)} headed mods that
+                        ended up spread across several categories, so each stays above the
+                        first mod it was heading rather than being left out, which BG3MM
+                        would read as disabled.
                       </>
                     ) : (
-                      <>All {countWordCap(plan.carried)} go back.</>
+                      <>Each heads the category its mods went to.</>
                     )}
                   </p>
                 )}
-                {insertDividers && plan.carried === 0 && (
+                {!keepDividers && plan.carried > 0 && (
+                  <p className="text-xs text-muted-foreground pl-7">
+                    Leaving them out means BG3MM lists those {countWordCap(plan.carried)} paks as
+                    disabled when you import this.
+                  </p>
+                )}
+                {keepDividers && plan.carried === 0 && (
                   <p className="text-xs text-muted-foreground pl-7">
                     This order arrived without dividers, so these are Astra's
                     Load Order Dividers. The paks must be installed or BG3MM

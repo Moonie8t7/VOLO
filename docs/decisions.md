@@ -426,6 +426,29 @@ arbitrary is not, because shelf order means nothing and load order does.
 Where the suggestion and the data disagree, the data won, so this is a
 cousin of that pack and not a version of it.
 
+### an-export-contains-everything-you-gave-it
+
+**Every divider pak an order arrived with goes back out in the export, and
+keeping them is the default.** It was not. The box was off unless ticked,
+and even ticked, a divider whose mods scattered across several categories
+once sorted was left out, on the reasoning that a divider in the wrong place
+mislabels everything under it. That reasoning is fine as far as it goes and
+it missed what BG3MM does with a pak that is absent from an imported order:
+it lists it as disabled. Somebody with a hundred dividers imported VOLO's
+export and found half their list switched off, and said so on Nexus, adding
+that other tools had done the same to them. Not a flattering comparison and
+a fair one.
+
+So: an order that came in with its own divider paks keeps them unless the
+person unticks the box, and the box says what unticking costs. Dividers
+whose mods went to one category head that category as before. The rest stay
+above the first of their mods in the new order, which is a worse label than
+no label in exactly one way and a far better outcome than a pak quietly
+disabled. Astra's set is still an opt-in, because those are paks the person
+may not have installed. The foreign divider fixture in the smoke test now
+has a scattered section in it and checks all three come back, the scattered
+one above the first mod it headed.
+
 ## Rejected
 
 Each experiment below quotes the figure it was measured against at the time,

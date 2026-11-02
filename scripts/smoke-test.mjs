@@ -22,7 +22,7 @@ await build({
     contents: `
       export { parseLoadOrder, isSeparator } from './client/src/lib/parser';
       export { sortLoadOrder } from './client/src/lib/optimiser';
-      export { exportOrder } from './client/src/lib/exporter';
+      export { exportOrder, dividerPlan } from './client/src/lib/exporter';
       export { default as dividers } from './client/src/lib/dividers.json';
     `,
     resolveDir: process.cwd(),
@@ -35,7 +35,7 @@ await build({
   logLevel: 'error',
 });
 
-const { parseLoadOrder, isSeparator, sortLoadOrder, exportOrder, dividers } = await import(`file://${out}`);
+const { parseLoadOrder, isSeparator, sortLoadOrder, exportOrder, dividerPlan, dividers } = await import(`file://${out}`);
 const masterlist = JSON.parse(fs.readFileSync('masterlist/bg3-masterlist.json', 'utf8'));
 
 let failures = 0;
@@ -712,12 +712,23 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   );
   const MINE_A = { UUID: '9a9a9a9a-1111-2222-3333-444444444401', Name: '===== My UI Section =====' };
   const MINE_B = { UUID: '9a9a9a9a-1111-2222-3333-444444444402', Name: '===== My Other Section =====' };
+  // A personal section whose mods scatter: one UI mod and one from elsewhere,
+  // so no group has a majority and the category pass cannot place it.
+  const MINE_C = { UUID: '9a9a9a9a-1111-2222-3333-444444444403', Name: '===== The Bone Zone =====' };
+  const ui2 = masterlist.plugins.find(p => p.group === 'User Interface' && p.uuid !== ui.uuid && !p.uuid.startsWith('name:'));
+  const other2 = masterlist.plugins.find(
+    p => p.group === other.group && p.uuid !== other.uuid && !p.uuid.startsWith('name:'),
+  );
 
   const parsed = parseLoadOrder(JSON.stringify({
-    Order: [MINE_A, { Name: ui.name, UUID: ui.uuid }, MINE_B, { Name: other.name, UUID: other.uuid }],
+    Order: [
+      MINE_A, { Name: ui.name, UUID: ui.uuid },
+      MINE_B, { Name: other.name, UUID: other.uuid },
+      MINE_C, { Name: ui2.name, UUID: ui2.uuid }, { Name: other2.name, UUID: other2.uuid },
+    ],
   }), 'mine.json');
 
-  if (parsed.sections.length === 2 && parsed.sections.every(s => s.uuid && s.name)) {
+  if (parsed.sections.length === 3 && parsed.sections.every(s => s.uuid && s.name)) {
     console.log('  ok    a divider set we do not catalogue is kept, uuid and all');
   } else {
     failures++;
@@ -730,11 +741,30 @@ for (const file of fs.readdirSync(CORPUS).sort()) {
   }));
   const emitted = withMine.Order.map(e => e.UUID);
 
-  if (emitted.includes(MINE_A.UUID) || emitted.includes(MINE_B.UUID)) {
-    console.log("  ok    the user's own dividers come back in the export");
+  if ([MINE_A, MINE_B, MINE_C].every(d => emitted.includes(d.UUID))) {
+    console.log("  ok    every one of the user's own dividers comes back in the export");
   } else {
     failures++;
-    console.log('  FAIL  the export dropped the dividers the order arrived with');
+    console.log(`  FAIL  the export dropped a divider the order arrived with: ${JSON.stringify(emitted)}`);
+  }
+
+  // The scattered one sits above the first of its mods, wherever that mod
+  // ended up, rather than nowhere. A pak missing from an imported order is a
+  // pak BG3MM lists as disabled, which is how a user lost half their list.
+  const cAt = emitted.indexOf(MINE_C.UUID);
+  const firstHeaded = Math.min(...[ui2.uuid, other2.uuid].map(u => emitted.indexOf(u)).filter(i => i >= 0));
+  if (cAt >= 0 && cAt === firstHeaded - 1) {
+    console.log('  ok    a divider whose mods scattered stays above the first mod it was heading');
+  } else {
+    failures++;
+    console.log(`  FAIL  scattered divider at ${cAt}, first of its mods at ${firstHeaded}`);
+  }
+  const plan = dividerPlan(sorted, parsed.sections);
+  if (plan.carried === 3 && plan.placeable === 3 && plan.byCategory === 2) {
+    console.log('  ok    the plan says three go back, two by category');
+  } else {
+    failures++;
+    console.log(`  FAIL  plan ${JSON.stringify(plan)}`);
   }
 
   const astraUuids = new Set(dividers.uuids);
