@@ -1,6 +1,6 @@
 # Masterlist coverage report
 
-Generated 2026-11-16T05:07:21.998Z by `scripts/mine-corpus.mjs`.
+Generated 2026-11-19T17:39:13.436Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
@@ -40,12 +40,12 @@ Builds observed across the corpus, newest first:
 |---|---|---|
 | Curated override | 97 | highest, hand-verified infrastructure |
 | Human-authored section header | 7702 | high, a modder put it there |
-| Name pattern fallback | 2103 | medium, needs review |
-| Nexus or mod.io listing category | 1253 | medium, the author's own words about what the mod is |
+| Name pattern fallback | 2156 | medium, needs review |
+| Nexus or mod.io listing category | 1218 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 17 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
-| Neighbour inference, 0.85 agreement or better | 108 | high, measured 97 percent accurate at this band |
-| Neighbour inference, 0.70 to 0.85 | 96 | medium, roughly 75 percent accurate, carries a confidence score |
-| Uncategorised | 881 | none, needs community input |
+| Neighbour inference, 0.85 agreement or better | 106 | high, measured 97 percent accurate at this band |
+| Neighbour inference, 0.70 to 0.85 | 95 | medium, roughly 75 percent accurate, carries a confidence score |
+| Uncategorised | 866 | none, needs community input |
 
 Inferred placements come from where a mod sits in submitted orders: labelled
 neighbours within six places vote for their group, weighted by closeness.
@@ -57,21 +57,21 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Top of Load Order`: 13
 - `Resources`: 300
 - `Utilities`: 114
-- `Visuals`: 131
+- `Visuals`: 128
 - `Animations`: 203
 - `User Interface`: 209
 - `Clothing`: 152
-- `Equipment`: 1844
+- `Equipment`: 1840
 - `Miscellaneous`: 235
 - `Spells`: 883
 - `Dyes`: 86
 - `Armor`: 402
-- `Weapons`: 523
+- `Weapons`: 549
 - `Gameplay`: 695
 - `Races`: 338
 - `Classes`: 1476
 - `Character Customization`: 494
-- `Bug Fixes`: 553
+- `Bug Fixes`: 550
 - `Accessories`: 126
 - `Quests`: 32
 - `Environment`: 70
@@ -79,11 +79,11 @@ inferred entry stores its agreement score as `evidence.confidence`.
 - `Heads`: 752
 - `Hair`: 371
 - `Companions`: 462
-- `NPC`: 346
+- `NPC`: 345
 - `Bodies`: 46
 - `Dice`: 474
 - `Bottom of Load Order`: 13
-- `unsorted`: 881
+- `unsorted`: 866
 
 ## What the broken orders do differently
 
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 19.4% | 20.5% | no, and it points the other way |
+| Category pairs against the working consensus | 19.2% | 20.3% | no, and it points the other way |
 | Mods in no working order anywhere | 8% | 0% | yes |
 | Declared dependencies not installed | 0.0 | 0.0 | no |
 
-Measured over 48 broken and 181 working orders, against 148 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 48 broken and 181 working orders, against 144 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -167,7 +167,7 @@ _none: every stated requirement names a mod this masterlist knows_
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
-- **881 mods are `unsorted`.** These need community categorisation.
+- **866 mods are `unsorted`.** These need community categorisation.
 - **Thin exports dominate.** Most submissions use the `{UUID, Name}` format, which
   carries no dependency or version data. Only the full BG3MM export does.
 

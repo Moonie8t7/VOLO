@@ -99,7 +99,7 @@ const NAME_PATTERNS: [RegExp, GroupName, number][] = [
   [/outfit|clothing|clothes|camp\s*(clothes|outfit)/i, 'Clothing', 37],
   [/underwear|lingerie/i, 'Clothing', 41],
   [/armou?r/i, 'Armor', 36],
-  [/weapon|\bswords?\b|\bblades?\b|\bbows?\b|dagger/i, 'Weapons', 42],
+  [/weapon|\b(?:great|long|short|broad|bastard)?swords?\b|\bblades?\b|\bbows?\b|dagger|scimitar|rapier|halberd|glaive|\bmaces?\b|\b(?:battle|great|hand|war)?axes?\b|\b(?:war)?hammers?\b|\bspears?\b|crossbow/i, 'Weapons', 42],
   [/jewel|amulet|\brings?\b|earring/i, 'Accessories', 40],
   [/cloak/i, 'Accessories', 35],
   [/instrument|\blute\b|\bflute\b/i, 'Equipment', 39],
