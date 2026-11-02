@@ -31,6 +31,14 @@ updates:
         patterns:
           - "*"
     open-pull-requests-limit: 3
+    # A major version is a person's job, not a monthly batch. The October
+    # group put React 19 and a lucide rewrite in with twenty-three patch
+    # bumps and the whole thing failed checks, which is the twenty-three
+    # held hostage by the two. Majors get looked at when somebody has the
+    # afternoon for them.
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
     commit-message:
       prefix: Update
 
