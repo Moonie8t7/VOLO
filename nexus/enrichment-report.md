@@ -6,20 +6,20 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 11991 |
-| Matched exactly by name | 2739 |
-| Matched fuzzily (>= 0.9) | 683 |
-| Unmatched | 8569 |
+| Masterlist mods | 12257 |
+| Matched exactly by name | 2783 |
+| Matched fuzzily (>= 0.9) | 722 |
+| Unmatched | 8752 |
 
 ## What the match would add
 
-- 34 currently unsorted mods would receive a category from their
+- 33 currently unsorted mods would receive a category from their
   Nexus listing.
-- 1133 mods have a Nexus category that disagrees with the
+- 1152 mods have a Nexus category that disagrees with the
   masterlist group. Disagreement is information, not an instruction; each needs
   a look before anything changes.
-- 1863 dependency edges from author-maintained Requirements tables land
-  on matched masterlist mods, 838 of them resolved to a uuid on both
+- 1900 dependency edges from author-maintained Requirements tables land
+  on matched masterlist mods, 866 of them resolved to a uuid on both
   ends and usable as load-after constraints today.
 
 ### Sample category fills
@@ -31,11 +31,11 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - EW_Proficiency_Potion: Utilities (fuzzy match)
 - Exhaustion: User Interface (fuzzy match)
 - Guilt-Free Slayer Form: Quests (fuzzy match)
+- DuplicationSE: User Interface (fuzzy match)
 - Initiative Variants - D20: Gameplay (fuzzy match)
 - AskewShaders: Utilities (fuzzy match)
 - BetterDualWieldingAlt: Gameplay (fuzzy match)
 - BG3CraftingUpdate: Gameplay (fuzzy match)
-- DuplicationSE: User Interface (fuzzy match)
 - Durge Noblestalk Memory Swap: Gameplay (fuzzy match)
 - IllithidPowersOverhaul: Gameplay (fuzzy match)
 - Lay on Hands Enhanced - DND 5R: Classes (fuzzy match)
@@ -53,15 +53,15 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
+- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
+- Auto Send Food To Camp: ours Utilities (section-majority), Nexus says Gameplay
 - Fade's Assorted Treasure Expansion: ours Equipment (section-majority), Nexus says Gameplay
 - HT_Lesser Restoration: Assorted Bug Fixes: ours Bug Fixes (section-majority), Nexus says Gameplay
-- Auto Send Food To Camp: ours Utilities (section-majority), Nexus says Gameplay
-- Myky's Heads: ours Heads (section-majority), Nexus says Character Customization
 - Race CC Universal Automatic Patcher (UAP): ours Bug Fixes (section-majority), Nexus says Races
 - HT_Early Access Scenes Restored: ours Bug Fixes (section-majority), Nexus says Gameplay
 - Tepkunset Hair Collection: ours Hair (section-majority), Nexus says Character Customization
-- Essential_Feats: ours Classes (section), Nexus says Gameplay
 - Jerinski's Alt Hairs: ours Hair (section-majority), Nexus says Character Customization
+- Essential_Feats: ours Classes (section), Nexus says Gameplay
 
 ## Unmapped Nexus categories
 
