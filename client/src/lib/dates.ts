@@ -21,12 +21,15 @@ export function longDate(iso: string): string {
 }
 
 /**
- * The date at axis width, as in 9 Sep.
+ * The month alone, as in Sep, with the year added where a chart crosses
+ * into a new one, as in Jan 2027.
  *
  * @param iso a date such as 2026-09-09
- * @returns the day and the month's first three letters
+ * @param withYear whether this label has to say which year it starts
+ * @returns the month's first three letters, and the year when asked
  */
-export function shortDate(iso: string): string {
-  const [, month, day] = iso.split('-').map(Number);
-  return `${day} ${MONTHS[month - 1].slice(0, 3)}`;
+export function monthLabel(iso: string, withYear = false): string {
+  const [year, month] = iso.split('-').map(Number);
+  const name = MONTHS[month - 1].slice(0, 3);
+  return withYear ? `${name} ${year}` : name;
 }

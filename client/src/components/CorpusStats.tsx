@@ -10,7 +10,7 @@
  */
 
 import { useState, type ReactNode } from "react";
-import { longDate, shortDate } from "@/lib/dates";
+import { longDate, monthLabel } from "@/lib/dates";
 import summary from "@/lib/masterlist-summary.json";
 import { HELD_OUT, RANDOM } from "@/lib/measured-stats";
 
@@ -231,6 +231,13 @@ function Bar({ id, x, y, width, height }: {
  * Columns, one per week, on a dotted grid stepped in fives or tens with the
  * tick values at the right. Only the tallest column and the newest carry a
  * figure; the rest are read off the grid, the tooltip, or the table.
+ *
+ * The axis names months, not weeks. Every week used to carry its date, which
+ * read fine at eight columns and became one run of overlapping type by
+ * sixteen, and the corpus adds a column a week. A label now sits under the
+ * first week of each month, with the year the first time a new one appears,
+ * and every column keeps a tick so the weeks can still be counted. The
+ * exact week is in the tooltip and the table.
  */
 function WeeklyChart() {
   const W = 520, H = 240, L = 16, R = 44, T = 28, B = 36;
@@ -246,6 +253,15 @@ function WeeklyChart() {
   const last = WEEKS[WEEKS.length - 1];
   const ticks: number[] = [];
   for (let v = 0; v <= top; v += step) ticks.push(v);
+  // The label under a column, if it opens a month: the month's name, with
+  // the year the first time the axis enters a new one.
+  const monthLabelFor = (i: number): string | null => {
+    const [year, month] = WEEKS[i].week.split('-');
+    if (i === 0) return monthLabel(WEEKS[i].week);
+    const [prevYear, prevMonth] = WEEKS[i - 1].week.split('-');
+    if (month === prevMonth && year === prevYear) return null;
+    return monthLabel(WEEKS[i].week, year !== prevYear);
+  };
 
   return (
     <svg
@@ -284,9 +300,12 @@ function WeeklyChart() {
                 {w.orders}
               </text>
             )}
-            <text x={x + bar / 2} y={H - 12} textAnchor="middle" fill={INK} fontSize="12">
-              {shortDate(w.week)}
-            </text>
+            <line x1={x + bar / 2} x2={x + bar / 2} y1={y(0)} y2={y(0) + 4} stroke={TICK} strokeWidth="1" />
+            {monthLabelFor(i) && (
+              <text x={x + bar / 2} y={H - 12} textAnchor="middle" fill={INK} fontSize="12">
+                {monthLabelFor(i)}
+              </text>
+            )}
           </g>
         );
       })}
@@ -377,7 +396,7 @@ export function CorpusCharts() {
         eyebrow="Corpus growth"
         title={<>Orders landed <Gold>by week</Gold></>}
         unit="Orders in the corpus, by the week they landed"
-        note={`Weeks start on a Monday. ${undated}${latest}`}
+        note={`Weeks start on a Monday; the axis names the first week of each month and every column keeps its tick. ${undated}${latest}`}
         chart={<WeeklyChart />}
         table={
           <Table
