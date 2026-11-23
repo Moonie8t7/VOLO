@@ -6,10 +6,10 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 
 | | |
 |---|---|
-| Masterlist mods | 12257 |
-| Matched exactly by name | 2783 |
-| Matched fuzzily (>= 0.9) | 722 |
-| Unmatched | 8752 |
+| Masterlist mods | 12265 |
+| Matched exactly by name | 2784 |
+| Matched fuzzily (>= 0.9) | 727 |
+| Unmatched | 8754 |
 
 ## What the match would add
 
@@ -48,8 +48,8 @@ Catalogue scanned through id 9848 of 24245 (crawl still in progress).
 ### Sample disagreements
 
 - Tav's Hair Salon: ours Hair (section-majority), Nexus says Character Customization
-- Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
 - Transmog Enhanced Revamped: ours Miscellaneous (section-majority), Nexus says Gameplay
+- Myky's Hairstyles: ours Hair (section-majority), Nexus says Character Customization
 - Faces of Faerun: ours Heads (section-majority), Nexus says Character Customization
 - AnimationUnlocker: ours Resources (section-majority), Nexus says Animations
 - PixellBytes' Adjustable Party Limit: ours Miscellaneous (section-majority), Nexus says Companions
