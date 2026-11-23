@@ -1,22 +1,22 @@
 # Masterlist coverage report
 
-Generated 2026-11-23T00:13:23.904Z by `scripts/mine-corpus.mjs`.
+Generated 2026-11-23T01:10:37.833Z by `scripts/mine-corpus.mjs`.
 
 ## Corpus
 
 | | |
 |---|---|
-| Load orders analysed | 232 |
-| labelled working | 181 |
+| Load orders analysed | 233 |
+| labelled working | 182 |
 | labelled broken | 49 |
 | load-after edges promoted from catalogues | 893 |
 | unlabelled | 2 |
-| Separator headers parsed | 5342 |
+| Separator headers parsed | 5473 |
 | **Unique mods indexed** | **12265** |
 | Seen in more than one order | 8719 |
-| With declared dependencies | 856 |
+| With declared dependencies | 857 |
 | With Script Extender flags | 237 |
-| With author metadata | 1311 |
+| With author metadata | 1314 |
 
 ## Game version
 
@@ -24,7 +24,7 @@ Calibrated against **Patch 8** (build `4.8.700.7143220`).
 
 BG3 patches change what is compatible, so the build a load order was made on
 matters. Full BG3MM exports record it on the base-game packages, which is where
-this comes from. Only 5 of 232 orders carry it, because the short
+this comes from. Only 6 of 233 orders carry it, because the short
 export format omits dependency metadata entirely.
 
 Builds observed across the corpus, newest first:
@@ -32,15 +32,15 @@ Builds observed across the corpus, newest first:
 - `4.8.700.7143220` (Patch 8)
 - `4.8.400.6917144` (Patch 8)
 
-1067 mods record the newest build they were seen on, which would let the tool flag a mod as last verified on an older patch.
+1072 mods record the newest build they were seen on, which would let the tool flag a mod as last verified on an older patch.
 
 ## How each mod got its group
 
 | Source | Count | Trust |
 |---|---|---|
 | Curated override | 97 | highest, hand-verified infrastructure |
-| Human-authored section header | 7702 | high, a modder put it there |
-| Name pattern fallback | 2164 | medium, needs review |
+| Human-authored section header | 7703 | high, a modder put it there |
+| Name pattern fallback | 2163 | medium, needs review |
 | Nexus or mod.io listing category | 1224 | medium, the author's own words about what the mod is |
 | Author's other catalogued mods | 17 | medium, a specialist author's habit; needs three catalogued mods with eighty percent in one group |
 | Neighbour inference, 0.85 agreement or better | 106 | high, measured 97 percent accurate at this band |
@@ -55,13 +55,13 @@ inferred entry stores its agreement score as `evidence.confidence`.
 ## Group distribution
 
 - `Top of Load Order`: 13
-- `Resources`: 300
+- `Resources`: 299
 - `Utilities`: 114
 - `Visuals`: 128
 - `Animations`: 203
-- `User Interface`: 209
+- `User Interface`: 211
 - `Clothing`: 152
-- `Equipment`: 1840
+- `Equipment`: 1839
 - `Miscellaneous`: 235
 - `Spells`: 890
 - `Dyes`: 86
@@ -94,11 +94,11 @@ easier to lose.
 
 | Signal | Broken orders | Working orders | Separates? |
 |---|---|---|---|
-| Category pairs against the working consensus | 18.8% | 20.3% | no, and it points the other way |
+| Category pairs against the working consensus | 18.8% | 20.2% | no, and it points the other way |
 | Mods in no working order anywhere | 8% | 0% | yes |
 | Declared dependencies not installed | 0.0 | 0.0 | no |
 
-Measured over 49 broken and 181 working orders, against 144 category conventions, each held by at least 75 percent of at least 500 observed pairs.
+Measured over 49 broken and 182 working orders, against 144 category conventions, each held by at least 75 percent of at least 500 observed pairs.
 
 Read the broken column with that first count in mind. A handful of orders
 cannot say what breaks a game, and the ordering signal still runs backwards,
@@ -164,7 +164,7 @@ _none: every stated requirement names a mod this masterlist knows_
 
 ## Known limitations
 
-- **Ordering rules are not derived here.** Pairwise co-occurrence over 181
+- **Ordering rules are not derived here.** Pairwise co-occurrence over 182
   working orders overfits badly: most pairs reflect one person's arbitrary sequencing
   rather than a real constraint. Only declared `dependencies` are emitted as hard
   edges. Revisit once submissions reach ~100 orders.
